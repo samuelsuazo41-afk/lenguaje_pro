@@ -1,0 +1,23 @@
+{
+  "name": "Lenguaje Pro - Learn English with Laia",
+  "short_name": "LenguajePro",
+  "description": "50 areas, 28 grammar, 72 vocab with Laia AI avatar",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#FFD60A",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/laia_3_celebratoria.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/laia_3_celebratoria.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,10 +1,108 @@
-<link rel="manifest" href="/manifest.json">
-<meta name="theme-color" content="#FFD60A">
-<link rel="icon" href="/laia_3_celebratoria.png">
-<link rel="apple-touch-icon" href="/laia_3_celebratoria.png">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lenguaje-Pro V6 - Laia</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<meta name="theme-color" content="#6d28d9">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <div class="logo">📚 LENGUAJE-PRO <span>V6 DEFINITIVO</span></div>
+  <div class="metrics">
+    <span>🔥 <b id="streak">3</b></span>
+    <span>🎯 <b id="acc">82</b>%</span>
+    <span>⏱️ <b id="hes">1200</b>ms</span>
+    <span id="level-badge">A2</span>
+  </div>
+</header>
 
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js');
+<div class="layout">
+  <aside>
+    <h3>50 ÁREAS - LAYA FINAL</h3>
+    <input id="search" placeholder="Buscar: Money, Fear, Family...">
+    <div id="list"></div>
+  </aside>
+  <main>
+    <div class="controls">
+      <select id="level"><option>A1</option><option selected>A2</option><option>B1</option><option>B2</option></select>
+      <button id="gen">⚡ GENERAR LECCIÓN</button>
+    </div>
+    <div id="empty">
+      <h1>👋 Hola, soy Laia</h1>
+      <p>Elige un área. Tengo 6 estados reales: furiosa, observer, empática, celebratoria, colega, strict_light.</p>
+      <img src="laia_4_colega.png" width="140" style="border-radius:24px;margin-top:20px">
+    </div>
+    <div id="card" class="hidden"></div>
+  </main>
+</div>
+
+<!-- LAIA SIEMPRE VISIBLE 40% BOTTOM-RIGHT -->
+<div id="laia-box">
+  <div id="bubble" class="hidden"></div>
+  <img id="laia" src="laia_4_colega.png" alt="Laia">
+  <div id="laia-state">IMG_4_COLEGA</div>
+</div>
+
+<script type="module">
+import { LAYA_FINAL, AVATAR_ENGINE_V6, EMOTION_ENGINE } from './LAYA_FINAL_COMPLETO.js';
+
+let metrics = { same_error_count:0, streak_days:3, accuracy_7d:0.82, hesitation_ms:1200, cefr_level:'A2', flow_mode:false, level_up:false, level:'A2' };
+let selected=null;
+
+const listEl=document.getElementById('list');
+function render(filter=''){
+  listEl.innerHTML='';
+  Object.entries(LAYA_FINAL.AREAS).forEach(([id,a])=>{
+    if(filter &&!`${a.name} ${a.topic}`.toLowerCase().includes(filter)) return;
+    const d=document.createElement('div'); d.className='area';
+    d.innerHTML=`<b>${id}. ${a.name}</b><small>${a.topic}</small><em>${a.baseImg}</em>`;
+    d.onclick=()=>{selected=id; document.querySelectorAll('.area').forEach(x=>x.classList.remove('active')); d.classList.add('active'); updateLaia(); };
+    listEl.appendChild(d);
+  });
 }
+render();
+document.getElementById('search').oninput=e=>render(e.target.value.toLowerCase());
+
+function updateLaia(){
+  const key = AVATAR_ENGINE_V6.decideByMetrics(metrics);
+  const data = AVATAR_ENGINE_V6.files[key];
+  document.getElementById('laia').src = data.file.replace('.jpg','.png');
+  document.getElementById('laia-state').textContent=key;
+  const b=document.getElementById('bubble');
+  b.textContent=data.tts.text; b.classList.remove('hidden');
+  document.getElementById('laia').style.borderColor = key.includes('FURIOUS')?'#ef4444':key.includes('CELEBRATORIA')?'#22c55e':key.includes('EMPATICA')?'#a78bfa':'#8b5cf6';
+  setTimeout(()=>b.classList.add('hidden'),4000);
+}
+
+document.getElementById('gen').onclick=()=>{
+  if(!selected) return alert('Elige área primero tete!');
+  metrics.cefr_level=document.getElementById('level').value;
+  const res = LAYA_FINAL.generate(selected, metrics.cefr_level, metrics);
+  document.getElementById('empty').classList.add('hidden');
+  const card=document.getElementById('card'); card.classList.remove('hidden');
+  card.innerHTML=`
+    <div class="meta"><span>${res.meta.area}</span><span>${res.meta.level}</span><span>⭐ ${res.meta.xp} XP</span><span>${res.meta.emotion}</span></div>
+    <h2>${res.meta.topic}</h2>
+    <div class="gram"><b>MAIN:</b> ${res.meta.grammar_main.id} - <code>${res.meta.grammar_main.formula}</code><br>Ex: ${res.meta.grammar_main.example} <br><b style="color:#f59e0b">${res.meta.mistake_prevention||''}</b></div>
+    <div class="gram"><b>FUTURE:</b> ${res.meta.grammar_future.id} - <code>${res.meta.grammar_future.formula}</code><br>Ex: ${res.meta.grammar_future.example}</div>
+    <pre class="prompt">${res.prompt}</pre>
+    <div class="tags">${res.meta.vocab.map(v=>`<span>${v}</span>`).join('')}</div>
+    <div class="quiz"><h4>Quiz Auto</h4><p>${res.quizAuto.tense_choice}</p><p>${res.quizAuto.conditional}</p><button onclick="ok()">✅ Acierto</button><button onclick="fail()">❌ Fallo</button></div>
+  `;
+  // actualizar Laia a emoción generada
+  document.getElementById('laia').src = res.meta.avatar_file.replace('.jpg','.png');
+  document.getElementById('laia-state').textContent=res.meta.emotion;
+  updateLaia();
+};
+
+window.ok=()=>{metrics.same_error_count=0; metrics.streak_days++; document.getElementById('streak').textContent=metrics.streak_days; updateLaia();};
+window.fail=()=>{metrics.same_error_count++; updateLaia();};
+
+updateLaia();
 </script>
+</body>
+</html>

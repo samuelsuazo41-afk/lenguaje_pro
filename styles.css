@@ -24,25 +24,46 @@ main{flex:1;padding:18px;max-width:860px}
 .meta .blocked{background:#ef4444;color:white;border-color:#ef4444}
 .gram{background:var(--card2);padding:10px 12px;border-radius:10px;margin-bottom:8px;font-size:13px;border:1px solid #2a2a3a;line-height:1.5}
 .gram code{background:#0f0f14;padding:2px 6px;border-radius:6px;color:#a78bfa}
-.reading{background:#0f0f14;border:1px solid #2a2a3a;padding:16px;border-radius:12px;white-space:pre-wrap;font-size:14px;line-height:1.7;margin:14px 0}
+.reading{background:#0f0f14;border:1px solid #2a2a3a;padding:16px;border-radius:12px;white-space:pre-wrap;font-size:14px;line-height:1.7;margin:14px 0;word-wrap:break-word;overflow-wrap:break-word}
 .word{cursor:pointer;border-bottom:1px dashed #3a3a4a;padding:0 2px;border-radius:4px;transition:all 0.15s}.word:hover{background:rgba(139,92,246,0.25);color:#a78bfa}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}.tags span{background:#0f0f14;border:1px solid #2a2a3a;padding:4px 9px;border-radius:20px;font-size:11px;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;max-width:100%;overflow:hidden}.tags span{background:#0f0f14;border:1px solid #2a2a3a;padding:4px 9px;border-radius:20px;font-size:11px;color:var(--muted);max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .chat-box{display:flex;gap:8px;margin-top:12px}.chat-box input{flex:1;background:var(--card2);border:1px solid #2a2a3a;color:white;padding:12px 14px;border-radius:12px;outline:none;font-size:14px}.chat-box input:focus{border-color:var(--accent)}
 .chat-box button{background:var(--accent);color:white;border:none;padding:12px 18px;border-radius:12px;font-weight:700;cursor:pointer}.chat-box button:hover{background:#7c3aed}
 .feedback{margin-top:12px;padding:12px;border-radius:12px;font-size:13px;font-weight:700}.feedback.ok{background:rgba(34,197,94,0.12);border:1px solid #22c55e;color:#86efac}.feedback.fail{background:rgba(239,68,68,0.12);border:1px solid #ef4444;color:#fca5a5}
-#dic-box{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:rgba(26,26,35,0.96);border:1px solid #8b5cf6;padding:12px 18px;border-radius:14px;font-size:12px;z-index:100;backdrop-filter:blur(12px);box-shadow:0 12px 32px rgba(0,0,0,0.5);max-width:90vw}
-#laia-box{position:fixed;right:18px;bottom:18px;width:100px;z-index:99;display:flex;flex-direction:column;align-items:center;gap:6px;pointer-events:none}
-#laia{width:64px;height:64px;border-radius:20px;object-fit:contain;background:transparent!important;border:none!important;box-shadow:none!important;opacity:0.22;transition:all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);animation:float 3s infinite ease-in-out;pointer-events:auto;cursor:pointer}
-#laia:hover{opacity:1;transform:scale(1.3)}
-#laia-box:hover #laia{opacity:1;transform:scale(1.25)}
-#laia-state{background:var(--card);border:1px solid #2a2a3a;padding:2px 7px;border-radius:20px;font-size:8px;color:var(--muted);letter-spacing:0.5px;font-weight:700}
-#bubble{position:absolute;bottom:92px;right:0;background:rgba(139,92,246,0.14);backdrop-filter:blur(14px);border:1px solid rgba(139,92,246,0.35);color:white;padding:10px 14px;border-radius:18px 18px 4px 18px;font-size:12px;font-weight:600;max-width:240px;box-shadow:0 8px 24px rgba(0,0,0,.4);pointer-events:auto;line-height:1.4}
-.bubble-furiosa{background:rgba(239,68,68,0.16)!important;border-color:#ef4444!important}
-.bubble-celebratoria{background:rgba(34,197,94,0.16)!important;border-color:#22c55e!important}
-.bubble-empatica{background:rgba(167,139,250,0.16)!important;border-color:#a78bfa!important}
+
+/* === 2ª PANTALLA OFICIAL - SUPERDIC LAB + SAP === */
+#dic-box{position:fixed;right:0;top:58px;width:390px;height:calc(100vh - 58px);background:#12121a;border-left:2px solid #8b5cf6;padding:18px;overflow-y:auto;z-index:90;transform:translateX(105%);transition:transform .32s cubic-bezier(.4,0,.2,1);box-shadow:-12px 0 40px rgba(139,92,246,0.25);border-radius:0}
+#dic-box.active{transform:translateX(0)}
+#dic-box.hidden{visibility:hidden;display:block!important} #dic-box.active.hidden{visibility:visible}
+#dic-box .close-dic{position:absolute;top:12px;right:12px;background:#232332;border:1px solid #8b5cf6;border-radius:50%;width:30px;height:30px;cursor:pointer;color:#fff;font-size:14px}
+
+/* Fallback para tu dic-box antiguo centrado (si aún se usa) */
+#dic-box.centered{left:50%;right:auto;bottom:24px;top:auto;transform:translateX(-50%);background:rgba(26,26,35,0.96);border:1px solid #8b5cf6;padding:12px 18px;border-radius:14px;font-size:12px;backdrop-filter:blur(12px);box-shadow:0 12px 32px rgba(0,0,0,0.5);max-width:90vw;width:auto;height:auto}
+
+/* === HOLOGRAMA LAIA SAP - SIEMPRE VISIBLE + FLOTANTE === */
+#laia-box{position:fixed;right:18px;bottom:18px;width:110px;z-index:9999;display:flex;flex-direction:column;align-items:center;gap:6px;pointer-events:none}
+#laia{width:86px;height:86px;border-radius:24px;object-fit:contain;background:radial-gradient(circle, rgba(139,92,246,0.15) 0%, transparent 70%)!important;border:2px solid rgba(139,92,246,0.5)!important;box-shadow:0 0 22px rgba(139,92,246,0.5)!important;opacity:0.95;transition:all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);animation:holoFloat 3.2s infinite ease-in-out;pointer-events:auto;cursor:pointer;filter:drop-shadow(0 0 18px #8b5cf6)}
+#laia:hover{opacity:1;transform:scale(1.2)}
+#laia-box:hover #laia{opacity:1;transform:scale(1.15)}
+#laia-state{background:rgba(26,26,35,0.9);border:1px solid #2a2a3a;padding:3px 8px;border-radius:20px;font-size:8px;color:var(--muted);letter-spacing:0.5px;font-weight:700;backdrop-filter:blur(8px)}
+#bubble{position:absolute;bottom:98px;right:0;background:rgba(26,26,37,0.94)!important;backdrop-filter:blur(14px);border:1px solid rgba(139,92,246,0.5)!important;color:white;padding:10px 14px;border-radius:18px 18px 4px 18px;font-size:11px;font-weight:600;max-width:280px;box-shadow:0 8px 28px rgba(139,92,246,0.35)!important;pointer-events:auto;line-height:1.4;word-wrap:break-word}
+.bubble-furiosa{background:rgba(239,68,68,0.18)!important;border-color:#ef4444!important;box-shadow:0 8px 24px rgba(239,68,68,0.3)!important}
+.bubble-celebratoria{background:rgba(34,197,94,0.18)!important;border-color:#22c55e!important;box-shadow:0 8px 24px rgba(34,197,94,0.3)!important}
+.bubble-empatica{background:rgba(167,139,250,0.18)!important;border-color:#a78bfa!important}
+.bubble-observer{background:rgba(96,165,250,0.18)!important;border-color:#60a5fa!important}
+.bubble-strict{background:rgba(245,158,11,0.18)!important;border-color:#f59e0b!important}
+.bubble-colega{background:rgba(139,92,246,0.18)!important}
+
+@keyframes holoFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
 .shake{animation:shake 0.35s ease}
 .jump{animation:float 0.5s ease 2}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:768px){.layout{flex-direction:column}aside{width:100%;position:relative;top:0;height:auto;max-height:50vh}#laia-box{right:12px;bottom:12px}#laia{width:56px;height:56px}}
+@media(max-width:768px){
+.layout{flex-direction:column}aside{width:100%;position:relative;top:0;height:auto;max-height:50vh}
+#laia-box{right:12px;bottom:12px;width:90px}#laia{width:72px;height:72px}
+#dic-box{width:100%;height:60vh;top:auto;bottom:0;right:0;transform:translateY(105%);border-left:none;border-top:2px solid #8b5cf6}
+#dic-box.active{transform:translateY(0)}
+#bubble{max-width:220px;right:0}
+}

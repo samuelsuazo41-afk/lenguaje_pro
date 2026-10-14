@@ -1,23 +1,57 @@
-const CACHE_NAME = 'lenguaje-pro-v15';
+const CACHE_NAME = 'lenguaje-pro-v12-2-sap-hologram';
 const ASSETS = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/LAYA_FINAL_COMPLETO.js',
-  '/laia_0_furious.png',
-  '/laia_1_observer.png',
-  '/laia_2_empatica.png',
-  '/laia_3_celebratoria.png',
-  '/laia_4_colega.png',
-  '/laia_5_strict_light.png'
+  '/l/',
+  '/l/index.html',
+  '/l/manifest.json',
+  '/l/styles.css',
+  '/l/LAYA_FINAL_COMPLETO.js',
+  '/l/LAYA_SAP_HOLOGRAM.js',
+  '/l/laia_0_furiosa.png',
+  '/l/laia_1_observer.png',
+  '/l/laia_2_empatica.png',
+  '/l/laia_3_celebratoria.png',
+  '/l/laia_4_colega.png',
+  '/l/laia_5_strict_light.png',
+  '/l/icon-192.png'
 ];
 
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(ASSETS)));
+  self.skipWaiting();
+  e.waitUntil(
+    caches.open(CACHE_NAME).then(c => {
+      return c.addAll(ASSETS.map(url => new Request(url, {cache: 'reload'}))).catch(err => {
+        console.log('[SW] Cache addAll fail, trying individual:', err);
+        // Fallback individual para que no rompa si falta una imagen
+        return Promise.allSettled(ASSETS.map(u => c.add(u)));
+      });
+    })
+  );
+});
+
+self.addEventListener('activate', e => {
+  e.waitUntil(
+    caches.keys().then(keys => {
+      return Promise.all(
+        keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k))
+      );
+    }).then(()=> self.clients.claim())
+  );
 });
 
 self.addEventListener('fetch', e => {
+  // Solo cachea GET y mismo origen /l/
+  if(e.request.method !== 'GET') return;
   e.respondWith(
-    caches.match(e.request).then(r => r || fetch(e.request))
+    caches.match(e.request).then(cached => {
+      if(cached) return cached;
+      return fetch(e.request).then(resp => {
+        // Cachea nuevo si es de /l/
+        if(resp.ok && e.request.url.includes('/l/')){
+          const clone = resp.clone();
+          caches.open(CACHE_NAME).then(c => c.put(e.request, clone));
+        }
+        return resp;
+      }).catch(()=> cached);
+    })
   );
 });

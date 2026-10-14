@@ -3,46 +3,49 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lenguaje-Pro V8 - Laia ES la App</title>
+<title>Lenguaje-Pro V6 - Laia</title>
+<link rel="icon" href="icon-192.png">
 <meta name="theme-color" content="#6d28d9">
 <style>
-  body{font-family:system-ui;background:#0f0a1e;color:#fff;margin:0}
-  header{display:flex;justify-content:space-between;padding:12px 20px;background:#1a1330;position:sticky;top:0;z-index:10}
-  .logo span{opacity:.6;font-size:12px}
-  .metrics span{margin-left:10px;font-size:13px}
-  .layout{display:flex;min-height:100vh}
-  aside{width:320px;background:#15102a;padding:12px;border-right:1px solid #2a2347;overflow:auto}
-  aside input{width:100%;padding:8px;border-radius:8px;border:none;background:#211c3a;color:#fff;margin-bottom:8px}
-  .area{padding:8px;border-radius:8px;cursor:pointer;margin-bottom:4px;background:#1e1840}
-  .area.active{background:#6d28d9}
-  .area b{display:block;font-size:13px}
-  .area small{opacity:.6;font-size:11px}
-  main{flex:1;padding:20px;max-width:800px}
-  .card{background:#1c1835;border-radius:16px;padding:20px;border:1px solid #302a5a;animation:fade .3s}
-  .feedback{padding:12px 16px;border-radius:12px;margin-bottom:16px;font-weight:600}
-  .feedback.furiosa{background:rgba(239,68,68,.15);border:1px solid #ef4444;color:#fecaca;animation:shake .4s}
-  .feedback.colega{background:rgba(139,92,246,.15);border:1px solid #8b5cf6}
-  .feedback.celebratoria{background:rgba(34,197,94,.15);border:1px solid #22c55e;animation:jump .5s}
-  .feedback.empatica{background:rgba(167,139,250,.15);border:1px solid #a78bfa}
-  .bloqueo{background:#ef4444;color:#fff;padding:8px;border-radius:8px;text-align:center;font-size:12px;margin-top:12px}
-  .lesson{line-height:1.7;font-size:17px;letter-spacing:.2px}
-  .lesson span.word{border-bottom:1px dashed #8b5cf6;cursor:pointer}
-  .lesson span.word:hover{background:rgba(139,92,246,.2)}
-  .tags span{background:#2a2347;padding:4px 8px;border-radius:20px;font-size:11px;margin:2px;display:inline-block}
-  button{background:#6d28d9;color:#fff;border:none;padding:10px 16px;border-radius:10px;cursor:pointer;font-weight:600}
-  button:disabled{opacity:.4;cursor:not-allowed}
-  #superDic{margin-top:16px;background:#211c3a;padding:12px;border-radius:12px}
-  #laia-box{position:fixed;bottom:20px;right:20px;width:80px;height:80px;pointer-events:none;opacity:.15;transition:.3s}
-  #laia-box.furiosa{opacity:1;filter:drop-shadow(0 0 12px #ef4444);transform:scale(1.1)}
-  #laia-box.celebratoria{opacity:1;filter:drop-shadow(0 0 12px #22c55e)}
-  @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
-  @keyframes jump{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+:root{--bg:#0f0f14;--card:#1a1a23;--card2:#232332;--accent:#8b5cf6;--text:#f1f1f5;--muted:#9ca3af;--border:#2a2a3a;--red:#ef4444;--green:#22c55e}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:Inter,system-ui}
+header{height:58px;background:var(--card);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;padding:0 18px;position:sticky;top:0;z-index:10}
+.logo{font-weight:800}.logo span{background:var(--accent);padding:2px 8px;border-radius:6px;font-size:11px;margin-left:6px}
+.metrics{display:flex;gap:12px;font-size:13px;color:var(--muted)}
+#level-badge{background:#7c3aed;color:white;padding:3px 10px;border-radius:20px}
+.layout{display:flex;min-height:calc(100vh - 58px)}
+aside{width:310px;background:var(--card);border-right:1px solid var(--border);padding:14px;display:flex;flex-direction:column;gap:10px;position:sticky;top:58px;height:calc(100vh - 58px)}
+#search{background:var(--card2);border:1px solid var(--border);color:white;padding:9px 11px;border-radius:9px;outline:none}
+#list{overflow:auto;display:flex;flex-direction:column;gap:6px}
+.area{background:var(--card2);padding:9px 10px;border-radius:10px;cursor:pointer;border:1px solid transparent}
+.area b{font-size:13px;display:block}.area small{font-size:11px;color:var(--muted)}.area em{font-size:10px;color:#8b5cf6;display:block;margin-top:2px}.area:hover{border-color:var(--accent)}.area.active{background:linear-gradient(135deg,#8b5cf6,#6d28d9)}
+main{flex:1;padding:18px;max-width:860px;margin:0 auto}
+.controls{display:flex;gap:10px;margin-bottom:16px}
+#level,#gen{padding:9px 14px;border-radius:9px;border:1px solid var(--border)}
+#gen{background:var(--accent);color:white;font-weight:700;border:none;cursor:pointer}
+#card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px}
+.hidden{display:none!important}
+.meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}.meta span{background:var(--card2);padding:4px 9px;border-radius:20px;font-size:11px;border:1px solid var(--border)}
+.lesson{line-height:1.7;font-size:15px;background:var(--card2);padding:14px;border-radius:12px;border:1px solid var(--border);margin:10px 0}
+.gram{background:var(--card2);padding:10px;border-radius:10px;margin-bottom:8px;font-size:13px;border:1px solid var(--border)}
+.gram code{background:#0f0f14;padding:2px 6px;border-radius:6px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}.tags span{background:#0f0f14;border:1px solid var(--border);padding:4px 8px;border-radius:20px;font-size:11px}
+.quiz{background:var(--card2);padding:12px;border-radius:10px;border:1px solid var(--border);margin-top:10px}
+#laia-box{position:fixed;right:18px;bottom:18px;width:130px;z-index:99;display:flex;flex-direction:column;align-items:center;gap:6px;transition:.4s}
+#laia{width:120px;height:120px;border-radius:24px;border:3px solid var(--accent);box-shadow:0 10px 30px rgba(0,0,0,.5);object-fit:cover;background:var(--card2)}
+#laia-box.furiosa #laia{border-color:var(--red);box-shadow:0 0 20px rgba(239,68,68,.6);animation:shake .4s}
+#laia-box.celebratoria #laia{border-color:var(--green);box-shadow:0 0 20px rgba(34,197,94,.6);animation:jump .5s}
+#laia-state{background:var(--card);border:1px solid var(--border);padding:3px 8px;border-radius:20px;font-size:9px;color:var(--muted)}
+#bubble{background:white;color:#111;padding:9px 12px;border-radius:16px 16px 4px 16px;font-size:12px;font-weight:600;max-width:200px;position:absolute;bottom:135px;right:0;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+@keyframes jump{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 </style>
 </head>
 <body>
 <header>
-  <div class="logo">📚 LENGUAJE-PRO <span>V8 JARVIS - Laia ES la app</span></div>
+  <div class="logo">📚 LENGUAJE-PRO <span>V6 DEFINITIVO</span></div>
   <div class="metrics">
     <span>🔥 <b id="streak">3</b></span>
     <span>🎯 <b id="acc">82</b>%</span>
@@ -53,98 +56,107 @@
 
 <div class="layout">
   <aside>
-    <h3 style="font-size:13px;opacity:.7">50 ÁREAS</h3>
+    <h3 style="font-size:11px;opacity:.5;letter-spacing:1px">50 ÁREAS - LAYA FINAL</h3>
     <input id="search" placeholder="Buscar: Money, Fear, Family...">
     <div id="list"></div>
   </aside>
   <main>
-    <div style="display:flex;gap:8px;margin-bottom:16px">
+    <div class="controls">
       <select id="level"><option>A1</option><option selected>A2</option><option>B1</option><option>B2</option></select>
-      <button id="gen">⚡ GENERAR LECCIÓN COMPRENSIBLE</button>
+      <button id="gen">⚡ GENERAR LECCIÓN</button>
     </div>
     <div id="empty">
       <h1>👋 Hola, soy Laia</h1>
-      <p>Ya no ves mi foto grande. Yo SOY la app. Si fallas 3 veces la misma, te bloqueo. Si dudas, te ayudo. Si lo clavas, celebramos.</p>
-      <p style="opacity:.6;font-size:13px">Escribe algo abajo como "He have" o "co" para probar el súper diccionario.</p>
-      <input id="testInput" placeholder="Escribe aquí: He have / He play / cook / knead..." style="width:100%;padding:12px;border-radius:10px;background:#1c1835;border:1px solid #302a5a;color:#fff;margin-top:12px">
-      <button id="testBtn" style="margin-top:8px">Probar Laia</button>
+      <p style="opacity:.7;margin-top:8px;font-size:14px;line-height:1.5">Elige un área a la izquierda. Tengo 6 estados reales: furiosa, observer, empática, celebratoria, colega, strict_light. Mi supermotor genera lectura comprensible, gramática, vocab y quiz.</p>
+      <img src="laia_4_colega.png" width="120" style="border-radius:24px;margin-top:16px;border:3px solid #8b5cf6">
     </div>
-    <div id="card"></div>
+    <div id="card" class="hidden"></div>
   </main>
 </div>
 
-<!-- LAIA JARVIS - YA NO ES AVATAR GRANDE, ES MICRO-ANIMACIÓN -->
-<div id="laia-box"><img id="laia" src="laia_4_colega.png" width="80" style="border-radius:20px"></div>
+<div id="laia-box">
+  <div id="bubble" class="hidden"></div>
+  <img id="laia" src="laia_4_colega.png" alt="Laia">
+  <div id="laia-state">IMG_4_COLEGA</div>
+</div>
 
 <script type="module">
-import { LaiaApp } from './LENGUAJE-PRO-V8-JARVIS-DEFINITIVO.js';
+import { LAYA_FINAL, AVATAR_ENGINE_V6 } from './LAYA_FINAL_COMPLETO.js';
 
-const app = new LaiaApp('en');
-let metrics = { same_error_count:0, streak_days:3, accuracy_7d:0.82, hesitation_ms:1200, cefr_level:'A2', flow_mode:false };
-let selected = 34;
-let userId = "tete123";
+let metrics = { same_error_count:0, streak_days:3, accuracy_7d:0.82, hesitation_ms:1200, cefr_level:'A2', flow_mode:false, level_up:false, level:'A2' };
+let selected=null;
 
-const listEl = document.getElementById('list');
+const listEl=document.getElementById('list');
 function render(filter=''){
   listEl.innerHTML='';
-  // Simula AREAS sin baseImg
-  const areas = {1:"Money Basics",5:"Work",7:"Opportunity",11:"Positive Mindset",26:"Good Habits",34:"Healthy Food",48:"Delivery Life"};
-  Object.entries(areas).forEach(([id,name])=>{
-    if(filter && !name.toLowerCase().includes(filter)) return;
-    const d=document.createElement('div'); d.className='area'+(id==selected?' active':'');
-    d.innerHTML=`<b>${id}. ${name}</b>`;
-    d.onclick=()=>{selected=id; document.querySelectorAll('.area').forEach(x=>x.classList.remove('active')); d.classList.add('active');};
+  Object.entries(LAYA_FINAL.AREAS).forEach(([id,a])=>{
+    if(filter && !`${a.name} ${a.topic}`.toLowerCase().includes(filter.toLowerCase())) return;
+    const d=document.createElement('div'); d.className='area';
+    d.innerHTML=`<b>${id}. ${a.name}</b><small>${a.topic}</small><em>${a.grammar?.[0] || ''} + ${a.future || ''}</em>`;
+    d.onclick=()=>{selected=id; document.querySelectorAll('.area').forEach(x=>x.classList.remove('active')); d.classList.add('active'); updateLaia(); };
     listEl.appendChild(d);
   });
 }
 render();
-document.getElementById('search').oninput=e=>render(e.target.value.toLowerCase());
+document.getElementById('search').oninput=e=>render(e.target.value);
 
-async function probarLaia(input){
-  const start = Date.now();
-  const res = await app.aprender({ userId, input, areaId: selected, level: document.getElementById('level').value, hesitation_ms: metrics.hesitation_ms });
-  const card = document.getElementById('card');
-  document.getElementById('empty').style.display='none';
-  card.innerHTML='';
-  const div = document.createElement('div'); div.className='card';
-  
-  const tono = res._interno.estado;
-  const feedbackClass = tono.includes('FURIOUS')?'furiosa': tono.includes('CELEBRATORIA')?'celebratoria': tono.includes('EMPATICA')?'empatica':'colega';
-  
-  div.innerHTML=`
-    <div class="feedback ${feedbackClass}">${res.ui.feedback}</div>
-    <div class="lesson">
-      Hello everyone! Today I want to talk about <span class="word">healthy food</span>. I <span class="word">cook</span> every day. 
-      He <b style="color:${res.ui.bloqueado?'#ef4444':'#22c55e'}">${res.ui.bloqueado?'have -> HAS':'has'}</b> good habits since Monday. If you <span class="word">knead</span> the bread, it becomes soft.
-    </div>
-    <div class="tags">${res.ui.siguiente?res.ui.siguiente.vocab.map(v=>`<span>${v}</span>`).join(''):''}</div>
-    ${res.ui.bloqueado?`<div class="bloqueo">⛔ BLOQUEADO - Corrige: ${res.ui.correccion} para avanzar - No hay XP</div>`:`<div style="margin-top:12px">⭐ ${res.ui.xp} XP - Siguiente: Área ${res.ui.siguiente?res.ui.siguiente.areaId:''}</div>`}
-    <div id="superDic"><b>🔍 Súper Diccionario - Sílabas de "${input}":</b><br>${res.ui.superDic.length?res.ui.superDic.map(w=>`<span style="background:#6d28d9;padding:2px 6px;border-radius:6px;margin:2px;display:inline-block">${w}</span>`).join(''): 'No encontrado, prueba "co", "knead", "happy"'}</div>
-    <div style="margin-top:12px;display:flex;gap:8px">
-      <button id="okBtn" ${res.ui.bloqueado?'disabled':''}>✅ Acierto (He HAS)</button>
-      <button id="failBtn">❌ Fallo (He have)</button>
-    </div>
-    <pre style="opacity:.3;font-size:10px;margin-top:12px">_interno: ${JSON.stringify(res._interno,null,2)}</pre>
-  `;
-  card.appendChild(div);
-  
-  // Micro-animación Jarvis
-  const box = document.getElementById('laia-box');
-  box.className = feedbackClass;
-  setTimeout(()=>box.className='',2000);
-  
-  // Actualizar métricas UI
-  document.getElementById('streak').textContent = res._interno.metrics.streak_days;
-  document.getElementById('acc').textContent = Math.round(res._interno.metrics.accuracy_7d*100);
-  document.getElementById('hes').textContent = metrics.hesitation_ms;
-  
-  document.getElementById('okBtn')?.addEventListener('click',()=>{ probarLaia("He has"); });
-  document.getElementById('failBtn').addEventListener('click',()=>{ probarLaia("He have"); });
+function updateLaia(){
+  const key = AVATAR_ENGINE_V6.decideByMetrics(metrics);
+  const data = AVATAR_ENGINE_V6.files[key];
+  document.getElementById('laia').src = data.file.replace('.jpg','.png');
+  document.getElementById('laia-state').textContent=key;
+  const b=document.getElementById('bubble');
+  b.textContent=data.tts.text || data.tts; b.classList.remove('hidden');
+  const box=document.getElementById('laia-box');
+  box.className = key.includes('FURIOUS')?'furiosa':key.includes('CELEBRATORIA')?'celebratoria':'';
+  document.getElementById('laia').style.borderColor = key.includes('FURIOUS')?'#ef4444':key.includes('CELEBRATORIA')?'#22c55e':key.includes('EMPATICA')?'#a78bfa':'#8b5cf6';
+  setTimeout(()=>b.classList.add('hidden'),4500);
 }
 
-document.getElementById('gen').onclick=()=>probarLaia("cook");
-document.getElementById('testBtn').onclick=()=>probarLaia(document.getElementById('testInput').value||"He have");
+document.getElementById('gen').onclick=()=>{
+  if(!selected) return alert('Elige área primero tete!');
+  metrics.cefr_level=document.getElementById('level').value;
+  metrics.level=document.getElementById('level').value;
+  document.getElementById('level-badge').textContent=metrics.cefr_level;
+  
+  const res = LAYA_FINAL.generate(selected, metrics.cefr_level, metrics);
+  
+  document.getElementById('empty').classList.add('hidden');
+  const card=document.getElementById('card'); card.classList.remove('hidden');
+  
+  // APROVECHA TODO EL SUPERMOTOR - Lectura + Vocab + Gram + Quiz
+  card.innerHTML=`
+    <div class="meta"><span>📚 ${res.meta.area}</span><span>Level ${res.meta.level}</span><span>⭐ ${res.meta.xp} XP</span><span>${res.meta.emotion}</span><span>${res.meta.grammar_main.id}</span></div>
+    <h2 style="margin:8px 0">${res.meta.topic}</h2>
+    
+    <div class="lesson">${(res.reading || res.prompt || 'Lesson content').toString().split(' ').slice(0,180).join(' ')}</div>
+    
+    <div class="gram"><b>MAIN:</b> ${res.meta.grammar_main.id} - <code>${res.meta.grammar_main.formula}</code><br>Ex: ${res.meta.grammar_main.example}<br><b style="color:#f59e0b">${res.meta.mistake_prevention||res.meta.grammar_main.mistake||''}</b></div>
+    <div class="gram"><b>FUTURE:</b> ${res.meta.grammar_future.id} - <code>${res.meta.grammar_future.formula}</code><br>Ex: ${res.meta.grammar_future.example}</div>
+    
+    <div class="tags">${(res.meta.vocab||[]).map(v=>`<span>${v}</span>`).join('')}</div>
+    
+    <div class="quiz">
+      <h4>✅ Quiz Auto - Aprovechando supermotor</h4>
+      <p style="margin-top:8px"><b>1.</b> ${res.quizAuto?.tense_choice || res.meta.grammar_main.example}</p>
+      <p style="margin-top:6px"><b>2.</b> ${res.quizAuto?.conditional || res.meta.grammar_future.example}</p>
+      <p style="margin-top:6px"><b>3.</b> ${res.quizAuto?.vocab_check || 'Vocab check'}</p>
+      <div style="display:flex;gap:8px;margin-top:10px">
+        <button onclick="ok()" style="background:#22c55e;color:#fff;border:none;padding:8px 12px;border-radius:8px;cursor:pointer;font-weight:700">✅ Acierto</button>
+        <button onclick="fail()" style="background:#ef4444;color:#fff;border:none;padding:8px 12px;border-radius:8px;cursor:pointer;font-weight:700">❌ Fallo</button>
+      </div>
+    </div>
+  `;
+  
+  document.getElementById('laia').src = res.meta.avatar_file.replace('.jpg','.png');
+  document.getElementById('laia-state').textContent=res.meta.emotion;
+  updateLaia();
+};
 
+window.ok=()=>{metrics.same_error_count=0; metrics.streak_days++; metrics.accuracy_7d=Math.min(0.98,metrics.accuracy_7d+0.05); document.getElementById('streak').textContent=metrics.streak_days; document.getElementById('acc').textContent=Math.round(metrics.accuracy_7d*100); updateLaia();};
+window.fail=()=>{metrics.same_error_count++; metrics.accuracy_7d=Math.max(0.2,metrics.accuracy_7d-0.08); document.getElementById('acc').textContent=Math.round(metrics.accuracy_7d*100); updateLaia();};
+
+updateLaia();
 </script>
 </body>
 </html>

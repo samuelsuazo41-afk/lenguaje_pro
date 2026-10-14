@@ -1,4 +1,4 @@
-const CACHE_NAME = 'lenguaje-pro-v14';
+const CACHE_NAME = 'lenguaje-pro-v15';
 const ASSETS = [
   '/',
   '/index.html',

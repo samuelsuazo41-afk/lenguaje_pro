@@ -19,7 +19,6 @@
     <span id="level-badge">A2</span>
   </div>
 </header>
-
 <div class="layout">
   <aside>
     <h3>50 ÁREAS • 35 GRAM • 72 VOCAB</h3>
@@ -53,22 +52,18 @@
     <div id="dic-box" class="hidden"></div>
   </main>
 </div>
-
 <div id="laia-box">
   <div id="bubble" class="hidden"></div>
   <img id="laia" src="laia_4_colega.png" alt="Laia">
   <div id="laia-state">COLEGA</div>
 </div>
-
 <script type="module">
 import { LAYA_FINAL, AVATAR_ENGINE_V6, VOCAB_REAL } from './LAYA_FINAL_COMPLETO.js';
-
 let metrics = JSON.parse(localStorage.getItem('LAYA_METRICS_V9')||'{"same_error_count":0,"streak_days":3,"accuracy_7d":0.82,"hesitation_ms":1200,"cefr_level":"A2","flow_mode":false,"level_up":false,"level":"A2","xp_total":0}');
 let selected=null;
 let startTime=Date.now();
 let currentFilter='';
 const listEl=document.getElementById('list');
-
 function render(filterText='', levelFilter=''){
   listEl.innerHTML='';
   Object.entries(LAYA_FINAL.AREAS).forEach(([id,a])=>{
@@ -84,15 +79,12 @@ function render(filterText='', levelFilter=''){
 render();
 document.getElementById('search').oninput=e=>render(e.target.value.toLowerCase(), currentFilter);
 document.querySelectorAll('.f').forEach(b=>b.onclick=()=>{document.querySelectorAll('.f').forEach(x=>x.classList.remove('active')); b.classList.add('active'); currentFilter=b.dataset.f; render(document.getElementById('search').value.toLowerCase(), currentFilter);});
-
 document.getElementById('level').value=metrics.level;
 document.getElementById('streak').textContent=metrics.streak_days;
 document.getElementById('acc').textContent=Math.round(metrics.accuracy_7d*100);
 document.getElementById('level-badge').textContent=metrics.level;
 document.getElementById('xp').textContent=`⭐ ${metrics.xp_total} XP`;
-
 function saveMetrics(){ localStorage.setItem('LAYA_METRICS_V9', JSON.stringify(metrics)); }
-
 function updateLaia(){
   const key = AVATAR_ENGINE_V6.decideByMetrics(metrics);
   const data = AVATAR_ENGINE_V6.files[key];
@@ -107,15 +99,13 @@ function updateLaia(){
   clearTimeout(window._bubbleT);
   window._bubbleT=setTimeout(()=>b.classList.add('hidden'),5000);
 }
-
 function renderLesson(res){
   const card=document.getElementById('card');
-  const words = res.prompt.split(/(\s+)/).map(w=>{
+  const words = (res.story || res.prompt).split(/(\s+)/).map(w=>{
     if(w.trim().length<2) return w;
     const clean=w.toLowerCase().replace(/[^a-z]/g,'');
     return `<span class="word" data-w="${clean}">${w}</span>`;
   }).join('');
-  
   card.innerHTML=`
     <div class="meta">
       <span>📍 ${res.meta.area}</span><span>${res.meta.level}</span>
@@ -137,7 +127,6 @@ function renderLesson(res){
   `;
   card.classList.remove('hidden');
   document.getElementById('empty').classList.add('hidden');
-  
   card.querySelectorAll('.word').forEach(el=>{
     el.onclick=()=>{
       const s=el.dataset.w.slice(0,3);
@@ -148,7 +137,6 @@ function renderLesson(res){
       setTimeout(()=>box.classList.add('hidden'),6000);
     }
   });
-
   const input=document.getElementById('userInput');
   const send=document.getElementById('sendBtn');
   const check=()=>{
@@ -163,7 +151,6 @@ function renderLesson(res){
     if(mainSig==='THERE_QUANT' && /there have /i.test(txt)) ok=false;
     if(mainSig==='PRON_PER_POSS' && /I car|you car|he car/i.test(txt)) ok=false;
     if(txt.length<3) ok=false;
-    
     LAYA_FINAL.MEMORY.update(mainSig, ok, hes);
     if(ok){ metrics.same_error_count=0; metrics.streak_days++; metrics.accuracy_7d=Math.min(0.98, metrics.accuracy_7d+0.04); metrics.xp_total+=res.meta.xp; }
     else{ metrics.same_error_count++; metrics.accuracy_7d=Math.max(0.2, metrics.accuracy_7d-0.07); }
@@ -171,7 +158,6 @@ function renderLesson(res){
     document.getElementById('streak').textContent=metrics.streak_days;
     document.getElementById('acc').textContent=Math.round(metrics.accuracy_7d*100);
     document.getElementById('xp').textContent=`⭐ ${metrics.xp_total} XP`;
-    
     const fb=document.getElementById('feedback');
     fb.className= ok ? 'feedback ok' : 'feedback fail';
     fb.textContent= ok ? `✅ Perfecto tete! +${res.meta.xp} XP` : `❌ Ojo: ${res.meta.grammar_main.mistake} - Repite correcto: ${res.meta.grammar_main.example}`;
@@ -182,7 +168,6 @@ function renderLesson(res){
   send.onclick=check;
   input.onkeydown=e=>{ if(e.key==='Enter') check(); };
 }
-
 document.getElementById('gen').onclick=()=>{
   if(!selected) return alert('Elige área primero tete!');
   metrics.cefr_level=document.getElementById('level').value;
@@ -194,7 +179,6 @@ document.getElementById('gen').onclick=()=>{
   renderLesson(res);
   updateLaia();
 };
-
 updateLaia();
 </script>
 </body>

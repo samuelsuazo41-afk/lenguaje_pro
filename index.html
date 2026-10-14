@@ -3,15 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lenguaje-Pro V6 - Laia</title>
-<link rel="manifest" href="manifest.json">
-<link rel="icon" href="icon-192.png">
+<title>Lenguaje-Pro V8 - Laia ES la App</title>
 <meta name="theme-color" content="#6d28d9">
-<link rel="stylesheet" href="styles.css">
+<style>
+  body{font-family:system-ui;background:#0f0a1e;color:#fff;margin:0}
+  header{display:flex;justify-content:space-between;padding:12px 20px;background:#1a1330;position:sticky;top:0;z-index:10}
+  .logo span{opacity:.6;font-size:12px}
+  .metrics span{margin-left:10px;font-size:13px}
+  .layout{display:flex;min-height:100vh}
+  aside{width:320px;background:#15102a;padding:12px;border-right:1px solid #2a2347;overflow:auto}
+  aside input{width:100%;padding:8px;border-radius:8px;border:none;background:#211c3a;color:#fff;margin-bottom:8px}
+  .area{padding:8px;border-radius:8px;cursor:pointer;margin-bottom:4px;background:#1e1840}
+  .area.active{background:#6d28d9}
+  .area b{display:block;font-size:13px}
+  .area small{opacity:.6;font-size:11px}
+  main{flex:1;padding:20px;max-width:800px}
+  .card{background:#1c1835;border-radius:16px;padding:20px;border:1px solid #302a5a;animation:fade .3s}
+  .feedback{padding:12px 16px;border-radius:12px;margin-bottom:16px;font-weight:600}
+  .feedback.furiosa{background:rgba(239,68,68,.15);border:1px solid #ef4444;color:#fecaca;animation:shake .4s}
+  .feedback.colega{background:rgba(139,92,246,.15);border:1px solid #8b5cf6}
+  .feedback.celebratoria{background:rgba(34,197,94,.15);border:1px solid #22c55e;animation:jump .5s}
+  .feedback.empatica{background:rgba(167,139,250,.15);border:1px solid #a78bfa}
+  .bloqueo{background:#ef4444;color:#fff;padding:8px;border-radius:8px;text-align:center;font-size:12px;margin-top:12px}
+  .lesson{line-height:1.7;font-size:17px;letter-spacing:.2px}
+  .lesson span.word{border-bottom:1px dashed #8b5cf6;cursor:pointer}
+  .lesson span.word:hover{background:rgba(139,92,246,.2)}
+  .tags span{background:#2a2347;padding:4px 8px;border-radius:20px;font-size:11px;margin:2px;display:inline-block}
+  button{background:#6d28d9;color:#fff;border:none;padding:10px 16px;border-radius:10px;cursor:pointer;font-weight:600}
+  button:disabled{opacity:.4;cursor:not-allowed}
+  #superDic{margin-top:16px;background:#211c3a;padding:12px;border-radius:12px}
+  #laia-box{position:fixed;bottom:20px;right:20px;width:80px;height:80px;pointer-events:none;opacity:.15;transition:.3s}
+  #laia-box.furiosa{opacity:1;filter:drop-shadow(0 0 12px #ef4444);transform:scale(1.1)}
+  #laia-box.celebratoria{opacity:1;filter:drop-shadow(0 0 12px #22c55e)}
+  @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+  @keyframes jump{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+</style>
 </head>
 <body>
 <header>
-  <div class="logo">📚 LENGUAJE-PRO <span>V6 DEFINITIVO</span></div>
+  <div class="logo">📚 LENGUAJE-PRO <span>V8 JARVIS - Laia ES la app</span></div>
   <div class="metrics">
     <span>🔥 <b id="streak">3</b></span>
     <span>🎯 <b id="acc">82</b>%</span>
@@ -22,87 +53,98 @@
 
 <div class="layout">
   <aside>
-    <h3>50 ÁREAS - LAYA FINAL</h3>
+    <h3 style="font-size:13px;opacity:.7">50 ÁREAS</h3>
     <input id="search" placeholder="Buscar: Money, Fear, Family...">
     <div id="list"></div>
   </aside>
   <main>
-    <div class="controls">
+    <div style="display:flex;gap:8px;margin-bottom:16px">
       <select id="level"><option>A1</option><option selected>A2</option><option>B1</option><option>B2</option></select>
-      <button id="gen">⚡ GENERAR LECCIÓN</button>
+      <button id="gen">⚡ GENERAR LECCIÓN COMPRENSIBLE</button>
     </div>
     <div id="empty">
       <h1>👋 Hola, soy Laia</h1>
-      <p>Elige un área. Tengo 6 estados reales: furiosa, observer, empática, celebratoria, colega, strict_light.</p>
-      <img src="laia_4_colega.png" width="140" style="border-radius:24px;margin-top:20px">
+      <p>Ya no ves mi foto grande. Yo SOY la app. Si fallas 3 veces la misma, te bloqueo. Si dudas, te ayudo. Si lo clavas, celebramos.</p>
+      <p style="opacity:.6;font-size:13px">Escribe algo abajo como "He have" o "co" para probar el súper diccionario.</p>
+      <input id="testInput" placeholder="Escribe aquí: He have / He play / cook / knead..." style="width:100%;padding:12px;border-radius:10px;background:#1c1835;border:1px solid #302a5a;color:#fff;margin-top:12px">
+      <button id="testBtn" style="margin-top:8px">Probar Laia</button>
     </div>
-    <div id="card" class="hidden"></div>
+    <div id="card"></div>
   </main>
 </div>
 
-<!-- LAIA SIEMPRE VISIBLE 40% BOTTOM-RIGHT -->
-<div id="laia-box">
-  <div id="bubble" class="hidden"></div>
-  <img id="laia" src="laia_4_colega.png" alt="Laia">
-  <div id="laia-state">IMG_4_COLEGA</div>
-</div>
+<!-- LAIA JARVIS - YA NO ES AVATAR GRANDE, ES MICRO-ANIMACIÓN -->
+<div id="laia-box"><img id="laia" src="laia_4_colega.png" width="80" style="border-radius:20px"></div>
 
 <script type="module">
-import { LAYA_FINAL, AVATAR_ENGINE_V6, EMOTION_ENGINE } from './LAYA_FINAL_COMPLETO.js';
+import { LaiaApp } from './LENGUAJE-PRO-V8-JARVIS-DEFINITIVO.js';
 
-let metrics = { same_error_count:0, streak_days:3, accuracy_7d:0.82, hesitation_ms:1200, cefr_level:'A2', flow_mode:false, level_up:false, level:'A2' };
-let selected=null;
+const app = new LaiaApp('en');
+let metrics = { same_error_count:0, streak_days:3, accuracy_7d:0.82, hesitation_ms:1200, cefr_level:'A2', flow_mode:false };
+let selected = 34;
+let userId = "tete123";
 
-const listEl=document.getElementById('list');
+const listEl = document.getElementById('list');
 function render(filter=''){
   listEl.innerHTML='';
-  Object.entries(LAYA_FINAL.AREAS).forEach(([id,a])=>{
-    if(filter &&!`${a.name} ${a.topic}`.toLowerCase().includes(filter)) return;
-    const d=document.createElement('div'); d.className='area';
-    d.innerHTML=`<b>${id}. ${a.name}</b><small>${a.topic}</small><em>${a.baseImg}</em>`;
-    d.onclick=()=>{selected=id; document.querySelectorAll('.area').forEach(x=>x.classList.remove('active')); d.classList.add('active'); updateLaia(); };
+  // Simula AREAS sin baseImg
+  const areas = {1:"Money Basics",5:"Work",7:"Opportunity",11:"Positive Mindset",26:"Good Habits",34:"Healthy Food",48:"Delivery Life"};
+  Object.entries(areas).forEach(([id,name])=>{
+    if(filter && !name.toLowerCase().includes(filter)) return;
+    const d=document.createElement('div'); d.className='area'+(id==selected?' active':'');
+    d.innerHTML=`<b>${id}. ${name}</b>`;
+    d.onclick=()=>{selected=id; document.querySelectorAll('.area').forEach(x=>x.classList.remove('active')); d.classList.add('active');};
     listEl.appendChild(d);
   });
 }
 render();
 document.getElementById('search').oninput=e=>render(e.target.value.toLowerCase());
 
-function updateLaia(){
-  const key = AVATAR_ENGINE_V6.decideByMetrics(metrics);
-  const data = AVATAR_ENGINE_V6.files[key];
-  document.getElementById('laia').src = data.file.replace('.jpg','.png');
-  document.getElementById('laia-state').textContent=key;
-  const b=document.getElementById('bubble');
-  b.textContent=data.tts.text; b.classList.remove('hidden');
-  document.getElementById('laia').style.borderColor = key.includes('FURIOUS')?'#ef4444':key.includes('CELEBRATORIA')?'#22c55e':key.includes('EMPATICA')?'#a78bfa':'#8b5cf6';
-  setTimeout(()=>b.classList.add('hidden'),4000);
+async function probarLaia(input){
+  const start = Date.now();
+  const res = await app.aprender({ userId, input, areaId: selected, level: document.getElementById('level').value, hesitation_ms: metrics.hesitation_ms });
+  const card = document.getElementById('card');
+  document.getElementById('empty').style.display='none';
+  card.innerHTML='';
+  const div = document.createElement('div'); div.className='card';
+  
+  const tono = res._interno.estado;
+  const feedbackClass = tono.includes('FURIOUS')?'furiosa': tono.includes('CELEBRATORIA')?'celebratoria': tono.includes('EMPATICA')?'empatica':'colega';
+  
+  div.innerHTML=`
+    <div class="feedback ${feedbackClass}">${res.ui.feedback}</div>
+    <div class="lesson">
+      Hello everyone! Today I want to talk about <span class="word">healthy food</span>. I <span class="word">cook</span> every day. 
+      He <b style="color:${res.ui.bloqueado?'#ef4444':'#22c55e'}">${res.ui.bloqueado?'have -> HAS':'has'}</b> good habits since Monday. If you <span class="word">knead</span> the bread, it becomes soft.
+    </div>
+    <div class="tags">${res.ui.siguiente?res.ui.siguiente.vocab.map(v=>`<span>${v}</span>`).join(''):''}</div>
+    ${res.ui.bloqueado?`<div class="bloqueo">⛔ BLOQUEADO - Corrige: ${res.ui.correccion} para avanzar - No hay XP</div>`:`<div style="margin-top:12px">⭐ ${res.ui.xp} XP - Siguiente: Área ${res.ui.siguiente?res.ui.siguiente.areaId:''}</div>`}
+    <div id="superDic"><b>🔍 Súper Diccionario - Sílabas de "${input}":</b><br>${res.ui.superDic.length?res.ui.superDic.map(w=>`<span style="background:#6d28d9;padding:2px 6px;border-radius:6px;margin:2px;display:inline-block">${w}</span>`).join(''): 'No encontrado, prueba "co", "knead", "happy"'}</div>
+    <div style="margin-top:12px;display:flex;gap:8px">
+      <button id="okBtn" ${res.ui.bloqueado?'disabled':''}>✅ Acierto (He HAS)</button>
+      <button id="failBtn">❌ Fallo (He have)</button>
+    </div>
+    <pre style="opacity:.3;font-size:10px;margin-top:12px">_interno: ${JSON.stringify(res._interno,null,2)}</pre>
+  `;
+  card.appendChild(div);
+  
+  // Micro-animación Jarvis
+  const box = document.getElementById('laia-box');
+  box.className = feedbackClass;
+  setTimeout(()=>box.className='',2000);
+  
+  // Actualizar métricas UI
+  document.getElementById('streak').textContent = res._interno.metrics.streak_days;
+  document.getElementById('acc').textContent = Math.round(res._interno.metrics.accuracy_7d*100);
+  document.getElementById('hes').textContent = metrics.hesitation_ms;
+  
+  document.getElementById('okBtn')?.addEventListener('click',()=>{ probarLaia("He has"); });
+  document.getElementById('failBtn').addEventListener('click',()=>{ probarLaia("He have"); });
 }
 
-document.getElementById('gen').onclick=()=>{
-  if(!selected) return alert('Elige área primero tete!');
-  metrics.cefr_level=document.getElementById('level').value;
-  const res = LAYA_FINAL.generate(selected, metrics.cefr_level, metrics);
-  document.getElementById('empty').classList.add('hidden');
-  const card=document.getElementById('card'); card.classList.remove('hidden');
-  card.innerHTML=`
-    <div class="meta"><span>${res.meta.area}</span><span>${res.meta.level}</span><span>⭐ ${res.meta.xp} XP</span><span>${res.meta.emotion}</span></div>
-    <h2>${res.meta.topic}</h2>
-    <div class="gram"><b>MAIN:</b> ${res.meta.grammar_main.id} - <code>${res.meta.grammar_main.formula}</code><br>Ex: ${res.meta.grammar_main.example} <br><b style="color:#f59e0b">${res.meta.mistake_prevention||''}</b></div>
-    <div class="gram"><b>FUTURE:</b> ${res.meta.grammar_future.id} - <code>${res.meta.grammar_future.formula}</code><br>Ex: ${res.meta.grammar_future.example}</div>
-    <pre class="prompt">${res.prompt}</pre>
-    <div class="tags">${res.meta.vocab.map(v=>`<span>${v}</span>`).join('')}</div>
-    <div class="quiz"><h4>Quiz Auto</h4><p>${res.quizAuto.tense_choice}</p><p>${res.quizAuto.conditional}</p><button onclick="ok()">✅ Acierto</button><button onclick="fail()">❌ Fallo</button></div>
-  `;
-  // actualizar Laia a emoción generada
-  document.getElementById('laia').src = res.meta.avatar_file.replace('.jpg','.png');
-  document.getElementById('laia-state').textContent=res.meta.emotion;
-  updateLaia();
-};
+document.getElementById('gen').onclick=()=>probarLaia("cook");
+document.getElementById('testBtn').onclick=()=>probarLaia(document.getElementById('testInput').value||"He have");
 
-window.ok=()=>{metrics.same_error_count=0; metrics.streak_days++; document.getElementById('streak').textContent=metrics.streak_days; updateLaia();};
-window.fail=()=>{metrics.same_error_count++; updateLaia();};
-
-updateLaia();
 </script>
 </body>
 </html>

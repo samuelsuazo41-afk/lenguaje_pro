@@ -116,7 +116,7 @@ export const LAYA_FINAL = {
     49:{ name:"Alignment", topic:"Why Alignment Creates Success", vocab:["conectores40","business","quantifiers"], grammar:["PS_3RD_S","GERUND_INF"], future:"COND_1", level:"B1", baseImg:"IMG_3_CELEBRATORIA" },
     50:{ name:"Willpower", topic:"The Power of Willpower", vocab:["move16","adjEmotion","conectores40"], grammar:["FUT_WILL","FUT_CONT"], future:"FUT_PERF", level:"B2", baseImg:"IMG_3_CELEBRATORIA" }
   },
-  SUPER_DIC: {
+   SUPER_DIC: {
     search(syllable){
       const s = syllable.toLowerCase();
       const dic = VOCAB_REAL.superDicSyllables;
@@ -136,24 +136,37 @@ export const LAYA_FINAL = {
       this.save(mem); return mem;
     }
   },
+  STORIES: {
+    "Money Basics": "Hello everyone. Today I want to talk about why most people never become rich. I have a friend. His name is Carlos. He works hard every day. He has a good salary. But he has a problem. There is a lot of money in his account on Monday, but on Friday there is no money. Why? Because he spends all his money. He buys expensive things. If you want to be rich, you must save money. My grandmother always said: save a little every day. Since 2020 I have saved money. For three years I have saved a lot. I used to spend everything. Now I save. My dream is big. This is my money, not yours. I did it myself. Remember: money is made by discipline. Quote: Wealth is a habit. Thank you.",
+    "default": "Hello everyone. Today I want to talk about {topic}. There is a lot to learn. Since Monday I have been thinking about this. For a long time I did not understand. I have a question. Can you help me? I used to make many mistakes. I have a dream. This is my book, not yours. I did it myself. My family is my strength. I work on Monday at 8am in December in Salou. There is a lot of {vocab} in my life. If you {verb}, you will be rich later. However, you must work hard. Therefore, you will succeed. For example, my grandmother taught me discipline. She used to save money. Now I save too. Quote: Wealth is a mindset. Thank you."
+  },
   generate(areaId, level, metrics){
     const area = this.AREAS[areaId];
-    if(!area) return { prompt:"Elige area primero tete!", meta:{ area:"?", topic:"?", level, grammar_main:{id:"?",formula:"?",example:"?"}, grammar_future:{id:"?",formula:"?",example:"?"}, vocab:[], emotion:"COLEGA", avatar_file:"laia_4_colega.png", xp:0, bloqueado:false } };
+    if(!area) return { prompt:"Elige area primero tete!", story:"Elige area primero tete!", meta:{ area:"?", topic:"?", level, grammar_main:{id:"?",formula:"?",example:"?"}, grammar_future:{id:"?",formula:"?",example:"?"}, vocab:[], emotion:"COLEGA", avatar_file:"laia_4_colega.png", xp:0, bloqueado:false } };
     const gMain = GRAMMAR_REAL[area.grammar[0]] || Object.values(GRAMMAR_REAL).find(g=>g.id===area.grammar[0]) || Object.values(GRAMMAR_REAL)[0];
     const gSecond = area.grammar[1]? (GRAMMAR_REAL[area.grammar[1]] || Object.values(GRAMMAR_REAL).find(g=>g.id===area.grammar[1])) : null;
     const gFuture = GRAMMAR_REAL[area.future] || Object.values(GRAMMAR_REAL).find(g=>g.id===area.future) || GRAMMAR_REAL.COND_1;
-    const vocabList = area.vocab.map(v=>{ const val=VOCAB_REAL[v]; if(!val) return []; return Array.isArray(val)?val:Object.values(val).flat(); }).flat().slice(0,8);
+    const vocabList = area.vocab.map(v=>{ const val=VOCAB_REAL[v]; if(!val) return []; return Array.isArray(val)?val:Object.values(val).flat(); }).flat().slice(0,10);
     const avatarKey = AVATAR_ENGINE_V6.decideByMetrics({...metrics, cefr_level: level});
     const avatar = AVATAR_ENGINE_V6.files[avatarKey];
     const bloqueado = metrics.same_error_count >=3;
     const xp = bloqueado? 0 : (level==="A1"?10:level==="A2"?15:level==="B1"?20:25);
     const wordCount = {A1:"130-160", A2:"150-180", B1:"160-190", B2:"180-220"}[level] || "150-180";
-    const template = `Level ${level} - Topic: ${area.topic} AREA ${areaId}: ${area.name} GRAMMAR MAIN: ${gMain.id} | ${gMain.formula} | Ex: ${gMain.example} | Mistake: ${gMain.mistake} ${gSecond?`GRAMMAR 2: ${gSecond.id} | ${gSecond.formula} | Ex: ${gSecond.example}`:''} FUTURE/COND: ${gFuture.id} | ${gFuture.formula} | Ex: ${gFuture.example} Vocab ONLY: ${vocabList.slice(0,8).join(", ")} Must include: Time marker + If clause + There is/are + Pronouns + in/on/at Word count: ${wordCount} Structure: Title, Hello everyone Today I want to talk about..., One day he decided to..., Over time..., So remember..., Quote + Thank you. Style: Super simple, emotional. XP: ${xp} ${bloqueado?'BLOQUEADO':''}`.trim();
+    let baseStory = this.STORIES[area.name] || this.STORIES["default"];
+    baseStory = baseStory.replace("{topic}", area.topic.toLowerCase()).replace("{vocab}", vocabList[0] || "money").replace("{verb}", "save");
+    let extra = "";
+    if(baseStory.indexOf("Since")==-1 && baseStory.indexOf("since")==-1) extra += " Since 2020 I have worked hard. ";
+    if(baseStory.indexOf("There is")==-1) extra += " There is a lot of opportunity. There are many ways. ";
+    if(baseStory.indexOf("If you")==-1) extra += " If you save now, you will be rich later. ";
+    const story = (baseStory + extra).trim();
+    const prompt = "Level " + level + " - Topic: " + area.topic + " AREA " + areaId + ": " + area.name + " Story: " + story + " XP: " + xp;
     return {
-      prompt: template,
+      prompt: prompt,
+      story: story,
       meta: { area: area.name, topic: area.topic, level, grammar_main: gMain, grammar_second: gSecond, grammar_future: gFuture, vocab: vocabList, emotion: avatar.emotion, avatar_file: avatar.file, avatar_key: avatarKey, xp, bloqueado, mistake_prevention: gMain.mistake, wordCount, superDic: VOCAB_REAL.superDicSyllables },
       quizAuto: { tense_choice: gMain.example, conditional: gFuture.example, mistake_fix: gMain.mistake, blocked: bloqueado },
       avatarState: avatar
     };
   }
 };
+export const LAYA_FINAL_COMPLETO = LAYA_FINAL;

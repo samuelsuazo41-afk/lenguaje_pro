@@ -157,4 +157,3 @@ export const LAYA_FINAL = {
     };
   }
 };
-export const LAYA_FINAL_COMPLETO = LAYA_FINAL;

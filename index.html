@@ -2,249 +2,30 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>LENGUAJE-PRO V13 HORIZONTAL DUAL</title>
-<link rel="icon" href="./icon-192.png">
-<meta name="theme-color" content="#8b5cf6">
-<style>
-:root{--bg:#0f0f14;--card:#1a1a23;--card2:#232332;--accent:#8b5cf6;--text:#f1f1f5;--muted:#9ca3af}
-*{margin:0;padding:0;box-sizing:border-box} body{background:var(--bg);color:var(--text);font-family:Inter,system-ui;overflow:hidden}
-header{height:58px;background:#1a1a23;border-bottom:1px solid #2a2a3a;display:flex;justify-content:space-between;align-items:center;padding:0 18px;position:fixed;top:0;left:0;right:0;z-index:30}
-.logo{font-weight:800;font-size:14px}.logo span{background:var(--accent);padding:2px 8px;border-radius:6px;font-size:11px}
-.metrics{display:flex;gap:10px;font-size:12px;color:var(--muted);align-items:center}
-#level-badge{background:#7c3aed;color:#fff;padding:3px 10px;border-radius:20px;font-weight:700}
-.dots{display:flex;gap:6px;align-items:center}.dot{width:8px;height:8px;border-radius:50%;background:#2a2a3a;transition:.3s}.dot.active{background:var(--accent);width:22px}
-
-/* === HORIZONTAL CONTAINER === */
-.h-wrapper{margin-top:58px;display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;width:100vw;height:calc(100vh - 58px);-webkit-overflow-scrolling:touch;scrollbar-width:none}
-.h-wrapper::-webkit-scrollbar{display:none}
-.page{min-width:100vw;width:100vw;height:100%;scroll-snap-align:start;overflow-y:auto;display:flex;flex-direction:row}
-
-.page-label{position:absolute;top:68px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.7);border:1px solid #2a2a3a;padding:4px 12px;border-radius:20px;font-size:10px;color:var(--muted);z-index:20;pointer-events:none}
-
-/* === PAGE 1 - MOTOR 1 V9 ORIGINAL === */
-#page1 aside{width:330px;min-width:330px;background:var(--card);border-right:1px solid #2a2a3a;padding:14px;display:flex;flex-direction:column;gap:10px}
-#page1 main{flex:1;padding:18px;min-width:0;overflow-x:hidden}
-#search{background:var(--card2);border:1px solid #2a2a3a;color:#fff;padding:9px 11px;border-radius:9px;width:100%}
-#filters{display:flex;gap:6px;flex-wrap:wrap}.f{background:var(--card2);border:1px solid #2a2a3a;color:var(--muted);padding:5px 10px;border-radius:20px;font-size:11px;cursor:pointer}.f.active{background:var(--accent);color:#fff}
-#list{overflow:auto;display:flex;flex-direction:column;gap:6px;flex:1}
-.area{background:var(--card2);padding:9px 10px;border-radius:10px;cursor:pointer;border:1px solid transparent}.area.active{background:linear-gradient(135deg,#8b5cf6,#6d28d9);border-color:#8b5cf6}
-.area b{font-size:13px;display:block}.area small{font-size:11px;color:var(--muted);display:block}.area em{font-size:10px;color:#8b5cf6;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-
-/* === PAGE 2 - MOTOR 2 SAP HOLOGRAM === */
-#page2{background:linear-gradient(180deg,#12121a 0%,#0f0f14 100%);padding:18px;display:flex;flex-direction:column;gap:14px;align-items:center;justify-content:flex-start}
-.sap-header{width:100%;max-width:700px;background:#1a1a23;border:1px solid #8b5cf6;border-radius:16px;padding:14px}
-.sap-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;max-width:700px}
-.sap-card{background:var(--card);border:1px solid #2a2a3a;border-radius:12px;padding:12px}
-.evo-lab{width:100%;max-width:700px;background:#0f0f14;border:1px dashed #8b5cf6;border-radius:12px;padding:14px;font-size:12px;white-space:pre-wrap}
-
-/* COMMON */
-#gen, #gen2{background:var(--accent);color:#fff;border:none;padding:10px 16px;border-radius:10px;font-weight:700;cursor:pointer}
-#card, #card2{background:var(--card);border:1px solid #2a2a3a;border-radius:16px;padding:18px;word-wrap:break-word;max-width:760px;width:100%}
-.hidden{display:none!important}
-.reading{background:#0f0f14;border:1px solid #2a2a3a;padding:16px;border-radius:12px;font-size:14px;line-height:1.7;margin:14px 0;white-space:pre-wrap;word-break:break-word}
-.word{cursor:pointer;border-bottom:1px dashed #3a3a4a}.word:hover{background:rgba(139,92,246,0.25)}
-.tags{display:flex;flex-wrap:wrap;gap:6px}.tags span{background:#0f0f14;border:1px solid #2a2a3a;padding:4px 9px;border-radius:20px;font-size:11px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.chat-box{display:flex;gap:8px;margin-top:12px}.chat-box input{flex:1;background:var(--card2);border:1px solid #2a2a3a;color:#fff;padding:12px;border-radius:12px}
-.feedback{margin-top:12px;padding:12px;border-radius:12px;font-weight:700;font-size:13px}.feedback.ok{background:rgba(34,197,94,0.12);border:1px solid #22c55e}.feedback.fail{background:rgba(239,68,68,0.12);border:1px solid #ef4444}
-
-/* HOLOGRAMA SIEMPRE VISIBLE - ACOMPAÑA LAS 2 PÁGINAS */
-#laia-box{position:fixed;right:18px;bottom:18px;width:110px;z-index:9999;display:flex;flex-direction:column;align-items:center;gap:6px;pointer-events:none}
-#laia{width:88px;height:88px;border-radius:24px;object-fit:contain;background:radial-gradient(circle, rgba(139,92,246,0.25) 0%, transparent 70%)!important;border:2px solid rgba(139,92,246,0.7)!important;box-shadow:0 0 28px rgba(139,92,246,0.7)!important;animation:holoFloat 3.2s infinite ease-in-out;pointer-events:auto;cursor:pointer}
-@keyframes holoFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-#bubble{position:absolute;bottom:100px;right:0;background:rgba(26,26,37,0.96);border:1px solid #8b5cf6;color:#fff;padding:10px 14px;border-radius:18px 18px 4px 18px;font-size:11px;max-width:280px;box-shadow:0 8px 28px rgba(139,92,246,0.5);pointer-events:auto}
-#laia-state{background:#1a1a23;border:1px solid #2a2a3a;padding:3px 8px;border-radius:20px;font-size:8px;color:var(--muted);font-weight:700}
-@media(max-width:768px){.page{flex-direction:column}#page1 aside{width:100%;min-width:100%}}
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LENGUAJE-PRO V10.1 FINAL COMPLETO</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header>
-  <div class="logo">📚 LENGUAJE-PRO <span>V13 DUAL HORIZONTAL</span></div>
-  <div style="display:flex;gap:12px;align-items:center">
-    <div class="dots"><div class="dot active" id="dot1"></div><div class="dot" id="dot2"></div></div>
-    <div class="metrics"><span id="xp">⭐ 0 XP</span><span>🔥 <b id="streak">0</b></span><span id="level-badge">A2</span></div>
-  </div>
-</header>
-
-<div class="page-label" id="pageLabel">◀️ MOTOR 1 V9 • desliza ▶️ MOTOR 2 SAP</div>
-
-<div class="h-wrapper" id="hWrapper">
-  <!-- PAGE 1 = TU MOTOR 1 ORIGINAL QUE YA FUNCIONABA -->
-  <div class="page" id="page1">
-    <aside>
-      <h3 style="font-size:11px;color:#9ca3af">MOTOR 1 - 50 ÁREAS • 35 GRAM • 72 VOCAB</h3>
-      <input id="search" placeholder="Buscar: Money, in/on/at, co, have...">
-      <div id="filters"><button class="f active" data-f="">Todas</button><button class="f" data-f="A1">A1</button><button class="f" data-f="A2">A2</button><button class="f" data-f="B1">B1</button><button class="f" data-f="B2">B2</button></div>
-      <div id="list"></div>
-    </aside>
-    <main>
-      <div style="display:flex;gap:10px;margin-bottom:12px"><select id="level"><option>A1</option><option selected>A2</option><option>B1</option><option>B2</option></select><button id="gen">⚡ GENERAR V9</button></div>
-      <div id="empty"><h1>👋 Motor 1 - V9 original</h1><p id="status">Cargando...</p><p style="margin-top:8px;font-size:11px;color:#9ca3af">Esta es tu primera página intacta. Desliza a la derecha para Motor 2 SAP.</p></div>
-      <div id="card" class="hidden"></div>
-    </main>
-  </div>
-
-  <!-- PAGE 2 = MOTOR 2 SAP HOLOGRAM EVOLUCION -->
-  <div class="page" id="page2">
-    <div style="width:100%;max-width:700px">
-      <h2 style="margin-bottom:4px">🧬 MOTOR 2 - SAP EVOLUTION LAB</h2>
-      <p style="font-size:11px;color:#9ca3af;margin-bottom:14px">Segunda página horizontal. Aquí lanza datos importantes a evolución.</p>
-      <div class="sap-header" id="sapHeader">Esperando datos del Motor 1...</div>
-      <div style="margin-top:14px;display:flex;gap:8px"><input id="wordInput" placeholder="Escribe palabra para explorar evolución: co, hav, mon..." style="flex:1;background:#1a1a23;border:1px solid #2a2a3a;color:#fff;padding:10px;border-radius:10px"><button id="gen2">🔍 EXPLORAR EVOLUCIÓN</button></div>
-      <div id="card2" class="hidden" style="margin-top:14px"></div>
-      <div class="sap-grid" id="sapGrid" style="margin-top:14px"></div>
-      <div class="evo-lab" id="evoLab" style="margin-top:14px">MANDT 100 | Sin datos aún - genera una lección en Motor 1 para ver el stream SAP aquí.</div>
-    </div>
-  </div>
-</div>
-
-<div id="laia-box"><div id="bubble" class="hidden"></div><img id="laia" src="./laia_4_colega.png" onerror="this.src='./icon-192.png'"><div id="laia-state">COLEGA • DUAL</div></div>
-
+<header><div class="logo">📚 LENGUAJE-PRO <span>V10.1 FINAL</span></div><div class="metrics"><span id="xp">⭐ 0 XP</span><span>🔥 <b id="streak">0</b></span><span>🎯 <b id="acc">82</b>%</span><span id="level-badge">A2</span></div></header>
+<div class="layout"><aside><h3>50 ÁREAS • 35 GRAM • 72 VOCAB • V10.1 COMPLETO FINAL</h3><input id="search" placeholder="Buscar: Money, in/on/at, co, have, family..."><div id="filters"><button class="f active" data-f="">Todas</button><button class="f" data-f="A1">A1</button><button class="f" data-f="A2">A2</button><button class="f" data-f="B1">B1</button><button class="f" data-f="B2">B2</button></div><div id="list"></div></aside><main><div class="controls"><select id="level"><option>A1</option><option selected>A2</option><option>B1</option><option>B2</option></select><button id="gen">⚡ GENERAR LECCIÓN V10.1</button></div><div id="empty"><h1>👋 Hola, soy Laia</h1><p>Tengo todo tu V6 + los 4 SIGs nuevos. 50 áreas, 35 gramáticas ordenadas A1->B2, 72 familias de vocab, super dic por sílabas + HISTORIAS REALES.</p><div style="margin-top:12px;display:flex;gap:6px;flex-wrap:wrap"><span style="background:#232332;padding:4px 8px;border-radius:20px;font-size:11px;border:1px solid #8b5cf6">PRON_PER_POSS: my/mine</span><span style="background:#232332;padding:4px 8px;border-radius:20px;font-size:11px;border:1px solid #8b5cf6">PREP_IN_ON_AT: on Monday</span><span style="background:#232332;padding:4px 8px;border-radius:20px;font-size:11px;border:1px solid #8b5cf6">THERE_QUANT: There is/are</span><span style="background:#232332;padding:4px 8px;border-radius:20px;font-size:11px;border:1px solid #8b5cf6">CONN_LOGIC: Moreover/However</span></div><p style="margin-top:12px;color:#9ca3af;font-size:12px">Click en cualquier palabra de la lectura para super dic. Ej: co, kne, hav, mon - V10.1 COMPLETO FINAL SIN RESUMIR</p><p id="status" style="margin-top:10px;font-size:11px;color:#22c55e">Cargando motor V10.1...</p></div><div id="card" class="hidden"></div><div id="dic-box" class="hidden"></div></main></div>
+<div id="laia-box"><div id="bubble" class="hidden"></div><img id="laia" src="laia_4_colega.png" alt="Laia"><div id="laia-state">COLEGA</div></div>
 <script type="module">
-let LAYA_FINAL, AVATAR_ENGINE_V6;
-try{
-  const mod = await import('./LAYA_FINAL_COMPLETO.js');
-  LAYA_FINAL = mod.LAYA_FINAL; AVATAR_ENGINE_V6 = mod.AVATAR_ENGINE_V6;
-  document.getElementById('status').textContent = `Motor 1 OK: ${Object.keys(LAYA_FINAL.AREAS).length} áreas cargadas.`;
-  document.getElementById('status').style.color = '#22c55e';
-}catch(e){
-  document.getElementById('status').textContent = `Error Motor 1: ${e.message}`;
-  document.getElementById('status').style.color = '#ef4444';
-}
-
-let metrics = JSON.parse(localStorage.getItem('LAYA_METRICS_V9')||'{"same_error_count":0,"streak_days":3,"accuracy_7d":0.82,"hesitation_ms":1200,"level":"A2","xp_total":0}');
-let selected=null, currentFilter='';
+import { LAYA_FINAL, AVATAR_ENGINE_V6 } from './LAYA_FINAL_COMPLETO.js';
+let metrics = JSON.parse(localStorage.getItem('LAYA_METRICS_V9')||'{"same_error_count":0,"streak_days":3,"accuracy_7d":0.82,"hesitation_ms":1200,"cefr_level":"A2","flow_mode":false,"level_up":false,"level":"A2","xp_total":0}');
+let selected=null; let startTime=Date.now(); let currentFilter='';
 const listEl=document.getElementById('list');
-function renderList(f='', lvl=''){
-  if(!LAYA_FINAL) return;
-  listEl.innerHTML='';
-  Object.entries(LAYA_FINAL.AREAS).forEach(([id,a])=>{
-    const hay = `${id} ${a.name} ${a.topic} ${a.grammar.join(' ')} ${a.vocab.join(' ')} ${a.level}`.toLowerCase();
-    if(f &&!hay.includes(f)) return;
-    if(lvl && a.level!==lvl) return;
-    const d=document.createElement('div'); d.className='area';
-    d.innerHTML=`<b>${id}. ${a.name}</b><small>${a.topic} • ${a.level} • ${a.grammar[0]}</small><em>${a.vocab.slice(0,2).join(', ')}</em>`;
-    d.onclick=()=>{selected=id; document.querySelectorAll('.area').forEach(x=>x.classList.remove('active')); d.classList.add('active'); updateLaia();};
-    listEl.appendChild(d);
-  });
-}
-renderList();
-document.getElementById('search').oninput=e=>renderList(e.target.value.toLowerCase(), currentFilter);
-document.querySelectorAll('.f').forEach(b=>b.onclick=()=>{document.querySelectorAll('.f').forEach(x=>x.classList.remove('active')); b.classList.add('active'); currentFilter=b.dataset.f; renderList(document.getElementById('search').value.toLowerCase(), currentFilter);});
+function render(filterText='', levelFilter=''){ listEl.innerHTML=''; Object.entries(LAYA_FINAL.AREAS).forEach(([id,a])=>{ const hay=`${id} ${a.name} ${a.topic} ${a.grammar.join(' ')} ${a.vocab.join(' ')} ${a.level}`.toLowerCase(); if(filterText && !hay.includes(filterText)) return; if(levelFilter && a.level!==levelFilter) return; const d=document.createElement('div'); d.className='area'; d.innerHTML=`<b>${id}. ${a.name}</b><small>${a.topic} • ${a.level} • ${a.grammar[0]}</small><em>${a.vocab.slice(0,2).join(', ')}</em>`; d.onclick=()=>{selected=id; document.querySelectorAll('.area').forEach(x=>x.classList.remove('active')); d.classList.add('active'); updateLaia();}; listEl.appendChild(d); });}
+render();
+document.getElementById('search').oninput=e=>render(e.target.value.toLowerCase(), currentFilter);
+document.querySelectorAll('.f').forEach(b=>b.onclick=()=>{document.querySelectorAll('.f').forEach(x=>x.classList.remove('active')); b.classList.add('active'); currentFilter=b.dataset.f; render(document.getElementById('search').value.toLowerCase(), currentFilter);});
 document.getElementById('level').value=metrics.level;
-document.getElementById('streak').textContent=metrics.streak_days;
-document.getElementById('xp').textContent=`⭐ ${metrics.xp_total} XP`;
-document.getElementById('level-badge').textContent=metrics.level;
+document.getElementById('streak').textContent=metrics.streak_days; document.getElementById('acc').textContent=Math.round(metrics.accuracy_7d*100); document.getElementById('level-badge').textContent=metrics.level; document.getElementById('xp').textContent=`⭐ ${metrics.xp_total} XP`;
 function saveMetrics(){ localStorage.setItem('LAYA_METRICS_V9', JSON.stringify(metrics)); }
-
-function updateLaia(){
-  const key = AVATAR_ENGINE_V6.decideByMetrics(metrics);
-  const data = AVATAR_ENGINE_V6.files[key];
-  document.getElementById('laia').src = data.file||'./laia_4_colega.png';
-  document.getElementById('laia-state').textContent = data.emotion + ' • DUAL';
-  const b=document.getElementById('bubble');
-  b.textContent=data.tts.text; b.classList.remove('hidden');
-  setTimeout(()=>b.classList.add('hidden'),5000);
-}
-function pushToPage2(res, word){
-  // SAP DATA QUE LANZA A EVOLUCIÓN - MOTOR 2
-  const g = LAYA_FINAL.MEMORY.get()?.[res.meta.grammar_main.sig]||{errors:0,oks:0};
-  document.getElementById('sapHeader').innerHTML=`
-    <div style="display:flex;justify-content:space-between"><b style="color:#8b5cf6">SAP STREAM // ${res.meta.grammar_main.sig}</b><span style="font-size:10px">${new Date().toISOString().slice(0,10)} ${new Date().toTimeString().slice(0,5)}</span></div>
-    <div style="margin-top:8px;font-size:12px">📍 ${res.meta.area} | ${res.meta.topic} | ${word}</div>
-    <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">
-      <span style="background:rgba(139,92,246,0.2);padding:4px 8px;border-radius:10px;font-size:10px">⭐ XP ${metrics.xp_total}</span>
-      <span style="background:rgba(34,197,94,0.2);padding:4px 8px;border-radius:10px;font-size:10px">🔥 ${metrics.streak_days}d</span>
-      <span style="background:rgba(96,165,250,0.2);padding:4px 8px;border-radius:10px;font-size:10px">🎯 ${Math.round(metrics.accuracy_7d*100)}%</span>
-      <span style="background:rgba(239,68,68,0.2);padding:4px 8px;border-radius:10px;font-size:10px">⚠️ ERR ${g.errors||0}</span>
-    </div>
-    <div style="margin-top:8px;font-size:10px;color:#f59e0b">⚠️ ${res.meta.grammar_main.mistake}</div>
-    <div style="font-size:10px;color:#9ca3af;margin-top:4px">Ex: ${res.meta.grammar_main.example} | ${res.meta.grammar_main.formula}</div>
-  `;
-  const s = word.slice(0,3).toLowerCase();
-  const dic = LAYA_FINAL.SUPER_DIC.search(s);
-  document.getElementById('sapGrid').innerHTML = `
-    <div class="sap-card"><b style="font-size:11px;color:#8b5cf6">FAMILIA CORE [${dic.length}]</b><br><span style="font-size:11px">${dic.slice(0,10).join(', ')}</span></div>
-    <div class="sap-card"><b style="font-size:11px;color:#22c55e">CHAIN ${res.meta.grammar_main.level} → ${res.meta.grammar_future.level}</b><br><span style="font-size:11px">MAIN: ${res.meta.grammar_main.sig}<br>FUTURE: ${res.meta.grammar_future.sig}</span></div>
-  `;
-  document.getElementById('evoLab').textContent = `EVOLUTION LAB // MANDT 100 | AREA ${res.meta.area} | WORD ${word} | SYLL ${s} -> ${dic.length} cousins | HES ${metrics.hesitation_ms}ms | NEXT: ${res.meta.grammar_future.id} | ${JSON.stringify(g).slice(0,120)}`;
-
-  // Holograma SAP
-  const bubble=document.getElementById('bubble');
-  bubble.innerHTML = `SAP: ${res.meta.grammar_main.sig} | ${word}<br>⭐ ${metrics.xp_total} XP | 🔥 ${metrics.streak_days}d<br>→ Ver detalle en Página 2`;
-  bubble.classList.remove('hidden');
-}
-
-function renderLesson(res){
-  const card=document.getElementById('card');
-  const words = res.story.split(/(\s+)/).map(w=>{
-    if(w.trim().length<2) return w;
-    const clean=w.toLowerCase().replace(/[^a-z]/g,'');
-    if(!clean) return w;
-    return `<span class="word" data-w="${clean}">${w}</span>`;
-  }).join('');
-  card.innerHTML=`<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px"><span style="background:#232332;padding:4px 8px;border-radius:10px;font-size:10px">📍 ${res.meta.area}</span><span style="background:#232332;padding:4px 8px;border-radius:10px;font-size:10px">${res.meta.grammar_main.sig}</span><span style="background:#8b5cf6;padding:4px 8px;border-radius:10px;font-size:10px">⭐ ${res.meta.xp}</span></div><h3>${res.meta.topic}</h3><div style="background:#232332;padding:8px;border-radius:8px;margin:8px 0;font-size:12px"><code>${res.meta.grammar_main.formula}</code><br>Ex: ${res.meta.grammar_main.example}</div><div class="reading">${words}</div><div class="tags">${res.meta.vocab.slice(0,8).map(v=>`<span>${v}</span>`).join('')}</div><div class="chat-box"><input id="userInput" placeholder="Escribe con ${res.meta.grammar_main.sig}"><button id="sendBtn">Enviar</button></div><div id="feedback"></div>`;
-  card.classList.remove('hidden');
-  document.getElementById('empty').classList.add('hidden');
-  pushToPage2(res, res.meta.vocab[0]||"evolution");
-
-  card.querySelectorAll('.word').forEach(el=>{
-    el.onclick=()=>{
-      const w=el.dataset.w;
-      pushToPage2(res, w);
-      // Auto scroll a page 2 al hacer click en palabra
-      document.getElementById('hWrapper').scrollTo({left: window.innerWidth, behavior:'smooth'});
-    };
-  });
-  const input=document.getElementById('userInput');
-  const check=()=>{
-    const txt=input.value; if(!txt) return;
-    let ok=true; if(/he have|she have/i.test(txt)) ok=false;
-    LAYA_FINAL.MEMORY.update(res.meta.grammar_main.sig, ok, 800);
-    if(ok){ metrics.streak_days++; metrics.accuracy_7d=Math.min(0.98, metrics.accuracy_7d+0.04); metrics.xp_total+=res.meta.xp; } else { metrics.accuracy_7d=Math.max(0.2, metrics.accuracy_7d-0.07); }
-    saveMetrics();
-    document.getElementById('streak').textContent=metrics.streak_days;
-    document.getElementById('xp').textContent=`⭐ ${metrics.xp_total} XP`;
-    document.getElementById('feedback').textContent = ok? `✅ +${res.meta.xp}` : `❌ ${res.meta.grammar_main.mistake}`;
-    document.getElementById('feedback').className = ok? 'feedback ok':'feedback fail';
-    pushToPage2(res, txt.split(' ')[0]);
-    if(ok) input.value='';
-  };
-  document.getElementById('sendBtn').onclick=check;
-  input.onkeydown=e=>{ if(e.key==='Enter') check(); };
-}
-document.getElementById('gen').onclick=()=>{
-  if(!selected) return alert('Elige área primero tete!');
-  const lvl=document.getElementById('level').value;
-  metrics.level=lvl; saveMetrics();
-  const res=LAYA_FINAL.generate(selected, lvl, metrics);
-  renderLesson(res);
-  updateLaia();
-};
-document.getElementById('gen2').onclick=()=>{
-  const w=document.getElementById('wordInput').value||'evolution';
-  const s=w.slice(0,3).toLowerCase();
-  const dic=LAYA_FINAL.SUPER_DIC.search(s);
-  document.getElementById('card2').innerHTML=`<b>${w} [${s}]</b><br><br>Familia: ${dic.join(', ').slice(0,200)}<br><br><small style="color:#9ca3af">Root evolution: ${s} → ${dic.length} primos</small>`;
-  document.getElementById('card2').classList.remove('hidden');
-  document.getElementById('evoLab').textContent=`EXPLORATION // WORD ${w} | SYLL ${s} | COUSINS ${dic.length} | ${dic.slice(0,8).join(', ')}`;
-};
-
-// Dots + label update on scroll
-const wrapper=document.getElementById('hWrapper');
-wrapper.addEventListener('scroll', ()=>{
-  const isPage2 = wrapper.scrollLeft > window.innerWidth/2;
-  document.getElementById('dot1').classList.toggle('active',!isPage2);
-  document.getElementById('dot2').classList.toggle('active', isPage2);
-  document.getElementById('pageLabel').textContent = isPage2? '◀️ MOTOR 1 V9 • estás en MOTOR 2 SAP ▶️' : '◀️ estás en MOTOR 1 V9 • MOTOR 2 SAP ▶️';
-});
-
-// Click en Laia cambia página
-document.getElementById('laia').onclick=()=>{
-  const isPage2 = wrapper.scrollLeft > window.innerWidth/2;
-  wrapper.scrollTo({left: isPage2? 0 : window.innerWidth, behavior:'smooth'});
-};
-
+function updateLaia(){ const key=AVATAR_ENGINE_V6.decideByMetrics(metrics); const data=AVATAR_ENGINE_V6.files[key]; document.getElementById('laia').src=data.file||'laia_4_colega.png'; document.getElementById('laia-state').textContent=data.emotion; const b=document.getElementById('bubble'); b.textContent=data.tts.text; b.className='bubble-'+data.emotion.toLowerCase(); b.classList.remove('hidden'); clearTimeout(window._bubbleT); window._bubbleT=setTimeout(()=>b.classList.add('hidden'),5000);}
+function renderLesson(res){ const card=document.getElementById('card'); const words=(res.story||res.prompt).split(/(\s+)/).map(w=>{ if(w.trim().length<2) return w; const clean=w.toLowerCase().replace(/[^a-z]/g,''); return `<span class="word" data-w="${clean}">${w}</span>`; }).join(''); card.innerHTML=`<div class="meta"><span>📍 ${res.meta.area}</span><span>${res.meta.level}</span><span class="${res.meta.bloqueado?'blocked':''}">⭐ ${res.meta.xp} XP ${res.meta.bloqueado?'⛔ BLOQUEADO':''}</span><span>${res.meta.grammar_main.sig}</span><span>${res.meta.grammar_future.sig}</span><span>${res.meta.wordCount} words</span></div><h2>${res.meta.topic}</h2><div class="gram"><b>MAIN ${res.meta.grammar_main.level}:</b> ${res.meta.grammar_main.id} - <code>${res.meta.grammar_main.formula}</code><br>Ex: ${res.meta.grammar_main.example}<br><b style="color:#f59e0b">⚠️ ${res.meta.grammar_main.mistake}</b></div>${res.meta.grammar_second?`<div class="gram"><b>SECOND:</b> ${res.meta.grammar_second.id} - <code>${res.meta.grammar_second.formula}</code><br>Ex: ${res.meta.grammar_second.example}</div>`:''}<div class="gram"><b>FUTURE:</b> ${res.meta.grammar_future.id} - <code>${res.meta.grammar_future.formula}</code><br>Ex: ${res.meta.grammar_future.example}</div><div class="reading">${words}</div><div class="tags">${res.meta.vocab.map(v=>`<span>${v}</span>`).join('')}</div><div class="chat-box"><input id="userInput" placeholder="Escribe tu frase con ${res.meta.grammar_main.sig}..."/><button id="sendBtn">Enviar</button></div><div id="feedback"></div>`; card.classList.remove('hidden'); document.getElementById('empty').classList.add('hidden'); card.querySelectorAll('.word').forEach(el=>{ el.onclick=()=>{ const s=el.dataset.w.slice(0,3); const results=LAYA_FINAL.SUPER_DIC.search(s); const box=document.getElementById('dic-box'); box.innerHTML=`<b>SuperDic [${s}] →</b> ${results.join(', ')}`; box.classList.remove('hidden'); setTimeout(()=>box.classList.add('hidden'),6000); };}); const input=document.getElementById('userInput'); const send=document.getElementById('sendBtn'); const check=()=>{ const txt=input.value; if(!txt) return; const hes=Date.now()-startTime; metrics.hesitation_ms=hes; const mainSig=res.meta.grammar_main.sig; let ok=true; if(mainSig==='PS_3RD_S' && /he have|she have/i.test(txt)) ok=false; if(txt.length<3) ok=false; LAYA_FINAL.MEMORY.update(mainSig, ok, hes); if(ok){ metrics.same_error_count=0; metrics.streak_days++; metrics.accuracy_7d=Math.min(0.98, metrics.accuracy_7d+0.04); metrics.xp_total+=res.meta.xp; }else{ metrics.same_error_count++; metrics.accuracy_7d=Math.max(0.2, metrics.accuracy_7d-0.07);} saveMetrics(); document.getElementById('streak').textContent=metrics.streak_days; document.getElementById('acc').textContent=Math.round(metrics.accuracy_7d*100); document.getElementById('xp').textContent=`⭐ ${metrics.xp_total} XP`; const fb=document.getElementById('feedback'); fb.className=ok?'feedback ok':'feedback fail'; fb.textContent=ok?`✅ Perfecto tete! +${res.meta.xp} XP`:`❌ Ojo: ${res.meta.grammar_main.mistake} - Repite: ${res.meta.grammar_main.example}`; updateLaia(); startTime=Date.now(); if(ok) input.value='';}; send.onclick=check; input.onkeydown=e=>{ if(e.key==='Enter') check(); };}
+document.getElementById('gen').onclick=()=>{ if(!selected) return alert('Elige área primero tete!'); metrics.cefr_level=document.getElementById('level').value; metrics.level=metrics.cefr_level; document.getElementById('level-badge').textContent=metrics.level; saveMetrics(); startTime=Date.now(); const res=LAYA_FINAL.generate(selected, metrics.cefr_level, metrics); renderLesson(res); updateLaia(); document.getElementById('status').textContent=`Motor V10.1 OK: ${Object.keys(LAYA_FINAL.AREAS).length} áreas, ${Object.keys(LAYA_FINAL.GRAMMAR).length} SIGs, HISTORIAS REALES - LISTO`; };
+try{ document.getElementById('status').textContent=`Motor V10.1 Cargado: ${Object.keys(LAYA_FINAL.AREAS).length} áreas, ${Object.keys(LAYA_FINAL.GRAMMAR).length} gramáticas, HISTORIAS REALES OK - LISTO PARA PÁGINA 1`; document.getElementById('status').style.color='#22c55e'; }catch(e){ document.getElementById('status').textContent=`Error: ${e.message}`; document.getElementById('status').style.color='#ef4444'; }
 updateLaia();
 </script>
 </body>

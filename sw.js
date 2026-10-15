@@ -1,4 +1,4 @@
-const CACHE_NAME = 'lenguaje-pro-v12-3-sap-hologram';
+const CACHE_NAME = 'lenguaje-pro-v12-4-sap-hologram';
 const ASSETS = [
   '/l/',
   '/l/index.html',

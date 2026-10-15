@@ -1,4 +1,4 @@
-const CACHE_NAME = 'lenguaje-pro-v12-5-sap-hologram';
+const CACHE_NAME = 'lenguaje-pro-v15-holo-16-sap-pins';
 const ASSETS = [
   '/l/',
   '/l/index.html',
@@ -6,13 +6,10 @@ const ASSETS = [
   '/l/styles.css',
   '/l/LAYA_FINAL_COMPLETO.js',
   '/l/LAYA_SAP_HOLOGRAM.js',
-  '/l/laia_0_furiosa.png',
-  '/l/laia_1_observer.png',
-  '/l/laia_2_empatica.png',
-  '/l/laia_3_celebratoria.png',
-  '/l/laia_4_colega.png',
-  '/l/laia_5_strict_light.png',
-  '/l/icon-192.png'
+  '/l/LAYA_SECONDARY_ENGINE.js',
+  '/l/laia_HOLO_CLEAN_16.png',
+  '/l/icon-192.png',
+  '/l/icon-512.png'
 ];
 
 self.addEventListener('install', e => {
@@ -20,7 +17,7 @@ self.addEventListener('install', e => {
   e.waitUntil(
     caches.open(CACHE_NAME).then(c => {
       return c.addAll(ASSETS.map(url => new Request(url, {cache: 'reload'}))).catch(err => {
-        console.log('[SW] Cache addAll fail, trying individual:', err);
+        console.log('[SW V15 HOLO-16] Cache addAll fail, trying individual:', err);
         // Fallback individual para que no rompa si falta una imagen
         return Promise.allSettled(ASSETS.map(u => c.add(u)));
       });

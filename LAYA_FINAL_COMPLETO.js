@@ -1,4 +1,5 @@
-// LAYA_FINAL_COMPLETO.js - V10.1 FINAL - TODO INCLUIDO + HISTORIAS REALES
+// LAYA_FINAL_COMPLETO.js - V15 HOLO-16 - TODO INCLUIDO + HISTORIAS REALES + HOLOGRAMA 16 FRAMES AZUL
+// BASE: V10.1 tuyo intacto + reemplazo AVATAR_ENGINE_V6 viejo por HOLO-16
 export const GRAMMAR_REAL = {
   PRON_PER_POSS: { id:"Pronouns Personal & Possessive", sig:"PRON_PER_POSS", formula:"I/me/my/mine/myself", example:"This is my book, not yours. I did it myself.", mistake:"I car -> MY car", level:"A1" },
   THERE_QUANT: { id:"There is/are + Quantifiers", sig:"THERE_QUANT", formula:"There is a / There are many / much / a lot of", example:"There is a lot of money in my account.", mistake:"There have -> There is/are", level:"A1" },
@@ -37,81 +38,95 @@ export const GRAMMAR_REAL = {
   MOD_PAST_REGRET: { id:"Modals Past Regret", sig:"MOD_PAST_REGRET", formula:"should have / could have / would have + V3", example:"You should have called me", mistake:"should have call -> called", level:"B2" }
 };
 export const VOCAB_REAL = { kitchen50: ["cook","kitchen","knead","knife","plate","fork","oven","fry","boil","chop","blend","bake","stir","taste","recipe","ingredient","spice","salt","pepper","pan","pot","sauce","dish","meal","breakfast","lunch","dinner","hungry","delicious","Cook/Cocinar","Bake/Hornear","Boil/Hervir","Fry/Freir"], move16: ["run","walk","jump","move","travel","go","come","arrive","leave","return","PUSH/Empujar","PULL/Tirar","LIFT/Levantar","DROP/Soltar","THROW/Lanzar","CATCH/Atrapar","JUMP/Saltar","ROLL/Rodar","SLIDE/Deslizar","CLIMB/Trepar","FALL/Caer","FLOAT/Flotar"], collHaveTake: ["have a shower","have breakfast","have a break","take a break","take notes","have fun","take care","have a look","have a dream","take a chance","Have a drink/rest/shower/dream/look/idea/bath/party/chat/break","Take a break/look/chance/photo/risk/seat/shower/note/bus/time","Do work/dishes/yoga/homework/best/research/exercise"], verbPrep40: ["talk ABOUT","work DURING","walk AROUND","fight AGAINST","look AFTER","sit UNDER","arrive BEFORE","choose BETWEEN","believe IN","depend ON","think ABOUT","wait FOR","look FOR","care ABOUT","agree WITH","apologize FOR","pay FOR","listen TO","arrive AT/IN"], sinceForUntil: ["since 2020","for 3 years","until tomorrow","since Monday","for a while","since yesterday","for a long time","until now","since Monday/2010/morning/yesterday/we met/I was a child","during the meeting/summer/war/night/class","while I was cooking","2 days ago","already done, not yet finished, just finished, ever/never"], adjPerson: ["Kind/Rude/Smart/Funny/Honest/Lazy/Brave/Generous/Shy/Confident","confident","happy","kind","brave","honest","loyal","hardworking","generous"], adjEmotion: ["Happy/Sad/Angry/Excited/Scared/Nervous/Proud/Jealous/Worried/Grateful","anxious","excited","grateful","frustrated","motivated","overwhelmed","proud","stressed","inspired"], adjObject: ["New/Old/Big/Cheap/Useful/Expensive/Modern/Empty/Heavy/Light/Sharp/Soft/Dangerous/Safe","expensive","cheap","useful","useless","modern","ancient","broken","valuable"], survival50: ["I have a question","Can you help me?","I don't understand","What does it mean?","Can you explain?","Let me think","I'm not sure","I agree/disagree","I'm ready/not ready","In my opinion","money","save","spend","invest","earn","bank","debt","rich","poor","budget","salary","income","expense","profit","loss","cost","price","value","wealth","cash","coin","loan","credit","interest","account","wallet","pay","buy","sell","trade","market","business","company","client","boss","job","work","career","success","failure","risk","opportunity","goal","plan","habit","discipline","freedom","future","life"], conectores40: ["Moreover","Furthermore","However","Therefore","For example","For instance","Finally","In contrast","Meanwhile","Nevertheless","Instead","Although","Because","Since","So","Then","After that","First of all","Secondly","On the other hand","In fact","Actually","Basically","Essentially","In addition","As a result","Thus","Hence","Furthermore","Besides","Otherwise"], silentLetters: ["knife/knee/know/knock","doubt/debt/bomb/climb","gnome/sign/design/foreign","honest/hour/honor","castle/listen/often/fasten","write/wrong/wrist/wrap","should/walk/palm/calm","island/salmon","receipt/psychology","lamb/comb/tomb","know","knee","knock","write","wrong","hour","honest","island","debt","psychology"], phrasalVerbs50: ["turn on/off, put on/off, get up, wake up, go out, come back, look for, look after, give up, find out, carry on, turn up, bring up, call off, break down, run out of, take off, set up, grow up, deal with, look forward to, get along with, put up with, run into","give up","keep up","set up","save up","pay off","cut down","turn down","bring up","grow up","wake up","look up","find out","figure out","work out"], business: ["budget/profit/loss/investment/meeting/deadline/target/growth/risk/loan/debt/salary/income/expense/saving/bank","confidence","consistency","commitment","company","cold call","contract","client","co-founder","corporate","commerce","collaboration","communication","competition"], idioms: ["over the moon, under the weather, piece of cake, break a leg, costs an arm and a leg, hit the books, once in a blue moon","break the ice","hit the books","piece of cake","cost an arm and a leg","under the weather","once in a blue moon","kill two birds","let the cat out","break a leg","so far so good"], pronPoss: ["I/me/my/mine/myself","you/your/yours/yourself","he/him/his/himself","she/her/hers/herself","we/us/our/ours/ourselves","they/them/their/theirs/themselves","this/that/these/those","someone/anyone/everyone/no one"], prepTime: ["in the morning","on Monday","at night","in 2024","on 15th May","at 8pm","in December","at the weekend","on time","in time","at the moment","on holiday","in summer","at Christmas","on my birthday"], quantifiers: ["a lot of","many","much","some","any","a few","a little","no","all","both","each","every","either","neither","several","enough","too much","too many"], superDicSyllables: { co: ["cook","confidence","consistency","cold","contract","co-founder","commitment","company","cost","cold call","come up"], kne: ["knead","knee","kneel","knife","know","knock"], hap: ["happy","happiness","happily","happen","happening","perhaps"], hav: ["have a shower","have breakfast","have fun","have a break","have to","have a look","have an idea","have a dream"], tak: ["take a break","take notes","take care","take off","take action","take a chance"], sav: ["save","saving","savings","save up","saver"], mon: ["money","month","Monday","morning","Moreover","moment"], fai: ["fail","failure","failing","fair","faith","faithful"], wor: ["work","worry","work out","world","word","worth","work during"], tim: ["time","timing","time management","sometimes","meantime","Meanwhile"], kno: ["know","knowledge","known","knows","knew"], wri: ["write","wrong","wrist","wrap","writing"] } };
-export const AVATAR_ENGINE_V6 = {
-  files: {
-    IMG_0_FURIOUS: { id:0, file:"laia_0_furiosa.png", tts:{ text:"¡Tete, 3 veces lo mismo! Parem. Es HAS, no have. Hasta que no lo clavas, 0 XP.", rate:0.85 }, emotion:"FURIOSA", color:"#ef4444", anim:"shake" },
-    IMG_1_OBSERVER: { id:1, file:"laia_1_observer.png", tts:{ text:"Te observo. Vas en flow, no te interrumpo.", rate:1.0 }, emotion:"OBSERVER", color:"#60a5fa", anim:"idle" },
-    IMG_2_EMPATICA: { id:2, file:"laia_2_empatica.png", tts:{ text:"Respira. Se que cuesta. Vamos a hacerlo juntos.", rate:0.9 }, emotion:"EMPATICA", color:"#a78bfa", anim:"soft" },
-    IMG_3_CELEBRATORIA: { id:3, file:"laia_3_celebratoria.png", tts:{ text:"Boom! Lo clavaste! Esa es mi gente!", rate:1.25 }, emotion:"CELEBRATORIA", color:"#22c55e", anim:"jump" },
-    IMG_4_COLEGA: { id:4, file:"laia_4_colega.png", tts:{ text:"Vamos tete, tu puedes. Elige un area y le damos cana.", rate:1.1 }, emotion:"COLEGA", color:"#8b5cf6", anim:"float" },
-    IMG_5_STRICT_LIGHT: { id:5, file:"laia_5_strict_light.png", tts:{ text:"Ojo. Te estas desviando. Vuelve al foco.", rate:1.0 }, emotion:"STRICT", color:"#f59e0b", anim:"pulse" }
+
+// NUEVO V15 HOLO-16 - REEMPLAZA TODO LO VIEJO DE LAIA
+export const AVATAR_ENGINE_HOLO = {
+  sprite: "./laia_HOLO_CLEAN_16.png",
+  totalFrames: 16,
+  frameMap: {
+    strict: 0, point_left: 1, explain_open: 2, crossed_arms: 3,
+    celebratory: 4, strict2: 5, point_glow: 6, explain2: 7,
+    crossed_clip: 8, open_big: 9, strict3: 10, point3: 11,
+    explain3: 12, crossed2: 13, open2: 14, strict4: 15
+  },
+  emotions: {
+    HOLO_STRICT: { frame: 0, name: "STRICT", color: "#00d4ff", tts: "Ojo tete, trampa hispana. Es HAS, no have. Frame 0.", anim: "strict" },
+    HOLO_CELEB: { frame: 4, name: "CELEBRATORY", color: "#22c55e", tts: "Boom! Lo clavaste! +50 XP Frame 4", anim: "celebratory" },
+    HOLO_EXPLAIN: { frame: 2, name: "EXPLAIN", color: "#00d4ff", tts: "Te explico paso a paso. Frame 2", anim: "explain" },
+    HOLO_CROSSED: { frame: 3, name: "CROSSED", color: "#00d4ff", tts: "Te observo. Frame 3", anim: "crossed" },
+    HOLO_CLIP: { frame: 8, name: "CLIPBOARD", color: "#00d4ff", tts: "Tengo tu SAP, voy a escupir datos como pins. Frame 8", anim: "clipboard" },
+    HOLO_OPEN: { frame: 9, name: "OPEN_BIG", color: "#22c55e", tts: "Mira todos estos datos SAP! Frame 9", anim: "open" }
   },
   decideByMetrics(m){
-    if(m.same_error_count >= 3) return "IMG_0_FURIOUS";
-    if(m.same_error_count === 2) return "IMG_5_STRICT_LIGHT";
-    if(m.streak_days >= 7 || m.level_up || m.accuracy_7d >= 0.9) return "IMG_3_CELEBRATORIA";
-    if(m.cefr_level==="B1" && m.flow_mode) return "IMG_1_OBSERVER";
-    if(m.hesitation_ms > 4000 || m.accuracy_7d < 0.5) return "IMG_2_EMPATICA";
-    return "IMG_4_COLEGA";
-  }
+    if(m.same_error_count >= 3) return { frame: 0, key: "HOLO_STRICT", emotion: "STRICT", tts: "Tete, 3 veces lo mismo! Frame 0. 0 XP.", data: this.emotions.HOLO_STRICT };
+    if(m.same_error_count === 2) return { frame: 10, key: "HOLO_STRICT", emotion: "STRICT", tts: "Ojo, vuelve al foco. Frame 10.", data: this.emotions.HOLO_STRICT };
+    if(m.streak_days >= 7 || m.level_up || m.accuracy_7d >= 0.9) return { frame: 4, key: "HOLO_CELEB", emotion: "CELEBRATORY", tts: "Boom! Frame 4 celebrando.", data: this.emotions.HOLO_CELEB };
+    if(m.cefr_level==="B1" && m.flow_mode) return { frame: 3, key: "HOLO_CROSSED", emotion: "OBSERVER", tts: "Te observo, vas en flow. Frame 3", data: this.emotions.HOLO_CROSSED };
+    if(m.hesitation_ms > 4000 || m.accuracy_7d < 0.5) return { frame: 2, key: "HOLO_EXPLAIN", emotion: "EXPLAIN", tts: "Respira, vamos juntos. Frame 2", data: this.emotions.HOLO_EXPLAIN };
+    return { frame: 2, key: "HOLO_EXPLAIN", emotion: "COLEGA", tts: "Vamos tete, tu puedes. Frame 2", data: this.emotions.HOLO_EXPLAIN };
+  },
+  focusFrame(index){ return Math.max(0, Math.min(15, index)); },
+  getFrameByName(name){ return this.frameMap[name]?? 0; }
 };
-export const EMOTION_ENGINE = AVATAR_ENGINE_V6;
+export const AVATAR_ENGINE_V6 = AVATAR_ENGINE_HOLO;
+export const EMOTION_ENGINE = AVATAR_ENGINE_HOLO;
+
 export const LAYA_FINAL = {
-  version: "10.1 COMPLETO + HISTORIAS REALES - TODO",
+  version: "15 HOLO-16 SAP PINS - TODO + HISTORIAS REALES",
   VOCAB: VOCAB_REAL,
   GRAMMAR: GRAMMAR_REAL,
-  AVATAR: AVATAR_ENGINE_V6,
+  AVATAR: AVATAR_ENGINE_HOLO,
   AREAS: {
-    1: { name:"Money Basics", topic:"Why Most People Never Become Rich", vocab:["collHaveTake","survival50","pronPoss"], grammar:["PS_3RD_S","COND_1"], future:"COND_1", level:"A1", baseImg:"IMG_4_COLEGA" },
-    2: { name:"Saving", topic:"The Power of Saving Small", vocab:["survival50","quantifiers","sinceForUntil"], grammar:["THERE_QUANT","PRES_PERF"], future:"FUT_GOING", level:"A1", baseImg:"IMG_4_COLEGA" },
-    3: { name:"Smart Spending", topic:"Smart Spending Habits", vocab:["adjObject","survival50"], grammar:["PS_3RD_S","COUNT_UNCOUNT"], future:"WILL_VS_GOING", level:"A1", baseImg:"IMG_4_COLEGA" },
-    4: { name:"Investing", topic:"How Investing Builds Freedom", vocab:["conectores40","business"], grammar:["FUT_WILL","COND_1"], future:"FUT_PERF", level:"A2", baseImg:"IMG_4_COLEGA" },
-    5: { name:"Work", topic:"Why Hard Work Matters", vocab:["move16","survival50"], grammar:["PAST_SIMP","PAST_CONT"], future:"COND_2", level:"A2", baseImg:"IMG_0_FURIOUS" },
-    6: { name:"Career", topic:"How to Grow in Your Career", vocab:["survival50","business","verbPrep40"], grammar:["PRES_PERF","PAST_PERF"], future:"FUT_CONT", level:"B1", baseImg:"IMG_4_COLEGA" },
-    7: { name:"Opportunity", topic:"Why English Is The Language of Opportunity", vocab:["conectores40","survival50"], grammar:["PS_3RD_S","MOD_CAN"], future:"COND_1", level:"A2", baseImg:"IMG_3_CELEBRATORIA" },
-    8: { name:"Business", topic:"How Small Business Starts", vocab:["verbPrep40","business"], grammar:["PS_3RD_S","PASS_BASIC"], future:"FUT_GOING", level:"A2", baseImg:"IMG_4_COLEGA" },
-    9: { name:"Time Is Money", topic:"Why Time Is More Valuable Than Money", vocab:["sinceForUntil","prepTime","quantifiers"], grammar:["PREP_IN_ON_AT","PRES_PERF"], future:"FUT_PERF", level:"A1", baseImg:"IMG_2_EMPATICA" },
-    10:{ name:"Rich vs Poor Mind", topic:"How Rich People Think Different", vocab:["adjPerson","conectores40"], grammar:["PS_3RD_S","COMP_SUP"], future:"COND_2", level:"A2", baseImg:"IMG_5_STRICT_LIGHT" },
-    11:{ name:"Positive Mindset", topic:"Why a Positive Mindset Helps Overcome Challenges", vocab:["adjEmotion","conectores40"], grammar:["PAST_SIMP","PRES_PERF"], future:"COND_0", level:"A2", baseImg:"IMG_2_EMPATICA" },
-    12:{ name:"Growth Mindset", topic:"The Power of Growth Mindset", vocab:["adjPerson","survival50"], grammar:["PS_3RD_S","GERUND_INF"], future:"COND_1", level:"A2", baseImg:"IMG_3_CELEBRATORIA" },
-    13:{ name:"Confidence", topic:"How to Build Real Confidence", vocab:["survival50","adjPerson","pronPoss"], grammar:["MOD_CAN","MOD_MUST"], future:"FUT_WILL", level:"A2", baseImg:"IMG_3_CELEBRATORIA" },
-    14:{ name:"Fear", topic:"Why Fear Stops Most People", vocab:["adjEmotion","survival50"], grammar:["MOD_CAN","PRES_PERF"], future:"COND_2", level:"A2", baseImg:"IMG_2_EMPATICA" },
-    15:{ name:"Failure", topic:"Why Failure Is Your Best Teacher", vocab:["conectores40","survival50"], grammar:["PRES_PERF","PAST_PERF"], future:"COND_3", level:"B1", baseImg:"IMG_3_CELEBRATORIA" },
-    16:{ name:"Success", topic:"What Success Really Means", vocab:["conectores40","survival50"], grammar:["PS_3RD_S","PRES_CONT"], future:"FUT_PERF", level:"A2", baseImg:"IMG_3_CELEBRATORIA" },
-    17:{ name:"Progress", topic:"The Power of Progress", vocab:["move16","prepTime"], grammar:["PAST_SIMP","PAST_CONT"], future:"FUT_CONT", level:"A2", baseImg:"IMG_4_COLEGA" },
-    18:{ name:"Taking Action", topic:"Why Taking Action Can Change Your Life", vocab:["move16","phrasalVerbs50"], grammar:["PAST_SIMP","MOD_MUST"], future:"COND_1", level:"A2", baseImg:"IMG_0_FURIOUS" },
-    19:{ name:"Discipline", topic:"Why Discipline Beats Motivation", vocab:["verbPrep40","business"], grammar:["PS_3RD_S","MOD_MUST"], future:"COND_0", level:"A2", baseImg:"IMG_0_FURIOUS" },
-    20:{ name:"Motivation", topic:"Where Real Motivation Comes From", vocab:["survival50","adjEmotion"], grammar:["PRES_CONT","PRES_PERF"], future:"WILL_VS_GOING", level:"A2", baseImg:"IMG_3_CELEBRATORIA" },
-    21:{ name:"Focus", topic:"The Power of Deep Focus", vocab:["conectores40","business"], grammar:["PS_3RD_S","GERUND_INF"], future:"FUT_WILL", level:"A2", baseImg:"IMG_4_COLEGA" },
-    22:{ name:"Procrastination", topic:"Why We Procrastinate", vocab:["sinceForUntil","prepTime"], grammar:["PS_3RD_S","PRES_CONT"], future:"COND_2", level:"A2", baseImg:"IMG_2_EMPATICA" },
-    23:{ name:"Gratitude", topic:"Why Gratitude Changes Everything", vocab:["adjEmotion","pronPoss"], grammar:["PRON_PER_POSS","PRES_PERF"], future:"COND_0", level:"A2", baseImg:"IMG_3_CELEBRATORIA" },
-    24:{ name:"Happiness", topic:"How to Find Real Happiness", vocab:["adjEmotion","conectores40"], grammar:["PS_3RD_S","PAST_SIMP"], future:"COND_1", level:"A2", baseImg:"IMG_2_EMPATICA" },
-    25:{ name:"Stress", topic:"How to Handle Stress", vocab:["adjEmotion","verbPrep40"], grammar:["PRES_CONT","MOD_MIGHT"], future:"WILL_VS_GOING", level:"A2", baseImg:"IMG_2_EMPATICA" },
-    26:{ name:"Good Habits", topic:"Why Building Good Habits Leads to Success", vocab:["kitchen50","collHaveTake"], grammar:["PS_3RD_S","ART_DET"], future:"COND_0", level:"A1", baseImg:"IMG_4_COLEGA" },
-    27:{ name:"Bad Habits", topic:"The Money Habits That Keep You Poor", vocab:["collHaveTake","survival50","quantifiers"], grammar:["PS_3RD_S","COUNT_UNCOUNT"], future:"COND_1", level:"A1", baseImg:"IMG_5_STRICT_LIGHT" },
-    28:{ name:"Morning Routine", topic:"The Power of a Morning Routine", vocab:["sinceForUntil","prepTime","collHaveTake"], grammar:["PREP_IN_ON_AT","PRES_CONT"], future:"FUT_GOING", level:"A1", baseImg:"IMG_3_CELEBRATORIA" },
-    29:{ name:"Goals", topic:"The Power of Setting Goals", vocab:["survival50","business"], grammar:["FUT_WILL","FUT_GOING"], future:"COND_1", level:"A2", baseImg:"IMG_3_CELEBRATORIA" },
-    30:{ name:"Planning", topic:"Why Planning Saves Your Future", vocab:["conectores40","business"], grammar:["WILL_VS_GOING","CONN_LOGIC"], future:"FUT_CONT", level:"A2", baseImg:"IMG_4_COLEGA" },
-    31:{ name:"Time Management", topic:"How to Manage Your Time", vocab:["sinceForUntil","prepTime","quantifiers"], grammar:["PREP_IN_ON_AT","THERE_QUANT"], future:"COND_2", level:"A1", baseImg:"IMG_0_FURIOUS" },
-    32:{ name:"Health", topic:"Why Health Is Real Wealth", vocab:["adjPerson","move16"], grammar:["PS_3RD_S","MOD_MUST"], future:"COND_1", level:"A1", baseImg:"IMG_2_EMPATICA" },
-    33:{ name:"Sleep", topic:"The Power of Good Sleep", vocab:["move16","prepTime"], grammar:["PS_3RD_S","PAST_SIMP"], future:"WILL_VS_GOING", level:"A1", baseImg:"IMG_4_COLEGA" },
-    34:{ name:"Healthy Food", topic:"How Food Affects Your Energy", vocab:["kitchen50","quantifiers"], grammar:["PS_3RD_S","COUNT_UNCOUNT"], future:"COND_0", level:"A1", baseImg:"IMG_4_COLEGA" },
-    35:{ name:"Fitness", topic:"Why Small Exercise Changes Your Life", vocab:["move16","adjEmotion"], grammar:["PRES_CONT","PRES_PERF_CONT"], future:"FUT_GOING", level:"A2", baseImg:"IMG_3_CELEBRATORIA" },
-    36:{ name:"Learning", topic:"Learn More, Earn More", vocab:["survival50","verbPrep40"], grammar:["PRES_PERF","RELATIVE"], future:"FUT_PERF", level:"B1", baseImg:"IMG_3_CELEBRATORIA" },
-    37:{ name:"Reading", topic:"Why Reading Makes You Richer", vocab:["conectores40","business"], grammar:["PS_3RD_S","PASS_BASIC"], future:"COND_2", level:"B1", baseImg:"IMG_4_COLEGA" },
-    38:{ name:"Consistency", topic:"Why Consistency Beats Talent", vocab:["verbPrep40","conectores40"], grammar:["PS_3RD_S","PRES_PERF"], future:"COND_0", level:"A2", baseImg:"IMG_0_FURIOUS" },
-    39:{ name:"Patience", topic:"The Power of Patience", vocab:["adjPerson","sinceForUntil"], grammar:["PS_3RD_S","PAST_PERF"], future:"FUT_CONT", level:"B1", baseImg:"IMG_2_EMPATICA" },
-    40:{ name:"Kindness", topic:"Why Kindness Is Strength", vocab:["adjPerson","pronPoss"], grammar:["PRON_PER_POSS","MOD_CAN"], future:"COND_1", level:"A1", baseImg:"IMG_3_CELEBRATORIA" },
-    41:{ name:"Family", topic:"My Family Is My Strength", vocab:["survival50","pronPoss","adjPerson"], grammar:["PRON_PER_POSS","THERE_QUANT"], future:"COND_2", level:"A1", baseImg:"IMG_2_EMPATICA" },
-    42:{ name:"Grandmother", topic:"My Grandmother Is My Inspiration", vocab:["adjPerson","pronPoss","sinceForUntil"], grammar:["USED_TO","PAST_CONT"], future:"COND_2", level:"B1", baseImg:"IMG_4_COLEGA" },
-    43:{ name:"Friends", topic:"How Real Friends Help You Grow", vocab:["adjPerson","pronPoss"], grammar:["PS_3RD_S","RELATIVE"], future:"COND_1", level:"A2", baseImg:"IMG_4_COLEGA" },
-    44:{ name:"Love", topic:"Why Love Makes Us Stronger", vocab:["adjEmotion","pronPoss"], grammar:["PS_3RD_S","PRES_PERF"], future:"COND_3", level:"B1", baseImg:"IMG_2_EMPATICA" },
-    45:{ name:"Respect", topic:"Why Respect Is Everything", vocab:["verbPrep40","adjPerson"], grammar:["PS_3RD_S","MOD_MUST"], future:"COND_0", level:"A2", baseImg:"IMG_5_STRICT_LIGHT" },
-    46:{ name:"Honesty", topic:"Why Honesty Builds Trust", vocab:["adjPerson","business"], grammar:["PS_3RD_S","REPORTED"], future:"COND_1", level:"B1", baseImg:"IMG_4_COLEGA" },
-    47:{ name:"Responsibility", topic:"The Power of Responsibility", vocab:["verbPrep40","quantifiers","pronPoss"], grammar:["THERE_QUANT","PASS_BASIC"], future:"FUT_PERF", level:"A1", baseImg:"IMG_0_FURIOUS" },
-    48:{ name:"Delivery Life", topic:"My Life Delivering Food", vocab:["move16","prepTime","collHaveTake"], grammar:["PREP_IN_ON_AT","PRES_CONT"], future:"FUT_GOING", level:"A1", baseImg:"IMG_4_COLEGA" },
-    49:{ name:"Alignment", topic:"Why Alignment Creates Success", vocab:["conectores40","business","quantifiers"], grammar:["PS_3RD_S","GERUND_INF"], future:"COND_1", level:"B1", baseImg:"IMG_3_CELEBRATORIA" },
-    50:{ name:"Willpower", topic:"The Power of Willpower", vocab:["move16","adjEmotion","conectores40"], grammar:["FUT_WILL","FUT_CONT"], future:"FUT_PERF", level:"B2", baseImg:"IMG_3_CELEBRATORIA" }
+    1: { name:"Money Basics", topic:"Why Most People Never Become Rich", vocab:["collHaveTake","survival50","pronPoss"], grammar:["PS_3RD_S","COND_1"], future:"COND_1", level:"A1", baseFrame:2 },
+    2: { name:"Saving", topic:"The Power of Saving Small", vocab:["survival50","quantifiers","sinceForUntil"], grammar:["THERE_QUANT","PRES_PERF"], future:"FUT_GOING", level:"A1", baseFrame:2 },
+    3: { name:"Smart Spending", topic:"Smart Spending Habits", vocab:["adjObject","survival50"], grammar:["PS_3RD_S","COUNT_UNCOUNT"], future:"WILL_VS_GOING", level:"A1", baseFrame:2 },
+    4: { name:"Investing", topic:"How Investing Builds Freedom", vocab:["conectores40","business"], grammar:["FUT_WILL","COND_1"], future:"FUT_PERF", level:"A2", baseFrame:4 },
+    5: { name:"Work", topic:"Why Hard Work Matters", vocab:["move16","survival50"], grammar:["PAST_SIMP","PAST_CONT"], future:"COND_2", level:"A2", baseFrame:0 },
+    6: { name:"Career", topic:"How to Grow in Your Career", vocab:["survival50","business","verbPrep40"], grammar:["PRES_PERF","PAST_PERF"], future:"FUT_CONT", level:"B1", baseFrame:2 },
+    7: { name:"Opportunity", topic:"Why English Is The Language of Opportunity", vocab:["conectores40","survival50"], grammar:["PS_3RD_S","MOD_CAN"], future:"COND_1", level:"A2", baseFrame:4 },
+    8: { name:"Business", topic:"How Small Business Starts", vocab:["verbPrep40","business"], grammar:["PS_3RD_S","PASS_BASIC"], future:"FUT_GOING", level:"A2", baseFrame:2 },
+    9: { name:"Time Is Money", topic:"Why Time Is More Valuable Than Money", vocab:["sinceForUntil","prepTime","quantifiers"], grammar:["PREP_IN_ON_AT","PRES_PERF"], future:"FUT_PERF", level:"A1", baseFrame:2 },
+    10:{ name:"Rich vs Poor Mind", topic:"How Rich People Think Different", vocab:["adjPerson","conectores40"], grammar:["PS_3RD_S","COMP_SUP"], future:"COND_2", level:"A2", baseFrame:10 },
+    11:{ name:"Positive Mindset", topic:"Why a Positive Mindset Helps Overcome Challenges", vocab:["adjEmotion","conectores40"], grammar:["PAST_SIMP","PRES_PERF"], future:"COND_0", level:"A2", baseFrame:2 },
+    12:{ name:"Growth Mindset", topic:"The Power of Growth Mindset", vocab:["adjPerson","survival50"], grammar:["PS_3RD_S","GERUND_INF"], future:"COND_1", level:"A2", baseFrame:4 },
+    13:{ name:"Confidence", topic:"How to Build Real Confidence", vocab:["survival50","adjPerson","pronPoss"], grammar:["MOD_CAN","MOD_MUST"], future:"FUT_WILL", level:"A2", baseFrame:4 },
+    14:{ name:"Fear", topic:"Why Fear Stops Most People", vocab:["adjEmotion","survival50"], grammar:["MOD_CAN","PRES_PERF"], future:"COND_2", level:"A2", baseFrame:2 },
+    15:{ name:"Failure", topic:"Why Failure Is Your Best Teacher", vocab:["conectores40","survival50"], grammar:["PRES_PERF","PAST_PERF"], future:"COND_3", level:"B1", baseFrame:4 },
+    16:{ name:"Success", topic:"What Success Really Means", vocab:["conectores40","survival50"], grammar:["PS_3RD_S","PRES_CONT"], future:"FUT_PERF", level:"A2", baseFrame:4 },
+    17:{ name:"Progress", topic:"The Power of Progress", vocab:["move16","prepTime"], grammar:["PAST_SIMP","PAST_CONT"], future:"FUT_CONT", level:"A2", baseFrame:2 },
+    18:{ name:"Taking Action", topic:"Why Taking Action Can Change Your Life", vocab:["move16","phrasalVerbs50"], grammar:["PAST_SIMP","MOD_MUST"], future:"COND_1", level:"A2", baseFrame:0 },
+    19:{ name:"Discipline", topic:"Why Discipline Beats Motivation", vocab:["verbPrep40","business"], grammar:["PS_3RD_S","MOD_MUST"], future:"COND_0", level:"A2", baseFrame:0 },
+    20:{ name:"Motivation", topic:"Where Real Motivation Comes From", vocab:["survival50","adjEmotion"], grammar:["PRES_CONT","PRES_PERF"], future:"WILL_VS_GOING", level:"A2", baseFrame:4 },
+    21:{ name:"Focus", topic:"The Power of Deep Focus", vocab:["conectores40","business"], grammar:["PS_3RD_S","GERUND_INF"], future:"FUT_WILL", level:"A2", baseFrame:2 },
+    22:{ name:"Procrastination", topic:"Why We Procrastinate", vocab:["sinceForUntil","prepTime"], grammar:["PS_3RD_S","PRES_CONT"], future:"COND_2", level:"A2", baseFrame:2 },
+    23:{ name:"Gratitude", topic:"Why Gratitude Changes Everything", vocab:["adjEmotion","pronPoss"], grammar:["PRON_PER_POSS","PRES_PERF"], future:"COND_0", level:"A2", baseFrame:4 },
+    24:{ name:"Happiness", topic:"How to Find Real Happiness", vocab:["adjEmotion","conectores40"], grammar:["PS_3RD_S","PAST_SIMP"], future:"COND_1", level:"A2", baseFrame:2 },
+    25:{ name:"Stress", topic:"How to Handle Stress", vocab:["adjEmotion","verbPrep40"], grammar:["PRES_CONT","MOD_MIGHT"], future:"WILL_VS_GOING", level:"A2", baseFrame:2 },
+    26:{ name:"Good Habits", topic:"Why Building Good Habits Leads to Success", vocab:["kitchen50","collHaveTake"], grammar:["PS_3RD_S","ART_DET"], future:"COND_0", level:"A1", baseFrame:2 },
+    27:{ name:"Bad Habits", topic:"The Money Habits That Keep You Poor", vocab:["collHaveTake","survival50","quantifiers"], grammar:["PS_3RD_S","COUNT_UNCOUNT"], future:"COND_1", level:"A1", baseFrame:10 },
+    28:{ name:"Morning Routine", topic:"The Power of a Morning Routine", vocab:["sinceForUntil","prepTime","collHaveTake"], grammar:["PREP_IN_ON_AT","PRES_CONT"], future:"FUT_GOING", level:"A1", baseFrame:4 },
+    29:{ name:"Goals", topic:"The Power of Setting Goals", vocab:["survival50","business"], grammar:["FUT_WILL","FUT_GOING"], future:"COND_1", level:"A2", baseFrame:4 },
+    30:{ name:"Planning", topic:"Why Planning Saves Your Future", vocab:["conectores40","business"], grammar:["WILL_VS_GOING","CONN_LOGIC"], future:"FUT_CONT", level:"A2", baseFrame:2 },
+    31:{ name:"Time Management", topic:"How to Manage Your Time", vocab:["sinceForUntil","prepTime","quantifiers"], grammar:["PREP_IN_ON_AT","THERE_QUANT"], future:"COND_2", level:"A1", baseFrame:0 },
+    32:{ name:"Health", topic:"Why Health Is Real Wealth", vocab:["adjPerson","move16"], grammar:["PS_3RD_S","MOD_MUST"], future:"COND_1", level:"A1", baseFrame:2 },
+    33:{ name:"Sleep", topic:"The Power of Good Sleep", vocab:["move16","prepTime"], grammar:["PS_3RD_S","PAST_SIMP"], future:"WILL_VS_GOING", level:"A1", baseFrame:2 },
+    34:{ name:"Healthy Food", topic:"How Food Affects Your Energy", vocab:["kitchen50","quantifiers"], grammar:["PS_3RD_S","COUNT_UNCOUNT"], future:"COND_0", level:"A1", baseFrame:2 },
+    35:{ name:"Fitness", topic:"Why Small Exercise Changes Your Life", vocab:["move16","adjEmotion"], grammar:["PRES_CONT","PRES_PERF_CONT"], future:"FUT_GOING", level:"A2", baseFrame:4 },
+    36:{ name:"Learning", topic:"Learn More, Earn More", vocab:["survival50","verbPrep40"], grammar:["PRES_PERF","RELATIVE"], future:"FUT_PERF", level:"B1", baseFrame:4 },
+    37:{ name:"Reading", topic:"Why Reading Makes You Richer", vocab:["conectores40","business"], grammar:["PS_3RD_S","PASS_BASIC"], future:"COND_2", level:"B1", baseFrame:2 },
+    38:{ name:"Consistency", topic:"Why Consistency Beats Talent", vocab:["verbPrep40","conectores40"], grammar:["PS_3RD_S","PRES_PERF"], future:"COND_0", level:"A2", baseFrame:0 },
+    39:{ name:"Patience", topic:"The Power of Patience", vocab:["adjPerson","sinceForUntil"], grammar:["PS_3RD_S","PAST_PERF"], future:"FUT_CONT", level:"B1", baseFrame:2 },
+    40:{ name:"Kindness", topic:"Why Kindness Is Strength", vocab:["adjPerson","pronPoss"], grammar:["PRON_PER_POSS","MOD_CAN"], future:"COND_1", level:"A1", baseFrame:4 },
+    41:{ name:"Family", topic:"My Family Is My Strength", vocab:["survival50","pronPoss","adjPerson"], grammar:["PRON_PER_POSS","THERE_QUANT"], future:"COND_2", level:"A1", baseFrame:2 },
+    42:{ name:"Grandmother", topic:"My Grandmother Is My Inspiration", vocab:["adjPerson","pronPoss","sinceForUntil"], grammar:["USED_TO","PAST_CONT"], future:"COND_2", level:"B1", baseFrame:2 },
+    43:{ name:"Friends", topic:"How Real Friends Help You Grow", vocab:["adjPerson","pronPoss"], grammar:["PS_3RD_S","RELATIVE"], future:"COND_1", level:"A2", baseFrame:2 },
+    44:{ name:"Love", topic:"Why Love Makes Us Stronger", vocab:["adjEmotion","pronPoss"], grammar:["PS_3RD_S","PRES_PERF"], future:"COND_3", level:"B1", baseFrame:2 },
+    45:{ name:"Respect", topic:"Why Respect Is Everything", vocab:["verbPrep40","adjPerson"], grammar:["PS_3RD_S","MOD_MUST"], future:"COND_0", level:"A2", baseFrame:10 },
+    46:{ name:"Honesty", topic:"Why Honesty Builds Trust", vocab:["adjPerson","business"], grammar:["PS_3RD_S","REPORTED"], future:"COND_1", level:"B1", baseFrame:2 },
+    47:{ name:"Responsibility", topic:"The Power of Responsibility", vocab:["verbPrep40","quantifiers","pronPoss"], grammar:["THERE_QUANT","PASS_BASIC"], future:"FUT_PERF", level:"A1", baseFrame:0 },
+    48:{ name:"Delivery Life", topic:"My Life Delivering Food", vocab:["move16","prepTime","collHaveTake"], grammar:["PREP_IN_ON_AT","PRES_CONT"], future:"FUT_GOING", level:"A1", baseFrame:2 },
+    49:{ name:"Alignment", topic:"Why Alignment Creates Success", vocab:["conectores40","business","quantifiers"], grammar:["PS_3RD_S","GERUND_INF"], future:"COND_1", level:"B1", baseFrame:4 },
+    50:{ name:"Willpower", topic:"The Power of Willpower", vocab:["move16","adjEmotion","conectores40"], grammar:["FUT_WILL","FUT_CONT"], future:"FUT_PERF", level:"B2", baseFrame:4 }
   },
   SUPER_DIC: {
     search(syllable){
@@ -140,13 +155,12 @@ export const LAYA_FINAL = {
   },
   generate(areaId, level, metrics){
     const area = this.AREAS[areaId];
-    if(!area) return { prompt:"Elige area primero tete!", story:"Elige area primero tete!", meta:{ area:"?", topic:"?", level, grammar_main:{id:"?",formula:"?",example:"?"}, grammar_future:{id:"?",formula:"?",example:"?"}, vocab:[], emotion:"COLEGA", avatar_file:"laia_4_colega.png", xp:0, bloqueado:false } };
+    if(!area) return { prompt:"Elige area primero tete!", story:"Elige area primero tete!", meta:{ area:"?", topic:"?", level, grammar_main:{id:"?",formula:"?",example:"?"}, grammar_future:{id:"?",formula:"?",example:"?"}, vocab:[], emotion:"HOLO_EXPLAIN", avatar_file:"./laia_HOLO_CLEAN_16.png", avatar_frame:2, xp:0, bloqueado:false } };
     const gMain = GRAMMAR_REAL[area.grammar[0]] || Object.values(GRAMMAR_REAL).find(g=>g.id===area.grammar[0]) || Object.values(GRAMMAR_REAL)[0];
     const gSecond = area.grammar[1]? (GRAMMAR_REAL[area.grammar[1]] || Object.values(GRAMMAR_REAL).find(g=>g.id===area.grammar[1])) : null;
     const gFuture = GRAMMAR_REAL[area.future] || Object.values(GRAMMAR_REAL).find(g=>g.id===area.future) || GRAMMAR_REAL.COND_1;
     const vocabList = area.vocab.map(v=>{ const val=VOCAB_REAL[v]; if(!val) return []; return Array.isArray(val)?val:Object.values(val).flat(); }).flat().slice(0,10);
-    const avatarKey = AVATAR_ENGINE_V6.decideByMetrics({...metrics, cefr_level: level});
-    const avatar = AVATAR_ENGINE_V6.files[avatarKey];
+    const avatarData = AVATAR_ENGINE_HOLO.decideByMetrics({...metrics, cefr_level: level});
     const bloqueado = metrics.same_error_count >=3;
     const xp = bloqueado? 0 : (level==="A1"?10:level==="A2"?15:level==="B1"?20:25);
     const wordCount = {A1:"130-160", A2:"150-180", B1:"160-190", B2:"180-220"}[level] || "150-180";
@@ -157,14 +171,15 @@ export const LAYA_FINAL = {
     if(baseStory.indexOf("There is")==-1) extra += " There is a lot of opportunity. There are many ways. ";
     if(baseStory.indexOf("If you")==-1) extra += " If you save now, you will be rich later. ";
     const story = (baseStory + extra).trim();
-    const prompt = "Level " + level + " - Topic: " + area.topic + " AREA " + areaId + ": " + area.name + " Story: " + story + " XP: " + xp;
+    const prompt = "Level " + level + " - Topic: " + area.topic + " AREA " + areaId + ": " + area.name + " Story: " + story + " XP: " + xp + " HOLO_FRAME: " + avatarData.frame;
     return {
       prompt: prompt,
       story: story,
-      meta: { area: area.name, topic: area.topic, level, grammar_main: gMain, grammar_second: gSecond, grammar_future: gFuture, vocab: vocabList, emotion: avatar.emotion, avatar_file: avatar.file, avatar_key: avatarKey, xp, bloqueado, mistake_prevention: gMain.mistake, wordCount, superDic: VOCAB_REAL.superDicSyllables },
+      meta: { area: area.name, topic: area.topic, level, grammar_main: gMain, grammar_second: gSecond, grammar_future: gFuture, vocab: vocabList, emotion: avatarData.emotion, avatar_file:"./laia_HOLO_CLEAN_16.png", avatar_frame: avatarData.frame, avatar_key: avatarData.key, xp, bloqueado, mistake_prevention: gMain.mistake, wordCount, superDic: VOCAB_REAL.superDicSyllables, holo: avatarData },
       quizAuto: { tense_choice: gMain.example, conditional: gFuture.example, mistake_fix: gMain.mistake, blocked: bloqueado },
-      avatarState: avatar
+      avatarState: avatarData.data
     };
   }
 };
 export const LAYA_FINAL_COMPLETO = LAYA_FINAL;
+

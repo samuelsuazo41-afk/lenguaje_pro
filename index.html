@@ -3,89 +3,103 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>LENGUAJE-PRO V14.1 DUAL B10.1 FIX</title>
+<title>LENGUAJE-PRO V15 HOLO-16 SAP PINS</title>
 <link rel="icon" href="./icon-192.png">
-<meta name="theme-color" content="#8b5cf6">
+<meta name="theme-color" content="#00d4ff">
 <link rel="stylesheet" href="./styles.css">
 <style>
 .h-wrapper{margin-top:58px;display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;width:100vw;height:calc(100vh - 58px);-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .h-wrapper::-webkit-scrollbar{display:none}
 .page{min-width:100vw;width:100vw;height:100%;scroll-snap-align:start;overflow-y:auto;display:flex;flex-direction:row}
 .page-label{position:fixed;top:62px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.7);border:1px solid #2a2a3a;padding:4px 12px;border-radius:20px;font-size:10px;color:#9ca3af;z-index:20;pointer-events:none}
-.dots{display:flex;gap:6px;align-items:center}.dot{width:8px;height:8px;border-radius:50%;background:#2a2a3a;transition:.3s}.dot.active{background:#8b5cf6;width:22px}
+.dots{display:flex;gap:6px;align-items:center}.dot{width:8px;height:8px;border-radius:50%;background:#2a2a3a;transition:.3s}.dot.active{background:#00d4ff;width:22px}
 #page1{flex:1;display:flex;min-height:100%;min-width:100vw;overflow-y:auto}
 #page1 aside{width:330px;min-width:330px;background:#1a1a23;border-right:1px solid #2a2a3a;padding:14px;display:flex;flex-direction:column;gap:10px;position:sticky;top:0;height:calc(100vh - 58px);overflow-y:auto}
 #page1 main{flex:1;padding:18px;min-width:0;overflow-x:hidden;max-width:860px}
 #page2{background:linear-gradient(180deg,#12121a 0%,#0f0f14 100%);padding:18px;display:flex;flex-direction:column;gap:14px;align-items:center;min-width:100vw}
-.sap-header{width:100%;max-width:760px;background:#1a1a23;border:1px solid #8b5cf6;border-radius:16px;padding:14px;word-break:break-word}
+.sap-header{width:100%;max-width:760px;background:#1a1a23;border:1px solid #00d4ff;border-radius:16px;padding:14px;word-break:break-word}
 .sap-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;max-width:760px}
 .sap-card{background:#1a1a23;border:1px solid #2a2a3a;border-radius:12px;padding:12px;word-break:break-word}
-.evo-lab{width:100%;max-width:760px;background:#0f0f14;border:1px dashed #8b5cf6;border-radius:12px;padding:14px;font-size:12px;white-space:pre-wrap;word-break:break-word}
+.evo-lab{width:100%;max-width:760px;background:#0f0f14;border:1px dashed #00d4ff;border-radius:12px;padding:14px;font-size:12px;white-space:pre-wrap;word-break:break-word}
 #card{scroll-margin-top:14px}
+#laia-hologram{position:fixed;right:18px;bottom:18px;width:110px;height:220px;z-index:9999;pointer-events:none;transition:all 1.1s cubic-bezier(0.34,1.56,0.64,1);filter:drop-shadow(0 0 18px #00d4ff) drop-shadow(0 0 35px #00d4ff);animation:laiaFloat 3s ease-in-out infinite}
+#laia-sprite{width:100%;height:100%;background:url('./laia_HOLO_CLEAN_16.png') 0 0 / 1600% 100%;image-rendering:crisp-edges;pointer-events:auto;cursor:pointer}
+#laia-glow{position:absolute;inset:-15px;background:radial-gradient(circle at 50% 80%, rgba(0,212,255,0.3) 0%, transparent 70%);z-index:-1;animation:laiaPulse 2s infinite}
+#bubble{position:absolute;right:125px;bottom:80px;background:rgba(10,15,30,0.92);backdrop-filter:blur(12px);border:1px solid rgba(0,212,255,0.5);color:white;padding:12px 14px;border-radius:14px;font-size:12px;width:210px;pointer-events:auto;box-shadow:0 0 25px rgba(0,212,255,0.3)}
+#bubble.hidden{display:none}
+#laia-state{position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);background:rgba(0,212,255,0.9);color:white;font-size:9px;padding:2px 8px;border-radius:10px;white-space:nowrap}
+#laia-pin-container{position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9998}
+.laia-pin{position:absolute;background:linear-gradient(135deg, rgba(0,212,255,0.95), rgba(139,92,246,0.95));color:white;padding:10px 14px;border-radius:12px;font-size:11px;max-width:230px;box-shadow:0 8px 25px rgba(0,212,255,0.4);border:1px solid rgba(255,255,255,0.3);animation:pinPop 0.4s cubic-bezier(0.34,1.56,0.64,1), pinFloat 3s ease-in-out infinite;pointer-events:auto;cursor:pointer}
+.laia-pin.sap-data{background:linear-gradient(135deg, rgba(16,185,129,0.95), rgba(6,182,212,0.95))}
+.laia-pin.grammar-tip{background:linear-gradient(135deg, rgba(245,158,11,0.95), rgba(239,68,68,0.95))}
+.laia-pin.vocab-family{background:linear-gradient(135deg, rgba(139,92,246,0.95), rgba(236,72,153,0.95))}
+@keyframes laiaFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes laiaPulse{0%,100%{opacity:0.6}50%{opacity:1}}
+@keyframes holoLoop{from{background-position:0% 0}to{background-position:-1600% 0}}
+@keyframes pinPop{0%{transform:scale(0) translateY(20px);opacity:0}100%{transform:scale(1) translateY(0);opacity:1}}
+@keyframes pinFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 @media(max-width:768px){
-.page{flex-direction:column}
-#page1{flex-direction:column;overflow-y:auto}
-#page1 aside{width:100%;min-width:100%;position:relative;top:0;height:auto;max-height:42vh;flex-shrink:0;overflow-y:auto}
-#page1 main{min-height:58vh;overflow-y:visible}
-.sap-grid{grid-template-columns:1fr}
-.h-wrapper{position:relative;margin-top:58px;height:auto;min-height:calc(100vh - 58px)}
+#page1{flex-direction:column}#page1 aside{width:100%;min-width:100%;position:relative;height:auto;max-height:42vh}#page1 main{min-height:58vh}
+.sap-grid{grid-template-columns:1fr}.h-wrapper{height:auto;min-height:calc(100vh - 58px)}
+#laia-hologram{width:85px;height:170px;right:10px;bottom:10px}#bubble{right:95px;bottom:60px;width:180px}
 }
 </style>
 </head>
 <body>
 <header>
-  <div class="logo">📚 LENGUAJE-PRO <span>V14.1 B10.1 DUAL FIX</span></div>
+  <div class="logo">📚 LENGUAJE-PRO <span>V15 HOLO-16 SAP PINS</span></div>
   <div style="display:flex;gap:12px;align-items:center">
     <div class="dots"><div class="dot active" id="dot1"></div><div class="dot" id="dot2"></div></div>
     <div class="metrics"><span id="xp">⭐ 0 XP</span><span>🔥 <b id="streak">0</b></span><span id="level-badge">A2</span></div>
   </div>
 </header>
-<div class="page-label" id="pageLabel">MOTOR 1 B10.1 • desliza ▶️ MOTOR 2 SAP</div>
+<div class="page-label" id="pageLabel">MOTOR 1 B10.1 HOLO-16 • desliza ▶️ MOTOR 2 SAP</div>
 <div class="h-wrapper" id="hWrapper">
   <div class="page" id="page1">
     <aside>
-      <h3 style="font-size:11px;color:#9ca3af">MOTOR 1 - 50 ÁREAS • 35 SIGs • 72 VOCAB • B10.1 FINAL + HISTORIAS REALES</h3>
+      <h3 style="font-size:11px;color:#00d4ff">MOTOR 1 - 50 ÁREAS • 35 SIGs • 72 VOCAB • B10.1 + HOLO-16</h3>
       <input id="search" placeholder="Buscar: Money, in/on/at, co, have, family...">
       <div id="filters"><button class="f active" data-f="">Todas</button><button class="f" data-f="A1">A1</button><button class="f" data-f="A2">A2</button><button class="f" data-f="B1">B1</button><button class="f" data-f="B2">B2</button></div>
       <div id="list"></div>
     </aside>
     <main>
-      <div style="display:flex;gap:10px;margin-bottom:12px"><select id="level"><option>A1</option><option selected>A2</option><option>B1</option><option>B2</option></select><button id="gen" style="background:#8b5cf6;color:#fff;border:none;padding:10px 16px;border-radius:10px;font-weight:700;cursor:pointer;flex:1;max-width:260px">⚡ GENERAR LECCIÓN V10.1</button></div>
-      <div id="empty"><h1 style="font-size:28px">👋 Hola, soy Laia - V10.1</h1><p style="margin:8px 0">Tengo todo tu V6 + 4 SIGs nuevos. 50 áreas, 35 gramáticas A1->B2, 72 familias vocab, super dic por sílabas + HISTORIAS REALES.</p><div style="display:flex;gap:6px;flex-wrap:wrap;margin:10px 0"><span style="background:#232332;padding:4px 8px;border-radius:20px;font-size:11px;border:1px solid #8b5cf6">PRON_PER_POSS: my/mine</span><span style="background:#232332;padding:4px 8px;border-radius:20px;font-size:11px;border:1px solid #8b5cf6">PREP_IN_ON_AT: on Monday</span><span style="background:#232332;padding:4px 8px;border-radius:20px;font-size:11px;border:1px solid #8b5cf6">THERE_QUANT: There is/are</span><span style="background:#232332;padding:4px 8px;border-radius:20px;font-size:11px;border:1px solid #8b5cf6">CONN_LOGIC: Moreover/However</span></div><p style="font-size:11px;color:#9ca3af">Click en cualquier palabra para SuperDic + lanza a Motor 2 SAP</p><p id="status" style="margin-top:10px;font-size:11px;color:#22c55e">Cargando B10.1...</p></div>
+      <div style="display:flex;gap:10px;margin-bottom:12px"><select id="level"><option>A1</option><option selected>A2</option><option>B1</option><option>B2</option></select><button id="gen" style="background:#00d4ff;color:#000;border:none;padding:10px 16px;border-radius:10px;font-weight:700;cursor:pointer;flex:1;max-width:260px">⚡ GENERAR LECCIÓN V15</button><button id="teachBtn" style="background:#8b5cf6;color:#fff;border:none;padding:10px 12px;border-radius:10px;font-weight:700;cursor:pointer">📌 SAPs</button></div>
+      <div id="empty"><h1 style="font-size:28px">👋 Hola, soy Laia HOLO-16</h1><p style="margin:8px 0">V15 con 16 frames holográficos azules. Me muevo sola y escupo datos SAP como pins.</p><p id="status" style="margin-top:10px;font-size:11px;color:#22c55e">Cargando B10.1 HOLO-16...</p></div>
       <div id="card" class="hidden"></div>
     </main>
   </div>
   <div class="page" id="page2">
     <div style="width:100%;max-width:760px">
-      <h2 style="font-size:22px">🧬 MOTOR 2 - SAP EVOLUTION LAB + SECONDARY ENGINE</h2>
-      <p style="font-size:11px;color:#9ca3af;margin-bottom:14px">Segunda página. Explota 100% de tu ingeniería V10.1 con LAYA_SECONDARY_ENGINE.js</p>
-      <div class="sap-header" id="sapHeader">Esperando datos de Motor 1 B10.1...</div>
-      <div style="margin-top:14px;display:flex;gap:8px"><input id="wordInput" placeholder="Escribe: co, hav, mon, wor, sav..." style="flex:1;background:#1a1a23;border:1px solid #2a2a3a;color:#fff;padding:10px;border-radius:10px"><button id="gen2" style="background:#8b5cf6;color:#fff;border:none;padding:10px 16px;border-radius:10px;font-weight:700">🔍 EXPLORAR EVOLUCIÓN</button></div>
-      <div id="card2" class="hidden" style="margin-top:14px;background:#1a1a23;border:1px solid #2a2a3a;border-radius:16px;padding:18px;max-width:760px;width:100%"></div>
+      <h2 style="font-size:22px">🧬 MOTOR 2 - SAP EVOLUTION LAB + HOLO-16 PINS</h2>
+      <div class="sap-header" id="sapHeader">Esperando datos de Motor 1...</div>
+      <div style="margin-top:14px;display:flex;gap:8px"><input id="wordInput" placeholder="Escribe: co, hav, mon, wor, sav..." style="flex:1;background:#1a1a23;border:1px solid #2a2a3a;color:#fff;padding:10px;border-radius:10px"><button id="gen2" style="background:#00d4ff;color:#000;border:none;padding:10px 16px;border-radius:10px;font-weight:700">🔍 EXPLORAR</button></div>
+      <div id="card2" class="hidden" style="margin-top:14px;background:#1a1a23;border:1px solid #2a2a3a;border-radius:16px;padding:18px"></div>
       <div class="sap-grid" id="sapGrid" style="margin-top:14px"></div>
-      <div class="evo-lab" id="evoLab" style="margin-top:14px">MANDT 100 | Sin datos - genera lección en Motor 1 para ver stream SAP + Secondary Engine aquí.</div>
+      <div class="evo-lab" id="evoLab" style="margin-top:14px">MANDT 100 | Sin datos - genera lección en Motor 1</div>
     </div>
   </div>
 </div>
-<div id="laia-box"><div id="bubble" class="hidden"></div><img id="laia" src="./laia_4_colega.png" onerror="this.src='./icon-192.png'"><div id="laia-state">COLEGA</div></div>
+<div id="laia-hologram"><div id="laia-sprite"></div><div id="laia-glow"></div><div id="bubble" class="hidden"></div><div id="laia-state">HOLO-16</div></div>
+<div id="laia-pin-container"></div>
 <div id="dic-box" class="hidden"></div>
 <script type="module">
-import { LAYA_FINAL, AVATAR_ENGINE_V6 } from './LAYA_FINAL_COMPLETO.js';
-let LAYA_EVOLUTION = null;
-try{ const m = await import('./LAYA_SECONDARY_ENGINE.js'); LAYA_EVOLUTION = m.LAYA_EVOLUTION; }catch(e){ console.log('Secondary no cargado aún:', e.message); }
+import { LAYA_FINAL } from './LAYA_FINAL_COMPLETO.js';
+import { LAYA_SAP, LaiaHologramSmart, LAYA_EVOLUTION } from './LAIA_SAP_HOLOGRAM.js';
+
 let metrics = JSON.parse(localStorage.getItem('LAYA_METRICS_V9')||'{"same_error_count":0,"streak_days":3,"accuracy_7d":0.82,"hesitation_ms":1200,"level":"A2","xp_total":0,"cefr_level":"A2"}');
-let selected=null, currentFilter='', startTime=Date.now();
+let selected=null, currentFilter='', startTime=Date.now(), lastSap=null, lastGrammar='THERE_QUANT', lastWord='confidence';
+let LAYA_EVOLUTION_SECONDARY = null;
+try{ const m = await import('./LAYA_SECONDARY_ENGINE.js'); LAYA_EVOLUTION_SECONDARY = m.LAYA_EVOLUTION; }catch(e){}
+const laia = new LaiaHologramSmart(); laia.playLoop(); window.laia = laia;
 const listEl=document.getElementById('list');
 function renderList(f='', lvl=''){
-  if(!LAYA_FINAL) return;
-  listEl.innerHTML='';
+  if(!LAYA_FINAL) return; listEl.innerHTML='';
   Object.entries(LAYA_FINAL.AREAS).forEach(([id,a])=>{
     const hay=`${id} ${a.name} ${a.topic} ${a.grammar.join(' ')} ${a.vocab.join(' ')} ${a.level}`.toLowerCase();
-    if(f &&!hay.includes(f)) return;
-    if(lvl && a.level!==lvl) return;
+    if(f &&!hay.includes(f)) return; if(lvl && a.level!==lvl) return;
     const d=document.createElement('div'); d.className='area';
     d.innerHTML=`<b>${id}. ${a.name}</b><small>${a.topic} • ${a.level} • ${a.grammar[0]}</small><em>${a.vocab.slice(0,2).join(', ')}</em>`;
-    d.onclick=()=>{selected=id; document.querySelectorAll('.area').forEach(x=>x.classList.remove('active')); d.classList.add('active'); updateLaia();};
+    d.onclick=()=>{selected=id; document.querySelectorAll('.area').forEach(x=>x.classList.remove('active')); d.classList.add('active'); laia.moveTo('reading'); laia.focus('explain_open');};
     listEl.appendChild(d);
   });
 }
@@ -97,112 +111,37 @@ document.getElementById('streak').textContent=metrics.streak_days;
 document.getElementById('xp').textContent=`⭐ ${metrics.xp_total} XP`;
 document.getElementById('level-badge').textContent=metrics.level;
 function saveMetrics(){ localStorage.setItem('LAYA_METRICS_V9', JSON.stringify(metrics)); }
-function updateLaia(){
-  const key=AVATAR_ENGINE_V6.decideByMetrics(metrics);
-  const data=AVATAR_ENGINE_V6.files[key];
-  document.getElementById('laia').src=data.file||'./laia_4_colega.png';
-  document.getElementById('laia-state').textContent=data.emotion;
-  const b=document.getElementById('bubble');
-  b.textContent=data.tts.text; b.classList.remove('hidden');
-  setTimeout(()=>b.classList.add('hidden'),5000);
-}
 function pushToPage2(res, word){
+  lastWord = word; lastGrammar = res.meta.grammar_main.sig;
+  lastSap = LAYA_SAP.generateSAP(metrics, lastGrammar, word); window.lastSap = lastSap;
   const mem = LAYA_FINAL.MEMORY.get()?.[res.meta.grammar_main.sig]||{errors:0,oks:0};
   let secondaryData = null;
-  if(LAYA_EVOLUTION){ try{ secondaryData = LAYA_EVOLUTION.explore(word, res.meta.grammar_main.sig, metrics); }catch(e){} }
-  document.getElementById('sapHeader').innerHTML=`<div style="display:flex;justify-content:space-between"><b style="color:#8b5cf6">SAP STREAM // ${res.meta.grammar_main.sig} // ${word}</b><span style="font-size:10px">${new Date().toISOString().slice(0,10)}</span></div><div style="margin-top:8px;font-size:12px">📍 ${res.meta.area} | ${res.meta.topic}</div><div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap"><span style="background:rgba(139,92,246,0.2);padding:4px 8px;border-radius:10px;font-size:10px">⭐ ${metrics.xp_total} XP</span><span style="background:rgba(34,197,94,0.2);padding:4px 8px;border-radius:10px;font-size:10px">🔥 ${metrics.streak_days}d</span><span style="background:rgba(96,165,250,0.2);padding:4px 8px;border-radius:10px;font-size:10px">🎯 ${Math.round(metrics.accuracy_7d*100)}%</span><span style="background:rgba(239,68,68,0.2);padding:4px 8px;border-radius:10px;font-size:10px">⚠️ ${mem.errors||0}</span></div><div style="margin-top:8px;font-size:11px;color:#f59e0b">⚠️ ${res.meta.grammar_main.mistake}</div><div style="font-size:10px;color:#9ca3af;margin-top:4px">Ex: ${res.meta.grammar_main.example} | ${res.meta.grammar_main.formula}</div>${secondaryData?`<div style="margin-top:10px;padding:8px;background:rgba(139,92,246,0.1);border-radius:8px;font-size:11px"><b>Secondary Engine:</b> Root ${secondaryData.syllable.evolution.root} | Chain ${secondaryData.syllable.evolution.chain.slice(0,4).join(' → ')} | Difficulty ${secondaryData.lab.difficulty} | Progress ${secondaryData.grammarChain.progress}</div>`:''}`;
-  const s=word.slice(0,3).toLowerCase();
-  const dic=LAYA_FINAL.SUPER_DIC.search(s);
-  document.getElementById('sapGrid').innerHTML=`<div class="sap-card"><b style="font-size:11px;color:#8b5cf6">FAMILIA CORE [${dic.length}] [${s}]</b><br><span style="font-size:11px">${dic.slice(0,12).join(', ')}</span></div><div class="sap-card"><b style="font-size:11px;color:#22c55e">CHAIN ${res.meta.grammar_main.level} → ${res.meta.grammar_future.level} ${secondaryData?`+ ${secondaryData.grammarChain.progress}`:''}</b><br><span style="font-size:11px">MAIN: ${res.meta.grammar_main.sig}<br>FUTURE: ${res.meta.grammar_future.sig}${secondaryData?`<br>NEXT: ${secondaryData.grammarChain.next?.sig||'END'}`:''}</span></div><div class="sap-card"><b style="font-size:11px;color:#f59e0b">LAB DRILLS [${secondaryData?.lab.difficulty||'NORMAL'}]</b><br><span style="font-size:11px">${secondaryData?secondaryData.lab.drills.map(d=>d.prompt).join('<br>'):res.meta.grammar_main.mistake}</span></div><div class="sap-card"><b style="font-size:11px;color:#a78bfa">LAIA EVOLUTION</b><br><span style="font-size:11px">${secondaryData?`Current: ${secondaryData.avatarEvolution.current.emotion}<br>Next: ${secondaryData.avatarEvolution.next.need} → ${secondaryData.avatarEvolution.next.reward}`:`${res.meta.emotion}`}</span></div>`;
-  document.getElementById('evoLab').textContent=`EVOLUTION LAB // MANDT 100 | AREA ${res.meta.area} | WORD ${word} | SYLL ${s} -> ${dic.length} cousins | HES ${metrics.hesitation_ms}ms | NEXT: ${res.meta.grammar_future.id} | SECONDARY: ${secondaryData?`Root ${secondaryData.syllable.evolution.root} | ${secondaryData.syllable.extended.length} words | ${secondaryData.lab.difficulty}`:'off'}`;
-  const bubble=document.getElementById('bubble');
-  bubble.innerHTML=`SAP: ${res.meta.grammar_main.sig} | ${word}<br>⭐ ${metrics.xp_total} XP | ${secondaryData?secondaryData.syllable.evolution.root:''}<br>→ Página 2`;
-  bubble.classList.remove('hidden');
+  if(LAYA_EVOLUTION_SECONDARY){ try{ secondaryData = LAYA_EVOLUTION_SECONDARY.explore(word, res.meta.grammar_main.sig, metrics); }catch(e){} }
+  document.getElementById('sapHeader').innerHTML=`<b style="color:#00d4ff">SAP HOLO-16 // ${res.meta.grammar_main.sig} // ${word}</b><br>📍 ${res.meta.area} | ${res.meta.topic}<br>⭐ ${metrics.xp_total} XP | 🔥 ${metrics.streak_days}d | 🎯 ${Math.round(metrics.accuracy_7d*100)}% | ⚠️ ${mem.errors||0}<br>⚠️ ${res.meta.grammar_main.mistake}<br>Ex: ${res.meta.grammar_main.example}`;
+  const s=word.slice(0,3).toLowerCase(); const dic=LAYA_FINAL.SUPER_DIC.search(s);
+  document.getElementById('sapGrid').innerHTML=`<div class="sap-card"><b>FAMILIA [${dic.length}] [${s}]</b><br>${dic.slice(0,12).join(', ')}</div><div class="sap-card"><b>CHAIN</b><br>${res.meta.grammar_main.sig} → ${res.meta.grammar_future.sig}</div><div class="sap-card"><b>HOLO ${laia.currentFrame}/16</b><br><button onclick="laia.teachWithData(lastSap, lastGrammar, lastWord)" style="background:#00d4ff;border:none;padding:4px 8px;border-radius:6px">📌 ESCUPIR SAPs</button></div><div class="sap-card"><b>LAIA</b><br>${lastSap.detail.performance}</div>`;
+  document.getElementById('evoLab').textContent=`HOLO-16 LAB // ${res.meta.area} | ${word} | ${s} -> ${dic.length} | FRAME ${laia.currentFrame}`;
+  LAYA_SAP.renderToHologram(lastSap); laia.updateFromSAP(lastSap);
 }
 function renderLesson(res){
   const card=document.getElementById('card');
-  const words=res.story.split(/(\s+)/).map(w=>{
-    if(w.trim().length<2) return w;
-    const clean=w.toLowerCase().replace(/[^a-z]/g,'');
-    if(!clean) return w;
-    return `<span class="word" data-w="${clean}">${w}</span>`;
-  }).join('');
-  card.innerHTML=`<div class="meta"><span>📍 ${res.meta.area}</span><span>${res.meta.level}</span><span style="background:#8b5cf6;color:#fff">⭐ ${res.meta.xp} XP</span><span>${res.meta.grammar_main.sig}</span><span>${res.meta.grammar_future.sig}</span><span>${res.meta.wordCount||res.meta.length||'130-160'}</span></div><h2 style="font-size:20px;margin:10px 0">${res.meta.topic}</h2><div class="gram"><b>MAIN ${res.meta.grammar_main.level}:</b> ${res.meta.grammar_main.id} - <code>${res.meta.grammar_main.formula}</code><br>Ex: ${res.meta.grammar_main.example}<br><span style="color:#f59e0b">⚠️ ${res.meta.grammar_main.mistake}</span></div><div class="gram"><b>SECOND:</b> ${res.meta.grammar_second?.id||res.meta.grammar_future.id} - <code>${res.meta.grammar_second?.formula||res.meta.grammar_future.formula}</code><br>Ex: ${res.meta.grammar_second?.example||res.meta.grammar_future.example}</div><div class="gram"><b>FUTURE:</b> ${res.meta.grammar_future.id} - <code>${res.meta.grammar_future.formula}</code><br>Ex: ${res.meta.grammar_future.example}</div><div class="reading">${words}</div><div class="tags">${res.meta.vocab.map(v=>`<span>${v}</span>`).join('')}</div><div class="chat-box"><input id="userInput" placeholder="Escribe tu frase con ${res.meta.grammar_main.sig}..."><button id="sendBtn">Enviar</button></div><div id="feedback"></div>`;
-  card.classList.remove('hidden');
-  document.getElementById('empty').classList.add('hidden');
-  pushToPage2(res, res.meta.vocab[0]||'evolution');
-  // === FIX SCROLL PÁGINA 1 - tu pedido ===
-  setTimeout(()=>{
-    const isMobile = window.innerWidth <= 768;
-    if(isMobile){
-      const p1 = document.getElementById('page1');
-      if(p1){ p1.scrollTo({top:0, behavior:'smooth'}); }
-      setTimeout(()=>{ card.scrollIntoView({behavior:'smooth', block:'start'}); }, 200);
-    } else {
-      card.scrollIntoView({behavior:'smooth', block:'start'});
-    }
-  }, 150);
-  card.querySelectorAll('.word').forEach(el=>{
-    el.onclick=()=>{
-      const w=el.dataset.w;
-      pushToPage2(res, w);
-      document.getElementById('hWrapper').scrollTo({left: window.innerWidth, behavior:'smooth'});
-    };
-  });
+  const words=res.story.split(/(\s+)/).map(w=>{ if(w.trim().length<2) return w; const clean=w.toLowerCase().replace(/[^a-z]/g,''); if(!clean) return w; return `<span class="word" data-w="${clean}">${w}</span>`; }).join('');
+  card.innerHTML=`<div class="meta"><span>📍 ${res.meta.area}</span><span>${res.meta.level}</span><span style="background:#00d4ff;color:#000">⭐ ${res.meta.xp} XP</span><span>${res.meta.grammar_main.sig}</span></div><h2>${res.meta.topic}</h2><div class="gram"><b>MAIN:</b> ${res.meta.grammar_main.id} - <code>${res.meta.grammar_main.formula}</code><br>Ex: ${res.meta.grammar_main.example}<br><span style="color:#f59e0b">⚠️ ${res.meta.grammar_main.mistake}</span></div><div class="reading">${words}</div><div class="tags">${res.meta.vocab.map(v=>`<span>${v}</span>`).join('')}</div><div class="chat-box"><input id="userInput" placeholder="Escribe con ${res.meta.grammar_main.sig}..."><button id="sendBtn">Enviar</button></div><div id="feedback"></div>`;
+  card.classList.remove('hidden'); document.getElementById('empty').classList.add('hidden'); pushToPage2(res, res.meta.vocab[0]||'evolution');
+  setTimeout(()=>{ card.scrollIntoView({behavior:'smooth', block:'start'}); laia.moveTo('reading'); },150);
+  card.querySelectorAll('.word').forEach(el=>{ el.onclick=()=>{ const w=el.dataset.w; pushToPage2(res, w); document.getElementById('hWrapper').scrollTo({left: window.innerWidth, behavior:'smooth'}); try{ const s=w.slice(0,3); const dic=LAYA_FINAL.SUPER_DIC.search(s); laia.spitDataPin('vocab', {root: s, family: dic.slice(0,5), count: dic.length, evolution: LAYA_EVOLUTION.traceEvolution(s)}, {x:65, y:25}); }catch(e){} }; });
   const input=document.getElementById('userInput');
-  const check=()=>{
-    const txt=input.value; if(!txt) return;
-    let ok=true; if(/he have|she have/i.test(txt)) ok=false; if(txt.length<3) ok=false;
-    LAYA_FINAL.MEMORY.update(res.meta.grammar_main.sig, ok, 800);
-    if(ok){ metrics.streak_days++; metrics.accuracy_7d=Math.min(0.98, metrics.accuracy_7d+0.04); metrics.xp_total+=res.meta.xp; } else { metrics.accuracy_7d=Math.max(0.2, metrics.accuracy_7d-0.07); }
-    saveMetrics();
-    document.getElementById('streak').textContent=metrics.streak_days;
-    document.getElementById('xp').textContent=`⭐ ${metrics.xp_total} XP`;
-    document.getElementById('feedback').textContent=ok?`✅ +${res.meta.xp} XP`:`❌ ${res.meta.grammar_main.mistake}`;
-    document.getElementById('feedback').className=ok?'feedback ok':'feedback fail';
-    updateLaia();
-    pushToPage2(res, txt.split(' ')[0]);
-    if(ok) input.value='';
-  };
-  document.getElementById('sendBtn').onclick=check;
-  input.onkeydown=e=>{ if(e.key==='Enter') check(); };
+  const check=()=>{ const txt=input.value; if(!txt) return; let ok=true; if(/he have|she have/i.test(txt)) ok=false; if(txt.length<3) ok=false; LAYA_FINAL.MEMORY.update(res.meta.grammar_main.sig, ok, Date.now()-startTime); if(ok){ metrics.streak_days++; metrics.accuracy_7d=Math.min(0.98, metrics.accuracy_7d+0.04); metrics.xp_total+=res.meta.xp; } else { metrics.accuracy_7d=Math.max(0.2, metrics.accuracy_7d-0.07); } saveMetrics(); document.getElementById('streak').textContent=metrics.streak_days; document.getElementById('xp').textContent=`⭐ ${metrics.xp_total} XP`; document.getElementById('feedback').textContent=ok?`✅ +${res.meta.xp} XP`:`❌ ${res.meta.grammar_main.mistake}`; const sap = LAYA_SAP.generateSAP(metrics, res.meta.grammar_main.sig, txt.split(' ')[0]); lastSap = sap; if(ok){ laia.autoPilot('correct_answer', {sap}); } else { laia.autoPilot('wrong_answer', {msg: res.meta.grammar_main.mistake, sap}); setTimeout(()=> laia.spitDataPin('grammar', {sig: res.meta.grammar_main.sig, progress: LAYA_SAP.getGrammarProgress(res.meta.grammar_main.sig), example: res.meta.grammar_main.example, rule: res.meta.grammar_main.mistake}, {x:8, y:55}), 600); } pushToPage2(res, txt.split(' ')[0]); if(ok) input.value=''; };
+  document.getElementById('sendBtn').onclick=check; input.onkeydown=e=>{ if(e.key==='Enter') check(); }; input.onfocus=()=>{ laia.moveTo('input'); };
 }
-document.getElementById('gen').onclick=()=>{
-  if(!selected) return alert('Elige área primero tete!');
-  const lvl=document.getElementById('level').value;
-  metrics.level=lvl; metrics.cefr_level=lvl; saveMetrics();
-  startTime=Date.now();
-  const res=LAYA_FINAL.generate(selected, lvl, metrics);
-  renderLesson(res);
-  updateLaia();
-  try{ document.getElementById('status').textContent=`B10.1 OK: ${Object.keys(LAYA_FINAL.AREAS).length} áreas, ${Object.keys(LAYA_FINAL.GRAMMAR).length} SIGs + HISTORIAS REALES`; document.getElementById('status').style.color='#22c55e'; }catch(e){}
-};
-document.getElementById('gen2').onclick=()=>{
-  const w=document.getElementById('wordInput').value||'evolution';
-  const s=w.slice(0,3).toLowerCase();
-  const dic=LAYA_FINAL.SUPER_DIC.search(s);
-  let sec='';
-  if(LAYA_EVOLUTION){ try{ const d=LAYA_EVOLUTION.expandSyllable(s); sec=`<br><br><b>Secondary Engine:</b><br>Root: ${d.evolution.root}<br>Chain: ${d.evolution.chain.join(' → ')}<br>Extended: ${d.extended.slice(0,12).join(', ')}<br>GrammarLink: ${d.grammarLink.map(g=>g.sig).join(', ')}`; }catch(e){} }
-  document.getElementById('card2').innerHTML=`<b>${w} [${s}]</b><br><br>Familia: ${dic.join(', ')}${sec}<br><br><small style="color:#9ca3af">Root evolution: ${s} → ${dic.length} primos</small>`;
-  document.getElementById('card2').classList.remove('hidden');
-  document.getElementById('evoLab').textContent=`EXPLORATION // WORD ${w} | SYLL ${s} | COUSINS ${dic.length} | ${dic.slice(0,8).join(', ')}`;
-};
+document.getElementById('gen').onclick=()=>{ if(!selected) return alert('Elige área primero tete!'); const lvl=document.getElementById('level').value; metrics.level=lvl; metrics.cefr_level=lvl; saveMetrics(); startTime=Date.now(); const res=LAYA_FINAL.generate(selected, lvl, metrics); renderLesson(res); laia.moveTo('reading'); };
+document.getElementById('teachBtn').onclick=()=>{ if(!lastSap){ alert('Genera lección primero!'); return; } laia.teachWithData(lastSap, lastGrammar, lastWord); };
+document.getElementById('gen2').onclick=()=>{ const w=document.getElementById('wordInput').value||'evolution'; const s=w.slice(0,3).toLowerCase(); const dic=LAYA_FINAL.SUPER_DIC.search(s); document.getElementById('card2').innerHTML=`<b>${w} [${s}]</b><br>Familia: ${dic.join(', ')}`; document.getElementById('card2').classList.remove('hidden'); try{ laia.spitDataPin('vocab', {root: s, family: dic.slice(0,5), count: dic.length, evolution: LAYA_EVOLUTION.traceEvolution(s)}, {x:60, y:20}); }catch(e){} };
 const wrapper=document.getElementById('hWrapper');
-wrapper.addEventListener('scroll', ()=>{
-  const isPage2 = wrapper.scrollLeft > window.innerWidth/2;
-  document.getElementById('dot1').classList.toggle('active',!isPage2);
-  document.getElementById('dot2').classList.toggle('active', isPage2);
-  document.getElementById('pageLabel').textContent = isPage2? '◀️ MOTOR 1 B10.1 • MOTOR 2 SAP' : 'MOTOR 1 B10.1 • desliza ▶️ MOTOR 2 SAP';
-});
-document.getElementById('laia').onclick=()=>{
-  const isPage2 = wrapper.scrollLeft > window.innerWidth/2;
-  wrapper.scrollTo({left: isPage2? 0 : window.innerWidth, behavior:'smooth'});
-};
-try{
-  document.getElementById('status').textContent=`Motor B10.1 Cargado: ${Object.keys(LAYA_FINAL.AREAS).length} áreas, ${Object.keys(LAYA_FINAL.GRAMMAR).length} SIGs, HISTORIAS REALES OK - LISTO`;
-  document.getElementById('status').style.color='#22c55e';
-}catch(e){ document.getElementById('status').textContent=`Error: ${e.message}`; document.getElementById('status').style.color='#ef4444'; }
-updateLaia();
+wrapper.addEventListener('scroll', ()=>{ const isPage2 = wrapper.scrollLeft > window.innerWidth/2; document.getElementById('dot1').classList.toggle('active',!isPage2); document.getElementById('dot2').classList.toggle('active', isPage2); document.getElementById('pageLabel').textContent = isPage2? '◀️ MOTOR 1 HOLO-16 • MOTOR 2 SAP' : 'MOTOR 1 HOLO-16 • desliza ▶️ MOTOR 2 SAP'; });
+document.getElementById('laia-hologram').onclick=()=>{ const isPage2 = wrapper.scrollLeft > window.innerWidth/2; wrapper.scrollTo({left: isPage2? 0 : window.innerWidth, behavior:'smooth'}); laia.focus(Math.floor(Math.random()*16)); };
+try{ document.getElementById('status').textContent=`Motor B10.1 HOLO-16 Cargado: ${Object.keys(LAYA_FINAL.AREAS).length} áreas, ${Object.keys(LAYA_FINAL.GRAMMAR).length} SIGs, 16 FRAMES HOLO ACTIVO - LISTO`; document.getElementById('status').style.color='#00d4ff'; }catch(e){ document.getElementById('status').textContent=`Error: ${e.message}`; }
+setInterval(()=>{ if(Date.now()-startTime > 12000) laia.autoPilot('idle'); }, 12000);
 </script>
 </body>
 </html>

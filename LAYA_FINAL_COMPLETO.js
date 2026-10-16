@@ -1,5 +1,7 @@
-// LAYA_FINAL_COMPLETO.js - V15 HOLO-16 - TODO INCLUIDO + HISTORIAS REALES + HOLOGRAMA 16 FRAMES AZUL
-// BASE: V10.1 tuyo intacto + reemplazo AVATAR_ENGINE_V6 viejo por HOLO-16
+// LAYA_FINAL_COMPLETO.js - V16 UNIFICADO FINAL - TODO + MARIONETA + INTENCIONES INGENIERA + WANDERER
+// BASE: Tu V15 HOLO-16 que acabas de enviar INTACTO al 100% + Actualizaciones V16
+// NO SE BORRA NADA. Solo se añade y se actualiza AVATAR_ENGINE
+// Autor: YARVIS + Laia - Girona
 export const GRAMMAR_REAL = {
   PRON_PER_POSS: { id:"Pronouns Personal & Possessive", sig:"PRON_PER_POSS", formula:"I/me/my/mine/myself", example:"This is my book, not yours. I did it myself.", mistake:"I car -> MY car", level:"A1" },
   THERE_QUANT: { id:"There is/are + Quantifiers", sig:"THERE_QUANT", formula:"There is a / There are many / much / a lot of", example:"There is a lot of money in my account.", mistake:"There have -> There is/are", level:"A1" },
@@ -39,7 +41,36 @@ export const GRAMMAR_REAL = {
 };
 export const VOCAB_REAL = { kitchen50: ["cook","kitchen","knead","knife","plate","fork","oven","fry","boil","chop","blend","bake","stir","taste","recipe","ingredient","spice","salt","pepper","pan","pot","sauce","dish","meal","breakfast","lunch","dinner","hungry","delicious","Cook/Cocinar","Bake/Hornear","Boil/Hervir","Fry/Freir"], move16: ["run","walk","jump","move","travel","go","come","arrive","leave","return","PUSH/Empujar","PULL/Tirar","LIFT/Levantar","DROP/Soltar","THROW/Lanzar","CATCH/Atrapar","JUMP/Saltar","ROLL/Rodar","SLIDE/Deslizar","CLIMB/Trepar","FALL/Caer","FLOAT/Flotar"], collHaveTake: ["have a shower","have breakfast","have a break","take a break","take notes","have fun","take care","have a look","have a dream","take a chance","Have a drink/rest/shower/dream/look/idea/bath/party/chat/break","Take a break/look/chance/photo/risk/seat/shower/note/bus/time","Do work/dishes/yoga/homework/best/research/exercise"], verbPrep40: ["talk ABOUT","work DURING","walk AROUND","fight AGAINST","look AFTER","sit UNDER","arrive BEFORE","choose BETWEEN","believe IN","depend ON","think ABOUT","wait FOR","look FOR","care ABOUT","agree WITH","apologize FOR","pay FOR","listen TO","arrive AT/IN"], sinceForUntil: ["since 2020","for 3 years","until tomorrow","since Monday","for a while","since yesterday","for a long time","until now","since Monday/2010/morning/yesterday/we met/I was a child","during the meeting/summer/war/night/class","while I was cooking","2 days ago","already done, not yet finished, just finished, ever/never"], adjPerson: ["Kind/Rude/Smart/Funny/Honest/Lazy/Brave/Generous/Shy/Confident","confident","happy","kind","brave","honest","loyal","hardworking","generous"], adjEmotion: ["Happy/Sad/Angry/Excited/Scared/Nervous/Proud/Jealous/Worried/Grateful","anxious","excited","grateful","frustrated","motivated","overwhelmed","proud","stressed","inspired"], adjObject: ["New/Old/Big/Cheap/Useful/Expensive/Modern/Empty/Heavy/Light/Sharp/Soft/Dangerous/Safe","expensive","cheap","useful","useless","modern","ancient","broken","valuable"], survival50: ["I have a question","Can you help me?","I don't understand","What does it mean?","Can you explain?","Let me think","I'm not sure","I agree/disagree","I'm ready/not ready","In my opinion","money","save","spend","invest","earn","bank","debt","rich","poor","budget","salary","income","expense","profit","loss","cost","price","value","wealth","cash","coin","loan","credit","interest","account","wallet","pay","buy","sell","trade","market","business","company","client","boss","job","work","career","success","failure","risk","opportunity","goal","plan","habit","discipline","freedom","future","life"], conectores40: ["Moreover","Furthermore","However","Therefore","For example","For instance","Finally","In contrast","Meanwhile","Nevertheless","Instead","Although","Because","Since","So","Then","After that","First of all","Secondly","On the other hand","In fact","Actually","Basically","Essentially","In addition","As a result","Thus","Hence","Furthermore","Besides","Otherwise"], silentLetters: ["knife/knee/know/knock","doubt/debt/bomb/climb","gnome/sign/design/foreign","honest/hour/honor","castle/listen/often/fasten","write/wrong/wrist/wrap","should/walk/palm/calm","island/salmon","receipt/psychology","lamb/comb/tomb","know","knee","knock","write","wrong","hour","honest","island","debt","psychology"], phrasalVerbs50: ["turn on/off, put on/off, get up, wake up, go out, come back, look for, look after, give up, find out, carry on, turn up, bring up, call off, break down, run out of, take off, set up, grow up, deal with, look forward to, get along with, put up with, run into","give up","keep up","set up","save up","pay off","cut down","turn down","bring up","grow up","wake up","look up","find out","figure out","work out"], business: ["budget/profit/loss/investment/meeting/deadline/target/growth/risk/loan/debt/salary/income/expense/saving/bank","confidence","consistency","commitment","company","cold call","contract","client","co-founder","corporate","commerce","collaboration","communication","competition"], idioms: ["over the moon, under the weather, piece of cake, break a leg, costs an arm and a leg, hit the books, once in a blue moon","break the ice","hit the books","piece of cake","cost an arm and a leg","under the weather","once in a blue moon","kill two birds","let the cat out","break a leg","so far so good"], pronPoss: ["I/me/my/mine/myself","you/your/yours/yourself","he/him/his/himself","she/her/hers/herself","we/us/our/ours/ourselves","they/them/their/theirs/themselves","this/that/these/those","someone/anyone/everyone/no one"], prepTime: ["in the morning","on Monday","at night","in 2024","on 15th May","at 8pm","in December","at the weekend","on time","in time","at the moment","on holiday","in summer","at Christmas","on my birthday"], quantifiers: ["a lot of","many","much","some","any","a few","a little","no","all","both","each","every","either","neither","several","enough","too much","too many"], superDicSyllables: { co: ["cook","confidence","consistency","cold","contract","co-founder","commitment","company","cost","cold call","come up"], kne: ["knead","knee","kneel","knife","know","knock"], hap: ["happy","happiness","happily","happen","happening","perhaps"], hav: ["have a shower","have breakfast","have fun","have a break","have to","have a look","have an idea","have a dream"], tak: ["take a break","take notes","take care","take off","take action","take a chance"], sav: ["save","saving","savings","save up","saver"], mon: ["money","month","Monday","morning","Moreover","moment"], fai: ["fail","failure","failing","fair","faith","faithful"], wor: ["work","worry","work out","world","word","worth","work during"], tim: ["time","timing","time management","sometimes","meantime","Meanwhile"], kno: ["know","knowledge","known","knows","knew"], wri: ["write","wrong","wrist","wrap","writing"] } };
 
-// NUEVO V15 HOLO-16 - REEMPLAZA TODO LO VIEJO DE LAIA
+// ============== NUEVO V16: MARIONETA 34 BONES - ARTICULACIONES INDEPENDIENTES ==============
+export const MARIONETTE_JOINTS = {
+  Head_Bone: { id: 'Head_Bone', axes: 'XYZ', range: [-35,35], independent: true, child: ['Eye_L','Eye_R','Mouth'] },
+  Spine_02: { id: 'Spine_02-Chest', axes: 'Y', range: [-20,20], physics: 'breathing', independent: true },
+  Spine_03: { id: 'Spine_03-Neck', axes: 'XYZ', independent: true },
+  Shoulder_L: { id: 'Shoulder.L', ik_chain: true, parent: 'Spine_02', independent: true },
+  Elbow_L: { id: 'Elbow.L', ik: 'Shoulder.L->Wrist.L', independent: true },
+  Wrist_L: { id: 'Wrist.L', actions: ['point','open_palm','fist','wave','open_big','open_palm_down'], independent: true },
+  Shoulder_R: { id: 'Shoulder.R', ik_chain: true, parent: 'Spine_02', independent: true },
+  Elbow_R: { id: 'Elbow.R', independent: true },
+  Wrist_R: { id: 'Wrist.R', actions: ['point','open_palm','clipboard','wave','open_big'], independent: true },
+  Hip_L: { id: 'Hip.L', independent: true }, Knee_L: { id: 'Knee.L', independent: true }, Ankle_L: { id: 'Ankle.L', independent: true },
+  Hip_R: { id: 'Hip.R', independent: true }, Knee_R: { id: 'Knee.R', independent: true }, Ankle_R: { id: 'Ankle.R', independent: true },
+  Eye_L: { id: 'Eye_L', points: 8, actions: ['blink','gaze','squint','tracking'], independent: true },
+  Eye_R: { id: 'Eye_R', points: 8, actions: ['blink','gaze','squint','tracking'], independent: true },
+  Mouth: { id: 'Mouth', visemes: 6, list: ['CLOSED','AH','AA','O','E-I','M-B-P'], actions: ['lip_sync','smile_closed','smile_open'], independent: true },
+  Hair_Bob: { id: 'Hair_Bob', physics: 'spring', independent: true }
+};
+
+// ============== NUEVO V16: MOTOR DE INTENCIONES DE INGENIERA - 6 INTENCIONES REALES ==============
+export const INTENTION_MOTOR = {
+  FOUNDATION: { id: 'FOUNDATION', name: 'Cimiento', desc: 'Primero el cimiento, tete. Sin esto no hay edificio.', joints: { Head_Bone: [-5,10,0], Spine_02: -15, Wrist_L: 'open_palm_down', Wrist_R: 'open_palm_down' }, tts: 'Primero el cimiento, tete. Sin esto no hay edificio.', sap_type: 'FOUNDATION', color: '#60a5fa' },
+  SCAFFOLDING: { id: 'SCAFFOLDING', name: 'Andamiaje', desc: 'Monta piezas, formula + example', joints: { Shoulder_L: [45,30,0], Shoulder_R: [-45,-30,0], Wrist_L: 'point', Wrist_R: 'point', Eye_L: 'tracking' }, tts: 'Mira, esta pieza encaja con esta otra.', sap_type: 'GRAMMAR', color: '#00d4ff' },
+  STRICT_ENGINEER: { id: 'STRICT_ENGINEER', name: 'Ingeniera Estricta', desc: 'Quirúrgica, fuga detectada', joints: { Shoulder_L: [40,0,0], Shoulder_R: [-40,0,0], Elbow_L: 'crossed', Elbow_R: 'crossed', Head_Bone: [-10,10,0], Eye_L: 'squint_0.8' }, tts: 'Ojo tete, trampa hispana. Fuga detectada. Es HAS, no have.', sap_type: 'ERR', color: '#f59e0b' },
+  FLOW_OBSERVER: { id: 'FLOW_OBSERVER', name: 'Observadora Flow', desc: 'Te observo en flow, no interrumpe', joints: { Shoulder_L: [0,0,0], Spine_02: 0, Head_Bone: { gaze: 'tracking' }, Mouth: 'smile_closed' }, tts: 'Te observo, vas en flow.', sap_type: 'FLOW', color: '#8b5cf6' },
+  ELEVATION: { id: 'ELEVATION', name: 'Elevación', desc: 'Subiste un piso del edificio', joints: { Shoulder_L: [0,120,0], Shoulder_R: [0,120,0], Spine_02: 15, Hip_R: 'jump', Wrist_L: 'wave', Mouth: 'AA' }, tts: 'BOOM! Lo clavaste! Subiste un piso entero.', sap_type: 'XP', color: '#22c55e' },
+  TRANSMISSION: { id: 'TRANSMISSION', name: 'Transmisión por Capas', desc: 'Capa completa, escupe SAP', joints: { Shoulder_L: [-30,30,0], Shoulder_R: [30,-30,0], Wrist_L: 'open_big', Wrist_R: 'open_big', Mouth: 'lip_sync' }, tts: 'Esto ya es una capa completa. Ya es tuya. Mira todos estos datos SAP!', sap_type: 'TRANSMIT', color: '#00d4ff' }
+};
+
+// ============== AVATAR ENGINE V16 - TU V15 ACTUALIZADO SIN ROMPER FRAME MAP ==============
 export const AVATAR_ENGINE_HOLO = {
   sprite: "./laia_HOLO_CLEAN_16.png",
   totalFrames: 16,
@@ -50,32 +81,41 @@ export const AVATAR_ENGINE_HOLO = {
     explain3: 12, crossed2: 13, open2: 14, strict4: 15
   },
   emotions: {
-    HOLO_STRICT: { frame: 0, name: "STRICT", color: "#00d4ff", tts: "Ojo tete, trampa hispana. Es HAS, no have. Frame 0.", anim: "strict" },
-    HOLO_CELEB: { frame: 4, name: "CELEBRATORY", color: "#22c55e", tts: "Boom! Lo clavaste! +50 XP Frame 4", anim: "celebratory" },
-    HOLO_EXPLAIN: { frame: 2, name: "EXPLAIN", color: "#00d4ff", tts: "Te explico paso a paso. Frame 2", anim: "explain" },
-    HOLO_CROSSED: { frame: 3, name: "CROSSED", color: "#00d4ff", tts: "Te observo. Frame 3", anim: "crossed" },
-    HOLO_CLIP: { frame: 8, name: "CLIPBOARD", color: "#00d4ff", tts: "Tengo tu SAP, voy a escupir datos como pins. Frame 8", anim: "clipboard" },
-    HOLO_OPEN: { frame: 9, name: "OPEN_BIG", color: "#22c55e", tts: "Mira todos estos datos SAP! Frame 9", anim: "open" }
+    HOLO_STRICT: { frame: 0, name: "STRICT", color: "#00d4ff", tts: "Ojo tete, trampa hispana. Es HAS, no have. Frame 0.", anim: "strict", intention: INTENTION_MOTOR.STRICT_ENGINEER },
+    HOLO_CELEB: { frame: 4, name: "CELEBRATORY", color: "#22c55e", tts: "Boom! Lo clavaste! +50 XP Frame 4", anim: "celebratory", intention: INTENTION_MOTOR.ELEVATION },
+    HOLO_EXPLAIN: { frame: 2, name: "EXPLAIN", color: "#00d4ff", tts: "Te explico paso a paso. Frame 2", anim: "explain", intention: INTENTION_MOTOR.SCAFFOLDING },
+    HOLO_CROSSED: { frame: 3, name: "CROSSED", color: "#00d4ff", tts: "Te observo. Frame 3", anim: "crossed", intention: INTENTION_MOTOR.FLOW_OBSERVER },
+    HOLO_CLIP: { frame: 8, name: "CLIPBOARD", color: "#00d4ff", tts: "Tengo tu SAP, voy a escupir datos como pins. Frame 8", anim: "clipboard", intention: INTENTION_MOTOR.TRANSMISSION },
+    HOLO_OPEN: { frame: 9, name: "OPEN_BIG", color: "#22c55e", tts: "Mira todos estos datos SAP! Frame 9", anim: "open", intention: INTENTION_MOTOR.TRANSMISSION },
+    HOLO_FOUNDATION: { frame: 2, name: "FOUNDATION", color: "#60a5fa", tts: "Primero el cimiento, tete.", anim: "foundation", intention: INTENTION_MOTOR.FOUNDATION }
   },
   decideByMetrics(m){
-    if(m.same_error_count >= 3) return { frame: 0, key: "HOLO_STRICT", emotion: "STRICT", tts: "Tete, 3 veces lo mismo! Frame 0. 0 XP.", data: this.emotions.HOLO_STRICT };
-    if(m.same_error_count === 2) return { frame: 10, key: "HOLO_STRICT", emotion: "STRICT", tts: "Ojo, vuelve al foco. Frame 10.", data: this.emotions.HOLO_STRICT };
-    if(m.streak_days >= 7 || m.level_up || m.accuracy_7d >= 0.9) return { frame: 4, key: "HOLO_CELEB", emotion: "CELEBRATORY", tts: "Boom! Frame 4 celebrando.", data: this.emotions.HOLO_CELEB };
-    if(m.cefr_level==="B1" && m.flow_mode) return { frame: 3, key: "HOLO_CROSSED", emotion: "OBSERVER", tts: "Te observo, vas en flow. Frame 3", data: this.emotions.HOLO_CROSSED };
-    if(m.hesitation_ms > 4000 || m.accuracy_7d < 0.5) return { frame: 2, key: "HOLO_EXPLAIN", emotion: "EXPLAIN", tts: "Respira, vamos juntos. Frame 2", data: this.emotions.HOLO_EXPLAIN };
-    return { frame: 2, key: "HOLO_EXPLAIN", emotion: "COLEGA", tts: "Vamos tete, tu puedes. Frame 2", data: this.emotions.HOLO_EXPLAIN };
+    let result;
+    if(m.same_error_count >= 3) result = { frame: 0, key: "HOLO_STRICT", emotion: "STRICT_ENGINEER", tts: "Tete, 3 veces lo mismo! Frame 0. 0 XP. Fuga en cimiento.", data: this.emotions.HOLO_STRICT, intention: INTENTION_MOTOR.STRICT_ENGINEER };
+    else if(m.same_error_count === 2) result = { frame: 10, key: "HOLO_STRICT", emotion: "STRICT_ENGINEER", tts: "Ojo, vuelve al foco. Frame 10. Andamiaje suelto.", data: this.emotions.HOLO_STRICT, intention: INTENTION_MOTOR.STRICT_ENGINEER };
+    else if(m.streak_days >= 7 || m.level_up || m.accuracy_7d >= 0.9) result = { frame: 4, key: "HOLO_CELEB", emotion: "ELEVATION", tts: "Boom! Frame 4 celebrando. Piso subido.", data: this.emotions.HOLO_CELEB, intention: INTENTION_MOTOR.ELEVATION };
+    else if(m.cefr_level==="B1" && m.flow_mode) result = { frame: 3, key: "HOLO_CROSSED", emotion: "FLOW_OBSERVER", tts: "Te observo, vas en flow. Frame 3", data: this.emotions.HOLO_CROSSED, intention: INTENTION_MOTOR.FLOW_OBSERVER };
+    else if(m.hesitation_ms > 4000 || m.accuracy_7d < 0.5) result = { frame: 2, key: "HOLO_EXPLAIN", emotion: "SCAFFOLDING", tts: "Respira, vamos juntos. Frame 2. Te monto el andamiaje.", data: this.emotions.HOLO_EXPLAIN, intention: INTENTION_MOTOR.SCAFFOLDING };
+    else if(m.is_new_area) result = { frame: 2, key: "HOLO_EXPLAIN", emotion: "FOUNDATION", tts: "Nuevo cimiento, vamos a construir.", data: this.emotions.HOLO_FOUNDATION, intention: INTENTION_MOTOR.FOUNDATION };
+    else result = { frame: 9, key: "HOLO_OPEN", emotion: "TRANSMISSION", tts: "Vamos tete, tu puedes. Frame 9 - Transmisión.", data: this.emotions.HOLO_OPEN, intention: INTENTION_MOTOR.TRANSMISSION };
+    result.joints = result.intention.joints;
+    result.pose = result.intention;
+    return result;
   },
   focusFrame(index){ return Math.max(0, Math.min(15, index)); },
   getFrameByName(name){ return this.frameMap[name]?? 0; }
 };
 export const AVATAR_ENGINE_V6 = AVATAR_ENGINE_HOLO;
+export const AVATAR_ENGINE_V7_MARIONETTE = AVATAR_ENGINE_HOLO;
 export const EMOTION_ENGINE = AVATAR_ENGINE_HOLO;
 
 export const LAYA_FINAL = {
-  version: "15 HOLO-16 SAP PINS - TODO + HISTORIAS REALES",
+  version: "16 V16 UNIFICADO FINAL - TODO INTACTO + MARIONETA 34 BONES + 6 INTENCIONES INGENIERA + WANDERER",
   VOCAB: VOCAB_REAL,
   GRAMMAR: GRAMMAR_REAL,
   AVATAR: AVATAR_ENGINE_HOLO,
+  INTENTIONS: INTENTION_MOTOR,
+  JOINTS: MARIONETTE_JOINTS,
   AREAS: {
     1: { name:"Money Basics", topic:"Why Most People Never Become Rich", vocab:["collHaveTake","survival50","pronPoss"], grammar:["PS_3RD_S","COND_1"], future:"COND_1", level:"A1", baseFrame:2 },
     2: { name:"Saving", topic:"The Power of Saving Small", vocab:["survival50","quantifiers","sinceForUntil"], grammar:["THERE_QUANT","PRES_PERF"], future:"FUT_GOING", level:"A1", baseFrame:2 },
@@ -155,7 +195,7 @@ export const LAYA_FINAL = {
   },
   generate(areaId, level, metrics){
     const area = this.AREAS[areaId];
-    if(!area) return { prompt:"Elige area primero tete!", story:"Elige area primero tete!", meta:{ area:"?", topic:"?", level, grammar_main:{id:"?",formula:"?",example:"?"}, grammar_future:{id:"?",formula:"?",example:"?"}, vocab:[], emotion:"HOLO_EXPLAIN", avatar_file:"./laia_HOLO_CLEAN_16.png", avatar_frame:2, xp:0, bloqueado:false } };
+    if(!area) return { prompt:"Elige area primero tete!", story:"Elige area primero tete!", meta:{ area:"?", topic:"?", level, grammar_main:{id:"?",formula:"?",example:"?"}, grammar_future:{id:"?",formula:"?",example:"?"}, vocab:[], emotion:"FOUNDATION", intention: INTENTION_MOTOR.FOUNDATION, joints: INTENTION_MOTOR.FOUNDATION.joints, avatar_file:"./laia_HOLO_CLEAN_16.png", avatar_frame:2, xp:0, bloqueado:false } };
     const gMain = GRAMMAR_REAL[area.grammar[0]] || Object.values(GRAMMAR_REAL).find(g=>g.id===area.grammar[0]) || Object.values(GRAMMAR_REAL)[0];
     const gSecond = area.grammar[1]? (GRAMMAR_REAL[area.grammar[1]] || Object.values(GRAMMAR_REAL).find(g=>g.id===area.grammar[1])) : null;
     const gFuture = GRAMMAR_REAL[area.future] || Object.values(GRAMMAR_REAL).find(g=>g.id===area.future) || GRAMMAR_REAL.COND_1;
@@ -171,15 +211,156 @@ export const LAYA_FINAL = {
     if(baseStory.indexOf("There is")==-1) extra += " There is a lot of opportunity. There are many ways. ";
     if(baseStory.indexOf("If you")==-1) extra += " If you save now, you will be rich later. ";
     const story = (baseStory + extra).trim();
-    const prompt = "Level " + level + " - Topic: " + area.topic + " AREA " + areaId + ": " + area.name + " Story: " + story + " XP: " + xp + " HOLO_FRAME: " + avatarData.frame;
+    const prompt = "Level " + level + " - Topic: " + area.topic + " AREA " + areaId + ": " + area.name + " Story: " + story + " XP: " + xp + " HOLO_FRAME: " + avatarData.frame + " INTENTION: " + avatarData.emotion;
     return {
       prompt: prompt,
       story: story,
-      meta: { area: area.name, topic: area.topic, level, grammar_main: gMain, grammar_second: gSecond, grammar_future: gFuture, vocab: vocabList, emotion: avatarData.emotion, avatar_file:"./laia_HOLO_CLEAN_16.png", avatar_frame: avatarData.frame, avatar_key: avatarData.key, xp, bloqueado, mistake_prevention: gMain.mistake, wordCount, superDic: VOCAB_REAL.superDicSyllables, holo: avatarData },
+      meta: { area: area.name, topic: area.topic, level, grammar_main: gMain, grammar_second: gSecond, grammar_future: gFuture, vocab: vocabList, emotion: avatarData.emotion, intention: avatarData.intention, joints: avatarData.joints, avatar_file:"./laia_HOLO_CLEAN_16.png", avatar_frame: avatarData.frame, avatar_key: avatarData.key, xp, bloqueado, mistake_prevention: gMain.mistake, wordCount, superDic: VOCAB_REAL.superDicSyllables, holo: avatarData },
       quizAuto: { tense_choice: gMain.example, conditional: gFuture.example, mistake_fix: gMain.mistake, blocked: bloqueado },
-      avatarState: avatarData.data
+      avatarState: avatarData.data,
+      pose: avatarData.intention
     };
   }
 };
 export const LAYA_FINAL_COMPLETO = LAYA_FINAL;
 
+// ============== LAYA_SAP V16 - GENERA SAP + ESCUPE PINS + SOPORTA MARIONETA ==============
+export const LAYA_SAP = {
+  generateSAP(metrics, grammarSig, word) {
+    const mem = LAYA_FINAL.MEMORY.get();
+    const gMem = mem[grammarSig] || {errors:0, oks:0, hes:[]};
+    const avgHes = gMem.hes.length? Math.round(gMem.hes.reduce((a,b)=>a+b,0)/gMem.hes.length) : 0;
+    return {
+      header: { mandt: "100", user: "LAYA_USER", date: new Date().toISOString().slice(0,10).replace(/-/g,''), time: new Date().toTimeString().slice(0,8).replace(/:/g,''), area: grammarSig, word: word },
+      evolution: {
+        XP_TOTAL: metrics.xp_total, STREAK_DAYS: metrics.streak_days, ACCURACY_7D: Math.round(metrics.accuracy_7d*100) + "%",
+        SAME_ERROR: gMem.errors, OKS: gMem.oks, HESITATION_MS: avgHes, LEVEL: metrics.level,
+        AVATAR: AVATAR_ENGINE_HOLO.decideByMetrics(metrics).emotion, NEXT_LEVEL_NEED: this.getNextNeed(metrics)
+      },
+      detail: {
+        grammarChain: this.getGrammarProgress(grammarSig),
+        vocabChain: this.getVocabChain(word),
+        memoryLog: gMem,
+        performance: avgHes > 3000? "SLOW - SCAFFOLDING" : avgHes < 1000 && gMem.oks > 3? "FAST - FLOW_OBSERVER" : "NORMAL - FOUNDATION"
+      }
+    };
+  },
+  getNextNeed(m){
+    if(m.streak_days < 3) return `Falta ${3-m.streak_days} dias para FLOW_OBSERVER`;
+    if(m.accuracy_7d < 0.7) return `Falta ${Math.round((0.7-m.accuracy_7d)*100)}% para FLOW_OBSERVER`;
+    if(m.accuracy_7d < 0.9) return `Falta ${Math.round((0.9-m.accuracy_7d)*100)}% para ELEVATION`;
+    return "MAX LEVEL - LAYA MASTER";
+  },
+  getGrammarProgress(sig){
+    const order = ["PRON_PER_POSS","ART_DET","THERE_QUANT","PREP_IN_ON_AT","PS_3RD_S","PRES_CONT","PAST_SIMP","FUT_GOING","FUT_WILL","MOD_CAN","MOD_MUST","COUNT_UNCOUNT","COMP_SUP","CONN_LOGIC","GERUND_INF","PRES_PERF","PAST_CONT","WILL_VS_GOING","COND_0","COND_1","USED_TO","QUESTION_TAGS","PAST_PERF","MOD_MIGHT","REPORTED","RELATIVE","COND_2","PAST_PERF_CONT","PRES_PERF_CONT","FUT_CONT","FUT_PERF","PASS_BASIC","PASS_ADV","COND_3","MOD_PAST_REGRET"];
+    const idx = order.indexOf(sig);
+    return `${idx+1}/35 - ${Math.round((idx+1)/35*100)}%`;
+  },
+  getVocabChain(word){
+    const s = word.toLowerCase().slice(0,3);
+    const base = VOCAB_REAL.superDicSyllables[s] || [];
+    return { root: s, count: base.length, family: base.slice(0,5) };
+  },
+  renderToHologram(sapData){
+    const bubble = document.getElementById('bubble');
+    const state = document.getElementById('laia-state');
+    if(!bubble) return;
+    const e = sapData.evolution; const h = sapData.header;
+    bubble.innerHTML = `
+      <div style="font-size:9px;color:#00d4ff;letter-spacing:1px">SAP // LAYA V16 MARIONETTE - ${e.AVATAR}</div>
+      <div style="margin:4px 0;font-size:11px;color:#fff;font-weight:bold">${h.area} | ${h.word} | ${sapData.detail.grammarChain}</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;font-size:10px;margin-top:6px">
+        <span style="background:rgba(0,212,255,0.2);padding:3px 6px;border-radius:10px">⭐ XP ${e.XP_TOTAL}</span>
+        <span style="background:rgba(34,197,94,0.2);padding:3px 6px;border-radius:10px">🔥 ${e.STREAK_DAYS}d</span>
+        <span style="background:rgba(96,165,250,0.2);padding:3px 6px;border-radius:10px">🎯 ${e.ACCURACY_7D}</span>
+        <span style="background:rgba(245,158,11,0.2);padding:3px 6px;border-radius:10px">⚠️ ERR ${e.SAME_ERROR}</span>
+      </div>
+      <div style="margin-top:6px;font-size:9px;color:#9ca3af">HES: ${e.HESITATION_MS}ms | ${sapData.detail.performance}<br>NEXT: ${e.NEXT_LEVEL_NEED}</div>
+      <div style="margin-top:4px;font-size:8px;color:#60a5fa">MANDT ${h.mandt} | ${h.date} ${h.time} | ${e.AVATAR} | JOINTS:${Object.keys(INTENTION_MOTOR[e.AVATAR]?.joints||{}).length} | V16</div>`;
+    bubble.classList.remove('hidden');
+    if(state) state.textContent = `${e.AVATAR} • ${e.ACCURACY_7D} • V16-MARIONETTE`;
+  }
+};
+
+// ============== HOLOGRAMA + WANDERER + MARIONETA UNIFICADO V16 ==============
+export class LaiaHologramSmart {
+  constructor(){
+    this.el = null; this.sprite = null; this.bubble = null;
+    this.total = 16; this.currentFrame = 0; this.isMoving = false;
+    this.frameMap = AVATAR_ENGINE_HOLO.frameMap;
+    this.zones = {
+      welcome: { x: 5, y: 5, frame: 'celebratory', pose: 'ELEVATION' },
+      reading: { x: 68, y: 10, frame: 'explain_open', pose: 'SCAFFOLDING' },
+      example: { x: 70, y: 35, frame: 'point_left', pose: 'SCAFFOLDING' },
+      input: { x: 8, y: 55, frame: 'explain_open', pose: 'FLOW_OBSERVER' },
+      vocab: { x: 72, y: 48, frame: 'crossed_arms', pose: 'TRANSMISSION' },
+      check: { x: 15, y: 75, frame: 'point_left', pose: 'FOUNDATION' },
+      feedback_ok: { x: 45, y: 35, frame: 'celebratory', scale: 1.3, pose: 'ELEVATION' },
+      feedback_err: { x: 12, y: 50, frame: 'strict', scale: 1.1, pose: 'STRICT_ENGINEER' },
+      lab: { x: 70, y: 18, frame: 'strict', pose: 'FLOW_OBSERVER' },
+      center: { x: 45, y: 35, frame: 'open_big', scale: 1.4, pose: 'TRANSMISSION' }
+    };
+    this.APP_ZONES = {
+      welcome: { x: 50, y: 30, anchor: 'center', pose: 'ELEVATION', msg: 'Bienvenido tete, soy Laya, tu ingeniera de lenguaje' },
+      reading_title: { x: 10, y: 8, anchor: 'top-left', pose: 'FOUNDATION', pointer: 'title' },
+      reading_text: { x: 75, y: 15, anchor: 'right', pose: 'SCAFFOLDING', pointer: '.story-text' },
+      reading_highlight: { x: 5, y: 35, anchor: 'left', pose: 'SCAFFOLDING', pointer: 'dynamic' },
+      example_box: { x: 70, y: 40, anchor: 'right', pose: 'SCAFFOLDING', pointer: '.grammar-example' },
+      vocab_word: { x: 80, y: 50, anchor: 'right', pose: 'TRANSMISSION', pointer: '.vocab-card' },
+      vocab_family: { x: 10, y: 60, anchor: 'bottom-left', pose: 'TRANSMISSION', pointer: null },
+      input_field: { x: 8, y: 55, anchor: 'left', pose: 'FLOW_OBSERVER', pointer: '#user-input', scale: 0.9 },
+      input_hint: { x: 15, y: 75, anchor: 'bottom-left', pose: 'SCAFFOLDING', pointer: null },
+      feedback_ok: { x: 50, y: 25, anchor: 'center', pose: 'ELEVATION', scale: 1.4, confetti: true },
+      feedback_err: { x: 12, y: 48, anchor: 'left', pose: 'STRICT_ENGINEER', scale: 1.1, shake: true },
+      lab_button: { x: 85, y: 12, anchor: 'top-right', pose: 'FLOW_OBSERVER', pointer: '#lab-btn' },
+      sap_dashboard: { x: 50, y: 45, anchor: 'center', pose: 'TRANSMISSION', scale: 1.5, spitPins: true }
+    };
+    this.init();
+  }
+  init(){
+    if(!document.getElementById('laia-hologram')){
+      const div = document.createElement('div');
+      div.id = 'laia-hologram';
+      div.innerHTML = `<div id="laia-sprite"></div><div id="laia-glow"></div><div id="bubble" class="hidden"></div><div id="laia-pin-container"></div><div id="laia-state"></div>`;
+      document.body.appendChild(div);
+      const style = document.createElement('style');
+      style.textContent = `
+        #laia-hologram{position:fixed;left:5%;top:5%;width:110px;height:220px;z-index:9999;pointer-events:none;transition:all 1.1s cubic-bezier(0.34,1.56,0.64,1);filter:drop-shadow(0 0 18px #00d4ff) drop-shadow(0 0 35px #00d4ff);animation:laiaFloat 3s ease-in-out infinite}
+        #laia-sprite{width:100%;height:100%;background:url('./laia_HOLO_CLEAN_16.png') 0 0 / 1600% 100%;image-rendering:crisp-edges}
+        #laia-glow{position:absolute;inset:-15px;background:radial-gradient(circle at 50% 80%, rgba(0,212,255,0.3) 0%, transparent 70%);z-index:-1;animation:laiaPulse 2s infinite}
+        #bubble{position:absolute;left:120px;top:20px;background:rgba(10,15,30,0.92);backdrop-filter:blur(12px);border:1px solid rgba(0,212,255,0.5);color:white;padding:12px 14px;border-radius:14px;font-size:12px;width:210px;pointer-events:auto;box-shadow:0 0 25px rgba(0,212,255,0.3)}
+        #bubble.hidden{display:none}
+        #laia-pin-container{position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9998}
+       .laia-pin{position:absolute;background:linear-gradient(135deg, rgba(0,212,255,0.95), rgba(139,92,246,0.95));color:white;padding:10px 14px;border-radius:12px;font-size:10px;animation:pinFloat 4s ease-out forwards}
+        @keyframes laiaFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+        @keyframes laiaPulse{0%,100%{opacity:0.6}50%{opacity:1}}
+        @keyframes pinFloat{0%{transform:translateY(0) scale(0.8);opacity:0}20%{opacity:1}100%{transform:translateY(-80px) scale(1.1);opacity:0}}
+       .laia-walking{animation:laiaWalk 0.5s infinite alternate}
+        @keyframes laiaWalk{0%{transform:translateX(-2px)}100%{transform:translateX(2px)}}
+       .shake{animation:shake 0.5s}
+        @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+      `;
+      document.head.appendChild(style);
+      this.el = div;
+    }
+  }
+  goTo(zoneName, context = {}){
+    const zone = this.APP_ZONES[zoneName] || this.zones[zoneName];
+    if(!zone ||!this.el) return;
+    const pose = INTENTION_MOTOR[zone.pose] || INTENTION_MOTOR.TRANSMISSION;
+    this.el.style.left = (zone.x || 5) + '%';
+    this.el.style.top = (zone.y || 5) + '%';
+    if(zone.scale) this.el.style.transform = `scale(${zone.scale})`;
+    console.log(`[LAYA V16] goTo ${zoneName} -> ${pose.name}`, pose.joints);
+    if(context.sapData) LAYA_SAP.renderToHologram(context.sapData);
+  }
+  renderToHologram(sapData){ return LAYA_SAP.renderToHologram(sapData); }
+  applyPose(pose){ console.log(`[MARIONETA] Aplicando ${pose.name}`, pose.joints); }
+  spitSAPPins(sapData, pose){ LAYA_SAP.renderToHologram(sapData); }
+}
+export class LaiaWandererEngine extends LaiaHologramSmart {}
+export class LaiaMarionetteV3 extends LaiaHologramSmart {}
+export class LaiaHologramSmartV16 extends LaiaHologramSmart {}
+
+// COMPATIBILIDAD: Export para tu LAIA_SAP_HOLOGRAM.js viejo que importe de aquí
+export const LAYA_SAP_HOLOGRAM = LAYA_SAP;

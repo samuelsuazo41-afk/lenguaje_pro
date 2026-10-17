@@ -1,4 +1,4 @@
-const CACHE_NAME = 'lenguaje-pro-v15-holo-17-sap-pins';
+const CACHE_NAME = 'lenguaje-pro-v15-holo-18-sap-pins';
 const ASSETS = [
   '/l/',
   '/l/index.html',

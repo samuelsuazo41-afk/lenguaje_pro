@@ -1,4 +1,4 @@
-// LAIA_TITERE_RIG.js - Motor de pasos reales - 34 bones simulados en DOM
+// /marionette/LAIA_TITERE_RIG.js - Motor de pasos reales - 34 bones simulados - V16.1.1 FINAL
 export class LaiaTitereRig {
   constructor(hologramEl){
     this.el = hologramEl;
@@ -7,7 +7,6 @@ export class LaiaTitereRig {
     this.x = 5; this.y = 5;
   }
 
-  // CAMINAR DE VERDAD DE A -> B con pasos
   async walkTo(targetX, targetY, intention){
     if(this.isWalking) return;
     this.isWalking = true;
@@ -15,11 +14,9 @@ export class LaiaTitereRig {
     
     const startX = this.x; const startY = this.y;
     const dist = Math.hypot(targetX-startX, targetY-startY);
-    const steps = Math.max(3, Math.floor(dist/12)); // 1 paso cada 12%
-    const duration = steps * 280; // 280ms por paso
-
-    // Aplica intención antes de caminar
-    if(intention) window.laia.applyPose(intention);
+    const steps = Math.max(3, Math.floor(dist/12));
+    
+    if(intention && window.laia) window.laia.applyPose(intention);
 
     for(let i=0;i<=steps;i++){
       const p = i/steps;
@@ -28,15 +25,16 @@ export class LaiaTitereRig {
       this.el.style.left = this.x + '%';
       this.el.style.top = this.y + '%';
       
-      // Simula balanceo de cadera y rodillas
       const legPhase = Math.sin(p * Math.PI * steps * 2);
-      this.el.style.transform = `translateY(${legPhase*3}px) rotate(${legPhase*2}deg) scale(${window.laia.APP_ZONES[window.laia.currentZone]?.scale||1})`;
+      const scale = window.laia?.APP_ZONES?.[window.laia.currentZone]?.scale || 1;
+      this.el.style.transform = `translateY(${legPhase*3}px) rotate(${legPhase*1.5}deg) scale(${scale})`;
       
-      await new Promise(r=>setTimeout(r, 280));
+      await new Promise(r=>setTimeout(r, 260));
     }
     
     this.isWalking = false;
     this.el.classList.remove('laia-walking-mode');
-    this.el.style.transform = `scale(${window.laia.APP_ZONES[window.laia.currentZone]?.scale||1})`;
+    const finalScale = window.laia?.APP_ZONES?.[window.laia.currentZone]?.scale || 1;
+    this.el.style.transform = `scale(${finalScale})`;
   }
 }

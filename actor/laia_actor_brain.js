@@ -146,4 +146,4 @@ export const LAIA_ACTOR_BRAIN = {
   thinkAndMove,
   decideByMetrics,
   config: LAIA_BRAIN_CONFIG
-};
+}; 

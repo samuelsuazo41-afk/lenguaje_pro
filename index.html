@@ -8,11 +8,7 @@
 <meta name="theme-color" content="#00d4ff">
 <link rel="stylesheet" href="./styles.css">
 <script type="importmap">
-{
-  "imports": {
-    "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
-  }
-}
+{ "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
 </script>
 <style>
 .h-wrapper{margin-top:58px;display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;width:100vw;height:calc(100vh - 58px);-webkit-overflow-scrolling:touch;scrollbar-width:none;position:relative;z-index:10}
@@ -21,87 +17,56 @@
 .page-label{position:fixed;top:62px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.7);border:1px solid #2a2a3a;padding:4px 12px;border-radius:20px;font-size:10px;color:#9ca3af;z-index:20;pointer-events:none}
 .dots{display:flex;gap:6px;align-items:center}.dot{width:8px;height:8px;border-radius:50%;background:#2a2a3a;transition:.3s}.dot.active{background:#00d4ff;width:22px}
 #page1{flex:1;display:flex;min-height:100%;min-width:100vw;overflow-y:auto}
-#page1 aside{width:330px;min-width:330px;background:rgba(26,26,35,0.85);backdrop-filter:blur(12px);border-right:1px solid #2a2a3a;padding:14px;display:flex;flex-direction:column;gap:10px;position:sticky;top:0;height:calc(100vh - 58px);overflow-y:auto}
-#page1 main{flex:1;padding:18px;min-width:0;overflow-x:hidden;max-width:860px;background:rgba(15,15,20,0.6)}
-#page2{background:linear-gradient(180deg,rgba(18,18,26,0.7) 0%,rgba(15,15,20,0.8) 100%);padding:18px;display:flex;flex-direction:column;gap:14px;align-items:center;min-width:100vw}
-.sap-header{width:100%;max-width:760px;background:#1a1a23;border:1px solid #00d4ff;border-radius:16px;padding:14px;word-break:break-word}
+#page1 aside{width:330px;min-width:330px;background:rgba(26,26,35,0.45);backdrop-filter:blur(6px);border-right:1px solid #2a2a3a;padding:14px;display:flex;flex-direction:column;gap:10px;position:sticky;top:0;height:calc(100vh - 58px);overflow-y:auto}
+#page1 main{flex:1;padding:18px;min-width:0;overflow-x:hidden;max-width:860px;background:rgba(15,15,20,0.25);backdrop-filter:blur(2px)}
+#page2{background:linear-gradient(180deg,rgba(18,18,26,0.35) 0%,rgba(15,15,20,0.35) 100%);padding:18px;display:flex;flex-direction:column;gap:14px;align-items:center;min-width:100vw;backdrop-filter:blur(2px)}
+.sap-header{width:100%;max-width:760px;background:rgba(26,26,35,0.72);border:1px solid #00d4ff;border-radius:16px;padding:14px;word-break:break-word;backdrop-filter:blur(6px)}
 .sap-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;max-width:760px}
-.sap-card{background:#1a1a23;border:1px solid #2a2a3a;border-radius:12px;padding:12px;word-break:break-word}
-.evo-lab{width:100%;max-width:760px;background:#0f0f14;border:1px dashed #00d4ff;border-radius:12px;padding:14px;font-size:12px;white-space:pre-wrap;word-break:break-word}
+.sap-card{background:rgba(26,26,35,0.72);border:1px solid #2a2a3a;border-radius:12px;padding:12px;backdrop-filter:blur(6px)}
+.evo-lab{width:100%;max-width:760px;background:rgba(15,15,20,0.72);border:1px dashed #00d4ff;border-radius:12px;padding:14px;font-size:12px;white-space:pre-wrap;word-break:break-word;backdrop-filter:blur(6px)}
 #card{scroll-margin-top:14px}
-/* V17.4 FIX DEFINITIVO - MUNDO DETRAS - CABEZA Y PIES DENTRO - COMO TU REFERENCIA EL CARME */
-#laia-hologram{position:fixed !important;top:0 !important;left:0 !important;right:auto !important;bottom:auto !important;width:100vw !important;height:100vh !important;z-index:1 !important;display:flex !important;align-items:center !important;justify-content:center !important;pointer-events:none !important;filter:drop-shadow(0 0 22px #00d4ff) drop-shadow(0 0 45px #00d4ff);background:radial-gradient(ellipse at 70% 50%, rgba(0,212,255,0.08), transparent 60%) !important}
+#laia-hologram{position:fixed !important;top:0 !important;left:0 !important;width:100vw !important;height:100vh !important;z-index:50 !important;display:flex !important;align-items:center !important;justify-content:center !important;pointer-events:none !important;filter:drop-shadow(0 0 22px #00d4ff) drop-shadow(0 0 45px #00d4ff);background:transparent !important;mix-blend-mode:screen !important;opacity:0.95 !important}
 #laia-holo-canvas{width:100vw !important;height:100vh !important;display:block !important;background:transparent !important;pointer-events:auto !important;cursor:pointer !important}
-#bubble{position:absolute;left:50%;transform:translateX(-50%);bottom:110px;background:rgba(10,15,30,0.92);backdrop-filter:blur(12px);border:1px solid rgba(0,212,255,0.5);color:white;padding:12px 14px;border-radius:14px;font-size:12px;max-width:260px;pointer-events:auto;box-shadow:0 0 25px rgba(0,212,255,0.3);z-index:5}
+#bubble{position:absolute;left:50%;transform:translateX(-50%);bottom:110px;background:rgba(10,15,30,0.92);backdrop-filter:blur(12px);border:1px solid rgba(0,212,255,0.5);color:white;padding:12px 14px;border-radius:14px;font-size:12px;max-width:260px;pointer-events:auto;box-shadow:0 0 25px rgba(0,212,255,0.3);z-index:60}
 #bubble.hidden{display:none}
-#laia-state{position:absolute;bottom:80px;left:50%;transform:translateX(-50%);background:rgba(0,212,255,0.9);color:#000;font-size:9px;padding:3px 10px;border-radius:10px;white-space:nowrap;font-weight:700;z-index:5}
+#laia-state{position:absolute;bottom:80px;left:50%;transform:translateX(-50%);background:rgba(0,212,255,0.9);color:#000;font-size:9px;padding:3px 10px;border-radius:10px;white-space:nowrap;font-weight:700;z-index:60}
 #laia-pin-container{position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9998}
-.laia-pin{position:absolute;background:linear-gradient(135deg, rgba(0,212,255,0.95), rgba(139,92,246,0.95));color:white;padding:10px 14px;border-radius:12px;font-size:11px;max-width:230px;box-shadow:0 8px 25px rgba(0,212,255,0.4);border:1px solid rgba(255,255,255,0.3);animation:pinPop 0.4s cubic-bezier(0.34,1.56,0.64,1), pinFloat 3s ease-in-out infinite;pointer-events:auto;cursor:pointer}
-@keyframes pinPop{0%{transform:scale(0) translateY(20px);opacity:0}100%{transform:scale(1) translateY(0);opacity:1}}
-@keyframes pinFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
-@media(max-width:768px){
-#page1{flex-direction:column}#page1 aside{width:100%;min-width:100%;position:relative;height:auto;max-height:42vh}#page1 main{min-height:58vh}
-.sap-grid{grid-template-columns:1fr}.h-wrapper{height:auto;min-height:calc(100vh - 58px)}
-#laia-hologram{width:100vw !important;height:100vh !important}
-#bubble{max-width:200px;bottom:90px}
-}
+@media(max-width:768px){#page1{flex-direction:column}#page1 aside{width:100%;min-width:100%;position:relative;height:auto;max-height:42vh}#page1 main{min-height:58vh}.sap-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<header>
-  <div class="logo">📚 LENGUAJE-PRO <span>V17.4 CONSTELLATION</span></div>
-  <div style="display:flex;gap:12px;align-items:center">
-    <div class="dots"><div class="dot active" id="dot1"></div><div class="dot" id="dot2"></div></div>
-    <div class="metrics"><span id="xp">⭐ 0 XP</span><span>🔥 <b id="streak">0</b></span><span id="level-badge">A2</span></div>
-  </div>
-</header>
-<div class="page-label" id="pageLabel">V17.4 CONSTELLATION • 4000 PUNTOS + LINEAS ZODIAC • MOTOR INTUICIÓN</div>
+<header><div class="logo">📚 LENGUAJE-PRO <span>V17.4 CONSTELLATION FIX</span></div><div style="display:flex;gap:12px;align-items:center"><div class="dots"><div class="dot active" id="dot1"></div><div class="dot" id="dot2"></div></div><div class="metrics"><span id="xp">⭐ 0 XP</span><span>🔥 <b id="streak">0</b></span><span id="level-badge">A2</span></div></div></header>
+<div class="page-label" id="pageLabel">V17.4 CONSTELLATION • 4000 PUNTOS + LINEAS ZODIAC • FOV45 CABEZA+PÍES</div>
 <div class="h-wrapper" id="hWrapper">
   <div class="page" id="page1">
-    <aside>
-      <h3 style="font-size:11px;color:#00d4ff">V17.4 CONSTELLATION - 4000 PUNTOS + LINEAS</h3>
-      <input id="search" placeholder="Buscar: Money, in/on/at, co, have, family...">
-      <div id="filters"><button class="f active" data-f="">Todas</button><button class="f" data-f="A1">A1</button><button class="f" data-f="A2">A2</button><button class="f" data-f="B1">B1</button><button class="f" data-f="B2">B2</button></div>
-      <div id="list"><div style="color:#9ca3af;font-size:12px;padding:10px">Cargando áreas...</div></div>
-    </aside>
-    <main>
-      <div style="display:flex;gap:10px;margin-bottom:12px"><select id="level"><option>A1</option><option selected>A2</option><option>B1</option><option>B2</option></select><button id="gen" style="background:#00d4ff;color:#000;border:none;padding:10px 16px;border-radius:10px;font-weight:700;cursor:pointer;flex:1;max-width:260px">⚡ GENERAR LECCIÓN V17.4</button><button id="teachBtn" style="background:#8b5cf6;color:#fff;border:none;padding:10px 12px;border-radius:10px;font-weight:700;cursor:pointer">📌 SAPs</button></div>
-      <div id="empty"><h1 style="font-size:28px">👋 Soy Laia CONSTELLATION</h1><p style="margin:8px 0">V17.4 - 4000 puntos + líneas zodiac, cuerpo completo femenina, motor intuición.</p><p id="status" style="margin-top:10px;font-size:11px;color:#22c55e">Cargando CONSTELLATION...</p></div>
-      <div id="card" class="hidden"></div>
-    </main>
+    <aside><h3 style="font-size:11px;color:#00d4ff">V17.4 CONSTELLATION - 4000 PUNTOS + LINEAS</h3><input id="search" placeholder="Buscar: Money, in/on/at, co, have, family..."><div id="filters"><button class="f active" data-f="">Todas</button><button class="f" data-f="A1">A1</button><button class="f" data-f="A2">A2</button><button class="f" data-f="B1">B1</button><button class="f" data-f="B2">B2</button></div><div id="list"><div style="color:#9ca3af;font-size:12px;padding:10px">Cargando áreas...</div></div></aside>
+    <main><div style="display:flex;gap:10px;margin-bottom:12px"><select id="level"><option>A1</option><option selected>A2</option><option>B1</option><option>B2</option></select><button id="gen" style="background:#00d4ff;color:#000;border:none;padding:10px 16px;border-radius:10px;font-weight:700;cursor:pointer;flex:1;max-width:260px">⚡ GENERAR LECCIÓN V17.4</button><button id="teachBtn" style="background:#8b5cf6;color:#fff;border:none;padding:10px 12px;border-radius:10px;font-weight:700;cursor:pointer">📌 SAPs</button></div><div id="empty"><h1 style="font-size:28px">👋 Soy Laia CONSTELLATION</h1><p style="margin:8px 0">V17.4 - 4000 puntos + líneas zodiac, cuerpo completo femenina, motor intuición.</p><p id="status" style="margin-top:10px;font-size:11px;color:#22c55e">Cargando CONSTELLATION...</p></div><div id="card" class="hidden"></div></main>
   </div>
-  <div class="page" id="page2">
-    <div style="width:100%;max-width:760px">
-      <h2 style="font-size:22px">🧬 MOTOR 2 - SAP + CONSTELLATION</h2>
-      <div class="sap-header" id="sapHeader">Esperando datos Motor 1 CONSTELLATION...</div>
-      <div style="margin-top:14px;display:flex;gap:8px"><input id="wordInput" placeholder="Escribe: co, hav, mon, wor, sav..." style="flex:1;background:#1a1a23;border:1px solid #2a2a3a;color:#fff;padding:10px;border-radius:10px"><button id="gen2" style="background:#00d4ff;color:#000;border:none;padding:10px 16px;border-radius:10px;font-weight:700">🔍 EXPLORAR EVOLUCIÓN</button></div>
-      <div id="card2" class="hidden" style="margin-top:14px;background:#1a1a23;border:1px solid #2a2a3a;border-radius:16px;padding:18px;max-width:760px;width:100%"></div>
-      <div class="sap-grid" id="sapGrid" style="margin-top:14px"></div>
-      <div class="evo-lab" id="evoLab" style="margin-top:14px">CONSTELLATION 4000 LAB - MOTOR INTUICIÓN</div>
-    </div>
-  </div>
+  <div class="page" id="page2"><div style="width:100%;max-width:760px"><h2 style="font-size:22px">🧬 MOTOR 2 - SAP + CONSTELLATION</h2><div class="sap-header" id="sapHeader">Esperando datos Motor 1 CONSTELLATION...</div><div style="margin-top:14px;display:flex;gap:8px"><input id="wordInput" placeholder="Escribe: co, hav, mon, wor, sav..." style="flex:1;background:#1a1a23;border:1px solid #2a2a3a;color:#fff;padding:10px;border-radius:10px"><button id="gen2" style="background:#00d4ff;color:#000;border:none;padding:10px 16px;border-radius:10px;font-weight:700">🔍 EXPLORAR EVOLUCIÓN</button></div><div id="card2" class="hidden" style="margin-top:14px;background:#1a1a23;border:1px solid #2a2a3a;border-radius:16px;padding:18px;max-width:760px;width:100%"></div><div class="sap-grid" id="sapGrid" style="margin-top:14px"></div><div class="evo-lab" id="evoLab" style="margin-top:14px">CONSTELLATION 4000 LAB - MOTOR INTUICIÓN - FOV45</div></div></div>
 </div>
-<div id="laia-hologram"><canvas id="laia-holo-canvas"></canvas><div id="bubble" class="hidden"></div><div id="laia-state">CONSTELLATION 4000</div></div>
+<div id="laia-hologram"><canvas id="laia-holo-canvas"></canvas><div id="bubble" class="hidden"></div><div id="laia-state">CONSTELLATION 4000 FOV45</div></div>
 <div id="laia-pin-container"></div>
 <script type="module">
 import { LAYA_FINAL } from './LAYA_FINAL_COMPLETO.js';
 import { thinkAndMove } from './actor/laia_actor_brain.js';
 import * as THREE from 'three';
-
 class LaiaMeshOnly {
   constructor(canvas){
     this.canvas = canvas;
     this.scene = new THREE.Scene();
-    // FIX DEFINITIVO - FOV 28 PARA QUE ENTRE CABEZA+PIES - COMO REFERENCIA EL CARME
-    this.camera = new THREE.PerspectiveCamera(28, window.innerWidth / window.innerHeight, 0.1, 100);
-    this.camera.position.set(0.35, 0.15, 4.2);
+    // FIX FINAL - CABEZA + PIES DENTRO - 100% VISIBLE
+    this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
+    this.camera.position.set(0.25, 0.35, 2.6);
     this.renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:true});
     this.renderer.setSize(window.innerWidth, window.innerHeight); 
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
     this.bones = []; 
     this.group = new THREE.Group();
-    // FIX POSICION - BAJA Y DERECHA COMO TU WIDGET
-    this.group.position.set(0.38, -0.48, 0);
+    this.group.position.set(0.30, -0.10, 0);
+    if(window.innerWidth < 768){
+      this.camera.position.set(0.20, 0.25, 2.9);
+      this.group.position.set(0.15, 0.05, 0);
+    }
     this.createInvisibleSkeleton();
     this.createFullBodyPointCloud();
     this.scene.add(this.group);
@@ -140,7 +105,6 @@ class LaiaMeshOnly {
         positions.push(c.x + rx*Math.sin(v)*Math.cos(u), c.y + ry*Math.sin(v)*Math.sin(u), c.z + rz*Math.cos(v));
       }
     };
-    // V17.4 CONSTELLATION - FEMENINA COMPLETA - MISMA MALLA + ARREGLADA POSICION
     cloud(new THREE.Vector3(0,1.08,0), 0.15,0.19,0.13, 900);
     cloud(new THREE.Vector3(-0.16,0.92,0), 0.08,0.13,0.06, 250);
     cloud(new THREE.Vector3(0,0.85,0), 0.04,0.05,0.04, 70);
@@ -158,29 +122,27 @@ class LaiaMeshOnly {
     cloud(new THREE.Vector3(0.12,-0.64,0), 0.06,0.16,0.06, 280);
     cloud(new THREE.Vector3(-0.12,-0.98,0), 0.05,0.07,0.07, 160);
     cloud(new THREE.Vector3(0.12,-0.98,0), 0.05,0.07,0.07, 160);
-    
     const geo = new THREE.BufferGeometry();
     geo.setAttribute('position', new THREE.Float32BufferAttribute(positions,3));
-    const mat = new THREE.PointsMaterial({color:0x00d4ff, size:0.022, sizeAttenuation:true, transparent:true, opacity:0.96, blending: THREE.AdditiveBlending});
+    const mat = new THREE.PointsMaterial({color:0x00d4ff, size:0.028, sizeAttenuation:true, transparent:true, opacity:1.0, blending: THREE.AdditiveBlending});
     const pts = new THREE.Points(geo, mat);
     this.bones[3].add(pts);
     this.points = pts;
-
     const linePos=[];
     for(let i=0;i<positions.length-12;i+=6){
       if(Math.random()>0.88) linePos.push(positions[i],positions[i+1],positions[i+2], positions[i+9],positions[i+10],positions[i+11]);
     }
     const lgeo=new THREE.BufferGeometry();
     lgeo.setAttribute('position',new THREE.Float32BufferAttribute(linePos,3));
-    const lmat=new THREE.LineBasicMaterial({color:0x00d4ff,transparent:true,opacity:0.20});
+    const lmat=new THREE.LineBasicMaterial({color:0x00d4ff,transparent:true,opacity:0.22});
     this.bones[3].add(new THREE.LineSegments(lgeo,lmat));
   }
   async goTo(zone){
     this.currentZone = zone;
-    const mapPos = {welcome:{x:0.38,y:-0.48}, reading_text:{x:0.15,y:-0.43}, input_field:{x:0.55,y:-0.43}, feedback_ok:{x:0.38,y:-0.53}, feedback_err:{x:0.38,y:-0.38}, sap_dashboard:{x:0.38,y:-0.48}, evolution:{x:0.38,y:-0.43}};
+    const mapPos = {welcome:{x:0.30,y:-0.10}, reading_text:{x:0.10,y:-0.05}, input_field:{x:0.50,y:-0.05}, feedback_ok:{x:0.30,y:-0.15}, feedback_err:{x:0.30,y:0.0}, sap_dashboard:{x:0.30,y:-0.10}, evolution:{x:0.30,y:-0.05}};
     if(mapPos[zone]){ this.group.position.x=mapPos[zone].x; this.group.position.y=mapPos[zone].y; }
     thinkAndMove(this.bones, {inputFocused: zone==='input_field', sapError: zone==='feedback_err', sapOK: zone==='feedback_ok', moving: zone==='reading_text', reading: zone==='reading_text', talkAmp:0.7});
-    document.getElementById('laia-state').textContent = zone.toUpperCase() + ' • 4000PTS';
+    document.getElementById('laia-state').textContent = zone.toUpperCase() + ' • 4000PTS • FOV45';
   }
   animate(){
     requestAnimationFrame(()=>this.animate());
@@ -189,13 +151,10 @@ class LaiaMeshOnly {
     this.renderer.render(this.scene, this.camera);
   }
 }
-
 let metrics = JSON.parse(localStorage.getItem('LAYA_METRICS_V9')||'{"same_error_count":0,"streak_days":3,"accuracy_7d":0.82,"hesitation_ms":1200,"level":"A2","xp_total":0,"cefr_level":"A2"}');
 let selected=null, currentFilter='';
-
 const laiaActor = new LaiaMeshOnly(document.getElementById('laia-holo-canvas'));
 window.laiaActor = laiaActor;
-
 const listEl=document.getElementById('list');
 function renderList(f='', lvl=''){
   if(!LAYA_FINAL ||!LAYA_FINAL.AREAS){ listEl.innerHTML='<div style="color:#ef4444;padding:10px">Error</div>'; return; }
@@ -203,12 +162,12 @@ function renderList(f='', lvl=''){
   Object.entries(LAYA_FINAL.AREAS).forEach(([id,a])=>{
     const hay=`${id} ${a.name} ${a.topic} ${a.grammar.join(' ')} ${a.vocab.join(' ')} ${a.level}`.toLowerCase();
     if(f &&!hay.includes(f)) return; if(lvl && a.level!==lvl) return;
-    const d=document.createElement('div'); d.className='area';
-    d.innerHTML=`<b>${id}. ${a.name}</b><small>${a.topic} • ${a.level} • ${a.grammar[0]}</small><em>${a.vocab.slice(0,2).join(', ')}</em>`;
+    const d=document.createElement('div'); d.className='area'; d.style.cssText='background:#232332;padding:9px;border-radius:10px;margin-bottom:6px;cursor:pointer;color:#fff';
+    d.innerHTML=`<b>${id}. ${a.name}</b><small> ${a.topic} • ${a.level}</small>`;
     d.onclick=async ()=>{ selected=id; document.querySelectorAll('.area').forEach(x=>x.classList.remove('active')); d.classList.add('active'); await laiaActor.goTo('reading_text'); };
     listEl.appendChild(d);
   });
-  document.getElementById('status').textContent=`CONSTELLATION 4000: ${Object.keys(LAYA_FINAL.AREAS).length} áreas - LISTO`;
+  document.getElementById('status').textContent=`CONSTELLATION 4000 FOV45: ${Object.keys(LAYA_FINAL.AREAS).length} áreas - CABEZA+PÍES DENTRO`;
   document.getElementById('status').style.color='#00d4ff';
 }
 renderList();
@@ -219,9 +178,7 @@ document.getElementById('streak').textContent=metrics.streak_days;
 document.getElementById('xp').textContent=`⭐ ${metrics.xp_total} XP`;
 document.getElementById('level-badge').textContent=metrics.level;
 function saveMetrics(){ localStorage.setItem('LAYA_METRICS_V9', JSON.stringify(metrics)); }
-function pushToPage2(res, word){
-  document.getElementById('sapHeader').innerHTML=`<div style="display:flex;justify-content:space-between"><b style="color:#00d4ff">CONSTELLATION 4000 // ${res.meta.grammar_main.sig} // ${word}</b></div><div style="margin-top:8px;font-size:12px">📍 ${res.meta.area} | ${res.meta.topic}</div>`;
-}
+function pushToPage2(res, word){ document.getElementById('sapHeader').innerHTML=`<div style="display:flex;justify-content:space-between"><b style="color:#00d4ff">CONSTELLATION 4000 // ${res.meta.grammar_main.sig} // ${word}</b></div><div style="margin-top:8px;font-size:12px">📍 ${res.meta.area} | ${res.meta.topic}</div>`; }
 function renderLesson(res){
   const card=document.getElementById('card');
   const words=res.story.split(/(\s+)/).map(w=>{ if(w.trim().length<2) return w; const clean=w.toLowerCase().replace(/[^a-z]/g,''); if(!clean) return w; return `<span class="word" data-w="${clean}">${w}</span>`; }).join('');
@@ -229,29 +186,14 @@ function renderLesson(res){
   card.classList.remove('hidden'); document.getElementById('empty').classList.add('hidden'); pushToPage2(res, res.meta.vocab[0]||'evolution');
   setTimeout(()=>{ card.scrollIntoView({behavior:'smooth', block:'start'}); laiaActor.goTo('reading_text'); },150);
   const input=document.getElementById('userInput');
-  const check=async ()=>{
-    const txt=input.value; if(!txt) return;
-    let ok=true; if(/he have|she have/i.test(txt)) ok=false;
-    if(ok){ metrics.accuracy_7d=Math.min(0.98, metrics.accuracy_7d+0.04); await laiaActor.goTo('feedback_ok'); } else { metrics.accuracy_7d=Math.max(0.2, metrics.accuracy_7d-0.07); await laiaActor.goTo('feedback_err'); }
-    saveMetrics(); document.getElementById('feedback').textContent=ok?`✅ +${res.meta.xp} XP`:`❌ ${res.meta.grammar_main.mistake}`;
-  };
+  const check=async ()=>{ const txt=input.value; if(!txt) return; let ok=true; if(/he have|she have/i.test(txt)) ok=false; if(ok){ metrics.accuracy_7d=Math.min(0.98, metrics.accuracy_7d+0.04); await laiaActor.goTo('feedback_ok'); } else { metrics.accuracy_7d=Math.max(0.2, metrics.accuracy_7d-0.07); await laiaActor.goTo('feedback_err'); } saveMetrics(); document.getElementById('feedback').textContent=ok?`✅ +${res.meta.xp} XP`:`❌ ${res.meta.grammar_main.mistake}`; };
   document.getElementById('sendBtn').onclick=check; input.onkeydown=e=>{ if(e.key==='Enter') check(); }; input.onfocus=()=>{ laiaActor.goTo('input_field'); };
 }
-document.getElementById('gen').onclick=()=>{
-  if(!selected){ alert('Elige área primero tete!'); return; }
-  const lvl=document.getElementById('level').value; const res=LAYA_FINAL.generate(selected, lvl, metrics); renderLesson(res);
-};
+document.getElementById('gen').onclick=()=>{ if(!selected){ alert('Elige área primero tete!'); return; } const lvl=document.getElementById('level').value; const res=LAYA_FINAL.generate(selected, lvl, metrics); renderLesson(res); };
 const wrapper=document.getElementById('hWrapper');
-wrapper.addEventListener('scroll', ()=>{
-  const isPage2 = wrapper.scrollLeft > window.innerWidth/2;
-  document.getElementById('dot1').classList.toggle('active',!isPage2);
-  document.getElementById('dot2').classList.toggle('active', isPage2);
-});
-document.getElementById('laia-hologram').onclick=()=>{
-  const isPage2 = wrapper.scrollLeft > window.innerWidth/2;
-  wrapper.scrollTo({left: isPage2? 0 : window.innerWidth, behavior:'smooth'});
-};
+wrapper.addEventListener('scroll', ()=>{ const isPage2 = wrapper.scrollLeft > window.innerWidth/2; document.getElementById('dot1').classList.toggle('active',!isPage2); document.getElementById('dot2').classList.toggle('active', isPage2); });
+document.getElementById('laia-hologram').onclick=()=>{ const isPage2 = wrapper.scrollLeft > window.innerWidth/2; wrapper.scrollTo({left: isPage2? 0 : window.innerWidth, behavior:'smooth'}); };
 laiaActor.goTo('welcome');
 </script>
 </body>
-</html> 
+</html>

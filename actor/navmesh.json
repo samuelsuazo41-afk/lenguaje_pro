@@ -1,0 +1,20 @@
+{
+  "version": "V16 ACTOR V1 - NAVMESH REAL",
+  "source": "APP_ZONES de LAIA_SAP_HOLOGRAM.js V16.1",
+  "coordinate_system": "percentage viewport",
+  "zones": {
+    "welcome": { "x": 50, "y": 30, "anchor": "center", "pose": "ELEVATION", "scale": 1.0 },
+    "reading_title": { "x": 10, "y": 8, "anchor": "top-left", "pose": "FOUNDATION" },
+    "reading_text": { "x": 75, "y": 15, "anchor": "right", "pose": "SCAFFOLDING" },
+    "reading_highlight": { "x": 5, "y": 35, "anchor": "left", "pose": "SCAFFOLDING" },
+    "example_box": { "x": 70, "y": 40, "anchor": "right", "pose": "SCAFFOLDING" },
+    "vocab_word": { "x": 80, "y": 50, "anchor": "right", "pose": "TRANSMISSION" },
+    "vocab_family": { "x": 10, "y": 60, "anchor": "bottom-left", "pose": "TRANSMISSION" },
+    "input_field": { "x": 8, "y": 55, "anchor": "left", "pose": "FLOW_OBSERVER", "scale": 0.9 },
+    "input_hint": { "x": 15, "y": 75, "anchor": "bottom-left", "pose": "SCAFFOLDING" },
+    "feedback_ok": { "x": 50, "y": 25, "anchor": "center", "pose": "ELEVATION", "scale": 1.4, "confetti": true },
+    "feedback_err": { "x": 12, "y": 48, "anchor": "left", "pose": "STRICT_ENGINEER", "scale": 1.1, "shake": true },
+    "lab_button": { "x": 85, "y": 12, "anchor": "top-right", "pose": "FLOW_OBSERVER" },
+    "sap_dashboard": { "x": 50, "y": 45, "anchor": "center", "pose": "TRANSMISSION", "scale": 1.5 }
+  }
+}

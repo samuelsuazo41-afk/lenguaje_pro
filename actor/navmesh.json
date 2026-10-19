@@ -1,20 +1,107 @@
 {
-  "version": "V16 ACTOR V1 - NAVMESH REAL",
-  "source": "APP_ZONES de LAIA_SAP_HOLOGRAM.js V16.1",
-  "coordinate_system": "percentage viewport",
+  "version": "V17.4 CONSTELLATION MOTOR - PIN PAN INTUICIÓN",
+  "source": "MOTOR LAIA - FULL BODY 4000 + ZODIAC LINES",
+  "coordinate_system": "mesh_only_3d_constellation",
+  "type": "constellation_motor_intuition",
+  "actor_version": "V17.4",
+  "feminine_params": {
+    "waist": 0.11,
+    "hips": 0.21,
+    "gap": 0.11
+  },
   "zones": {
-    "welcome": { "x": 50, "y": 30, "anchor": "center", "pose": "ELEVATION", "scale": 1.0 },
-    "reading_title": { "x": 10, "y": 8, "anchor": "top-left", "pose": "FOUNDATION" },
-    "reading_text": { "x": 75, "y": 15, "anchor": "right", "pose": "SCAFFOLDING" },
-    "reading_highlight": { "x": 5, "y": 35, "anchor": "left", "pose": "SCAFFOLDING" },
-    "example_box": { "x": 70, "y": 40, "anchor": "right", "pose": "SCAFFOLDING" },
-    "vocab_word": { "x": 80, "y": 50, "anchor": "right", "pose": "TRANSMISSION" },
-    "vocab_family": { "x": 10, "y": 60, "anchor": "bottom-left", "pose": "TRANSMISSION" },
-    "input_field": { "x": 8, "y": 55, "anchor": "left", "pose": "FLOW_OBSERVER", "scale": 0.9 },
-    "input_hint": { "x": 15, "y": 75, "anchor": "bottom-left", "pose": "SCAFFOLDING" },
-    "feedback_ok": { "x": 50, "y": 25, "anchor": "center", "pose": "ELEVATION", "scale": 1.4, "confetti": true },
-    "feedback_err": { "x": 12, "y": 48, "anchor": "left", "pose": "STRICT_ENGINEER", "scale": 1.1, "shake": true },
-    "lab_button": { "x": 85, "y": 12, "anchor": "top-right", "pose": "FLOW_OBSERVER" },
-    "sap_dashboard": { "x": 50, "y": 45, "anchor": "center", "pose": "TRANSMISSION", "scale": 1.5 }
+    "welcome": { 
+      "x": 0, "y": -0.20, "z": 0, 
+      "anchor": "center", 
+      "pose": "IDLE_CORTANA", 
+      "scale": 1.0,
+      "camera": [0, -0.10, 3.10],
+      "description": "Centro - cabeza y pies dentro - cortana TV"
+    },
+    "reading_text": { 
+      "x": -0.25, "y": -0.15, "z": 0.05, 
+      "anchor": "left_reading", 
+      "pose": "EXPLAINING",
+      "scale": 1.1,
+      "motor_action": "pin_pan_left_gesturing",
+      "description": "Se mueve a izquierda leyendo - femenina gesticula"
+    },
+    "reading_title": { 
+      "x": -0.20, "y": -0.10, "z": 0, 
+      "anchor": "top_left", 
+      "pose": "SCAFFOLDING",
+      "scale": 1.0
+    },
+    "input_field": { 
+      "x": 0.22, "y": -0.15, "z": 0.05, 
+      "anchor": "right_input", 
+      "pose": "LISTENING",
+      "scale": 0.95,
+      "motor_action": "pin_pan_right_ear_listen",
+      "description": "Se mueve a derecha escuchando - mano a oreja"
+    },
+    "vocab_word": { 
+      "x": 0.25, "y": -0.20, "z": 0, 
+      "anchor": "right_vocab", 
+      "pose": "TRANSMISSION",
+      "scale": 1.0,
+      "motor_action": "pin_pan_vocab_highlight"
+    },
+    "feedback_ok": { 
+      "x": 0, "y": -0.25, "z": 0.1, 
+      "anchor": "center_ok", 
+      "pose": "CELEBRATING",
+      "scale": 1.25,
+      "confetti": true,
+      "motor_action": "jump_happy_constellation_glow",
+      "description": "Centro abajo salta feliz - constelación brilla"
+    },
+    "feedback_err": { 
+      "x": 0, "y": -0.10, "z": 0, 
+      "anchor": "center_err", 
+      "pose": "SCOLDING",
+      "scale": 1.1,
+      "shake": true,
+      "motor_action": "shake_head_strict_ponytail",
+      "description": "Centro arriba niega estricta"
+    },
+    "sap_dashboard": { 
+      "x": 0, "y": -0.20, "z": 0, 
+      "anchor": "center_sap", 
+      "pose": "TRANSMISSION",
+      "scale": 1.0,
+      "motor_action": "evolution_lab_center"
+    },
+    "evolution": { 
+      "x": 0, "y": -0.15, "z": 0.05, 
+      "anchor": "center_evolution", 
+      "pose": "EXPLAINING",
+      "scale": 1.15,
+      "motor_action": "pin_pan_evolution_motor",
+      "description": "Motor intuición - al dar INICIAR mapea toda la app"
+    },
+    "lab_button": { 
+      "x": 0.20, "y": -0.10, "z": 0, 
+      "anchor": "top_right_lab", 
+      "pose": "FLOW_OBSERVER"
+    }
+  },
+  "motor_intuicion": {
+    "enabled": true,
+    "type": "constellation_motor_pin_pan",
+    "is_full_motor": true,
+    "moves_entire_app": true,
+    "on_iniciar": [
+      { "time": 0, "zone": "welcome", "action": "idle_feminine" },
+      { "time": 800, "zone": "reading_text", "action": "pin_pan_left" },
+      { "time": 1800, "zone": "input_field", "action": "pin_pan_right" },
+      { "time": 2800, "zone": "evolution", "action": "center_motor" }
+    ],
+    "camera_path": {
+      "fov": 38,
+      "pos": [0, -0.10, 3.10],
+      "group_y": -0.20,
+      "keeps_head_and_feet_visible": true
+    }
   }
 }

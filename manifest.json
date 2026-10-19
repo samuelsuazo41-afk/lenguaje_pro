@@ -1,7 +1,7 @@
 {
-  "name": "Lenguaje Pro - Learn English with Laia ACTOR V1",
+  "name": "Lenguaje Pro - Laia MESH ONLY 1200",
   "short_name": "LenguajePro",
-  "description": "50 areas, 35 grammar, 72 vocab with Laia AI Actor V1 - 6 intenciones ingeniera",
+  "description": "50 areas, 35 grammar, 72 vocab with Laia MESH ONLY 1200 puntos - Sin esqueleto visible",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0f0f14",
@@ -19,12 +19,6 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
-    },
-    {
-      "src": "/laia_HOLO_CLEAN_16.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
     }
   ]
 }

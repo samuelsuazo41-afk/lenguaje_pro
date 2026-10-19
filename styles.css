@@ -1,4 +1,4 @@
-:root{--bg:#0f0f14;--card:#1a1a23;--card2:#232332;--accent:#00d4ff;--accent-old:#8b5cf6;--text:#f1f1f5;--muted:#9ca3af;--holo:#00d4ff;--holo-glow:rgba(0,212,255,0.5)}
+:root{--bg:#0f0f14;--card:#1a1a23;--card2:#232332;--accent:#00d4ff;--text:#f1f1f5;--muted:#9ca3af;--holo:#00d4ff;--holo-glow:rgba(0,212,255,0.5)}
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system;overflow-x:hidden}
 header{height:58px;background:#1a1a23;border-bottom:1px solid #2a2a3a;display:flex;justify-content:space-between;align-items:center;padding:0 18px;position:sticky;top:0;z-index:10}
@@ -22,52 +22,40 @@ main{flex:1;padding:18px;max-width:860px}
 #card{background:var(--card);border:1px solid #2a2a3a;border-radius:16px;padding:18px;animation:fadeIn 0.3s ease;word-wrap:break-word;overflow-wrap:anywhere;max-width:100%;scroll-margin-top:16px}
 .hidden{display:none!important}
 .meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.meta span{background:var(--card2);padding:4px 9px;border-radius:20px;font-size:11px;border:1px solid #2a2a3a}
-.meta .blocked{background:#ef4444;color:white;border-color:#ef4444}
-.meta .intention{font-weight:800;color:#000}
-.meta .intention.FOUNDATION{background:#60a5fa}.meta .intention.SCAFFOLDING{background:#00d4ff}.meta .intention.STRICT_ENGINEER{background:#f59e0b}.meta .intention.FLOW_OBSERVER{background:#8b5cf6;color:#fff}.meta .intention.ELEVATION{background:#22c55e}.meta .intention.TRANSMISSION{background:#00d4ff}
 .gram{background:var(--card2);padding:10px 12px;border-radius:10px;margin-bottom:8px;font-size:13px;border:1px solid #2a2a3a;line-height:1.5}
 .gram code{background:#0f0f14;padding:2px 6px;border-radius:6px;color:var(--holo)}
-.reading{background:#0f0f14;border:1px solid #2a2a3a;padding:16px;border-radius:12px;white-space:pre-wrap;font-size:14px;line-height:1.7;margin:14px 0;word-wrap:break-word;overflow-wrap:anywhere;word-break:break-word;max-width:100%;overflow:hidden}
+.reading{background:#0f0f14;border:1px solid #2a2a3a;padding:16px;border-radius:12px;white-space:pre-wrap;font-size:14px;line-height:1.7;margin:14px 0;word-break:break-word;max-width:100%;overflow:hidden}
 .word{cursor:pointer;border-bottom:1px dashed #3a3a4a;padding:0 2px;border-radius:4px;transition:all 0.15s}.word:hover{background:rgba(0,212,255,0.25);color:var(--holo)}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;max-width:100%;overflow:hidden}.tags span{background:#0f0f14;border:1px solid #2a2a3a;padding:4px 9px;border-radius:20px;font-size:11px;color:var(--muted);max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;max-width:100%;overflow:hidden}.tags span{background:#0f0f14;border:1px solid #2a2a3a;padding:4px 9px;border-radius:20px;font-size:11px;color:var(--muted)}
 .chat-box{display:flex;gap:8px;margin-top:12px}.chat-box input{flex:1;background:var(--card2);border:1px solid #2a2a3a;color:white;padding:12px 14px;border-radius:12px;outline:none;font-size:14px;min-width:0}.chat-box input:focus{border-color:var(--holo)}
-.chat-box button{background:var(--holo);color:#000;border:none;padding:12px 18px;border-radius:12px;font-weight:700;cursor:pointer}.chat-box button:hover{background:#0284c7}
+.chat-box button{background:var(--holo);color:#000;border:none;padding:12px 18px;border-radius:12px;font-weight:700;cursor:pointer}
 .feedback{margin-top:12px;padding:12px;border-radius:12px;font-size:13px;font-weight:700;word-break:break-word}.feedback.ok{background:rgba(34,197,94,0.12);border:1px solid #22c55e;color:#86efac}.feedback.fail{background:rgba(239,68,68,0.12);border:1px solid #ef4444;color:#fca5a5}
-#dic-box{position:fixed;right:0;top:58px;width:390px;height:calc(100vh - 58px);background:#12121a;border-left:2px solid var(--holo);padding:18px;overflow-y:auto;z-index:90;transform:translateX(105%);transition:transform .32s cubic-bezier(.4,0,.2,1);box-shadow:-12px 0 40px rgba(0,212,255,0.25);border-radius:0}
+#dic-box{position:fixed;right:0;top:58px;width:390px;height:calc(100vh - 58px);background:#12121a;border-left:2px solid var(--holo);padding:18px;overflow-y:auto;z-index:90;transform:translateX(105%);transition:transform .32s cubic-bezier(.4,0,.2,1);box-shadow:-12px 0 40px rgba(0,212,255,0.25)}
 #dic-box.active{transform:translateX(0)}
 #dic-box.hidden{visibility:hidden;display:block!important} #dic-box.active.hidden{visibility:visible}
-#dic-box .close-dic{position:absolute;top:12px;right:12px;background:#232332;border:1px solid var(--holo);border-radius:50%;width:30px;height:30px;cursor:pointer;color:#fff;font-size:14px}
-#dic-box.centered{left:50%;right:auto;bottom:24px;top:auto;transform:translateX(-50%);background:rgba(26,26,35,0.96);border:1px solid var(--holo);padding:12px 18px;border-radius:14px;font-size:12px;backdrop-filter:blur(12px);box-shadow:0 12px 32px rgba(0,0,0,0.5);max-width:90vw;width:auto;height:auto}
 
-/* === HOLOGRAMA LAIA V16.1 MARIONETA - 34 BONES + 6 INTENCIONES + WALK CYCLE === */
-#laia-hologram{position:fixed;right:18px;bottom:18px;width:110px;height:220px;z-index:9999;display:flex;flex-direction:column;align-items:center;gap:6px;pointer-events:none;transition:all 1.1s cubic-bezier(0.34,1.56,0.64,1);filter:drop-shadow(0 0 18px var(--holo)) drop-shadow(0 0 35px var(--holo));animation:holoFloat 3s infinite ease-in-out}
-#laia-sprite{width:100%;height:100%;background:url('./laia_HOLO_CLEAN_16.png') 0 0 / 1600% 100%;image-rendering:crisp-edges;pointer-events:auto;cursor:pointer;transition:filter 0.3s, background-position 0.2s}
-#laia-sprite:hover{filter:brightness(1.3) drop-shadow(0 0 25px var(--holo))}
+/* === ACTOR V1 - VOLUMEN REAL - NO SPRITE SHEET === */
+#laia-hologram{position:fixed;left:50%;top:30%;width:110px;height:220px;z-index:9999;display:flex;flex-direction:column;align-items:center;gap:6px;pointer-events:none;transform:translate(-50%,-50%);transition:left 0.18s linear, top 0.18s linear, filter 0.4s, transform 0.4s;filter:drop-shadow(0 0 18px var(--holo)) drop-shadow(0 0 35px var(--holo));animation:laiaFloat 3s infinite ease-in-out}
+#laia-hologram.laia-walking-mode{filter:drop-shadow(0 0 22px var(--holo)) brightness(1.1)}
+#laia-sprite{width:100%;height:100%;background:url('./laia_HOLO_CLEAN_16.png') center bottom / contain no-repeat;image-rendering:auto;pointer-events:auto;cursor:pointer;transition:transform 0.3s}
+#laia-sprite:hover{filter:brightness(1.15)}
 #laia-glow{position:absolute;inset:-15px;background:radial-gradient(circle at 50% 80%, rgba(0,212,255,0.3) 0%, transparent 70%);z-index:-1;animation:laiaPulse 2s infinite}
-#bubble{position:absolute;right:125px;bottom:80px;background:rgba(10,15,30,0.92)!important;backdrop-filter:blur(14px);border:1px solid rgba(0,212,255,0.5)!important;color:white;padding:10px 14px;border-radius:18px 18px 4px 18px;font-size:11px;font-weight:600;max-width:280px;box-shadow:0 8px 28px rgba(0,212,255,0.35)!important;pointer-events:auto;line-height:1.4;word-wrap:break-word}
+#bubble{position:absolute;right:125px;bottom:80px;background:rgba(10,15,30,0.92)!important;backdrop-filter:blur(14px);border:1px solid rgba(0,212,255,0.5)!important;color:white;padding:10px 14px;border-radius:18px 18px 4px 18px;font-size:11px;font-weight:600;max-width:280px;box-shadow:0 8px 28px rgba(0,212,255,0.35)!important;pointer-events:auto;line-height:1.4}
 #bubble.hidden{display:none}
-#laia-state{background:rgba(0,212,255,0.9);border:none;padding:3px 8px;border-radius:20px;font-size:8px;color:#000;letter-spacing:0.5px;font-weight:700;backdrop-filter:blur(8px);max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#laia-state{background:rgba(0,212,255,0.9);border:none;padding:3px 8px;border-radius:20px;font-size:8px;color:#000;letter-spacing:0.5px;font-weight:700;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 #laia-pin-container{position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9998}
 .laia-pin{position:absolute;background:linear-gradient(135deg, rgba(0,212,255,0.95), rgba(139,92,246,0.95));color:white;padding:10px 14px;border-radius:12px;font-size:11px;max-width:230px;box-shadow:0 8px 25px rgba(0,212,255,0.4);border:1px solid rgba(255,255,255,0.3);animation:pinPop 0.4s cubic-bezier(0.34,1.56,0.64,1), pinFloat 3s ease-in-out infinite;pointer-events:auto;cursor:pointer}
-.laia-pin::before{content:'📌';position:absolute;top:-8px;left:-8px;background:white;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;box-shadow:0 2px 8px rgba(0,0,0,0.2)}
 .laia-pin.sap-data{background:linear-gradient(135deg, rgba(16,185,129,0.95), rgba(6,182,212,0.95))}
 .laia-pin.grammar-tip{background:linear-gradient(135deg, rgba(245,158,11,0.95), rgba(239,68,68,0.95))}
 .laia-pin.vocab-family{background:linear-gradient(135deg, rgba(139,92,246,0.95), rgba(236,72,153,0.95))}
+.laia-pin::before{content:'📌';position:absolute;top:-8px;left:-8px;background:white;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;box-shadow:0 2px 8px rgba(0,0,0,0.2)}
 #laia-box{display:none}
-.laia-walking-mode{animation:laiaWalkTranslate 0.28s infinite alternate}
-.laia-walking-mode #laia-sprite{animation:walkCycle 0.28s infinite alternate steps(2), holoLoop 8s steps(16) infinite}
-@keyframes holoFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-@keyframes laiaFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes laiaFloat{0%,100%{transform:translate(-50%,-50%) translateY(0)}50%{transform:translate(-50%,-50%) translateY(-8px)}}
 @keyframes laiaPulse{0%,100%{opacity:0.6}50%{opacity:1}}
-@keyframes holoLoop{from{background-position:0% 0}to{background-position:-1600% 0}}
 @keyframes pinPop{0%{transform:scale(0) translateY(20px);opacity:0}100%{transform:scale(1) translateY(0);opacity:1}}
 @keyframes pinFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
-@keyframes walkCycle{0%{transform:translateY(-3px) rotate(-1.5deg) scaleY(0.98)}100%{transform:translateY(1px) rotate(1.5deg) scaleY(1.02)}}
-@keyframes laiaWalkTranslate{0%{transform:translateX(-2px)}100%{transform:translateX(2px)}}
 .shake{animation:shake 0.35s ease}
-.jump{animation:float 0.5s ease 2}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .h-wrapper{margin-top:58px;display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;width:100vw;height:calc(100vh - 58px);-webkit-overflow-scrolling:touch;scrollbar-width:none;position:fixed;top:0;left:0}
 .h-wrapper::-webkit-scrollbar{display:none}
@@ -84,10 +72,7 @@ main{flex:1;padding:18px;max-width:860px}
 .evo-lab{width:100%;max-width:760px;background:#0f0f14;border:1px dashed var(--holo);border-radius:12px;padding:14px;font-size:12px;white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere}
 @media(max-width:768px){
 .layout{flex-direction:column}aside{width:100%;position:relative;top:0;height:auto;max-height:50vh}
-#laia-hologram{right:12px;bottom:12px;width:90px;height:180px}#laia-sprite{width:100%;height:100%}
-#dic-box{width:100%;height:60vh;top:auto;bottom:0;right:0;transform:translateY(105%);border-left:none;border-top:2px solid var(--holo)}
-#dic-box.active{transform:translateY(0)}
-#bubble{max-width:220px;right:95px;bottom:60px}
+#laia-hologram{width:90px;height:180px}#bubble{max-width:220px;right:95px;bottom:60px}
 .page{flex-direction:column}
 #page1{flex-direction:column;overflow-y:auto}
 #page1 aside{width:100%;min-width:100%;position:relative;top:0;height:auto;max-height:42vh;flex-shrink:0;overflow-y:auto}

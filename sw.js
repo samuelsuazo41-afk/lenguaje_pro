@@ -1,4 +1,4 @@
-const CACHE_NAME = 'lenguaje-pro-v17-3-full-body-4000';
+const CACHE_NAME = 'laia-v17-4-constellation-final-feminine-motor';
 const ASSETS = [
   '/',
   '/index.html',
@@ -14,11 +14,11 @@ const ASSETS = [
 
 self.addEventListener('install', e => {
   self.skipWaiting();
-  console.log('[SW V17.3 FULL BODY] Instalando 4000 puntos CUERPO COMPLETO');
+  console.log('[SW V17.4 CONSTELLATION FEMENINA] Instalando 4000 PUNTOS + ZODIAC LINES + CINTURA 0.11 + CADERA 0.21 + MOTOR');
   e.waitUntil(
     caches.open(CACHE_NAME).then(c => {
       return c.addAll(ASSETS.map(url => new Request(url, {cache: 'reload'}))).catch(err => {
-        console.log('[SW FULL BODY] addAll fail, individual:', err);
+        console.log('[SW V17.4] addAll fail, individual:', err);
         return Promise.allSettled(ASSETS.map(u => c.add(u).catch(e=>console.log('fail',u))));
       });
     })
@@ -30,7 +30,7 @@ self.addEventListener('activate', e => {
     caches.keys().then(keys => {
       return Promise.all(
         keys.filter(k => k !== CACHE_NAME).map(k => {
-          console.log('[SW FULL BODY] Borrando cache vieja:', k);
+          console.log('[SW V17.4 CONSTELLATION] Borrando cache vieja:', k);
           return caches.delete(k);
         })
       );

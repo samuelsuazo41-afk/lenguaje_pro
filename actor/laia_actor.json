@@ -1,22 +1,80 @@
 {
-  "actor_version": "V1",
-  "base_image": "../laia_HOLO_CLEAN_16.png",
-  "type": "billboard_actor_v1",
-  "status": "t_pose_clean_323kb_ready_for_glb",
+  "actor_version": "V17.4 CONSTELLATION FEMENINA",
+  "type": "mesh_only_constellation_v17_4",
+  "status": "full_body_4000_points_zodiac_lines_feminine_0.11_waist_ready",
+  "base_image": null,
   "rig": {
     "joints": 34,
-    "head": "bob_brown_short",
-    "face": "freckles_gold_hoops_brown_eyes",
-    "body": "blazer_black_gold_button + grey_trousers + black_loafers",
-    "t_pose": "arms_180_horizontal_palms_down_legs_together"
+    "hidden_skeleton": true,
+    "head": "holographic_hair_ponytail_0.15x0.19",
+    "face": "freckles_gold_hoops_brown_eyes_constellation",
+    "body": "mesh_only_4000_points",
+    "feminine_params": {
+      "waist": 0.11,
+      "hips": 0.21,
+      "chest": 0.19,
+      "shoulders": 0.20,
+      "thigh_gap": true
+    },
+    "t_pose": "full_body_constellation_legs_separated_0.11_gap"
+  },
+  "mesh": {
+    "points_count": 4000,
+    "type": "constellation_zodiac_lines",
+    "color": "#00d4ff",
+    "size": 0.016,
+    "opacity": 0.96,
+    "blending": "AdditiveBlending",
+    "lines": {
+      "enabled": true,
+      "color": "#00d4ff",
+      "opacity": 0.20,
+      "connection_distance": 0.08,
+      "random_threshold": 0.88
+    },
+    "clouds": [
+      { "name": "head_crown", "pos": [0, 1.08, 0], "rad": [0.15, 0.19, 0.13], "count": 900 },
+      { "name": "ponytail", "pos": [-0.16, 0.92, 0], "rad": [0.08, 0.13, 0.06], "count": 250 },
+      { "name": "neck", "pos": [0, 0.85, 0], "rad": [0.04, 0.05, 0.04], "count": 70 },
+      { "name": "shoulders", "pos": [0, 0.68, 0], "rad": [0.20, 0.08, 0.10], "count": 380 },
+      { "name": "chest", "pos": [0, 0.44, 0.02], "rad": [0.19, 0.14, 0.11], "count": 450 },
+      { "name": "waist_0.11_feminine", "pos": [0, 0.22, 0], "rad": [0.11, 0.09, 0.08], "count": 320 },
+      { "name": "hips_0.21", "pos": [0, 0.0, 0], "rad": [0.21, 0.13, 0.12], "count": 450 },
+      { "name": "arm_L_up", "pos": [-0.27, 0.50, 0], "rad": [0.05, 0.13, 0.05], "count": 150 },
+      { "name": "arm_L_low", "pos": [-0.39, 0.20, 0], "rad": [0.04, 0.13, 0.04], "count": 150 },
+      { "name": "arm_R_up", "pos": [0.27, 0.50, 0], "rad": [0.05, 0.13, 0.05], "count": 150 },
+      { "name": "arm_R_low", "pos": [0.39, 0.20, 0], "rad": [0.04, 0.13, 0.04], "count": 150 },
+      { "name": "thigh_L", "pos": [-0.11, -0.28, 0], "rad": [0.07, 0.18, 0.07], "count": 300 },
+      { "name": "thigh_R", "pos": [0.11, -0.28, 0], "rad": [0.07, 0.18, 0.07], "count": 300 },
+      { "name": "leg_L", "pos": [-0.12, -0.64, 0], "rad": [0.06, 0.16, 0.06], "count": 280 },
+      { "name": "leg_R", "pos": [0.12, -0.64, 0], "rad": [0.06, 0.16, 0.06], "count": 280 },
+      { "name": "foot_L", "pos": [-0.12, -0.98, 0], "rad": [0.05, 0.07, 0.07], "count": 160 },
+      { "name": "foot_R", "pos": [0.12, -0.98, 0], "rad": [0.05, 0.07, 0.07], "count": 160 }
+    ]
   },
   "animations_from_intentions": {
-    "FOUNDATION": "idle_hands_down",
-    "SCAFFOLDING": "point_left_right_explain_open",
-    "STRICT_ENGINEER": "crossed_arms_squint",
-    "FLOW_OBSERVER": "crossed_arms_relaxed_nod",
-    "ELEVATION": "jump_wave_celebratory",
-    "TRANSMISSION": "open_big_lip_sync_6_visemes"
+    "IDLE_CORTANA": "idle_feminine_ponytail_sway_0.11_waist",
+    "LISTENING": "head_tilt_0.18_hand_to_ear_hips_0.21",
+    "EXPLAINING": "gesture_feminine_lip_sync_8_visemes_constellation",
+    "WALKING": "ik_legs_feminine_thigh_gap_pin_pan_motor",
+    "SCOLDING": "shake_head_strict_ponytail_move",
+    "CELEBRATING": "jump_arms_up_happy_constellation_glow",
+    "SCAFFOLDING": "point_left_right_explain_open_feminine",
+    "ELEVATION": "jump_wave_celebratory_constellation"
   },
-  "next_step_glb": "Este manifest se reemplazará por laia_actor.glb binario cuando lo genere con tus 9 piezas modulares"
+  "camera": {
+    "fov": 38,
+    "aspect": 0.5,
+    "position": [0, -0.10, 3.10],
+    "group_y": -0.20,
+    "renderer_size": [300, 600],
+    "mobile_size": [180, 360]
+  },
+  "motor_intuicion": {
+    "type": "pin_pan_constellation_motor",
+    "is_motor": true,
+    "moves_app": true,
+    "zones": ["welcome", "reading_text", "input_field", "feedback_ok", "feedback_err", "sap_dashboard", "evolution", "vocab_word"]
+  },
+  "next_step_glb": "V17.4 ya es malla constelación final, no necesita GLB - es meshOnly 4000 puntos + líneas zodiac"
 }

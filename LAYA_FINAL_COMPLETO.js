@@ -175,4 +175,4 @@ export const LAYA_SAP = {
   generateSAP(m, sig, w){ return { evolution:{ ACCURACY_7D: Math.round(m.accuracy_7d*100)+'%', XP_TOTAL: m.xp_total }, detail:{ grammarChain: sig } }; },
   renderToHologram(sap){ const b=document.getElementById('bubble'); if(b){ b.innerHTML=`MESH ONLY // ${sap.evolution.ACCURACY_7D} // XP ${sap.evolution.XP_TOTAL}`; b.classList.remove('hidden'); } }
 };
-export const LAYA_FINAL_ACTOR_V1 = LAYA_FINAL;
+export const LAYA_FINAL_ACTOR_V1 = LAYA_FINAL; 

@@ -3,15 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>LENGUAJE-PRO V17.2 MESH ONLY</title>
+<title>LENGUAJE-PRO V17.3 FULL BODY</title>
 <link rel="icon" href="./icon-192.png">
 <meta name="theme-color" content="#00d4ff">
 <link rel="stylesheet" href="./styles.css">
 <script type="importmap">
 {
   "imports": {
-    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
-    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
   }
 }
 </script>
@@ -30,11 +29,10 @@
 .sap-card{background:#1a1a23;border:1px solid #2a2a3a;border-radius:12px;padding:12px;word-break:break-word}
 .evo-lab{width:100%;max-width:760px;background:#0f0f14;border:1px dashed #00d4ff;border-radius:12px;padding:14px;font-size:12px;white-space:pre-wrap;word-break:break-word}
 #card{scroll-margin-top:14px}
-
-/* V17.2 MESH ONLY - CANVAS EN VEZ DE IMG */
-#laia-hologram{position:fixed;right:18px;bottom:18px;width:180px;height:320px;z-index:9999;pointer-events:none;filter:drop-shadow(0 0 18px #00d4ff) drop-shadow(0 0 35px #00d4ff);background:transparent}
+/* V17.3 FULL BODY 4000 - CUERPO COMPLETO */
+#laia-hologram{position:fixed;right:18px;bottom:18px;width:280px;height:520px;z-index:9999;pointer-events:none;filter:drop-shadow(0 0 22px #00d4ff) drop-shadow(0 0 45px #00d4ff);background:transparent}
 #laia-holo-canvas{width:100%;height:100%;display:block;background:transparent;pointer-events:auto;cursor:pointer}
-#bubble{position:absolute;right:195px;bottom:80px;background:rgba(10,15,30,0.92);backdrop-filter:blur(12px);border:1px solid rgba(0,212,255,0.5);color:white;padding:12px 14px;border-radius:14px;font-size:12px;width:210px;pointer-events:auto;box-shadow:0 0 25px rgba(0,212,255,0.3)}
+#bubble{position:absolute;right:295px;bottom:100px;background:rgba(10,15,30,0.92);backdrop-filter:blur(12px);border:1px solid rgba(0,212,255,0.5);color:white;padding:12px 14px;border-radius:14px;font-size:12px;width:210px;pointer-events:auto;box-shadow:0 0 25px rgba(0,212,255,0.3)}
 #bubble.hidden{display:none}
 #laia-state{position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);background:rgba(0,212,255,0.9);color:#000;font-size:9px;padding:2px 8px;border-radius:10px;white-space:nowrap;font-weight:700}
 #laia-pin-container{position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9998}
@@ -44,67 +42,62 @@
 @media(max-width:768px){
 #page1{flex-direction:column}#page1 aside{width:100%;min-width:100%;position:relative;height:auto;max-height:42vh}#page1 main{min-height:58vh}
 .sap-grid{grid-template-columns:1fr}.h-wrapper{height:auto;min-height:calc(100vh - 58px)}
-#laia-hologram{width:110px;height:210px;right:10px;bottom:10px}#bubble{right:125px;bottom:60px;width:180px}
+#laia-hologram{width:160px;height:320px;right:10px;bottom:10px}#bubble{right:175px;bottom:60px;width:180px}
 }
 </style>
 </head>
 <body>
 <header>
-  <div class="logo">📚 LENGUAJE-PRO <span>V17.2 MESH ONLY</span></div>
+  <div class="logo">📚 LENGUAJE-PRO <span>V17.3 FULL BODY</span></div>
   <div style="display:flex;gap:12px;align-items:center">
     <div class="dots"><div class="dot active" id="dot1"></div><div class="dot" id="dot2"></div></div>
     <div class="metrics"><span id="xp">⭐ 0 XP</span><span>🔥 <b id="streak">0</b></span><span id="level-badge">A2</span></div>
   </div>
 </header>
-<div class="page-label" id="pageLabel">V17.2 MESH ONLY • 1200 PUNTOS • SIN ESQUELETO VISIBLE</div>
+<div class="page-label" id="pageLabel">V17.3 FULL BODY • 4000 PUNTOS • CUERPO COMPLETO • ESQUELETO INVISIBLE</div>
 <div class="h-wrapper" id="hWrapper">
   <div class="page" id="page1">
     <aside>
-      <h3 style="font-size:11px;color:#00d4ff">V17.2 MESH ONLY - 50 ÁREAS • 1200 PUNTOS • CEREBRO AUTONOMO</h3>
+      <h3 style="font-size:11px;color:#00d4ff">V17.3 FULL BODY - 4000 PUNTOS • CUERPO ENTERO</h3>
       <input id="search" placeholder="Buscar: Money, in/on/at, co, have, family...">
       <div id="filters"><button class="f active" data-f="">Todas</button><button class="f" data-f="A1">A1</button><button class="f" data-f="A2">A2</button><button class="f" data-f="B1">B1</button><button class="f" data-f="B2">B2</button></div>
       <div id="list"><div style="color:#9ca3af;font-size:12px;padding:10px">Cargando áreas...</div></div>
     </aside>
     <main>
-      <div style="display:flex;gap:10px;margin-bottom:12px"><select id="level"><option>A1</option><option selected>A2</option><option>B1</option><option>B2</option></select><button id="gen" style="background:#00d4ff;color:#000;border:none;padding:10px 16px;border-radius:10px;font-weight:700;cursor:pointer;flex:1;max-width:260px">⚡ GENERAR LECCIÓN V17.2</button><button id="teachBtn" style="background:#8b5cf6;color:#fff;border:none;padding:10px 12px;border-radius:10px;font-weight:700;cursor:pointer">📌 SAPs</button></div>
-      <div id="empty"><h1 style="font-size:28px">👋 Hola, soy Laia MESH ONLY</h1><p style="margin:8px 0">V17.2 - 1200 puntos pin-pan, sin esqueleto visible, cerebro autónomo.</p><p id="status" style="margin-top:10px;font-size:11px;color:#22c55e">Cargando MESH ONLY...</p></div>
+      <div style="display:flex;gap:10px;margin-bottom:12px"><select id="level"><option>A1</option><option selected>A2</option><option>B1</option><option>B2</option></select><button id="gen" style="background:#00d4ff;color:#000;border:none;padding:10px 16px;border-radius:10px;font-weight:700;cursor:pointer;flex:1;max-width:260px">⚡ GENERAR LECCIÓN V17.3</button><button id="teachBtn" style="background:#8b5cf6;color:#fff;border:none;padding:10px 12px;border-radius:10px;font-weight:700;cursor:pointer">📌 SAPs</button></div>
+      <div id="empty"><h1 style="font-size:28px">👋 Soy Laia FULL BODY</h1><p style="margin:8px 0">V17.3 - 4000 puntos, cuerpo completo interconectado con esqueleto invisible.</p><p id="status" style="margin-top:10px;font-size:11px;color:#22c55e">Cargando FULL BODY...</p></div>
       <div id="card" class="hidden"></div>
     </main>
   </div>
   <div class="page" id="page2">
     <div style="width:100%;max-width:760px">
-      <h2 style="font-size:22px">🧬 MOTOR 2 - SAP + MESH PINS</h2>
-      <div class="sap-header" id="sapHeader">Esperando datos Motor 1 MESH ONLY...</div>
+      <h2 style="font-size:22px">🧬 MOTOR 2 - SAP + FULL BODY</h2>
+      <div class="sap-header" id="sapHeader">Esperando datos Motor 1 FULL BODY...</div>
       <div style="margin-top:14px;display:flex;gap:8px"><input id="wordInput" placeholder="Escribe: co, hav, mon, wor, sav..." style="flex:1;background:#1a1a23;border:1px solid #2a2a3a;color:#fff;padding:10px;border-radius:10px"><button id="gen2" style="background:#00d4ff;color:#000;border:none;padding:10px 16px;border-radius:10px;font-weight:700">🔍 EXPLORAR EVOLUCIÓN</button></div>
       <div id="card2" class="hidden" style="margin-top:14px;background:#1a1a23;border:1px solid #2a2a3a;border-radius:16px;padding:18px;max-width:760px;width:100%"></div>
       <div class="sap-grid" id="sapGrid" style="margin-top:14px"></div>
-      <div class="evo-lab" id="evoLab" style="margin-top:14px">MESH ONLY LAB | Sin datos</div>
+      <div class="evo-lab" id="evoLab" style="margin-top:14px">FULL BODY 4000 LAB</div>
     </div>
   </div>
 </div>
-
-<!-- V17.2 MESH ONLY - CANVAS THREE.JS -->
-<div id="laia-hologram"><canvas id="laia-holo-canvas"></canvas><div id="bubble" class="hidden"></div><div id="laia-state">MESH ONLY 1200</div></div>
+<div id="laia-hologram"><canvas id="laia-holo-canvas"></canvas><div id="bubble" class="hidden"></div><div id="laia-state">FULL BODY 4000</div></div>
 <div id="laia-pin-container"></div>
-<div id="dic-box" class="hidden"></div>
-
 <script type="module">
 import { LAYA_FINAL } from './LAYA_FINAL_COMPLETO.js';
-import { thinkAndMove, decideByMetrics } from './actor/laia_actor_brain.js';
+import { thinkAndMove } from './actor/laia_actor_brain.js';
 import * as THREE from 'three';
 
-// MESH ONLY ENGINE - 1200 PUNTOS - SIN ESQUELETO VISIBLE
 class LaiaMeshOnly {
   constructor(canvas){
     this.canvas = canvas;
     this.scene = new THREE.Scene();
-    this.camera = new THREE.PerspectiveCamera(28, 180/320, 0.1, 100);
-    this.camera.position.set(0,0.8,2.2);
+    this.camera = new THREE.PerspectiveCamera(35, 280/520, 0.1, 100);
+    this.camera.position.set(0,0.15,2.6);
     this.renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:true});
-    this.renderer.setSize(180,320); this.renderer.setPixelRatio(window.devicePixelRatio);
+    this.renderer.setSize(280,520); this.renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
     this.bones = []; this.group = new THREE.Group();
     this.createInvisibleSkeleton();
-    this.createPointCloudMesh();
+    this.createFullBodyPointCloud();
     this.scene.add(this.group);
     this.navmesh = {welcome:{x:50,y:30}, reading_text:{x:35,y:40}, input_field:{x:45,y:60}, feedback_ok:{x:60,y:35}, feedback_err:{x:30,y:65}, vocab_word:{x:70,y:45}, sap_dashboard:{x:50,y:50}};
     this.currentZone = 'welcome';
@@ -112,106 +105,86 @@ class LaiaMeshOnly {
     this.animate();
   }
   createInvisibleSkeleton(){
-    const mkBone = (pos, parent) => {
-      const b = new THREE.Bone(); b.position.copy(pos); parent.add(b); this.bones.push(b); return b;
-    };
-    const hips = mkBone(new THREE.Vector3(0,0,0), this.group);
-    const spine1 = mkBone(new THREE.Vector3(0,0.15,0), hips);
-    const spine2 = mkBone(new THREE.Vector3(0,0.2,0), spine1);
-    const chest = mkBone(new THREE.Vector3(0,0.18,0), spine2);
-    const neck = mkBone(new THREE.Vector3(0,0.15,0), chest);
-    const head = mkBone(new THREE.Vector3(0,0.12,0), neck);
-    const mouth = mkBone(new THREE.Vector3(0,-0.04,0.08), head);
-    // brazos
-    const lShoulder = mkBone(new THREE.Vector3(-0.18,0,0), chest);
-    const lArm = mkBone(new THREE.Vector3(-0.15,0,0), lShoulder);
-    const lFore = mkBone(new THREE.Vector3(-0.14,0,0), lArm);
-    const lHand = mkBone(new THREE.Vector3(-0.1,0,0), lFore);
-    const rShoulder = mkBone(new THREE.Vector3(0.18,0,0), chest);
-    const rArm = mkBone(new THREE.Vector3(0.15,0,0), rShoulder);
-    const rFore = mkBone(new THREE.Vector3(0.14,0,0), rArm);
-    const rHand = mkBone(new THREE.Vector3(0.1,0,0), rFore);
-    // piernas
-    const lHip = mkBone(new THREE.Vector3(-0.09,0,0), hips);
-    const lThigh = mkBone(new THREE.Vector3(0,-0.2,0), lHip);
-    const lKnee = mkBone(new THREE.Vector3(0,-0.2,0), lThigh);
-    const lFoot = mkBone(new THREE.Vector3(0,-0.2,0), lKnee);
-    const rHip = mkBone(new THREE.Vector3(0.09,0,0), hips);
-    const rThigh = mkBone(new THREE.Vector3(0,-0.2,0), rHip);
-    const rKnee = mkBone(new THREE.Vector3(0,-0.2,0), rThigh);
-    const rFoot = mkBone(new THREE.Vector3(0,-0.2,0), rKnee);
-    // relleno hasta 34
-    while(this.bones.length < 34) mkBone(new THREE.Vector3(0,0,0), hips);
+    const mk = (pos, parent) => { const b = new THREE.Bone(); b.position.copy(pos); parent.add(b); this.bones.push(b); return b; };
+    const hips = mk(new THREE.Vector3(0,0,0), this.group);
+    const spine1 = mk(new THREE.Vector3(0,0.18,0), hips);
+    const spine2 = mk(new THREE.Vector3(0,0.22,0), spine1);
+    const chest = mk(new THREE.Vector3(0,0.22,0), spine2);
+    const neck = mk(new THREE.Vector3(0,0.18,0), chest);
+    const head = mk(new THREE.Vector3(0,0.14,0), neck);
+    const lSh = mk(new THREE.Vector3(-0.21,0,0), chest); const lArm = mk(new THREE.Vector3(-0.18,0,0), lSh); const lFore = mk(new THREE.Vector3(-0.17,0,0), lArm); const lHand = mk(new THREE.Vector3(-0.14,0,0), lFore);
+    const rSh = mk(new THREE.Vector3(0.21,0,0), chest); const rArm = mk(new THREE.Vector3(0.18,0,0), rSh); const rFore = mk(new THREE.Vector3(0.17,0,0), rArm); const rHand = mk(new THREE.Vector3(0.14,0,0), rFore);
+    const lHip = mk(new THREE.Vector3(-0.11,0,0), hips); const lTh = mk(new THREE.Vector3(0,-0.26,0), lHip); const lKn = mk(new THREE.Vector3(0,-0.26,0), lTh); const lFt = mk(new THREE.Vector3(0,-0.24,0), lKn);
+    const rHip = mk(new THREE.Vector3(0.11,0,0), hips); const rTh = mk(new THREE.Vector3(0,-0.26,0), rHip); const rKn = mk(new THREE.Vector3(0,-0.26,0), rTh); const rFt = mk(new THREE.Vector3(0,-0.24,0), rKn);
+    while(this.bones.length < 34) mk(new THREE.Vector3(0,0,0), hips);
   }
-  createPointCloudMesh(){
-    const totalPoints = 1200;
+  createFullBodyPointCloud(){
     const positions = [];
-    const makeCloud = (center, radius, count) => {
+    const cloud = (c, radX, radY, radZ, count) => {
       for(let i=0;i<count;i++){
-        const theta = Math.random()*Math.PI*2;
-        const phi = Math.acos(2*Math.random()-1);
-        const r = radius * (0.9 + Math.random()*0.2);
-        positions.push(center.x + r*Math.sin(phi)*Math.cos(theta), center.y + r*Math.sin(phi)*Math.sin(theta), center.z + r*Math.cos(phi));
+        const u = Math.random()*2*Math.PI;
+        const v = Math.random()*Math.PI;
+        const rx = radX * (0.8 + Math.random()*0.4);
+        const ry = radY * (0.8 + Math.random()*0.4);
+        const rz = radZ * (0.8 + Math.random()*0.4);
+        positions.push(c.x + rx*Math.sin(v)*Math.cos(u), c.y + ry*Math.sin(v)*Math.sin(u), c.z + rz*Math.cos(v));
       }
     };
-    makeCloud(new THREE.Vector3(0,0.5,0), 0.18, 300); // cabeza
-    makeCloud(new THREE.Vector3(0,0.2,0), 0.22, 400); // pecho
-    makeCloud(new THREE.Vector3(0,-0.15,0), 0.18, 250); // cadera
-    makeCloud(new THREE.Vector3(-0.25,0.2,0), 0.06, 80); makeCloud(new THREE.Vector3(-0.35,0.1,0), 0.05, 60); // brazo L
-    makeCloud(new THREE.Vector3(0.25,0.2,0), 0.06, 80); makeCloud(new THREE.Vector3(0.35,0.1,0), 0.05, 60); // brazo R
-    makeCloud(new THREE.Vector3(-0.09,-0.4,0), 0.07, 90); makeCloud(new THREE.Vector3(0.09,-0.4,0), 0.07, 90); // piernas
+    // CUERPO COMPLETO COMO LA FOTO - 4000 PUNTOS
+    cloud(new THREE.Vector3(0,0.98,0), 0.18,0.21,0.18, 950); // cabeza + pelo holográfico
+    cloud(new THREE.Vector3(0,0.68,0), 0.23,0.14, 550); // hombros/cuello
+    cloud(new THREE.Vector3(0,0.42,0), 0.26,0.22,0.16, 650); // pecho
+    cloud(new THREE.Vector3(0,0.15,0), 0.21,0.18,0.13, 500); // cintura/cadera
+    cloud(new THREE.Vector3(-0.28,0.42,0), 0.07,0.18,0.07, 180); // brazo L up
+    cloud(new THREE.Vector3(-0.42,0.12,0), 0.06,0.16,0.06, 180); // brazo L low
+    cloud(new THREE.Vector3(0.28,0.42,0), 0.07,0.18,0.07, 180);
+    cloud(new THREE.Vector3(0.42,0.12,0), 0.06,0.16,0.06, 180); // brazo R
+    cloud(new THREE.Vector3(-0.11,-0.22,0), 0.09,0.20,0.09, 300); // muslo L
+    cloud(new THREE.Vector3(0.11,-0.22,0), 0.09,0.20,0.09, 300); // muslo R
+    cloud(new THREE.Vector3(-0.11,-0.62,0), 0.08,0.18,0.08, 150);
+    cloud(new THREE.Vector3(0.11,-0.62,0), 0.08,0.18,0.08, 150);
+    
     const geo = new THREE.BufferGeometry();
     geo.setAttribute('position', new THREE.Float32BufferAttribute(positions,3));
-    const mat = new THREE.PointsMaterial({color:0x00d4ff, size:0.018, sizeAttenuation:true, transparent:true, opacity:0.92});
-    const points = new THREE.Points(geo, mat);
-    // Atachamos la nube al hueso chest para que se mueva con el esqueleto invisible
-    this.bones[2].add(points);
-    this.points = points;
+    const mat = new THREE.PointsMaterial({color:0x00d4ff, size:0.016, sizeAttenuation:true, transparent:true, opacity:0.96, blending: THREE.AdditiveBlending});
+    const pts = new THREE.Points(geo, mat);
+    // La malla completa atada al spine invisible - cuando el esqueleto se mueve, toda la malla se mueve
+    this.bones[3].add(pts);
+    this.points = pts;
   }
   async goTo(zone){
     this.currentZone = zone;
-    const ctx = { inputFocused: zone==='input_field', sapError: zone==='feedback_err', sapOK: zone==='feedback_ok', moving: zone==='reading_text', reading: zone==='reading_text', talkAmp: zone==='reading_text'?0.8:0 };
-    thinkAndMove(this.bones, ctx);
-    document.getElementById('laia-state').textContent = zone.toUpperCase();
+    thinkAndMove(this.bones, {inputFocused: zone==='input_field', sapError: zone==='feedback_err', sapOK: zone==='feedback_ok', moving: zone==='reading_text', reading: zone==='reading_text', talkAmp:0.7});
+    document.getElementById('laia-state').textContent = zone.toUpperCase() + ' • 4000PTS';
   }
   animate(){
     requestAnimationFrame(()=>this.animate());
     const t = this.clock.getElapsedTime();
-    thinkAndMove(this.bones, {reading:true, talkAmp: Math.sin(t*5)*0.2+0.2});
-    if(this.bones[0]){ this.bones[0].rotation.y = Math.sin(t*0.3)*0.15; }
+    thinkAndMove(this.bones, {reading:true, talkAmp: 0.3 + Math.sin(t*4)*0.2});
+    if(this.bones[0]){ this.bones[0].rotation.y = Math.sin(t*0.25)*0.18; this.bones[0].position.y = Math.sin(t*0.7)*0.02; }
     this.renderer.render(this.scene, this.camera);
   }
 }
 
 let metrics = JSON.parse(localStorage.getItem('LAYA_METRICS_V9')||'{"same_error_count":0,"streak_days":3,"accuracy_7d":0.82,"hesitation_ms":1200,"level":"A2","xp_total":0,"cefr_level":"A2"}');
-let selected=null, currentFilter='', startTime=Date.now();
+let selected=null, currentFilter='';
 
 const laiaActor = new LaiaMeshOnly(document.getElementById('laia-holo-canvas'));
 window.laiaActor = laiaActor;
 
-function spitPin(type, data, zoneName){
-  const c=document.getElementById('laia-pin-container'); if(!c) return;
-  const pin=document.createElement('div'); pin.className='laia-pin';
-  const zone = laiaActor.navmesh[zoneName] || {x:50,y:30};
-  pin.style.left=zone.x+'vw'; pin.style.top=zone.y+'vh';
-  pin.innerHTML=`<b>${type.toUpperCase()}</b><br>${JSON.stringify(data).slice(0,120)}`;
-  pin.onclick=()=>pin.remove(); c.appendChild(pin); setTimeout(()=>pin.remove(),6000);
-}
-
 const listEl=document.getElementById('list');
 function renderList(f='', lvl=''){
-  if(!LAYA_FINAL ||!LAYA_FINAL.AREAS){ listEl.innerHTML='<div style="color:#ef4444;padding:10px">Error: LAYA_FINAL no cargado</div>'; return; }
+  if(!LAYA_FINAL ||!LAYA_FINAL.AREAS){ listEl.innerHTML='<div style="color:#ef4444;padding:10px">Error</div>'; return; }
   listEl.innerHTML='';
   Object.entries(LAYA_FINAL.AREAS).forEach(([id,a])=>{
     const hay=`${id} ${a.name} ${a.topic} ${a.grammar.join(' ')} ${a.vocab.join(' ')} ${a.level}`.toLowerCase();
-    if(f &&!hay.includes(f)) return;
-    if(lvl && a.level!==lvl) return;
+    if(f &&!hay.includes(f)) return; if(lvl && a.level!==lvl) return;
     const d=document.createElement('div'); d.className='area';
     d.innerHTML=`<b>${id}. ${a.name}</b><small>${a.topic} • ${a.level} • ${a.grammar[0]}</small><em>${a.vocab.slice(0,2).join(', ')}</em>`;
     d.onclick=async ()=>{ selected=id; document.querySelectorAll('.area').forEach(x=>x.classList.remove('active')); d.classList.add('active'); await laiaActor.goTo('reading_text'); };
     listEl.appendChild(d);
   });
-  document.getElementById('status').textContent=`MESH ONLY 1200: ${Object.keys(LAYA_FINAL.AREAS).length} áreas, ${Object.keys(LAYA_FINAL.GRAMMAR).length} SIGs - LISTO`;
+  document.getElementById('status').textContent=`FULL BODY 4000: ${Object.keys(LAYA_FINAL.AREAS).length} áreas - LISTO`;
   document.getElementById('status').style.color='#00d4ff';
 }
 renderList();
@@ -222,12 +195,9 @@ document.getElementById('streak').textContent=metrics.streak_days;
 document.getElementById('xp').textContent=`⭐ ${metrics.xp_total} XP`;
 document.getElementById('level-badge').textContent=metrics.level;
 function saveMetrics(){ localStorage.setItem('LAYA_METRICS_V9', JSON.stringify(metrics)); }
-
 function pushToPage2(res, word){
-  document.getElementById('sapHeader').innerHTML=`<div style="display:flex;justify-content:space-between"><b style="color:#00d4ff">MESH ONLY // ${res.meta.grammar_main.sig} // ${word}</b></div><div style="margin-top:8px;font-size:12px">📍 ${res.meta.area} | ${res.meta.topic}</div>`;
-  document.getElementById('sapGrid').innerHTML=`<div class="sap-card"><b style="font-size:11px;color:#00d4ff">MESH 1200 PUNTOS</b><br><span style="font-size:11px">Solo malla punteada, sin skeleton visible</span></div><div class="sap-card"><b style="font-size:11px;color:#22c55e">ZONE ${laiaActor.currentZone}</b></div>`;
+  document.getElementById('sapHeader').innerHTML=`<div style="display:flex;justify-content:space-between"><b style="color:#00d4ff">FULL BODY 4000 // ${res.meta.grammar_main.sig} // ${word}</b></div><div style="margin-top:8px;font-size:12px">📍 ${res.meta.area} | ${res.meta.topic}</div>`;
 }
-
 function renderLesson(res){
   const card=document.getElementById('card');
   const words=res.story.split(/(\s+)/).map(w=>{ if(w.trim().length<2) return w; const clean=w.toLowerCase().replace(/[^a-z]/g,''); if(!clean) return w; return `<span class="word" data-w="${clean}">${w}</span>`; }).join('');
@@ -243,15 +213,21 @@ function renderLesson(res){
   };
   document.getElementById('sendBtn').onclick=check; input.onkeydown=e=>{ if(e.key==='Enter') check(); }; input.onfocus=()=>{ laiaActor.goTo('input_field'); };
 }
-
 document.getElementById('gen').onclick=()=>{
   if(!selected){ alert('Elige área primero tete!'); return; }
   const lvl=document.getElementById('level').value; const res=LAYA_FINAL.generate(selected, lvl, metrics); renderLesson(res);
 };
-document.getElementById('laia-hologram').onclick=()=>{ const w=document.getElementById('hWrapper'); const isPage2 = w.scrollLeft > window.innerWidth/2; w.scrollTo({left: isPage2?0:window.innerWidth, behavior:'smooth'}); };
-
+const wrapper=document.getElementById('hWrapper');
+wrapper.addEventListener('scroll', ()=>{
+  const isPage2 = wrapper.scrollLeft > window.innerWidth/2;
+  document.getElementById('dot1').classList.toggle('active',!isPage2);
+  document.getElementById('dot2').classList.toggle('active', isPage2);
+});
+document.getElementById('laia-hologram').onclick=()=>{
+  const isPage2 = wrapper.scrollLeft > window.innerWidth/2;
+  wrapper.scrollTo({left: isPage2? 0 : window.innerWidth, behavior:'smooth'});
+};
 laiaActor.goTo('welcome');
-document.getElementById('status').textContent=`MESH ONLY 1200 PUNTOS CARGADO - LISTO`;
 </script>
 </body>
 </html>

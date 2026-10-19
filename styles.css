@@ -25,12 +25,12 @@ header{height:58px;background:#1a1a23;border-bottom:1px solid #2a2a3a;display:fl
 .chat-box button{background:var(--holo);color:#000;border:none;padding:12px 18px;border-radius:12px;font-weight:700;cursor:pointer}
 .feedback{margin-top:12px;padding:12px;border-radius:12px;font-size:13px;font-weight:700;word-break:break-word}.feedback.ok{background:rgba(34,197,94,0.12);border:1px solid #22c55e;color:#86efac}.feedback.fail{background:rgba(239,68,68,0.12);border:1px solid #ef4444;color:#fca5a5}
 
-/* V17.3 FULL BODY 4000 - CUERPO COMPLETO */
-#laia-hologram{position:fixed;right:18px;bottom:18px;width:280px;height:520px;z-index:9999;display:flex;flex-direction:column;align-items:center;pointer-events:none;filter:drop-shadow(0 0 22px var(--holo)) drop-shadow(0 0 45px var(--holo));background:transparent}
-#laia-holo-canvas{width:100%;height:100%;display:block;background:transparent;pointer-events:auto;cursor:pointer}
+/* V17.4 CONSTELLATION - FULL BODY CABEZA Y PIES DENTRO - FEMENINA 0.11 CINTURA */
+#laia-hologram{position:fixed;right:18px;bottom:18px;width:300px;height:600px;z-index:9999;display:flex;flex-direction:column;align-items:center;pointer-events:none;filter:drop-shadow(0 0 22px var(--holo)) drop-shadow(0 0 45px var(--holo));background:transparent}
+#laia-holo-canvas{width:300px!important;height:600px!important;display:block;background:transparent;pointer-events:auto;cursor:pointer}
 #laia-glow{display:none}
 #laia-sprite{display:none}
-#bubble{position:absolute;right:295px;bottom:100px;background:rgba(10,15,30,0.92);backdrop-filter:blur(14px);border:1px solid rgba(0,212,255,0.5);color:white;padding:10px 14px;border-radius:18px 18px 4px 18px;font-size:11px;font-weight:600;max-width:280px;box-shadow:0 8px 28px rgba(0,212,255,0.35);pointer-events:auto;line-height:1.4}
+#bubble{position:absolute;right:315px;bottom:110px;background:rgba(10,15,30,0.92);backdrop-filter:blur(14px);border:1px solid rgba(0,212,255,0.5);color:white;padding:10px 14px;border-radius:18px 18px 4px 18px;font-size:11px;font-weight:600;max-width:280px;box-shadow:0 8px 28px rgba(0,212,255,0.35);pointer-events:auto;line-height:1.4}
 #bubble.hidden{display:none}
 #laia-state{background:rgba(0,212,255,0.9);border:none;padding:3px 8px;border-radius:20px;font-size:8px;color:#000;letter-spacing:0.5px;font-weight:700;position:absolute;bottom:-18px}
 #laia-pin-container{position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9998}
@@ -52,7 +52,9 @@ header{height:58px;background:#1a1a23;border-bottom:1px solid #2a2a3a;display:fl
 .sap-card{background:var(--card);border:1px solid #2a2a3a;border-radius:12px;padding:12px;word-break:break-word}
 .evo-lab{width:100%;max-width:760px;background:#0f0f14;border:1px dashed var(--holo);border-radius:12px;padding:14px;font-size:12px;white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere}
 @media(max-width:768px){
-#laia-hologram{width:170px;height:340px;right:10px;bottom:10px}#bubble{max-width:220px;right:185px;bottom:60px}
+#laia-hologram{width:180px!important;height:360px!important;right:8px;bottom:8px}
+#laia-holo-canvas{width:180px!important;height:360px!important}
+#bubble{max-width:180px;right:190px;bottom:50px;font-size:10px}
 #page1{flex-direction:column;overflow-y:auto}
 #page1 aside{width:100%;min-width:100%;position:relative;top:0;height:auto;max-height:42vh;flex-shrink:0;overflow-y:auto}
 #page1 main{flex:1;min-height:58vh;overflow-y:visible}

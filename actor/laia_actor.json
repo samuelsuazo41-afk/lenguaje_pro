@@ -1,0 +1,22 @@
+{
+  "actor_version": "V1",
+  "base_image": "../laia_HOLO_CLEAN_16.png",
+  "type": "billboard_actor_v1",
+  "status": "t_pose_clean_323kb_ready_for_glb",
+  "rig": {
+    "joints": 34,
+    "head": "bob_brown_short",
+    "face": "freckles_gold_hoops_brown_eyes",
+    "body": "blazer_black_gold_button + grey_trousers + black_loafers",
+    "t_pose": "arms_180_horizontal_palms_down_legs_together"
+  },
+  "animations_from_intentions": {
+    "FOUNDATION": "idle_hands_down",
+    "SCAFFOLDING": "point_left_right_explain_open",
+    "STRICT_ENGINEER": "crossed_arms_squint",
+    "FLOW_OBSERVER": "crossed_arms_relaxed_nod",
+    "ELEVATION": "jump_wave_celebratory",
+    "TRANSMISSION": "open_big_lip_sync_6_visemes"
+  },
+  "next_step_glb": "Este manifest se reemplazará por laia_actor.glb binario cuando lo genere con tus 9 piezas modulares"
+}

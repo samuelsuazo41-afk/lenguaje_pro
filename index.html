@@ -15,26 +15,26 @@
 }
 </script>
 <style>
-.h-wrapper{margin-top:58px;display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;width:100vw;height:calc(100vh - 58px);-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.h-wrapper{margin-top:58px;display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;width:100vw;height:calc(100vh - 58px);-webkit-overflow-scrolling:touch;scrollbar-width:none;position:relative;z-index:10}
 .h-wrapper::-webkit-scrollbar{display:none}
 .page{min-width:100vw;width:100vw;height:100%;scroll-snap-align:start;overflow-y:auto;display:flex;flex-direction:row}
 .page-label{position:fixed;top:62px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.7);border:1px solid #2a2a3a;padding:4px 12px;border-radius:20px;font-size:10px;color:#9ca3af;z-index:20;pointer-events:none}
 .dots{display:flex;gap:6px;align-items:center}.dot{width:8px;height:8px;border-radius:50%;background:#2a2a3a;transition:.3s}.dot.active{background:#00d4ff;width:22px}
 #page1{flex:1;display:flex;min-height:100%;min-width:100vw;overflow-y:auto}
-#page1 aside{width:330px;min-width:330px;background:#1a1a23;border-right:1px solid #2a2a3a;padding:14px;display:flex;flex-direction:column;gap:10px;position:sticky;top:0;height:calc(100vh - 58px);overflow-y:auto}
-#page1 main{flex:1;padding:18px;min-width:0;overflow-x:hidden;max-width:860px}
-#page2{background:linear-gradient(180deg,#12121a 0%,#0f0f14 100%);padding:18px;display:flex;flex-direction:column;gap:14px;align-items:center;min-width:100vw}
+#page1 aside{width:330px;min-width:330px;background:rgba(26,26,35,0.85);backdrop-filter:blur(12px);border-right:1px solid #2a2a3a;padding:14px;display:flex;flex-direction:column;gap:10px;position:sticky;top:0;height:calc(100vh - 58px);overflow-y:auto}
+#page1 main{flex:1;padding:18px;min-width:0;overflow-x:hidden;max-width:860px;background:rgba(15,15,20,0.6)}
+#page2{background:linear-gradient(180deg,rgba(18,18,26,0.7) 0%,rgba(15,15,20,0.8) 100%);padding:18px;display:flex;flex-direction:column;gap:14px;align-items:center;min-width:100vw}
 .sap-header{width:100%;max-width:760px;background:#1a1a23;border:1px solid #00d4ff;border-radius:16px;padding:14px;word-break:break-word}
 .sap-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;max-width:760px}
 .sap-card{background:#1a1a23;border:1px solid #2a2a3a;border-radius:12px;padding:12px;word-break:break-word}
 .evo-lab{width:100%;max-width:760px;background:#0f0f14;border:1px dashed #00d4ff;border-radius:12px;padding:14px;font-size:12px;white-space:pre-wrap;word-break:break-word}
 #card{scroll-margin-top:14px}
-/* V17.4 FULL BODY CONSTELLATION - CABEZA Y PIES DENTRO */
-#laia-hologram{position:fixed;right:18px;bottom:18px;width:300px;height:600px;z-index:9999;pointer-events:none;filter:drop-shadow(0 0 22px #00d4ff) drop-shadow(0 0 45px #00d4ff);background:transparent}
-#laia-holo-canvas{width:100%;height:100%;display:block;background:transparent;pointer-events:auto;cursor:pointer}
-#bubble{position:absolute;right:315px;bottom:100px;background:rgba(10,15,30,0.92);backdrop-filter:blur(12px);border:1px solid rgba(0,212,255,0.5);color:white;padding:12px 14px;border-radius:14px;font-size:12px;width:210px;pointer-events:auto;box-shadow:0 0 25px rgba(0,212,255,0.3)}
+/* V17.4 FIX DEFINITIVO - MUNDO DETRAS - CABEZA Y PIES DENTRO - COMO TU REFERENCIA EL CARME */
+#laia-hologram{position:fixed !important;top:0 !important;left:0 !important;right:auto !important;bottom:auto !important;width:100vw !important;height:100vh !important;z-index:1 !important;display:flex !important;align-items:center !important;justify-content:center !important;pointer-events:none !important;filter:drop-shadow(0 0 22px #00d4ff) drop-shadow(0 0 45px #00d4ff);background:radial-gradient(ellipse at 70% 50%, rgba(0,212,255,0.08), transparent 60%) !important}
+#laia-holo-canvas{width:100vw !important;height:100vh !important;display:block !important;background:transparent !important;pointer-events:auto !important;cursor:pointer !important}
+#bubble{position:absolute;left:50%;transform:translateX(-50%);bottom:110px;background:rgba(10,15,30,0.92);backdrop-filter:blur(12px);border:1px solid rgba(0,212,255,0.5);color:white;padding:12px 14px;border-radius:14px;font-size:12px;max-width:260px;pointer-events:auto;box-shadow:0 0 25px rgba(0,212,255,0.3);z-index:5}
 #bubble.hidden{display:none}
-#laia-state{position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);background:rgba(0,212,255,0.9);color:#000;font-size:9px;padding:2px 8px;border-radius:10px;white-space:nowrap;font-weight:700}
+#laia-state{position:absolute;bottom:80px;left:50%;transform:translateX(-50%);background:rgba(0,212,255,0.9);color:#000;font-size:9px;padding:3px 10px;border-radius:10px;white-space:nowrap;font-weight:700;z-index:5}
 #laia-pin-container{position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9998}
 .laia-pin{position:absolute;background:linear-gradient(135deg, rgba(0,212,255,0.95), rgba(139,92,246,0.95));color:white;padding:10px 14px;border-radius:12px;font-size:11px;max-width:230px;box-shadow:0 8px 25px rgba(0,212,255,0.4);border:1px solid rgba(255,255,255,0.3);animation:pinPop 0.4s cubic-bezier(0.34,1.56,0.64,1), pinFloat 3s ease-in-out infinite;pointer-events:auto;cursor:pointer}
 @keyframes pinPop{0%{transform:scale(0) translateY(20px);opacity:0}100%{transform:scale(1) translateY(0);opacity:1}}
@@ -42,7 +42,8 @@
 @media(max-width:768px){
 #page1{flex-direction:column}#page1 aside{width:100%;min-width:100%;position:relative;height:auto;max-height:42vh}#page1 main{min-height:58vh}
 .sap-grid{grid-template-columns:1fr}.h-wrapper{height:auto;min-height:calc(100vh - 58px)}
-#laia-hologram{width:180px;height:360px;right:10px;bottom:10px}#bubble{right:195px;bottom:60px;width:180px}
+#laia-hologram{width:100vw !important;height:100vh !important}
+#bubble{max-width:200px;bottom:90px}
 }
 </style>
 </head>
@@ -91,20 +92,26 @@ class LaiaMeshOnly {
   constructor(canvas){
     this.canvas = canvas;
     this.scene = new THREE.Scene();
-    this.camera = new THREE.PerspectiveCamera(38, 300/600, 0.1, 100);
-    this.camera.position.set(0,-0.10,3.10);
+    // FIX DEFINITIVO - FOV 28 PARA QUE ENTRE CABEZA+PIES - COMO REFERENCIA EL CARME
+    this.camera = new THREE.PerspectiveCamera(28, window.innerWidth / window.innerHeight, 0.1, 100);
+    this.camera.position.set(0.35, 0.15, 4.2);
     this.renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:true});
-    this.renderer.setSize(300,600); 
+    this.renderer.setSize(window.innerWidth, window.innerHeight); 
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
     this.bones = []; 
     this.group = new THREE.Group();
-    this.group.position.y = -0.20;
+    // FIX POSICION - BAJA Y DERECHA COMO TU WIDGET
+    this.group.position.set(0.38, -0.48, 0);
     this.createInvisibleSkeleton();
     this.createFullBodyPointCloud();
     this.scene.add(this.group);
-    this.navmesh = {welcome:{x:50,y:30}, reading_text:{x:35,y:40}, input_field:{x:45,y:60}, feedback_ok:{x:60,y:35}, feedback_err:{x:30,y:65}, vocab_word:{x:70,y:45}, sap_dashboard:{x:50,y:50}, evolution:{x:50,y:20}};
     this.currentZone = 'welcome';
     this.clock = new THREE.Clock();
+    window.addEventListener('resize', ()=>{ 
+      this.camera.aspect = window.innerWidth/window.innerHeight; 
+      this.camera.updateProjectionMatrix(); 
+      this.renderer.setSize(window.innerWidth, window.innerHeight);
+    });
     this.animate();
   }
   createInvisibleSkeleton(){
@@ -133,33 +140,32 @@ class LaiaMeshOnly {
         positions.push(c.x + rx*Math.sin(v)*Math.cos(u), c.y + ry*Math.sin(v)*Math.sin(u), c.z + rz*Math.cos(v));
       }
     };
-    // V17.4 CONSTELLATION - FEMENINA COMPLETA - MISMA MALLA + ARREGLADA
-    cloud(new THREE.Vector3(0,1.08,0), 0.15,0.19,0.13, 900); // cabeza corona + pelo
-    cloud(new THREE.Vector3(-0.16,0.92,0), 0.08,0.13,0.06, 250); // coleta larga holográfica
-    cloud(new THREE.Vector3(0,0.85,0), 0.04,0.05,0.04, 70); // cuello fino
-    cloud(new THREE.Vector3(0,0.68,0), 0.20,0.08,0.10, 380); // hombros suaves
-    cloud(new THREE.Vector3(0,0.44,0.02), 0.19,0.14,0.11, 450); // pecho
-    cloud(new THREE.Vector3(0,0.22,0), 0.11,0.09,0.08, 320); // CINTURA 0.11 FEMENINA
-    cloud(new THREE.Vector3(0,0.0,0), 0.21,0.13,0.12, 450); // cadera 0.21 ancha
-    cloud(new THREE.Vector3(-0.27,0.50,0), 0.05,0.13,0.05, 150); // brazo L up
-    cloud(new THREE.Vector3(-0.39,0.20,0), 0.04,0.13,0.04, 150); // brazo L low
-    cloud(new THREE.Vector3(0.27,0.50,0), 0.05,0.13,0.05, 150); // brazo R up
-    cloud(new THREE.Vector3(0.39,0.20,0), 0.04,0.13,0.04, 150); // brazo R low
-    cloud(new THREE.Vector3(-0.11,-0.28,0), 0.07,0.18,0.07, 300); // muslo L
-    cloud(new THREE.Vector3(0.11,-0.28,0), 0.07,0.18,0.07, 300); // muslo R
-    cloud(new THREE.Vector3(-0.12,-0.64,0), 0.06,0.16,0.06, 280); // pierna L
-    cloud(new THREE.Vector3(0.12,-0.64,0), 0.06,0.16,0.06, 280); // pierna R
-    cloud(new THREE.Vector3(-0.12,-0.98,0), 0.05,0.07,0.07, 160); // pie L
-    cloud(new THREE.Vector3(0.12,-0.98,0), 0.05,0.07,0.07, 160); // pie R
+    // V17.4 CONSTELLATION - FEMENINA COMPLETA - MISMA MALLA + ARREGLADA POSICION
+    cloud(new THREE.Vector3(0,1.08,0), 0.15,0.19,0.13, 900);
+    cloud(new THREE.Vector3(-0.16,0.92,0), 0.08,0.13,0.06, 250);
+    cloud(new THREE.Vector3(0,0.85,0), 0.04,0.05,0.04, 70);
+    cloud(new THREE.Vector3(0,0.68,0), 0.20,0.08,0.10, 380);
+    cloud(new THREE.Vector3(0,0.44,0.02), 0.19,0.14,0.11, 450);
+    cloud(new THREE.Vector3(0,0.22,0), 0.11,0.09,0.08, 320);
+    cloud(new THREE.Vector3(0,0.0,0), 0.21,0.13,0.12, 450);
+    cloud(new THREE.Vector3(-0.27,0.50,0), 0.05,0.13,0.05, 150);
+    cloud(new THREE.Vector3(-0.39,0.20,0), 0.04,0.13,0.04, 150);
+    cloud(new THREE.Vector3(0.27,0.50,0), 0.05,0.13,0.05, 150);
+    cloud(new THREE.Vector3(0.39,0.20,0), 0.04,0.13,0.04, 150);
+    cloud(new THREE.Vector3(-0.11,-0.28,0), 0.07,0.18,0.07, 300);
+    cloud(new THREE.Vector3(0.11,-0.28,0), 0.07,0.18,0.07, 300);
+    cloud(new THREE.Vector3(-0.12,-0.64,0), 0.06,0.16,0.06, 280);
+    cloud(new THREE.Vector3(0.12,-0.64,0), 0.06,0.16,0.06, 280);
+    cloud(new THREE.Vector3(-0.12,-0.98,0), 0.05,0.07,0.07, 160);
+    cloud(new THREE.Vector3(0.12,-0.98,0), 0.05,0.07,0.07, 160);
     
     const geo = new THREE.BufferGeometry();
     geo.setAttribute('position', new THREE.Float32BufferAttribute(positions,3));
-    const mat = new THREE.PointsMaterial({color:0x00d4ff, size:0.016, sizeAttenuation:true, transparent:true, opacity:0.96, blending: THREE.AdditiveBlending});
+    const mat = new THREE.PointsMaterial({color:0x00d4ff, size:0.022, sizeAttenuation:true, transparent:true, opacity:0.96, blending: THREE.AdditiveBlending});
     const pts = new THREE.Points(geo, mat);
     this.bones[3].add(pts);
     this.points = pts;
 
-    // CONSTELACIÓN ZODIAC - interconexión pin pan
     const linePos=[];
     for(let i=0;i<positions.length-12;i+=6){
       if(Math.random()>0.88) linePos.push(positions[i],positions[i+1],positions[i+2], positions[i+9],positions[i+10],positions[i+11]);
@@ -171,7 +177,7 @@ class LaiaMeshOnly {
   }
   async goTo(zone){
     this.currentZone = zone;
-    const mapPos = {welcome:{x:0,y:-0.20}, reading_text:{x:-0.20,y:-0.15}, input_field:{x:0.20,y:-0.15}, feedback_ok:{x:0,y:-0.25}, feedback_err:{x:0,y:-0.10}, sap_dashboard:{x:0,y:-0.20}, evolution:{x:0,y:-0.15}};
+    const mapPos = {welcome:{x:0.38,y:-0.48}, reading_text:{x:0.15,y:-0.43}, input_field:{x:0.55,y:-0.43}, feedback_ok:{x:0.38,y:-0.53}, feedback_err:{x:0.38,y:-0.38}, sap_dashboard:{x:0.38,y:-0.48}, evolution:{x:0.38,y:-0.43}};
     if(mapPos[zone]){ this.group.position.x=mapPos[zone].x; this.group.position.y=mapPos[zone].y; }
     thinkAndMove(this.bones, {inputFocused: zone==='input_field', sapError: zone==='feedback_err', sapOK: zone==='feedback_ok', moving: zone==='reading_text', reading: zone==='reading_text', talkAmp:0.7});
     document.getElementById('laia-state').textContent = zone.toUpperCase() + ' • 4000PTS';
@@ -180,7 +186,6 @@ class LaiaMeshOnly {
     requestAnimationFrame(()=>this.animate());
     const t = this.clock.getElapsedTime();
     thinkAndMove(this.bones, {reading:true, talkAmp: 0.3 + Math.sin(t*4)*0.2});
-    if(this.bones[0]){ this.bones[0].rotation.y = Math.sin(t*0.25)*0.15; this.bones[0].position.y = Math.sin(t*0.7)*0.015; }
     this.renderer.render(this.scene, this.camera);
   }
 }
@@ -190,7 +195,6 @@ let selected=null, currentFilter='';
 
 const laiaActor = new LaiaMeshOnly(document.getElementById('laia-holo-canvas'));
 window.laiaActor = laiaActor;
-window.laiaMotor = laiaActor;
 
 const listEl=document.getElementById('list');
 function renderList(f='', lvl=''){

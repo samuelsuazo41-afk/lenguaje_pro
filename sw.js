@@ -1,11 +1,10 @@
-const CACHE_NAME = 'lenguaje-pro-v16-actor-v1-billboard';
+const CACHE_NAME = 'lenguaje-pro-v17-2-mesh-only-1200';
 const ASSETS = [
   '/',
   '/index.html',
   '/manifest.json',
   '/styles.css',
   '/LAYA_FINAL_COMPLETO.js',
-  '/laia_HOLO_CLEAN_16.png',
   '/icon-192.png',
   '/icon-512.png',
   '/actor/laia_actor_brain.js',
@@ -15,11 +14,11 @@ const ASSETS = [
 
 self.addEventListener('install', e => {
   self.skipWaiting();
-  console.log('[SW V16 ACTOR V1] Instalando ACTOR V1 BILLBOARD');
+  console.log('[SW V17.2 MESH ONLY] Instalando 1200 puntos');
   e.waitUntil(
     caches.open(CACHE_NAME).then(c => {
       return c.addAll(ASSETS.map(url => new Request(url, {cache: 'reload'}))).catch(err => {
-        console.log('[SW ACTOR V1] addAll fail, individual:', err);
+        console.log('[SW MESH ONLY] addAll fail, individual:', err);
         return Promise.allSettled(ASSETS.map(u => c.add(u).catch(e=>console.log('fail',u))));
       });
     })
@@ -31,7 +30,7 @@ self.addEventListener('activate', e => {
     caches.keys().then(keys => {
       return Promise.all(
         keys.filter(k => k !== CACHE_NAME).map(k => {
-          console.log('[SW ACTOR V1] Borrando cache vieja:', k);
+          console.log('[SW MESH ONLY] Borrando cache vieja:', k);
           return caches.delete(k);
         })
       );
@@ -41,13 +40,10 @@ self.addEventListener('activate', e => {
 
 self.addEventListener('fetch', e => {
   if(e.request.method !== 'GET') return;
-  // No cachear chrome extensions ni otros dominios
   if(!e.request.url.startsWith(self.location.origin)) return;
-  
   e.respondWith(
     caches.match(e.request).then(cached => {
       if(cached) {
-        // Revalida en background para ACTOR V1
         fetch(e.request).then(resp => {
           if(resp.ok){
             caches.open(CACHE_NAME).then(c => c.put(e.request, resp.clone()));

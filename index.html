@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>LENGUAJE-PRO V15.1 HOLO-16 FIX PAG1</title>
+<title>LENGUAJE-PRO V16 ACTOR V1</title>
 <link rel="icon" href="./icon-192.png">
 <meta name="theme-color" content="#00d4ff">
 <link rel="stylesheet" href="./styles.css">
@@ -22,9 +22,11 @@
 .sap-card{background:#1a1a23;border:1px solid #2a2a3a;border-radius:12px;padding:12px;word-break:break-word}
 .evo-lab{width:100%;max-width:760px;background:#0f0f14;border:1px dashed #00d4ff;border-radius:12px;padding:14px;font-size:12px;white-space:pre-wrap;word-break:break-word}
 #card{scroll-margin-top:14px}
-#laia-hologram{position:fixed;right:18px;bottom:18px;width:110px;height:220px;z-index:9999;pointer-events:none;transition:all 1.1s cubic-bezier(0.34,1.56,0.64,1);filter:drop-shadow(0 0 18px #00d4ff) drop-shadow(0 0 35px #00d4ff);animation:laiaFloat 3s ease-in-out infinite}
-#laia-sprite{width:100%;height:100%;background:url('./laia_HOLO_CLEAN_16.png') 0 0 / 1600% 100%;image-rendering:auto;background-repeat:no-repeat;pointer-events:auto;cursor:pointer}
-#laia-sprite.animating{animation:holoLoop 8s steps(16) infinite}
+
+/* ACTOR V1 - YA NO ES SPRITE SHEET */
+#laia-hologram{position:fixed;right:18px;bottom:18px;width:110px;height:220px;z-index:9999;pointer-events:none;transition:left 0.18s linear, top 0.18s linear, transform 0.4s, filter 0.4s;filter:drop-shadow(0 0 18px #00d4ff) drop-shadow(0 0 35px #00d4ff);animation:laiaFloat 3s ease-in-out infinite}
+#laia-hologram.laia-walking-mode{transition:left 0.18s linear, top 0.18s linear}
+#laia-sprite{width:100%;height:100%;background:url('./laia_HOLO_CLEAN_16.png') center bottom / contain no-repeat;image-rendering:auto;background-repeat:no-repeat;pointer-events:auto;cursor:pointer}
 #laia-glow{position:absolute;inset:-15px;background:radial-gradient(circle at 50% 80%, rgba(0,212,255,0.3) 0%, transparent 70%);z-index:-1;animation:laiaPulse 2s infinite}
 #bubble{position:absolute;right:125px;bottom:80px;background:rgba(10,15,30,0.92);backdrop-filter:blur(12px);border:1px solid rgba(0,212,255,0.5);color:white;padding:12px 14px;border-radius:14px;font-size:12px;width:210px;pointer-events:auto;box-shadow:0 0 25px rgba(0,212,255,0.3)}
 #bubble.hidden{display:none}
@@ -33,9 +35,10 @@
 .laia-pin{position:absolute;background:linear-gradient(135deg, rgba(0,212,255,0.95), rgba(139,92,246,0.95));color:white;padding:10px 14px;border-radius:12px;font-size:11px;max-width:230px;box-shadow:0 8px 25px rgba(0,212,255,0.4);border:1px solid rgba(255,255,255,0.3);animation:pinPop 0.4s cubic-bezier(0.34,1.56,0.64,1), pinFloat 3s ease-in-out infinite;pointer-events:auto;cursor:pointer}
 @keyframes laiaFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
 @keyframes laiaPulse{0%,100%{opacity:0.6}50%{opacity:1}}
-@keyframes holoLoop{from{background-position:0% 0}to{background-position:-1600% 0}}
 @keyframes pinPop{0%{transform:scale(0) translateY(20px);opacity:0}100%{transform:scale(1) translateY(0);opacity:1}}
 @keyframes pinFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+#laia-hologram.shake{animation:laiaFloat 3s ease-in-out infinite, shake 0.6s}
 @media(max-width:768px){
 #page1{flex-direction:column}#page1 aside{width:100%;min-width:100%;position:relative;height:auto;max-height:42vh}#page1 main{min-height:58vh}
 .sap-grid{grid-template-columns:1fr}.h-wrapper{height:auto;min-height:calc(100vh - 58px)}
@@ -45,31 +48,31 @@
 </head>
 <body>
 <header>
-  <div class="logo">📚 LENGUAJE-PRO <span>V15.1 HOLO-16 FIX</span></div>
+  <div class="logo">📚 LENGUAJE-PRO <span>V16 ACTOR V1</span></div>
   <div style="display:flex;gap:12px;align-items:center">
     <div class="dots"><div class="dot active" id="dot1"></div><div class="dot" id="dot2"></div></div>
     <div class="metrics"><span id="xp">⭐ 0 XP</span><span>🔥 <b id="streak">0</b></span><span id="level-badge">A2</span></div>
   </div>
 </header>
-<div class="page-label" id="pageLabel">MOTOR 1 B10.1 HOLO-16 • desliza ▶️ MOTOR 2 SAP</div>
+<div class="page-label" id="pageLabel">ACTOR V1 AUTONOMO • navmesh real • dist/12 steps</div>
 <div class="h-wrapper" id="hWrapper">
   <div class="page" id="page1">
     <aside>
-      <h3 style="font-size:11px;color:#00d4ff">MOTOR 1 - 50 ÁREAS • 35 SIGs • 72 VOCAB • B10.1 + HOLO-16</h3>
+      <h3 style="font-size:11px;color:#00d4ff">ACTOR V1 - 50 ÁREAS • NAVMESH REAL • 6 INTENCIONES</h3>
       <input id="search" placeholder="Buscar: Money, in/on/at, co, have, family...">
       <div id="filters"><button class="f active" data-f="">Todas</button><button class="f" data-f="A1">A1</button><button class="f" data-f="A2">A2</button><button class="f" data-f="B1">B1</button><button class="f" data-f="B2">B2</button></div>
       <div id="list"><div style="color:#9ca3af;font-size:12px;padding:10px">Cargando áreas...</div></div>
     </aside>
     <main>
-      <div style="display:flex;gap:10px;margin-bottom:12px"><select id="level"><option>A1</option><option selected>A2</option><option>B1</option><option>B2</option></select><button id="gen" style="background:#00d4ff;color:#000;border:none;padding:10px 16px;border-radius:10px;font-weight:700;cursor:pointer;flex:1;max-width:260px">⚡ GENERAR LECCIÓN V15</button><button id="teachBtn" style="background:#8b5cf6;color:#fff;border:none;padding:10px 12px;border-radius:10px;font-weight:700;cursor:pointer">📌 SAPs</button></div>
-      <div id="empty"><h1 style="font-size:28px">👋 Hola, soy Laia HOLO-16</h1><p style="margin:8px 0">V15.1 FIX - Ya veo las 50 áreas otra vez. 16 frames holográficos azules.</p><p id="status" style="margin-top:10px;font-size:11px;color:#22c55e">Cargando B10.1 HOLO-16...</p></div>
+      <div style="display:flex;gap:10px;margin-bottom:12px"><select id="level"><option>A1</option><option selected>A2</option><option>B1</option><option>B2</option></select><button id="gen" style="background:#00d4ff;color:#000;border:none;padding:10px 16px;border-radius:10px;font-weight:700;cursor:pointer;flex:1;max-width:260px">⚡ GENERAR LECCIÓN V16</button><button id="teachBtn" style="background:#8b5cf6;color:#fff;border:none;padding:10px 12px;border-radius:10px;font-weight:700;cursor:pointer">📌 SAPs</button></div>
+      <div id="empty"><h1 style="font-size:28px">👋 Hola, soy Laia ACTOR V1</h1><p style="margin:8px 0">V16 - Camino con pasos reales dist/12, no teleport. 6 intenciones.</p><p id="status" style="margin-top:10px;font-size:11px;color:#22c55e">Cargando ACTOR V1...</p></div>
       <div id="card" class="hidden"></div>
     </main>
   </div>
   <div class="page" id="page2">
     <div style="width:100%;max-width:760px">
-      <h2 style="font-size:22px">🧬 MOTOR 2 - SAP EVOLUTION LAB + HOLO-16 PINS</h2>
-      <div class="sap-header" id="sapHeader">Esperando datos de Motor 1 B10.1 HOLO-16...</div>
+      <h2 style="font-size:22px">🧬 MOTOR 2 - SAP EVOLUTION LAB + ACTOR PINS</h2>
+      <div class="sap-header" id="sapHeader">Esperando datos de Motor 1 ACTOR V1...</div>
       <div style="margin-top:14px;display:flex;gap:8px"><input id="wordInput" placeholder="Escribe: co, hav, mon, wor, sav..." style="flex:1;background:#1a1a23;border:1px solid #2a2a3a;color:#fff;padding:10px;border-radius:10px"><button id="gen2" style="background:#00d4ff;color:#000;border:none;padding:10px 16px;border-radius:10px;font-weight:700">🔍 EXPLORAR EVOLUCIÓN</button></div>
       <div id="card2" class="hidden" style="margin-top:14px;background:#1a1a23;border:1px solid #2a2a3a;border-radius:16px;padding:18px;max-width:760px;width:100%"></div>
       <div class="sap-grid" id="sapGrid" style="margin-top:14px"></div>
@@ -77,53 +80,45 @@
     </div>
   </div>
 </div>
-<div id="laia-hologram"><div id="laia-sprite" class="animating"></div><div id="laia-glow"></div><div id="bubble" class="hidden"></div><div id="laia-state">HOLO-16</div></div>
+<div id="laia-hologram"><div id="laia-sprite"></div><div id="laia-glow"></div><div id="bubble" class="hidden"></div><div id="laia-state">ACTOR V1</div></div>
 <div id="laia-pin-container"></div>
 <div id="dic-box" class="hidden"></div>
 <script type="module">
 import { LAYA_FINAL } from './LAYA_FINAL_COMPLETO.js';
+import { LaiaActorBrain } from './actor/laia_actor_brain.js';
 
 let LAYA_SAP = {
-  generateSAP: (metrics, sig, word)=>({evolution:{ACCURACY_7D: Math.round(metrics.accuracy_7d*100)+'%'}, detail:{performance:'HOLO-16 OK'}}),
+  generateSAP: (metrics, sig, word)=>({evolution:{ACCURACY_7D: Math.round(metrics.accuracy_7d*100)+'%'}, detail:{performance:'ACTOR V1 OK'}}),
   getGrammarProgress: ()=> '50%',
   renderToHologram: ()=>{}
-};
-let LAYA_EVOLUTION = {
-  traceEvolution: (s)=> s+' → evolution',
-  expandSyllable: (s)=>({evolution:{root:s, chain:[s]}, extended:[s], grammarLink:[]}),
-  explore: (w,sig,m)=>({syllable:{evolution:{root:sig, chain:[sig]}, extended:[w]}, lab:{difficulty:'NORMAL', drills:[]}, grammarChain:{progress:'50%', next:{sig:'END'}}, avatarEvolution:{current:{emotion:'HOLO'}, next:{need:'XP', reward:'FRAME'}}})
-};
-let LaiaHologramSmart = class {
-  constructor(){ this.currentFrame=2; this.frameMap={strict:0, point_left:1, explain_open:2, crossed_arms:3, celebratory:4, crossed_clip:8, open_big:9}; this.el=document.getElementById('laia-sprite'); }
-  playLoop(){ if(this.el) this.el.classList.add('animating'); }
-  moveTo(pos){ const h=document.getElementById('laia-hologram'); if(!h) return; if(pos==='reading'){ h.style.right='18px'; h.style.bottom='18px'; } if(pos==='input'){ h.style.right='40%'; h.style.bottom='50%'; } }
-  focus(idxOrName){ let idx=typeof idxOrName==='string'? (this.frameMap[idxOrName]??2) : idxOrName; this.currentFrame=idx; if(this.el){ this.el.style.backgroundPosition=`-${idx*100}% 0`; } document.getElementById('laia-state').textContent='FRAME '+idx; }
-  spitDataPin(type, data, pos){ const c=document.getElementById('laia-pin-container'); if(!c) return; const pin=document.createElement('div'); pin.className='laia-pin'; pin.style.left=(pos?.x||50)+'vw'; pin.style.top=(pos?.y||30)+'vh'; pin.innerHTML=`<b>${type.toUpperCase()}</b><br>${JSON.stringify(data).slice(0,120)}`; pin.onclick=()=>pin.remove(); c.appendChild(pin); setTimeout(()=>pin.remove(),6000); }
-  teachWithData(sap, sig, word){ this.focus(8); this.spitDataPin('sap',{sig, word, acc:sap?.evolution?.ACCURACY_7D}, {x:10,y:20}); setTimeout(()=>{ this.focus(9); this.spitDataPin('grammar',{sig, example:'Example: '+sig}, {x:60,y:30}); },800); setTimeout(()=>{ this.focus(2); this.spitDataPin('vocab',{root:word?.slice(0,3)}, {x:30,y:60}); },1600); }
-  autoPilot(state, extra){ if(state==='correct_answer'){ this.focus(4); } else if(state==='wrong_answer'){ this.focus(0); } else if(state==='idle'){ this.focus(Math.floor(Math.random()*16)); } }
-  updateFromSAP(sap){ document.getElementById('laia-state').textContent='HOLO '+this.currentFrame+' | '+(sap?.evolution?.ACCURACY_7D||''); }
 };
 
 try{
   const mod = await import('./LAIA_SAP_HOLOGRAM.js');
   if(mod.LAYA_SAP) LAYA_SAP = mod.LAYA_SAP;
-  if(mod.LAYA_EVOLUTION) LAYA_EVOLUTION = mod.LAYA_EVOLUTION;
-  if(mod.LaiaHologramSmart) LaiaHologramSmart = mod.LaiaHologramSmart;
-}catch(e){ console.log('LAIA_SAP_HOLOGRAM no encontrado, usando fallback HOLO-16'); }
-
-let LAYA_EVOLUTION_SECONDARY=null;
-try{ const m = await import('./LAYA_SECONDARY_ENGINE.js'); LAYA_EVOLUTION_SECONDARY = m.LAYA_EVOLUTION; }catch(e){}
+}catch(e){ console.log('LAIA_SAP_HOLOGRAM fallback ACTOR V1'); }
 
 let metrics = JSON.parse(localStorage.getItem('LAYA_METRICS_V9')||'{"same_error_count":0,"streak_days":3,"accuracy_7d":0.82,"hesitation_ms":1200,"level":"A2","xp_total":0,"cefr_level":"A2"}');
 let selected=null, currentFilter='', startTime=Date.now(), lastSap=null, lastGrammar='THERE_QUANT', lastWord='confidence';
 
-const laia = new LaiaHologramSmart();
-laia.playLoop();
-window.laia = laia;
+// ACTOR V1 - AUTONOMO
+const laiaActor = new LaiaActorBrain(document.getElementById('laia-hologram'));
+window.laiaActor = laiaActor;
+window.laia = laiaActor; // compatibilidad
+
+// Helper para pins (antes spitDataPin)
+function spitPin(type, data, zoneName){
+  const c=document.getElementById('laia-pin-container'); if(!c) return;
+  const pin=document.createElement('div'); pin.className='laia-pin';
+  const zone = laiaActor.navmesh[zoneName] || {x:50,y:30};
+  pin.style.left=zone.x+'vw'; pin.style.top=zone.y+'vh';
+  pin.innerHTML=`<b>${type.toUpperCase()}</b><br>${JSON.stringify(data).slice(0,120)}`;
+  pin.onclick=()=>pin.remove(); c.appendChild(pin); setTimeout(()=>pin.remove(),6000);
+}
 
 const listEl=document.getElementById('list');
 function renderList(f='', lvl=''){
-  if(!LAYA_FINAL ||!LAYA_FINAL.AREAS){ listEl.innerHTML='<div style="color:#ef4444;padding:10px">Error: LAYA_FINAL no cargado - revisa LAYA_FINAL_COMPLETO.js</div>'; return; }
+  if(!LAYA_FINAL ||!LAYA_FINAL.AREAS){ listEl.innerHTML='<div style="color:#ef4444;padding:10px">Error: LAYA_FINAL no cargado</div>'; return; }
   listEl.innerHTML='';
   Object.entries(LAYA_FINAL.AREAS).forEach(([id,a])=>{
     const hay=`${id} ${a.name} ${a.topic} ${a.grammar.join(' ')} ${a.vocab.join(' ')} ${a.level}`.toLowerCase();
@@ -131,10 +126,13 @@ function renderList(f='', lvl=''){
     if(lvl && a.level!==lvl) return;
     const d=document.createElement('div'); d.className='area';
     d.innerHTML=`<b>${id}. ${a.name}</b><small>${a.topic} • ${a.level} • ${a.grammar[0]}</small><em>${a.vocab.slice(0,2).join(', ')}</em>`;
-    d.onclick=()=>{selected=id; document.querySelectorAll('.area').forEach(x=>x.classList.remove('active')); d.classList.add('active'); laia.moveTo('reading'); laia.focus('explain_open');};
+    d.onclick=async ()=>{
+      selected=id; document.querySelectorAll('.area').forEach(x=>x.classList.remove('active')); d.classList.add('active');
+      await laiaActor.goTo('reading_text');
+    };
     listEl.appendChild(d);
   });
-  document.getElementById('status').textContent=`Motor B10.1 HOLO-16 Cargado: ${Object.keys(LAYA_FINAL.AREAS).length} áreas, ${Object.keys(LAYA_FINAL.GRAMMAR).length} SIGs, 16 FRAMES HOLO ACTIVO - LISTO`;
+  document.getElementById('status').textContent=`ACTOR V1 Cargado: ${Object.keys(LAYA_FINAL.AREAS).length} áreas, ${Object.keys(LAYA_FINAL.GRAMMAR).length} SIGs, NAVMESH ${Object.keys(laiaActor.navmesh).length} zonas - LISTO`;
   document.getElementById('status').style.color='#00d4ff';
 }
 renderList();
@@ -148,60 +146,66 @@ function saveMetrics(){ localStorage.setItem('LAYA_METRICS_V9', JSON.stringify(m
 
 function pushToPage2(res, word){
   lastWord = word; lastGrammar = res.meta.grammar_main.sig;
-  try{ lastSap = LAYA_SAP.generateSAP(metrics, lastGrammar, word); }catch(e){ lastSap={evolution:{ACCURACY_7D:'82%'}, detail:{performance:'HOLO'}} }
+  try{ lastSap = LAYA_SAP.generateSAP(metrics, lastGrammar, word); }catch(e){ lastSap={evolution:{ACCURACY_7D:'82%'}, detail:{performance:'ACTOR'}} }
   window.lastSap = lastSap;
-  const mem = LAYA_FINAL.MEMORY.get()?.[res.meta.grammar_main.sig]||{errors:0,oks:0};
-  let secondaryData=null;
-  if(LAYA_EVOLUTION_SECONDARY){ try{ secondaryData=LAYA_EVOLUTION_SECONDARY.explore(word, res.meta.grammar_main.sig, metrics); }catch(e){} }
-  document.getElementById('sapHeader').innerHTML=`<div style="display:flex;justify-content:space-between"><b style="color:#00d4ff">SAP HOLO-16 // ${res.meta.grammar_main.sig} // ${word}</b><span style="font-size:10px">${new Date().toISOString().slice(0,10)}</span></div><div style="margin-top:8px;font-size:12px">📍 ${res.meta.area} | ${res.meta.topic}</div><div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap"><span style="background:rgba(0,212,255,0.2);padding:4px 8px;border-radius:10px;font-size:10px">⭐ ${metrics.xp_total} XP</span><span style="background:rgba(34,197,94,0.2);padding:4px 8px;border-radius:10px;font-size:10px">🔥 ${metrics.streak_days}d</span><span style="background:rgba(96,165,250,0.2);padding:4px 8px;border-radius:10px;font-size:10px">🎯 ${Math.round(metrics.accuracy_7d*100)}%</span></div><div style="margin-top:8px;font-size:11px;color:#f59e0b">⚠️ ${res.meta.grammar_main.mistake}</div><div style="font-size:10px;color:#9ca3af;margin-top:4px">Ex: ${res.meta.grammar_main.example} | ${res.meta.grammar_main.formula}</div>`;
+  document.getElementById('sapHeader').innerHTML=`<div style="display:flex;justify-content:space-between"><b style="color:#00d4ff">ACTOR V1 // ${res.meta.grammar_main.sig} // ${word}</b><span style="font-size:10px">${new Date().toISOString().slice(0,10)}</span></div><div style="margin-top:8px;font-size:12px">📍 ${res.meta.area} | ${res.meta.topic}</div><div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap"><span style="background:rgba(0,212,255,0.2);padding:4px 8px;border-radius:10px;font-size:10px">⭐ ${metrics.xp_total} XP</span><span style="background:rgba(34,197,94,0.2);padding:4px 8px;border-radius:10px;font-size:10px">🔥 ${metrics.streak_days}d</span><span style="background:rgba(96,165,250,0.2);padding:4px 8px;border-radius:10px;font-size:10px">🎯 ${Math.round(metrics.accuracy_7d*100)}%</span></div><div style="margin-top:8px;font-size:11px;color:#f59e0b">⚠️ ${res.meta.grammar_main.mistake}</div>`;
   const s=word.slice(0,3).toLowerCase(); const dic=LAYA_FINAL.SUPER_DIC.search(s);
-  document.getElementById('sapGrid').innerHTML=`<div class="sap-card"><b style="font-size:11px;color:#00d4ff">FAMILIA CORE [${dic.length}] [${s}]</b><br><span style="font-size:11px">${dic.slice(0,12).join(', ')}</span></div><div class="sap-card"><b style="font-size:11px;color:#22c55e">CHAIN ${res.meta.grammar_main.level} → ${res.meta.grammar_future.level}</b><br><span style="font-size:11px">MAIN: ${res.meta.grammar_main.sig}<br>FUTURE: ${res.meta.grammar_future.sig}</span></div><div class="sap-card"><b style="font-size:11px;color:#f59e0b">HOLO FRAME: ${laia.currentFrame}/16</b><br><span style="font-size:11px"><button onclick="laia.teachWithData(lastSap, lastGrammar, lastWord)" style="background:#00d4ff;color:#000;border:none;padding:4px 8px;border-radius:6px;font-size:10px">📌 ESCUPIR SAPs</button></span></div><div class="sap-card"><b style="font-size:11px;color:#a78bfa">LAIA HOLO-16</b><br><span style="font-size:11px">Frame ${laia.currentFrame} listo</span></div>`;
-  document.getElementById('evoLab').textContent=`HOLO-16 LAB // AREA ${res.meta.area} | WORD ${word} | SYLL ${s} -> ${dic.length} cousins | FRAME ${laia.currentFrame}`;
-  try{ LAYA_SAP.renderToHologram(lastSap); laia.updateFromSAP(lastSap); }catch(e){}
-  const bubble=document.getElementById('bubble'); bubble.innerHTML=`SAP: ${res.meta.grammar_main.sig} | ${word}<br>⭐ ${metrics.xp_total} XP | FRAME ${laia.currentFrame}`; bubble.classList.remove('hidden'); setTimeout(()=>bubble.classList.add('hidden'),4000);
+  document.getElementById('sapGrid').innerHTML=`<div class="sap-card"><b style="font-size:11px;color:#00d4ff">FAMILIA CORE [${dic.length}]</b><br><span style="font-size:11px">${dic.slice(0,12).join(', ')}</span></div><div class="sap-card"><b style="font-size:11px;color:#22c55e">CHAIN ${res.meta.grammar_main.level} → ${res.meta.grammar_future.level}</b><br><span style="font-size:11px">MAIN: ${res.meta.grammar_main.sig}</span></div><div class="sap-card"><b style="font-size:11px;color:#f59e0b">NAVMESH: ${laiaActor.currentZone}</b><br><button onclick="laiaActor.goTo('sap_dashboard')" style="background:#00d4ff;color:#000;border:none;padding:4px 8px;border-radius:6px;font-size:10px">📍 IR A SAP</button></div><div class="sap-card"><b style="font-size:11px;color:#a78bfa">ACTOR ${laiaActor.currentZone}</b><br><span style="font-size:11px">Intention: ${document.getElementById('laia-state').textContent}</span></div>`;
+  document.getElementById('evoLab').textContent=`ACTOR V1 LAB // AREA ${res.meta.area} | WORD ${word} | ZONE ${laiaActor.currentZone}`;
+  const bubble=document.getElementById('bubble'); bubble.innerHTML=`ACTOR: ${res.meta.grammar_main.sig} | ${word}<br>⭐ ${metrics.xp_total} XP | ${laiaActor.currentZone}`; bubble.classList.remove('hidden'); setTimeout(()=>bubble.classList.add('hidden'),4000);
 }
 
 function renderLesson(res){
   const card=document.getElementById('card');
   const words=res.story.split(/(\s+)/).map(w=>{ if(w.trim().length<2) return w; const clean=w.toLowerCase().replace(/[^a-z]/g,''); if(!clean) return w; return `<span class="word" data-w="${clean}">${w}</span>`; }).join('');
-  card.innerHTML=`<div class="meta"><span>📍 ${res.meta.area}</span><span>${res.meta.level}</span><span style="background:#00d4ff;color:#000">⭐ ${res.meta.xp} XP</span><span>${res.meta.grammar_main.sig}</span><span>${res.meta.grammar_future.sig}</span><span>${res.meta.wordCount||'150'}</span></div><h2 style="font-size:20px;margin:10px 0">${res.meta.topic}</h2><div class="gram"><b>MAIN ${res.meta.grammar_main.level}:</b> ${res.meta.grammar_main.id} - <code>${res.meta.grammar_main.formula}</code><br>Ex: ${res.meta.grammar_main.example}<br><span style="color:#f59e0b">⚠️ ${res.meta.grammar_main.mistake}</span></div><div class="gram"><b>SECOND:</b> ${res.meta.grammar_second?.id||res.meta.grammar_future.id} - <code>${res.meta.grammar_second?.formula||res.meta.grammar_future.formula}</code><br>Ex: ${res.meta.grammar_second?.example||res.meta.grammar_future.example}</div><div class="gram"><b>FUTURE:</b> ${res.meta.grammar_future.id} - <code>${res.meta.grammar_future.formula}</code><br>Ex: ${res.meta.grammar_future.example}</div><div class="reading">${words}</div><div class="tags">${res.meta.vocab.map(v=>`<span>${v}</span>`).join('')}</div><div class="chat-box"><input id="userInput" placeholder="Escribe tu frase con ${res.meta.grammar_main.sig}..."><button id="sendBtn">Enviar</button></div><div id="feedback"></div>`;
+  card.innerHTML=`<div class="meta"><span>📍 ${res.meta.area}</span><span>${res.meta.level}</span><span style="background:#00d4ff;color:#000">⭐ ${res.meta.xp} XP</span><span>${res.meta.grammar_main.sig}</span><span>${res.meta.grammar_future.sig}</span></div><h2 style="font-size:20px;margin:10px 0">${res.meta.topic}</h2><div class="gram"><b>MAIN ${res.meta.grammar_main.level}:</b> ${res.meta.grammar_main.id} - <code>${res.meta.grammar_main.formula}</code><br>Ex: ${res.meta.grammar_main.example}<br><span style="color:#f59e0b">⚠️ ${res.meta.grammar_main.mistake}</span></div><div class="reading">${words}</div><div class="tags">${res.meta.vocab.map(v=>`<span>${v}</span>`).join('')}</div><div class="chat-box"><input id="userInput" placeholder="Escribe tu frase con ${res.meta.grammar_main.sig}..."><button id="sendBtn">Enviar</button></div><div id="feedback"></div>`;
   card.classList.remove('hidden'); document.getElementById('empty').classList.add('hidden'); pushToPage2(res, res.meta.vocab[0]||'evolution');
-  setTimeout(()=>{ card.scrollIntoView({behavior:'smooth', block:'start'}); laia.moveTo('reading'); laia.focus('explain_open'); },150);
-  card.querySelectorAll('.word').forEach(el=>{ el.onclick=()=>{ const w=el.dataset.w; pushToPage2(res, w); document.getElementById('hWrapper').scrollTo({left: window.innerWidth, behavior:'smooth'}); try{ const s=w.slice(0,3); const dic=LAYA_FINAL.SUPER_DIC.search(s); laia.spitDataPin('vocab', {root:s, family:dic.slice(0,5), count:dic.length}, {x:65, y:25}); }catch(e){} }; });
+  setTimeout(()=>{ card.scrollIntoView({behavior:'smooth', block:'start'}); laiaActor.goTo('reading_text'); },150);
+  card.querySelectorAll('.word').forEach(el=>{ el.onclick=()=>{ const w=el.dataset.w; pushToPage2(res, w); document.getElementById('hWrapper').scrollTo({left: window.innerWidth, behavior:'smooth'}); spitPin('vocab', {root:w.slice(0,3)}, 'vocab_word'); laiaActor.goTo('vocab_word'); }; });
   const input=document.getElementById('userInput');
-  const check=()=>{ const txt=input.value; if(!txt) return; let ok=true; if(/he have|she have/i.test(txt)) ok=false; if(txt.length<3) ok=false; LAYA_FINAL.MEMORY.update(res.meta.grammar_main.sig, ok, Date.now()-startTime); if(ok){ metrics.streak_days++; metrics.accuracy_7d=Math.min(0.98, metrics.accuracy_7d+0.04); metrics.xp_total+=res.meta.xp; } else { metrics.accuracy_7d=Math.max(0.2, metrics.accuracy_7d-0.07); } saveMetrics(); document.getElementById('streak').textContent=metrics.streak_days; document.getElementById('xp').textContent=`⭐ ${metrics.xp_total} XP`; document.getElementById('feedback').textContent=ok?`✅ +${res.meta.xp} XP`:`❌ ${res.meta.grammar_main.mistake}`; document.getElementById('feedback').className=ok?'feedback ok':'feedback fail'; let sap; try{ sap=LAYA_SAP.generateSAP(metrics, res.meta.grammar_main.sig, txt.split(' ')[0]); lastSap=sap; }catch(e){} if(ok){ laia.autoPilot('correct_answer', {sap}); } else { laia.autoPilot('wrong_answer', {msg: res.meta.grammar_main.mistake, sap}); setTimeout(()=> laia.spitDataPin('grammar', {sig: res.meta.grammar_main.sig, rule: res.meta.grammar_main.mistake}, {x:8, y:55}), 600); } pushToPage2(res, txt.split(' ')[0]); if(ok) input.value=''; };
-  document.getElementById('sendBtn').onclick=check; input.onkeydown=e=>{ if(e.key==='Enter') check(); }; input.onfocus=()=>{ laia.moveTo('input'); laia.focus('explain_open'); };
+  const check=async ()=>{
+    const txt=input.value; if(!txt) return;
+    let ok=true; if(/he have|she have/i.test(txt)) ok=false; if(txt.length<3) ok=false;
+    LAYA_FINAL.MEMORY.update(res.meta.grammar_main.sig, ok, Date.now()-startTime);
+    if(ok){ metrics.streak_days++; metrics.accuracy_7d=Math.min(0.98, metrics.accuracy_7d+0.04); metrics.xp_total+=res.meta.xp; } else { metrics.accuracy_7d=Math.max(0.2, metrics.accuracy_7d-0.07); }
+    saveMetrics(); document.getElementById('streak').textContent=metrics.streak_days; document.getElementById('xp').textContent=`⭐ ${metrics.xp_total} XP`;
+    document.getElementById('feedback').textContent=ok?`✅ +${res.meta.xp} XP`:`❌ ${res.meta.grammar_main.mistake}`;
+    document.getElementById('feedback').className=ok?'feedback ok':'feedback fail';
+    if(ok){ await laiaActor.goTo('feedback_ok'); } else { await laiaActor.goTo('feedback_err'); setTimeout(()=> spitPin('grammar', {sig: res.meta.grammar_main.sig, rule: res.meta.grammar_main.mistake}, 'input_hint'), 600); }
+    pushToPage2(res, txt.split(' ')[0]); if(ok) input.value='';
+  };
+  document.getElementById('sendBtn').onclick=check; input.onkeydown=e=>{ if(e.key==='Enter') check(); }; input.onfocus=()=>{ laiaActor.goTo('input_field'); };
 }
 
 document.getElementById('gen').onclick=()=>{
-  if(!selected){ alert('Elige área primero tete! Haz click en la lista de la izquierda'); return; }
+  if(!selected){ alert('Elige área primero tete!'); return; }
   const lvl=document.getElementById('level').value; metrics.level=lvl; metrics.cefr_level=lvl; saveMetrics(); startTime=Date.now();
-  const res=LAYA_FINAL.generate(selected, lvl, metrics); renderLesson(res); laia.moveTo('reading');
+  const res=LAYA_FINAL.generate(selected, lvl, metrics); renderLesson(res);
 };
-document.getElementById('teachBtn').onclick=()=>{ if(!lastSap){ alert('Genera lección primero!'); return; } laia.teachWithData(lastSap, lastGrammar, lastWord); };
+document.getElementById('teachBtn').onclick=()=>{ if(!lastSap){ alert('Genera lección primero!'); return; } laiaActor.goTo('sap_dashboard'); spitPin('sap',{sig:lastGrammar, word:lastWord}, 'sap_dashboard'); };
 document.getElementById('gen2').onclick=()=>{
   const w=document.getElementById('wordInput').value||'evolution'; const s=w.slice(0,3).toLowerCase(); const dic=LAYA_FINAL.SUPER_DIC.search(s);
   document.getElementById('card2').innerHTML=`<b>${w} [${s}]</b><br>Familia: ${dic.join(', ')}<br><br><small style="color:#9ca3af">Root evolution: ${s} → ${dic.length} primos</small>`;
-  document.getElementById('card2').classList.remove('hidden'); document.getElementById('evoLab').textContent=`EXPLORATION HOLO-16 // WORD ${w} | SYLL ${s} | COUSINS ${dic.length}`;
-  try{ laia.spitDataPin('vocab', {root:s, family:dic.slice(0,5), count:dic.length}, {x:60, y:20}); }catch(e){}
+  document.getElementById('card2').classList.remove('hidden'); document.getElementById('evoLab').textContent=`EXPLORATION ACTOR V1 // WORD ${w} | SYLL ${s} | COUSINS ${dic.length}`;
+  spitPin('vocab', {root:s, count:dic.length}, 'vocab_word'); laiaActor.goTo('vocab_word');
 };
 const wrapper=document.getElementById('hWrapper');
 wrapper.addEventListener('scroll', ()=>{
   const isPage2 = wrapper.scrollLeft > window.innerWidth/2;
   document.getElementById('dot1').classList.toggle('active',!isPage2);
   document.getElementById('dot2').classList.toggle('active', isPage2);
-  document.getElementById('pageLabel').textContent = isPage2? '◀️ MOTOR 1 HOLO-16 • MOTOR 2 SAP' : 'MOTOR 1 B10.1 HOLO-16 • desliza ▶️ MOTOR 2 SAP';
+  document.getElementById('pageLabel').textContent = isPage2? '◀️ MOTOR 1 ACTOR • MOTOR 2 SAP' : 'MOTOR 1 B10.1 ACTOR V1 • desliza ▶️ MOTOR 2 SAP';
 });
 document.getElementById('laia-hologram').onclick=()=>{
   const isPage2 = wrapper.scrollLeft > window.innerWidth/2;
   wrapper.scrollTo({left: isPage2? 0 : window.innerWidth, behavior:'smooth'});
-  laia.focus(Math.floor(Math.random()*16));
+  laiaActor.goTo(isPage2? 'reading_text' : 'sap_dashboard');
 };
 try{
-  document.getElementById('status').textContent=`Motor B10.1 HOLO-16 Cargado: ${Object.keys(LAYA_FINAL.AREAS).length} áreas, ${Object.keys(LAYA_FINAL.GRAMMAR).length} SIGs, 16 FRAMES HOLO ACTIVO - LISTO`;
+  document.getElementById('status').textContent=`ACTOR V1 Cargado: ${Object.keys(LAYA_FINAL.AREAS).length} áreas, ${Object.keys(LAYA_FINAL.GRAMMAR).length} SIGs, NAVMESH ${Object.keys(laiaActor.navmesh).length} zonas - LISTO`;
   document.getElementById('status').style.color='#00d4ff';
 }catch(e){ document.getElementById('status').textContent=`Error: ${e.message}`; document.getElementById('status').style.color='#ef4444'; }
-setInterval(()=>{ if(Date.now()-startTime > 12000) laia.autoPilot('idle'); }, 12000);
+laiaActor.goTo('welcome');
 </script>
 </body>
 </html>

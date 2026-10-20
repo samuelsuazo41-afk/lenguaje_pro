@@ -1,32 +1,32 @@
-// laia_actor_brain.js - V24.0 MESH REAL - FOTO 3 - BOX BLAZER 0.11 WAIST
-// Malla real como foto 3 + wireframe real + 2 piernas separadas gap 0.11
-// Params V24: waist 0.11 box deform, hips 0.368, chest 0.357, thigh_gap 0.11 real
-// Autor: YARVIS + Laia - Girona - V24.0 MESH REAL
+// laia_actor_brain.js - V25.0 MESH REAL FIX - FOTO 3 - BOX BLAZER 0.11 WAIST FIX
+// FIX chicle removido - piernas 0.52 no 0.82 - proporciones foto 3
+// Params V25: waist 0.11 box deform 0.34, hips 0.32, chest 0.336, thigh_gap 0.11 real fix
+// Autor: YARVIS + Laia - Girona - V25.0 FIX
 
 export const LAIA_BRAIN_CONFIG = {
-  version: "24.0 MESH REAL - BOX BLAZER 0.11 WAIST - FOTO 3",
+  version: "25.0 MESH REAL FIX - BOX BLAZER 0.11 WAIST - FOTO 3",
   hiddenSkeleton: true,
   pointsCount: 7000,
   constellation: true,
   surfaceSampling: false,
   proxyMesh: false,
   meshReal: true,
-  meshType: "BoxBlazerDeformed_WireframeReal_Foto3",
+  meshType: "BoxBlazerDeformed_WireframeReal_Fix_Foto3",
   breathBase: 1.1,
   meshOnly: true,
   feminine: true,
   waist: 0.11,
-  waistFactor: 0.29,
-  hips: 0.368,
-  chest: 0.357,
-  shoulders: 0.357,
+  waistFactor: 0.34,
+  hips: 0.32,
+  chest: 0.336,
+  shoulders: 0.336,
   thigh_gap: 0.11,
-  legSeparation: 0.24,
-  scale: 0.68,
-  mobileScale: 0.62,
+  legSeparation: 0.22,
+  scale: 0.72,
+  mobileScale: 0.68,
   lines: {
-    type: "WireframeGeometry_real",
-    opacity: 0.32
+    type: "WireframeGeometry_real_fix",
+    opacity: 0.28
   }
 };
 
@@ -40,7 +40,7 @@ let MIND = {
   pinPan: 0
 };
 
-// 60fps - Mueve huesos invisibles que arrastran malla REAL foto 3
+// 60fps - Malla REAL FIX foto 3 - proporciones corregidas
 export function thinkAndMove(bones, context) {
   MIND.breath += 0.016;
   MIND.talkAmp = context.talkAmp || 0;
@@ -48,16 +48,16 @@ export function thinkAndMove(bones, context) {
 
   if (!bones || bones.length === 0) return MIND.state;
 
-  // 1. RESPIRACIÓN FEMENINA V24 - solo pecho respira, cintura 0.11 NO
+  // 1. RESPIRACIÓN FEMENINA V25 FIX - solo pecho 0.336, cintura 0.11 NO
   const t = MIND.breath;
   if (bones[31]) {
-    const scale = 1 + Math.sin(t * 1.1) * 0.015;
+    const scale = 1 + Math.sin(t * 1.1) * 0.012;
     bones[31].scale.x = scale;
     bones[31].scale.z = scale;
   }
-  // Sway cadera + thigh gap 0.11 limpio
-  bones[0].position.y = Math.sin(t * 0.7) * 0.006;
-  bones[0].position.x = Math.sin(t * 0.4) * 0.003;
+  // Sway suave - gap 0.11 limpio
+  bones[0].position.y = Math.sin(t * 0.7) * 0.005;
+  bones[0].position.x = Math.sin(t * 0.4) * 0.002;
 
   // 2. CEREBRO DECIDE ESTADO
   if (context.inputFocused) {
@@ -96,56 +96,56 @@ export function thinkAndMove(bones, context) {
 
   if (MIND.state === 'IDLE_CORTANA') {
     if (head) {
-      head.rotation.y = Math.sin(t * 0.35) * 0.16;
-      head.rotation.x = Math.sin(t * 0.28) * 0.03;
-      head.rotation.z = Math.sin(t * 0.2) * 0.015;
+      head.rotation.y = Math.sin(t * 0.32) * 0.14;
+      head.rotation.x = Math.sin(t * 0.26) * 0.025;
+      head.rotation.z = Math.sin(t * 0.18) * 0.012;
     }
-    if (mouth) mouth.scale.y = 1 + Math.sin(t * 0.8) * 0.01;
-    if (neck) neck.rotation.z = Math.sin(t * 0.45) * 0.015;
-    if (lShoulder) lShoulder.rotation.z = Math.sin(t * 0.3) * 0.02;
-    if (rShoulder) rShoulder.rotation.z = -Math.sin(t * 0.3) * 0.02;
+    if (mouth) mouth.scale.y = 1 + Math.sin(t * 0.8) * 0.008;
+    if (neck) neck.rotation.z = Math.sin(t * 0.42) * 0.012;
+    if (lShoulder) lShoulder.rotation.z = Math.sin(t * 0.28) * 0.018;
+    if (rShoulder) rShoulder.rotation.z = -Math.sin(t * 0.28) * 0.018;
   }
 
   if (MIND.state === 'LISTENING') {
     if (head) {
-      head.rotation.x = -0.12;
-      head.rotation.y = 0.10;
+      head.rotation.x = -0.10;
+      head.rotation.y = 0.08;
     }
-    if (lArm) lArm.rotation.z = 0.42;
-    if (lFore) lFore.rotation.x = -0.92;
+    if (lArm) lArm.rotation.z = 0.38;
+    if (lFore) lFore.rotation.x = -0.88;
   }
 
   if (MIND.state === 'EXPLAINING') {
-    if (rFore) rFore.rotation.x = Math.sin(t * 2.8) * 0.38;
-    if (rFore) rFore.rotation.z = Math.sin(t * 1.5) * 0.12;
+    if (rFore) rFore.rotation.x = Math.sin(t * 2.6) * 0.32;
+    if (rFore) rFore.rotation.z = Math.sin(t * 1.4) * 0.10;
     if (mouth) {
-      mouth.scale.y = 1 + Math.sin(t * 8.5) * (MIND.talkAmp || 0.30);
-      mouth.scale.x = 1 + Math.sin(t * 3) * 0.03;
+      mouth.scale.y = 1 + Math.sin(t * 8.0) * (MIND.talkAmp || 0.28);
+      mouth.scale.x = 1 + Math.sin(t * 2.8) * 0.025;
     }
-    if (lArm) lArm.rotation.x = Math.sin(t * 1.8) * 0.15;
+    if (lArm) lArm.rotation.x = Math.sin(t * 1.6) * 0.12;
   }
 
   if (MIND.state === 'WALKING') {
-    if (lKnee) lKnee.rotation.x = Math.sin(t * 5.5) * 0.62;
-    if (rKnee) rKnee.rotation.x = -Math.sin(t * 5.5) * 0.62;
-    if (lThigh) lThigh.rotation.x = Math.sin(t * 5.5) * 0.20;
-    if (rThigh) rThigh.rotation.x = -Math.sin(t * 5.5) * 0.20;
-    if (lFore) lFore.rotation.x = -Math.sin(t * 5.5) * 0.24;
-    if (rFore) rFore.rotation.x = Math.sin(t * 5.5) * 0.24;
-    bones[0].position.x = Math.sin(t * 5.5) * 0.015;
+    if (lKnee) lKnee.rotation.x = Math.sin(t * 5.2) * 0.52;
+    if (rKnee) rKnee.rotation.x = -Math.sin(t * 5.2) * 0.52;
+    if (lThigh) lThigh.rotation.x = Math.sin(t * 5.2) * 0.18;
+    if (rThigh) rThigh.rotation.x = -Math.sin(t * 5.2) * 0.18;
+    if (lFore) lFore.rotation.x = -Math.sin(t * 5.2) * 0.20;
+    if (rFore) rFore.rotation.x = Math.sin(t * 5.2) * 0.20;
+    bones[0].position.x = Math.sin(t * 5.2) * 0.012;
   }
 
   if (MIND.state === 'SCOLDING') {
-    bones[0].rotation.z = Math.sin(t * 11) * 0.05;
-    if (head) head.rotation.y = Math.sin(t * 9.5) * 0.15;
+    bones[0].rotation.z = Math.sin(t * 10) * 0.04;
+    if (head) head.rotation.y = Math.sin(t * 9) * 0.12;
   }
 
   if (MIND.state === 'CELEBRATING') {
-    bones[0].position.y += Math.abs(Math.sin(t * 3.8)) * 0.05;
-    if (lFore) lFore.rotation.x = -1.62;
-    if (rFore) rFore.rotation.x = -1.62;
-    if (lArm) lArm.rotation.x = -0.32;
-    if (rArm) rArm.rotation.x = -0.32;
+    bones[0].position.y += Math.abs(Math.sin(t * 3.6)) * 0.04;
+    if (lFore) lFore.rotation.x = -1.52;
+    if (rFore) rFore.rotation.x = -1.52;
+    if (lArm) lArm.rotation.x = -0.28;
+    if (rArm) rArm.rotation.x = -0.28;
   }
 
   return MIND.state;
@@ -163,7 +163,7 @@ export function decideByMetrics(metrics) {
 }
 
 export const LAIA_ACTOR_BRAIN = {
-  version: "24.0 MESH REAL - BOX BLAZER 0.11 - FOTO 3",
+  version: "25.0 MESH REAL FIX - BOX BLAZER 0.11 - FOTO 3",
   thinkAndMove,
   decideByMetrics,
   config: LAIA_BRAIN_CONFIG

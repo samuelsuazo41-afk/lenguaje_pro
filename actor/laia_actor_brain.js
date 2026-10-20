@@ -1,17 +1,17 @@
-// laia_actor_brain.js - V27.0 HD -20% - FOTO 3 - 0.11 WAIST - NITIDA COMPLETA
-// -20% escala para que quepa entera en la app + HD 0.009
-// Params V27: waist 0.11 cylinder 0.62, hips 0.32, chest 0.336, thigh_gap 0.11, scale 0.57
-// Autor: YARVIS + Laia - Girona - V27.0 HD -20%
+// laia_actor_brain.js - V28.5 TOPOLOGICAL - BLAZER REAL - 0.11 WAIST - SOLAPAS BOTONES BOLSILLOS
+// Malla topológica como tu imagen: blazer con costuras, 28 segmentos, quad grid 0.92 opacity
+// Params V28.5: waist 0.11 cylinder 0.62, hips 0.32, chest 0.336, thigh_gap 0.11, scale 0.52, leg 0.13 gap
+// Autor: YARVIS + Laia - Girona - V28.5 TOPOLOGICAL
 
 export const LAIA_BRAIN_CONFIG = {
-  version: "27.0 HD -20% - FOTO 3 - 0.11 WAIST - NITIDA COMPLETA",
+  version: "28.5 TOPOLOGICAL - BLAZER REAL - 0.11 WAIST - SOLAPAS BOTONES BOLSILLOS",
   hiddenSkeleton: true,
-  pointsCount: 7000,
-  constellation: true,
+  pointsCount: 8500,
+  constellation: false,
   surfaceSampling: false,
   proxyMesh: false,
   meshReal: true,
-  meshType: "DirectHumanoide_CylinderTapered_Foto3_HD_Minus20",
+  meshType: "Topological_Blazer_Real_Lapels_Buttons_Pockets_Quad_Grid_HD",
   breathBase: 1.1,
   meshOnly: true,
   feminine: true,
@@ -21,12 +21,13 @@ export const LAIA_BRAIN_CONFIG = {
   chest: 0.336,
   shoulders: 0.336,
   thigh_gap: 0.11,
-  legSeparation: 0.22,
-  scale: 0.57,
-  mobileScale: 0.544,
+  legSeparation: 0.13,
+  scale: 0.52,
+  mobileScale: 0.50,
   lines: {
-    type: "WireframeGeometry_direct_humanoide_hd",
-    opacity: 0.22
+    type: "WireframeGeometry_topological_quad_blazer_real_hd",
+    opacity: 0.92,
+    color: "#00e5ff"
   }
 };
 
@@ -112,7 +113,7 @@ export function decideByMetrics(metrics) {
 }
 
 export const LAIA_ACTOR_BRAIN = {
-  version: "27.0 HD -20% - FOTO 3 - 0.11 NITIDA",
+  version: "28.5 TOPOLOGICAL - BLAZER REAL - 0.11 - SOLAPAS BOTONES",
   thinkAndMove,
   decideByMetrics,
   config: LAIA_BRAIN_CONFIG

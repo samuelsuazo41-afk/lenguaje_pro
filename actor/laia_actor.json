@@ -1,16 +1,28 @@
 {
-  "actor_version": "V29.0 SKINNED - BLAZER REAL RIGGED - 0.11 WAIST - SOLAPAS BOTONES BOLSILLOS - SKELETON BINDEADO",
-  "type": "mesh_real_skinned_topological_blazer_v29_0_rigged_hd",
-  "status": "full_body_skinned_blazer_lapels_buttons_pockets_rigged_0.11_waist_thigh_gap_0.11_skeleton_binded",
-  "base_image": "wa_image_topological_ref_blazer_real_v29_skinned_rigged",
+  "actor_version": "V30.0 DEFINITIVO SKINNY PARTICLE TRIANGULATED - 0.11 WAIST - 3 MALLAS - POLOS REALES - FLOW TOPOLOGICAL",
+  "type": "mesh_real_skinned_topological_particle_triangulated_flow_poles_v30_0_definitive",
+  "status": "full_body_skinned_particle_kNN12_triangulated_quad_dense_knees_face_feet_poles_flow_0.11_waist_gap_clean",
+  "base_image": "wa_image_topological_ref_definitiva_skinny_particle_triangulated_v30_definitiva_3_mallas",
   "rig": {
     "joints": 34,
     "hidden_skeleton": false,
-    "skeleton_type": "Skeleton_34_Bones_Binded_SkinnedMesh",
-    "head": "Head_Bone + Eye_L + Eye_R + Mouth - sphere 18 + iris + visemes",
-    "face": "eyes_0.018_white_iris_0.0085_mouth_capsule_0.006_viseme_6_topological_rigged_hd",
-    "body": "SkinnedMesh_topological_blazer_28_segments + 2_lapels + 2_buttons_torus + 2_pockets_box + 2_human_legs_20_segments_gap_0.11_skinned_weight_painted + hands_box + feet_box_toes",
-    "bones_list": ["Hips","Spine_02","Chest","Neck","Head_Bone","Eye_L","Eye_R","Mouth","Shoulder.L","Elbow.L","Wrist.L","Shoulder.R","Elbow.R","Wrist.R","Hip.L","Knee.L","Ankle.L","Hip.R","Knee.R","Ankle.R"],
+    "skeleton_type": "Skeleton_34_Bones_Binded_SkinnedMesh_Flow_Poles",
+    "head": "Head_Bone + Frontal_Pole + Eye_L + Eye_R + Iris_L + Iris_R + Mouth + Jaw - sphere 18 + iris + 6 visemes - polo frontal origen flujo",
+    "face": "eyes_0.018_white_iris_0.0085_mouth_capsule_0.006_viseme_6_topological_rigged_flow_radial_8_hd - desde polo frontal",
+    "body": "SkinnedMesh_topological_particle_triangulated_3_mallas_flow: Points_0.012_glow + kNN_12_lines_0.08 + Quad_dense_knees_5_loops_blazer_28_segments + 2_lapels_nodes + 2_buttons_nodes_torus + 2_pockets_nodes_box + 2_legs_triangulated_open_gap_0.11 + feet_5_toes_bifurcation + hands + poles",
+    "bones_list": ["Hips","Spine_02","Chest","Neck","Head_Bone","Frontal_Pole","Eye_L","Iris_L","Eye_R","Iris_R","Mouth","Jaw","Shoulder.L","Elbow.L","Wrist.L","Hand.L","Shoulder.R","Elbow.R","Wrist.R","Hand.R","Sacral_Pole","Hip.L","Knee.L","Ankle.L","Toe.L","Hip.R","Knee.R","Ankle.R","Toe.R","Button_Node_01","Button_Node_02","Pocket_Node_L","Pocket_Node_R"],
+    "poles": {
+      "frontal_pole": "Frontal_Pole - forehead (0,0.04,0.09) - origen flujo topológico - radial 8 radios - se ve en imagen definitiva frente",
+      "sacral_pole": "Sacral_Pole - sacrum (0,-0.02,-0.04) - segundo origen - espalda baja - cierra flujo cintura 0.11",
+      "interruption_nodes": "Button_Node_01 (0.01,0.22,0.18) + Button_Node_02 (0.01,0.08,0.18) + Pocket_Node_L (-0.14,0.07,0.17) + Pocket_Node_R (0.14,0.07,0.17) - donde mueren 8-10 líneas - círculos y rectángulos blazer"
+    },
+    "flow_topological": {
+      "origin": "Frontal_Pole forehead - radial 8 radios saliendo - imagen definitiva polo frente",
+      "convergence_waist": "Todas líneas pecho 0.336 convergen hacia centro cintura 0.11 + cambio dirección 45deg - hourglass sin arruga - no es scale es re-dirección",
+      "knee_change": "Flujo vertical muslo -> horizontal 5 loops rodilla - giro 90deg - círculo perfecto imagen definitiva",
+      "termination_feet": "Flujo bifurca 5 ramas - cada dedo cluster propio con polo - 5 terminaciones",
+      "gap_clean": "0.13 separación + 0.11 hueco - cero conexiones entre piernas izquierda/derecha - gap limpio triangulación abierta"
+    },
     "feminine_params": {
       "waist": 0.11,
       "waist_factor": 0.62,
@@ -20,86 +32,108 @@
       "thigh_gap": 0.11,
       "leg_separation": 0.13,
       "scale": 0.52,
-      "mobile_scale": 0.50
+      "mobile_scale": 0.50,
+      "z_scale_waist": 0.58,
+      "note": "V30 DEFINITIVO - waist 0.11 no es scale simple - es flujo topológico con colapso z 0.58 + redirección 45deg - skinny real"
     },
-    "t_pose": "full_body_skinned_T_pose_legs_0.13_gap_arms_1.00_span_hands_box_feet_box_dedos_rigged_binded",
+    "t_pose": "full_body_skinned_T_pose_flow_poles_legs_0.13_gap_arms_0.50_span_hands_box_feet_5_toes_bifurcation_rigged_binded_particle",
     "weight_painting": {
-      "method": "skinIndex_skinWeight_4_influences_per_vertex",
-      "torso": "Spine_02 + Chest 100%",
-      "head": "Head_Bone 100%",
-      "arms": "Shoulder.L/R + Elbow.L/R",
-      "legs": "Hip.L/R + Knee.L/R + Ankle.L/R",
-      "note": "V29 - ya no es translate() - es skinIndex/skinWeight bindeado - no chicle"
+      "method": "skinIndex_skinWeight_4_influences_per_vertex_flow_poles",
+      "torso": "Spine_02 + Chest 100% + Button_Nodes + Pocket_Nodes - flujo converge",
+      "head": "Head_Bone + Frontal_Pole 100% - origen radial",
+      "arms": "Shoulder.L/R + Elbow.L/R - triangulación abierta",
+      "legs": "Hip.L/R + Knee.L/R + Ankle.L/R - muslo abierto rodilla 5 loops densa",
+      "poles": "Frontal_Pole + Sacral_Pole - polos origen flujo - no chicle",
+      "note": "V30 DEFINITIVO - skinIndex/skinWeight con polos reales - flujo topológico bindeado - particle triangulated - 3 mallas"
     }
   },
   "mesh": {
-    "points_count": 8500,
-    "type": "skinned_topological_quad_grid_blazer_real_rigged_hd",
+    "points_count": 3200,
+    "type": "skinned_topological_particle_triangulated_kNN12_flow_poles_definitive_hd",
     "color": "#00e5ff",
-    "size": 0.006,
-    "opacity": 0.35,
-    "blending": "NoBlending",
-    "material": "MeshBasicMaterial_wireframe_true_skinned_rigged_hd",
+    "size": 0.012,
+    "opacity": 0.88,
+    "blending": "AdditiveBlending",
+    "sizeAttenuation": true,
+    "material": "PointsMaterial_size_0.012_opacity_0.88_sizeAttenuation_true_glow_particle_definitive",
     "skinnedMesh": true,
     "skeleton": true,
     "bindMode": "attached",
+    "mallas_3_superpuestas": {
+      "malla_1_puntos_glow": "3200 puntos - size 0.012 - opacity 0.88 - color #00e5ff - sizeAttenuation true - AdditiveBlending - imagen definitiva puntos gordos brillando",
+      "malla_2_lineas_kNN": "kNN 12 + maxDistanceSq 0.08 + gapClean - triangulación irregular - líneas largas muslos 0.08-0.12 separadas - cortas cintura 0.11 - opacity 0.42 - imagen definitiva líneas irregulares cruzadas",
+      "malla_3_quad_denso": "Solo rodillas + cara + pies - rodillas 5 loops horizontales + 16 radiales - círculo perfecto imagen - cara grid denso ojos boca - pies 5 clusters dedos separados - opacity 0.28"
+    },
     "hair": {
       "color": "#c9a88a",
       "size": 0.007,
       "opacity": 0.82,
-      "geom": "SphereGeometry(0.115,14,14,0,6.28,0,1.95)",
-      "count": 850,
-      "attached_to": "Head_Bone"
+      "geom": "SphereGeometry(0.115,14,14,0,6.28,0,1.95)_bob_casco_particulas",
+      "count": 85,
+      "type": "particulas_casco_bob_no_sphere_recortada",
+      "attached_to": "Head_Bone",
+      "note": "V30 - pelo bob 80-100 partículas casco con conexiones cortas - no sphere recortada - volumen real"
     },
     "lines": {
       "enabled": true,
-      "type": "SkinnedMesh_Wireframe_Rigged_Binded",
+      "type": "kNN_Flow_Poles_Triangulated_Particle",
+      "method": "kNN_12_maxDistanceSq_0.08_gapClean",
       "color": "#00e5ff",
-      "opacity": 0.92,
+      "opacity": 0.42,
       "linewidth": 1,
-      "is_skinned": true,
-      "binded": true
+      "is_skinned": false,
+      "is_particle_flow": true,
+      "flow": true,
+      "poles": true,
+      "gap_clean": "No conexiones entre piernas - gap 0.11 limpio - triangulación abierta muslos",
+      "note": "V30 DEFINITIVO - líneas irregulares cruzadas largas muslos - cortas cintura - polos origen - nodos interrupción botones/bolsillos"
     },
     "mesh_real_profile": {
-      "torso": "CylinderGeometry(0.195,0.18,0.56,28,24)_SkinnedMesh_Spine_02_Chest_weight_1.0_hd",
+      "torso": "CylinderGeometry(0.195,0.18,0.56,28,24)_SkinnedMesh_Spine_02_Chest_flow_poles_convergence_0.62_hd - colapso z 0.58",
       "torso_deform": [
-        { "y": ">0.22", "scale_x": 1.12, "label": "hombros 0.336 TOPOLOGICAL SKINNED - Shoulder.L/R" },
-        { "y": ">0.02", "scale_x": 0.62, "label": "cintura 0.11 REAL SKINNED - Spine_02" },
-        { "y": ">-0.12", "scale_x": 0.97, "label": "cadera 0.32 TOPOLOGICAL SKINNED - Hips" },
-        { "y": "<=-0.12", "scale_x": 0.92, "label": "bajo blazer TOPOLOGICAL SKINNED" }
+        { "y": ">0.22", "scale_x": 1.12, "scale_z": 1.05, "label": "hombros 0.336 TOPOLOGICAL FLOW - Shoulder.L/R - flujo origen frontal pole", "flow": "radial desde frontal pole" },
+        { "y": ">0.02", "scale_x": 0.62, "scale_z": 0.58, "label": "cintura 0.11 REAL FLOW - Spine_02 + Sacral_Pole - convergencia 45deg - hourglass sin arruga", "flow": "todas líneas pecho convergen centro + 45deg dirección" },
+        { "y": ">-0.12", "scale_x": 0.97, "scale_z": 0.92, "label": "cadera 0.32 TOPOLOGICAL FLOW - Hips + Sacral_Pole", "flow": "vuelve quad" },
+        { "y": "<=-0.12", "scale_x": 0.92, "label": "bajo blazer TOPOLOGICAL FLOW", "flow": "terminación" }
       ],
-      "lapels": "2x PlaneGeometry(0.08,0.28,4,8)_rotated_0.32rad_blazer_lapels_real_hd_skinned_Chest",
-      "buttons": "2x TorusGeometry(0.011,0.0025,8,16)_blazer_buttons_skinned_Chest",
-      "pockets": "2x BoxGeometry(0.075,0.038,0.012,4,2,1)_blazer_pockets_skinned_Spine_02",
-      "legs": "2x CylinderGeometry(0.092,0.046,0.80,20,24)_SKINNED_Hip_L_R_Knee_L_R_weight_painted_gap_0.11",
-      "feet": "2x BoxGeometry(0.055,0.04,0.19,6,2,8)_box_feet_with_toes_skinned_Ankle_L_R",
-      "arms": "2x CylinderGeometry(0.044,0.031,0.72,14,14)_SKINNED_Shoulder_L_R_Elbow_L_R_weight_painted_no_cut",
-      "hands": "2x BoxGeometry(0.05,0.02,0.08,3,1,2)_box_hands_skinned_Wrist_L_R",
-      "head": "SphereGeometry(0.11,18,18)_hd_realistic_face_skinned_Head_Bone",
-      "morphTargets": "6_visemes_Mouth_A_I_U_E_O_CLOSED_for_lip_sync",
+      "lapels": "2x PlaneGeometry(0.08,0.28,6,10)_rotated_0.32rad_blazer_lapels_nodes_interruption_8-10_lines_hd",
+      "buttons": "2x TorusGeometry(0.011,0.0025,12,20)_blazer_buttons_nodes_where_8-10_lines_die",
+      "pockets": "2x BoxGeometry(0.075,0.038,0.012,6,3,1)_blazer_pockets_nodes_interruption_hd",
+      "legs": "2x CylinderGeometry(0.092,0.046,0.80,20,24)_SKINNED_Hip_L_R_Knee_L_R_flow_triangulated_open_gap_0.11 - muslo triangulación abierta puntos separados 0.08-0.12 líneas largas cruzadas - rodilla 5 loops horizontales + 16 radiales círculo perfecto imagen definitiva",
+      "knees_dense": "5_loops_horizontales_juntos_Y_-0.15_a_-0.35 + 16_radiales - quad denso puro - círculo perfecto imagen definitiva - 90deg cambio dirección vertical->horizontal",
+      "feet": "2x BoxGeometry(0.055,0.04,0.19,8,3,10)_box_feet_with_5_toes_clusters_bifurcation_flow_5_terminaciones - cada dedo cluster propio polo",
+      "arms": "2x CylinderGeometry(0.044,0.031,0.72,14,14)_SKINNED_Shoulder_L_R_Elbow_L_R_triangulated_open - líneas largas cruzadas bíceps antebrazo - codo anillo denso",
+      "hands": "2x BoxGeometry(0.05,0.02,0.08,4,2,3)_box_hands_skinned_Wrist_L_R",
+      "head": "SphereGeometry(0.11,18,18)_hd_realistic_face_flow_polo_frontal_radial_8_radios - polo frente origen todo",
+      "morphTargets": "6_visemes_Mouth_A_I_U_E_O_CLOSED_for_lip_sync_flow_poles",
       "no_lathe": false,
       "no_capsule": true,
       "no_chicle": true,
       "skinned": true,
-      "note": "V29.0 SKINNED - SkinnedMesh bindeado - malla viva - shoulder 0.50 sin corte - weight painting real - 0.92 opacity"
+      "flow": true,
+      "poles": true,
+      "particle": true,
+      "note": "V30.0 DEFINITIVO - 3 mallas superpuestas - Malla 1 puntos 0.012 glow 3200 + Malla 2 kNN 12 líneas irregulares + Malla 3 quad denso rodillas/cara/pies - Polos reales frontal/sacro - Flujo topológico - 0.11 waist hora glass - gap limpio - imagen definitiva clonada"
     },
     "sampling": {
-      "method": "skinned_weight_painting_hd",
-      "total_points": 8500,
+      "method": "skinned_weight_painting_flow_poles_particle_kNN",
+      "total_points": 3200,
       "distribution": {
-        "body_cylinder_topological_skinned": "vertices_torso_28_segments_Spine_02_Chest",
-        "lapels_skinned": 320,
-        "buttons_skinned": 80,
-        "pockets_skinned": 160,
-        "head_skinned_Head_Bone": 1100,
-        "face_eyes_white": 120,
-        "face_iris": 80,
-        "face_mouth_morph": 40,
-        "arms_cylinder_topological_skinned_Shoulder": 840,
-        "hands_box_skinned_Wrist": 120,
-        "legs_cylinder_topological_skinned_Hip_Knee": 1680,
-        "feet_box_toes_skinned_Ankle": 240,
-        "hair_bob_attached_Head_Bone": 850
+        "body_cylinder_topological_flow_Spine_02_Chest": "vertices_torso_28_segments_flow_poles_convergence_0.62",
+        "lapels_nodes_interruption": 120,
+        "buttons_nodes_poles": 60,
+        "pockets_nodes_interruption": 80,
+        "head_flow_frontal_pole_radial_8": 450,
+        "face_eyes_white_iris_radial": 120,
+        "face_iris_flow": 80,
+        "face_mouth_morph_visemes": 40,
+        "arms_cylinder_triangulated_open_Shoulder_Elbow": 500,
+        "hands_box_Wrist": 80,
+        "legs_cylinder_triangulated_open_Hip_Knee_gap_clean": 900,
+        "knees_quad_dense_5_loops_16_radiales_circulo_perfecto": 280,
+        "feet_box_5_toes_bifurcation_clusters": 180,
+        "hair_bob_particulas_casco_Head_Bone": 85,
+        "lines_kNN_12_maxDistance_0.08": "~3200 conexiones - largas muslos cortas cintura - gap clean sin cruces piernas"
       }
     }
   },
@@ -111,20 +145,26 @@
     "mobile_scale": [0.50, 0.50, 0.50],
     "group_position": [0.0, -0.02, 0],
     "mobile_group_position": [0.0, -0.02, 0],
-    "note": "V29.0 SKINNED - SkinnedMesh bindeado - camara 1.95/2.35 + escala 0.52 = cabe entera cabeza 0.68 pies -0.70 visible rigged nitida 0.92 opacity"
+    "filter": "contrast(1.22) brightness(1.14) saturate(1.08) drop-shadow(0 0 6px rgba(0,229,255,0.55))",
+    "hologram_filter": "drop-shadow(0 0 24px rgba(0,229,255,0.55)) drop-shadow(0 0 48px rgba(0,212,255,0.28)) drop-shadow(0 0 80px rgba(0,229,255,0.12))",
+    "note": "V30.0 DEFINITIVO - 3 mallas superpuestas - partículas 0.012 glow + kNN 12 líneas - camara 1.95/2.35 + escala 0.52 = cabe entera cabeza 0.68 pies -0.70 visible rigged nítida flow poles - glow definitivo imagen"
   },
   "motor_intuicion": {
-    "type": "skinned_pin_pan_topological_motor_blazer_real_rigged_hd",
+    "type": "skinned_pin_pan_topological_motor_flow_poles_particle_blazer_real_definitivo_hd",
     "is_motor": true,
     "moves_app": true,
     "is_skinned": true,
     "is_rigged": true,
+    "is_flow": true,
+    "is_poles": true,
+    "is_particle": true,
     "zones": ["welcome", "reading_text", "input_field", "feedback_ok", "feedback_err", "sap_dashboard", "evolution"],
     "thinkAndMove_params": {
       "reading": true,
       "talkAmp": "0.3 + sin(t*4)*0.2",
-      "breathing": "Spine_02_Y_skinned",
-      "bones": "Head_Bone_Eye_L_R_Mouth_Shoulder_L_R_Elbow_L_R_Wrist_L_R_Hip_L_R_Knee_L_R_Ankle_L_R"
+      "breathing": "Spine_02_Y_skinned + Frontal_Pole_Z + Sacral_Pole_X - flujo respira",
+      "bones": "Head_Bone_Frontal_Pole_Eye_L_R_Iris_L_R_Mouth_Jaw_Shoulder_L_R_Elbow_L_R_Wrist_L_R_Hand_L_R_Hip_L_R_Knee_L_R_Ankle_L_R_Toe_L_R_Sacral_Pole_Button_Node_01_02_Pocket_Node_L_R - 34 bones flow poles",
+      "poles_breathing": "Frontal_Pole rotation.y sin(polePhase)*0.04 + Sacral_Pole rotation.x sin(polePhase*0.7)*0.03 - polos respiran"
     }
   }
 }

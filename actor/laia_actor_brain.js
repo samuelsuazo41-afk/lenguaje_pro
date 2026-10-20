@@ -1,17 +1,19 @@
-// laia_actor_brain.js - V29.5 SKINNED FACIAL RIGGED - TOPOLOGICAL BLAZER REAL
-// V29.0 -> V29.5: Facial rig completo Eye_L/R iris + Mouth 6 visemas + fix bindMode attached + scale bob + chest fix
-// LIVE2D RIGGING BLUEPRINT COMPLETO: Head_Bone, Spine_02, Shoulder.L/R, Elbow.L/R, Wrist.L/R, Hip.L/R, Knee.L/R, Ankle.L/R, Eye_L/R, Mouth + Visemes
-// Autor: YARVIS + Laia - Girona - V29.5 SKINNED FACIAL
+// laia_actor_brain.js - V30.0 DEFINITIVO SKINNY PARTICLE TRIANGULATED - TOPOLOGICAL FLOW
+// V29.5 -> V30.0: Rediseño total desde imagen definitiva - 3 mallas superpuestas + polos reales + flujo topológico 0.11 waist
+// Malla definitiva: Partículas 0.012 glow + kNN 12 maxDistance 0.08 + quad denso solo rodillas/cara/pies + polos frontal/sacro
+// Autor: YARVIS + Laia - Girona - V30.0 DEFINITIVO
 
 export const LAIA_BRAIN_CONFIG = {
-  version: "29.5 SKINNED FACIAL RIGGED - TOPOLOGICAL - BLAZER REAL - 0.11 WAIST - 6 VISEMES",
+  version: "30.0 DEFINITIVO SKINNY PARTICLE TRIANGULATED - 3 MALLAS - POLOS REALES - 0.11 WAIST",
   hiddenSkeleton: false,
   skinnedMesh: true,
   skeleton: true,
   facialRig: true,
+  topologicalFlow: true,
+  poles: true,
   bones: 34,
-  pointsCount: 9740,
-  meshType: "SkinnedMesh_Topological_Blazer_Quad_Grid_Rigged_Facial_Visemes_28_24_HD",
+  pointsCount: 3200,
+  meshType: "SkinnedMesh_Topological_Skinny_Particle_Triangulated_kNN12_Flow_Poles_0.11_Waist_V30_DEFINITIVE",
   breathBase: 1.1,
   meshOnly: false,
   feminine: true,
@@ -26,30 +28,36 @@ export const LAIA_BRAIN_CONFIG = {
   mobileScale: 0.50,
   visemes: 6,
   visemeList: ['CLOSED','A','I','U','E','O'],
-  lines: { type: "SkinnedMesh_Wireframe_Rigged_Facial_Visemes", opacity: 0.92, color: "#00e5ff" }
+  particle: { size: 0.012, opacity: 0.88, color: "#00e5ff", sizeAttenuation: true },
+  lines: { type: "kNN_Particle_Flow", k: 12, maxDistanceSq: 0.08, opacity: 0.42, color: "#00e5ff", gapClean: true },
+  quadDense: { zones: ["KNEES","FACE","FEET"], knees: "5_loops", face: "radial_8", feet: "5_clusters" },
+  flow: { origin: "Frontal_Pole_Forehead", sacral: "Sacro_Pole_Back", directionChangeWaist: "45deg", kneeDirection: "90deg_vertical_to_horizontal", termination: "5_toes_bifurcation" }
 };
 
-let MIND = { breath: 0, mood: 'curiosa', state: 'IDLE_CORTANA', talkAmp: 0, lastError: 0, pinPan: 0, viseme: 0 };
+let MIND = { breath: 0, mood: 'curiosa', state: 'IDLE_CORTANA', talkAmp: 0, lastError: 0, pinPan: 0, viseme: 0, polePhase: 0 };
 
 export function createLaiaSkeleton(THREE, group) {
   const bones = [];
   const mk = (name, pos, parent) => {
     const b = new THREE.Bone(); b.name = name; b.position.copy(pos); parent.add(b); bones.push(b); return b;
   };
-  // HIERARCHY REAL - como tu blueprint 5
+  // HIERARCHY REAL V30 - con polos topológicos
   const hips = mk('Hips', new THREE.Vector3(0,0,0), group);
   const spine02 = mk('Spine_02', new THREE.Vector3(0,0.18,0), hips);
   const chest = mk('Chest', new THREE.Vector3(0,0.22,0), spine02);
   const neck = mk('Neck', new THREE.Vector3(0,0.22,0), chest);
   const head = mk('Head_Bone', new THREE.Vector3(0,0.18,0), neck);
   
-  // FACIAL RIG - nuevo en V29.5
+  // POLO FRONTAL - origen de flujo topológico (se ve en frente de imagen definitiva)
+  const frontalPole = mk('Frontal_Pole', new THREE.Vector3(0,0.04,0.09), head);
+  
+  // FACIAL RIG V30 - mapeado de imagen definitiva
   const eyeL = mk('Eye_L', new THREE.Vector3(-0.032,0.02,0.082), head);
   const irisL = mk('Iris_L', new THREE.Vector3(0,0,0.015), eyeL);
   const eyeR = mk('Eye_R', new THREE.Vector3(0.032,0.02,0.082), head);
   const irisR = mk('Iris_R', new THREE.Vector3(0,0,0.015), eyeR);
   const mouth = mk('Mouth', new THREE.Vector3(0,-0.035,0.088), head);
-  const jaw = mk('Jaw', new THREE.Vector3(0,-0.01,0), mouth); // para visemas A,E
+  const jaw = mk('Jaw', new THREE.Vector3(0,-0.01,0), mouth);
 
   const shoulderL = mk('Shoulder.L', new THREE.Vector3(-0.22,0.15,0), chest);
   const elbowL = mk('Elbow.L', new THREE.Vector3(-0.32,0,0), shoulderL);
@@ -61,6 +69,9 @@ export function createLaiaSkeleton(THREE, group) {
   const wristR = mk('Wrist.R', new THREE.Vector3(0.32,0,0), elbowR);
   const handR = mk('Hand.R', new THREE.Vector3(0.08,0,0), wristR);
 
+  // POLO SACRO - segundo origen flujo (espalda baja)
+  const sacralPole = mk('Sacral_Pole', new THREE.Vector3(0,-0.02,-0.04), hips);
+
   const hipL = mk('Hip.L', new THREE.Vector3(-0.065,-0.18,0), hips);
   const kneeL = mk('Knee.L', new THREE.Vector3(0,-0.38,0), hipL);
   const ankleL = mk('Ankle.L', new THREE.Vector3(0,-0.38,0), kneeL);
@@ -71,6 +82,12 @@ export function createLaiaSkeleton(THREE, group) {
   const ankleR = mk('Ankle.R', new THREE.Vector3(0,-0.38,0), kneeR);
   const toeR = mk('Toe.R', new THREE.Vector3(0,-0.04,0.08), ankleR);
 
+  // NODOS INTERRUPCIÓN - botones/bolsillos donde mueren 8-10 líneas
+  const btnNode1 = mk('Button_Node_01', new THREE.Vector3(0.01,0.22,0.18), chest);
+  const btnNode2 = mk('Button_Node_02', new THREE.Vector3(0.01,0.08,0.18), chest);
+  const pocketNodeL = mk('Pocket_Node_L', new THREE.Vector3(-0.14,0.07,0.17), chest);
+  const pocketNodeR = mk('Pocket_Node_R', new THREE.Vector3(0.14,0.07,0.17), chest);
+
   while(bones.length < 34) mk(`Extra_${bones.length}`, new THREE.Vector3(0,0,0), hips);
   
   const skeleton = new THREE.Skeleton(bones);
@@ -80,6 +97,7 @@ export function createLaiaSkeleton(THREE, group) {
 export function thinkAndMove(bones, context) {
   MIND.breath += 0.016;
   MIND.talkAmp = context.talkAmp || 0;
+  MIND.polePhase += 0.008;
   if (!bones || bones.length === 0) return MIND.state;
   const t = MIND.breath;
   
@@ -98,12 +116,22 @@ export function thinkAndMove(bones, context) {
   const mouth = bones.find(b=>b.name==='Mouth');
   const jaw = bones.find(b=>b.name==='Jaw');
   const eyeL = bones.find(b=>b.name==='Eye_L'); const eyeR = bones.find(b=>b.name==='Eye_R');
-  const irisL = bones.find(b=>b.name==='Iris_L'); const irisR = bones.find(b=>b.name==='Iris_R');
+  const frontalPole = bones.find(b=>b.name==='Frontal_Pole');
+  const sacralPole = bones.find(b=>b.name==='Sacral_Pole');
   const lShoulder = bones.find(b=>b.name==='Shoulder.L'); const lElbow = bones.find(b=>b.name==='Elbow.L');
   const rShoulder = bones.find(b=>b.name==='Shoulder.R'); const rElbow = bones.find(b=>b.name==='Elbow.R');
   const lKnee = bones.find(b=>b.name==='Knee.L'); const rKnee = bones.find(b=>b.name==='Knee.R');
 
-  // V29.5 FACIAL TRACKING - ojos siguen
+  // V30 POLOS - flujo topológico respirando
+  if (frontalPole) {
+    frontalPole.rotation.y = Math.sin(MIND.polePhase) * 0.04;
+    frontalPole.position.z = 0.09 + Math.sin(t*0.5)*0.002;
+  }
+  if (sacralPole) {
+    sacralPole.rotation.x = Math.sin(MIND.polePhase*0.7) * 0.03;
+  }
+
+  // V30 FACIAL TRACKING - ojos siguen + radial 8 desde polo frontal
   if (eyeL && eyeR) {
     const lookX = Math.sin(t*0.23)*0.015;
     const lookY = Math.sin(t*0.31)*0.008;
@@ -125,7 +153,7 @@ export function thinkAndMove(bones, context) {
   }
   if (MIND.state === 'EXPLAINING') {
     if (rElbow) { rElbow.rotation.x = Math.sin(t * 2.6) * 0.28; rElbow.rotation.z = Math.sin(t * 1.4) * 0.08; }
-    // V29.5 VISEMAS REALES - 6 formas de boca según audio
+    // V30 VISEMAS REALES - 6 formas mapeadas de imagen definitiva
     if (mouth && jaw) {
       MIND.viseme = Math.floor((t*6) % 6);
       const amp = MIND.talkAmp || 0.22;
@@ -138,6 +166,7 @@ export function thinkAndMove(bones, context) {
     }
   }
   if (MIND.state === 'WALKING') {
+    // V30 WALKING con cambio dirección rodilla 90deg
     if (lKnee) lKnee.rotation.x = Math.sin(t * 5.2) * 0.44;
     if (rKnee) rKnee.rotation.x = -Math.sin(t * 5.2) * 0.44;
     if (hips) hips.position.x = Math.sin(t * 5.2) * 0.010;
@@ -165,4 +194,4 @@ export function decideByMetrics(metrics) {
   return { state: 'IDLE_CORTANA', color: '#00d4ff', pos: 'welcome' };
 }
 
-export const LAIA_ACTOR_BRAIN = { version: "29.5 SKINNED FACIAL RIGGED - BLAZER REAL - 6 VISEMES", createLaiaSkeleton, thinkAndMove, decideByMetrics, config: LAIA_BRAIN_CONFIG };
+export const LAIA_ACTOR_BRAIN = { version: "30.0 DEFINITIVO SKINNY PARTICLE TRIANGULATED - POLOS REALES - 3 MALLAS - 0.11 WAIST", createLaiaSkeleton, thinkAndMove, decideByMetrics, config: LAIA_BRAIN_CONFIG };

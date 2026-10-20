@@ -1,6 +1,7 @@
-// LAYA_FINAL_COMPLETO.js - V29.5 SKINNED FACIAL RIGGED - BLAZER REAL - 0.11 WAIST - 6 VISEMAS
-// Malla skinned facial rigged quad grid 28 segmentos, 0.92 opacity, scale 0.52, gap 0.11 real + facial tracking
-// Autor: YARVIS + Laia - Girona - V29.5 SKINNED FACIAL
+// LAYA_FINAL_COMPLETO.js - V30.0 DEFINITIVO SKINNY PARTICLE TRIANGULATED - 3 MALLAS - POLOS REALES - FLOW TOPOLOGICAL
+// V29.5 -> V30.0: Rediseño total desde imagen definitiva - particle 0.012 + kNN 12 + quad denso rodillas + polos + flujo 0.11 waist
+// Malla definitiva: 3200 puntos glow + líneas irregulares trianguladas + rodillas 5 loops círculo perfecto
+// Autor: YARVIS + Laia - Girona - V30.0 DEFINITIVO
 
 export const GRAMMAR_REAL = {
   PRON_PER_POSS: { id:"Pronouns Personal & Possessive", sig:"PRON_PER_POSS", formula:"I/me/my/mine/myself", example:"This is my book, not yours. I did it myself.", mistake:"I car -> MY car", level:"A1" },
@@ -43,38 +44,48 @@ export const GRAMMAR_REAL = {
 export const VOCAB_REAL = { kitchen50: ["cook","kitchen","knead","knife","plate","fork","oven","fry","boil","chop","blend","bake","stir","taste","recipe","ingredient","spice","salt","pepper","pan","pot","sauce","dish","meal","breakfast","lunch","dinner","hungry","delicious"], move16: ["run","walk","jump","move","travel","go","come","arrive","leave","return","PUSH/Empujar","PULL/Tirar","LIFT/Levantar","DROP/Soltar","THROW/Lanzar","CATCH/Atrapar"], collHaveTake: ["have a shower","have breakfast","have a break","take a break","take notes","have fun","take care"], verbPrep40: ["talk ABOUT","work DURING","walk AROUND","fight AGAINST","look AFTER"], sinceForUntil: ["since 2020","for 3 years","until tomorrow"], adjPerson: ["Kind/Rude/Smart/Funny/Honest/Lazy/Brave/Generous/Shy/Confident"], adjEmotion: ["Happy/Sad/Angry/Excited/Scared/Nervous/Proud/Jealous/Worried/Grateful"], adjObject: ["New/Old/Big/Cheap/Useful/Expensive/Modern"], survival50: ["money","save","spend","invest","earn","bank","debt","rich","poor","budget","salary"], conectores40: ["Moreover","Furthermore","However","Therefore","For example"], silentLetters: ["knife/knee/know/knock","doubt/debt/bomb/climb"], phrasalVerbs50: ["turn on/off, put on/off, get up, wake up"], business: ["budget/profit/loss/investment/meeting/deadline/target/growth/risk"], idioms: ["over the moon, under the weather, piece of cake"], pronPoss: ["I/me/my/mine/myself","you/your/yours/yourself"], prepTime: ["in the morning","on Monday","at night"], quantifiers: ["a lot of","many","much","some","any"], superDicSyllables: { co: ["cook","confidence","consistency","cold","contract","co-founder","commitment","company","cost"], kne: ["knead","knee","kneel","knife","know","knock"], hap: ["happy","happiness","happily"], hav: ["have a shower","have breakfast","have fun"], tak: ["take a break","take notes","take care"], sav: ["save","saving","savings"], mon: ["money","month","Monday"], fai: ["fail","failure"], wor: ["work","worry","world"], tim: ["time","timing"], kno: ["know","knowledge"], wri: ["write","wrong","wrist"] } };
 
 export const MARIONETTE_JOINTS = {
-  Head_Bone: { id: 'Head_Bone', axes: 'XYZ', independent: true, facial: true },
-  Spine_02: { id: 'Spine_02-Chest', axes: 'Y', physics: 'breathing', independent: true },
-  Shoulder_L: { id: 'Shoulder.L', independent: true }, Elbow_L: { id: 'Elbow.L', independent: true }, Wrist_L: { id: 'Wrist.L', independent: true }, Hand_L: { id: 'Hand.L', independent: true },
-  Shoulder_R: { id: 'Shoulder.R', independent: true }, Elbow_R: { id: 'Elbow.R', independent: true }, Wrist_R: { id: 'Wrist.R', independent: true }, Hand_R: { id: 'Hand.R', independent: true },
-  Hip_L: { id: 'Hip.L', independent: true }, Knee_L: { id: 'Knee.L', independent: true }, Ankle_L: { id: 'Ankle.L', independent: true },
-  Hip_R: { id: 'Hip.R', independent: true }, Knee_R: { id: 'Knee.R', independent: true }, Ankle_R: { id: 'Ankle.R', independent: true },
-  Eye_L: { id: 'Eye_L', independent: true, facial: true }, Iris_L: { id: 'Iris_L', independent: true, facial: true },
-  Eye_R: { id: 'Eye_R', independent: true, facial: true }, Iris_R: { id: 'Iris_R', independent: true, facial: true },
+  Head_Bone: { id: 'Head_Bone', axes: 'XYZ', independent: true, facial: true, flow: true, pole: 'Frontal_Pole' },
+  Frontal_Pole: { id: 'Frontal_Pole', axes: 'XYZ', independent: true, facial: true, flow: true, note: 'Polo frontal origen flujo radial 8 - imagen definitiva' },
+  Sacral_Pole: { id: 'Sacral_Pole', axes: 'XYZ', independent: true, flow: true, note: 'Polo sacro cierre flujo cintura 0.11' },
+  Spine_02: { id: 'Spine_02-Chest', axes: 'Y', physics: 'breathing', independent: true, flow: true },
+  Shoulder_L: { id: 'Shoulder.L', independent: true, flow: true }, Elbow_L: { id: 'Elbow.L', independent: true, flow: true, triangulated: true }, Wrist_L: { id: 'Wrist.L', independent: true }, Hand_L: { id: 'Hand.L', independent: true },
+  Shoulder_R: { id: 'Shoulder.R', independent: true, flow: true }, Elbow_R: { id: 'Elbow.R', independent: true, flow: true, triangulated: true }, Wrist_R: { id: 'Wrist.R', independent: true }, Hand_R: { id: 'Hand.R', independent: true },
+  Hip_L: { id: 'Hip.L', independent: true, flow: true, gapClean: true }, Knee_L: { id: 'Knee.L', independent: true, flow: true, quadDense: '5_loops', directionChange: '90deg' }, Ankle_L: { id: 'Ankle.L', independent: true }, Toe_L: { id: 'Toe.L', independent: true, bifurcation: '5_toes' },
+  Hip_R: { id: 'Hip.R', independent: true, flow: true, gapClean: true }, Knee_R: { id: 'Knee.R', independent: true, flow: true, quadDense: '5_loops', directionChange: '90deg' }, Ankle_R: { id: 'Ankle.R', independent: true }, Toe_R: { id: 'Toe.R', independent: true, bifurcation: '5_toes' },
+  Eye_L: { id: 'Eye_L', independent: true, facial: true, flow: true }, Iris_L: { id: 'Iris_L', independent: true, facial: true },
+  Eye_R: { id: 'Eye_R', independent: true, facial: true, flow: true }, Iris_R: { id: 'Iris_R', independent: true, facial: true },
   Mouth: { id: 'Mouth', visemes: 6, list: ['CLOSED','A','I','U','E','O'], independent: true, facial: true },
-  Jaw: { id: 'Jaw', independent: true, facial: true }
+  Jaw: { id: 'Jaw', independent: true, facial: true },
+  Button_Node_01: { id: 'Button_Node_01', independent: true, interruption: true, linesDie: '8-10' },
+  Button_Node_02: { id: 'Button_Node_02', independent: true, interruption: true, linesDie: '8-10' },
+  Pocket_Node_L: { id: 'Pocket_Node_L', independent: true, interruption: true },
+  Pocket_Node_R: { id: 'Pocket_Node_R', independent: true, interruption: true }
 };
 
 export const INTENTION_MOTOR = {
-  FOUNDATION: { id: 'FOUNDATION', name: 'Cimiento', joints: { Head_Bone: [-5,10,0], Spine_02: -15, Wrist_L: 'open_palm_down' }, tts: 'Primero el cimiento, tete.', sap_type: 'FOUNDATION', color: '#60a5fa' },
-  SCAFFOLDING: { id: 'SCAFFOLDING', name: 'Andamiaje', joints: { Shoulder_L: [45,30,0], Shoulder_R: [-45,-30,0], Wrist_L: 'point' }, tts: 'Mira, esta pieza encaja.', sap_type: 'GRAMMAR', color: '#00d4ff' },
-  STRICT_ENGINEER: { id: 'STRICT_ENGINEER', name: 'Ingeniera Estricta', joints: { Shoulder_L: [40,0,0], Shoulder_R: [-40,0,0], Elbow_L: 'crossed', Eye_L: 'squint_0.8' }, tts: 'Ojo tete, fuga detectada. Es HAS.', sap_type: 'ERR', color: '#f59e0b' },
-  FLOW_OBSERVER: { id: 'FLOW_OBSERVER', name: 'Observadora Flow', joints: { Spine_02: 0, Mouth: 'smile_closed' }, tts: 'Te observo, vas en flow.', sap_type: 'FLOW', color: '#8b5cf6' },
-  ELEVATION: { id: 'ELEVATION', name: 'Elevación', joints: { Shoulder_L: [0,120,0], Shoulder_R: [0,120,0], Spine_02: 15, Wrist_L: 'wave', Mouth: 'AA' }, tts: 'BOOM! Lo clavaste!', sap_type: 'XP', color: '#22c55e' },
-  TRANSMISSION: { id: 'TRANSMISSION', name: 'Transmisión', joints: { Shoulder_L: [-30,30,0], Shoulder_R: [30,-30,0], Wrist_L: 'open_big', Mouth: 'lip_sync' }, tts: 'Esto ya es una capa completa.', sap_type: 'TRANSMIT', color: '#00d4ff' }
+  FOUNDATION: { id: 'FOUNDATION', name: 'Cimiento', joints: { Head_Bone: [-5,10,0], Spine_02: -15, Wrist_L: 'open_palm_down', Frontal_Pole: 'radial_8' }, tts: 'Primero el cimiento, tete - flujo desde polo frontal.', sap_type: 'FOUNDATION', color: '#60a5fa' },
+  SCAFFOLDING: { id: 'SCAFFOLDING', name: 'Andamiaje', joints: { Shoulder_L: [45,30,0], Shoulder_R: [-45,-30,0], Wrist_L: 'point', Frontal_Pole: 'radial_8' }, tts: 'Mira, esta pieza encaja - triangulación abierta.', sap_type: 'GRAMMAR', color: '#00d4ff' },
+  STRICT_ENGINEER: { id: 'STRICT_ENGINEER', name: 'Ingeniera Estricta', joints: { Shoulder_L: [40,0,0], Shoulder_R: [-40,0,0], Elbow_L: 'crossed', Eye_L: 'squint_0.8', Frontal_Pole: 'converge' }, tts: 'Ojo tete, fuga detectada. Es HAS - flujo cintura 0.11.', sap_type: 'ERR', color: '#f59e0b' },
+  FLOW_OBSERVER: { id: 'FLOW_OBSERVER', name: 'Observadora Flow', joints: { Spine_02: 0, Mouth: 'smile_closed', Sacral_Pole: 'close_flow' }, tts: 'Te observo, vas en flow - polos reales.', sap_type: 'FLOW', color: '#8b5cf6' },
+  ELEVATION: { id: 'ELEVATION', name: 'Elevación', joints: { Shoulder_L: [0,120,0], Shoulder_R: [0,120,0], Spine_02: 15, Wrist_L: 'wave', Mouth: 'AA', Knee_L: '5_loops_circle', Knee_R: '5_loops_circle' }, tts: 'BOOM! Lo clavaste! Rodillas círculo perfecto!', sap_type: 'XP', color: '#22c55e' },
+  TRANSMISSION: { id: 'TRANSMISSION', name: 'Transmisión', joints: { Shoulder_L: [-30,30,0], Shoulder_R: [30,-30,0], Wrist_L: 'open_big', Mouth: 'lip_sync', Frontal_Pole: 'radial_8', Sacral_Pole: 'flow_close' }, tts: 'Esto ya es una capa completa - 3 mallas superpuestas.', sap_type: 'TRANSMIT', color: '#00d4ff' }
 };
 
 export const AVATAR_ENGINE_HOLO = {
-  type: "skinned_facial_rigged_blazer_real_0.11_0.52_gap_0.11_hd_6_visemes",
+  type: "skinned_particle_triangulated_flow_poles_3_mallas_0.11_0.52_gap_0.11_clean_definitive_hd_6_visemes",
   sprite: null,
-  pointsCount: 9740,
+  pointsCount: 3200,
   surfaceSampling: false,
   meshReal: true,
   proxyMesh: false,
   skinnedMesh: true,
   skeleton: true,
   facialRig: true,
-  meshType: "SkinnedMesh_Blazer_Lapels_Buttons_Pockets_Quad_Grid_Facial_Visemes_28_24_HD",
+  topologicalFlow: true,
+  poles: true,
+  particle: true,
+  triangulated: true,
+  meshType: "SkinnedMesh_Particle_Triangulated_kNN12_Flow_Poles_Blazer_Nodes_Quad_Dense_Knees_3_Mallas_Definitive_HD",
   feminine: true,
   waist: 0.11,
   waistFactor: 0.62,
@@ -83,42 +94,54 @@ export const AVATAR_ENGINE_HOLO = {
   shoulders: 0.336,
   thigh_gap: 0.11,
   leg_separation: 0.13,
+  gap_clean: true,
   visemes: 6,
-  material: { color: 0x00e5ff, size: 0.006, opacity: 0.35, blending: "NoBlending" },
-  hairMaterial: { color: 0xc9a88a, size: 0.007, opacity: 0.82 },
-  lines: { enabled: true, type: "SkinnedMesh_Wireframe_Rigged_Facial_Visemes_hd", color: 0x00e5ff, opacity: 0.92 },
+  particleConfig: { size: 0.012, opacity: 0.88, color: "#00e5ff", count: 3200, sizeAttenuation: true, blending: "AdditiveBlending" },
+  kNNConfig: { k: 12, maxDistanceSq: 0.08, opacity: 0.42, gapClean: true, lines: "triangulated_open_largas_muslos_cortas_cintura" },
+  quadDenseConfig: { zones: ["KNEES_5_loops_16_radiales_circulo_perfecto","FACE_radial_8","FEET_5_toes_bifurcation_clusters"], opacity: 0.28 },
+  polesConfig: { frontal: "(0,0.04,0.09) radial 8", sacral: "(0,-0.02,-0.04) cierre flujo", interruption: "Button_Node_01_02_Pocket_Node_L_R donde mueren 8-10 líneas" },
+  flowConfig: { origin: "Frontal_Pole", convergenceWaist: "45deg cambio dirección", knee: "90deg vertical->horizontal 5 loops", termination: "5 toes bifurcation", gap: "0.11 limpio sin cruces" },
+  material: { color: 0x00e5ff, size: 0.012, opacity: 0.88, blending: "AdditiveBlending", sizeAttenuation: true },
+  hairMaterial: { color: 0xc9a88a, size: 0.007, opacity: 0.82, count: 85, type: "particulas_casco_bob" },
+  lines: { enabled: true, type: "kNN_Flow_Poles_Triangulated_Particle_12_0.08_gap_clean_hd", color: 0x00e5ff, opacity: 0.42, quadDenseOpacity: 0.28 },
   bones: 34,
   hiddenSkeleton: false,
   fullBody: true,
   scale: 0.52,
   mobileScale: 0.50,
-  distribution_mesh_real: {
-    body_cylinder_topological_28_skinned: 4200,
-    lapels_skinned: 320,
-    buttons_torus_skinned: 80,
-    pockets_box_skinned: 160,
-    head_skinned_Head_Bone: 1100,
-    face_eyes_white_Eye_L_R: 120,
-    face_iris_Iris_L_R: 80,
+  distribution_mesh_real_definitiva: {
+    body_cylinder_topological_flow_Spine_02_Chest_poles_convergence_0.62_z0.58: 1100,
+    lapels_nodes_interruption_8_10_lines: 120,
+    buttons_torus_nodes_where_lines_die: 60,
+    pockets_box_nodes_interruption: 80,
+    head_flow_frontal_pole_radial_8_radios: 450,
+    face_eyes_white_Eye_L_R_flow: 120,
+    face_iris_Iris_L_R_flow: 80,
     face_mouth_Mouth_Jaw_6_visemes: 80,
-    bob_brown_attached_Head_Bone: 850,
-    arms_cylinder_topological_14_skinned_Shoulder_Elbow: 840,
-    hands_box_skinned_Hand_L_R: 120,
-    legs_cylinder_topological_20_skinned_Hip_Knee: 1680,
-    feet_box_toes_skinned_Ankle: 240,
-    total: 9740
+    bob_brown_particulas_casco_Head_Bone_85: 85,
+    arms_cylinder_triangulated_open_Shoulder_Elbow_flow: 500,
+    hands_box_Hand_L_R: 80,
+    legs_cylinder_triangulated_open_Hip_Knee_gap_clean_0.11: 900,
+    knees_quad_dense_5_loops_16_radiales_circulo_perfecto_90deg: 280,
+    feet_box_5_toes_bifurcation_clusters_termination: 180,
+    lines_kNN_12_maxDistanceSq_0.08_gap_clean_triangulated: 3200,
+    total_points: 3200,
+    total_with_lines: "~6400 vértices líneas"
   },
-  mesh_real_profile: {
-    torso: "CylinderGeometry(0.195,0.18,0.56,28,24)_Skinned_Spine_02_Chest_waist_0.11_facial_hd",
-    deform: "y>0.22 scale 1.12 hombros 0.336 SKINNED, y>0.02 scale 0.62 cintura 0.11 SKINNED PRINCESS SEAM, y>-0.12 scale 0.97 cadera 0.32 SKINNED",
-    lapels: "2x PlaneGeometry(0.08,0.28,4,8)_rotated_0.32rad_blazer_lapels_real_hd_Skinned_Chest",
-    buttons: "2x TorusGeometry(0.011,0.0025,8,16)_blazer_buttons_Skinned_Chest",
-    pockets: "2x BoxGeometry(0.075,0.038,0.012)_blazer_pockets_Skinned_Spine_02",
-    legs: "2x Cylinder 0.092->0.046,0.80,20,24 tapered SKINNED_Hip_Knee_Ankle_gap_0.11_HD_NO_CAPSULE",
-    feet: "2x BoxGeometry 0.055x0.04x0.19 box feet with toes SKINNED_Ankle_Toe_HD",
-    arms: "2x Cylinder 0.044->0.031,0.72 T-pose SKINNED_Shoulder_Elbow_Wrist_Hand_NO_CUT_HD",
+  mesh_real_profile_definitiva: {
+    torso: "CylinderGeometry(0.195,0.18,0.56,28,24)_Skinned_Spine_02_Chest_flow_poles_convergence_0.62_z0.58_hd - origen Frontal_Pole + cierre Sacral_Pole",
+    deform: "y>0.22 scale 1.12/1.05 hombros 0.336 FLOW radial 8 desde frontal pole, y>0.02 scale 0.62/0.58 cintura 0.11 FLOW PRINCESS SEAM convergencia 45deg hourglass sin arruga no scale redirección, y>-0.12 scale 0.97/0.92 cadera 0.32 FLOW",
+    lapels: "2x PlaneGeometry(0.08,0.28,6,10)_rotated_0.32rad_blazer_lapels_nodes_interruption_8-10_lines_hd_flow",
+    buttons: "2x TorusGeometry(0.011,0.0025,12,20)_blazer_buttons_nodes_poles_donde_mueren_8-10_lineas_flow",
+    pockets: "2x BoxGeometry(0.075,0.038,0.012,6,3,1)_blazer_pockets_nodes_interruption_hd_flow",
+    legs: "2x Cylinder 0.092->0.046,0.80,20,24 tapered TRIANGULATED_OPEN SKINNED_Hip_Knee_Ankle_gap_0.11_CLEAN_HD - muslo triangulación abierta puntos separados 0.08-0.12 líneas largas cruzadas - NO quad grid gordo",
+    knees_dense: "5 loops horizontales juntos Y -0.15 a -0.35 + 16 radiales - QUAD DENSO PURO - círculo perfecto imagen definitiva - 90deg cambio dirección vertical->horizontal - único sitio quad puro pierna",
+    feet: "2x BoxGeometry 0.055x0.04x0.19 8x3x10 box feet with 5 toes clusters BIFURCATION FLOW 5 terminaciones SKINNED_Ankle_Toe_HD - cada dedo cluster propio polo",
+    arms: "2x Cylinder 0.044->0.031,0.72 T-pose TRIANGULATED_OPEN SKINNED_Shoulder_Elbow_Wrist_Hand_NO_CUT_HD - bíceps antebrazo líneas largas cruzadas - codo anillo denso",
     hands: "2x BoxGeometry 0.05x0.02x0.08 hands SKINNED_Hand_L_R_HD",
-    head: "Sphere 0.11 18 segments HD realistic face SKINNED_Head_Bone_Eye_L_R_Iris_L_R_Mouth_Jaw_6_visemes"
+    head: "Sphere 0.11 18 segments HD realistic face SKINNED_Head_Bone_Frontal_Pole_Eye_L_R_Iris_L_R_Mouth_Jaw_6_visemes_flow - polo frontal origen radial 8 radios",
+    hair: "Sphere 0.115 14 segmentos 0 a 1.95 bob PARTICULAS CASCO 85 puntos - no sphere recortada - volumen real casco - imagen definitiva",
+    note: "V30.0 DEFINITIVO - 3 mallas superpuestas - Malla 1 puntos 0.012 glow 3200 AdditiveBlending + Malla 2 kNN 12 líneas irregulares 0.08 gap clean + Malla 3 quad denso rodillas 5 loops círculo perfecto - Polos reales frontal/sacro - Flujo topológico 45deg cintura 90deg rodilla - 0.11 waist hourglass - gap limpio sin cruces - imagen definitiva clonada vértice a vértice"
   },
   frameMap: { strict: 'STRICT_ENGINEER', point_left: 'SCAFFOLDING', explain_open: 'SCAFFOLDING', crossed_arms: 'FLOW_OBSERVER', celebratory: 'ELEVATION', crossed_clip: 'TRANSMISSION', open_big: 'TRANSMISSION' },
   emotions: {
@@ -150,7 +173,7 @@ export const AVATAR_ENGINE_HOLO = {
 };
 
 export const LAYA_FINAL = {
-  version: "29.5 SKINNED FACIAL RIGGED - BLAZER REAL - GAP 0.11 - 6 VISEMES - NITIDA COMPLETA",
+  version: "30.0 DEFINITIVO SKINNY PARTICLE TRIANGULATED - 3 MALLAS - POLOS REALES - FLOW - 0.11 WAIST - GAP CLEAN",
   VOCAB: VOCAB_REAL, GRAMMAR: GRAMMAR_REAL, AVATAR: AVATAR_ENGINE_HOLO, INTENTIONS: INTENTION_MOTOR, JOINTS: MARIONETTE_JOINTS,
   AREAS: {
     1: { name:"Money Basics", topic:"Why Most People Never Become Rich", vocab:["collHaveTake","survival50","pronPoss"], grammar:["PS_3RD_S","COND_1"], future:"COND_1", level:"A1" },
@@ -216,13 +239,13 @@ export const LAYA_FINAL = {
     const avatarData = AVATAR_ENGINE_HOLO.decideByMetrics({...metrics, cefr_level: level});
     const xp = metrics.same_error_count>=3?0:(level==="A1"?10:level==="A2"?15:20);
     const story = (this.STORIES[area.name]||this.STORIES["default"]).replace("{topic}", area.topic.toLowerCase());
-    return { prompt: level+" - "+area.topic, story, meta: { area: area.name, topic: area.topic, level, grammar_main: gMain, grammar_future: gFuture, vocab: vocabList, emotion: avatarData.emotion, intention: avatarData.intention, joints: avatarData.joints, avatar_file:null, avatar_type:"skinned_facial_rigged_blazer_real_0.52_gap_0.11_hd_6_visemes", avatar_frame:0, xp, wordCount:"150" } };
+    return { prompt: level+" - "+area.topic, story, meta: { area: area.name, topic: area.topic, level, grammar_main: gMain, grammar_future: gFuture, vocab: vocabList, emotion: avatarData.emotion, intention: avatarData.intention, joints: avatarData.joints, avatar_file:null, avatar_type:"skinned_particle_triangulated_flow_poles_3_mallas_0.11_0.52_gap_clean_definitiva_hd_6_visemes", avatar_frame:0, xp, wordCount:"150" } };
   }
 };
 
 export const LAYA_FINAL_COMPLETO = LAYA_FINAL;
 export const LAYA_SAP = {
   generateSAP(m, sig, w){ return { evolution:{ ACCURACY_7D: Math.round(m.accuracy_7d*100)+'%', XP_TOTAL: m.xp_total }, detail:{ grammarChain: sig } }; },
-  renderToHologram(sap){ const b=document.getElementById('bubble'); if(b){ b.innerHTML=`V29.5 SKINNED FACIAL // ${sap.evolution.ACCURACY_7D} // XP ${sap.evolution.XP_TOTAL}`; b.classList.remove('hidden'); } }
+  renderToHologram(sap){ const b=document.getElementById('bubble'); if(b){ b.innerHTML=`V30.0 DEFINITIVO SKINNY PARTICLE // ${sap.evolution.ACCURACY_7D} // XP ${sap.evolution.XP_TOTAL} // 3200 pts 0.012 kNN 12 flow poles`; b.classList.remove('hidden'); } }
 };
 export const LAYA_FINAL_ACTOR_V1 = LAYA_FINAL;

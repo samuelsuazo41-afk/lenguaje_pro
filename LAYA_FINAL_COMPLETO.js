@@ -1,6 +1,6 @@
-// LAYA_FINAL_COMPLETO.js - V27.0 HD -20% FOTO 3 - 0.11 WAIST - NITIDA COMPLETA
-// -20% escala para que quepa entera en la app + HD 0.009 + 0.22 wireframe
-// Autor: YARVIS + Laia - Girona - V27.0 HD -20%
+// LAYA_FINAL_COMPLETO.js - V28.5 TOPOLOGICAL BLAZER REAL - 0.11 WAIST - SOLAPAS BOTONES BOLSILLOS
+// Malla topológica quad grid 28 segmentos, 0.92 opacity, scale 0.52, gap 0.11 real
+// Autor: YARVIS + Laia - Girona - V28.5 TOPOLOGICAL
 
 export const GRAMMAR_REAL = {
   PRON_PER_POSS: { id:"Pronouns Personal & Possessive", sig:"PRON_PER_POSS", formula:"I/me/my/mine/myself", example:"This is my book, not yours. I did it myself.", mistake:"I car -> MY car", level:"A1" },
@@ -62,13 +62,13 @@ export const INTENTION_MOTOR = {
 };
 
 export const AVATAR_ENGINE_HOLO = {
-  type: "direct_humanoide_0.11_foto3_hd_minus20_final",
+  type: "topological_blazer_real_0.11_0.52_gap_0.11_hd",
   sprite: null,
-  pointsCount: 7000,
+  pointsCount: 8500,
   surfaceSampling: false,
   meshReal: true,
   proxyMesh: false,
-  meshType: "DirectHumanoide_TaperedLegs_Feet_Hands_Foto3_HD_Minus20",
+  meshType: "Topological_Blazer_Lapels_Buttons_Pockets_Quad_Grid_28_24_HD",
   feminine: true,
   waist: 0.11,
   waistFactor: 0.62,
@@ -76,35 +76,42 @@ export const AVATAR_ENGINE_HOLO = {
   chest: 0.336,
   shoulders: 0.336,
   thigh_gap: 0.11,
-  leg_separation: 0.22,
-  material: { color: 0x00d4ff, size: 0.009, opacity: 0.88, blending: "NoBlending" },
-  hairMaterial: { color: 0xc9a88a, size: 0.008, opacity: 0.78 },
-  lines: { enabled: true, type: "WireframeGeometry_direct_hd", color: 0x00d4ff, opacity: 0.22 },
+  leg_separation: 0.13,
+  material: { color: 0x00e5ff, size: 0.006, opacity: 0.35, blending: "NoBlending" },
+  hairMaterial: { color: 0xc9a88a, size: 0.007, opacity: 0.82 },
+  lines: { enabled: true, type: "WireframeGeometry_topological_quad_blazer_real_hd", color: 0x00e5ff, opacity: 0.92 },
   bones: 34,
   hiddenSkeleton: true,
   fullBody: true,
-  scale: 0.57,
-  mobileScale: 0.544,
+  scale: 0.52,
+  mobileScale: 0.50,
   distribution_mesh_real: {
-    body_cylinder_deformed: 3600,
-    head: 900,
-    face_eyes: 60,
-    face_mouth: 20,
-    bob_brown: 700,
-    arms_cylinder_direct: 680,
-    hands: 80,
-    legs_cylinder_tapered_gap_0_11: 1180,
-    feet: 120,
-    total: 7340
+    body_cylinder_topological_28: 4200,
+    lapels: 320,
+    buttons_torus: 80,
+    pockets_box: 160,
+    head: 1100,
+    face_eyes_white: 120,
+    face_iris: 80,
+    face_mouth: 40,
+    bob_brown: 850,
+    arms_cylinder_topological_14: 840,
+    hands_box: 120,
+    legs_cylinder_topological_20: 1680,
+    feet_box_toes: 240,
+    total: 9740
   },
   mesh_real_profile: {
-    torso: "CylinderGeometry(0.18,0.165,0.54,16,14)_deformed_HD",
-    deform: "y>0.19 scale 1.12 hombros 0.336, y>0.02 scale 0.62 cintura 0.11 DIRECT HD, y>-0.15 scale 0.97 cadera 0.32",
-    legs: "2x Cylinder 0.088->0.048,0.78 tapered knee/ankle separated 0.22 gap 0.11 DIRECT HD NO CAPSULE",
-    feet: "2x Sphere 0.06 scaled feet HD",
-    arms: "2x Cylinder 0.044->0.031,0.70 T-pose DIRECT HD",
-    hands: "2x Sphere 0.034 hands HD",
-    head: "Sphere 0.11 HD"
+    torso: "CylinderGeometry(0.195,0.18,0.56,28,24)_deformed_waist_0.11_topological_princess_seam_hd",
+    deform: "y>0.22 scale 1.12 hombros 0.336 TOPOLOGICAL, y>0.02 scale 0.62 cintura 0.11 TOPOLOGICAL PRINCESS SEAM, y>-0.12 scale 0.97 cadera 0.32",
+    lapels: "2x PlaneGeometry(0.08,0.28,4,8)_rotated_0.32rad_blazer_lapels_real_hd",
+    buttons: "2x TorusGeometry(0.011,0.0025,8,16)_blazer_buttons_0.22_0.08_y_hd",
+    pockets: "2x BoxGeometry(0.075,0.038,0.012)_blazer_pockets_0.07_y_hd",
+    legs: "2x Cylinder 0.092->0.046,0.80,20,24 tapered knee/ankle separated 0.13 gap 0.11 TOPOLOGICAL HD NO CAPSULE NO CUT SHOULDER",
+    feet: "2x BoxGeometry 0.055x0.04x0.19 box feet with toes TOPOLOGICAL HD",
+    arms: "2x Cylinder 0.044->0.031,0.72 T-pose 0.50 shoulder NO CUT TOPOLOGICAL HD",
+    hands: "2x BoxGeometry 0.05x0.02x0.08 hands TOPOLOGICAL HD",
+    head: "Sphere 0.11 18 segments HD realistic face"
   },
   frameMap: { strict: 'STRICT_ENGINEER', point_left: 'SCAFFOLDING', explain_open: 'SCAFFOLDING', crossed_arms: 'FLOW_OBSERVER', celebratory: 'ELEVATION', crossed_clip: 'TRANSMISSION', open_big: 'TRANSMISSION' },
   emotions: {
@@ -136,7 +143,7 @@ export const AVATAR_ENGINE_HOLO = {
 };
 
 export const LAYA_FINAL = {
-  version: "27.0 HD -20% - FOTO 3 - GAP REAL NO CHICLE - NITIDA COMPLETA",
+  version: "28.5 TOPOLOGICAL - BLAZER REAL - GAP 0.11 - SOLAPAS BOTONES BOLSILLOS - NITIDA COMPLETA",
   VOCAB: VOCAB_REAL, GRAMMAR: GRAMMAR_REAL, AVATAR: AVATAR_ENGINE_HOLO, INTENTIONS: INTENTION_MOTOR, JOINTS: MARIONETTE_JOINTS,
   AREAS: {
     1: { name:"Money Basics", topic:"Why Most People Never Become Rich", vocab:["collHaveTake","survival50","pronPoss"], grammar:["PS_3RD_S","COND_1"], future:"COND_1", level:"A1" },
@@ -202,13 +209,13 @@ export const LAYA_FINAL = {
     const avatarData = AVATAR_ENGINE_HOLO.decideByMetrics({...metrics, cefr_level: level});
     const xp = metrics.same_error_count>=3?0:(level==="A1"?10:level==="A2"?15:20);
     const story = (this.STORIES[area.name]||this.STORIES["default"]).replace("{topic}", area.topic.toLowerCase());
-    return { prompt: level+" - "+area.topic, story, meta: { area: area.name, topic: area.topic, level, grammar_main: gMain, grammar_future: gFuture, vocab: vocabList, emotion: avatarData.emotion, intention: avatarData.intention, joints: avatarData.joints, avatar_file:null, avatar_type:"direct_humanoide_foto3_hd_minus20", avatar_frame:0, xp, wordCount:"150" } };
+    return { prompt: level+" - "+area.topic, story, meta: { area: area.name, topic: area.topic, level, grammar_main: gMain, grammar_future: gFuture, vocab: vocabList, emotion: avatarData.emotion, intention: avatarData.intention, joints: avatarData.joints, avatar_file:null, avatar_type:"topological_blazer_real_0.52_gap_0.11_hd", avatar_frame:0, xp, wordCount:"150" } };
   }
 };
 
 export const LAYA_FINAL_COMPLETO = LAYA_FINAL;
 export const LAYA_SAP = {
   generateSAP(m, sig, w){ return { evolution:{ ACCURACY_7D: Math.round(m.accuracy_7d*100)+'%', XP_TOTAL: m.xp_total }, detail:{ grammarChain: sig } }; },
-  renderToHologram(sap){ const b=document.getElementById('bubble'); if(b){ b.innerHTML=`V27.0 HD -20% FOTO 3 // ${sap.evolution.ACCURACY_7D} // XP ${sap.evolution.XP_TOTAL}`; b.classList.remove('hidden'); } }
+  renderToHologram(sap){ const b=document.getElementById('bubble'); if(b){ b.innerHTML=`V28.5 TOPOLOGICAL BLAZER REAL // ${sap.evolution.ACCURACY_7D} // XP ${sap.evolution.XP_TOTAL}`; b.classList.remove('hidden'); } }
 };
 export const LAYA_FINAL_ACTOR_V1 = LAYA_FINAL;

@@ -1,94 +1,94 @@
 {
-  "version": "V24.0 MESH REAL - BOX BLAZER 0.11 WAIST - PIN PAN FOTO 3",
-  "source": "MOTOR LAIA - FULL BODY MESH REAL BOX + 2 LEGS GAP 0.11 + WIREFRAME REAL",
-  "coordinate_system": "mesh_real_box_blazer_foto3",
-  "type": "constellation_motor_intuition_mesh_real_foto3",
-  "actor_version": "V24.0",
+  "version": "V25.0 MESH REAL FIX - BOX BLAZER 0.11 WAIST - PIN PAN FOTO 3",
+  "source": "MOTOR LAIA - FULL BODY MESH REAL FIX - PROPORCIONES FOTO 3 - NO CHICLE",
+  "coordinate_system": "mesh_real_box_blazer_fix_foto3",
+  "type": "constellation_motor_intuition_mesh_real_fix_foto3",
+  "actor_version": "V25.0",
   "feminine_params": {
     "waist": 0.11,
-    "waist_factor": 0.29,
-    "hips": 0.368,
-    "chest": 0.357,
-    "shoulders": 0.357,
+    "waist_factor": 0.34,
+    "hips": 0.32,
+    "chest": 0.336,
+    "shoulders": 0.336,
     "gap": 0.11,
-    "leg_separation": 0.24,
-    "scale": 0.68,
-    "mobile_scale": 0.62,
-    "mesh_real": "BoxGeometry(0.38,0.60,0.20)_deformed + 2x Capsule_legs_gap_0.11"
+    "leg_separation": 0.22,
+    "scale": 0.72,
+    "mobile_scale": 0.68,
+    "mesh_real": "BoxGeometry(0.32,0.48,0.18)_deformed + 2x Capsule_0.058_0.52_gap_0.11_FIX"
   },
   "zones": {
     "welcome": { 
-      "x": 0.05, "y": -0.32, "z": 0, 
+      "x": 0.05, "y": -0.18, "z": 0, 
       "anchor": "center", 
       "pose": "IDLE_CORTANA", 
-      "scale": 0.68,
-      "camera": [0.0, 0.06, 1.65],
-      "description": "Centro bajado -0.32 - cabeza 0.82 y pies -0.30 visibles - mesh real foto 3"
+      "scale": 0.72,
+      "camera": [0.0, 0.15, 1.55],
+      "description": "FIX - Centro -0.18 - cabeza 0.68 y pies -0.50 visibles - proporciones foto 3 sin chicle"
     },
     "reading_text": { 
-      "x": -0.10, "y": -0.26, "z": 0.05, 
+      "x": -0.10, "y": -0.15, "z": 0.05, 
       "anchor": "left_reading", 
       "pose": "EXPLAINING",
       "scale": 0.72,
-      "motor_action": "pin_pan_left_gesturing_mesh_real",
-      "description": "Izquierda leyendo - gesticula - mesh real intacta gap 0.11"
+      "motor_action": "pin_pan_left_gesturing_mesh_real_fix",
+      "description": "Izquierda leyendo - gesticula - mesh fix gap 0.11"
     },
     "reading_title": { 
-      "x": -0.08, "y": -0.22, "z": 0, 
+      "x": -0.08, "y": -0.12, "z": 0, 
       "anchor": "top_left", 
       "pose": "SCAFFOLDING",
       "scale": 0.68
     },
     "input_field": { 
-      "x": 0.20, "y": -0.26, "z": 0.05, 
+      "x": 0.18, "y": -0.15, "z": 0.05, 
       "anchor": "right_input", 
       "pose": "LISTENING",
-      "scale": 0.62,
-      "motor_action": "pin_pan_right_ear_listen_mesh_real",
-      "description": "Derecha escuchando - mano oreja - escala 0.62 - mesh real 0.11"
+      "scale": 0.68,
+      "motor_action": "pin_pan_right_ear_listen_mesh_real_fix",
+      "description": "Derecha escuchando - mano oreja - escala 0.68 - mesh fix 0.11"
     },
     "vocab_word": { 
-      "x": 0.18, "y": -0.28, "z": 0, 
+      "x": 0.16, "y": -0.16, "z": 0, 
       "anchor": "right_vocab", 
       "pose": "TRANSMISSION",
       "scale": 0.68,
-      "motor_action": "pin_pan_vocab_highlight_mesh_real"
+      "motor_action": "pin_pan_vocab_highlight_mesh_real_fix"
     },
     "feedback_ok": { 
-      "x": 0.05, "y": -0.36, "z": 0.1, 
+      "x": 0.05, "y": -0.20, "z": 0.1, 
       "anchor": "center_ok", 
       "pose": "CELEBRATING",
       "scale": 0.72,
       "confetti": true,
-      "motor_action": "jump_happy_mesh_real_glow",
-      "description": "Centro abajo salta feliz - 0.72 para que entre entera cabeza y pies - mesh real"
+      "motor_action": "jump_happy_mesh_real_fix_glow",
+      "description": "Centro abajo salta feliz - 0.72 entera - mesh fix"
     },
     "feedback_err": { 
-      "x": 0.05, "y": -0.26, "z": 0, 
+      "x": 0.05, "y": -0.14, "z": 0, 
       "anchor": "center_err", 
       "pose": "SCOLDING",
       "scale": 0.70,
       "shake": true,
-      "motor_action": "shake_head_strict_bob_mesh_real",
-      "description": "Centro arriba niega estricta - bob corto - mesh real gap limpio"
+      "motor_action": "shake_head_strict_bob_mesh_real_fix",
+      "description": "Centro arriba niega estricta - bob corto - mesh fix gap limpio"
     },
     "sap_dashboard": { 
-      "x": 0.05, "y": -0.32, "z": 0, 
+      "x": 0.05, "y": -0.18, "z": 0, 
       "anchor": "center_sap", 
       "pose": "TRANSMISSION",
-      "scale": 0.68,
-      "motor_action": "evolution_lab_center_mesh_real"
+      "scale": 0.72,
+      "motor_action": "evolution_lab_center_mesh_real_fix"
     },
     "evolution": { 
-      "x": 0.05, "y": -0.28, "z": 0.05, 
+      "x": 0.05, "y": -0.16, "z": 0.05, 
       "anchor": "center_evolution", 
       "pose": "EXPLAINING",
       "scale": 0.70,
-      "motor_action": "pin_pan_evolution_motor_mesh_real",
-      "description": "Motor intuición - al dar INICIAR mapea toda la app - 0.70 - mesh real foto 3"
+      "motor_action": "pin_pan_evolution_motor_mesh_real_fix",
+      "description": "Motor intuición - al dar INICIAR mapea toda la app - 0.70 - mesh fix foto 3"
     },
     "lab_button": { 
-      "x": 0.18, "y": -0.22, "z": 0, 
+      "x": 0.16, "y": -0.12, "z": 0, 
       "anchor": "top_right_lab", 
       "pose": "FLOW_OBSERVER",
       "scale": 0.68
@@ -96,30 +96,32 @@
   },
   "motor_intuicion": {
     "enabled": true,
-    "type": "constellation_motor_pin_pan_mesh_real_foto3",
+    "type": "constellation_motor_pin_pan_mesh_real_fix_foto3",
     "is_full_motor": true,
     "moves_entire_app": true,
     "mesh_real": true,
     "single_mesh": false,
     "merged_mesh": true,
+    "fix_chicle": true,
     "on_iniciar": [
-      { "time": 0, "zone": "welcome", "action": "idle_feminine_0.68_mesh_real", "scale": 0.68 },
-      { "time": 800, "zone": "reading_text", "action": "pin_pan_left_0.72_mesh_real", "scale": 0.72 },
-      { "time": 1800, "zone": "input_field", "action": "pin_pan_right_0.62_mesh_real", "scale": 0.62 },
-      { "time": 2800, "zone": "evolution", "action": "center_motor_0.70_mesh_real", "scale": 0.70 }
+      { "time": 0, "zone": "welcome", "action": "idle_feminine_0.72_mesh_real_fix", "scale": 0.72 },
+      { "time": 800, "zone": "reading_text", "action": "pin_pan_left_0.72_mesh_real_fix", "scale": 0.72 },
+      { "time": 1800, "zone": "input_field", "action": "pin_pan_right_0.68_mesh_real_fix", "scale": 0.68 },
+      { "time": 2800, "zone": "evolution", "action": "center_motor_0.70_mesh_real_fix", "scale": 0.70 }
     ],
     "camera_path": {
-      "fov": 42,
-      "pos": [0.0, 0.06, 1.65],
-      "group_scale": [0.68, 0.68, 0.68],
-      "mobile_pos": [0.0, 0.03, 1.95],
-      "mobile_scale": [0.62, 0.62, 0.62],
-      "group_position": [0.05, -0.32, 0],
-      "mobile_group_position": [0.0, -0.26, 0],
+      "fov": 38,
+      "pos": [0.0, 0.15, 1.55],
+      "group_scale": [0.72, 0.72, 0.72],
+      "mobile_pos": [0.0, 0.10, 1.85],
+      "mobile_scale": [0.68, 0.68, 0.68],
+      "group_position": [0.05, -0.18, 0],
+      "mobile_group_position": [0.0, -0.15, 0],
       "keeps_head_and_feet_visible": true,
-      "head_y": 0.82,
-      "feet_y": -0.72,
+      "head_y": 0.68,
+      "feet_y": -0.50,
       "thigh_gap": 0.11,
+      "no_chicle": true,
       "filter": "none",
       "mix_blend": "normal",
       "image_rendering": "crisp-edges"

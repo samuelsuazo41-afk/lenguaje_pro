@@ -1,6 +1,6 @@
-// LAYA_FINAL_COMPLETO.js - V28.5 TOPOLOGICAL BLAZER REAL - 0.11 WAIST - SOLAPAS BOTONES BOLSILLOS
-// Malla topológica quad grid 28 segmentos, 0.92 opacity, scale 0.52, gap 0.11 real
-// Autor: YARVIS + Laia - Girona - V28.5 TOPOLOGICAL
+// LAYA_FINAL_COMPLETO.js - V29.5 SKINNED FACIAL RIGGED - BLAZER REAL - 0.11 WAIST - 6 VISEMAS
+// Malla skinned facial rigged quad grid 28 segmentos, 0.92 opacity, scale 0.52, gap 0.11 real + facial tracking
+// Autor: YARVIS + Laia - Girona - V29.5 SKINNED FACIAL
 
 export const GRAMMAR_REAL = {
   PRON_PER_POSS: { id:"Pronouns Personal & Possessive", sig:"PRON_PER_POSS", formula:"I/me/my/mine/myself", example:"This is my book, not yours. I did it myself.", mistake:"I car -> MY car", level:"A1" },
@@ -43,13 +43,16 @@ export const GRAMMAR_REAL = {
 export const VOCAB_REAL = { kitchen50: ["cook","kitchen","knead","knife","plate","fork","oven","fry","boil","chop","blend","bake","stir","taste","recipe","ingredient","spice","salt","pepper","pan","pot","sauce","dish","meal","breakfast","lunch","dinner","hungry","delicious"], move16: ["run","walk","jump","move","travel","go","come","arrive","leave","return","PUSH/Empujar","PULL/Tirar","LIFT/Levantar","DROP/Soltar","THROW/Lanzar","CATCH/Atrapar"], collHaveTake: ["have a shower","have breakfast","have a break","take a break","take notes","have fun","take care"], verbPrep40: ["talk ABOUT","work DURING","walk AROUND","fight AGAINST","look AFTER"], sinceForUntil: ["since 2020","for 3 years","until tomorrow"], adjPerson: ["Kind/Rude/Smart/Funny/Honest/Lazy/Brave/Generous/Shy/Confident"], adjEmotion: ["Happy/Sad/Angry/Excited/Scared/Nervous/Proud/Jealous/Worried/Grateful"], adjObject: ["New/Old/Big/Cheap/Useful/Expensive/Modern"], survival50: ["money","save","spend","invest","earn","bank","debt","rich","poor","budget","salary"], conectores40: ["Moreover","Furthermore","However","Therefore","For example"], silentLetters: ["knife/knee/know/knock","doubt/debt/bomb/climb"], phrasalVerbs50: ["turn on/off, put on/off, get up, wake up"], business: ["budget/profit/loss/investment/meeting/deadline/target/growth/risk"], idioms: ["over the moon, under the weather, piece of cake"], pronPoss: ["I/me/my/mine/myself","you/your/yours/yourself"], prepTime: ["in the morning","on Monday","at night"], quantifiers: ["a lot of","many","much","some","any"], superDicSyllables: { co: ["cook","confidence","consistency","cold","contract","co-founder","commitment","company","cost"], kne: ["knead","knee","kneel","knife","know","knock"], hap: ["happy","happiness","happily"], hav: ["have a shower","have breakfast","have fun"], tak: ["take a break","take notes","take care"], sav: ["save","saving","savings"], mon: ["money","month","Monday"], fai: ["fail","failure"], wor: ["work","worry","world"], tim: ["time","timing"], kno: ["know","knowledge"], wri: ["write","wrong","wrist"] } };
 
 export const MARIONETTE_JOINTS = {
-  Head_Bone: { id: 'Head_Bone', axes: 'XYZ', independent: true },
+  Head_Bone: { id: 'Head_Bone', axes: 'XYZ', independent: true, facial: true },
   Spine_02: { id: 'Spine_02-Chest', axes: 'Y', physics: 'breathing', independent: true },
-  Shoulder_L: { id: 'Shoulder.L', independent: true }, Wrist_L: { id: 'Wrist.L', independent: true },
-  Shoulder_R: { id: 'Shoulder.R', independent: true }, Wrist_R: { id: 'Wrist.R', independent: true },
-  Hip_L: { id: 'Hip.L', independent: true }, Hip_R: { id: 'Hip.R', independent: true },
-  Eye_L: { id: 'Eye_L', independent: true }, Eye_R: { id: 'Eye_R', independent: true },
-  Mouth: { id: 'Mouth', visemes: 6, list: ['CLOSED','AH','AA','O','E-I','M-B-P'], independent: true }
+  Shoulder_L: { id: 'Shoulder.L', independent: true }, Elbow_L: { id: 'Elbow.L', independent: true }, Wrist_L: { id: 'Wrist.L', independent: true }, Hand_L: { id: 'Hand.L', independent: true },
+  Shoulder_R: { id: 'Shoulder.R', independent: true }, Elbow_R: { id: 'Elbow.R', independent: true }, Wrist_R: { id: 'Wrist.R', independent: true }, Hand_R: { id: 'Hand.R', independent: true },
+  Hip_L: { id: 'Hip.L', independent: true }, Knee_L: { id: 'Knee.L', independent: true }, Ankle_L: { id: 'Ankle.L', independent: true },
+  Hip_R: { id: 'Hip.R', independent: true }, Knee_R: { id: 'Knee.R', independent: true }, Ankle_R: { id: 'Ankle.R', independent: true },
+  Eye_L: { id: 'Eye_L', independent: true, facial: true }, Iris_L: { id: 'Iris_L', independent: true, facial: true },
+  Eye_R: { id: 'Eye_R', independent: true, facial: true }, Iris_R: { id: 'Iris_R', independent: true, facial: true },
+  Mouth: { id: 'Mouth', visemes: 6, list: ['CLOSED','A','I','U','E','O'], independent: true, facial: true },
+  Jaw: { id: 'Jaw', independent: true, facial: true }
 };
 
 export const INTENTION_MOTOR = {
@@ -62,13 +65,16 @@ export const INTENTION_MOTOR = {
 };
 
 export const AVATAR_ENGINE_HOLO = {
-  type: "topological_blazer_real_0.11_0.52_gap_0.11_hd",
+  type: "skinned_facial_rigged_blazer_real_0.11_0.52_gap_0.11_hd_6_visemes",
   sprite: null,
-  pointsCount: 8500,
+  pointsCount: 9740,
   surfaceSampling: false,
   meshReal: true,
   proxyMesh: false,
-  meshType: "Topological_Blazer_Lapels_Buttons_Pockets_Quad_Grid_28_24_HD",
+  skinnedMesh: true,
+  skeleton: true,
+  facialRig: true,
+  meshType: "SkinnedMesh_Blazer_Lapels_Buttons_Pockets_Quad_Grid_Facial_Visemes_28_24_HD",
   feminine: true,
   waist: 0.11,
   waistFactor: 0.62,
@@ -77,41 +83,42 @@ export const AVATAR_ENGINE_HOLO = {
   shoulders: 0.336,
   thigh_gap: 0.11,
   leg_separation: 0.13,
+  visemes: 6,
   material: { color: 0x00e5ff, size: 0.006, opacity: 0.35, blending: "NoBlending" },
   hairMaterial: { color: 0xc9a88a, size: 0.007, opacity: 0.82 },
-  lines: { enabled: true, type: "WireframeGeometry_topological_quad_blazer_real_hd", color: 0x00e5ff, opacity: 0.92 },
+  lines: { enabled: true, type: "SkinnedMesh_Wireframe_Rigged_Facial_Visemes_hd", color: 0x00e5ff, opacity: 0.92 },
   bones: 34,
-  hiddenSkeleton: true,
+  hiddenSkeleton: false,
   fullBody: true,
   scale: 0.52,
   mobileScale: 0.50,
   distribution_mesh_real: {
-    body_cylinder_topological_28: 4200,
-    lapels: 320,
-    buttons_torus: 80,
-    pockets_box: 160,
-    head: 1100,
-    face_eyes_white: 120,
-    face_iris: 80,
-    face_mouth: 40,
-    bob_brown: 850,
-    arms_cylinder_topological_14: 840,
-    hands_box: 120,
-    legs_cylinder_topological_20: 1680,
-    feet_box_toes: 240,
+    body_cylinder_topological_28_skinned: 4200,
+    lapels_skinned: 320,
+    buttons_torus_skinned: 80,
+    pockets_box_skinned: 160,
+    head_skinned_Head_Bone: 1100,
+    face_eyes_white_Eye_L_R: 120,
+    face_iris_Iris_L_R: 80,
+    face_mouth_Mouth_Jaw_6_visemes: 80,
+    bob_brown_attached_Head_Bone: 850,
+    arms_cylinder_topological_14_skinned_Shoulder_Elbow: 840,
+    hands_box_skinned_Hand_L_R: 120,
+    legs_cylinder_topological_20_skinned_Hip_Knee: 1680,
+    feet_box_toes_skinned_Ankle: 240,
     total: 9740
   },
   mesh_real_profile: {
-    torso: "CylinderGeometry(0.195,0.18,0.56,28,24)_deformed_waist_0.11_topological_princess_seam_hd",
-    deform: "y>0.22 scale 1.12 hombros 0.336 TOPOLOGICAL, y>0.02 scale 0.62 cintura 0.11 TOPOLOGICAL PRINCESS SEAM, y>-0.12 scale 0.97 cadera 0.32",
-    lapels: "2x PlaneGeometry(0.08,0.28,4,8)_rotated_0.32rad_blazer_lapels_real_hd",
-    buttons: "2x TorusGeometry(0.011,0.0025,8,16)_blazer_buttons_0.22_0.08_y_hd",
-    pockets: "2x BoxGeometry(0.075,0.038,0.012)_blazer_pockets_0.07_y_hd",
-    legs: "2x Cylinder 0.092->0.046,0.80,20,24 tapered knee/ankle separated 0.13 gap 0.11 TOPOLOGICAL HD NO CAPSULE NO CUT SHOULDER",
-    feet: "2x BoxGeometry 0.055x0.04x0.19 box feet with toes TOPOLOGICAL HD",
-    arms: "2x Cylinder 0.044->0.031,0.72 T-pose 0.50 shoulder NO CUT TOPOLOGICAL HD",
-    hands: "2x BoxGeometry 0.05x0.02x0.08 hands TOPOLOGICAL HD",
-    head: "Sphere 0.11 18 segments HD realistic face"
+    torso: "CylinderGeometry(0.195,0.18,0.56,28,24)_Skinned_Spine_02_Chest_waist_0.11_facial_hd",
+    deform: "y>0.22 scale 1.12 hombros 0.336 SKINNED, y>0.02 scale 0.62 cintura 0.11 SKINNED PRINCESS SEAM, y>-0.12 scale 0.97 cadera 0.32 SKINNED",
+    lapels: "2x PlaneGeometry(0.08,0.28,4,8)_rotated_0.32rad_blazer_lapels_real_hd_Skinned_Chest",
+    buttons: "2x TorusGeometry(0.011,0.0025,8,16)_blazer_buttons_Skinned_Chest",
+    pockets: "2x BoxGeometry(0.075,0.038,0.012)_blazer_pockets_Skinned_Spine_02",
+    legs: "2x Cylinder 0.092->0.046,0.80,20,24 tapered SKINNED_Hip_Knee_Ankle_gap_0.11_HD_NO_CAPSULE",
+    feet: "2x BoxGeometry 0.055x0.04x0.19 box feet with toes SKINNED_Ankle_Toe_HD",
+    arms: "2x Cylinder 0.044->0.031,0.72 T-pose SKINNED_Shoulder_Elbow_Wrist_Hand_NO_CUT_HD",
+    hands: "2x BoxGeometry 0.05x0.02x0.08 hands SKINNED_Hand_L_R_HD",
+    head: "Sphere 0.11 18 segments HD realistic face SKINNED_Head_Bone_Eye_L_R_Iris_L_R_Mouth_Jaw_6_visemes"
   },
   frameMap: { strict: 'STRICT_ENGINEER', point_left: 'SCAFFOLDING', explain_open: 'SCAFFOLDING', crossed_arms: 'FLOW_OBSERVER', celebratory: 'ELEVATION', crossed_clip: 'TRANSMISSION', open_big: 'TRANSMISSION' },
   emotions: {
@@ -143,7 +150,7 @@ export const AVATAR_ENGINE_HOLO = {
 };
 
 export const LAYA_FINAL = {
-  version: "28.5 TOPOLOGICAL - BLAZER REAL - GAP 0.11 - SOLAPAS BOTONES BOLSILLOS - NITIDA COMPLETA",
+  version: "29.5 SKINNED FACIAL RIGGED - BLAZER REAL - GAP 0.11 - 6 VISEMES - NITIDA COMPLETA",
   VOCAB: VOCAB_REAL, GRAMMAR: GRAMMAR_REAL, AVATAR: AVATAR_ENGINE_HOLO, INTENTIONS: INTENTION_MOTOR, JOINTS: MARIONETTE_JOINTS,
   AREAS: {
     1: { name:"Money Basics", topic:"Why Most People Never Become Rich", vocab:["collHaveTake","survival50","pronPoss"], grammar:["PS_3RD_S","COND_1"], future:"COND_1", level:"A1" },
@@ -209,13 +216,13 @@ export const LAYA_FINAL = {
     const avatarData = AVATAR_ENGINE_HOLO.decideByMetrics({...metrics, cefr_level: level});
     const xp = metrics.same_error_count>=3?0:(level==="A1"?10:level==="A2"?15:20);
     const story = (this.STORIES[area.name]||this.STORIES["default"]).replace("{topic}", area.topic.toLowerCase());
-    return { prompt: level+" - "+area.topic, story, meta: { area: area.name, topic: area.topic, level, grammar_main: gMain, grammar_future: gFuture, vocab: vocabList, emotion: avatarData.emotion, intention: avatarData.intention, joints: avatarData.joints, avatar_file:null, avatar_type:"topological_blazer_real_0.52_gap_0.11_hd", avatar_frame:0, xp, wordCount:"150" } };
+    return { prompt: level+" - "+area.topic, story, meta: { area: area.name, topic: area.topic, level, grammar_main: gMain, grammar_future: gFuture, vocab: vocabList, emotion: avatarData.emotion, intention: avatarData.intention, joints: avatarData.joints, avatar_file:null, avatar_type:"skinned_facial_rigged_blazer_real_0.52_gap_0.11_hd_6_visemes", avatar_frame:0, xp, wordCount:"150" } };
   }
 };
 
 export const LAYA_FINAL_COMPLETO = LAYA_FINAL;
 export const LAYA_SAP = {
   generateSAP(m, sig, w){ return { evolution:{ ACCURACY_7D: Math.round(m.accuracy_7d*100)+'%', XP_TOTAL: m.xp_total }, detail:{ grammarChain: sig } }; },
-  renderToHologram(sap){ const b=document.getElementById('bubble'); if(b){ b.innerHTML=`V28.5 TOPOLOGICAL BLAZER REAL // ${sap.evolution.ACCURACY_7D} // XP ${sap.evolution.XP_TOTAL}`; b.classList.remove('hidden'); } }
+  renderToHologram(sap){ const b=document.getElementById('bubble'); if(b){ b.innerHTML=`V29.5 SKINNED FACIAL // ${sap.evolution.ACCURACY_7D} // XP ${sap.evolution.XP_TOTAL}`; b.classList.remove('hidden'); } }
 };
 export const LAYA_FINAL_ACTOR_V1 = LAYA_FINAL;

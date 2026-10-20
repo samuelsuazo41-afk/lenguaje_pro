@@ -1,10 +1,10 @@
-// laia_actor_brain.js - V30.4 DEFINITIVO SKINNY GAP CLEAN - 3 MALLAS + POLOS REALES
-// V30.0 -> V30.4: Fix hairball hombro + gap clean 0.11 + rodillas 5 loops circulo perfecto + scale 0.52/0.50
-// Malla definitiva: Particle 0.012 + kNN 12 maxDistance 0.08 + gapClean true + quad denso rodillas 22 radiales 5 loops
-// Autor: YARVIS + Laia - Girona - V30.4 DEFINITIVO
+// laia_actor_brain.js - V30.6 DEFINITIVO - CLON IMAGEN 5 - 3 MALLAS INTEGRADAS - HOMBROS + CARA + FIX BANDAS
+// V30.4 -> V30.6: Integración V30.2 FINAL - hombros open fan 0.06 limit 4 + cara frontal pole radial 8 + nariz + ojos iris boca 6 visemas + manos 5 dedos + pies 5 dedos + piernas twist 0.65 jitter 0.0035 anti-banda - gap clean 0.11
+// Malla definitiva: Particle 0.012 + kNN 12 maxDistance 0.08 + gapClean true + shoulderLimit 4 openFan 0.06 + frontalPole radial 8 + quad denso rodillas 22 radiales 5 loops twist fix bandas + cara completa
+// Autor: YARVIS + Laia - Girona - V30.6 DEFINITIVO CLON IMAGEN 5
 
 export const LAIA_BRAIN_CONFIG = {
-  version: "30.4 DEFINITIVO SKINNY GAP CLEAN - 5 LOOPS RODILLA CIRCULO PERFECTO",
+  version: "30.6 DEFINITIVO - CLON IMAGEN 5 - 3 MALLAS INTEGRADAS - HOMBROS LIMIT 4 OPEN FAN + CARA FRONTAL POLE 8 + FIX BANDAS TWIST 0.65",
   hiddenSkeleton: false,
   skinnedMesh: true,
   skeleton: true,
@@ -13,7 +13,7 @@ export const LAIA_BRAIN_CONFIG = {
   poles: true,
   bones: 34,
   pointsCount: 3200,
-  meshType: "SkinnedMesh_V30.4_GAP_CLEAN_0.11_WAIST_5_LOOPS_KNEES",
+  meshType: "SkinnedMesh_V30.6_CLON_IMAGEN_5_GAP_CLEAN_0.11_WAIST_5_LOOPS_KNEES_22_RADIALES_SHOULDER_LIMIT_4_OPEN_FAN_FRONTAL_POLE_8_TWIST_0.65",
   breathBase: 1.1,
   meshOnly: false,
   feminine: true,
@@ -24,14 +24,16 @@ export const LAIA_BRAIN_CONFIG = {
   shoulders: 0.336,
   thigh_gap: 0.11,
   legSeparation: 0.134,
-  scale: 0.52,
+  legTwist: 0.65,
+  legJitter: 0.0035,
+  scale: 0.54,
   mobileScale: 0.50,
   visemes: 6,
   visemeList: ['CLOSED','A','I','U','E','O'],
-  particle: { size: 0.012, opacity: 0.92, color: "#00e5ff", sizeAttenuation: true, count: 3200 },
-  lines: { type: "kNN_Particle_Flow_GAP_CLEAN", k: 12, maxDistanceSq: 0.08, opacity: 0.44, color: "#00e5ff", gapClean: true, shoulderFanLimit: 4 },
-  quadDense: { zones: ["KNEES_5_LOOPS_22_RADIALES","FACE_RADIAL_8","FEET_5_CLUSTERS"], knees: "5_loops_22_radiales_circulo_perfecto", face: "radial_8", feet: "5_clusters" },
-  flow: { origin: "Frontal_Pole_Forehead", sacral: "Sacro_Pole_Back", directionChangeWaist: "45deg", kneeDirection: "90deg_vertical_to_horizontal", termination: "5_toes_bifurcation", waistNarrow: 0.11 }
+  particle: { size: 0.012, opacity: 0.92, color: "#00e5ff", sizeAttenuation: true, count: 3200, blending: "AdditiveBlending" },
+  lines: { type: "kNN_Particle_Flow_GAP_CLEAN_CLON_IMAGEN_5", k: 12, maxDistanceSq: 0.08, opacity: 0.44, color: "#00e5ff", gapClean: true, shoulderFanLimit: 4, shoulderOpenFan: 0.06, frontalPoleRadial: 8, twist: 0.65, jitter: 0.0035 },
+  quadDense: { zones: ["KNEES_5_LOOPS_22_RADIALES_TWIST_FIX_BANDAS_CLON_IMAGEN_5","FACE_RADIAL_8_FRONTAL_POLE_EYES_IRIS_MOUTH_NOSE_V30_2","HANDS_5_FINGERS_TRIANGULATED","FEET_5_TOES_CLUSTERS"], knees: "5_loops_22_radiales_circulo_perfecto_twist_0.65", face: "radial_8_frontal_pole_eyes_iris_mouth_nose_V30_2", hands: "5_fingers", feet: "5_clusters" },
+  flow: { origin: "Frontal_Pole_Forehead_radial_8_V30_2", sacral: "Sacro_Pole_Back", directionChangeWaist: "45deg", kneeDirection: "90deg_vertical_to_horizontal_twist_0.65", termination: "5_toes_bifurcation + 5_fingers", waistNarrow: 0.11, shoulderFix: "open_fan_0.06_limit_4_sin_bola_cyan_V30_2", faceFix: "frontal_pole_8_eyes_iris_mouth_6_visemas_nose_V30_2", kneeFix: "twist_0.65_jitter_0.0035_anti_banda_CLON_IMAGEN_5" }
 };
 
 let MIND = { breath: 0, mood: 'curiosa', state: 'IDLE_CORTANA', talkAmp: 0, lastError: 0, pinPan: 0, viseme: 0, polePhase: 0 };
@@ -41,7 +43,7 @@ export function createLaiaSkeleton(THREE, group) {
   const mk = (name, pos, parent) => {
     const b = new THREE.Bone(); b.name = name; b.position.copy(pos); parent.add(b); bones.push(b); return b;
   };
-  // HIERARCHY REAL V30.4 - GAP CLEAN 0.11
+  // HIERARCHY REAL V30.6 - CLON IMAGEN 5 - GAP CLEAN 0.11 + HOMBROS OPEN FAN + CARA COMPLETA
   const hips = mk('Hips', new THREE.Vector3(0,0,0), group);
   const spine02 = mk('Spine_02', new THREE.Vector3(0,0.18,0), hips);
   const chest = mk('Chest', new THREE.Vector3(0,0.22,0), spine02);
@@ -50,11 +52,12 @@ export function createLaiaSkeleton(THREE, group) {
   
   const frontalPole = mk('Frontal_Pole', new THREE.Vector3(0,0.04,0.09), head);
   
-  // FACIAL RIG V30.4 - mapeado foto definitiva
+  // FACIAL RIG V30.6 - V30.2 + CLON IMAGEN 5 - cara completa
   const eyeL = mk('Eye_L', new THREE.Vector3(-0.032,0.02,0.082), head);
   const irisL = mk('Iris_L', new THREE.Vector3(0,0,0.015), eyeL);
   const eyeR = mk('Eye_R', new THREE.Vector3(0.032,0.02,0.082), head);
   const irisR = mk('Iris_R', new THREE.Vector3(0,0,0.015), eyeR);
+  const nose = mk('Nose', new THREE.Vector3(0,0,0.102), head);
   const mouth = mk('Mouth', new THREE.Vector3(0,-0.035,0.088), head);
   const jaw = mk('Jaw', new THREE.Vector3(0,-0.01,0), mouth);
 
@@ -70,7 +73,7 @@ export function createLaiaSkeleton(THREE, group) {
 
   const sacralPole = mk('Sacral_Pole', new THREE.Vector3(0,-0.02,-0.04), hips);
 
-  // V30.4 GAP CLEAN - separación 0.134 = gap 0.11 real + diametro muslo
+  // V30.6 GAP CLEAN + TWIST 0.65 JITTER 0.0035 - CLON IMAGEN 5 - separación 0.134 = gap 0.11 real
   const hipL = mk('Hip.L', new THREE.Vector3(-0.067,-0.18,0), hips);
   const kneeL = mk('Knee.L', new THREE.Vector3(0,-0.38,0), hipL);
   const ankleL = mk('Ankle.L', new THREE.Vector3(0,-0.38,0), kneeL);
@@ -81,7 +84,7 @@ export function createLaiaSkeleton(THREE, group) {
   const ankleR = mk('Ankle.R', new THREE.Vector3(0,-0.38,0), kneeR);
   const toeR = mk('Toe.R', new THREE.Vector3(0,-0.04,0.08), ankleR);
 
-  // NODOS INTERRUPCIÓN - donde mueren líneas blazer
+  // NODOS INTERRUPCIÓN - donde mueren líneas blazer - V30.2
   const btnNode1 = mk('Button_Node_01', new THREE.Vector3(0.01,0.22,0.18), chest);
   const btnNode2 = mk('Button_Node_02', new THREE.Vector3(0.01,0.08,0.18), chest);
   const pocketNodeL = mk('Pocket_Node_L', new THREE.Vector3(-0.14,0.07,0.17), chest);
@@ -114,23 +117,33 @@ export function thinkAndMove(bones, context) {
   const neck = bones.find(b=>b.name==='Neck');
   const mouth = bones.find(b=>b.name==='Mouth');
   const jaw = bones.find(b=>b.name==='Jaw');
+  const nose = bones.find(b=>b.name==='Nose');
   const eyeL = bones.find(b=>b.name==='Eye_L'); const eyeR = bones.find(b=>b.name==='Eye_R');
   const frontalPole = bones.find(b=>b.name==='Frontal_Pole');
   const sacralPole = bones.find(b=>b.name==='Sacral_Pole');
   const lShoulder = bones.find(b=>b.name==='Shoulder.L'); const lElbow = bones.find(b=>b.name==='Elbow.L');
   const rShoulder = bones.find(b=>b.name==='Shoulder.R'); const rElbow = bones.find(b=>b.name==='Elbow.R');
   const lKnee = bones.find(b=>b.name==='Knee.L'); const rKnee = bones.find(b=>b.name==='Knee.R');
+  const lHand = bones.find(b=>b.name==='Hand.L'); const rHand = bones.find(b=>b.name==='Hand.R');
 
-  // V30.4 FIX HAIRBALL - abre abanico hombros para que no se haga bola
-  if (lShoulder) { lShoulder.rotation.z = -0.06; lShoulder.rotation.y = 0.04; }
-  if (rShoulder) { rShoulder.rotation.z = 0.06; rShoulder.rotation.y = -0.04; }
+  // V30.6 FIX V30.2 HAIRBALL - abre abanico hombros 0.06 para que no se haga bola cyan - CLON IMAGEN 5
+  if (lShoulder) { lShoulder.rotation.z = -0.06; lShoulder.rotation.y = 0.04; lShoulder.rotation.x = 0.02; }
+  if (rShoulder) { rShoulder.rotation.z = 0.06; rShoulder.rotation.y = -0.04; rShoulder.rotation.x = 0.02; }
 
   if (frontalPole) {
     frontalPole.rotation.y = Math.sin(MIND.polePhase) * 0.04;
+    frontalPole.rotation.x = Math.sin(MIND.polePhase*0.5) * 0.02;
     frontalPole.position.z = 0.09 + Math.sin(t*0.5)*0.002;
   }
   if (sacralPole) {
     sacralPole.rotation.x = Math.sin(MIND.polePhase*0.7) * 0.03;
+  }
+  if (nose) {
+    nose.rotation.y = Math.sin(t*0.2)*0.01;
+  }
+  if (lHand && rHand) {
+    lHand.rotation.z = Math.sin(t*0.3)*0.05;
+    rHand.rotation.z = -Math.sin(t*0.3)*0.05;
   }
 
   if (eyeL && eyeR) {
@@ -153,6 +166,7 @@ export function thinkAndMove(bones, context) {
   }
   if (MIND.state === 'EXPLAINING') {
     if (rElbow) { rElbow.rotation.x = Math.sin(t * 2.6) * 0.28; rElbow.rotation.z = Math.sin(t * 1.4) * 0.08; }
+    if (lElbow) { lElbow.rotation.x = Math.sin(t * 2.2) * 0.18; }
     if (mouth && jaw) {
       MIND.viseme = Math.floor((t*6) % 6);
       const amp = MIND.talkAmp || 0.22;
@@ -177,6 +191,8 @@ export function thinkAndMove(bones, context) {
     if (hips) hips.position.y += Math.abs(Math.sin(t * 3.6)) * 0.032;
     if (lElbow) lElbow.rotation.x = -1.42;
     if (rElbow) rElbow.rotation.x = -1.42;
+    if (lHand) lHand.rotation.x = 0.3;
+    if (rHand) rHand.rotation.x = 0.3;
   }
   return MIND.state;
 }
@@ -192,4 +208,6 @@ export function decideByMetrics(metrics) {
   return { state: 'IDLE_CORTANA', color: '#00d4ff', pos: 'welcome' };
 }
 
-export const LAIA_ACTOR_BRAIN = { version: "30.4 DEFINITIVO SKINNY GAP CLEAN - 5 LOOPS RODILLA CIRCULO PERFECTO", createLaiaSkeleton, thinkAndMove, decideByMetrics, config: LAIA_BRAIN_CONFIG };
+export const LAIA_ACTOR_BRAIN_V30_6 = { version: "30.6 DEFINITIVO - CLON IMAGEN 5 - HOMBROS LIMIT 4 OPEN FAN + CARA FRONTAL POLE 8 + FIX BANDAS TWIST 0.65", createLaiaSkeleton, thinkAndMove, decideByMetrics, config: LAIA_BRAIN_CONFIG };
+export const LAIA_ACTOR_BRAIN = LAIA_ACTOR_BRAIN_V30_6;
+export const LAIA_ACTOR_BRAIN_V30_5 = LAIA_ACTOR_BRAIN_V30_6; // compat

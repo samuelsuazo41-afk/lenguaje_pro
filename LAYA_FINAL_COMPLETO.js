@@ -1,7 +1,7 @@
-// LAYA_FINAL_COMPLETO.js - V17.3 FULL BODY 4000 PUNTOS - CUERPO COMPLETO
-// ELIMINA laia_HOLO_CLEAN_16.png - 4000 PUNTOS INTERCONECTADOS ESQUELETO INVISIBLE
-// 35 SIGs + 50 AREAS INTACTOS - CEREBRO AUTONOMO COMPATIBLE
-// Autor: YARVIS + Laia - Girona - FULL BODY MESH
+// LAYA_FINAL_COMPLETO.js - V19.0 SURFACE REAL -20% - 7000 PUNTOS SUPERFICIE DEFINIDA
+// V17.3 + V17.4 FEMENINA 0.11 + V19 SURFACE - CUERPO COMPLETO DEFINIDO COMO FOTO REF
+// 35 SIGs + 50 AREAS INTACTOS - NO SE TOCA LOGICA SAP - SOLO AVATAR ENGINE
+// Autor: YARVIS + Laia - Girona - V19.0 SURFACE REAL
 
 export const GRAMMAR_REAL = {
   PRON_PER_POSS: { id:"Pronouns Personal & Possessive", sig:"PRON_PER_POSS", formula:"I/me/my/mine/myself", example:"This is my book, not yours. I did it myself.", mistake:"I car -> MY car", level:"A1" },
@@ -62,23 +62,39 @@ export const INTENTION_MOTOR = {
   TRANSMISSION: { id: 'TRANSMISSION', name: 'Transmisión', joints: { Shoulder_L: [-30,30,0], Shoulder_R: [30,-30,0], Wrist_L: 'open_big', Mouth: 'lip_sync' }, tts: 'Esto ya es una capa completa.', sap_type: 'TRANSMIT', color: '#00d4ff' }
 };
 
-// AVATAR ENGINE V17.3 - FULL BODY 4000 - CUERPO COMPLETO
+// AVATAR ENGINE V19.0 - SURFACE REAL 7000 - CUERPO DEFINIDO COMO FOTO REF - FEMENINA 0.11
 export const AVATAR_ENGINE_HOLO = {
-  type: "mesh_only_points_4000_fullbody",
+  type: "mesh_only_points_7000_surface_real",
   sprite: null,
-  pointsCount: 4000,
-  material: { color: 0x00d4ff, size: 0.016, opacity: 0.96, blending: "additive" },
+  pointsCount: 7000,
+  surfaceSampling: true,
+  feminine: true,
+  waist: 0.11,
+  hips: 0.21,
+  chest: 0.19,
+  shoulders: 0.20,
+  thigh_gap: true,
+  material: { color: 0x00d4ff, size: 0.011, opacity: 0.92, blending: "NoBlending" },
+  hairMaterial: { color: 0xc9a88a, size: 0.009, opacity: 0.85 },
+  lines: { enabled: true, color: 0x00d4ff, opacity: 0.24, connection_distance: 0.08 },
   bones: 34,
   hiddenSkeleton: true,
   fullBody: true,
-  distribution: {
-    head: 950,
-    shoulders_neck: 600,
-    chest: 650,
-    waist_hip: 500,
-    arms: 720,
-    legs: 900,
-    total: 4320
+  scale: 0.72,
+  mobileScale: 0.688,
+  distribution_surface: {
+    head: 1100,
+    face_eyes: 100,
+    face_mouth: 40,
+    bob_L: 300,
+    bob_R: 300,
+    bob_top: 120,
+    shoulders_blazer: 500,
+    chest_waist_0_11_pinch: 800,
+    hips_0_21: 600,
+    arms_T: 960,
+    legs: 1400,
+    total: 7220
   },
   frameMap: { strict: 'STRICT_ENGINEER', point_left: 'SCAFFOLDING', explain_open: 'SCAFFOLDING', crossed_arms: 'FLOW_OBSERVER', celebratory: 'ELEVATION', crossed_clip: 'TRANSMISSION', open_big: 'TRANSMISSION' },
   emotions: {
@@ -110,7 +126,7 @@ export const AVATAR_ENGINE_HOLO = {
 };
 
 export const LAYA_FINAL = {
-  version: "17.3 FULL BODY 4000 - NO PNG - SKELETON INVISIBLE",
+  version: "19.0 SURFACE REAL -20% - 7000 POINTS DEFINIDA COMO REF",
   VOCAB: VOCAB_REAL, GRAMMAR: GRAMMAR_REAL, AVATAR: AVATAR_ENGINE_HOLO, INTENTIONS: INTENTION_MOTOR, JOINTS: MARIONETTE_JOINTS,
   AREAS: {
     1: { name:"Money Basics", topic:"Why Most People Never Become Rich", vocab:["collHaveTake","survival50","pronPoss"], grammar:["PS_3RD_S","COND_1"], future:"COND_1", level:"A1" },
@@ -176,13 +192,13 @@ export const LAYA_FINAL = {
     const avatarData = AVATAR_ENGINE_HOLO.decideByMetrics({...metrics, cefr_level: level});
     const xp = metrics.same_error_count>=3?0:(level==="A1"?10:level==="A2"?15:20);
     const story = (this.STORIES[area.name]||this.STORIES["default"]).replace("{topic}", area.topic.toLowerCase());
-    return { prompt: level+" - "+area.topic, story, meta: { area: area.name, topic: area.topic, level, grammar_main: gMain, grammar_future: gFuture, vocab: vocabList, emotion: avatarData.emotion, intention: avatarData.intention, joints: avatarData.joints, avatar_file:null, avatar_type:"mesh_only_points_4000", avatar_frame:0, xp, wordCount:"150" } };
+    return { prompt: level+" - "+area.topic, story, meta: { area: area.name, topic: area.topic, level, grammar_main: gMain, grammar_future: gFuture, vocab: vocabList, emotion: avatarData.emotion, intention: avatarData.intention, joints: avatarData.joints, avatar_file:null, avatar_type:"mesh_surface_7000", avatar_frame:0, xp, wordCount:"150" } };
   }
 };
 
 export const LAYA_FINAL_COMPLETO = LAYA_FINAL;
 export const LAYA_SAP = {
   generateSAP(m, sig, w){ return { evolution:{ ACCURACY_7D: Math.round(m.accuracy_7d*100)+'%', XP_TOTAL: m.xp_total }, detail:{ grammarChain: sig } }; },
-  renderToHologram(sap){ const b=document.getElementById('bubble'); if(b){ b.innerHTML=`FULL BODY 4000 // ${sap.evolution.ACCURACY_7D} // XP ${sap.evolution.XP_TOTAL}`; b.classList.remove('hidden'); } }
+  renderToHologram(sap){ const b=document.getElementById('bubble'); if(b){ b.innerHTML=`V19.0 SURFACE 7000 // ${sap.evolution.ACCURACY_7D} // XP ${sap.evolution.XP_TOTAL}`; b.classList.remove('hidden'); } }
 };
-export const LAYA_FINAL_ACTOR_V1 = LAYA_FINAL;  
+export const LAYA_FINAL_ACTOR_V1 = LAYA_FINAL;

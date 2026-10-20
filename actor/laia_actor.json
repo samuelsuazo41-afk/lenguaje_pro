@@ -1,67 +1,94 @@
 {
-  "actor_version": "V19.0 SURFACE REAL -20%",
-  "type": "mesh_only_constellation_v19_surface",
-  "status": "full_body_7000_points_surface_feminine_0.11_waist_defined",
-  "base_image": null,
+  "actor_version": "V20.0 PROXY MESH FINAL - LATHE 0.11 WAIST - SURFACE SAMPLING",
+  "type": "mesh_proxy_lathe_constellation_v20_surface_sampling",
+  "status": "full_body_proxy_single_mesh_7000_points_feminine_0.11_waist_defined_final",
+  "base_image": "wa_image_1385876788746981355_2_transfer",
   "rig": {
     "joints": 34,
     "hidden_skeleton": true,
-    "head": "bob_short_brown_0.16",
-    "face": "eyes_mouth_constellation_defined",
-    "body": "mesh_surface_7000_points",
+    "head": "defined_face_eyes_mouth_0.152_not_sphere_blob",
+    "face": "eyes_0.022_mouth_0.018_constellation_defined",
+    "body": "single_lathe_proxy_mesh_surface_7000_points",
     "feminine_params": {
       "waist": 0.11,
       "hips": 0.21,
       "chest": 0.19,
       "shoulders": 0.20,
-      "thigh_gap": true
+      "thigh_gap": 0.11,
+      "scale": 0.72,
+      "mobile_scale": 0.688
     },
-    "t_pose": "full_body_constellation_legs_separated_0.11_gap"
+    "t_pose": "full_body_proxy_lathe_T_pose_legs_separated_0.11_gap_final"
   },
   "mesh": {
     "points_count": 7000,
-    "type": "constellation_surface_zodiac",
+    "type": "constellation_proxy_single_mesh_lathe_surface_barycentric",
     "color": "#00d4ff",
     "size": 0.011,
     "opacity": 0.92,
     "blending": "NoBlending",
+    "material": "PointsMaterial_sizeAttenuation_true",
+    "hair": {
+      "color": "#c9a88a",
+      "size": 0.009,
+      "opacity": 0.85,
+      "geom": "SphereGeometry(0.165,18,18,0,6.28,0,2.13)",
+      "count": 680
+    },
     "lines": {
       "enabled": true,
       "color": "#00d4ff",
-      "opacity": 0.24,
+      "opacity": 0.22,
       "connection_distance": 0.08,
-      "random_threshold": 0.88
+      "max_distance_sq": 0.0064,
+      "kNN_window": 132
     },
-    "clouds_surface": [
-      { "name": "head_crown", "geom": "SphereGeometry(0.155,22,22)", "pos": [0, 1.135, 0], "count": 1100 },
-      { "name": "face_eyes", "geom": "SphereGeometry(0.04,8,8)", "pos": [-0.05, 1.15, 0.12], "count": 50 },
-      { "name": "face_eyes_R", "geom": "SphereGeometry(0.04,8,8)", "pos": [0.05, 1.15, 0.12], "count": 50 },
-      { "name": "face_mouth", "geom": "SphereGeometry(0.03,8,8)", "pos": [0, 1.07, 0.13], "count": 40 },
-      { "name": "bob_L", "geom": "SphereGeometry(0.16,14,14)", "pos": [-0.085, 1.12, 0], "count": 300, "color": "#c9a88a", "size": 0.009 },
-      { "name": "bob_R", "geom": "SphereGeometry(0.16,14,14)", "pos": [0.085, 1.12, 0], "count": 300, "color": "#c9a88a", "size": 0.009 },
-      { "name": "shoulders_blazer", "geom": "CylinderGeometry(0.20,0.20,0.18,20)", "pos": [0, 0.66, 0], "count": 500 },
-      { "name": "chest_waist_0.11_pinch", "geom": "CylinderGeometry(0.19,0.11,0.22,20)", "pos": [0, 0.50, 0], "count": 800 },
-      { "name": "hips_0.21", "geom": "CylinderGeometry(0.22,0.22,0.15,20)", "pos": [0, 0.05, 0], "count": 600 },
-      { "name": "arm_L_up", "geom": "CylinderGeometry(0.05,0.05,0.38,14)", "pos": [-0.32, 0.60, 0], "count": 240 },
-      { "name": "arm_L_low", "geom": "CylinderGeometry(0.045,0.045,0.38,14)", "pos": [-0.56, 0.60, 0], "count": 240 },
-      { "name": "arm_R_up", "geom": "CylinderGeometry(0.05,0.05,0.38,14)", "pos": [0.32, 0.60, 0], "count": 240 },
-      { "name": "arm_R_low", "geom": "CylinderGeometry(0.045,0.045,0.38,14)", "pos": [0.56, 0.60, 0], "count": 240 },
-      { "name": "thigh_L", "geom": "CylinderGeometry(0.075,0.075,0.36,14)", "pos": [-0.11, -0.22, 0], "count": 380 },
-      { "name": "thigh_R", "geom": "CylinderGeometry(0.075,0.075,0.36,14)", "pos": [0.11, -0.22, 0], "count": 380 },
-      { "name": "leg_L", "geom": "CylinderGeometry(0.065,0.065,0.32,14)", "pos": [-0.11, -0.58, 0], "count": 320 },
-      { "name": "leg_R", "geom": "CylinderGeometry(0.065,0.065,0.32,14)", "pos": [0.11, -0.58, 0], "count": 320 }
-    ]
+    "proxy_mesh_profile_lathe": [
+      { "x": 0.000, "y": -1.02, "label": "pies" },
+      { "x": 0.042, "y": -0.98 },
+      { "x": 0.052, "y": -0.88 },
+      { "x": 0.058, "y": -0.60 },
+      { "x": 0.068, "y": -0.30, "label": "muslo" },
+      { "x": 0.105, "y": 0.00, "label": "cadera 0.21" },
+      { "x": 0.055, "y": 0.22, "label": "cintura 0.11 PINCH" },
+      { "x": 0.095, "y": 0.44, "label": "pecho 0.19" },
+      { "x": 0.100, "y": 0.68, "label": "hombros 0.20" },
+      { "x": 0.028, "y": 0.84, "label": "cuello" },
+      { "x": 0.000, "y": 0.88 }
+    ],
+    "sampling": {
+      "method": "barycentric_triangle_surface",
+      "total_points": 7000,
+      "distribution": {
+        "body_lathe": 3800,
+        "head": 900,
+        "face_eyes": 60,
+        "face_mouth": 20,
+        "arms_capsule": 960,
+        "legs_capsule": 1120,
+        "hair_bob": 680
+      }
+    },
+    "clouds_surface_OLD_REMOVED": "V19 cylinders removed - replaced by single lathe"
   },
   "camera": {
-    "fov": 38,
+    "fov": 45,
     "position": [0.25, 0.35, 2.6],
+    "mobile_position": [0.20, 0.28, 3.10],
     "group_scale": [0.72, 0.72, 0.72],
-    "mobile_scale": [0.688, 0.688, 0.688]
+    "mobile_scale": [0.688, 0.688, 0.688],
+    "group_position": [0.28, -0.02, 0],
+    "mobile_group_position": [0.10, 0.05, 0]
   },
   "motor_intuicion": {
-    "type": "pin_pan_constellation_motor_surface",
+    "type": "pin_pan_constellation_motor_surface_proxy_lathe",
     "is_motor": true,
     "moves_app": true,
-    "zones": ["welcome", "reading_text", "input_field", "feedback_ok", "feedback_err", "sap_dashboard", "evolution"]
+    "zones": ["welcome", "reading_text", "input_field", "feedback_ok", "feedback_err", "sap_dashboard", "evolution"],
+    "thinkAndMove_params": {
+      "reading": true,
+      "talkAmp": "0.3 + sin(t*4)*0.2",
+      "breathing": "spine_02_Y"
+    }
   }
 }

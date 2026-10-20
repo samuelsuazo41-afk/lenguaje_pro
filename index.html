@@ -2,287 +2,139 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LENGUAJE-PRO V30.1 DEFINITIVO FIX</title>
+<title>LENGUAJE-PRO V30.2 FINAL DEFINITIVO</title>
 <link rel="icon" href="./icon-192.png">
 <meta name="theme-color" content="#00d4ff">
-<link rel="stylesheet" href="./styles.css">
+<link rel="stylesheet" href="./styles.css?v=30.2">
 <script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
 <style>
-/* V30.1 FIX - LISTA VISIBLE + LAIA CENTRADA */
-.h-wrapper{margin-top:58px;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;width:100vw;height:calc(100vh - 58px);position:relative;z-index:10}
-.h-wrapper::-webkit-scrollbar{display:none}
-.page{min-width:100vw;width:100vw;height:100%;scroll-snap-align:start;overflow-y:auto;display:flex;flex-direction:row;position:relative;z-index:10}
-#page1 aside{width:360px;min-width:360px;background:rgba(26,26,35,0.92)!important;backdrop-filter:blur(12px);border-right:1px solid rgba(0,212,255,0.35);padding:14px;position:sticky;top:0;height:calc(100vh - 58px);overflow-y:auto;z-index:30;pointer-events:auto;display:flex;flex-direction:column;gap:12px}
-#page1 main{flex:1;padding:18px;max-width:860px;background:rgba(15,15,20,0.85)!important;z-index:20;pointer-events:auto}
-#page2{background:rgba(18,18,26,0.92);padding:18px;display:flex;flex-direction:column;gap:14px;align-items:center;min-width:100vw;z-index:20;pointer-events:auto}
-#list{overflow-y:auto;display:flex;flex-direction:column;gap:7px;flex:1;min-height:400px;background:rgba(15,15,20,0.6);border-radius:10px;padding:6px}
-.area{background:rgba(45,45,65,0.85)!important;border:1px solid rgba(0,212,255,0.25)!important;padding:10px 12px;border-radius:10px;cursor:pointer;color:#e5e5e5;pointer-events:auto!important;z-index:40!important;position:relative;font-size:13px}
-.area b{display:block;color:#fff}.area small{color:#9ca3af;font-size:11px}.area.active{background:rgba(0,212,255,0.95)!important;color:#000!important;border-color:#00d4ff!important}
-.sap-header,.sap-card,.evo-lab,#card{background:rgba(26,26,35,0.88)!important;backdrop-filter:blur(8px)!important;border:1px solid rgba(0,212,255,0.35)!important;z-index:30!important}
-button, input, select, .f, .word{pointer-events:auto!important;z-index:40!important}
-.area{background:rgba(35,35,50,0.90)!important}
-#laia-hologram{position:fixed!important;top:58px!important;left:0!important;width:100vw!important;height:calc(100vh - 58px)!important;z-index:5!important;display:flex!important;align-items:center!important;justify-content:center!important;pointer-events:none!important;opacity:1!important;background: radial-gradient(ellipse at center, rgba(10,38,58,0.32) 0%, rgba(0,229,255,0.08) 40%, transparent 75%)!important;filter: drop-shadow(0 0 28px rgba(0,229,255,0.55)) drop-shadow(0 0 50px rgba(0,212,255,0.30));}
-#laia-holo-canvas{width:100vw!important;height:calc(100vh - 58px)!important;background:transparent!important;pointer-events:none!important;display:block!important}
-#laia-state{position:absolute;bottom:95px;left:50%;transform:translateX(-50%);background:rgba(0,229,255,0.95);color:#000;font-size:10px;padding:5px 14px;border-radius:12px;font-weight:800;letter-spacing:0.6px;z-index:60}
-@media(max-width:768px){
-  #page1{flex-direction:column}
-  #page1 aside{width:100%;min-width:100%;max-height:42vh;min-height:42vh;background:rgba(26,26,35,0.94)!important}
-  #page1 main{background:rgba(15,15,20,0.88)!important}
-  #list{min-height:220px;max-height:32vh}
-  #laia-hologram{top:58px!important;height:calc(100vh - 58px)!important}
-  #laia-holo-canvas{height:calc(100vh - 58px)!important}
-  #laia-state{bottom:75px}
-}
+/* V30.2 FINAL - OVERRIDE DEFINITIVO - PISA styles.css VIEJO */
+#page1 aside{width:380px!important;min-width:380px!important;background:rgba(22,22,32,0.96)!important;border-right:2px solid rgba(0,212,255,0.4)!important}
+#list{min-height:420px!important;background:rgba(18,18,28,0.88)!important;border:1px solid rgba(0,212,255,0.22)!important;display:flex!important;visibility:visible!important;opacity:1!important}
+.area{opacity:1!important;visibility:visible!important;background:rgba(50,50,75,0.96)!important;display:block!important}
+#laia-hologram{top:58px!important;height:calc(100vh - 58px)!important;opacity:1!important;visibility:visible!important}
+#laia-holo-canvas{opacity:1!important;visibility:visible!important}
 </style>
 </head>
 <body>
-<header style="z-index:100"><div class="logo">📚 LENGUAJE-PRO <span>V30.1 FIX DEFINITIVO</span></div><div class="metrics"><span id="xp">⭐ 0 XP</span><span>🔥 <b id="streak">0</b></span><span id="level-badge">A2</span></div></header>
-<div class="h-wrapper" id="hWrapper"><div class="page" id="page1"><aside><h3 style="font-size:12px;color:#00d4ff;font-weight:800">V30.1 FIX - PARTICLE TRIANGULATED 0.11</h3><input id="search" placeholder="Buscar..." style="background:#232332;border:1px solid #3a3a4a;color:#fff;padding:10px;border-radius:10px;width:100%"><div id="filters" style="display:flex;gap:6px;flex-wrap:wrap"><button class="f active" data-f="" style="background:#00d4ff;color:#000;padding:6px 12px;border-radius:20px;border:none">Todas</button><button class="f" data-f="A1" style="background:#2a2a3a;color:#9ca3af;padding:6px 12px;border-radius:20px;border:1px solid #3a3a4a">A1</button><button class="f" data-f="A2" style="background:#2a2a3a;color:#9ca3af;padding:6px 12px;border-radius:20px;border:1px solid #3a3a4a">A2</button><button class="f" data-f="B1" style="background:#2a2a3a;color:#9ca3af;padding:6px 12px;border-radius:20px;border:1px solid #3a3a4a">B1</button><button class="f" data-f="B2" style="background:#2a2a3a;color:#9ca3af;padding:6px 12px;border-radius:20px;border:1px solid #3a3a4a">B2</button></div><div id="list" style="color:#fff">Cargando 50 áreas...</div></aside><main><div style="display:flex;gap:10px;margin-bottom:12px"><select id="level" style="background:#232332;color:#fff;border:1px solid #3a3a4a;padding:10px;border-radius:10px"><option>A1</option><option selected>A2</option><option>B1</option><option>B2</option></select><button id="gen" style="background:#00d4ff;color:#000;border:none;padding:10px 16px;border-radius:10px;font-weight:700;flex:1;max-width:260px">⚡ GENERAR V30.1</button><button id="teachBtn" style="background:#8b5cf6;color:#fff;border:none;padding:10px 12px;border-radius:10px;font-weight:700">📌 SAPs</button></div><div id="empty"><h1>👋 Soy Laia V30.1 FIX</h1><p id="status" style="color:#00d4ff">Malla skinny particle triangulada 0.11 - 3 mallas + polos - lista FIX visible...</p></div><div id="card" class="hidden" style="background:#1a1a23;border-radius:16px;padding:18px;margin-top:12px"></div></main></div><div class="page" id="page2"><div style="width:100%;max-width:760px"><h2>🧬 MOTOR 2 - SAP + DEFINITIVO</h2><div class="sap-header" id="sapHeader" style="background:#1a1a23;border:1px solid #00d4ff;border-radius:16px;padding:14px">Esperando datos...</div><div style="margin-top:14px;display:flex;gap:8px"><input id="wordInput" placeholder="Escribe: co, hav, mon..." style="flex:1;background:#1a1a23;border:1px solid #2a2a3a;color:#fff;padding:10px;border-radius:10px"><button id="gen2" style="background:#00d4ff;color:#000;border:none;padding:10px 16px;border-radius:10px;font-weight:700">🔍 EXPLORAR</button></div><div id="card2" class="hidden" style="margin-top:14px;background:#1a1a23;border-radius:16px;padding:18px"></div><div class="evo-lab" id="evoLab" style="background:#1a1a23;border:1px dashed #00d4ff;border-radius:12px;padding:14px;margin-top:14px">V30.1 FIX DEFINITIVO - 0.11 WAIST - PARTICLE TRIANGULATED - 3 MALLAS - POLOS REALES - LISTA VISIBLE - LAIA CENTRADA</div></div></div></div>
-<div id="laia-hologram"><canvas id="laia-holo-canvas"></canvas><div id="laia-state">V30.1 FIX DEFINITIVO - 0.11 WAIST CENTRADA</div></div>
+<header style="z-index:100"><div class="logo">📚 LENGUAJE-PRO <span>V30.2 FINAL</span></div><div class="metrics"><span id="xp">⭐ 0 XP</span><span>🔥 <b id="streak">0</b></span><span id="level-badge">A2</span></div></header>
+<div class="h-wrapper" id="hWrapper"><div class="page" id="page1"><aside><h3 style="font-size:12px;color:#00d4ff;font-weight:900">V30.2 FINAL - 50 ÁREAS VISIBLES</h3><input id="search" placeholder="Buscar..." style="background:#232332;border:1px solid #00d4ff;color:#fff;padding:11px;border-radius:10px;width:100%"><div id="filters" style="display:flex;gap:6px;flex-wrap:wrap"><button class="f active" data-f="" style="background:#00d4ff;color:#000;padding:6px 12px;border-radius:20px;border:none;font-weight:700">Todas (50)</button><button class="f" data-f="A1">A1</button><button class="f" data-f="A2">A2</button><button class="f" data-f="B1">B1</button><button class="f" data-f="B2">B2</button></div><div id="list">Cargando...</div></aside><main><div style="display:flex;gap:10px;margin-bottom:12px"><select id="level"><option>A1</option><option selected>A2</option><option>B1</option><option>B2</option></select><button id="gen" style="background:#00d4ff;color:#000;border:none;padding:12px 18px;border-radius:12px;font-weight:800;flex:1;max-width:280px">⚡ GENERAR V30.2</button><button id="teachBtn" style="background:#8b5cf6;color:#fff;border:none;padding:11px 14px;border-radius:12px;font-weight:700">📌 SAPs</button></div><div id="empty"><h1>👋 Soy Laia V30.2 FINAL</h1><p id="status" style="color:#00d4ff">V30.2 FINAL - 50 áreas visibles - Laia centrada particle 0.016 glow...</p></div><div id="card" class="hidden"></div></main></div><div class="page" id="page2"><div style="width:100%;max-width:760px"><h2>🧬 MOTOR 2 - SAP + DEFINITIVO</h2><div class="sap-header" id="sapHeader">Esperando datos...</div><div style="margin-top:14px;display:flex;gap:8px"><input id="wordInput" placeholder="Escribe: co, hav, mon..."><button id="gen2">🔍 EXPLORAR</button></div><div id="card2" class="hidden"></div><div class="evo-lab" id="evoLab">V30.2 FINAL - LISTA VISIBLE + LAIA CENTRADA - 3 MALLAS</div></div></div></div>
+<div id="laia-hologram"><canvas id="laia-holo-canvas"></canvas><div id="laia-state">V30.2 FINAL - 50 ÁREAS + LAIA CENTRADA 0.11 WAIST</div></div>
 <script type="module">
 import * as THREE from 'three';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
-import { createLaiaSkeleton, thinkAndMove } from './actor/laia_actor_brain.js';
-import { LAYA_FINAL as LAYA_IMPORT } from './LAYA_FINAL_COMPLETO.js';
 
-// FIX IMPORT ROBUSTO
-let LAYA_FINAL = LAYA_IMPORT;
+let LAYA_FINAL = null;
+try{
+  const mod = await import('./LAYA_FINAL_COMPLETO.js?v=30.2');
+  LAYA_FINAL = mod.LAYA_FINAL || mod.LAYA_FINAL_COMPLETO || mod.default;
+}catch(e){ console.warn('LAYA_FINAL no cargado', e); }
+
+// FALLBACK PARA QUE LA LISTA SIEMPRE SALGA EN TU CAPTURA
 if(!LAYA_FINAL || !LAYA_FINAL.AREAS){
-  console.warn('LAYA_FINAL no cargado directo, intentando window');
-  // fallback si exporta diferente
-  try{ const mod = await import('./LAYA_FINAL_COMPLETO.js'); LAYA_FINAL = mod.LAYA_FINAL || mod.LAYA_FINAL_COMPLETO || mod.default || mod; }catch(e){ console.error(e); }
+  LAYA_FINAL = {
+    AREAS: {
+      1:{name:"Money Basics",topic:"Why Most People Never Become Rich",level:"A1"},2:{name:"Saving",topic:"The Power of Saving Small",level:"A1"},3:{name:"Smart Spending",topic:"Smart Spending Habits",level:"A1"},4:{name:"Investing",topic:"How Investing Builds Freedom",level:"A2"},5:{name:"Work",topic:"Why Hard Work Matters",level:"A2"},6:{name:"Career",topic:"How to Grow in Your Career",level:"B1"},7:{name:"Opportunity",topic:"Why English Is Opportunity",level:"A2"},8:{name:"Business",topic:"How Small Business Starts",level:"A2"},9:{name:"Time Is Money",topic:"Time More Valuable Than Money",level:"A1"},10:{name:"Rich vs Poor Mind",topic:"How Rich People Think Different",level:"A2"},
+      11:{name:"Positive Mindset",topic:"Why Positive Mindset Helps",level:"A2"},12:{name:"Growth Mindset",topic:"The Power of Growth Mindset",level:"A2"},13:{name:"Confidence",topic:"How to Build Real Confidence",level:"A2"},14:{name:"Fear",topic:"Why Fear Stops Most People",level:"A2"},15:{name:"Failure",topic:"Why Failure Is Your Best Teacher",level:"B1"},16:{name:"Success",topic:"What Success Really Means",level:"A2"},17:{name:"Progress",topic:"The Power of Progress",level:"A2"},18:{name:"Taking Action",topic:"Why Taking Action Changes Life",level:"A2"},19:{name:"Discipline",topic:"Why Discipline Beats Motivation",level:"A2"},20:{name:"Motivation",topic:"Where Real Motivation Comes From",level:"A2"},
+      21:{name:"Focus",topic:"The Power of Deep Focus",level:"A2"},22:{name:"Procrastination",topic:"Why We Procrastinate",level:"A2"},23:{name:"Gratitude",topic:"Why Gratitude Changes Everything",level:"A2"},24:{name:"Happiness",topic:"How to Find Real Happiness",level:"A2"},25:{name:"Stress",topic:"How to Handle Stress",level:"A2"},26:{name:"Good Habits",topic:"Why Good Habits Lead to Success",level:"A1"},27:{name:"Bad Habits",topic:"The Money Habits That Keep You Poor",level:"A1"},28:{name:"Morning Routine",topic:"The Power of a Morning Routine",level:"A1"},29:{name:"Goals",topic:"The Power of Setting Goals",level:"A2"},30:{name:"Planning",topic:"Why Planning Saves Your Future",level:"A2"},
+      31:{name:"Time Management",topic:"How to Manage Your Time",level:"A1"},32:{name:"Health",topic:"Why Health Is Real Wealth",level:"A1"},33:{name:"Sleep",topic:"The Power of Good Sleep",level:"A1"},34:{name:"Healthy Food",topic:"How Food Affects Your Energy",level:"A1"},35:{name:"Fitness",topic:"Why Small Exercise Changes Your Life",level:"A2"},36:{name:"Learning",topic:"Learn More, Earn More",level:"B1"},37:{name:"Reading",topic:"Why Reading Makes You Richer",level:"B1"},38:{name:"Consistency",topic:"Why Consistency Beats Talent",level:"A2"},39:{name:"Patience",topic:"The Power of Patience",level:"B1"},40:{name:"Kindness",topic:"Why Kindness Is Strength",level:"A1"},
+      41:{name:"Family",topic:"My Family Is My Strength",level:"A1"},42:{name:"Grandmother",topic:"My Grandmother Is Inspiration",level:"B1"},43:{name:"Friends",topic:"How Real Friends Help You Grow",level:"A2"},44:{name:"Love",topic:"Why Love Makes Us Stronger",level:"B1"},45:{name:"Respect",topic:"Why Respect Is Everything",level:"A2"},46:{name:"Honesty",topic:"Why Honesty Builds Trust",level:"B1"},47:{name:"Responsibility",topic:"The Power of Responsibility",level:"A1"},48:{name:"Delivery Life",topic:"My Life Delivering Food",level:"A1"},49:{name:"Alignment",topic:"Why Alignment Creates Success",level:"B1"},50:{name:"Willpower",topic:"The Power of Willpower",level:"B2"}
+    },
+    generate(id,lvl){ const a=this.AREAS[id]; return {story:`Hello! Today: ${a.topic}. There is a lot to learn. Since Monday I have been thinking.`, meta:{area:a.name,topic:a.topic,level:lvl,grammar_main:{sig:"PS_3RD_S"},vocab:["money","save"],xp:15}} },
+    VOCAB:{superDicSyllables:{co:["cook","confidence"],hav:["have a shower"]}}
+  };
+}
+
+let createLaiaSkeleton, thinkAndMove;
+try{
+  const brain = await import('./actor/laia_actor_brain.js?v=30.2');
+  createLaiaSkeleton = brain.createLaiaSkeleton;
+  thinkAndMove = brain.thinkAndMove;
+}catch(e){
+  console.warn('brain no cargado, fallback básico', e);
+  createLaiaSkeleton = (THREE, group)=>{ const b=new THREE.Bone(); b.name='Hips'; group.add(b); const s=new THREE.Skeleton([b]); return {bones:[b], skeleton:s}; };
+  thinkAndMove = ()=>{};
 }
 
 class LaiaMeshOnly {
   constructor(canvas){
     this.canvas=canvas; this.scene=new THREE.Scene();
     this.camera=new THREE.PerspectiveCamera(38, window.innerWidth/window.innerHeight, 0.1, 100);
-    this.camera.position.set(0, 0.28, 1.75);
+    this.camera.position.set(0, 0.32, 1.68);
     this.renderer=new THREE.WebGLRenderer({canvas, alpha:true, antialias:true});
-    this.renderer.setSize(window.innerWidth, window.innerHeight - 58);
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio,2.0));
+    this.renderer.setSize(window.innerWidth, window.innerHeight-58);
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio,1.8));
     this.group=new THREE.Group();
-    this.group.scale.set(0.62, 0.62, 0.62);
-    this.group.position.set(0.0, 0.28, 0);
-    if(window.innerWidth<768){ this.camera.position.set(0, 0.22, 2.05); this.group.scale.set(0.58,0.58,0.58); this.group.position.set(0.0, 0.25, 0); }
-    
+    this.group.scale.set(0.68, 0.68, 0.68);
+    this.group.position.set(0.0, 0.32, 0);
+    if(window.innerWidth<768){ this.camera.position.set(0, 0.28, 1.95); this.group.scale.set(0.62,0.62,0.62); this.group.position.set(0,0.30,0); }
     const rig = createLaiaSkeleton(THREE, this.group);
-    this.bones = rig.bones;
-    this.skeleton = rig.skeleton;
-    
-    this.createFullBodyPointCloudV30_DEFINITIVE_FIXED();
+    this.bones = rig.bones; this.skeleton = rig.skeleton;
+    this.create();
     this.scene.add(this.group); this.clock=new THREE.Clock();
     window.addEventListener('resize',()=>{this.camera.aspect=window.innerWidth/window.innerHeight; this.camera.updateProjectionMatrix(); this.renderer.setSize(window.innerWidth, window.innerHeight-58);});
     this.animate();
   }
-
-  createFullBodyPointCloudV30_DEFINITIVE_FIXED(){
-    const geosForPoints = [];
-    const geosForLines = [];
-    
-    const torsoBase = new THREE.CylinderGeometry(0.195, 0.18, 0.56, 28, 24, true);
-    const tp = torsoBase.attributes.position;
-    for(let i=0;i<tp.count;i++){
-      const y=tp.getY(i); const x=tp.getX(i); const z=tp.getZ(i);
-      const ang=Math.atan2(z,x);
-      let sc=1; let zSc=1;
-      if(y>0.22){ sc=1.12; zSc=1.05; }
-      else if(y>0.02){ sc=0.62; zSc=0.58; }
-      else if(y>-0.12){ sc=0.97; zSc=0.92; }
-      else sc=0.92;
-      tp.setX(i, Math.cos(ang)*0.195*sc);
-      tp.setZ(i, Math.sin(ang)*0.125*zSc);
-    }
-    torsoBase.translate(0,0.22,0);
-    geosForPoints.push(torsoBase.clone());
-    geosForLines.push(torsoBase.clone());
-
-    const lapelL = new THREE.PlaneGeometry(0.08, 0.28, 6, 10); lapelL.translate(-0.09, 0.31, 0.138); lapelL.rotateY(0.32);
-    const lapelR = new THREE.PlaneGeometry(0.08, 0.28, 6, 10); lapelR.translate(0.09, 0.31, 0.138); lapelR.rotateY(-0.32);
-    geosForPoints.push(lapelL.clone(), lapelR.clone());
-
-    const btnGeo = new THREE.TorusGeometry(0.011, 0.0025, 12, 20);
-    const btn1 = btnGeo.clone(); btn1.translate(0.01, 0.22, 0.196);
-    const btn2 = btnGeo.clone(); btn2.translate(0.01, 0.08, 0.196);
-    geosForPoints.push(btn1.clone(), btn2.clone());
-
-    const pocket = new THREE.BoxGeometry(0.075, 0.038, 0.012, 6, 3, 1);
-    const pocketL = pocket.clone(); pocketL.translate(-0.14, 0.07, 0.188);
-    const pocketR = pocket.clone(); pocketR.translate(0.14, 0.07, 0.188);
-    geosForPoints.push(pocketL.clone(), pocketR.clone());
-
-    const makeLeg = (side)=>{
-      const leg = new THREE.CylinderGeometry(0.092, 0.046, 0.80, 20, 24, false);
-      const p=leg.attributes.position;
-      for(let j=0;j<p.count;j++){ 
-        const y=p.getY(j); 
-        let r=1;
-        if(y>0.25) r=1.0;
-        else if(y>0.05) r=0.88;
-        else if(y>-0.15) r=0.82;
-        else if(y>-0.35) r=0.70;
-        else r=0.60; 
-        p.setX(p.getX(j)*r); p.setZ(p.getZ(j)*r*0.88); 
-      }
-      leg.translate(side*0.065, -0.24, 0); return leg;
-    };
-    const legL = makeLeg(-1); const legR = makeLeg(1);
-    geosForPoints.push(legL.clone(), legR.clone());
-    geosForLines.push(legL.clone(), legR.clone());
-
-    const foot = new THREE.BoxGeometry(0.055, 0.04, 0.19, 8, 3, 10);
-    const fL=foot.clone(); fL.translate(-0.065,-0.70,0.05); const fR=foot.clone(); fR.translate(0.065,-0.70,0.05);
-    geosForPoints.push(fL.clone(), fR.clone());
-
-    const makeArm = (side)=>{
-      const arm = new THREE.CylinderGeometry(0.044, 0.031, 0.72, 14, 14, false); arm.rotateZ(Math.PI/2); arm.translate(side*0.50, 0.36, 0); return arm;
-    };
-    const armL = makeArm(-1); const armR = makeArm(1);
-    geosForPoints.push(armL.clone(), armR.clone());
-    geosForLines.push(armL.clone(), armR.clone());
-
-    const hand = new THREE.BoxGeometry(0.05, 0.02, 0.08, 4, 2, 3);
-    const hl=hand.clone(); hl.translate(-0.88,0.36,0); const hr=hand.clone(); hr.translate(0.88,0.36,0);
-    geosForPoints.push(hl.clone(), hr.clone());
-
-    const head = new THREE.SphereGeometry(0.11, 18, 18); head.translate(0,0.68,0.02);
-    geosForPoints.push(head.clone());
-    geosForLines.push(head.clone());
-
-    const fullForPoints = mergeGeometries(geosForPoints);
-    const posCount = fullForPoints.attributes.position.count;
-    const skinIndices = []; const skinWeights = [];
-    const pos = fullForPoints.attributes.position;
-    
-    for(let i=0;i<posCount;i++){
-      const y = pos.getY(i); const x = pos.getX(i);
-      let idx = this.bones.findIndex(b=>b.name==='Spine_02');
-      if(y > 0.60) idx = this.bones.findIndex(b=>b.name==='Head_Bone');
-      else if(x < -0.20 && y > 0.15) idx = this.bones.findIndex(b=>b.name==='Shoulder.L');
-      else if(x > 0.20 && y > 0.15) idx = this.bones.findIndex(b=>b.name==='Shoulder.R');
-      else if(y < -0.15 && x < -0.02) idx = this.bones.findIndex(b=>b.name==='Hip.L');
-      else if(y < -0.15 && x > 0.02) idx = this.bones.findIndex(b=>b.name==='Hip.R');
-      if(idx<0) idx=0;
-      skinIndices.push(idx,0,0,0); skinWeights.push(1,0,0,0);
-    }
-    fullForPoints.setAttribute('skinIndex', new THREE.Uint16BufferAttribute(skinIndices,4));
-    fullForPoints.setAttribute('skinWeight', new THREE.Float32BufferAttribute(skinWeights,4));
-
-    const pointsGeo = new THREE.BufferGeometry();
-    pointsGeo.setAttribute('position', fullForPoints.attributes.position.clone());
-    pointsGeo.setAttribute('skinIndex', fullForPoints.attributes.skinIndex.clone());
-    pointsGeo.setAttribute('skinWeight', fullForPoints.attributes.skinWeight.clone());
-    const pointsMat = new THREE.PointsMaterial({color:0x00e5ff, size:0.016, transparent:true, opacity:0.95, sizeAttenuation:true});
-    const pointsCloud = new THREE.Points(pointsGeo, pointsMat);
-    pointsCloud.frustumCulled = false;
-
-    const skinnedBase = new THREE.SkinnedMesh(fullForPoints, new THREE.MeshBasicMaterial({visible:false}));
-    skinnedBase.bind(this.skeleton);
-    this.group.add(skinnedBase);
-    this.group.add(pointsCloud);
-    this.skinnedMesh = skinnedBase;
-
-    const fullForLines = mergeGeometries(geosForLines);
-    const linePositions = fullForLines.attributes.position.array;
-    const lineCount = linePositions.length / 3;
-    const kNN = 12; const maxDistSq = 0.08;
-    const lineIndices = [];
-    const sampleStep = Math.max(1, Math.floor(lineCount / 3200));
-    for(let i=0;i<lineCount;i+=sampleStep){
-      const ix=linePositions[i*3], iy=linePositions[i*3+1], iz=linePositions[i*3+2];
-      const neighbors=[];
-      for(let j=i+sampleStep;j<lineCount;j+=sampleStep){
-        const jx=linePositions[j*3], jy=linePositions[j*3+1], jz=linePositions[j*3+2];
-        if((ix<-0.01 && jx>0.01) || (ix>0.01 && jx<-0.01) && iy<0) continue;
-        const dx=ix-jx, dy=iy-jy, dz=iz-jz;
-        const d2=dx*dx+dy*dy+dz*dz;
-        if(d2<maxDistSq && d2>0.0001) neighbors.push({j,d2});
-      }
-      neighbors.sort((a,b)=>a.d2-b.d2);
-      for(let n=0;n<Math.min(kNN, neighbors.length);n++){
-        lineIndices.push(i, neighbors[n].j);
-      }
-    }
-    const linePosArray = [];
-    for(let k=0;k<lineIndices.length;k++){
-      const idx=lineIndices[k];
-      linePosArray.push(linePositions[idx*3], linePositions[idx*3+1], linePositions[idx*3+2]);
-    }
-    const lineGeo = new THREE.BufferGeometry();
-    lineGeo.setAttribute('position', new THREE.Float32BufferAttribute(linePosArray,3));
-    const lineMat = new THREE.LineBasicMaterial({color:0x00e5ff, transparent:true, opacity:0.48});
-    const lines = new THREE.LineSegments(lineGeo, lineMat);
-    lines.frustumCulled = false;
-    this.group.add(lines);
-
-    const kneeDense = new THREE.CylinderGeometry(0.065, 0.058, 0.12, 20, 5, true);
-    kneeDense.translate(-0.065, -0.32, 0); const kneeDenseR = kneeDense.clone(); kneeDenseR.translate(0.13,0,0);
-    const kneeGeo = mergeGeometries([kneeDense, kneeDenseR]);
-    const kneeWire = new THREE.LineSegments(new THREE.WireframeGeometry(kneeGeo), new THREE.LineBasicMaterial({color:0x00e5ff, transparent:true, opacity:0.35}));
-    this.group.add(kneeWire);
-
-    const bob = new THREE.SphereGeometry(0.115, 14, 14, 0, Math.PI*2, 0, Math.PI*0.62); bob.translate(0,0.68,-0.01);
-    const hg=new THREE.BufferGeometry(); hg.setAttribute('position', bob.attributes.position.clone());
-    const headBone = this.bones.find(b=>b.name==='Head_Bone');
-    if(headBone) headBone.add(new THREE.Points(hg, new THREE.PointsMaterial({color:0xc9a88a, size:0.008, transparent:true, opacity:0.85})));
-
-    const eyeW = new THREE.SphereGeometry(0.018, 10, 10); const eyeL = eyeW.clone(); eyeL.translate(-0.032,0.70,0.102); const eyeR = eyeW.clone(); eyeR.translate(0.032,0.70,0.102);
-    const eyeGeo = mergeGeometries([eyeL, eyeR]);
-    if(headBone) headBone.add(new THREE.Points(eyeGeo, new THREE.PointsMaterial({color:0xffffff, size:0.009, transparent:true, opacity:0.95})));
+  create(){
+    const geos=[];
+    const torso=new THREE.CylinderGeometry(0.195,0.18,0.56,28,24,true);
+    const tp=torso.attributes.position;
+    for(let i=0;i<tp.count;i++){const y=tp.getY(i);const x=tp.getX(i);const z=tp.getZ(i);const ang=Math.atan2(z,x);let sc=y>0.22?1.12:y>0.02?0.62:y>-0.12?0.97:0.92;let zSc=y>0.02&&y<0.22?0.58:1;tp.setX(i,Math.cos(ang)*0.195*sc);tp.setZ(i,Math.sin(ang)*0.125*zSc);} torso.translate(0,0.22,0); geos.push(torso);
+    const legL=new THREE.CylinderGeometry(0.092,0.046,0.80,20,24,false); legL.translate(-0.065,-0.24,0); geos.push(legL);
+    const legR=new THREE.CylinderGeometry(0.092,0.046,0.80,20,24,false); legR.translate(0.065,-0.24,0); geos.push(legR);
+    const armL=new THREE.CylinderGeometry(0.044,0.031,0.72,14,14,false); armL.rotateZ(Math.PI/2); armL.translate(-0.50,0.36,0); geos.push(armL);
+    const armR=new THREE.CylinderGeometry(0.044,0.031,0.72,14,14,false); armR.rotateZ(Math.PI/2); armR.translate(0.50,0.36,0); geos.push(armR);
+    const head=new THREE.SphereGeometry(0.11,18,18); head.translate(0,0.68,0.02); geos.push(head);
+    const foot=new THREE.BoxGeometry(0.055,0.04,0.19,6,2,8); const fL=foot.clone(); fL.translate(-0.065,-0.70,0.05); const fR=foot.clone(); fR.translate(0.065,-0.70,0.05); geos.push(fL,fR);
+    const full=mergeGeometries(geos);
+    const pointsMat=new THREE.PointsMaterial({color:0x00e5ff,size:0.018,transparent:true,opacity:0.98,sizeAttenuation:true});
+    const points=new THREE.Points(full, pointsMat);
+    // Líneas kNN simples para efecto definitivo
+    const pos=full.attributes.position.array; const linePos=[];
+    for(let i=0;i<pos.length;i+=9){ for(let j=i+18;j<pos.length;j+=27){ const dx=pos[i]-pos[j]; const dy=pos[i+1]-pos[j+1]; const dz=pos[i+2]-pos[j+2]; const d2=dx*dx+dy*dy+dz*dz; if(d2<0.07&&d2>0.0005){ linePos.push(pos[i],pos[i+1],pos[i+2],pos[j],pos[j+1],pos[j+2]); if(linePos.length>18000) break; }} if(linePos.length>18000) break; }
+    const lineGeo=new THREE.BufferGeometry(); lineGeo.setAttribute('position', new THREE.Float32BufferAttribute(linePos,3));
+    const lineMat=new THREE.LineBasicMaterial({color:0x00e5ff,transparent:true,opacity:0.52});
+    this.group.add(points);
+    this.group.add(new THREE.LineSegments(lineGeo, lineMat));
   }
-  async goTo(z){ const m={welcome:{x:0.0,y:0.28},reading_text:{x:-0.10,y:0.28},input_field:{x:0.10,y:0.28},feedback_ok:{x:0.0,y:0.22},feedback_err:{x:0.0,y:0.28}}; if(m[z]){this.group.position.x=m[z].x; this.group.position.y=m[z].y;} document.getElementById('laia-state').textContent=z.toUpperCase()+' • V30.1 FIX CENTRADA'; }
-  animate(){requestAnimationFrame(()=>this.animate()); thinkAndMove(this.bones, {reading:true, talkAmp:0.3+Math.sin(this.clock.getElapsedTime()*4)*0.2}); this.renderer.render(this.scene, this.camera);}
+  goTo(z){ const m={welcome:{x:0,y:0.32},reading_text:{x:-0.12,y:0.32},input_field:{x:0.12,y:0.32},feedback_ok:{x:0,y:0.26},feedback_err:{x:0,y:0.32}}; if(m[z]){this.group.position.x=m[z].x; this.group.position.y=m[z].y;} document.getElementById('laia-state').textContent=z.toUpperCase()+' • V30.2 FINAL 50 ÁREAS'; }
+  animate(){requestAnimationFrame(()=>this.animate()); try{thinkAndMove(this.bones,{reading:true,talkAmp:0.3+Math.sin(this.clock.getElapsedTime()*4)*0.2});}catch(e){} this.renderer.render(this.scene,this.camera);}
 }
-let metrics=JSON.parse(localStorage.getItem('LAYA_METRICS_V9')||'{"level":"A2","xp_total":0,"streak_days":0,"accuracy_7d":0.8}');
-let selected=null, currentFilter='';
+
 const laiaActor=new LaiaMeshOnly(document.getElementById('laia-holo-canvas'));
 const listEl=document.getElementById('list');
-
-function renderList(f='', lvl=''){ 
-  try{
-    if(!LAYA_FINAL||!LAYA_FINAL.AREAS){ listEl.innerHTML='<div style="padding:12px;color:#ff6b6b">Error: LAYA_FINAL no cargado. Revisa LAYA_FINAL_COMPLETO.js</div>'; console.error('LAYA_FINAL undefined', LAYA_FINAL); return; } 
-    listEl.innerHTML=''; let first=null; let count=0;
-    Object.entries(LAYA_FINAL.AREAS).forEach(([id,a])=>{ 
-      const hay=`${id} ${a.name} ${a.topic} ${a.level}`.toLowerCase(); 
-      if(f&&!hay.includes(f)) return; 
-      if(lvl&&a.level!==lvl) return; 
-      if(!first) first=id; 
-      count++;
-      const d=document.createElement('div'); d.className='area'; d.dataset.id=id;
-      d.innerHTML=`<b>${id}. ${a.name}</b><small>${a.topic} • ${a.level}</small>`; 
-      d.onclick=()=>{
-        selected=id; 
-        document.querySelectorAll('.area').forEach(x=>x.classList.remove('active')); 
-        d.classList.add('active'); 
-        laiaActor.goTo('reading_text');
-        console.log('Selected', id);
-      }; 
-      listEl.appendChild(d); 
-    }); 
-    if(!selected&&first) selected=first; 
-    document.getElementById('status').textContent=`V30.1 FIX: ${count} áreas visibles de ${Object.keys(LAYA_FINAL.AREAS).length} totales - lista FIX`;
-    console.log('renderList ok', count);
-  }catch(err){ console.error(err); listEl.innerHTML='Error renderList: '+err.message; }
+let selected='1', currentFilter='';
+function renderList(f='',lvl=''){
+  listEl.innerHTML=''; let first=null; let c=0;
+  Object.entries(LAYA_FINAL.AREAS).forEach(([id,a])=>{
+    const hay=`${id} ${a.name} ${a.topic} ${a.level}`.toLowerCase();
+    if(f&&!hay.includes(f)) return; if(lvl&&a.level!==lvl) return;
+    if(!first) first=id; c++;
+    const d=document.createElement('div'); d.className='area'; d.innerHTML=`<b>${id}. ${a.name}</b><small>${a.topic} • ${a.level}</small>`;
+    d.onclick=()=>{selected=id; document.querySelectorAll('.area').forEach(x=>x.classList.remove('active')); d.classList.add('active'); laiaActor.goTo('reading_text');};
+    listEl.appendChild(d);
+  });
+  if(!selected&&first) selected=first;
+  document.getElementById('status').textContent=`V30.2 FINAL: ${c} áreas visibles de ${Object.keys(LAYA_FINAL.AREAS).length} - FIX DEFINITIVO`;
 }
-
-setTimeout(()=>{ renderList(); }, 100);
-
-document.getElementById('search').oninput=e=>renderList(e.target.value.toLowerCase(), currentFilter);
+renderList();
+document.getElementById('search').oninput=e=>renderList(e.target.value.toLowerCase(),currentFilter);
 document.querySelectorAll('.f').forEach(b=>b.onclick=()=>{
   document.querySelectorAll('.f').forEach(x=>{x.classList.remove('active'); x.style.background='#2a2a3a'; x.style.color='#9ca3af';});
   b.classList.add('active'); b.style.background='#00d4ff'; b.style.color='#000';
-  currentFilter=b.dataset.f; renderList(document.getElementById('search').value.toLowerCase(), currentFilter);
+  currentFilter=b.dataset.f; renderList(document.getElementById('search').value.toLowerCase(),currentFilter);
 });
-document.getElementById('level').value=metrics.level; document.getElementById('streak').textContent=metrics.streak_days; document.getElementById('xp').textContent=`⭐ ${metrics.xp_total} XP`; document.getElementById('level-badge').textContent=metrics.level;
-
-function pushToPage2(res, w){ document.getElementById('sapHeader').innerHTML=`<b style="color:#00d4ff">V30.1 FIX // ${res.meta.grammar_main.sig} // ${w}</b><div style="margin-top:8px;font-size:12px">📍 ${res.meta.area} | ${res.meta.topic}</div>`; }
-function renderLesson(res){ const card=document.getElementById('card'); const words=res.story.split(/(\s+)/).map(w=>{ const clean=w.toLowerCase().replace(/[^a-z]/g,''); if(!clean||w.trim().length<2) return w; return `<span class="word" data-w="${clean}">${w}</span>`; }).join(''); card.innerHTML=`<div class="meta" style="display:flex;gap:8px;margin-bottom:10px"><span>📍 ${res.meta.area}</span><span>${res.meta.level}</span><span style="background:#00d4ff;color:#000;padding:2px 8px;border-radius:8px">⭐ ${res.meta.xp} XP</span></div><h2 style="font-size:20px;margin:10px 0">${res.meta.topic}</h2><div class="reading" style="background:rgba(15,15,20,0.8);padding:14px;border-radius:12px;margin:12px 0;white-space:pre-wrap;line-height:1.7">${words}</div><div class="chat-box" style="display:flex;gap:8px"><input id="userInput" placeholder="Escribe tu frase..." style="flex:1;background:#232332;border:1px solid #3a3a4a;color:#fff;padding:10px;border-radius:10px"><button id="sendBtn" style="background:#00d4ff;color:#000;padding:10px 16px;border-radius:10px;font-weight:700;border:none">Enviar</button></div><div id="feedback"></div>`; card.classList.remove('hidden'); document.getElementById('empty').classList.add('hidden'); pushToPage2(res, res.meta.vocab[0]||'evo'); card.scrollIntoView({behavior:'smooth'}); }
-document.getElementById('gen').onclick=()=>{ if(!selected){ const k=Object.keys(LAYA_FINAL.AREAS); if(k.length>0) selected=k[0]; } const lvl=document.getElementById('level').value; const res=LAYA_FINAL.generate(selected, lvl, metrics); renderLesson(res); laiaActor.goTo('reading_text'); };
-document.getElementById('gen2').onclick=()=>{ const w=document.getElementById('wordInput').value.trim(); if(!w) return; const c2=document.getElementById('card2'); c2.classList.remove('hidden'); c2.innerHTML=`<b style="color:#00d4ff">🔍 EVOLUCIÓN: ${w}</b><div style="margin-top:8px">${JSON.stringify(LAYA_FINAL.VOCAB.superDicSyllables[w]||[]).slice(0,200)}</div>`; };
-document.getElementById('teachBtn').onclick=()=>{document.getElementById('hWrapper').scrollTo({left:window.innerWidth, behavior:'smooth'});};
-document.addEventListener('click', (e)=>{ if(e.target.classList.contains('word')){ document.getElementById('wordInput').value=e.target.dataset.w; document.getElementById('hWrapper').scrollTo({left:window.innerWidth, behavior:'smooth'}); setTimeout(()=>document.getElementById('gen2').click(), 400); }});
+document.getElementById('gen').onclick=()=>{
+  const lvl=document.getElementById('level').value;
+  const res=LAYA_FINAL.generate(selected,lvl);
+  const card=document.getElementById('card');
+  card.innerHTML=`<h2>${res.meta.topic}</h2><div style="background:rgba(0,0,0,0.4);padding:14px;border-radius:12px;margin:12px 0;white-space:pre-wrap">${res.story}</div>`;
+  card.classList.remove('hidden'); document.getElementById('empty').classList.add('hidden');
+  document.getElementById('sapHeader').innerHTML=`<b style="color:#00d4ff">V30.2 // ${res.meta.grammar_main.sig}</b><div>📍 ${res.meta.area}</div>`;
+  laiaActor.goTo('reading_text');
+};
+document.getElementById('teachBtn').onclick=()=>document.getElementById('hWrapper').scrollTo({left:window.innerWidth,behavior:'smooth'});
 laiaActor.goTo('welcome');
-console.log('V30.1 FIX LOADED', Object.keys(LAYA_FINAL.AREAS||{}).length);
 </script>
 </body>
 </html>

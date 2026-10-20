@@ -2,35 +2,41 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LENGUAJE-PRO V30.2 FINAL DEFINITIVO</title>
+<title>LENGUAJE-PRO V30.4 DEFINITIVO GAP CLEAN</title>
 <link rel="icon" href="./icon-192.png">
 <meta name="theme-color" content="#00d4ff">
-<link rel="stylesheet" href="./styles.css?v=30.2">
+<link rel="stylesheet" href="./styles.css?v=30.4">
 <script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
 <style>
-/* V30.2 FINAL - OVERRIDE DEFINITIVO - PISA styles.css VIEJO */
-#page1 aside{width:380px!important;min-width:380px!important;background:rgba(22,22,32,0.96)!important;border-right:2px solid rgba(0,212,255,0.4)!important}
-#list{min-height:420px!important;background:rgba(18,18,28,0.88)!important;border:1px solid rgba(0,212,255,0.22)!important;display:flex!important;visibility:visible!important;opacity:1!important}
-.area{opacity:1!important;visibility:visible!important;background:rgba(50,50,75,0.96)!important;display:block!important}
-#laia-hologram{top:58px!important;height:calc(100vh - 58px)!important;opacity:1!important;visibility:visible!important}
-#laia-holo-canvas{opacity:1!important;visibility:visible!important}
+/* V30.4 DEFINITIVO - OVERRIDE TRANSPARENTE - PISA TODO LO VIEJO - LAIA PROTAGONISTA */
+header{height:58px!important;background:rgba(12,12,20,0.32)!important;backdrop-filter:blur(14px)!important;border-bottom:1px solid rgba(0,212,255,0.16)!important;display:flex!important;justify-content:space-between!important;align-items:center!important;padding:0 18px!important;position:sticky!important;top:0!important;z-index:100!important}
+#page1 aside{width:380px!important;min-width:380px!important;background:rgba(14,14,22,0.18)!important;backdrop-filter:blur(10px)!important;border-right:1px solid rgba(0,212,255,0.12)!important;padding:14px!important;display:flex!important;flex-direction:column!important;gap:12px!important;height:calc(100vh - 58px)!important;overflow-y:auto!important}
+#list{min-height:420px!important;background:rgba(10,10,18,0.10)!important;border:1px solid rgba(0,212,255,0.10)!important;border-radius:12px!important;padding:8px!important;display:flex!important;flex-direction:column!important;gap:7px!important;visibility:visible!important;opacity:1!important;flex:1!important}
+.area{opacity:1!important;visibility:visible!important;background:rgba(26,26,38,0.22)!important;backdrop-filter:blur(4px)!important;display:block!important;padding:10px 12px!important;border-radius:10px!important;border:1px solid rgba(0,212,255,0.10)!important}
+.area.active{background:rgba(0,212,255,0.68)!important;color:#000!important}
+#page1 main{background:rgba(10,10,18,0.06)!important;backdrop-filter:blur(2px)!important}
+#card,.sap-header,.evo-lab{background:rgba(16,16,26,0.14)!important;backdrop-filter:blur(6px)!important;border:1px solid rgba(0,212,255,0.14)!important;border-radius:14px!important}
+#laia-hologram{position:fixed!important;top:58px!important;left:0!important;width:100vw!important;height:calc(100vh - 58px)!important;z-index:1!important;display:flex!important;align-items:center!important;justify-content:center!important;pointer-events:none!important;opacity:1!important;visibility:visible!important;background: radial-gradient(ellipse at center, rgba(8,32,52,0.42) 0%, rgba(0,229,255,0.12) 42%, transparent 80%)!important;filter: drop-shadow(0 0 36px rgba(0,229,255,0.62)) drop-shadow(0 0 70px rgba(0,212,255,0.38))!important;}
+#laia-holo-canvas{width:100vw!important;height:calc(100vh - 58px)!important;opacity:1!important;visibility:visible!important;filter: contrast(1.28) brightness(1.20) saturate(1.14) drop-shadow(0 0 12px rgba(0,229,255,0.70))!important;}
+.h-wrapper{margin-top:58px!important;display:flex!important;overflow-x:auto!important;scroll-snap-type:x mandatory!important;width:100vw!important;height:calc(100vh - 58px)!important}
+.page{min-width:100vw!important;width:100vw!important;height:100%!important;scroll-snap-align:start!important;overflow-y:auto!important;display:flex!important}
+@media(max-width:768px){#page1{flex-direction:column!important}#page1 aside{width:100%!important;min-width:100%!important;max-height:48vh!important;min-height:48vh!important}}
 </style>
 </head>
 <body>
-<header style="z-index:100"><div class="logo">📚 LENGUAJE-PRO <span>V30.2 FINAL</span></div><div class="metrics"><span id="xp">⭐ 0 XP</span><span>🔥 <b id="streak">0</b></span><span id="level-badge">A2</span></div></header>
-<div class="h-wrapper" id="hWrapper"><div class="page" id="page1"><aside><h3 style="font-size:12px;color:#00d4ff;font-weight:900">V30.2 FINAL - 50 ÁREAS VISIBLES</h3><input id="search" placeholder="Buscar..." style="background:#232332;border:1px solid #00d4ff;color:#fff;padding:11px;border-radius:10px;width:100%"><div id="filters" style="display:flex;gap:6px;flex-wrap:wrap"><button class="f active" data-f="" style="background:#00d4ff;color:#000;padding:6px 12px;border-radius:20px;border:none;font-weight:700">Todas (50)</button><button class="f" data-f="A1">A1</button><button class="f" data-f="A2">A2</button><button class="f" data-f="B1">B1</button><button class="f" data-f="B2">B2</button></div><div id="list">Cargando...</div></aside><main><div style="display:flex;gap:10px;margin-bottom:12px"><select id="level"><option>A1</option><option selected>A2</option><option>B1</option><option>B2</option></select><button id="gen" style="background:#00d4ff;color:#000;border:none;padding:12px 18px;border-radius:12px;font-weight:800;flex:1;max-width:280px">⚡ GENERAR V30.2</button><button id="teachBtn" style="background:#8b5cf6;color:#fff;border:none;padding:11px 14px;border-radius:12px;font-weight:700">📌 SAPs</button></div><div id="empty"><h1>👋 Soy Laia V30.2 FINAL</h1><p id="status" style="color:#00d4ff">V30.2 FINAL - 50 áreas visibles - Laia centrada particle 0.016 glow...</p></div><div id="card" class="hidden"></div></main></div><div class="page" id="page2"><div style="width:100%;max-width:760px"><h2>🧬 MOTOR 2 - SAP + DEFINITIVO</h2><div class="sap-header" id="sapHeader">Esperando datos...</div><div style="margin-top:14px;display:flex;gap:8px"><input id="wordInput" placeholder="Escribe: co, hav, mon..."><button id="gen2">🔍 EXPLORAR</button></div><div id="card2" class="hidden"></div><div class="evo-lab" id="evoLab">V30.2 FINAL - LISTA VISIBLE + LAIA CENTRADA - 3 MALLAS</div></div></div></div>
-<div id="laia-hologram"><canvas id="laia-holo-canvas"></canvas><div id="laia-state">V30.2 FINAL - 50 ÁREAS + LAIA CENTRADA 0.11 WAIST</div></div>
+<header><div class="logo">📚 LENGUAJE-PRO <span>V30.4 GAP CLEAN</span></div><div class="metrics"><span id="xp">⭐ 0 XP</span><span>🔥 <b id="streak">0</b></span><span id="level-badge">A2</span></div></header>
+<div class="h-wrapper" id="hWrapper"><div class="page" id="page1"><aside><h3 style="font-size:11px;color:#00d4ff;font-weight:900;letter-spacing:0.08em">V30.4 DEFINITIVO - GAP CLEAN 0.11 + 5 LOOPS 22 RADIALES</h3><input id="search" placeholder="Buscar 50 áreas..." style="background:rgba(35,35,50,0.22);border:1px solid rgba(0,212,255,0.22);color:#fff;padding:11px;border-radius:10px;width:100%;backdrop-filter:blur(4px)"><div id="filters" style="display:flex;gap:6px;flex-wrap:wrap"><button class="f active" data-f="" style="background:#00d4ff;color:#000;padding:6px 12px;border-radius:20px;border:none;font-weight:700">Todas (50)</button><button class="f" data-f="A1">A1</button><button class="f" data-f="A2">A2</button><button class="f" data-f="B1">B1</button><button class="f" data-f="B2">B2</button></div><div id="list">Cargando 50 áreas...</div></aside><main><div style="display:flex;gap:10px;margin-bottom:12px"><select id="level"><option>A1</option><option selected>A2</option><option>B1</option><option>B2</option></select><button id="gen" style="background:#00d4ff;color:#000;border:none;padding:12px 18px;border-radius:12px;font-weight:800;flex:1;max-width:280px">⚡ GENERAR V30.4</button><button id="teachBtn" style="background:#8b5cf6;color:#fff;border:none;padding:11px 14px;border-radius:12px;font-weight:700">📌 SAPs</button></div><div id="empty"><h1>👋 Soy Laia V30.4 GAP CLEAN</h1><p id="status" style="color:#00d4ff">V30.4 DEFINITIVO - GAP CLEAN 0.11 + 5 LOOPS RODILLA 22 RADIALES + SHOULDER LIMIT 4 - SIN HAIRBALL</p></div><div id="card" class="hidden"></div></main></div><div class="page" id="page2"><div style="width:100%;max-width:760px"><h2>🧬 MOTOR 2 - SAP + V30.4 GAP CLEAN</h2><div class="sap-header" id="sapHeader">Esperando datos...</div><div style="margin-top:14px;display:flex;gap:8px"><input id="wordInput" placeholder="Escribe: co, hav, mon..."><button id="gen2">🔍 EXPLORAR</button></div><div id="card2" class="hidden"></div><div class="evo-lab" id="evoLab">V30.4 DEFINITIVO - GAP CLEAN 0.11 - 5 LOOPS 22 RADIALES - SHOULDER FAN LIMIT 4 - PARTICLE 0.012 - kNN 12</div></div></div></div>
+<div id="laia-hologram"><canvas id="laia-holo-canvas"></canvas><div id="laia-state">V30.4 DEFINITIVO - GAP CLEAN + 5 LOOPS 22 RADIALES</div></div>
 <script type="module">
 import * as THREE from 'three';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 
 let LAYA_FINAL = null;
 try{
-  const mod = await import('./LAYA_FINAL_COMPLETO.js?v=30.2');
+  const mod = await import('./LAYA_FINAL_COMPLETO.js?v=30.4');
   LAYA_FINAL = mod.LAYA_FINAL || mod.LAYA_FINAL_COMPLETO || mod.default;
 }catch(e){ console.warn('LAYA_FINAL no cargado', e); }
 
-// FALLBACK PARA QUE LA LISTA SIEMPRE SALGA EN TU CAPTURA
 if(!LAYA_FINAL || !LAYA_FINAL.AREAS){
   LAYA_FINAL = {
     AREAS: {
@@ -40,14 +46,14 @@ if(!LAYA_FINAL || !LAYA_FINAL.AREAS){
       31:{name:"Time Management",topic:"How to Manage Your Time",level:"A1"},32:{name:"Health",topic:"Why Health Is Real Wealth",level:"A1"},33:{name:"Sleep",topic:"The Power of Good Sleep",level:"A1"},34:{name:"Healthy Food",topic:"How Food Affects Your Energy",level:"A1"},35:{name:"Fitness",topic:"Why Small Exercise Changes Your Life",level:"A2"},36:{name:"Learning",topic:"Learn More, Earn More",level:"B1"},37:{name:"Reading",topic:"Why Reading Makes You Richer",level:"B1"},38:{name:"Consistency",topic:"Why Consistency Beats Talent",level:"A2"},39:{name:"Patience",topic:"The Power of Patience",level:"B1"},40:{name:"Kindness",topic:"Why Kindness Is Strength",level:"A1"},
       41:{name:"Family",topic:"My Family Is My Strength",level:"A1"},42:{name:"Grandmother",topic:"My Grandmother Is Inspiration",level:"B1"},43:{name:"Friends",topic:"How Real Friends Help You Grow",level:"A2"},44:{name:"Love",topic:"Why Love Makes Us Stronger",level:"B1"},45:{name:"Respect",topic:"Why Respect Is Everything",level:"A2"},46:{name:"Honesty",topic:"Why Honesty Builds Trust",level:"B1"},47:{name:"Responsibility",topic:"The Power of Responsibility",level:"A1"},48:{name:"Delivery Life",topic:"My Life Delivering Food",level:"A1"},49:{name:"Alignment",topic:"Why Alignment Creates Success",level:"B1"},50:{name:"Willpower",topic:"The Power of Willpower",level:"B2"}
     },
-    generate(id,lvl){ const a=this.AREAS[id]; return {story:`Hello! Today: ${a.topic}. There is a lot to learn. Since Monday I have been thinking.`, meta:{area:a.name,topic:a.topic,level:lvl,grammar_main:{sig:"PS_3RD_S"},vocab:["money","save"],xp:15}} },
+    generate(id,lvl){ const a=this.AREAS[id]; return {story:`Hello! Today: ${a.topic}. There is a lot to learn. Since Monday I have been thinking. V30.4 GAP CLEAN - 5 loops rodilla circulo perfecto.`, meta:{area:a.name,topic:a.topic,level:lvl,grammar_main:{sig:"PS_3RD_S"},vocab:["money","save"],xp:15}} },
     VOCAB:{superDicSyllables:{co:["cook","confidence"],hav:["have a shower"]}}
   };
 }
 
 let createLaiaSkeleton, thinkAndMove;
 try{
-  const brain = await import('./actor/laia_actor_brain.js?v=30.2');
+  const brain = await import('./actor/laia_actor_brain.js?v=30.4');
   createLaiaSkeleton = brain.createLaiaSkeleton;
   thinkAndMove = brain.thinkAndMove;
 }catch(e){
@@ -59,45 +65,90 @@ try{
 class LaiaMeshOnly {
   constructor(canvas){
     this.canvas=canvas; this.scene=new THREE.Scene();
-    this.camera=new THREE.PerspectiveCamera(38, window.innerWidth/window.innerHeight, 0.1, 100);
-    this.camera.position.set(0, 0.32, 1.68);
+    this.camera=new THREE.PerspectiveCamera(36, window.innerWidth/window.innerHeight, 0.1, 100);
+    this.camera.position.set(0, 0.34, 1.62);
     this.renderer=new THREE.WebGLRenderer({canvas, alpha:true, antialias:true});
     this.renderer.setSize(window.innerWidth, window.innerHeight-58);
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio,1.8));
     this.group=new THREE.Group();
-    this.group.scale.set(0.68, 0.68, 0.68);
-    this.group.position.set(0.0, 0.32, 0);
-    if(window.innerWidth<768){ this.camera.position.set(0, 0.28, 1.95); this.group.scale.set(0.62,0.62,0.62); this.group.position.set(0,0.30,0); }
+    // V30.4 SCALE DEFINITIVO - 0.54 no corta T-pose, 0.50 mobile
+    this.group.scale.set(0.54, 0.54, 0.54);
+    this.group.position.set(0.0, 0.36, 0);
+    if(window.innerWidth<768){ this.camera.position.set(0, 0.30, 1.88); this.group.scale.set(0.50,0.50,0.50); this.group.position.set(0,0.32,0); }
     const rig = createLaiaSkeleton(THREE, this.group);
     this.bones = rig.bones; this.skeleton = rig.skeleton;
-    this.create();
+    this.createDefinitive();
     this.scene.add(this.group); this.clock=new THREE.Clock();
     window.addEventListener('resize',()=>{this.camera.aspect=window.innerWidth/window.innerHeight; this.camera.updateProjectionMatrix(); this.renderer.setSize(window.innerWidth, window.innerHeight-58);});
     this.animate();
   }
-  create(){
-    const geos=[];
-    const torso=new THREE.CylinderGeometry(0.195,0.18,0.56,28,24,true);
+  createDefinitive(){
+    const geosP=[]; const geosL=[];
+    // V30.4 TORSO - 32x28 para flow fino no bloques - waist 0.11 real
+    const torso=new THREE.CylinderGeometry(0.195,0.18,0.56,32,28,true);
     const tp=torso.attributes.position;
-    for(let i=0;i<tp.count;i++){const y=tp.getY(i);const x=tp.getX(i);const z=tp.getZ(i);const ang=Math.atan2(z,x);let sc=y>0.22?1.12:y>0.02?0.62:y>-0.12?0.97:0.92;let zSc=y>0.02&&y<0.22?0.58:1;tp.setX(i,Math.cos(ang)*0.195*sc);tp.setZ(i,Math.sin(ang)*0.125*zSc);} torso.translate(0,0.22,0); geos.push(torso);
-    const legL=new THREE.CylinderGeometry(0.092,0.046,0.80,20,24,false); legL.translate(-0.065,-0.24,0); geos.push(legL);
-    const legR=new THREE.CylinderGeometry(0.092,0.046,0.80,20,24,false); legR.translate(0.065,-0.24,0); geos.push(legR);
-    const armL=new THREE.CylinderGeometry(0.044,0.031,0.72,14,14,false); armL.rotateZ(Math.PI/2); armL.translate(-0.50,0.36,0); geos.push(armL);
-    const armR=new THREE.CylinderGeometry(0.044,0.031,0.72,14,14,false); armR.rotateZ(Math.PI/2); armR.translate(0.50,0.36,0); geos.push(armR);
-    const head=new THREE.SphereGeometry(0.11,18,18); head.translate(0,0.68,0.02); geos.push(head);
-    const foot=new THREE.BoxGeometry(0.055,0.04,0.19,6,2,8); const fL=foot.clone(); fL.translate(-0.065,-0.70,0.05); const fR=foot.clone(); fR.translate(0.065,-0.70,0.05); geos.push(fL,fR);
-    const full=mergeGeometries(geos);
-    const pointsMat=new THREE.PointsMaterial({color:0x00e5ff,size:0.018,transparent:true,opacity:0.98,sizeAttenuation:true});
-    const points=new THREE.Points(full, pointsMat);
-    // Líneas kNN simples para efecto definitivo
-    const pos=full.attributes.position.array; const linePos=[];
-    for(let i=0;i<pos.length;i+=9){ for(let j=i+18;j<pos.length;j+=27){ const dx=pos[i]-pos[j]; const dy=pos[i+1]-pos[j+1]; const dz=pos[i+2]-pos[j+2]; const d2=dx*dx+dy*dy+dz*dz; if(d2<0.07&&d2>0.0005){ linePos.push(pos[i],pos[i+1],pos[i+2],pos[j],pos[j+1],pos[j+2]); if(linePos.length>18000) break; }} if(linePos.length>18000) break; }
-    const lineGeo=new THREE.BufferGeometry(); lineGeo.setAttribute('position', new THREE.Float32BufferAttribute(linePos,3));
-    const lineMat=new THREE.LineBasicMaterial({color:0x00e5ff,transparent:true,opacity:0.52});
+    for(let i=0;i<tp.count;i++){
+      const y=tp.getY(i); const x=tp.getX(i); const z=tp.getZ(i); const ang=Math.atan2(z,x);
+      let sc=1; let zSc=1;
+      if(y>0.22){sc=1.12; zSc=1.05;} else if(y>0.02){sc=0.62; zSc=0.58;} else if(y>-0.12){sc=0.97; zSc=0.92;} else{sc=0.92; zSc=0.90;}
+      tp.setX(i,Math.cos(ang)*0.195*sc); tp.setZ(i,Math.sin(ang)*0.125*zSc);
+    }
+    torso.translate(0,0.22,0); geosP.push(torso.clone()); geosL.push(torso.clone());
+    
+    const makeLeg=(side)=>{
+      const g=new THREE.CylinderGeometry(0.092,0.046,0.80,24,28,false);
+      const p=g.attributes.position;
+      for(let j=0;j<p.count;j++){const y=p.getY(j); let r=y>0.20?1.0:y>0.0?0.86:y>-0.18?0.80:y>-0.38?0.68:0.58; p.setX(j,p.getX(j)*r); p.setZ(j,p.getZ(j)*r*0.88);}
+      g.translate(side*0.067,-0.24,0); return g;
+    };
+    const legL=makeLeg(-1); const legR=makeLeg(1); 
+    geosP.push(legL.clone(),legR.clone()); geosL.push(legL.clone(),legR.clone());
+    
+    const armL=new THREE.CylinderGeometry(0.044,0.031,0.72,16,16,false); armL.rotateZ(Math.PI/2); armL.translate(-0.50,0.36,0); geosL.push(armL.clone()); geosP.push(armL.clone());
+    const armR=new THREE.CylinderGeometry(0.044,0.031,0.72,16,16,false); armR.rotateZ(Math.PI/2); armR.translate(0.50,0.36,0); geosL.push(armR.clone()); geosP.push(armR.clone());
+    
+    const head=new THREE.SphereGeometry(0.11,20,20); head.translate(0,0.68,0.02); geosP.push(head.clone()); geosL.push(head.clone());
+    const foot=new THREE.BoxGeometry(0.055,0.04,0.19,8,3,10); const fL=foot.clone(); fL.translate(-0.067,-0.70,0.05); const fR=foot.clone(); fR.translate(0.067,-0.70,0.05); geosP.push(fL,fR);
+    
+    const fullP=mergeGeometries(geosP);
+    // V30.4 PARTICLE 0.012 GLOW 0.92 DEFINITIVO
+    const points=new THREE.Points(fullP,new THREE.PointsMaterial({color:0x00e5ff,size:0.012,transparent:true,opacity:0.92,sizeAttenuation:true}));
     this.group.add(points);
-    this.group.add(new THREE.LineSegments(lineGeo, lineMat));
+    
+    // V30.4 kNN GAP CLEAN + SHOULDER FAN LIMIT 4 - FIX HAIRBALL
+    const fullL=mergeGeometries(geosL); const arr=fullL.attributes.position.array; const linePos=[];
+    let shoulderLines=0;
+    for(let i=0;i<arr.length;i+=12){
+      const ix=arr[i], iy=arr[i+1], iz=arr[i+2];
+      let best=[]; 
+      for(let j=i+24;j<arr.length;j+=18){
+        const jx=arr[j], jy=arr[j+1], jz=arr[j+2];
+        // V30.4 GAP CLEAN DEFINITIVO - cero conexiones entre piernas
+        if(iy<0.05 && jy<0.05 && ((ix<-0.01 && jx>0.01)||(ix>0.01 && jx<-0.01))) continue;
+        const dx=ix-jx, dy=iy-jy, dz=iz-jz; const d2=dx*dx+dy*dy+dz*dz;
+        if(d2<0.08 && d2>0.0003) best.push({j,d2, isShoulder: iy>0.30});
+      }
+      best.sort((a,b)=>a.d2-b.d2);
+      let limit = 12;
+      // V30.4 SHOULDER FAN LIMIT 4 - evita bola cyan pecho
+      if(iy>0.30) limit = 4;
+      for(let k=0;k<Math.min(limit,best.length);k++){ 
+        const j=best[k].j; 
+        linePos.push(ix,iy,iz,arr[j],arr[j+1],arr[j+2]); 
+        if(linePos.length>24000) break; 
+      }
+      if(linePos.length>24000) break;
+    }
+    const lineGeo=new THREE.BufferGeometry(); lineGeo.setAttribute('position',new THREE.Float32BufferAttribute(linePos,3));
+    this.group.add(new THREE.LineSegments(lineGeo,new THREE.LineBasicMaterial({color:0x00e5ff,transparent:true,opacity:0.44})));
+    
+    // V30.4 RODILLAS 5 LOOPS 22 RADIALES CIRCULO PERFECTO - DEFINITIVO
+    const kneeGeoL=new THREE.CylinderGeometry(0.068,0.062,0.14,22,5,true); kneeGeoL.translate(-0.067,-0.32,0.01);
+    const kneeGeoR=new THREE.CylinderGeometry(0.068,0.062,0.14,22,5,true); kneeGeoR.translate(0.067,-0.32,0.01);
+    const kneeWire=new THREE.LineSegments(new THREE.WireframeGeometry(mergeGeometries([kneeGeoL,kneeGeoR])),new THREE.LineBasicMaterial({color:0x00e5ff,transparent:true,opacity:0.32}));
+    this.group.add(kneeWire);
   }
-  goTo(z){ const m={welcome:{x:0,y:0.32},reading_text:{x:-0.12,y:0.32},input_field:{x:0.12,y:0.32},feedback_ok:{x:0,y:0.26},feedback_err:{x:0,y:0.32}}; if(m[z]){this.group.position.x=m[z].x; this.group.position.y=m[z].y;} document.getElementById('laia-state').textContent=z.toUpperCase()+' • V30.2 FINAL 50 ÁREAS'; }
+  goTo(z){ const m={welcome:{x:0,y:0.36},reading_text:{x:-0.10,y:0.36},input_field:{x:0.08,y:0.36},feedback_ok:{x:0,y:0.30},feedback_err:{x:0,y:0.36}}; if(m[z]){this.group.position.x=m[z].x; this.group.position.y=m[z].y;} document.getElementById('laia-state').textContent=z.toUpperCase()+' • V30.4 GAP CLEAN 5 LOOPS 22 RADIALES'; }
   animate(){requestAnimationFrame(()=>this.animate()); try{thinkAndMove(this.bones,{reading:true,talkAmp:0.3+Math.sin(this.clock.getElapsedTime()*4)*0.2});}catch(e){} this.renderer.render(this.scene,this.camera);}
 }
 
@@ -115,7 +166,7 @@ function renderList(f='',lvl=''){
     listEl.appendChild(d);
   });
   if(!selected&&first) selected=first;
-  document.getElementById('status').textContent=`V30.2 FINAL: ${c} áreas visibles de ${Object.keys(LAYA_FINAL.AREAS).length} - FIX DEFINITIVO`;
+  document.getElementById('status').textContent=`V30.4 DEFINITIVO: ${c} áreas visibles - GAP CLEAN 0.11 + 5 LOOPS 22 RADIALES + SHOULDER LIMIT 4`;
 }
 renderList();
 document.getElementById('search').oninput=e=>renderList(e.target.value.toLowerCase(),currentFilter);
@@ -128,9 +179,9 @@ document.getElementById('gen').onclick=()=>{
   const lvl=document.getElementById('level').value;
   const res=LAYA_FINAL.generate(selected,lvl);
   const card=document.getElementById('card');
-  card.innerHTML=`<h2>${res.meta.topic}</h2><div style="background:rgba(0,0,0,0.4);padding:14px;border-radius:12px;margin:12px 0;white-space:pre-wrap">${res.story}</div>`;
+  card.innerHTML=`<h2>${res.meta.topic}</h2><div style="background:rgba(0,0,0,0.22);padding:14px;border-radius:12px;margin:12px 0;white-space:pre-wrap;backdrop-filter:blur(4px)">${res.story}</div>`;
   card.classList.remove('hidden'); document.getElementById('empty').classList.add('hidden');
-  document.getElementById('sapHeader').innerHTML=`<b style="color:#00d4ff">V30.2 // ${res.meta.grammar_main.sig}</b><div>📍 ${res.meta.area}</div>`;
+  document.getElementById('sapHeader').innerHTML=`<b style="color:#00d4ff">V30.4 GAP CLEAN // ${res.meta.grammar_main.sig}</b><div>📍 ${res.meta.area}</div>`;
   laiaActor.goTo('reading_text');
 };
 document.getElementById('teachBtn').onclick=()=>document.getElementById('hWrapper').scrollTo({left:window.innerWidth,behavior:'smooth'});

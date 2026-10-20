@@ -1,14 +1,16 @@
 {
-  "actor_version": "V28.5 TOPOLOGICAL - BLAZER REAL - 0.11 WAIST - SOLAPAS BOTONES BOLSILLOS",
-  "type": "mesh_real_topological_blazer_v28_5_hd",
-  "status": "full_body_topological_blazer_lapels_buttons_pockets_0.11_waist_thigh_gap_0.11_foto_topologica_completa",
-  "base_image": "wa_image_topological_ref_blazer_real_v28_5",
+  "actor_version": "V29.0 SKINNED - BLAZER REAL RIGGED - 0.11 WAIST - SOLAPAS BOTONES BOLSILLOS - SKELETON BINDEADO",
+  "type": "mesh_real_skinned_topological_blazer_v29_0_rigged_hd",
+  "status": "full_body_skinned_blazer_lapels_buttons_pockets_rigged_0.11_waist_thigh_gap_0.11_skeleton_binded",
+  "base_image": "wa_image_topological_ref_blazer_real_v29_skinned_rigged",
   "rig": {
     "joints": 34,
-    "hidden_skeleton": true,
-    "head": "defined_face_eyes_iris_mouth_0.11_sphere_18_hd_realistic",
-    "face": "eyes_0.018_white_iris_0.0085_mouth_capsule_0.006_topological_defined_hd",
-    "body": "topological_blazer_deformed_0.11_waist_28_segments + 2_lapels + 2_buttons_torus + 2_pockets_box + 2_human_legs_20_segments_gap_0.11_direct_hd",
+    "hidden_skeleton": false,
+    "skeleton_type": "Skeleton_34_Bones_Binded_SkinnedMesh",
+    "head": "Head_Bone + Eye_L + Eye_R + Mouth - sphere 18 + iris + visemes",
+    "face": "eyes_0.018_white_iris_0.0085_mouth_capsule_0.006_viseme_6_topological_rigged_hd",
+    "body": "SkinnedMesh_topological_blazer_28_segments + 2_lapels + 2_buttons_torus + 2_pockets_box + 2_human_legs_20_segments_gap_0.11_skinned_weight_painted + hands_box + feet_box_toes",
+    "bones_list": ["Hips","Spine_02","Chest","Neck","Head_Bone","Eye_L","Eye_R","Mouth","Shoulder.L","Elbow.L","Wrist.L","Shoulder.R","Elbow.R","Wrist.R","Hip.L","Knee.L","Ankle.L","Hip.R","Knee.R","Ankle.R"],
     "feminine_params": {
       "waist": 0.11,
       "waist_factor": 0.62,
@@ -20,71 +22,84 @@
       "scale": 0.52,
       "mobile_scale": 0.50
     },
-    "t_pose": "full_body_topological_T_pose_legs_0.13_gap_arms_1.00_span_hands_box_feet_box_dedos_foto_topologica_hd"
+    "t_pose": "full_body_skinned_T_pose_legs_0.13_gap_arms_1.00_span_hands_box_feet_box_dedos_rigged_binded",
+    "weight_painting": {
+      "method": "skinIndex_skinWeight_4_influences_per_vertex",
+      "torso": "Spine_02 + Chest 100%",
+      "head": "Head_Bone 100%",
+      "arms": "Shoulder.L/R + Elbow.L/R",
+      "legs": "Hip.L/R + Knee.L/R + Ankle.L/R",
+      "note": "V29 - ya no es translate() - es skinIndex/skinWeight bindeado - no chicle"
+    }
   },
   "mesh": {
     "points_count": 8500,
-    "type": "topological_quad_grid_blazer_real_hd",
+    "type": "skinned_topological_quad_grid_blazer_real_rigged_hd",
     "color": "#00e5ff",
     "size": 0.006,
     "opacity": 0.35,
     "blending": "NoBlending",
-    "material": "PointsMaterial_sizeAttenuation_true_hd_topological",
+    "material": "MeshBasicMaterial_wireframe_true_skinned_rigged_hd",
+    "skinnedMesh": true,
+    "skeleton": true,
+    "bindMode": "attached",
     "hair": {
       "color": "#c9a88a",
       "size": 0.007,
       "opacity": 0.82,
       "geom": "SphereGeometry(0.115,14,14,0,6.28,0,1.95)",
-      "count": 850
+      "count": 850,
+      "attached_to": "Head_Bone"
     },
     "lines": {
       "enabled": true,
-      "type": "WireframeGeometry_topological_quad_blazer_real_hd",
+      "type": "SkinnedMesh_Wireframe_Rigged_Binded",
       "color": "#00e5ff",
       "opacity": 0.92,
       "linewidth": 1,
-      "connection_distance": "quad_grid_topological_edges_direct_hd",
-      "max_distance_sq": "N/A_topological_quad",
-      "kNN_window": "N/A_topological_quad"
+      "is_skinned": true,
+      "binded": true
     },
     "mesh_real_profile": {
-      "torso": "CylinderGeometry(0.195,0.18,0.56,28,24)_deformed_waist_0.11_topological_princess_seam_hd",
+      "torso": "CylinderGeometry(0.195,0.18,0.56,28,24)_SkinnedMesh_Spine_02_Chest_weight_1.0_hd",
       "torso_deform": [
-        { "y": ">0.22", "scale_x": 1.12, "label": "hombros 0.336 TOPOLOGICAL" },
-        { "y": ">0.02", "scale_x": 0.62, "label": "cintura 0.11 REAL TOPOLOGICAL PRINCESS SEAM" },
-        { "y": ">-0.12", "scale_x": 0.97, "label": "cadera 0.32 TOPOLOGICAL" },
-        { "y": "<=-0.12", "scale_x": 0.92, "label": "bajo blazer TOPOLOGICAL" }
+        { "y": ">0.22", "scale_x": 1.12, "label": "hombros 0.336 TOPOLOGICAL SKINNED - Shoulder.L/R" },
+        { "y": ">0.02", "scale_x": 0.62, "label": "cintura 0.11 REAL SKINNED - Spine_02" },
+        { "y": ">-0.12", "scale_x": 0.97, "label": "cadera 0.32 TOPOLOGICAL SKINNED - Hips" },
+        { "y": "<=-0.12", "scale_x": 0.92, "label": "bajo blazer TOPOLOGICAL SKINNED" }
       ],
-      "lapels": "2x PlaneGeometry(0.08,0.28,4,8)_rotated_0.32rad_blazer_lapels_real_hd",
-      "buttons": "2x TorusGeometry(0.011,0.0025,8,16)_blazer_buttons_0.22_0.08_y_hd",
-      "pockets": "2x BoxGeometry(0.075,0.038,0.012,4,2,1)_blazer_pockets_0.07_y_hd",
-      "legs": "2x CylinderGeometry(0.092,0.046,0.80,20,24)_tapered_knee_ankle_separated_0.13_gap_0.11_TOPOLOGICAL_HD",
-      "feet": "2x BoxGeometry(0.055,0.04,0.19,6,2,8)_box_feet_with_toes_topological_hd",
-      "arms": "2x CylinderGeometry(0.044,0.031,0.72,14,14)_T_pose_span_1.00_fixed_shoulder_0.50_NO_CUT_TOPOLOGICAL_HD",
-      "hands": "2x BoxGeometry(0.05,0.02,0.08,3,1,2)_box_hands_topological_hd",
-      "head": "SphereGeometry(0.11,18,18)_hd_realistic_face",
+      "lapels": "2x PlaneGeometry(0.08,0.28,4,8)_rotated_0.32rad_blazer_lapels_real_hd_skinned_Chest",
+      "buttons": "2x TorusGeometry(0.011,0.0025,8,16)_blazer_buttons_skinned_Chest",
+      "pockets": "2x BoxGeometry(0.075,0.038,0.012,4,2,1)_blazer_pockets_skinned_Spine_02",
+      "legs": "2x CylinderGeometry(0.092,0.046,0.80,20,24)_SKINNED_Hip_L_R_Knee_L_R_weight_painted_gap_0.11",
+      "feet": "2x BoxGeometry(0.055,0.04,0.19,6,2,8)_box_feet_with_toes_skinned_Ankle_L_R",
+      "arms": "2x CylinderGeometry(0.044,0.031,0.72,14,14)_SKINNED_Shoulder_L_R_Elbow_L_R_weight_painted_no_cut",
+      "hands": "2x BoxGeometry(0.05,0.02,0.08,3,1,2)_box_hands_skinned_Wrist_L_R",
+      "head": "SphereGeometry(0.11,18,18)_hd_realistic_face_skinned_Head_Bone",
+      "morphTargets": "6_visemes_Mouth_A_I_U_E_O_CLOSED_for_lip_sync",
       "no_lathe": false,
       "no_capsule": true,
       "no_chicle": true,
-      "note": "V28.5 TOPOLOGICAL - malla cuadriculada blazer real con solapas/botones/bolsillos como imagen topologica - 0.92 opacity + escala 0.52 cabe entera - hombro sin corte"
+      "skinned": true,
+      "note": "V29.0 SKINNED - SkinnedMesh bindeado - malla viva - shoulder 0.50 sin corte - weight painting real - 0.92 opacity"
     },
     "sampling": {
-      "method": "topological_quad_grid_wireframe_hd",
+      "method": "skinned_weight_painting_hd",
       "total_points": 8500,
       "distribution": {
-        "body_cylinder_topological": "vertices_torso_28_segments_hd",
-        "lapels": 320,
-        "buttons": 80,
-        "pockets": 160,
-        "head": 1100,
+        "body_cylinder_topological_skinned": "vertices_torso_28_segments_Spine_02_Chest",
+        "lapels_skinned": 320,
+        "buttons_skinned": 80,
+        "pockets_skinned": 160,
+        "head_skinned_Head_Bone": 1100,
         "face_eyes_white": 120,
         "face_iris": 80,
-        "face_mouth": 40,
-        "arms_cylinder_topological": 840,
-        "hands_box": 120,
-        "legs_cylinder_topological": 1680,
-        "feet_box_toes": 240,
-        "hair_bob": 850
+        "face_mouth_morph": 40,
+        "arms_cylinder_topological_skinned_Shoulder": 840,
+        "hands_box_skinned_Wrist": 120,
+        "legs_cylinder_topological_skinned_Hip_Knee": 1680,
+        "feet_box_toes_skinned_Ankle": 240,
+        "hair_bob_attached_Head_Bone": 850
       }
     }
   },
@@ -96,17 +111,20 @@
     "mobile_scale": [0.50, 0.50, 0.50],
     "group_position": [0.0, -0.02, 0],
     "mobile_group_position": [0.0, -0.02, 0],
-    "note": "V28.5 TOPOLOGICAL - camara 1.95/2.35 + escala 0.52 = cabe entera cabeza 0.68 pies -0.70 visible topologica nitida 0.92 opacity - como foto topologica"
+    "note": "V29.0 SKINNED - SkinnedMesh bindeado - camara 1.95/2.35 + escala 0.52 = cabe entera cabeza 0.68 pies -0.70 visible rigged nitida 0.92 opacity"
   },
   "motor_intuicion": {
-    "type": "pin_pan_topological_motor_blazer_real_hd",
+    "type": "skinned_pin_pan_topological_motor_blazer_real_rigged_hd",
     "is_motor": true,
     "moves_app": true,
+    "is_skinned": true,
+    "is_rigged": true,
     "zones": ["welcome", "reading_text", "input_field", "feedback_ok", "feedback_err", "sap_dashboard", "evolution"],
     "thinkAndMove_params": {
       "reading": true,
       "talkAmp": "0.3 + sin(t*4)*0.2",
-      "breathing": "spine_02_Y_topological"
+      "breathing": "Spine_02_Y_skinned",
+      "bones": "Head_Bone_Eye_L_R_Mouth_Shoulder_L_R_Elbow_L_R_Wrist_L_R_Hip_L_R_Knee_L_R_Ankle_L_R"
     }
   }
 }

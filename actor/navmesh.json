@@ -125,4 +125,4 @@
       "note": "V30.4 DEFINITIVO GAP CLEAN - 3 mallas superpuestas - Partículas 0.012 glow 0.92 3200 + kNN 12 maxDistance 0.08 gapClean true shoulderLimit 4 + Quad denso rodillas 5 loops 22 radiales círculo perfecto + Polos reales frontal/sacro + Flujo topológico 45deg cintura 90deg rodilla + scale 0.54/0.50 - imagen definitiva clonada vértice a vértice sin bola pecho"
     }
   }
-}
+} 

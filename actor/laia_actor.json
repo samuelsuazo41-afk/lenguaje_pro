@@ -1,91 +1,92 @@
 {
-  "actor_version": "V24.0 MESH REAL - BOX BLAZER 0.11 WAIST - FOTO 3",
-  "type": "mesh_real_constellation_v24_box_blazer_wireframe",
-  "status": "full_body_mesh_real_0.11_waist_thigh_gap_0.11_final_foto3",
-  "base_image": "wa_image_1385876788746981355_2_transfer_foto3",
+  "actor_version": "V25.0 MESH REAL FIX - FOTO 3 - 0.11 WAIST",
+  "type": "mesh_real_constellation_v25_box_blazer_fix_foto3",
+  "status": "full_body_mesh_real_0.11_waist_thigh_gap_0.11_fix_foto3_proportions",
+  "base_image": "wa_image_foto3_ref_final_fixed",
   "rig": {
     "joints": 34,
     "hidden_skeleton": true,
-    "head": "defined_face_eyes_mouth_0.125_sphere_18",
-    "face": "eyes_0.013_mouth_0.010_constellation_defined",
-    "body": "box_blazer_deformed_0.11_waist + 2_legs_capsule_gap_0.11",
+    "head": "defined_face_eyes_mouth_0.11_sphere_16",
+    "face": "eyes_0.012_mouth_0.009_constellation_defined",
+    "body": "box_blazer_deformed_0.11_waist + 2_legs_short_gap_0.11_fix",
     "feminine_params": {
       "waist": 0.11,
-      "waist_factor": 0.29,
-      "hips": 0.368,
-      "chest": 0.357,
-      "shoulders": 0.357,
+      "waist_factor": 0.34,
+      "hips": 0.32,
+      "chest": 0.336,
+      "shoulders": 0.336,
       "thigh_gap": 0.11,
-      "leg_separation": 0.24,
-      "scale": 0.68,
-      "mobile_scale": 0.62
+      "leg_separation": 0.22,
+      "scale": 0.72,
+      "mobile_scale": 0.68
     },
-    "t_pose": "full_body_mesh_real_T_pose_legs_0.11_gap_arms_1.16_span_foto3"
+    "t_pose": "full_body_mesh_real_T_pose_fix_legs_0.11_gap_arms_0.80_span_foto3"
   },
   "mesh": {
     "points_count": 7000,
-    "type": "constellation_mesh_real_wireframe_foto3",
+    "type": "constellation_mesh_real_wireframe_foto3_fix",
     "color": "#00d4ff",
-    "size": 0.012,
-    "opacity": 0.95,
+    "size": 0.014,
+    "opacity": 0.96,
     "blending": "NoBlending",
     "material": "PointsMaterial_sizeAttenuation_true",
     "hair": {
       "color": "#c9a88a",
-      "size": 0.0105,
-      "opacity": 0.88,
-      "geom": "SphereGeometry(0.132,12,12,0,6.28,0,2.13)",
+      "size": 0.012,
+      "opacity": 0.85,
+      "geom": "SphereGeometry(0.115,10,10,0,6.28,0,1.95)",
       "count": 700
     },
     "lines": {
       "enabled": true,
-      "type": "WireframeGeometry_real_mesh_not_kNN",
+      "type": "WireframeGeometry_real_mesh_fix",
       "color": "#00d4ff",
-      "opacity": 0.32,
-      "connection_distance": "wireframe_edges",
-      "max_distance_sq": "N/A_wireframe",
-      "kNN_window": "N/A_wireframe"
+      "opacity": 0.28,
+      "connection_distance": "wireframe_edges_fix",
+      "max_distance_sq": "N/A_wireframe_fix",
+      "kNN_window": "N/A_wireframe_fix"
     },
     "mesh_real_profile": {
-      "torso": "BoxGeometry(0.38,0.60,0.20,10,12,2)_deformed_waist_0.11",
+      "torso": "BoxGeometry(0.32,0.48,0.18,12,12,2)_deformed_waist_0.11_fix",
       "torso_deform": [
-        { "y": ">0.22", "scale_x": 0.94, "label": "hombros 0.357" },
-        { "y": ">0.05", "scale_x": 0.29, "label": "cintura 0.11 REAL" },
-        { "y": ">-0.10", "scale_x": 0.97, "label": "cadera 0.368" },
-        { "y": "<=-0.10", "scale_x": 0.86, "label": "bajo blazer" }
+        { "y": ">0.18", "scale_x": 1.05, "label": "hombros 0.336" },
+        { "y": ">0.02", "scale_x": 0.34, "label": "cintura 0.11 REAL FIX" },
+        { "y": ">-0.12", "scale_x": 1.02, "label": "cadera 0.32" },
+        { "y": "<=-0.12", "scale_x": 0.88, "label": "bajo blazer" }
       ],
-      "legs": "2x CapsuleGeometry(0.068,0.82,10,16)_separated_0.24_gap_0.11",
-      "arms": "2x CapsuleGeometry(0.038,0.78,8,14)_T_pose_span_1.16",
-      "head": "SphereGeometry(0.125,18,18)",
+      "legs": "2x CapsuleGeometry(0.058,0.52,8,12)_separated_0.22_gap_0.11_FIX_NO_CHICLE",
+      "arms": "2x CapsuleGeometry(0.032,0.46,6,10)_T_pose_span_0.80_FIX",
+      "head": "SphereGeometry(0.11,16,16)",
       "no_lathe": true,
-      "note": "Lathe removido - ahora es malla real como foto 3, gap limpio"
+      "no_chicle": true,
+      "note": "FIX V25 - piernas 0.52 no 0.82 - ya no chicle - proporciones foto 3"
     },
     "sampling": {
-      "method": "vertices_wireframe_real_not_barycentric_random",
+      "method": "vertices_wireframe_real_fix",
       "total_points": 7000,
       "distribution": {
         "body_mesh_real": "vertices_torso_box_deformed",
         "head": 900,
         "face_eyes": 60,
         "face_mouth": 20,
-        "arms_capsule": 960,
-        "legs_capsule": 1640,
+        "arms_capsule": 720,
+        "legs_capsule": 1120,
         "hair_bob": 700
       }
     }
   },
   "camera": {
-    "fov": 42,
-    "position": [0.0, 0.06, 1.65],
-    "mobile_position": [0.0, 0.03, 1.95],
-    "group_scale": [0.68, 0.68, 0.68],
-    "mobile_scale": [0.62, 0.62, 0.62],
-    "group_position": [0.05, -0.32, 0],
-    "mobile_group_position": [0.0, -0.26, 0],
-    "note": "Bajada -0.32 para ver cabeza y pies completos"
+    "fov": 38,
+    "position": [0.0, 0.15, 1.55],
+    "mobile_position": [0.0, 0.10, 1.85],
+    "group_scale": [0.72, 0.72, 0.72],
+    "mobile_scale": [0.68, 0.68, 0.68],
+    "group_position": [0.05, -0.18, 0],
+    "mobile_group_position": [0.0, -0.15, 0],
+    "note": "FIX V25 - bajada -0.18 y FOV 38 para ver cabeza 0.68 y pies -0.50 completos sin chicle"
   },
   "motor_intuicion": {
-    "type": "pin_pan_constellation_motor_mesh_real_foto3",
+    "type": "pin_pan_constellation_motor_mesh_real_fix_foto3",
     "is_motor": true,
     "moves_app": true,
     "zones": ["welcome", "reading_text", "input_field", "feedback_ok", "feedback_err", "sap_dashboard", "evolution"],

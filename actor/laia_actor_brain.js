@@ -1,17 +1,22 @@
-// laia_actor_brain.js - V17.4 CONSTELLATION MOTOR - CEREBRO AUTÓNOMO FEMENINO
-// 4000 puntos + líneas zodiac - Esqueleto 34 huesos invisibles - Motor intuición pin pan
-// Autor: YARVIS + Laia - Girona - V17.4
+// laia_actor_brain.js - V19.0 SURFACE REAL -20% - CEREBRO AUTÓNOMO FEMENINO
+// 7000 puntos superficie + líneas vecinos <0.08 - Esqueleto 34 huesos invisibles
+// Params V17.4: waist 0.11, hips 0.21, chest 0.19 - Surface sampling
+// Autor: YARVIS + Laia - Girona - V19.0
 
 export const LAIA_BRAIN_CONFIG = {
-  version: "17.4 CONSTELLATION FEMENINA - 4000 POINTS + ZODIAC LINES",
+  version: "19.0 SURFACE REAL -20% FEMENINA 7000 POINTS",
   hiddenSkeleton: true,
-  pointsCount: 4000,
+  pointsCount: 7000,
   constellation: true,
+  surfaceSampling: true, // FIX: superficie no volumen
   breathBase: 1.1,
   meshOnly: true,
   feminine: true,
   waist: 0.11,
-  hips: 0.21
+  hips: 0.21,
+  chest: 0.19,
+  shoulders: 0.20,
+  thigh_gap: true
 };
 
 // Estado mental de Laia
@@ -24,7 +29,7 @@ let MIND = {
   pinPan: 0
 };
 
-// Algoritmo principal - 60fps - Mueve huesos invisibles que arrastran malla 4000 + líneas zodiac
+// 60fps - Mueve huesos invisibles que arrastran malla 7000 superficie
 export function thinkAndMove(bones, context) {
   MIND.breath += 0.016;
   MIND.talkAmp = context.talkAmp || 0;
@@ -32,18 +37,17 @@ export function thinkAndMove(bones, context) {
 
   if (!bones || bones.length === 0) return MIND.state;
 
-  // 1. RESPIRACIÓN AUTÓNOMA FEMENINA - pecho 0.19 escala suave - cintura 0.11 no respira
+  // 1. RESPIRACIÓN FEMENINA - chest 0.19 suave - cintura 0.11 no respira
   const t = MIND.breath;
   if (bones[31]) {
-    const scale = 1 + Math.sin(t * 1.1) * 0.028; // más suave femenina
+    const scale = 1 + Math.sin(t * 1.1) * 0.022;
     bones[31].scale.x = scale;
     bones[31].scale.z = scale;
   }
-  // Flotar suave + balanceo cadera femenina 0.21
-  bones[0].position.y = Math.sin(t * 0.7) * 0.012;
-  bones[0].position.x = Math.sin(t * 0.4) * 0.008; // sway cadera
+  bones[0].position.y = Math.sin(t * 0.7) * 0.010;
+  bones[0].position.x = Math.sin(t * 0.4) * 0.006; // sway cadera 0.21
 
-  // 2. CEREBRO DECIDE ESTADO SOLO - Motor intuición pin pan
+  // 2. CEREBRO DECIDE ESTADO
   if (context.inputFocused) {
     MIND.state = 'LISTENING';
   } else if (context.sapError) {
@@ -62,7 +66,6 @@ export function thinkAndMove(bones, context) {
     MIND.state = 'IDLE_CORTANA';
   }
 
-  // 3. MAPEO ESQUELÉTICO FEMENINO - 34 huesos invisibles arrastran 4000 puntos + líneas
   const head = bones[5];
   const neck = bones[4];
   const lShoulder = bones[6];
@@ -77,82 +80,65 @@ export function thinkAndMove(bones, context) {
   const rHip = bones[18];
   const rThigh = bones[19];
   const rKnee = bones[20];
-  const mouth = bones[5]; // cabeza = boca también
+  const mouth = bones[5];
 
-  // IDLE_CORTANA: Cortana TV original - femenina, mira al usuario, coleta holográfica
   if (MIND.state === 'IDLE_CORTANA') {
     if (head) {
-      head.rotation.y = Math.sin(t * 0.35) * 0.22; // más suave
-      head.rotation.x = Math.sin(t * 0.28) * 0.06;
-      head.rotation.z = Math.sin(t * 0.2) * 0.04; // inclinación coleta
+      head.rotation.y = Math.sin(t * 0.35) * 0.20;
+      head.rotation.x = Math.sin(t * 0.28) * 0.05;
+      head.rotation.z = Math.sin(t * 0.2) * 0.03;
     }
-    if (mouth) mouth.scale.y = 1 + Math.sin(t * 0.8) * 0.02;
-    if (neck) neck.rotation.z = Math.sin(t * 0.45) * 0.04;
-    if (lShoulder) lShoulder.rotation.z = Math.sin(t * 0.3) * 0.05;
-    if (rShoulder) rShoulder.rotation.z = -Math.sin(t * 0.3) * 0.05;
+    if (mouth) mouth.scale.y = 1 + Math.sin(t * 0.8) * 0.015;
+    if (neck) neck.rotation.z = Math.sin(t * 0.45) * 0.03;
+    if (lShoulder) lShoulder.rotation.z = Math.sin(t * 0.3) * 0.04;
+    if (rShoulder) rShoulder.rotation.z = -Math.sin(t * 0.3) * 0.04;
   }
 
-  // LISTENING: Inclina cabeza femenina, mano a oreja, cadera 0.21 quieta
   if (MIND.state === 'LISTENING') {
     if (head) {
-      head.rotation.x = -0.18;
-      head.rotation.y = 0.15;
+      head.rotation.x = -0.16;
+      head.rotation.y = 0.14;
     }
-    if (lArm) lArm.rotation.z = 0.55;
-    if (lFore) lFore.rotation.x = -1.05;
-    if (rHip) rHip.rotation.z = 0.02; // apoyo pierna
+    if (lArm) lArm.rotation.z = 0.52;
+    if (lFore) lFore.rotation.x = -1.02;
   }
 
-  // EXPLAINING: Gesticula femenina + habla - boca mapeada a amplitud
   if (MIND.state === 'EXPLAINING') {
-    if (rFore) rFore.rotation.x = Math.sin(t * 2.8) * 0.55;
-    if (rFore) rFore.rotation.z = Math.sin(t * 1.5) * 0.2;
+    if (rFore) rFore.rotation.x = Math.sin(t * 2.8) * 0.50;
+    if (rFore) rFore.rotation.z = Math.sin(t * 1.5) * 0.18;
     if (mouth) {
-      mouth.scale.y = 1 + Math.sin(t * 8.5) * (MIND.talkAmp || 0.45);
-      mouth.scale.x = 1 + Math.sin(t * 3) * 0.08;
+      mouth.scale.y = 1 + Math.sin(t * 8.5) * (MIND.talkAmp || 0.40);
+      mouth.scale.x = 1 + Math.sin(t * 3) * 0.06;
     }
-    if (lArm) lArm.rotation.x = Math.sin(t * 1.8) * 0.25;
-    if (lArm) lArm.rotation.z = Math.sin(t * 1.2) * 0.15;
+    if (lArm) lArm.rotation.x = Math.sin(t * 1.8) * 0.22;
   }
 
-  // WALKING: Pin pan motor intuición - IK real piernas femeninas con gap entre muslos
   if (MIND.state === 'WALKING') {
-    if (lKnee) lKnee.rotation.x = Math.sin(t * 5.5) * 0.85;
-    if (rKnee) rKnee.rotation.x = -Math.sin(t * 5.5) * 0.85;
-    if (lThigh) lThigh.rotation.x = Math.sin(t * 5.5) * 0.32;
-    if (rThigh) rThigh.rotation.x = -Math.sin(t * 5.5) * 0.32;
-    // Balanceo brazos femenina suave con 4000 puntos
-    if (lFore) lFore.rotation.x = -Math.sin(t * 5.5) * 0.35;
-    if (rFore) rFore.rotation.x = Math.sin(t * 5.5) * 0.35;
-    // Cadera 0.21 balancea al caminar
-    bones[0].position.x = Math.sin(t * 5.5) * 0.03;
-    bones[0].position.z = Math.sin(t * 5.5) * 0.015;
+    if (lKnee) lKnee.rotation.x = Math.sin(t * 5.5) * 0.80;
+    if (rKnee) rKnee.rotation.x = -Math.sin(t * 5.5) * 0.80;
+    if (lThigh) lThigh.rotation.x = Math.sin(t * 5.5) * 0.28;
+    if (rThigh) rThigh.rotation.x = -Math.sin(t * 5.5) * 0.28;
+    if (lFore) lFore.rotation.x = -Math.sin(t * 5.5) * 0.32;
+    if (rFore) rFore.rotation.x = Math.sin(t * 5.5) * 0.32;
+    bones[0].position.x = Math.sin(t * 5.5) * 0.025;
   }
 
-  // SCOLDING: Niega femenina estricta - coleta se mueve
   if (MIND.state === 'SCOLDING') {
-    bones[0].rotation.z = Math.sin(t * 11) * 0.10;
-    if (head) {
-      head.rotation.y = Math.sin(t * 9.5) * 0.28;
-      head.rotation.x = -0.05;
-    }
+    bones[0].rotation.z = Math.sin(t * 11) * 0.08;
+    if (head) head.rotation.y = Math.sin(t * 9.5) * 0.24;
   }
 
-  // CELEBRATING: Salto femenino + brazos arriba - felicidad constelación brilla
   if (MIND.state === 'CELEBRATING') {
-    bones[0].position.y += Math.abs(Math.sin(t * 3.8)) * 0.10;
-    if (lFore) lFore.rotation.x = -1.85;
-    if (rFore) rFore.rotation.x = -1.85;
-    if (lArm) lArm.rotation.x = -0.45;
-    if (rArm) rArm.rotation.x = -0.45;
-    if (lArm) lArm.rotation.z = 0.15;
-    if (rArm) rArm.rotation.z = -0.15;
+    bones[0].position.y += Math.abs(Math.sin(t * 3.8)) * 0.08;
+    if (lFore) lFore.rotation.x = -1.80;
+    if (rFore) rFore.rotation.x = -1.80;
+    if (lArm) lArm.rotation.x = -0.42;
+    if (rArm) rArm.rotation.x = -0.42;
   }
 
   return MIND.state;
 }
 
-// Decide intención basada en métricas SAP - para malla 4000 femenina
 export function decideByMetrics(metrics) {
   const m = metrics;
   if (m.same_error_count >= 3) return { state: 'SCOLDING', color: '#f59e0b', pos: 'feedback_err' };
@@ -164,9 +150,8 @@ export function decideByMetrics(metrics) {
   return { state: 'IDLE_CORTANA', color: '#00d4ff', pos: 'welcome' };
 }
 
-// Compatibilidad con index.html V17.4
 export const LAIA_ACTOR_BRAIN = {
-  version: "17.4 CONSTELLATION FEMENINA",
+  version: "19.0 SURFACE REAL FEMENINA",
   thinkAndMove,
   decideByMetrics,
   config: LAIA_BRAIN_CONFIG

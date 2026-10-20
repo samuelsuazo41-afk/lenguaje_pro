@@ -3,13 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>LENGUAJE-PRO V17.9 GHOST VISIBLE - 90% MODELADA</title>
+<title>LENGUAJE-PRO V18.0 -20% SIZE - 4300 MODELADA</title>
 <link rel="icon" href="./icon-192.png">
 <meta name="theme-color" content="#00d4ff">
 <link rel="stylesheet" href="./styles.css">
 <script type="importmap">{ "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }</script>
 <style>
-/* V17.9 GHOST VISIBLE - COMO TU CAPTURA 1 PERO FIJO */
 .h-wrapper{margin-top:58px;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;width:100vw;height:calc(100vh - 58px);position:relative;z-index:10}
 .h-wrapper::-webkit-scrollbar{display:none}
 .page{min-width:100vw;width:100vw;height:100%;scroll-snap-align:start;overflow-y:auto;display:flex;flex-direction:row;position:relative;z-index:10}
@@ -20,12 +19,10 @@
 #card{scroll-margin-top:14px;position:relative}
 button, input, select, .area, .f, .word{pointer-events:auto!important;position:relative;z-index:15!important}
 .area{background:rgba(35,35,50,0.45)!important;border:1px solid rgba(0,212,255,0.15)!important;pointer-events:auto!important;z-index:15!important}
-
-/* AVATAR COMO EN TU CAPTURA 1 - VISIBLE A TRAVÉS */
 #laia-hologram{
   position:fixed !important; top:0 !important; left:0 !important;
   width:100vw !important; height:100vh !important;
-  z-index:5 !important; /* DETRÁS PERO VISIBLE POR TRANSPARENCIA */
+  z-index:5 !important;
   display:flex !important; align-items:center !important; justify-content:center !important;
   pointer-events:none !important;
   background:transparent !important;
@@ -41,15 +38,15 @@ button, input, select, .area, .f, .word{pointer-events:auto!important;position:r
 </style>
 </head>
 <body>
-<header style="z-index:100"><div class="logo">📚 LENGUAJE-PRO <span>V17.9 GHOST VISIBLE 90%</span></div><div style="display:flex;gap:12px;align-items:center"><div class="metrics"><span id="xp">⭐ 0 XP</span><span>🔥 <b id="streak">0</b></span><span id="level-badge">A2</span></div></div></header>
+<header style="z-index:100"><div class="logo">📚 LENGUAJE-PRO <span>V18.0 -20% SIZE</span></div><div style="display:flex;gap:12px;align-items:center"><div class="metrics"><span id="xp">⭐ 0 XP</span><span>🔥 <b id="streak">0</b></span><span id="level-badge">A2</span></div></div></header>
 <div class="h-wrapper" id="hWrapper">
   <div class="page" id="page1">
-    <aside><h3 style="font-size:11px;color:#00d4ff">V17.9 GHOST - 4300 PUNTOS MODELADA</h3><input id="search" placeholder="Buscar: Money, in/on/at, co, have, family..."><div id="filters"><button class="f active" data-f="">Todas</button><button class="f" data-f="A1">A1</button><button class="f" data-f="A2">A2</button><button class="f" data-f="B1">B1</button><button class="f" data-f="B2">B2</button></div><div id="list"></div></aside>
-    <main><div style="display:flex;gap:10px;margin-bottom:12px"><select id="level"><option>A1</option><option selected>A2</option><option>B1</option><option>B2</option></select><button id="gen" style="background:#00d4ff;color:#000;border:none;padding:10px 16px;border-radius:10px;font-weight:700;cursor:pointer;flex:1;max-width:260px">⚡ GENERAR LECCIÓN V17.9</button><button id="teachBtn" style="background:#8b5cf6;color:#fff;border:none;padding:10px 12px;border-radius:10px;font-weight:700;cursor:pointer">📌 SAPs</button></div><div id="empty"><h1 style="font-size:28px">👋 Soy Laia CONSTELLATION</h1><p style="margin:8px 0">V17.9 - 4300 puntos + líneas zodiac, cuerpo completo femenina modelada, motor intuición.</p><p id="status" style="margin-top:10px;font-size:11px;color:#00d4ff">Cargando CONSTELLATION...</p></div><div id="card" class="hidden"></div></main>
+    <aside><h3 style="font-size:11px;color:#00d4ff">V18.0 -20% - 4300 PUNTOS</h3><input id="search" placeholder="Buscar: Money, in/on/at, co, have, family..."><div id="filters"><button class="f active" data-f="">Todas</button><button class="f" data-f="A1">A1</button><button class="f" data-f="A2">A2</button><button class="f" data-f="B1">B1</button><button class="f" data-f="B2">B2</button></div><div id="list"></div></aside>
+    <main><div style="display:flex;gap:10px;margin-bottom:12px"><select id="level"><option>A1</option><option selected>A2</option><option>B1</option><option>B2</option></select><button id="gen" style="background:#00d4ff;color:#000;border:none;padding:10px 16px;border-radius:10px;font-weight:700;cursor:pointer;flex:1;max-width:260px">⚡ GENERAR LECCIÓN V18.0</button><button id="teachBtn" style="background:#8b5cf6;color:#fff;border:none;padding:10px 12px;border-radius:10px;font-weight:700;cursor:pointer">📌 SAPs</button></div><div id="empty"><h1 style="font-size:28px">👋 Soy Laia V18.0</h1><p style="margin:8px 0">V18.0 - 4300 puntos, -20% tamaño, cuerpo completo femenina modelada.</p><p id="status" style="margin-top:10px;font-size:11px;color:#00d4ff">Cargando V18.0...</p></div><div id="card" class="hidden"></div></main>
   </div>
-  <div class="page" id="page2"><div style="width:100%;max-width:760px"><h2 style="font-size:22px">🧬 MOTOR 2 - SAP + CONSTELLATION</h2><div class="sap-header" id="sapHeader">Esperando datos Motor 1...</div><div style="margin-top:14px;display:flex;gap:8px"><input id="wordInput" placeholder="Escribe: co, hav, mon, wor, sav..." style="flex:1;background:#1a1a23;border:1px solid #2a2a3a;color:#fff;padding:10px;border-radius:10px"><button id="gen2" style="background:#00d4ff;color:#000;border:none;padding:10px 16px;border-radius:10px;font-weight:700">🔍 EXPLORAR EVOLUCIÓN</button></div><div id="card2" class="hidden" style="margin-top:14px;background:#1a1a23;border:1px solid #2a2a3a;border-radius:16px;padding:18px;max-width:760px;width:100%"></div><div class="evo-lab" id="evoLab" style="margin-top:14px">CONSTELLATION 4300 LAB - 90% MODELADA</div></div></div>
+  <div class="page" id="page2"><div style="width:100%;max-width:760px"><h2 style="font-size:22px">🧬 MOTOR 2 - SAP + CONSTELLATION</h2><div class="sap-header" id="sapHeader">Esperando datos Motor 1...</div><div style="margin-top:14px;display:flex;gap:8px"><input id="wordInput" placeholder="Escribe: co, hav, mon, wor, sav..." style="flex:1;background:#1a1a23;border:1px solid #2a2a3a;color:#fff;padding:10px;border-radius:10px"><button id="gen2" style="background:#00d4ff;color:#000;border:none;padding:10px 16px;border-radius:10px;font-weight:700">🔍 EXPLORAR EVOLUCIÓN</button></div><div id="card2" class="hidden" style="margin-top:14px;background:#1a1a23;border:1px solid #2a2a3a;border-radius:16px;padding:18px;max-width:760px;width:100%"></div><div class="evo-lab" id="evoLab" style="margin-top:14px">CONSTELLATION 4300 LAB - V18.0 -20%</div></div></div>
 </div>
-<div id="laia-hologram"><canvas id="laia-holo-canvas"></canvas><div id="bubble" class="hidden"></div><div id="laia-state">CONSTELLATION 4300 - 90% GHOST VISIBLE</div></div>
+<div id="laia-hologram"><canvas id="laia-holo-canvas"></canvas><div id="bubble" class="hidden"></div><div id="laia-state">V18.0 -20% - 4300PTS - 0.72 SIZE</div></div>
 <script type="module">
 import { LAYA_FINAL } from './LAYA_FINAL_COMPLETO.js';
 import { thinkAndMove } from './actor/laia_actor_brain.js';
@@ -63,9 +60,14 @@ class LaiaMeshOnly {
     this.renderer.setSize(window.innerWidth, window.innerHeight);
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
     this.bones=[]; this.group=new THREE.Group();
-    this.group.scale.set(0.90, 0.90, 0.90);
-    this.group.position.set(0.28, -0.08, 0);
-    if(window.innerWidth<768){ this.camera.position.set(0.20, 0.28, 2.85); this.group.scale.set(0.86, 0.86, 0.86); this.group.position.set(0.12, 0.02, 0); }
+    // V18.0 -20% COMO PEDISTE TTE - DE 0.90 A 0.72
+    this.group.scale.set(0.72, 0.72, 0.72);
+    this.group.position.set(0.28, -0.02, 0);
+    if(window.innerWidth<768){
+      this.camera.position.set(0.20, 0.28, 3.10);
+      this.group.scale.set(0.688, 0.688, 0.688);
+      this.group.position.set(0.10, 0.05, 0);
+    }
     this.createInvisibleSkeleton(); this.createFullBodyPointCloud();
     this.scene.add(this.group); this.clock=new THREE.Clock();
     window.addEventListener('resize',()=>{this.camera.aspect=window.innerWidth/window.innerHeight; this.camera.updateProjectionMatrix(); this.renderer.setSize(window.innerWidth, window.innerHeight);});
@@ -92,14 +94,13 @@ class LaiaMeshOnly {
     cloud(new THREE.Vector3(-0.13,-1.00,0),0.055,0.075,0.08,180);
     cloud(new THREE.Vector3(0.13,-1.00,0),0.055,0.075,0.08,180);
     const geo=new THREE.BufferGeometry(); geo.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));
-    // PUNTOS MÁS GRANDES Y BRILLANTES COMO EN TU CAPTURA
     const mat=new THREE.PointsMaterial({color:0x00d4ff, size:0.038, transparent:true, opacity:1.0, blending:THREE.AdditiveBlending});
     this.bones[3].add(new THREE.Points(geo,mat));
     const lpos=[]; for(let i=0;i<pos.length-12;i+=5){ if(Math.random()>0.86) lpos.push(pos[i],pos[i+1],pos[i+2], pos[i+9],pos[i+10],pos[i+11]); }
     const lgeo=new THREE.BufferGeometry(); lgeo.setAttribute('position',new THREE.Float32BufferAttribute(lpos,3));
     this.bones[3].add(new THREE.LineSegments(lgeo,new THREE.LineBasicMaterial({color:0x00d4ff,transparent:true,opacity:0.35})));
   }
-  async goTo(z){const m={welcome:{x:0.28,y:-0.08}, reading_text:{x:0.08,y:0.0}, input_field:{x:0.45,y:0.0}, feedback_ok:{x:0.28,y:-0.12}, feedback_err:{x:0.28,y:0.02}}; if(m[z]){this.group.position.x=m[z].x; this.group.position.y=m[z].y;} document.getElementById('laia-state').textContent=z.toUpperCase()+' • 4300PTS • 90% GHOST';}
+  async goTo(z){const m={welcome:{x:0.28,y:-0.02}, reading_text:{x:0.08,y:0.02}, input_field:{x:0.45,y:0.02}, feedback_ok:{x:0.28,y:-0.08}, feedback_err:{x:0.28,y:0.05}}; if(m[z]){this.group.position.x=m[z].x; this.group.position.y=m[z].y;} document.getElementById('laia-state').textContent=z.toUpperCase()+' • 4300PTS • 0.72 SIZE';}
   animate(){requestAnimationFrame(()=>this.animate()); const t=this.clock.getElapsedTime(); thinkAndMove(this.bones, {reading:true, talkAmp:0.3+Math.sin(t*4)*0.2}); this.renderer.render(this.scene, this.camera);}
 }
 let metrics=JSON.parse(localStorage.getItem('LAYA_METRICS_V9')||'{"level":"A2","xp_total":50,"streak_days":8}');
@@ -115,14 +116,14 @@ function renderList(f='', lvl=''){
     listEl.appendChild(d);
   });
   if(!selected&&first) selected=first;
-  document.getElementById('status').textContent=`GHOST 4300 90%: ${Object.keys(LAYA_FINAL.AREAS).length} áreas - VISIBLE`;
+  document.getElementById('status').textContent=`V18.0 -20% 0.72: ${Object.keys(LAYA_FINAL.AREAS).length} áreas`;
 }
 renderList();
 document.getElementById('search').oninput=e=>renderList(e.target.value.toLowerCase(), currentFilter);
 document.querySelectorAll('.f').forEach(b=>b.onclick=()=>{document.querySelectorAll('.f').forEach(x=>x.classList.remove('active')); b.classList.add('active'); currentFilter=b.dataset.f; renderList(document.getElementById('search').value.toLowerCase(), currentFilter);});
 document.getElementById('level').value=metrics.level; document.getElementById('streak').textContent=metrics.streak_days; document.getElementById('xp').textContent=`⭐ ${metrics.xp_total} XP`;
 document.getElementById('level-badge').textContent=metrics.level;
-function pushToPage2(res, word){ document.getElementById('sapHeader').innerHTML=`<b style="color:#00d4ff">CONSTELLATION 4300 90% // ${res.meta.grammar_main.sig} // ${word}</b><div style="margin-top:8px;font-size:12px">📍 ${res.meta.area} | ${res.meta.topic}</div>`; }
+function pushToPage2(res, word){ document.getElementById('sapHeader').innerHTML=`<b style="color:#00d4ff">V18.0 -20% 0.72 // ${res.meta.grammar_main.sig} // ${word}</b><div style="margin-top:8px;font-size:12px">📍 ${res.meta.area} | ${res.meta.topic}</div>`; }
 function renderLesson(res){
   const card=document.getElementById('card'); const words=res.story.split(/(\s+)/).map(w=>{ const clean=w.toLowerCase().replace(/[^a-z]/g,''); if(!clean||w.trim().length<2) return w; return `<span class="word" data-w="${clean}">${w}</span>`; }).join('');
   card.innerHTML=`<div class="meta"><span>📍 ${res.meta.area}</span><span>${res.meta.level}</span><span style="background:#00d4ff;color:#000">⭐ ${res.meta.xp} XP</span></div><h2 style="font-size:20px;margin:10px 0">${res.meta.topic}</h2><div class="reading">${words}</div><div class="chat-box"><input id="userInput" placeholder="Escribe tu frase..."><button id="sendBtn">Enviar</button></div><div id="feedback"></div>`;

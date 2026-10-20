@@ -1,16 +1,18 @@
 {
-  "version": "V19.0 SURFACE REAL -20% - PIN PAN INTUICIÓN",
-  "source": "MOTOR LAIA - FULL BODY 7000 SURFACE + ZODIAC NEIGHBORS",
-  "coordinate_system": "mesh_surface_3d_constellation",
-  "type": "constellation_motor_intuition_surface",
-  "actor_version": "V19.0",
+  "version": "V20.0 PROXY MESH FINAL - LATHE 0.11 WAIST - PIN PAN INTUICIÓN",
+  "source": "MOTOR LAIA - FULL BODY PROXY LATHE SINGLE MESH + SURFACE SAMPLING",
+  "coordinate_system": "mesh_proxy_lathe_single_constellation",
+  "type": "constellation_motor_intuition_proxy_lathe",
+  "actor_version": "V20.0",
   "feminine_params": {
     "waist": 0.11,
     "hips": 0.21,
     "chest": 0.19,
     "shoulders": 0.20,
     "gap": 0.11,
-    "scale": 0.72
+    "scale": 0.72,
+    "mobile_scale": 0.688,
+    "proxy": "LatheGeometry_profile_11_points_single_mesh"
   },
   "zones": {
     "welcome": { 
@@ -19,15 +21,15 @@
       "pose": "IDLE_CORTANA", 
       "scale": 0.72,
       "camera": [0.25, 0.35, 2.6],
-      "description": "Centro -20% - cabeza y pies dentro - cortana TV - como ref foto 3"
+      "description": "Centro -20% - cabeza y pies dentro - cortana TV - proxy lathe 0.11 waist - como ref foto 3"
     },
     "reading_text": { 
       "x": 0.08, "y": 0.02, "z": 0.05, 
       "anchor": "left_reading", 
       "pose": "EXPLAINING",
       "scale": 0.79,
-      "motor_action": "pin_pan_left_gesturing",
-      "description": "Se mueve a izquierda leyendo - femenina 0.11 gesticula"
+      "motor_action": "pin_pan_left_gesturing_lathe",
+      "description": "Se mueve a izquierda leyendo - femenina 0.11 gesticula - lathe intacto"
     },
     "reading_title": { 
       "x": 0.10, "y": 0.05, "z": 0, 
@@ -40,15 +42,15 @@
       "anchor": "right_input", 
       "pose": "LISTENING",
       "scale": 0.68,
-      "motor_action": "pin_pan_right_ear_listen",
-      "description": "Se mueve a derecha escuchando - mano a oreja - escala pequeña"
+      "motor_action": "pin_pan_right_ear_listen_proxy",
+      "description": "Se mueve a derecha escuchando - mano a oreja - escala pequeña 0.68 - proxy 0.11"
     },
     "vocab_word": { 
       "x": 0.42, "y": -0.02, "z": 0, 
       "anchor": "right_vocab", 
       "pose": "TRANSMISSION",
       "scale": 0.72,
-      "motor_action": "pin_pan_vocab_highlight"
+      "motor_action": "pin_pan_vocab_highlight_lathe"
     },
     "feedback_ok": { 
       "x": 0.28, "y": -0.08, "z": 0.1, 
@@ -56,8 +58,8 @@
       "pose": "CELEBRATING",
       "scale": 0.86,
       "confetti": true,
-      "motor_action": "jump_happy_constellation_glow",
-      "description": "Centro abajo salta feliz - 0.86 no 1.25 para que entre entera"
+      "motor_action": "jump_happy_proxy_glow",
+      "description": "Centro abajo salta feliz - 0.86 no 1.25 para que entre entera - lathe 0.11 intacto"
     },
     "feedback_err": { 
       "x": 0.28, "y": 0.04, "z": 0, 
@@ -65,23 +67,23 @@
       "pose": "SCOLDING",
       "scale": 0.79,
       "shake": true,
-      "motor_action": "shake_head_strict_bob",
-      "description": "Centro arriba niega estricta - bob corto"
+      "motor_action": "shake_head_strict_bob_proxy",
+      "description": "Centro arriba niega estricta - bob corto - proxy lathe"
     },
     "sap_dashboard": { 
       "x": 0.28, "y": -0.02, "z": 0, 
       "anchor": "center_sap", 
       "pose": "TRANSMISSION",
       "scale": 0.72,
-      "motor_action": "evolution_lab_center"
+      "motor_action": "evolution_lab_center_proxy"
     },
     "evolution": { 
       "x": 0.28, "y": 0.02, "z": 0.05, 
       "anchor": "center_evolution", 
       "pose": "EXPLAINING",
       "scale": 0.82,
-      "motor_action": "pin_pan_evolution_motor",
-      "description": "Motor intuición - al dar INICIAR mapea toda la app - 0.82"
+      "motor_action": "pin_pan_evolution_motor_lathe",
+      "description": "Motor intuición - al dar INICIAR mapea toda la app - 0.82 - proxy lathe"
     },
     "lab_button": { 
       "x": 0.42, "y": 0.06, "z": 0, 
@@ -92,24 +94,29 @@
   },
   "motor_intuicion": {
     "enabled": true,
-    "type": "constellation_motor_pin_pan_surface",
+    "type": "constellation_motor_pin_pan_proxy_lathe",
     "is_full_motor": true,
     "moves_entire_app": true,
+    "proxy_mesh": true,
+    "single_mesh": true,
     "on_iniciar": [
-      { "time": 0, "zone": "welcome", "action": "idle_feminine_0.72", "scale": 0.72 },
-      { "time": 800, "zone": "reading_text", "action": "pin_pan_left_0.79", "scale": 0.79 },
-      { "time": 1800, "zone": "input_field", "action": "pin_pan_right_0.68", "scale": 0.68 },
-      { "time": 2800, "zone": "evolution", "action": "center_motor_0.82", "scale": 0.82 }
+      { "time": 0, "zone": "welcome", "action": "idle_feminine_0.72_proxy_lathe", "scale": 0.72 },
+      { "time": 800, "zone": "reading_text", "action": "pin_pan_left_0.79_lathe", "scale": 0.79 },
+      { "time": 1800, "zone": "input_field", "action": "pin_pan_right_0.68_lathe", "scale": 0.68 },
+      { "time": 2800, "zone": "evolution", "action": "center_motor_0.82_lathe", "scale": 0.82 }
     ],
     "camera_path": {
-      "fov": 38,
+      "fov": 45,
       "pos": [0.25, 0.35, 2.6],
       "group_scale": [0.72, 0.72, 0.72],
       "mobile_pos": [0.20, 0.28, 3.10],
       "mobile_scale": [0.688, 0.688, 0.688],
+      "group_position": [0.28, -0.02, 0],
+      "mobile_group_position": [0.10, 0.05, 0],
       "keeps_head_and_feet_visible": true,
       "filter": "none",
-      "mix_blend": "normal"
+      "mix_blend": "normal",
+      "image_rendering": "crisp-edges"
     }
   }
 }

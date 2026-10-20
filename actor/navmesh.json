@@ -1,9 +1,9 @@
 {
-  "version": "V30.4 DEFINITIVO SKINNY GAP CLEAN - 5 LOOPS 22 RADIALES CIRCULO PERFECTO - SHOULDER FAN LIMIT 4",
-  "source": "MOTOR LAIA - FULL BODY SKINNED PARTICLE TRIANGULATED FLOW POLES kNN12 GAP_CLEAN_V30.4 - PIERNAS HUMANAS 0.11 GAP CLEAN DEFINITIVO",
-  "coordinate_system": "skinned_topological_particle_triangulated_flow_poles_kNN12_gap_clean_shoulder_limit4_definitive_hd",
-  "type": "skinned_motor_intuition_particle_triangulated_flow_poles_gap_clean_v30_4_definitive_hd",
-  "actor_version": "V30.4 DEFINITIVO GAP CLEAN",
+  "version": "V30.5 DEFINITIVO SKINNY GAP CLEAN - FIX BANDAS RODILLA - 5 LOOPS 22 RADIALES - SHOULDER LIMIT 4 - KNEE ANTI-BANDA",
+  "source": "MOTOR LAIA - FULL BODY SKINNED PARTICLE TRIANGULATED FLOW POLES kNN12 GAP_CLEAN_KNEEFIX_V30.5 - PIERNAS HUMANAS 0.11 GAP CLEAN FIX BANDAS",
+  "coordinate_system": "skinned_topological_particle_triangulated_flow_poles_kNN12_gap_clean_kneeFix_shoulder_limit4_definitive_hd_V30.5",
+  "type": "skinned_motor_intuition_particle_triangulated_flow_poles_gap_clean_kneeFix_v30_5_definitive_hd",
+  "actor_version": "V30.5 DEFINITIVO GAP CLEAN FIX BANDAS",
   "feminine_params": {
     "waist": 0.11,
     "waist_factor": 0.62,
@@ -21,23 +21,24 @@
     "maxDistanceSq": 0.08,
     "shoulderFanLimit": 4,
     "gapClean": true,
-    "mesh_real": "SkinnedMesh_Particle_Triangulated_3_Mallas_V30.4: Malla1_Points_0.012_glow_0.92_3200 + Malla2_kNN_12_lines_0.08_gap_clean_true_shoulder_limit_4_triangulated_open + Malla3_Quad_dense_knees_5_loops_22_radiales_circulo_perfecto + Cylinder(0.195,0.18,0.56,32,28)_Flow_Poles_Convergence_0.62_z0.58 + 2x Plane_Lapels_Nodes + 2x Torus_Buttons_Nodes + 2x Box_Pockets_Nodes + 2x Cylinder_0.092_0.046_0.80_24_28_Triangulated_Open_Skinned_Hip_Knee_gap_0.11_clean + Knees_5_loops_22_radiales + Box_Feet_5_toes_bifurcation + Arms_Triangulated_Open_Skinned_Shoulder_Elbow_ShoulderLimit4 + Hands_Box"
+    "kneeFix": true,
+    "mesh_real": "SkinnedMesh_Particle_Triangulated_3_Mallas_V30.5: Malla1_Points_0.012_glow_0.92_3200 + Malla2_kNN_12_lines_0.08_gap_clean_true_shoulder_limit_4_kneeFix_triangulated_open + Malla3_Quad_dense_knees_5_loops_22_radiales_circulo_perfecto_fix_bandas + Cylinder(0.195,0.18,0.56,32,28)_Flow_Poles_Convergence_0.62_z0.58 + 2x Plane_Lapels_Nodes + 2x Torus_Buttons_Nodes + 2x Box_Pockets_Nodes + 2x Cylinder_0.092_0.046_0.80_24_28_Triangulated_Open_Skinned_Hip_Knee_gap_0.11_clean + Knees_5_loops_22_radiales_fix_bandas + Box_Feet_5_toes_bifurcation + Arms_Triangulated_Open_Skinned_Shoulder_Elbow_ShoulderLimit4 + Hands_Box"
   },
   "zones": {
-    "welcome": { "x": 0.0, "y": 0.36, "z": 0, "anchor": "center", "pose": "IDLE_CORTANA", "scale": 0.54, "camera": [0.0, 0.34, 1.62], "description": "V30.4 DEFINITIVO Centro 0.36 - cabeza 0.68 y pies -0.70 visibles - 3 mallas particle triangulated flow poles GAP CLEAN - polo frontal origen - gap 0.11 limpio sin cruces - 3200 puntos 0.012 glow 0.92" },
-    "reading_text": { "x": -0.10, "y": 0.36, "z": 0.05, "anchor": "left_reading", "pose": "EXPLAINING", "scale": 0.54, "motor_action": "skinned_pin_pan_left_gesturing_Shoulder.L_Elbow.L_flow_poles_hd_gap_clean", "description": "Izquierda leyendo V30.4 - gesticula Shoulder.L Elbow.L - flujo topológico - blazer nodos interrupción - gap 0.11 limpio - kNN 12 shoulderLimit 4" },
+    "welcome": { "x": 0.0, "y": 0.36, "z": 0, "anchor": "center", "pose": "IDLE_CORTANA", "scale": 0.54, "camera": [0.0, 0.34, 1.62], "description": "V30.5 FIX BANDAS Centro 0.36 - cabeza 0.68 pies -0.70 visibles - 3 mallas GAP CLEAN FIX BANDAS - polo frontal - gap 0.11 limpio - 3200 puntos" },
+    "reading_text": { "x": -0.10, "y": 0.36, "z": 0.05, "anchor": "left_reading", "pose": "EXPLAINING", "scale": 0.54, "motor_action": "skinned_pin_pan_left_gesturing_Shoulder.L_Elbow.L_flow_poles_hd_gap_clean_kneeFix", "description": "Izquierda leyendo V30.5 - Shoulder.L Elbow.L - gap 0.11 - kNN 12 shoulderLimit 4 kneeFix anti-banda" },
     "reading_title": { "x": -0.06, "y": 0.36, "z": 0, "anchor": "top_left", "pose": "SCAFFOLDING", "scale": 0.54 },
-    "input_field": { "x": 0.08, "y": 0.36, "z": 0.05, "anchor": "right_input", "pose": "LISTENING", "scale": 0.50, "motor_action": "skinned_pin_pan_right_ear_listen_Head_Bone_Frontal_Pole_Eye_L_R_hd", "description": "Derecha escuchando V30.4 - mano oreja Wrist.L - Head_Bone + Frontal_Pole radial 8 - escala 0.50 - gap 0.11 limpio - particle flow shoulderLimit 4" },
+    "input_field": { "x": 0.08, "y": 0.36, "z": 0.05, "anchor": "right_input", "pose": "LISTENING", "scale": 0.50, "motor_action": "skinned_pin_pan_right_ear_listen_Head_Bone_Frontal_Pole_Eye_L_R_hd", "description": "Derecha escuchando V30.5 - Head_Bone + Frontal_Pole radial 8 - scale 0.50 - gap limpio - kneeFix" },
     "vocab_word": { "x": 0.10, "y": 0.36, "z": 0, "anchor": "right_vocab", "pose": "TRANSMISSION", "scale": 0.50, "motor_action": "skinned_pin_pan_vocab_highlight_Head_Bone_Frontal_Pole_Mouth_viseme_flow_hd" },
-    "feedback_ok": { "x": 0.0, "y": 0.30, "z": 0.1, "anchor": "center_ok", "pose": "CELEBRATING", "scale": 0.54, "confetti": true, "motor_action": "skinned_jump_happy_Spine_02_Sacral_Pole_Knee_L_R_flow_glow_hd_gap_clean", "description": "Centro abajo V30.4 salta feliz - Spine_02 + Sacral_Pole + Knee.L/R - 0.54 entera - blazer nodos botones - rodillas 5 loops 22 radiales círculo perfecto" },
-    "feedback_err": { "x": 0.0, "y": 0.36, "z": 0, "anchor": "center_err", "pose": "SCOLDING", "scale": 0.54, "shake": true, "motor_action": "skinned_shake_head_strict_Head_Bone_Frontal_Pole_Neck_bob_flow_hd", "description": "Centro V30.4 niega estricta - Head_Bone + Frontal_Pole + Neck - bob partículas casco - gap limpio sin cruces - hombro 0.50 triangulated open limit 4 - bindeado flow poles" },
-    "sap_dashboard": { "x": 0.0, "y": 0.36, "z": 0, "anchor": "center_sap", "pose": "TRANSMISSION", "scale": 0.54, "motor_action": "skinned_evolution_lab_center_Spine_02_Frontal_Pole_Sacral_Pole_flow_hd" },
-    "evolution": { "x": 0.0, "y": 0.36, "z": 0.05, "anchor": "center_evolution", "pose": "EXPLAINING", "scale": 0.54, "motor_action": "skinned_pin_pan_evolution_motor_Spine_02_Head_Bone_Frontal_Pole_flow_poles_hd", "description": "Motor intuición V30.4 DEFINITIVO - mapea toda la app con 3 mallas GAP CLEAN - 0.54 - particle 0.012 + kNN 12 gapClean shoulderLimit4 + quad denso rodillas 5 loops 22 radiales - polos reales - imagen definitiva clonada sin hairball" },
+    "feedback_ok": { "x": 0.0, "y": 0.30, "z": 0.1, "anchor": "center_ok", "pose": "CELEBRATING", "scale": 0.54, "confetti": true, "motor_action": "skinned_jump_happy_Spine_02_Sacral_Pole_Knee_L_R_flow_glow_hd_gap_clean_kneeFix", "description": "Centro abajo V30.5 salta feliz - Spine_02 + Sacral_Pole + Knee.L/R 5 loops 22 radiales círculo perfecto FIX BANDAS" },
+    "feedback_err": { "x": 0.0, "y": 0.36, "z": 0, "anchor": "center_err", "pose": "SCOLDING", "scale": 0.54, "shake": true, "motor_action": "skinned_shake_head_strict_Head_Bone_Frontal_Pole_Neck_bob_flow_hd", "description": "Centro V30.5 niega estricta - Head_Bone + Frontal_Pole + Neck - bob casco - gap limpio - hombro 0.50 triangulated open limit 4 kneeFix" },
+    "sap_dashboard": { "x": 0.0, "y": 0.36, "z": 0, "anchor": "center_sap", "pose": "TRANSMISSION", "scale": 0.54, "motor_action": "skinned_evolution_lab_center_Spine_02_Frontal_Pole_Sacral_Pole_flow_hd_kneeFix" },
+    "evolution": { "x": 0.0, "y": 0.36, "z": 0.05, "anchor": "center_evolution", "pose": "EXPLAINING", "scale": 0.54, "motor_action": "skinned_pin_pan_evolution_motor_Spine_02_Head_Bone_Frontal_Pole_flow_poles_hd_kneeFix", "description": "Motor intuición V30.5 DEFINITIVO - 3 mallas GAP CLEAN FIX BANDAS - particle 0.012 + kNN 12 gapClean shoulderLimit4 kneeFix + quad denso rodillas 5 loops 22 radiales fix bandas" },
     "lab_button": { "x": 0.10, "y": 0.36, "z": 0, "anchor": "top_right_lab", "pose": "FLOW_OBSERVER", "scale": 0.54 }
   },
   "motor_intuicion": {
     "enabled": true,
-    "type": "skinned_motor_pin_pan_particle_triangulated_flow_poles_gap_clean_v30_4_definitivo_hd",
+    "type": "skinned_motor_pin_pan_particle_triangulated_flow_poles_gap_clean_kneeFix_v30_5_definitive_hd",
     "is_full_motor": true,
     "is_skinned": true,
     "is_rigged": true,
@@ -63,6 +64,7 @@
     "fix_shoulder_cut": true,
     "fix_hairball": true,
     "gap_clean": true,
+    "knee_fix": true,
     "no_capsule": true,
     "hd": true,
     "topological": true,
@@ -72,10 +74,10 @@
     "flow": true,
     "poles": true,
     "on_iniciar": [
-      { "time": 0, "zone": "welcome", "action": "skinned_idle_feminine_0.54_Head_Bone_Frontal_Pole_Spine_02_flow_hd_gap_clean", "scale": 0.54, "bones": ["Head_Bone","Frontal_Pole","Spine_02"], "malla": "particle_0.012_glow_0.92_3200", "note": "Polo frontal origen flujo radial 8 - V30.4 sin hairball" },
-      { "time": 800, "zone": "reading_text", "action": "skinned_pin_pan_left_0.54_Shoulder.L_Elbow.L_flow_poles_hd_gap_clean", "scale": 0.54, "bones": ["Shoulder.L","Elbow.L","Wrist.L"], "malla": "kNN_12_lines_triangulated_open_muslos_gap_clean", "note": "Muslos triangulación abierta líneas largas + gap clean sin cruces" },
+      { "time": 0, "zone": "welcome", "action": "skinned_idle_feminine_0.54_Head_Bone_Frontal_Pole_Spine_02_flow_hd_gap_clean_kneeFix", "scale": 0.54, "bones": ["Head_Bone","Frontal_Pole","Spine_02"], "malla": "particle_0.012_glow_0.92_3200", "note": "Polo frontal origen radial 8 - V30.5 sin hairball - kneeFix" },
+      { "time": 800, "zone": "reading_text", "action": "skinned_pin_pan_left_0.54_Shoulder.L_Elbow.L_flow_poles_hd_gap_clean_kneeFix", "scale": 0.54, "bones": ["Shoulder.L","Elbow.L","Wrist.L"], "malla": "kNN_12_lines_triangulated_open_muslos_gap_clean_kneeFix", "note": "Muslos triangulación abierta + gap clean sin cruces + kneeFix anti-banda" },
       { "time": 1800, "zone": "input_field", "action": "skinned_pin_pan_right_0.50_Shoulder.R_Frontal_Pole_Eye_L_R_hd_shoulder_limit4", "scale": 0.50, "bones": ["Shoulder.R","Frontal_Pole","Eye_L","Eye_R"], "malla": "quad_denso_cara_radial", "note": "Cara grid denso desde polo frontal - hombro limit 4" },
-      { "time": 2800, "zone": "evolution", "action": "skinned_center_motor_0.54_Spine_02_Sacral_Pole_Hips_flow_poles_hd_gap_clean", "scale": 0.54, "bones": ["Spine_02","Sacral_Pole","Hips","Hip.L","Hip.R","Knee.L","Knee.R"], "malla": "quad_denso_rodillas_5_loops_22_radiales_circulo_perfecto + gap_clean", "note": "Rodillas 5 loops 22 radiales círculo perfecto imagen definitiva + sacral pole cierre cintura 0.11 + gap limpio V30.4" }
+      { "time": 2800, "zone": "evolution", "action": "skinned_center_motor_0.54_Spine_02_Sacral_Pole_Hips_flow_poles_hd_gap_clean_kneeFix", "scale": 0.54, "bones": ["Spine_02","Sacral_Pole","Hips","Hip.L","Hip.R","Knee.L","Knee.R"], "malla": "quad_denso_rodillas_5_loops_22_radiales_circulo_perfecto_fix_bandas + gap_clean", "note": "Rodillas 5 loops 22 radiales círculo perfecto FIX BANDAS + sacral pole cierre cintura 0.11 + gap limpio V30.5" }
     ],
     "camera_path": {
       "fov": 36,
@@ -91,12 +93,15 @@
       "thigh_gap": 0.11,
       "leg_separation": 0.134,
       "gap_clean": true,
+      "knee_fix": true,
       "gap_clean_logic": "if(iy<0.05 && jy<0.05 && ((ix<-0.01 && jx>0.01)||(ix>0.01 && jx<-0.01))) continue",
-      "shoulder_fix": "shoulderFanLimit 4 + Shoulder.L/R rotation.z 0.06 open fan",
+      "shoulder_fix": "shoulderFanLimit 4 + Shoulder.L/R rotation.z -0.06/0.06 open fan",
+      "knee_fix_logic": "if(isKnee && abs(iy-jy)<0.004 && abs(ix-jx)>0.02) continue - V30.5 FIX BANDAS rodilla",
       "no_chicle": true,
       "no_capsule": true,
       "fix_shoulder_cut": true,
       "fix_hairball": true,
+      "fix_bandas": true,
       "is_skinned": true,
       "is_flow": true,
       "is_poles": true,
@@ -104,7 +109,7 @@
       "is_triangulated": true,
       "shoulder_position": 0.50,
       "skeleton": "Hips_Spine_02_Chest_Neck_Head_Bone_Frontal_Pole_Eye_L_Iris_L_Eye_R_Iris_R_Mouth_Jaw_Shoulder.L_Shoulder_fix_open_fan_Elbow.L_Wrist.L_Hand.L_Shoulder.R_Elbow.R_Wrist.R_Hand.R_Sacral_Pole_Hip.L_Knee.L_Ankle.L_Toe.L_Hip.R_Knee.R_Ankle.R_Toe.R_Button_Node_01_02_Pocket_Node_L_R",
-      "weight_painting": "skinIndex_skinWeight_4_influences_binded_flow_poles_gap_clean_shoulder_limit4",
+      "weight_painting": "skinIndex_skinWeight_4_influences_binded_flow_poles_gap_clean_shoulder_limit4_kneeFix",
       "hd_particle_size": 0.012,
       "hd_particle_opacity": 0.92,
       "hd_particle_count": 3200,
@@ -112,6 +117,7 @@
       "hd_maxDistanceSq": 0.08,
       "hd_shoulderFanLimit": 4,
       "hd_gapClean": true,
+      "hd_kneeFix": true,
       "hd_wireframe_opacity_kNN": 0.44,
       "hd_wireframe_opacity_quad_dense": 0.32,
       "hd_color": "#00e5ff",
@@ -121,8 +127,7 @@
       "filter": "contrast(1.28) brightness(1.20) saturate(1.14) drop-shadow(0 0 12px rgba(0,229,255,0.70))",
       "hologram_filter": "drop-shadow(0 0 36px rgba(0,229,255,0.62)) drop-shadow(0 0 70px rgba(0,212,255,0.38))",
       "mix_blend": "normal",
-      "image_rendering": "-webkit-optimize-contrast",
-      "note": "V30.4 DEFINITIVO GAP CLEAN - 3 mallas superpuestas - Partículas 0.012 glow 0.92 3200 + kNN 12 maxDistance 0.08 gapClean true shoulderLimit 4 + Quad denso rodillas 5 loops 22 radiales círculo perfecto + Polos reales frontal/sacro + Flujo topológico 45deg cintura 90deg rodilla + scale 0.54/0.50 - imagen definitiva clonada vértice a vértice sin bola pecho"
+      "note": "V30.5 DEFINITIVO GAP CLEAN FIX BANDAS - 3 mallas superpuestas - Partículas 0.012 glow 0.92 3200 + kNN 12 gapClean shoulderLimit4 kneeFix anti-banda + Quad denso rodillas 5 loops 22 radiales círculo perfecto fix bandas + Polos reales frontal/sacro + Flujo 45deg cintura 90deg rodilla + scale 0.54/0.50"
     }
   }
-} 
+}

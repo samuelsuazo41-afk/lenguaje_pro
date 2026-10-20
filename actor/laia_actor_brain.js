@@ -1,17 +1,17 @@
-// laia_actor_brain.js - V26.0 DIRECT HUMANOIDE - FOTO 2 - 0.11 WAIST - NO CAPSULE
-// DIRECTO humanoide con rodilla/tobillo/pies/manos articulados como foto 2
-// Params V26: waist 0.11 cylinder 0.62, hips 0.32, chest 0.336, thigh_gap 0.11 direct
-// Autor: YARVIS + Laia - Girona - V26.0 DIRECT
+// laia_actor_brain.js - V27.0 HD -20% - FOTO 3 - 0.11 WAIST - NITIDA COMPLETA
+// -20% escala para que quepa entera en la app + HD 0.009
+// Params V27: waist 0.11 cylinder 0.62, hips 0.32, chest 0.336, thigh_gap 0.11, scale 0.57
+// Autor: YARVIS + Laia - Girona - V27.0 HD -20%
 
 export const LAIA_BRAIN_CONFIG = {
-  version: "26.0 DIRECT HUMANOIDE - FOTO 2 - 0.11 WAIST - NO CAPSULE",
+  version: "27.0 HD -20% - FOTO 3 - 0.11 WAIST - NITIDA COMPLETA",
   hiddenSkeleton: true,
   pointsCount: 7000,
   constellation: true,
   surfaceSampling: false,
   proxyMesh: false,
   meshReal: true,
-  meshType: "DirectHumanoide_CylinderTapered_Foto2",
+  meshType: "DirectHumanoide_CylinderTapered_Foto3_HD_Minus20",
   breathBase: 1.1,
   meshOnly: true,
   feminine: true,
@@ -22,11 +22,11 @@ export const LAIA_BRAIN_CONFIG = {
   shoulders: 0.336,
   thigh_gap: 0.11,
   legSeparation: 0.22,
-  scale: 0.72,
-  mobileScale: 0.68,
+  scale: 0.57,
+  mobileScale: 0.544,
   lines: {
-    type: "WireframeGeometry_direct_humanoide",
-    opacity: 0.32
+    type: "WireframeGeometry_direct_humanoide_hd",
+    opacity: 0.22
   }
 };
 
@@ -47,12 +47,12 @@ export function thinkAndMove(bones, context) {
 
   const t = MIND.breath;
   if (bones[31]) {
-    const scale = 1 + Math.sin(t * 1.1) * 0.012;
+    const scale = 1 + Math.sin(t * 1.1) * 0.009;
     bones[31].scale.x = scale;
     bones[31].scale.z = scale;
   }
-  bones[0].position.y = Math.sin(t * 0.7) * 0.005;
-  bones[0].position.x = Math.sin(t * 0.4) * 0.002;
+  bones[0].position.y = Math.sin(t * 0.7) * 0.004;
+  bones[0].position.x = Math.sin(t * 0.4) * 0.0015;
 
   if (context.inputFocused) MIND.state = 'LISTENING';
   else if (context.sapError) { MIND.state = 'SCOLDING'; MIND.mood = 'estricta'; MIND.lastError++; }
@@ -68,34 +68,34 @@ export function thinkAndMove(bones, context) {
   const mouth = bones[5];
 
   if (MIND.state === 'IDLE_CORTANA') {
-    if (head) { head.rotation.y = Math.sin(t * 0.32) * 0.14; head.rotation.x = Math.sin(t * 0.26) * 0.025; }
-    if (mouth) mouth.scale.y = 1 + Math.sin(t * 0.8) * 0.008;
-    if (neck) neck.rotation.z = Math.sin(t * 0.42) * 0.012;
+    if (head) { head.rotation.y = Math.sin(t * 0.32) * 0.11; head.rotation.x = Math.sin(t * 0.26) * 0.020; }
+    if (mouth) mouth.scale.y = 1 + Math.sin(t * 0.8) * 0.006;
+    if (neck) neck.rotation.z = Math.sin(t * 0.42) * 0.010;
   }
   if (MIND.state === 'LISTENING') {
-    if (head) { head.rotation.x = -0.10; head.rotation.y = 0.08; }
-    if (lArm) lArm.rotation.z = 0.38;
-    if (lFore) lFore.rotation.x = -0.88;
+    if (head) { head.rotation.x = -0.08; head.rotation.y = 0.06; }
+    if (lArm) lArm.rotation.z = 0.32;
+    if (lFore) lFore.rotation.x = -0.82;
   }
   if (MIND.state === 'EXPLAINING') {
-    if (rFore) { rFore.rotation.x = Math.sin(t * 2.6) * 0.32; rFore.rotation.z = Math.sin(t * 1.4) * 0.10; }
-    if (mouth) { mouth.scale.y = 1 + Math.sin(t * 8.0) * (MIND.talkAmp || 0.28); }
+    if (rFore) { rFore.rotation.x = Math.sin(t * 2.6) * 0.28; rFore.rotation.z = Math.sin(t * 1.4) * 0.08; }
+    if (mouth) { mouth.scale.y = 1 + Math.sin(t * 8.0) * (MIND.talkAmp || 0.22); }
   }
   if (MIND.state === 'WALKING') {
-    if (lKnee) lKnee.rotation.x = Math.sin(t * 5.2) * 0.52;
-    if (rKnee) rKnee.rotation.x = -Math.sin(t * 5.2) * 0.52;
-    if (lThigh) lThigh.rotation.x = Math.sin(t * 5.2) * 0.18;
-    if (rThigh) rThigh.rotation.x = -Math.sin(t * 5.2) * 0.18;
-    bones[0].position.x = Math.sin(t * 5.2) * 0.012;
+    if (lKnee) lKnee.rotation.x = Math.sin(t * 5.2) * 0.44;
+    if (rKnee) rKnee.rotation.x = -Math.sin(t * 5.2) * 0.44;
+    if (lThigh) lThigh.rotation.x = Math.sin(t * 5.2) * 0.14;
+    if (rThigh) rThigh.rotation.x = -Math.sin(t * 5.2) * 0.14;
+    bones[0].position.x = Math.sin(t * 5.2) * 0.010;
   }
   if (MIND.state === 'SCOLDING') {
-    bones[0].rotation.z = Math.sin(t * 10) * 0.04;
-    if (head) head.rotation.y = Math.sin(t * 9) * 0.12;
+    bones[0].rotation.z = Math.sin(t * 10) * 0.032;
+    if (head) head.rotation.y = Math.sin(t * 9) * 0.10;
   }
   if (MIND.state === 'CELEBRATING') {
-    bones[0].position.y += Math.abs(Math.sin(t * 3.6)) * 0.04;
-    if (lFore) lFore.rotation.x = -1.52;
-    if (rFore) rFore.rotation.x = -1.52;
+    bones[0].position.y += Math.abs(Math.sin(t * 3.6)) * 0.032;
+    if (lFore) lFore.rotation.x = -1.42;
+    if (rFore) rFore.rotation.x = -1.42;
   }
   return MIND.state;
 }
@@ -112,7 +112,7 @@ export function decideByMetrics(metrics) {
 }
 
 export const LAIA_ACTOR_BRAIN = {
-  version: "26.0 DIRECT HUMANOIDE - FOTO 2 - 0.11",
+  version: "27.0 HD -20% - FOTO 3 - 0.11 NITIDA",
   thinkAndMove,
   decideByMetrics,
   config: LAIA_BRAIN_CONFIG

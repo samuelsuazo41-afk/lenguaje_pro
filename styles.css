@@ -18,7 +18,7 @@ header{height:58px;background:rgba(26,26,35,0.92);border-bottom:1px solid #2a2a3
 .chat-box{display:flex;gap:8px;margin-top:12px}.chat-box input{flex:1;background:var(--card2);border:1px solid #2a2a3a;color:white;padding:12px 14px;border-radius:12px;outline:none;min-width:0}
 .chat-box button{background:var(--holo);color:#000;border:none;padding:12px 18px;border-radius:12px;font-weight:700;cursor:pointer}
 
-/* V19.0 FIX - SIN BLOOM QUE HACE BLOQUES */
+/* V20.0 PROXY MESH FINAL - SIN BLOOM - PUNTOS NITIDOS COMO FOTO 3 */
 #laia-hologram{
   position:fixed!important;
   top:0!important;left:0!important;
@@ -28,7 +28,6 @@ header{height:58px;background:rgba(26,26,35,0.92);border-bottom:1px solid #2a2a3
   pointer-events:none!important;
   background:transparent!important;
   opacity:1!important;
-  /* QUITADO mix-blend y brightness que hacían bloques */
   mix-blend-mode:normal!important;
   filter:none!important;
 }
@@ -37,8 +36,8 @@ header{height:58px;background:rgba(26,26,35,0.92);border-bottom:1px solid #2a2a3
   display:block!important;
   background:transparent!important;
   pointer-events:none!important;
-  /* Puntos nítidos como en tu foto 3 */
-  image-rendering: -webkit-optimize-contrast;
+  image-rendering:-webkit-optimize-contrast;
+  image-rendering:crisp-edges;
 }
 #bubble{position:absolute;left:50%;transform:translateX(-50%);bottom:110px;background:rgba(10,15,30,0.92);border:1px solid rgba(0,212,255,0.5);color:white;padding:12px 14px;border-radius:14px;font-size:12px;max-width:260px;pointer-events:auto;box-shadow:0 0 25px rgba(0,212,255,0.3);z-index:60}
 #bubble.hidden{display:none}

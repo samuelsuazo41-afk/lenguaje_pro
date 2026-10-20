@@ -1,17 +1,17 @@
 {
-  "actor_version": "V25.0 MESH REAL FIX - FOTO 3 - 0.11 WAIST",
-  "type": "mesh_real_constellation_v25_box_blazer_fix_foto3",
-  "status": "full_body_mesh_real_0.11_waist_thigh_gap_0.11_fix_foto3_proportions",
-  "base_image": "wa_image_foto3_ref_final_fixed",
+  "actor_version": "V26.0 DIRECT HUMANOIDE - FOTO 2 - 0.11 WAIST - NO CAPSULE",
+  "type": "mesh_real_constellation_v26_direct_humanoide_foto2",
+  "status": "full_body_humanoid_direct_0.11_waist_thigh_gap_0.11_foto2_no_chicle",
+  "base_image": "wa_image_foto2_ref_direct_humanoide",
   "rig": {
     "joints": 34,
     "hidden_skeleton": true,
     "head": "defined_face_eyes_mouth_0.11_sphere_16",
     "face": "eyes_0.012_mouth_0.009_constellation_defined",
-    "body": "box_blazer_deformed_0.11_waist + 2_legs_short_gap_0.11_fix",
+    "body": "cylinder_blazer_deformed_0.11_waist + 2_human_legs_tapered_gap_0.11_direct",
     "feminine_params": {
       "waist": 0.11,
-      "waist_factor": 0.34,
+      "waist_factor": 0.62,
       "hips": 0.32,
       "chest": 0.336,
       "shoulders": 0.336,
@@ -20,57 +20,62 @@
       "scale": 0.72,
       "mobile_scale": 0.68
     },
-    "t_pose": "full_body_mesh_real_T_pose_fix_legs_0.11_gap_arms_0.80_span_foto3"
+    "t_pose": "full_body_direct_T_pose_legs_0.11_gap_arms_1.06_span_hands_feet_foto2"
   },
   "mesh": {
     "points_count": 7000,
-    "type": "constellation_mesh_real_wireframe_foto3_fix",
+    "type": "constellation_direct_humanoide_wireframe_foto2",
     "color": "#00d4ff",
-    "size": 0.014,
+    "size": 0.013,
     "opacity": 0.96,
     "blending": "NoBlending",
     "material": "PointsMaterial_sizeAttenuation_true",
     "hair": {
       "color": "#c9a88a",
-      "size": 0.012,
+      "size": 0.011,
       "opacity": 0.85,
       "geom": "SphereGeometry(0.115,10,10,0,6.28,0,1.95)",
       "count": 700
     },
     "lines": {
       "enabled": true,
-      "type": "WireframeGeometry_real_mesh_fix",
+      "type": "WireframeGeometry_direct_humanoide",
       "color": "#00d4ff",
-      "opacity": 0.28,
-      "connection_distance": "wireframe_edges_fix",
-      "max_distance_sq": "N/A_wireframe_fix",
-      "kNN_window": "N/A_wireframe_fix"
+      "opacity": 0.32,
+      "connection_distance": "wireframe_edges_direct",
+      "max_distance_sq": "N/A_wireframe_direct",
+      "kNN_window": "N/A_wireframe_direct"
     },
     "mesh_real_profile": {
-      "torso": "BoxGeometry(0.32,0.48,0.18,12,12,2)_deformed_waist_0.11_fix",
+      "torso": "CylinderGeometry(0.18,0.165,0.54,16,14)_deformed_waist_0.11_direct",
       "torso_deform": [
-        { "y": ">0.18", "scale_x": 1.05, "label": "hombros 0.336" },
-        { "y": ">0.02", "scale_x": 0.34, "label": "cintura 0.11 REAL FIX" },
-        { "y": ">-0.12", "scale_x": 1.02, "label": "cadera 0.32" },
-        { "y": "<=-0.12", "scale_x": 0.88, "label": "bajo blazer" }
+        { "y": ">0.19", "scale_x": 1.12, "label": "hombros 0.336" },
+        { "y": ">0.02", "scale_x": 0.62, "label": "cintura 0.11 REAL DIRECT" },
+        { "y": ">-0.15", "scale_x": 0.97, "label": "cadera 0.32" },
+        { "y": "<=-0.15", "scale_x": 0.92, "label": "bajo blazer" }
       ],
-      "legs": "2x CapsuleGeometry(0.058,0.52,8,12)_separated_0.22_gap_0.11_FIX_NO_CHICLE",
-      "arms": "2x CapsuleGeometry(0.032,0.46,6,10)_T_pose_span_0.80_FIX",
+      "legs": "2x CylinderGeometry(0.088,0.048,0.78,12,14)_tapered_knee_ankle_separated_0.22_gap_0.11_DIRECT_NO_CAPSULE",
+      "feet": "2x SphereGeometry(0.06,10,8)_scaled_1x0.55x1.8_feet_defined",
+      "arms": "2x CylinderGeometry(0.044,0.031,0.70,10,10)_T_pose_span_1.06_with_elbow_DIRECT",
+      "hands": "2x SphereGeometry(0.034,8,6)_scaled_hands_defined",
       "head": "SphereGeometry(0.11,16,16)",
-      "no_lathe": true,
+      "no_lathe": false,
+      "no_capsule": true,
       "no_chicle": true,
-      "note": "FIX V25 - piernas 0.52 no 0.82 - ya no chicle - proporciones foto 3"
+      "note": "V26 DIRECT FOTO 2 - ya no Box ni Capsule - malla humanoide directa con rodilla, tobillo, pies y manos articuladas"
     },
     "sampling": {
-      "method": "vertices_wireframe_real_fix",
+      "method": "vertices_wireframe_direct_humanoide",
       "total_points": 7000,
       "distribution": {
-        "body_mesh_real": "vertices_torso_box_deformed",
+        "body_cylinder_deformed": "vertices_torso_cylinder",
         "head": 900,
         "face_eyes": 60,
         "face_mouth": 20,
-        "arms_capsule": 720,
-        "legs_capsule": 1120,
+        "arms_cylinder": 680,
+        "hands": 80,
+        "legs_cylinder_tapered": 1180,
+        "feet": 120,
         "hair_bob": 700
       }
     }
@@ -83,10 +88,10 @@
     "mobile_scale": [0.68, 0.68, 0.68],
     "group_position": [0.05, -0.18, 0],
     "mobile_group_position": [0.0, -0.15, 0],
-    "note": "FIX V25 - bajada -0.18 y FOV 38 para ver cabeza 0.68 y pies -0.50 completos sin chicle"
+    "note": "V26 DIRECT - cabeza 0.68 y pies -0.68 visibles - humanoide completo sin chicle - como foto 2"
   },
   "motor_intuicion": {
-    "type": "pin_pan_constellation_motor_mesh_real_fix_foto3",
+    "type": "pin_pan_constellation_motor_direct_humanoide_foto2",
     "is_motor": true,
     "moves_app": true,
     "zones": ["welcome", "reading_text", "input_field", "feedback_ok", "feedback_err", "sap_dashboard", "evolution"],

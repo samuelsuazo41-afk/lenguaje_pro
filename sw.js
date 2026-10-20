@@ -1,4 +1,4 @@
-const CACHE_NAME = 'laia-v17-7-constellation-final-feminine-motor';
+const CACHE_NAME = 'laia-v17-8-constellation-final-feminine-motor';
 const ASSETS = [
   '/',
   '/index.html',

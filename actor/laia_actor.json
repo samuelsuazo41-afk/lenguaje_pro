@@ -1,14 +1,14 @@
 {
-  "actor_version": "V26.0 DIRECT HUMANOIDE - FOTO 2 - 0.11 WAIST - NO CAPSULE",
-  "type": "mesh_real_constellation_v26_direct_humanoide_foto2",
-  "status": "full_body_humanoid_direct_0.11_waist_thigh_gap_0.11_foto2_no_chicle",
-  "base_image": "wa_image_foto2_ref_direct_humanoide",
+  "actor_version": "V27.0 HD -20% - FOTO 3 - 0.11 WAIST - NO CAPSULE - NITIDA COMPLETA",
+  "type": "mesh_real_constellation_v27_hd_foto3_minus20",
+  "status": "full_body_humanoid_direct_hd_0.11_waist_thigh_gap_0.11_foto3_minus20_completa",
+  "base_image": "wa_image_foto3_ref_hd_final_minus20",
   "rig": {
     "joints": 34,
     "hidden_skeleton": true,
-    "head": "defined_face_eyes_mouth_0.11_sphere_16",
-    "face": "eyes_0.012_mouth_0.009_constellation_defined",
-    "body": "cylinder_blazer_deformed_0.11_waist + 2_human_legs_tapered_gap_0.11_direct",
+    "head": "defined_face_eyes_mouth_0.11_sphere_16_hd",
+    "face": "eyes_0.012_mouth_0.009_constellation_defined_hd",
+    "body": "cylinder_blazer_deformed_0.11_waist_hd + 2_human_legs_tapered_gap_0.11_direct_hd",
     "feminine_params": {
       "waist": 0.11,
       "waist_factor": 0.62,
@@ -17,58 +17,58 @@
       "shoulders": 0.336,
       "thigh_gap": 0.11,
       "leg_separation": 0.22,
-      "scale": 0.72,
-      "mobile_scale": 0.68
+      "scale": 0.57,
+      "mobile_scale": 0.544
     },
-    "t_pose": "full_body_direct_T_pose_legs_0.11_gap_arms_1.06_span_hands_feet_foto2"
+    "t_pose": "full_body_direct_T_pose_legs_0.11_gap_arms_1.06_span_hands_feet_foto3_hd_minus20"
   },
   "mesh": {
     "points_count": 7000,
-    "type": "constellation_direct_humanoide_wireframe_foto2",
+    "type": "constellation_direct_humanoide_wireframe_foto3_hd_minus20",
     "color": "#00d4ff",
-    "size": 0.013,
-    "opacity": 0.96,
+    "size": 0.009,
+    "opacity": 0.88,
     "blending": "NoBlending",
-    "material": "PointsMaterial_sizeAttenuation_true",
+    "material": "PointsMaterial_sizeAttenuation_true_hd",
     "hair": {
       "color": "#c9a88a",
-      "size": 0.011,
-      "opacity": 0.85,
+      "size": 0.008,
+      "opacity": 0.78,
       "geom": "SphereGeometry(0.115,10,10,0,6.28,0,1.95)",
       "count": 700
     },
     "lines": {
       "enabled": true,
-      "type": "WireframeGeometry_direct_humanoide",
+      "type": "WireframeGeometry_direct_humanoide_hd",
       "color": "#00d4ff",
-      "opacity": 0.32,
-      "connection_distance": "wireframe_edges_direct",
-      "max_distance_sq": "N/A_wireframe_direct",
-      "kNN_window": "N/A_wireframe_direct"
+      "opacity": 0.22,
+      "connection_distance": "wireframe_edges_direct_hd",
+      "max_distance_sq": "N/A_wireframe_direct_hd",
+      "kNN_window": "N/A_wireframe_direct_hd"
     },
     "mesh_real_profile": {
-      "torso": "CylinderGeometry(0.18,0.165,0.54,16,14)_deformed_waist_0.11_direct",
+      "torso": "CylinderGeometry(0.18,0.165,0.54,16,14)_deformed_waist_0.11_direct_hd",
       "torso_deform": [
         { "y": ">0.19", "scale_x": 1.12, "label": "hombros 0.336" },
-        { "y": ">0.02", "scale_x": 0.62, "label": "cintura 0.11 REAL DIRECT" },
+        { "y": ">0.02", "scale_x": 0.62, "label": "cintura 0.11 REAL DIRECT HD" },
         { "y": ">-0.15", "scale_x": 0.97, "label": "cadera 0.32" },
         { "y": "<=-0.15", "scale_x": 0.92, "label": "bajo blazer" }
       ],
-      "legs": "2x CylinderGeometry(0.088,0.048,0.78,12,14)_tapered_knee_ankle_separated_0.22_gap_0.11_DIRECT_NO_CAPSULE",
-      "feet": "2x SphereGeometry(0.06,10,8)_scaled_1x0.55x1.8_feet_defined",
-      "arms": "2x CylinderGeometry(0.044,0.031,0.70,10,10)_T_pose_span_1.06_with_elbow_DIRECT",
-      "hands": "2x SphereGeometry(0.034,8,6)_scaled_hands_defined",
-      "head": "SphereGeometry(0.11,16,16)",
+      "legs": "2x CylinderGeometry(0.088,0.048,0.78,12,14)_tapered_knee_ankle_separated_0.22_gap_0.11_DIRECT_HD_NO_CAPSULE",
+      "feet": "2x SphereGeometry(0.06,10,8)_scaled_1x0.55x1.8_feet_defined_hd",
+      "arms": "2x CylinderGeometry(0.044,0.031,0.70,10,10)_T_pose_span_1.06_with_elbow_DIRECT_HD",
+      "hands": "2x SphereGeometry(0.034,8,6)_scaled_hands_defined_hd",
+      "head": "SphereGeometry(0.11,16,16)_hd",
       "no_lathe": false,
       "no_capsule": true,
       "no_chicle": true,
-      "note": "V26 DIRECT FOTO 2 - ya no Box ni Capsule - malla humanoide directa con rodilla, tobillo, pies y manos articuladas"
+      "note": "V27 HD -20% FOTO 3 - alta definicion 0.009 + escala 0.57 cabe entera cabeza 0.68 pies -0.68 - como imagen 3"
     },
     "sampling": {
-      "method": "vertices_wireframe_direct_humanoide",
+      "method": "vertices_wireframe_direct_humanoide_hd",
       "total_points": 7000,
       "distribution": {
-        "body_cylinder_deformed": "vertices_torso_cylinder",
+        "body_cylinder_deformed": "vertices_torso_cylinder_hd",
         "head": 900,
         "face_eyes": 60,
         "face_mouth": 20,
@@ -82,16 +82,16 @@
   },
   "camera": {
     "fov": 38,
-    "position": [0.0, 0.15, 1.55],
-    "mobile_position": [0.0, 0.10, 1.85],
-    "group_scale": [0.72, 0.72, 0.72],
-    "mobile_scale": [0.68, 0.68, 0.68],
-    "group_position": [0.05, -0.18, 0],
-    "mobile_group_position": [0.0, -0.15, 0],
-    "note": "V26 DIRECT - cabeza 0.68 y pies -0.68 visibles - humanoide completo sin chicle - como foto 2"
+    "position": [0.0, 0.15, 1.95],
+    "mobile_position": [0.0, 0.10, 2.35],
+    "group_scale": [0.57, 0.57, 0.57],
+    "mobile_scale": [0.544, 0.544, 0.544],
+    "group_position": [0.0, -0.08, 0],
+    "mobile_group_position": [0.0, -0.05, 0],
+    "note": "V27 HD -20% - camara lejos 1.95/2.35 + escala -20% = cabe entera cabeza 0.68 pies -0.68 visible nitida - como foto 3"
   },
   "motor_intuicion": {
-    "type": "pin_pan_constellation_motor_direct_humanoide_foto2",
+    "type": "pin_pan_constellation_motor_direct_humanoide_foto3_hd_minus20",
     "is_motor": true,
     "moves_app": true,
     "zones": ["welcome", "reading_text", "input_field", "feedback_ok", "feedback_err", "sap_dashboard", "evolution"],

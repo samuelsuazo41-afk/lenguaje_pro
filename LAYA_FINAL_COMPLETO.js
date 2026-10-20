@@ -253,4 +253,4 @@ export const LAYA_SAP = {
   generateSAP(m, sig, w){ return { evolution:{ ACCURACY_7D: Math.round(m.accuracy_7d*100)+'%', XP_TOTAL: m.xp_total }, detail:{ grammarChain: sig } }; },
   renderToHologram(sap){ const b=document.getElementById('bubble'); if(b){ b.innerHTML=`V30.5 DEFINITIVO GAP CLEAN FIX BANDAS // ${sap.evolution.ACCURACY_7D} // XP ${sap.evolution.XP_TOTAL} // 3200 pts 0.012 opacity 0.92 kNN 12 gapClean shoulderLimit4 kneeFix 22 radiales`; b.classList.remove('hidden'); } }
 };
-export const LAYA_FINAL_ACTOR_V1 = LAYA_FINAL;
+export const LAYA_FINAL_ACTOR_V1 = LAYA_FINAL; 

@@ -1,7 +1,6 @@
-// LAYA_FINAL_COMPLETO.js - V25.0 MESH REAL FIX - BOX BLAZER 0.11 WAIST - FOTO 3
-// FIX V24 chicle -> V25 proporciones reales foto 3
-// 35 SIGs + 50 AREAS INTACTOS - SOLO AVATAR ENGINE FIX
-// Autor: YARVIS + Laia - Girona - V25.0 FIX
+// LAYA_FINAL_COMPLETO.js - V26.0 DIRECT HUMANOIDE - FOTO 2 - 0.11 WAIST - NO CAPSULE
+// DIRECTO: Cylinder tapered + pies + manos - como imagen 2
+// Autor: YARVIS + Laia - Girona - V26.0 DIRECT
 
 export const GRAMMAR_REAL = {
   PRON_PER_POSS: { id:"Pronouns Personal & Possessive", sig:"PRON_PER_POSS", formula:"I/me/my/mine/myself", example:"This is my book, not yours. I did it myself.", mistake:"I car -> MY car", level:"A1" },
@@ -62,46 +61,49 @@ export const INTENTION_MOTOR = {
   TRANSMISSION: { id: 'TRANSMISSION', name: 'Transmisión', joints: { Shoulder_L: [-30,30,0], Shoulder_R: [30,-30,0], Wrist_L: 'open_big', Mouth: 'lip_sync' }, tts: 'Esto ya es una capa completa.', sap_type: 'TRANSMIT', color: '#00d4ff' }
 };
 
-// AVATAR ENGINE V25.0 FIX - COMO FOTO 3 REAL
 export const AVATAR_ENGINE_HOLO = {
-  type: "mesh_real_box_blazer_0.11_fix_foto3_final",
+  type: "direct_humanoide_0.11_foto2_final",
   sprite: null,
   pointsCount: 7000,
   surfaceSampling: false,
   meshReal: true,
   proxyMesh: false,
-  meshType: "BoxBlazerDeformed_2LegsGap0.11_Fix_NoChicle",
+  meshType: "DirectHumanoide_TaperedLegs_Feet_Hands_Foto2",
   feminine: true,
   waist: 0.11,
-  waistFactor: 0.34,
+  waistFactor: 0.62,
   hips: 0.32,
   chest: 0.336,
   shoulders: 0.336,
   thigh_gap: 0.11,
   leg_separation: 0.22,
-  material: { color: 0x00d4ff, size: 0.014, opacity: 0.96, blending: "NoBlending" },
-  hairMaterial: { color: 0xc9a88a, size: 0.012, opacity: 0.85 },
-  lines: { enabled: true, type: "WireframeGeometry_real_fix", color: 0x00d4ff, opacity: 0.28 },
+  material: { color: 0x00d4ff, size: 0.013, opacity: 0.96, blending: "NoBlending" },
+  hairMaterial: { color: 0xc9a88a, size: 0.011, opacity: 0.85 },
+  lines: { enabled: true, type: "WireframeGeometry_direct", color: 0x00d4ff, opacity: 0.32 },
   bones: 34,
   hiddenSkeleton: true,
   fullBody: true,
   scale: 0.72,
   mobileScale: 0.68,
   distribution_mesh_real: {
-    body_box_deformed: 3800,
+    body_cylinder_deformed: 3600,
     head: 900,
     face_eyes: 60,
     face_mouth: 20,
     bob_brown: 700,
-    arms_T_capsule: 720,
-    legs_capsule_gap_0_11: 1120,
-    total: 7320
+    arms_cylinder_direct: 680,
+    hands: 80,
+    legs_cylinder_tapered_gap_0_11: 1180,
+    feet: 120,
+    total: 7340
   },
   mesh_real_profile: {
-    torso: "BoxGeometry(0.32,0.48,0.18,12,12,2)_FIX",
-    deform: "y>0.18 scale 1.05 hombros 0.336, y>0.02 scale 0.34 cintura 0.11 REAL FIX, y>-0.12 scale 1.02 cadera 0.32",
-    legs: "2x Capsule 0.058,0.52 separated 0.22 gap 0.11 FIX NO CHICLE",
-    arms: "2x Capsule 0.032,0.46 T-pose 0.80 span FIX",
+    torso: "CylinderGeometry(0.18,0.165,0.54,16,14)_deformed",
+    deform: "y>0.19 scale 1.12 hombros, y>0.02 scale 0.62 cintura 0.11 DIRECT, y>-0.15 scale 0.97 cadera",
+    legs: "2x Cylinder 0.088->0.048,0.78 tapered knee/ankle separated 0.22 gap 0.11 DIRECT NO CAPSULE",
+    feet: "2x Sphere 0.06 scaled feet",
+    arms: "2x Cylinder 0.044->0.031,0.70 T-pose DIRECT",
+    hands: "2x Sphere 0.034 hands",
     head: "Sphere 0.11"
   },
   frameMap: { strict: 'STRICT_ENGINEER', point_left: 'SCAFFOLDING', explain_open: 'SCAFFOLDING', crossed_arms: 'FLOW_OBSERVER', celebratory: 'ELEVATION', crossed_clip: 'TRANSMISSION', open_big: 'TRANSMISSION' },
@@ -134,7 +136,7 @@ export const AVATAR_ENGINE_HOLO = {
 };
 
 export const LAYA_FINAL = {
-  version: "25.0 MESH REAL FIX - BOX BLAZER 0.11 - FOTO 3 - GAP REAL NO CHICLE",
+  version: "26.0 DIRECT HUMANOIDE - FOTO 2 - GAP REAL NO CHICLE - NO CAPSULE",
   VOCAB: VOCAB_REAL, GRAMMAR: GRAMMAR_REAL, AVATAR: AVATAR_ENGINE_HOLO, INTENTIONS: INTENTION_MOTOR, JOINTS: MARIONETTE_JOINTS,
   AREAS: {
     1: { name:"Money Basics", topic:"Why Most People Never Become Rich", vocab:["collHaveTake","survival50","pronPoss"], grammar:["PS_3RD_S","COND_1"], future:"COND_1", level:"A1" },
@@ -200,13 +202,13 @@ export const LAYA_FINAL = {
     const avatarData = AVATAR_ENGINE_HOLO.decideByMetrics({...metrics, cefr_level: level});
     const xp = metrics.same_error_count>=3?0:(level==="A1"?10:level==="A2"?15:20);
     const story = (this.STORIES[area.name]||this.STORIES["default"]).replace("{topic}", area.topic.toLowerCase());
-    return { prompt: level+" - "+area.topic, story, meta: { area: area.name, topic: area.topic, level, grammar_main: gMain, grammar_future: gFuture, vocab: vocabList, emotion: avatarData.emotion, intention: avatarData.intention, joints: avatarData.joints, avatar_file:null, avatar_type:"mesh_real_box_0.11_fix_foto3", avatar_frame:0, xp, wordCount:"150" } };
+    return { prompt: level+" - "+area.topic, story, meta: { area: area.name, topic: area.topic, level, grammar_main: gMain, grammar_future: gFuture, vocab: vocabList, emotion: avatarData.emotion, intention: avatarData.intention, joints: avatarData.joints, avatar_file:null, avatar_type:"direct_humanoide_foto2", avatar_frame:0, xp, wordCount:"150" } };
   }
 };
 
 export const LAYA_FINAL_COMPLETO = LAYA_FINAL;
 export const LAYA_SAP = {
   generateSAP(m, sig, w){ return { evolution:{ ACCURACY_7D: Math.round(m.accuracy_7d*100)+'%', XP_TOTAL: m.xp_total }, detail:{ grammarChain: sig } }; },
-  renderToHologram(sap){ const b=document.getElementById('bubble'); if(b){ b.innerHTML=`V25.0 FIX 0.11 // ${sap.evolution.ACCURACY_7D} // XP ${sap.evolution.XP_TOTAL}`; b.classList.remove('hidden'); } }
+  renderToHologram(sap){ const b=document.getElementById('bubble'); if(b){ b.innerHTML=`V26.0 DIRECT FOTO 2 // ${sap.evolution.ACCURACY_7D} // XP ${sap.evolution.XP_TOTAL}`; b.classList.remove('hidden'); } }
 };
 export const LAYA_FINAL_ACTOR_V1 = LAYA_FINAL;

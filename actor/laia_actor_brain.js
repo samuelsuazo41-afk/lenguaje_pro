@@ -1,14 +1,16 @@
-// laia_actor_brain.js - V19.0 SURFACE REAL -20% - CEREBRO AUTÓNOMO FEMENINO
-// 7000 puntos superficie + líneas vecinos <0.08 - Esqueleto 34 huesos invisibles
-// Params V17.4: waist 0.11, hips 0.21, chest 0.19 - Surface sampling
-// Autor: YARVIS + Laia - Girona - V19.0
+// laia_actor_brain.js - V20.0 PROXY MESH FINAL - LATHE 0.11 WAIST - CEREBRO AUTÓNOMO FEMENINO
+// 7000 puntos superficie proxy único + líneas vecinos <0.08 - Esqueleto 34 huesos invisibles
+// Params V20: waist 0.11 lathe pinch, hips 0.21, chest 0.19, thigh_gap 0.11
+// Autor: YARVIS + Laia - Girona - V20.0 PROXY MESH FINAL
 
 export const LAIA_BRAIN_CONFIG = {
-  version: "19.0 SURFACE REAL -20% FEMENINA 7000 POINTS",
+  version: "20.0 PROXY MESH FINAL - LATHE 0.11 WAIST - 7000 POINTS",
   hiddenSkeleton: true,
   pointsCount: 7000,
   constellation: true,
-  surfaceSampling: true, // FIX: superficie no volumen
+  surfaceSampling: true,
+  proxyMesh: true, // FIX V20: malla única lathe, no cilindros
+  proxyType: "LatheGeometry_single_mesh_barycentric",
   breathBase: 1.1,
   meshOnly: true,
   feminine: true,
@@ -16,7 +18,14 @@ export const LAIA_BRAIN_CONFIG = {
   hips: 0.21,
   chest: 0.19,
   shoulders: 0.20,
-  thigh_gap: true
+  thigh_gap: 0.11,
+  scale: 0.72,
+  mobileScale: 0.688,
+  lines: {
+    maxDist: 0.08,
+    maxDistSq: 0.0064,
+    kNN: 132
+  }
 };
 
 // Estado mental de Laia
@@ -29,7 +38,7 @@ let MIND = {
   pinPan: 0
 };
 
-// 60fps - Mueve huesos invisibles que arrastran malla 7000 superficie
+// 60fps - Mueve huesos invisibles que arrastran malla proxy única 7000 superficie
 export function thinkAndMove(bones, context) {
   MIND.breath += 0.016;
   MIND.talkAmp = context.talkAmp || 0;
@@ -37,15 +46,16 @@ export function thinkAndMove(bones, context) {
 
   if (!bones || bones.length === 0) return MIND.state;
 
-  // 1. RESPIRACIÓN FEMENINA - chest 0.19 suave - cintura 0.11 no respira
+  // 1. RESPIRACIÓN FEMENINA V20 - pecho 0.19 respira, cintura 0.11 pinch NO respira
   const t = MIND.breath;
   if (bones[31]) {
-    const scale = 1 + Math.sin(t * 1.1) * 0.022;
+    const scale = 1 + Math.sin(t * 1.1) * 0.018; // más suave que V19
     bones[31].scale.x = scale;
     bones[31].scale.z = scale;
   }
-  bones[0].position.y = Math.sin(t * 0.7) * 0.010;
-  bones[0].position.x = Math.sin(t * 0.4) * 0.006; // sway cadera 0.21
+  // Sway cadera 0.21 + thigh_gap 0.11
+  bones[0].position.y = Math.sin(t * 0.7) * 0.008;
+  bones[0].position.x = Math.sin(t * 0.4) * 0.004;
 
   // 2. CEREBRO DECIDE ESTADO
   if (context.inputFocused) {
@@ -84,56 +94,56 @@ export function thinkAndMove(bones, context) {
 
   if (MIND.state === 'IDLE_CORTANA') {
     if (head) {
-      head.rotation.y = Math.sin(t * 0.35) * 0.20;
-      head.rotation.x = Math.sin(t * 0.28) * 0.05;
-      head.rotation.z = Math.sin(t * 0.2) * 0.03;
+      head.rotation.y = Math.sin(t * 0.35) * 0.18;
+      head.rotation.x = Math.sin(t * 0.28) * 0.04;
+      head.rotation.z = Math.sin(t * 0.2) * 0.02;
     }
-    if (mouth) mouth.scale.y = 1 + Math.sin(t * 0.8) * 0.015;
-    if (neck) neck.rotation.z = Math.sin(t * 0.45) * 0.03;
-    if (lShoulder) lShoulder.rotation.z = Math.sin(t * 0.3) * 0.04;
-    if (rShoulder) rShoulder.rotation.z = -Math.sin(t * 0.3) * 0.04;
+    if (mouth) mouth.scale.y = 1 + Math.sin(t * 0.8) * 0.012;
+    if (neck) neck.rotation.z = Math.sin(t * 0.45) * 0.02;
+    if (lShoulder) lShoulder.rotation.z = Math.sin(t * 0.3) * 0.03;
+    if (rShoulder) rShoulder.rotation.z = -Math.sin(t * 0.3) * 0.03;
   }
 
   if (MIND.state === 'LISTENING') {
     if (head) {
-      head.rotation.x = -0.16;
-      head.rotation.y = 0.14;
+      head.rotation.x = -0.14;
+      head.rotation.y = 0.12;
     }
-    if (lArm) lArm.rotation.z = 0.52;
-    if (lFore) lFore.rotation.x = -1.02;
+    if (lArm) lArm.rotation.z = 0.48;
+    if (lFore) lFore.rotation.x = -0.98;
   }
 
   if (MIND.state === 'EXPLAINING') {
-    if (rFore) rFore.rotation.x = Math.sin(t * 2.8) * 0.50;
-    if (rFore) rFore.rotation.z = Math.sin(t * 1.5) * 0.18;
+    if (rFore) rFore.rotation.x = Math.sin(t * 2.8) * 0.42;
+    if (rFore) rFore.rotation.z = Math.sin(t * 1.5) * 0.14;
     if (mouth) {
-      mouth.scale.y = 1 + Math.sin(t * 8.5) * (MIND.talkAmp || 0.40);
-      mouth.scale.x = 1 + Math.sin(t * 3) * 0.06;
+      mouth.scale.y = 1 + Math.sin(t * 8.5) * (MIND.talkAmp || 0.32);
+      mouth.scale.x = 1 + Math.sin(t * 3) * 0.04;
     }
-    if (lArm) lArm.rotation.x = Math.sin(t * 1.8) * 0.22;
+    if (lArm) lArm.rotation.x = Math.sin(t * 1.8) * 0.18;
   }
 
   if (MIND.state === 'WALKING') {
-    if (lKnee) lKnee.rotation.x = Math.sin(t * 5.5) * 0.80;
-    if (rKnee) rKnee.rotation.x = -Math.sin(t * 5.5) * 0.80;
-    if (lThigh) lThigh.rotation.x = Math.sin(t * 5.5) * 0.28;
-    if (rThigh) rThigh.rotation.x = -Math.sin(t * 5.5) * 0.28;
-    if (lFore) lFore.rotation.x = -Math.sin(t * 5.5) * 0.32;
-    if (rFore) rFore.rotation.x = Math.sin(t * 5.5) * 0.32;
-    bones[0].position.x = Math.sin(t * 5.5) * 0.025;
+    if (lKnee) lKnee.rotation.x = Math.sin(t * 5.5) * 0.72;
+    if (rKnee) rKnee.rotation.x = -Math.sin(t * 5.5) * 0.72;
+    if (lThigh) lThigh.rotation.x = Math.sin(t * 5.5) * 0.24;
+    if (rThigh) rThigh.rotation.x = -Math.sin(t * 5.5) * 0.24;
+    if (lFore) lFore.rotation.x = -Math.sin(t * 5.5) * 0.28;
+    if (rFore) rFore.rotation.x = Math.sin(t * 5.5) * 0.28;
+    bones[0].position.x = Math.sin(t * 5.5) * 0.018;
   }
 
   if (MIND.state === 'SCOLDING') {
-    bones[0].rotation.z = Math.sin(t * 11) * 0.08;
-    if (head) head.rotation.y = Math.sin(t * 9.5) * 0.24;
+    bones[0].rotation.z = Math.sin(t * 11) * 0.06;
+    if (head) head.rotation.y = Math.sin(t * 9.5) * 0.18;
   }
 
   if (MIND.state === 'CELEBRATING') {
-    bones[0].position.y += Math.abs(Math.sin(t * 3.8)) * 0.08;
-    if (lFore) lFore.rotation.x = -1.80;
-    if (rFore) rFore.rotation.x = -1.80;
-    if (lArm) lArm.rotation.x = -0.42;
-    if (rArm) rArm.rotation.x = -0.42;
+    bones[0].position.y += Math.abs(Math.sin(t * 3.8)) * 0.06;
+    if (lFore) lFore.rotation.x = -1.72;
+    if (rFore) rFore.rotation.x = -1.72;
+    if (lArm) lArm.rotation.x = -0.38;
+    if (rArm) rArm.rotation.x = -0.38;
   }
 
   return MIND.state;
@@ -151,7 +161,7 @@ export function decideByMetrics(metrics) {
 }
 
 export const LAIA_ACTOR_BRAIN = {
-  version: "19.0 SURFACE REAL FEMENINA",
+  version: "20.0 PROXY MESH FINAL - LATHE 0.11",
   thinkAndMove,
   decideByMetrics,
   config: LAIA_BRAIN_CONFIG

@@ -1,5 +1,5 @@
-/* styles.css - V30.9 SINGLE MESH - CLON IMAGEN 1 - SKINNY GLOW REAL */
-/* QUITADO TODO LO QUE SOBRA: no points, no kNN, no bloques */
+/* styles.css - V30.10.1 FULL FRAME DEFINITIVO - CLON V27 T-POSE - SKINNY 0.19 */
+/* FIX TAMAÑOS: 0.40 / 2.42 - NO 0.58 / 1.78 QUE CORTABA */
 
 :root{
   --bg:#020208;
@@ -12,12 +12,12 @@
 body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system;overflow:hidden}
 
 header{
-  height:54px;
+  height:52px!important;
   background:rgba(10,12,20,0.28)!important;
   backdrop-filter:blur(12px)!important;
   border-bottom:1px solid rgba(0,212,255,0.10)!important;
-  display:flex;justify-content:space-between;align-items:center;
-  padding:0 16px;position:sticky;top:0;z-index:100
+  display:flex!important;justify-content:space-between!important;align-items:center!important;
+  padding:0 14px!important;position:fixed!important;top:0!important;left:0!important;right:0!important;z-index:100!important
 }
 .logo{font-weight:800;letter-spacing:-0.02em}
 .logo span{background:var(--holo);color:#000;padding:2px 8px;border-radius:6px;font-size:10px;margin-left:6px;font-weight:900}
@@ -26,68 +26,66 @@ header{
 #xp{color:#fbbf24;font-weight:800}
 
 .h-wrapper{
-  margin-top:54px;
-  display:flex;overflow-x:auto;
-  scroll-snap-type:x mandatory;
-  width:100vw;height:calc(100vh - 54px);
-  position:relative;z-index:20;
-  scrollbar-width:none
+  margin-top:52px!important;
+  display:flex!important;overflow-x:auto!important;
+  scroll-snap-type:x mandatory!important;
+  width:100vw!important;height:calc(100vh - 52px)!important;
+  position:relative!important;z-index:20!important;
+  scrollbar-width:none!important
 }
 .h-wrapper::-webkit-scrollbar{display:none}
 .page{
-  min-width:100vw;width:100vw;height:100%;
-  scroll-snap-align:start;overflow-y:auto;
-  display:flex;flex-direction:row;
-  position:relative;z-index:20
+  min-width:100vw!important;width:100vw!important;height:100%!important;
+  scroll-snap-align:start!important;overflow-y:auto!important;
+  display:flex!important;flex-direction:row!important;
+  position:relative!important;z-index:20!important
 }
 
 #page1 aside{
-  width:360px!important;min-width:360px!important;
+  width:340px!important;min-width:340px!important;
   background:rgba(12,14,22,0.18)!important;
   backdrop-filter:blur(10px)!important;
   border-right:1px solid rgba(0,212,255,0.08)!important;
-  padding:14px;display:flex;flex-direction:column;gap:10px;
-  height:calc(100vh - 54px);overflow-y:auto;
-  position:sticky;top:0;z-index:25
+  padding:12px!important;display:flex!important;flex-direction:column!important;gap:8px!important;
+  height:calc(100vh - 52px)!important;overflow-y:auto!important;
+  z-index:25!important
 }
 #page1 main{
-  flex:1;padding:16px;max-width:760px;
-  background:transparent!important;
-  z-index:25
+  flex:1!important;padding:16px!important;max-width:760px!important;
+  background:transparent!important;z-index:25!important
 }
-#page2{background:transparent!important;z-index:25;padding:18px;display:flex;flex-direction:column;gap:12px;align-items:center;min-width:100vw}
+#page2{background:transparent!important;z-index:25!important;padding:18px!important;display:flex!important;flex-direction:column!important;gap:12px!important;align-items:center!important;min-width:100vw!important}
 
 #search{
   background:rgba(22,24,36,0.28)!important;
   border:1px solid rgba(0,212,255,0.12)!important;
-  color:#fff;padding:10px 12px;border-radius:10px;
-  width:100%;outline:none
+  color:#fff!important;padding:9px 12px!important;border-radius:10px!important;
+  width:100%!important;outline:none!important
 }
-#search:focus{border-color:rgba(0,229,255,0.24)!important}
 .f{
   background:rgba(24,26,40,0.24)!important;
   border:1px solid rgba(70,70,90,0.12)!important;
-  color:var(--muted);padding:5px 10px;border-radius:20px;
-  font-size:11px;cursor:pointer
+  color:var(--muted)!important;padding:5px 10px!important;border-radius:20px!important;
+  font-size:11px!important;cursor:pointer!important
 }
-.f.active{background:rgba(0,212,255,0.82)!important;color:#000!important;font-weight:800}
+.f.active{background:rgba(0,212,255,0.82)!important;color:#000!important;font-weight:800!important}
 
 #list{
-  overflow-y:auto;display:flex;flex-direction:column;gap:6px;flex:1;
-  min-height:380px;
+  overflow-y:auto!important;display:flex!important;flex-direction:column!important;gap:5px!important;flex:1!important;
+  min-height:300px!important;
   background:rgba(10,12,18,0.12)!important;
   border:1px solid rgba(0,212,255,0.06)!important;
-  border-radius:10px;padding:6px;
-  scrollbar-width:thin
+  border-radius:10px!important;padding:6px!important;
+  scrollbar-width:thin!important
 }
 .area{
   background:rgba(22,24,36,0.22)!important;
-  padding:9px 10px;border-radius:8px;cursor:pointer;
+  padding:8px 10px!important;border-radius:8px!important;cursor:pointer!important;
   border:1px solid rgba(0,212,255,0.06)!important;
-  color:#d0d0d8;display:flex!important;flex-direction:column!important;gap:2px!important
+  color:#d0d0d8!important;display:flex!important;flex-direction:column!important;gap:2px!important
 }
-.area b{color:#fff;font-size:12px;font-weight:700}
-.area small{color:#9ca3af;font-size:10px}
+.area b{color:#fff!important;font-size:12px!important;font-weight:700!important}
+.area small{color:#9ca3af!important;font-size:10px!important}
 .area.active{background:rgba(0,212,255,0.62)!important;color:#000!important}
 .area.active b,.area.active small{color:#000!important}
 
@@ -95,43 +93,26 @@ header{
   background:rgba(14,16,26,0.20)!important;
   backdrop-filter:blur(8px)!important;
   border:1px solid rgba(0,212,255,0.10)!important;
-  border-radius:12px!important
+  border-radius:12px!important;padding:12px!important
 }
 
-/* === V30.9 LAIA - CLON IMAGEN 1 - SKINNY GLOW REAL === */
+/* === V30.10.1 LAIA - FULL FRAME 0.40 / 2.42 - CLON V27 - SKINNY GLOW 0.19 === */
 #laia-hologram{
   position:fixed!important;
-  top:54px!important;left:0!important;
-  width:100vw!important;height:calc(100vh - 54px)!important;
+  top:52px!important;left:0!important;
+  width:100vw!important;height:calc(100vh - 52px)!important;
   z-index:1!important;
   display:flex!important;align-items:center!important;justify-content:center!important;
   pointer-events:none!important;
   opacity:1!important;
   background:transparent!important;
-  /* quitado radial gordo que empastaba */
 }
 #laia-holo-canvas{
-  width:100vw!important;height:calc(100vh - 54px)!important;
+  width:100vw!important;height:calc(100vh - 52px)!important;
   display:block!important;background:transparent!important;
-  /* SKINNY GLOW REAL - NO BLOQUE */
-  filter: contrast(1.12) brightness(1.08) saturate(1.06) drop-shadow(0 0 8px rgba(0,229,255,0.38)) drop-shadow(0 0 18px rgba(0,212,255,0.16))!important;
+  /* SKINNY GLOW REAL - 0.19 - NO BLOQUE GORDO V27 */
+  filter: contrast(1.12) brightness(1.08) saturate(1.06) drop-shadow(0 0 8px rgba(0,229,255,0.38)) drop-shadow(0 0 18px rgba(0,212,255,0.14))!important;
 }
 #laia-state{
-  position:absolute;bottom:18px;left:50%;transform:translateX(-50%);
-  background:rgba(0,212,255,0.82);color:#000;
-  font-size:9px;padding:4px 10px;border-radius:10px;
-  font-weight:800;letter-spacing:0.6px;z-index:60;
-  box-shadow:0 0 12px rgba(0,229,255,0.52)
-}
-.hidden{display:none!important}
-
-#level{background:rgba(24,26,40,0.28);border:1px solid rgba(0,212,255,0.12);color:#fff;padding:10px 12px;border-radius:8px}
-#gen,#gen2{background:var(--holo)!important;color:#000!important;font-weight:800!important}
-#teachBtn{background:rgba(139,92,246,0.82)!important}
-#wordInput{background:rgba(24,26,40,0.28)!important;border:1px solid rgba(0,212,255,0.12)!important;color:#fff!important;padding:10px 12px!important;border-radius:8px!important;flex:1!important}
-
-@media(max-width:768px){
-  #page1{flex-direction:column}
-  #page1 aside{width:100%!important;min-width:100%!important;max-height:44vh;min-height:44vh;border-right:none;border-bottom:1px solid rgba(0,212,255,0.08)}
-  #list{min-height:180px;max-height:28vh}
-}
+  position:absolute!important;bottom:16px!important;left:50%!important;transform:translateX(-50%)!important;
+  background:rgba(0,212,255,0.82)!important;color:#000!important

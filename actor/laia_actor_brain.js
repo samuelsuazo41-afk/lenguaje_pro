@@ -1,15 +1,14 @@
-// actor/laia_actor_brain.js - V30.10.1 FULL FRAME DEFINITIVO - CLON V27 T-POSE - SKINNY 0.19
-// FIX: scale 0.40 / cam 2.42 / FOV 30 / group -0.20 - NO 0.58 / 1.78 QUE CORTABA
-// BORRAR: laia_actor.json
+// actor/laia_actor_brain.js - V30.11 FULL FRAME - CLON V27 BLAZER SOLDADO - SKINNY 0.19
+// FIX V30.11: Geometría movida a laia_hologram.js - Brain solo huesos + lógica - 50x44 + 0.042 solapas
 
 export const LAIA_BRAIN_CONFIG = {
-  version: "30.10.1 FULL FRAME - CLON V27 T-POSE - WAIST 0.11 GAP 0.11 SKINNY 0.19 - DEFINITIVO",
-  author: "YARVIS + Laia - V30.10.1 FULL FRAME",
+  version: "30.11 FULL FRAME - CLON V27 BLAZER SOLDADO - SINGLE MESH 50x44 - 0.19",
+  author: "YARVIS + Laia - V30.11",
   skeleton: {
     bones: 8,
     hiddenSkeleton: false,
     skinnedMesh: false,
-    type: "SingleMesh_Topological_Wireframe_V30.10.1_FULL_FRAME_0.40_2.42_CLON_V27_SKINNY_0.19"
+    type: "V30.11_FULL_FRAME_SOLDADO_50x44_BLAZER_0.042_T-POSE_0.92"
   },
   config: {
     scale: 0.40,
@@ -23,18 +22,18 @@ export const LAIA_BRAIN_CONFIG = {
     },
     singleMesh: {
       enabled: true,
-      note: "FULL FRAME 0.40 / 2.42 FOV 30 - SINGLE MESH CONTINUA - CLON V27 T-POSE COMPLETA - NO CORTES",
+      note: "V30.11 - SINGLE MESH 50x44 CONTINUO SOLDADO - NO MAS 43x34 - BLAZER 0.042 + T-POSE 0.92 + GAP 0.068 LIMPIO",
       waist: 0.11,
       waistFactor: 0.52,
       thigh_gap: 0.11,
       leg_separation: 0.068,
-      torso: "43 radiales x 34 verticales - waist 0.52 marcada + solapas 0.042 extruidas - blazer V27",
-      legs: "37 radiales x 24 verticales - gap 0.068 limpio - sin bandas - continuo torso",
-      feet: "7 radiales x 14 verticales - 5 dedos continuos bifurcacion real - no cajas",
-      arms: "22 radiales x 22 verticales - T-pose 0.92 largo V27 - open fan limpio",
-      head: "sphere 0.16 wireframe 0.19 provisional - no foto aun - misma opacidad",
+      torso: "50 radiales x 44 verticales - waist 0.52 + solapas 0.042 exp + botones 0.008 - V27",
+      legs: "37x24 - gap 0.068 soldado a cadera sin banda",
+      feet: "7x14 - 5 dedos continuos",
+      arms: "22x22 - T-pose 0.92 soldados a hombro sin gap",
+      head: "22x32 esfera 0.16 + pelo bob - wireframe 0.19",
       material: { color: 0x00e5ff, opacity: 0.19, wireframe: true, depthWrite: false, transparent: true },
-      filter: "contrast(1.12) brightness(1.08) saturate(1.06) drop-shadow 8px 18px opacity 0.14 - SKINNY GLOW REAL - FULL FRAME"
+      filter: "contrast(1.12) brightness(1.08) saturate(1.06) drop-shadow 0.19 skinny glow real"
     }
   },
   bones_hierarchy: [
@@ -42,23 +41,20 @@ export const LAIA_BRAIN_CONFIG = {
     { name: "Spine_02", parent: "Hips", pos: [0, 0.18, 0] },
     { name: "Chest", parent: "Spine_02", pos: [0, 0.22, 0] },
     { name: "Head_Bone", parent: "Chest", pos: [0, 0.22, 0] },
-    { name: "Shoulder.L", parent: "Chest", pos: [-0.22, 0.15, 0] },
-    { name: "Shoulder.R", parent: "Chest", pos: [0.22, 0.15, 0] },
+    { name: "Shoulder.L", parent: "Chest", pos: [-0.31, 0.15, 0] },
+    { name: "Shoulder.R", parent: "Chest", pos: [0.31, 0.15, 0] },
     { name: "Hip.L", parent: "Hips", pos: [-0.068, -0.18, 0] },
     { name: "Hip.R", parent: "Hips", pos: [0.068, -0.18, 0] }
   ],
-  distribution_mesh_real_V30_10_1: {
-    note: "FULL FRAME 0.40/2.42 - SINGLE MESH CONTINUA - 1 BufferGeometry - wireframe 0.19 - CLON V27 T-POSE",
-    torso_single_blazer: 1462,
-    legs_single_gap_clean_0_068: 1776,
-    feet_5_toes_continuos: 196,
-    arms_T_pose_0_92_largo: 968,
-    head_0_16_provisional: 196,
-    total_vertices: 4598,
-    wireframe: "Single LineSegments WireframeGeometry opacity 0.19 skinny glow full frame",
-    total_points: 0,
-    kNN_lines: 0,
-    quadDense: 0
+  distribution_mesh_real_V30_11: {
+    note: "V30.11 SINGLE MESH 50x44 SOLDADO - wireframe 0.19",
+    torso_single_blazer_50x44: 2200,
+    legs_single_gap_clean_0_068_37x24: 1776,
+    feet_5_toes_7x14: 196,
+    arms_T_pose_0_92_22x22_soldados: 968,
+    head_0_16_22x32: 704,
+    total_vertices: 5844,
+    wireframe: "LineSegments WireframeGeometry opacity 0.19 skinny glow"
   }
 };
 
@@ -78,8 +74,8 @@ export function createLaiaSkeleton(THREE, group) {
   const spine02 = mk('Spine_02', new THREE.Vector3(0,0.18,0), hips);
   const chest = mk('Chest', new THREE.Vector3(0,0.22,0), spine02);
   const head = mk('Head_Bone', new THREE.Vector3(0,0.22,0), chest);
-  const shoulderL = mk('Shoulder.L', new THREE.Vector3(-0.22,0.15,0), chest);
-  const shoulderR = mk('Shoulder.R', new THREE.Vector3(0.22,0.15,0), chest);
+  const shoulderL = mk('Shoulder.L', new THREE.Vector3(-0.31,0.15,0), chest);
+  const shoulderR = mk('Shoulder.R', new THREE.Vector3(0.31,0.15,0), chest);
   const hipL = mk('Hip.L', new THREE.Vector3(-0.068,-0.18,0), hips);
   const hipR = mk('Hip.R', new THREE.Vector3(0.068,-0.18,0), hips);
   const skeleton = new THREE.Skeleton(bones);
@@ -117,14 +113,13 @@ export function decideByMetrics(metrics) {
   return { state: 'IDLE_CORTANA', color: '#00d4ff', pos: 'welcome' };
 }
 
-export const LAIA_ACTOR_BRAIN_V30_10_1 = {
-  version: "30.10.1 FULL FRAME 0.40/2.42 FOV30 - CLON V27 T-POSE - SKINNY 0.19 DEFINITIVO",
+export const LAIA_ACTOR_BRAIN_V30_11 = {
+  version: "30.11 FULL FRAME 0.40/2.42 FOV30 - 50x44 BLAZER 0.042 SOLDADO DEFINITIVO",
   createLaiaSkeleton,
   thinkAndMove,
   decideByMetrics,
   config: LAIA_BRAIN_CONFIG
 };
-export const LAIA_ACTOR_BRAIN = LAIA_ACTOR_BRAIN_V30_10_1;
-export const LAIA_ACTOR_BRAIN_V30_10 = LAIA_ACTOR_BRAIN_V30_10_1;
-export const LAIA_ACTOR_BRAIN_V30_9 = LAIA_ACTOR_BRAIN_V30_10_1;
-export const LAIA_BRAIN = LAIA_ACTOR_BRAIN_V30_10_1;
+export const LAIA_ACTOR_BRAIN = LAIA_ACTOR_BRAIN_V30_11;
+export const LAIA_ACTOR_BRAIN_V30_10_1 = LAIA_ACTOR_BRAIN_V30_11;
+export const LAIA_BRAIN = LAIA_ACTOR_BRAIN_V30_11;

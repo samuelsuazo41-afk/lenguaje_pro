@@ -1,73 +1,137 @@
-/* styles.css - V30.7 DEFINITIVO - CLON IMAGEN 5 - 3 MALLAS INTEGRADAS - FIX BANDAS TWIST */
-/* V30.6 -> V30.7: Fix definitivo bandas rodilla - twist 0.65 + jitter 0.0035 + filtro dy<0.012 dx>0.012 - gap clean 0.11 - hombros open fan 0.06 limit 4 + cara frontal pole 8 - particle 0.012 glow 0.92 - scale 0.54/0.50 - camera 1.62/1.88 */
-// YARVIS + Laia - Girona - V30.7 DEFINITIVO CLON IMAGEN 5
+/* styles.css - V30.9 SINGLE MESH - CLON IMAGEN 1 - SKINNY GLOW REAL */
+/* QUITADO TODO LO QUE SOBRA: no points, no kNN, no bloques */
 
-:root{--bg:#080a12;--text:#f1f1f5;--muted:#9ca3af;--holo:#00d4ff;--holo-cyan:#00e5ff;--holo-glow:rgba(0,229,255,0.62);}
+:root{
+  --bg:#020208;
+  --text:#f1f1f5;
+  --muted:#9ca3af;
+  --holo:#00d4ff;
+  --holo-glow:rgba(0,229,255,0.38);
+}
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system;overflow-x:hidden;overflow-y:hidden}
-header{height:58px;background:rgba(12,12,20,0.22)!important;backdrop-filter:blur(16px) saturate(1.2)!important;border-bottom:1px solid rgba(0,212,255,0.14)!important;display:flex;justify-content:space-between;align-items:center;padding:0 18px;position:sticky;top:0;z-index:100}
-.logo{font-weight:800;letter-spacing:-0.02em}.logo span{background:var(--holo);color:#000;padding:2px 8px;border-radius:6px;font-size:11px;margin-left:6px;font-weight:900}
-.metrics{display:flex;gap:10px;font-size:13px;color:var(--muted);align-items:center}
-#level-badge{background:var(--holo);color:#000;padding:3px 10px;border-radius:20px;font-weight:800;font-size:11px}
+body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system;overflow:hidden}
+
+header{
+  height:54px;
+  background:rgba(10,12,20,0.28)!important;
+  backdrop-filter:blur(12px)!important;
+  border-bottom:1px solid rgba(0,212,255,0.10)!important;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0 16px;position:sticky;top:0;z-index:100
+}
+.logo{font-weight:800;letter-spacing:-0.02em}
+.logo span{background:var(--holo);color:#000;padding:2px 8px;border-radius:6px;font-size:10px;margin-left:6px;font-weight:900}
+.metrics{display:flex;gap:10px;font-size:12px;color:var(--muted);align-items:center}
+#level-badge{background:var(--holo);color:#000;padding:2px 8px;border-radius:12px;font-weight:800;font-size:10px}
 #xp{color:#fbbf24;font-weight:800}
 
-#search{background:rgba(28,28,42,0.18)!important;border:1px solid rgba(0,212,255,0.16)!important;color:#fff;padding:10px 12px;border-radius:10px;width:100%;backdrop-filter:blur(8px);outline:none;transition:border 0.2s}
-#search:focus{border-color:rgba(0,229,255,0.42)!important;box-shadow:0 0 0 3px rgba(0,229,255,0.12)}
-.f{background:rgba(28,28,42,0.18)!important;border:1px solid rgba(70,70,90,0.14)!important;color:var(--muted);padding:6px 12px;border-radius:20px;font-size:11px;cursor:pointer;backdrop-filter:blur(6px);transition:all 0.2s}
-.f:hover{border-color:rgba(0,212,255,0.22)!important;color:#cdefff!important}
-.f.active{background:rgba(0,212,255,0.88)!important;color:#000!important;font-weight:900;box-shadow:0 0 12px rgba(0,229,255,0.42)}
-
-/* V30.7 CONTENIDO ULTRA TRANSPARENTE - LAIA PROTAGONISTA - CLON IMAGEN 5 */
-.h-wrapper{margin-top:58px;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;width:100vw;height:calc(100vh - 58px);position:relative;z-index:20;scrollbar-width:none}
+.h-wrapper{
+  margin-top:54px;
+  display:flex;overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  width:100vw;height:calc(100vh - 54px);
+  position:relative;z-index:20;
+  scrollbar-width:none
+}
 .h-wrapper::-webkit-scrollbar{display:none}
-.page{min-width:100vw;width:100vw;height:100%;scroll-snap-align:start;overflow-y:auto;display:flex;flex-direction:row;position:relative;z-index:20}
+.page{
+  min-width:100vw;width:100vw;height:100%;
+  scroll-snap-align:start;overflow-y:auto;
+  display:flex;flex-direction:row;
+  position:relative;z-index:20
+}
 
-#page1 aside{width:380px!important;min-width:380px!important;background:rgba(14,14,22,0.16)!important;backdrop-filter:blur(14px) saturate(1.1)!important;border-right:1px solid rgba(0,212,255,0.10)!important;padding:14px;display:flex;flex-direction:column;gap:12px;height:calc(100vh - 58px);overflow-y:auto;position:sticky;top:0;z-index:25}
-#page1 main{flex:1;padding:18px;max-width:860px;background:rgba(10,10,18,0.04)!important;backdrop-filter:blur(1px)!important;z-index:25}
-#page2{background:rgba(10,10,18,0.04)!important;z-index:25;padding:18px;display:flex;flex-direction:column;gap:14px;align-items:center;min-width:100vw}
+#page1 aside{
+  width:360px!important;min-width:360px!important;
+  background:rgba(12,14,22,0.18)!important;
+  backdrop-filter:blur(10px)!important;
+  border-right:1px solid rgba(0,212,255,0.08)!important;
+  padding:14px;display:flex;flex-direction:column;gap:10px;
+  height:calc(100vh - 54px);overflow-y:auto;
+  position:sticky;top:0;z-index:25
+}
+#page1 main{
+  flex:1;padding:16px;max-width:760px;
+  background:transparent!important;
+  z-index:25
+}
+#page2{background:transparent!important;z-index:25;padding:18px;display:flex;flex-direction:column;gap:12px;align-items:center;min-width:100vw}
 
-#list{overflow-y:auto;display:flex;flex-direction:column;gap:7px;flex:1;min-height:420px;background:rgba(10,10,18,0.08)!important;border:1px solid rgba(0,212,255,0.08)!important;border-radius:12px;padding:8px;backdrop-filter:blur(6px)!important;scrollbar-width:thin;scrollbar-color:rgba(0,229,255,0.22) transparent}
-.area{background:rgba(26,26,38,0.20)!important;backdrop-filter:blur(6px)!important;padding:10px 12px;border-radius:10px;cursor:pointer;border:1px solid rgba(0,212,255,0.08)!important;color:#e0e0e8;transition:all 0.2s;display:flex!important;flex-direction:column!important;gap:2px!important}
-.area b{color:#fff;font-size:13px;font-weight:700;line-height:1.2}.area small{color:#9ca3af;font-size:11px;line-height:1.2}
-.area:hover{background:rgba(36,36,54,0.28)!important;border-color:rgba(0,212,255,0.22)!important;transform:translateX(2px)}
-.area.active{background:rgba(0,212,255,0.72)!important;color:#000!important;border-color:rgba(0,212,255,0.92)!important;box-shadow:0 0 14px rgba(0,229,255,0.38)} .area.active b,.area.active small{color:#000!important}
+#search{
+  background:rgba(22,24,36,0.28)!important;
+  border:1px solid rgba(0,212,255,0.12)!important;
+  color:#fff;padding:10px 12px;border-radius:10px;
+  width:100%;outline:none
+}
+#search:focus{border-color:rgba(0,229,255,0.24)!important}
+.f{
+  background:rgba(24,26,40,0.24)!important;
+  border:1px solid rgba(70,70,90,0.12)!important;
+  color:var(--muted);padding:5px 10px;border-radius:20px;
+  font-size:11px;cursor:pointer
+}
+.f.active{background:rgba(0,212,255,0.82)!important;color:#000!important;font-weight:800}
 
-#card,.sap-header,.sap-card,.evo-lab,.reading{background:rgba(16,16,26,0.12)!important;backdrop-filter:blur(10px) saturate(1.1)!important;border:1px solid rgba(0,212,255,0.12)!important;border-radius:14px!important;box-shadow:0 4px 24px rgba(0,0,0,0.18)!important}
-.reading{padding:16px;line-height:1.7;color:#e5e5ee!important}
-.word{cursor:pointer;border-bottom:1px dashed rgba(0,212,255,0.32);color:#7de4ff;transition:color 0.15s} .word:hover{color:#b8f1ff}
-.chat-box{display:flex;gap:8px;margin-top:12px}.chat-box input{flex:1;background:rgba(30,30,45,0.22);border:1px solid rgba(0,212,255,0.14);color:#fff;padding:12px 14px;border-radius:12px;backdrop-filter:blur(6px)}
-.chat-box button{background:var(--holo);color:#000;border:none;padding:12px 18px;border-radius:12px;font-weight:800}
+#list{
+  overflow-y:auto;display:flex;flex-direction:column;gap:6px;flex:1;
+  min-height:380px;
+  background:rgba(10,12,18,0.12)!important;
+  border:1px solid rgba(0,212,255,0.06)!important;
+  border-radius:10px;padding:6px;
+  scrollbar-width:thin
+}
+.area{
+  background:rgba(22,24,36,0.22)!important;
+  padding:9px 10px;border-radius:8px;cursor:pointer;
+  border:1px solid rgba(0,212,255,0.06)!important;
+  color:#d0d0d8;display:flex!important;flex-direction:column!important;gap:2px!important
+}
+.area b{color:#fff;font-size:12px;font-weight:700}
+.area small{color:#9ca3af;font-size:10px}
+.area.active{background:rgba(0,212,255,0.62)!important;color:#000!important}
+.area.active b,.area.active small{color:#000!important}
 
-/* V30.7 LAIA HOLOGRAMA - CLON IMAGEN 5 - FIX BANDAS DEFINITIVO */
+#card,.sap-header,.evo-lab{
+  background:rgba(14,16,26,0.20)!important;
+  backdrop-filter:blur(8px)!important;
+  border:1px solid rgba(0,212,255,0.10)!important;
+  border-radius:12px!important
+}
+
+/* === V30.9 LAIA - CLON IMAGEN 1 - SKINNY GLOW REAL === */
 #laia-hologram{
-  position:fixed!important;top:58px!important;left:0!important;width:100vw!important;height:calc(100vh - 58px)!important;
-  z-index:1!important;display:flex!important;align-items:center!important;justify-content:center!important;pointer-events:none!important;
-  opacity:1!important;visibility:visible!important;
-  background: radial-gradient(ellipse 88% 72% at 50% 48%, rgba(8,32,52,0.34) 0%, rgba(0,229,255,0.10) 38%, rgba(0,229,255,0.04) 62%, transparent 82%)!important;
-  filter: drop-shadow(0 0 36px var(--holo-glow)) drop-shadow(0 0 70px rgba(0,212,255,0.32)) drop-shadow(0 0 110px rgba(0,229,255,0.14))!important;
+  position:fixed!important;
+  top:54px!important;left:0!important;
+  width:100vw!important;height:calc(100vh - 54px)!important;
+  z-index:1!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  pointer-events:none!important;
+  opacity:1!important;
+  background:transparent!important;
+  /* quitado radial gordo que empastaba */
 }
 #laia-holo-canvas{
-  width:100vw!important;height:calc(100vh - 58px)!important;display:block!important;background:transparent!important;pointer-events:none!important;
-  /* V30.7 CLON IMAGEN 5 - 3 MALLAS - TWIST 0.65 JITTER 0.0035 FIX BANDAS + HOMBROS OPEN FAN + CARA FRONTAL POLE 8 */
-  filter: contrast(1.32) brightness(1.22) saturate(1.16) drop-shadow(0 0 12px rgba(0,229,255,0.72)) drop-shadow(0 0 28px rgba(0,212,255,0.22))!important;
-  image-rendering: -webkit-optimize-contrast;
+  width:100vw!important;height:calc(100vh - 54px)!important;
+  display:block!important;background:transparent!important;
+  /* SKINNY GLOW REAL - NO BLOQUE */
+  filter: contrast(1.12) brightness(1.08) saturate(1.06) drop-shadow(0 0 8px rgba(0,229,255,0.38)) drop-shadow(0 0 18px rgba(0,212,255,0.16))!important;
 }
-#laia-state{position:absolute;bottom:92px;left:50%;transform:translateX(-50%);background:rgba(0,229,255,0.92);color:#000;font-size:10px;padding:5px 14px;border-radius:12px;font-weight:900;letter-spacing:0.6px;z-index:60;box-shadow:0 0 16px rgba(0,229,255,0.9), 0 0 36px rgba(0,229,255,0.4);pointer-events:auto}
-#bubble{position:absolute;left:50%;transform:translateX(-50%);bottom:110px;background:rgba(10,15,30,0.84);border:1px solid var(--holo);color:#fff;padding:12px 14px;border-radius:14px;font-size:12px;max-width:300px;backdrop-filter:blur(12px);z-index:60;box-shadow:0 8px 24px rgba(0,0,0,0.32)}
+#laia-state{
+  position:absolute;bottom:18px;left:50%;transform:translateX(-50%);
+  background:rgba(0,212,255,0.82);color:#000;
+  font-size:9px;padding:4px 10px;border-radius:10px;
+  font-weight:800;letter-spacing:0.6px;z-index:60;
+  box-shadow:0 0 12px rgba(0,229,255,0.52)
+}
 .hidden{display:none!important}
 
-/* SELECT Y BOTONES V30.7 */
-#level{background:rgba(28,28,42,0.22);border:1px solid rgba(0,212,255,0.16);color:#fff;padding:11px 12px;border-radius:10px;backdrop-filter:blur(6px)}
-#gen,#gen2{background:var(--holo)!important;color:#000!important;font-weight:900!important;box-shadow:0 0 16px rgba(0,212,255,0.32)!important;transition:all 0.2s}
-#gen:hover{box-shadow:0 0 24px rgba(0,229,255,0.52)!important;transform:translateY(-1px)}
-#teachBtn{background:rgba(139,92,246,0.88)!important;backdrop-filter:blur(6px)!important}
-#wordInput{background:rgba(28,28,42,0.22)!important;border:1px solid rgba(0,212,255,0.16)!important;color:#fff!important;padding:11px 14px!important;border-radius:10px!important;flex:1!important;backdrop-filter:blur(6px)!important}
+#level{background:rgba(24,26,40,0.28);border:1px solid rgba(0,212,255,0.12);color:#fff;padding:10px 12px;border-radius:8px}
+#gen,#gen2{background:var(--holo)!important;color:#000!important;font-weight:800!important}
+#teachBtn{background:rgba(139,92,246,0.82)!important}
+#wordInput{background:rgba(24,26,40,0.28)!important;border:1px solid rgba(0,212,255,0.12)!important;color:#fff!important;padding:10px 12px!important;border-radius:8px!important;flex:1!important}
 
 @media(max-width:768px){
   #page1{flex-direction:column}
-  #page1 aside{width:100%!important;min-width:100%!important;max-height:48vh;min-height:48vh;background:rgba(14,14,22,0.20)!important;border-right:none;border-bottom:1px solid rgba(0,212,255,0.10)}
-  #page1 main{background:rgba(10,10,18,0.06)!important}
-  #list{min-height:200px;max-height:30vh;background:rgba(10,10,18,0.10)!important}
-  .area{background:rgba(26,26,38,0.22)!important}
-  #laia-state{bottom:72px;font-size:9px;padding:4px 10px}
+  #page1 aside{width:100%!important;min-width:100%!important;max-height:44vh;min-height:44vh;border-right:none;border-bottom:1px solid rgba(0,212,255,0.08)}
+  #list{min-height:180px;max-height:28vh}
 }

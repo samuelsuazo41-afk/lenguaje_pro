@@ -1,5 +1,5 @@
-/* styles.css - V30.10.1 FULL FRAME DEFINITIVO - CLON V27 T-POSE - SKINNY 0.19 */
-/* FIX TAMAÑOS: 0.40 / 2.42 - NO 0.58 / 1.78 QUE CORTABA */
+/* styles.css - V30.11 FULL FRAME DEFINITIVO - CLON V27 BLAZER SOLDADO 50x44 - SKINNY 0.19 */
+/* FIX: 0.40 / 2.42 FOV30 + 50x44 BLAZER 0.042 + GAP 0.068 SOLDADO + T-POSE 0.92 */
 
 :root{
   --bg:#020208;
@@ -96,7 +96,7 @@ header{
   border-radius:12px!important;padding:12px!important
 }
 
-/* === V30.10.1 LAIA - FULL FRAME 0.40 / 2.42 - CLON V27 - SKINNY GLOW 0.19 === */
+/* === V30.11 LAIA - FULL FRAME 0.40 / 2.42 - 50x44 BLAZER 0.042 SOLDADO - SKINNY GLOW 0.19 === */
 #laia-hologram{
   position:fixed!important;
   top:52px!important;left:0!important;
@@ -110,9 +110,17 @@ header{
 #laia-holo-canvas{
   width:100vw!important;height:calc(100vh - 52px)!important;
   display:block!important;background:transparent!important;
-  /* SKINNY GLOW REAL - 0.19 - NO BLOQUE GORDO V27 */
+  /* SKINNY GLOW REAL V30.11 - 0.19 - 50x44 BLAZER 0.042 - FULL FRAME SOLDADO */
   filter: contrast(1.12) brightness(1.08) saturate(1.06) drop-shadow(0 0 8px rgba(0,229,255,0.38)) drop-shadow(0 0 18px rgba(0,212,255,0.14))!important;
 }
 #laia-state{
   position:absolute!important;bottom:16px!important;left:50%!important;transform:translateX(-50%)!important;
-  background:rgba(0,212,255,0.82)!important;color:#000!important
+  background:rgba(0,212,255,0.82)!important;color:#000!important;
+  font-size:9px!important;padding:4px 10px!important;border-radius:10px!important;font-weight:800!important;letter-spacing:0.5px!important;
+  z-index:10!important;
+}
+.hidden{display:none!important}
+@media(max-width:768px){
+  #page1{flex-direction:column!important}
+  #page1 aside{width:100%!important;min-width:100%!important;max-height:42vh!important}
+}

@@ -1,10 +1,9 @@
-// laia_actor_brain.js - V30.6 DEFINITIVO - CLON IMAGEN 5 - 3 MALLAS INTEGRADAS - HOMBROS + CARA + FIX BANDAS
-// V30.4 -> V30.6: Integración V30.2 FINAL - hombros open fan 0.06 limit 4 + cara frontal pole radial 8 + nariz + ojos iris boca 6 visemas + manos 5 dedos + pies 5 dedos + piernas twist 0.65 jitter 0.0035 anti-banda - gap clean 0.11
-// Malla definitiva: Particle 0.012 + kNN 12 maxDistance 0.08 + gapClean true + shoulderLimit 4 openFan 0.06 + frontalPole radial 8 + quad denso rodillas 22 radiales 5 loops twist fix bandas + cara completa
-// Autor: YARVIS + Laia - Girona - V30.6 DEFINITIVO CLON IMAGEN 5
+// laia_actor_brain.js - V30.7 DEFINITIVO - CLON IMAGEN 5 - FIX BANDAS DEFINITIVO
+// V30.6 -> V30.7: Fix bandas definitivo dy<0.012 dx>0.012 + maxVertices 18000 + twist 0.65 jitter 0.0035 - gap clean 0.11 - hombros limit 4 open fan 0.06 + frontal pole 8 - CLON IMAGEN 5 DEFINITIVO
+// Autor: YARVIS + Laia - Girona - V30.7 DEFINITIVO
 
 export const LAIA_BRAIN_CONFIG = {
-  version: "30.6 DEFINITIVO - CLON IMAGEN 5 - 3 MALLAS INTEGRADAS - HOMBROS LIMIT 4 OPEN FAN + CARA FRONTAL POLE 8 + FIX BANDAS TWIST 0.65",
+  version: "30.7 DEFINITIVO - CLON IMAGEN 5 - FIX BANDAS DEFINITIVO - HOMBROS LIMIT 4 OPEN FAN 0.06 + CARA FRONTAL POLE 8 + TWIST 0.65 JITTER 0.0035 + GAP CLEAN 0.11",
   hiddenSkeleton: false,
   skinnedMesh: true,
   skeleton: true,
@@ -13,7 +12,7 @@ export const LAIA_BRAIN_CONFIG = {
   poles: true,
   bones: 34,
   pointsCount: 3200,
-  meshType: "SkinnedMesh_V30.6_CLON_IMAGEN_5_GAP_CLEAN_0.11_WAIST_5_LOOPS_KNEES_22_RADIALES_SHOULDER_LIMIT_4_OPEN_FAN_FRONTAL_POLE_8_TWIST_0.65",
+  meshType: "SkinnedMesh_V30.7_CLON_IMAGEN_5_GAP_CLEAN_0.11_WAIST_5_LOOPS_KNEES_22_RADIALES_SHOULDER_LIMIT_4_OPEN_FAN_0.06_FRONTAL_POLE_8_TWIST_0.65_FIX_DEFINITIVO",
   breathBase: 1.1,
   meshOnly: false,
   feminine: true,
@@ -31,9 +30,9 @@ export const LAIA_BRAIN_CONFIG = {
   visemes: 6,
   visemeList: ['CLOSED','A','I','U','E','O'],
   particle: { size: 0.012, opacity: 0.92, color: "#00e5ff", sizeAttenuation: true, count: 3200, blending: "AdditiveBlending" },
-  lines: { type: "kNN_Particle_Flow_GAP_CLEAN_CLON_IMAGEN_5", k: 12, maxDistanceSq: 0.08, opacity: 0.44, color: "#00e5ff", gapClean: true, shoulderFanLimit: 4, shoulderOpenFan: 0.06, frontalPoleRadial: 8, twist: 0.65, jitter: 0.0035 },
-  quadDense: { zones: ["KNEES_5_LOOPS_22_RADIALES_TWIST_FIX_BANDAS_CLON_IMAGEN_5","FACE_RADIAL_8_FRONTAL_POLE_EYES_IRIS_MOUTH_NOSE_V30_2","HANDS_5_FINGERS_TRIANGULATED","FEET_5_TOES_CLUSTERS"], knees: "5_loops_22_radiales_circulo_perfecto_twist_0.65", face: "radial_8_frontal_pole_eyes_iris_mouth_nose_V30_2", hands: "5_fingers", feet: "5_clusters" },
-  flow: { origin: "Frontal_Pole_Forehead_radial_8_V30_2", sacral: "Sacro_Pole_Back", directionChangeWaist: "45deg", kneeDirection: "90deg_vertical_to_horizontal_twist_0.65", termination: "5_toes_bifurcation + 5_fingers", waistNarrow: 0.11, shoulderFix: "open_fan_0.06_limit_4_sin_bola_cyan_V30_2", faceFix: "frontal_pole_8_eyes_iris_mouth_6_visemas_nose_V30_2", kneeFix: "twist_0.65_jitter_0.0035_anti_banda_CLON_IMAGEN_5" }
+  lines: { type: "kNN_Particle_Flow_GAP_CLEAN_CLON_IMAGEN_5_FIX_DEFINITIVO_V30_7", k: 12, maxDistanceSq: 0.08, opacity: 0.44, color: "#00e5ff", gapClean: true, shoulderFanLimit: 4, shoulderOpenFan: 0.06, frontalPoleRadial: 8, twist: 0.65, jitter: 0.0035, maxVertices: 18000, filter: "V30.7 DEFINITIVO - dy<0.012 dx>0.012 + dy<0.0035 + knee dy<0.008 dx>0.018" },
+  quadDense: { zones: ["KNEES_5_LOOPS_22_RADIALES_TWIST_FIX_BANDAS_DEFINITIVO_V30_7","FACE_RADIAL_8_FRONTAL_POLE_EYES_IRIS_MOUTH_NOSE","HANDS_5_FINGERS_TRIANGULATED","FEET_5_TOES_CLUSTERS"], knees: "5_loops_22_radiales_circulo_perfecto_twist_0.65_definitivo_V30_7", face: "radial_8_frontal_pole_eyes_iris_mouth_nose", hands: "5_fingers", feet: "5_clusters" },
+  flow: { origin: "Frontal_Pole_Forehead_radial_8_V30_7", sacral: "Sacro_Pole_Back", directionChangeWaist: "45deg", kneeDirection: "90deg_vertical_to_horizontal_twist_0.65_definitivo", termination: "5_toes_bifurcation + 5_fingers", waistNarrow: 0.11, shoulderFix: "open_fan_0.06_limit_4_sin_bola_cyan_V30_7", faceFix: "frontal_pole_8_eyes_iris_mouth_6_visemas_nose", kneeFix: "twist_0.65_jitter_0.0035_dy0.012_dx0.012_anti_banda_definitivo_CLON_IMAGEN_5_V30_7" }
 };
 
 let MIND = { breath: 0, mood: 'curiosa', state: 'IDLE_CORTANA', talkAmp: 0, lastError: 0, pinPan: 0, viseme: 0, polePhase: 0 };
@@ -43,16 +42,13 @@ export function createLaiaSkeleton(THREE, group) {
   const mk = (name, pos, parent) => {
     const b = new THREE.Bone(); b.name = name; b.position.copy(pos); parent.add(b); bones.push(b); return b;
   };
-  // HIERARCHY REAL V30.6 - CLON IMAGEN 5 - GAP CLEAN 0.11 + HOMBROS OPEN FAN + CARA COMPLETA
+  // HIERARCHY REAL V30.7 - CLON IMAGEN 5 DEFINITIVO - FIX BANDAS DEFINITIVO
   const hips = mk('Hips', new THREE.Vector3(0,0,0), group);
   const spine02 = mk('Spine_02', new THREE.Vector3(0,0.18,0), hips);
   const chest = mk('Chest', new THREE.Vector3(0,0.22,0), spine02);
   const neck = mk('Neck', new THREE.Vector3(0,0.22,0), chest);
   const head = mk('Head_Bone', new THREE.Vector3(0,0.18,0), neck);
-  
   const frontalPole = mk('Frontal_Pole', new THREE.Vector3(0,0.04,0.09), head);
-  
-  // FACIAL RIG V30.6 - V30.2 + CLON IMAGEN 5 - cara completa
   const eyeL = mk('Eye_L', new THREE.Vector3(-0.032,0.02,0.082), head);
   const irisL = mk('Iris_L', new THREE.Vector3(0,0,0.015), eyeL);
   const eyeR = mk('Eye_R', new THREE.Vector3(0.032,0.02,0.082), head);
@@ -60,38 +56,28 @@ export function createLaiaSkeleton(THREE, group) {
   const nose = mk('Nose', new THREE.Vector3(0,0,0.102), head);
   const mouth = mk('Mouth', new THREE.Vector3(0,-0.035,0.088), head);
   const jaw = mk('Jaw', new THREE.Vector3(0,-0.01,0), mouth);
-
   const shoulderL = mk('Shoulder.L', new THREE.Vector3(-0.22,0.15,0), chest);
   const elbowL = mk('Elbow.L', new THREE.Vector3(-0.32,0,0), shoulderL);
   const wristL = mk('Wrist.L', new THREE.Vector3(-0.32,0,0), elbowL);
   const handL = mk('Hand.L', new THREE.Vector3(-0.08,0,0), wristL);
-  
   const shoulderR = mk('Shoulder.R', new THREE.Vector3(0.22,0.15,0), chest);
   const elbowR = mk('Elbow.R', new THREE.Vector3(0.32,0,0), shoulderR);
   const wristR = mk('Wrist.R', new THREE.Vector3(0.32,0,0), elbowR);
   const handR = mk('Hand.R', new THREE.Vector3(0.08,0,0), wristR);
-
   const sacralPole = mk('Sacral_Pole', new THREE.Vector3(0,-0.02,-0.04), hips);
-
-  // V30.6 GAP CLEAN + TWIST 0.65 JITTER 0.0035 - CLON IMAGEN 5 - separación 0.134 = gap 0.11 real
   const hipL = mk('Hip.L', new THREE.Vector3(-0.067,-0.18,0), hips);
   const kneeL = mk('Knee.L', new THREE.Vector3(0,-0.38,0), hipL);
   const ankleL = mk('Ankle.L', new THREE.Vector3(0,-0.38,0), kneeL);
   const toeL = mk('Toe.L', new THREE.Vector3(0,-0.04,0.08), ankleL);
-  
   const hipR = mk('Hip.R', new THREE.Vector3(0.067,-0.18,0), hips);
   const kneeR = mk('Knee.R', new THREE.Vector3(0,-0.38,0), hipR);
   const ankleR = mk('Ankle.R', new THREE.Vector3(0,-0.38,0), kneeR);
   const toeR = mk('Toe.R', new THREE.Vector3(0,-0.04,0.08), ankleR);
-
-  // NODOS INTERRUPCIÓN - donde mueren líneas blazer - V30.2
   const btnNode1 = mk('Button_Node_01', new THREE.Vector3(0.01,0.22,0.18), chest);
   const btnNode2 = mk('Button_Node_02', new THREE.Vector3(0.01,0.08,0.18), chest);
   const pocketNodeL = mk('Pocket_Node_L', new THREE.Vector3(-0.14,0.07,0.17), chest);
   const pocketNodeR = mk('Pocket_Node_R', new THREE.Vector3(0.14,0.07,0.17), chest);
-
   while(bones.length < 34) mk(`Extra_${bones.length}`, new THREE.Vector3(0,0,0), hips);
-  
   const skeleton = new THREE.Skeleton(bones);
   return { bones, skeleton };
 }
@@ -102,10 +88,8 @@ export function thinkAndMove(bones, context) {
   MIND.polePhase += 0.008;
   if (!bones || bones.length === 0) return MIND.state;
   const t = MIND.breath;
-  
   const hips = bones.find(b=>b.name==='Hips');
   if (hips) hips.position.y = Math.sin(t * 0.7) * 0.004;
-
   if (context.inputFocused) MIND.state = 'LISTENING';
   else if (context.sapError) { MIND.state = 'SCOLDING'; MIND.mood = 'estricta'; MIND.lastError++; }
   else if (context.sapOK) { MIND.state = 'CELEBRATING'; MIND.mood = 'feliz'; MIND.lastError = 0; }
@@ -126,26 +110,20 @@ export function thinkAndMove(bones, context) {
   const lKnee = bones.find(b=>b.name==='Knee.L'); const rKnee = bones.find(b=>b.name==='Knee.R');
   const lHand = bones.find(b=>b.name==='Hand.L'); const rHand = bones.find(b=>b.name==='Hand.R');
 
-  // V30.6 FIX V30.2 HAIRBALL - abre abanico hombros 0.06 para que no se haga bola cyan - CLON IMAGEN 5
+  // V30.7 FIX DEFINITIVO - open fan 0.06 - sin bola cyan - CLON IMAGEN 5 DEFINITIVO
   if (lShoulder) { lShoulder.rotation.z = -0.06; lShoulder.rotation.y = 0.04; lShoulder.rotation.x = 0.02; }
   if (rShoulder) { rShoulder.rotation.z = 0.06; rShoulder.rotation.y = -0.04; rShoulder.rotation.x = 0.02; }
-
   if (frontalPole) {
     frontalPole.rotation.y = Math.sin(MIND.polePhase) * 0.04;
     frontalPole.rotation.x = Math.sin(MIND.polePhase*0.5) * 0.02;
     frontalPole.position.z = 0.09 + Math.sin(t*0.5)*0.002;
   }
-  if (sacralPole) {
-    sacralPole.rotation.x = Math.sin(MIND.polePhase*0.7) * 0.03;
-  }
-  if (nose) {
-    nose.rotation.y = Math.sin(t*0.2)*0.01;
-  }
+  if (sacralPole) sacralPole.rotation.x = Math.sin(MIND.polePhase*0.7) * 0.03;
+  if (nose) nose.rotation.y = Math.sin(t*0.2)*0.01;
   if (lHand && rHand) {
     lHand.rotation.z = Math.sin(t*0.3)*0.05;
     rHand.rotation.z = -Math.sin(t*0.3)*0.05;
   }
-
   if (eyeL && eyeR) {
     const lookX = Math.sin(t*0.23)*0.015;
     const lookY = Math.sin(t*0.31)*0.008;
@@ -153,7 +131,6 @@ export function thinkAndMove(bones, context) {
     eyeL.rotation.x = lookY; eyeR.rotation.x = lookY;
     if (MIND.state === 'LISTENING') { eyeL.rotation.y = 0.12; eyeR.rotation.y = 0.12; }
   }
-
   if (MIND.state === 'IDLE_CORTANA') {
     if (head) { head.rotation.y = Math.sin(t * 0.32) * 0.11; head.rotation.x = Math.sin(t * 0.26) * 0.020; }
     if (jaw) jaw.position.y = Math.sin(t * 0.8) * 0.002;
@@ -208,6 +185,7 @@ export function decideByMetrics(metrics) {
   return { state: 'IDLE_CORTANA', color: '#00d4ff', pos: 'welcome' };
 }
 
-export const LAIA_ACTOR_BRAIN_V30_6 = { version: "30.6 DEFINITIVO - CLON IMAGEN 5 - HOMBROS LIMIT 4 OPEN FAN + CARA FRONTAL POLE 8 + FIX BANDAS TWIST 0.65", createLaiaSkeleton, thinkAndMove, decideByMetrics, config: LAIA_BRAIN_CONFIG };
-export const LAIA_ACTOR_BRAIN = LAIA_ACTOR_BRAIN_V30_6;
-export const LAIA_ACTOR_BRAIN_V30_5 = LAIA_ACTOR_BRAIN_V30_6; // compat
+export const LAIA_ACTOR_BRAIN_V30_7 = { version: "30.7 DEFINITIVO - CLON IMAGEN 5 - FIX BANDAS DEFINITIVO - HOMBROS LIMIT 4 OPEN FAN 0.06 + CARA FRONTAL POLE 8 + TWIST 0.65 JITTER 0.0035", createLaiaSkeleton, thinkAndMove, decideByMetrics, config: LAIA_BRAIN_CONFIG };
+export const LAIA_ACTOR_BRAIN = LAIA_ACTOR_BRAIN_V30_7;
+export const LAIA_ACTOR_BRAIN_V30_6 = LAIA_ACTOR_BRAIN_V30_7; // compat V30.6 -> V30.7
+export const LAIA_ACTOR_BRAIN_V30_5 = LAIA_ACTOR_BRAIN_V30_7;

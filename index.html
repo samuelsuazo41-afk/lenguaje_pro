@@ -2,13 +2,13 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LENGUAJE-PRO V30.6 DEFINITIVO - CLON IMAGEN 5 - 3 MALLAS INTEGRADAS</title>
+<title>LENGUAJE-PRO V30.7 DEFINITIVO - CLON IMAGEN 5 - 3 MALLAS INTEGRADAS</title>
 <link rel="icon" href="./icon-192.png">
 <meta name="theme-color" content="#00d4ff">
-<link rel="stylesheet" href="./styles.css?v=30.6">
+<link rel="stylesheet" href="./styles.css?v=30.7">
 <script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
 <style>
-/* V30.6 DEFINITIVO - CLON IMAGEN 5 - OVERRIDE TRANSPARENTE - 3 MALLAS INTEGRADAS */
+/* V30.7 DEFINITIVO - CLON IMAGEN 5 - OVERRIDE TRANSPARENTE - 3 MALLAS INTEGRADAS - FIX BANDAS */
 header{height:58px!important;background:rgba(12,12,20,0.32)!important;backdrop-filter:blur(14px)!important;border-bottom:1px solid rgba(0,212,255,0.16)!important;display:flex!important;justify-content:space-between!important;align-items:center!important;padding:0 18px!important;position:sticky!important;top:0!important;z-index:100!important}
 #page1 aside{width:380px!important;min-width:380px!important;background:rgba(14,14,22,0.18)!important;backdrop-filter:blur(10px)!important;border-right:1px solid rgba(0,212,255,0.12)!important;padding:14px!important;display:flex!important;flex-direction:column!important;gap:12px!important;height:calc(100vh - 58px)!important;overflow-y:auto!important}
 #list{min-height:420px!important;background:rgba(10,10,18,0.10)!important;border:1px solid rgba(0,212,255,0.10)!important;border-radius:12px!important;padding:8px!important;display:flex!important;flex-direction:column!important;gap:7px!important;visibility:visible!important;opacity:1!important;flex:1!important}
@@ -17,23 +17,23 @@ header{height:58px!important;background:rgba(12,12,20,0.32)!important;backdrop-f
 #page1 main{background:rgba(10,10,18,0.06)!important;backdrop-filter:blur(2px)!important}
 #card,.sap-header,.evo-lab{background:rgba(16,16,26,0.14)!important;backdrop-filter:blur(6px)!important;border:1px solid rgba(0,212,255,0.14)!important;border-radius:14px!important}
 #laia-hologram{position:fixed!important;top:58px!important;left:0!important;width:100vw!important;height:calc(100vh - 58px)!important;z-index:1!important;display:flex!important;align-items:center!important;justify-content:center!important;pointer-events:none!important;opacity:1!important;visibility:visible!important;background: radial-gradient(ellipse at center, rgba(8,32,52,0.42) 0%, rgba(0,229,255,0.12) 42%, transparent 80%)!important;filter: drop-shadow(0 0 36px rgba(0,229,255,0.62)) drop-shadow(0 0 70px rgba(0,212,255,0.38))!important;}
-#laia-holo-canvas{width:100vw!important;height:calc(100vh - 58px)!important;opacity:1!important;visibility:visible!important;filter: contrast(1.32) brightness(1.22) saturate(1.16) drop-shadow(0 0 12px rgba(0,229,255,0.72))!important;}
+#laia-holo-canvas{width:100vw!important;height:calc(100vh - 58px)!important;opacity:1!important;visibility:visible!important;filter: contrast(1.32) brightness(1.22) saturate(1.16) drop-shadow(0 0 12px rgba(0,229,255,0.72)) drop-shadow(0 0 28px rgba(0,212,255,0.22))!important;}
 .h-wrapper{margin-top:58px!important;display:flex!important;overflow-x:auto!important;scroll-snap-type:x mandatory!important;width:100vw!important;height:calc(100vh - 58px)!important}
 .page{min-width:100vw!important;width:100vw!important;height:100%!important;scroll-snap-align:start!important;overflow-y:auto!important;display:flex!important}
 @media(max-width:768px){#page1{flex-direction:column!important}#page1 aside{width:100%!important;min-width:100%!important;max-height:48vh!important;min-height:48vh!important}}
 </style>
 </head>
 <body>
-<header><div class="logo">📚 LENGUAJE-PRO <span>V30.6 CLON IMAGEN 5</span></div><div class="metrics"><span id="xp">⭐ 0 XP</span><span>🔥 <b id="streak">0</b></span><span id="level-badge">A2</span></div></header>
-<div class="h-wrapper" id="hWrapper"><div class="page" id="page1"><aside><h3 style="font-size:11px;color:#00d4ff;font-weight:900;letter-spacing:0.08em">V30.6 DEFINITIVO - CLON IMAGEN 5 - 3 MALLAS INTEGRADAS - GAP 0.11 + HOMBROS LIMIT 4</h3><input id="search" placeholder="Buscar 50 áreas..." style="background:rgba(35,35,50,0.22);border:1px solid rgba(0,212,255,0.22);color:#fff;padding:11px;border-radius:10px;width:100%;backdrop-filter:blur(4px)"><div id="filters" style="display:flex;gap:6px;flex-wrap:wrap"><button class="f active" data-f="" style="background:#00d4ff;color:#000;padding:6px 12px;border-radius:20px;border:none;font-weight:700">Todas (50)</button><button class="f" data-f="A1">A1</button><button class="f" data-f="A2">A2</button><button class="f" data-f="B1">B1</button><button class="f" data-f="B2">B2</button></div><div id="list">Cargando 50 áreas...</div></aside><main><div style="display:flex;gap:10px;margin-bottom:12px"><select id="level"><option>A1</option><option selected>A2</option><option>B1</option><option>B2</option></select><button id="gen" style="background:#00d4ff;color:#000;border:none;padding:12px 18px;border-radius:12px;font-weight:800;flex:1;max-width:280px">⚡ GENERAR V30.6</button><button id="teachBtn" style="background:#8b5cf6;color:#fff;border:none;padding:11px 14px;border-radius:12px;font-weight:700">📌 SAPs</button></div><div id="empty"><h1>👋 Soy Laia V30.6 CLON IMAGEN 5</h1><p id="status" style="color:#00d4ff">V30.6 DEFINITIVO - 3 MALLAS INTEGRADAS - HOMBROS LIMIT 4 + CARA COMPLETA + GAP 0.11 + FIX BANDAS</p></div><div id="card" class="hidden"></div></main></div><div class="page" id="page2"><div style="width:100%;max-width:760px"><h2>🧬 MOTOR 2 - SAP + V30.6 CLON IMAGEN 5</h2><div class="sap-header" id="sapHeader">Esperando datos...</div><div style="margin-top:14px;display:flex;gap:8px"><input id="wordInput" placeholder="Escribe: co, hav, mon..."><button id="gen2">🔍 EXPLORAR</button></div><div id="card2" class="hidden"></div><div class="evo-lab" id="evoLab">V30.6 DEFINITIVO - 3 MALLAS INTEGRADAS - HOMBROS FAN LIMIT 4 OPEN + CARA FRONTAL POLE 8 + OJOS IRIS BOCA 6 VISEMAS + GAP 0.11 + FIX BANDAS + PARTICLE 0.012</div></div></div></div>
-<div id="laia-hologram"><canvas id="laia-holo-canvas"></canvas><div id="laia-state">V30.6 DEFINITIVO - CLON IMAGEN 5 - 3 MALLAS INTEGRADAS</div></div>
+<header><div class="logo">📚 LENGUAJE-PRO <span>V30.7 CLON IMAGEN 5 DEFINITIVO</span></div><div class="metrics"><span id="xp">⭐ 0 XP</span><span>🔥 <b id="streak">0</b></span><span id="level-badge">A2</span></div></header>
+<div class="h-wrapper" id="hWrapper"><div class="page" id="page1"><aside><h3 style="font-size:11px;color:#00d4ff;font-weight:900;letter-spacing:0.08em">V30.7 DEFINITIVO - CLON IMAGEN 5 - 3 MALLAS INTEGRADAS - GAP 0.11 + HOMBROS LIMIT 4 OPEN + FIX BANDAS TWIST</h3><input id="search" placeholder="Buscar 50 áreas..." style="background:rgba(35,35,50,0.22);border:1px solid rgba(0,212,255,0.22);color:#fff;padding:11px;border-radius:10px;width:100%;backdrop-filter:blur(4px)"><div id="filters" style="display:flex;gap:6px;flex-wrap:wrap"><button class="f active" data-f="" style="background:#00d4ff;color:#000;padding:6px 12px;border-radius:20px;border:none;font-weight:700">Todas (50)</button><button class="f" data-f="A1">A1</button><button class="f" data-f="A2">A2</button><button class="f" data-f="B1">B1</button><button class="f" data-f="B2">B2</button></div><div id="list">Cargando 50 áreas...</div></aside><main><div style="display:flex;gap:10px;margin-bottom:12px"><select id="level"><option>A1</option><option selected>A2</option><option>B1</option><option>B2</option></select><button id="gen" style="background:#00d4ff;color:#000;border:none;padding:12px 18px;border-radius:12px;font-weight:800;flex:1;max-width:280px">⚡ GENERAR V30.7</button><button id="teachBtn" style="background:#8b5cf6;color:#fff;border:none;padding:11px 14px;border-radius:12px;font-weight:700">📌 SAPs</button></div><div id="empty"><h1>👋 Soy Laia V30.7 CLON IMAGEN 5 DEFINITIVO</h1><p id="status" style="color:#00d4ff">V30.7 DEFINITIVO - 3 MALLAS INTEGRADAS - HOMBROS LIMIT 4 OPEN FAN 0.06 + CARA FRONTAL POLE 8 + OJOS IRIS BOCA 6 VISEMAS NARIZ + MANOS 5 DEDOS + PIES 5 DEDOS + GAP 0.11 + FIX BANDAS TWIST 0.65</p></div><div id="card" class="hidden"></div></main></div><div class="page" id="page2"><div style="width:100%;max-width:760px"><h2>🧬 MOTOR 2 - SAP + V30.7 CLON IMAGEN 5 DEFINITIVO</h2><div class="sap-header" id="sapHeader">Esperando datos...</div><div style="margin-top:14px;display:flex;gap:8px"><input id="wordInput" placeholder="Escribe: co, hav, mon..." style="background:rgba(35,35,50,0.22);border:1px solid rgba(0,212,255,0.22);color:#fff;padding:11px;border-radius:10px;flex:1"><button id="gen2" style="background:#00d4ff;color:#000;border:none;padding:12px 18px;border-radius:12px;font-weight:800">🔍 EXPLORAR</button></div><div id="card2" class="hidden"></div><div class="evo-lab" id="evoLab">V30.7 DEFINITIVO - 3 MALLAS INTEGRADAS - HOMBROS FAN LIMIT 4 OPEN 0.06 + CARA FRONTAL POLE 8 + OJOS IRIS BOCA 6 VISEMAS NARIZ + GAP 0.11 + FIX BANDAS TWIST 0.65 JITTER 0.0035 + PARTICLE 0.012 - CLON IMAGEN 5</div></div></div></div>
+<div id="laia-hologram"><canvas id="laia-holo-canvas"></canvas><div id="laia-state">V30.7 DEFINITIVO - CLON IMAGEN 5 - 3 MALLAS INTEGRADAS - FIX BANDAS</div></div>
 <script type="module">
 import * as THREE from 'three';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 
 let LAYA_FINAL = null;
 try{
-  const mod = await import('./LAYA_FINAL_COMPLETO.js?v=30.6');
+  const mod = await import('./LAYA_FINAL_COMPLETO.js?v=30.7');
   LAYA_FINAL = mod.LAYA_FINAL || mod.LAYA_FINAL_COMPLETO || mod.default;
 }catch(e){ console.warn('LAYA_FINAL no cargado', e); }
 
@@ -46,16 +46,16 @@ if(!LAYA_FINAL || !LAYA_FINAL.AREAS){
       31:{name:"Time Management",topic:"How to Manage Your Time",level:"A1"},32:{name:"Health",topic:"Why Health Is Real Wealth",level:"A1"},33:{name:"Sleep",topic:"The Power of Good Sleep",level:"A1"},34:{name:"Healthy Food",topic:"How Food Affects Your Energy",level:"A1"},35:{name:"Fitness",topic:"Why Small Exercise Changes Your Life",level:"A2"},36:{name:"Learning",topic:"Learn More, Earn More",level:"B1"},37:{name:"Reading",topic:"Why Reading Makes You Richer",level:"B1"},38:{name:"Consistency",topic:"Why Consistency Beats Talent",level:"A2"},39:{name:"Patience",topic:"The Power of Patience",level:"B1"},40:{name:"Kindness",topic:"Why Kindness Is Strength",level:"A1"},
       41:{name:"Family",topic:"My Family Is My Strength",level:"A1"},42:{name:"Grandmother",topic:"My Grandmother Is Inspiration",level:"B1"},43:{name:"Friends",topic:"How Real Friends Help You Grow",level:"A2"},44:{name:"Love",topic:"Why Love Makes Us Stronger",level:"B1"},45:{name:"Respect",topic:"Why Respect Is Everything",level:"A2"},46:{name:"Honesty",topic:"Why Honesty Builds Trust",level:"B1"},47:{name:"Responsibility",topic:"The Power of Responsibility",level:"A1"},48:{name:"Delivery Life",topic:"My Life Delivering Food",level:"A1"},49:{name:"Alignment",topic:"Why Alignment Creates Success",level:"B1"},50:{name:"Willpower",topic:"The Power of Willpower",level:"B2"}
     },
-    generate(id,lvl){ const a=this.AREAS[id]; return {story:`Hello! Today: ${a.topic}. There is a lot to learn. Since Monday I have been thinking. V30.6 CLON IMAGEN 5 - 3 mallas integradas trianguladas.`, meta:{area:a.name,topic:a.topic,level:lvl,grammar_main:{sig:"PS_3RD_S"},vocab:["money","save"],xp:15}} },
+    generate(id,lvl){ const a=this.AREAS[id]; return {story:`Hello! Today: ${a.topic}. There is a lot to learn. Since Monday I have been thinking. V30.7 CLON IMAGEN 5 - 3 mallas integradas trianguladas gap 0.11 fix bandas twist 0.65 open fan 0.06 frontal pole 8.`, meta:{area:a.name,topic:a.topic,level:lvl,grammar_main:{sig:"PS_3RD_S"},vocab:["money","save"],xp:15}} },
     VOCAB:{superDicSyllables:{co:["cook","confidence"],hav:["have a shower"]}}
   };
 }
 
 let createLaiaSkeleton, thinkAndMove;
 try{
-  const brain = await import('./actor/laia_actor_brain.js?v=30.6');
-  createLaiaSkeleton = brain.createLaiaSkeleton || brain.LAIA_ACTOR_BRAIN_V30_6?.createSkeleton || brain.LAIA_ACTOR_BRAIN_V30_5?.createSkeleton;
-  thinkAndMove = brain.thinkAndMove || brain.LAIA_ACTOR_BRAIN_V30_6?.thinkAndMove?.update || brain.LAIA_ACTOR_BRAIN_V30_5?.thinkAndMove?.update;
+  const brain = await import('./actor/laia_actor_brain.js?v=30.7');
+  createLaiaSkeleton = brain.createLaiaSkeleton || brain.LAIA_ACTOR_BRAIN_V30_6?.createLaiaSkeleton || brain.LAIA_ACTOR_BRAIN?.createLaiaSkeleton;
+  thinkAndMove = brain.thinkAndMove || brain.LAIA_ACTOR_BRAIN_V30_6?.thinkAndMove || brain.LAIA_ACTOR_BRAIN?.thinkAndMove;
   if(!createLaiaSkeleton){
     createLaiaSkeleton = (THREE, group)=>{ const b=new THREE.Bone(); b.name='Hips'; group.add(b); const s=new THREE.Skeleton([b]); return {bones:[b], skeleton:s}; };
   }
@@ -86,10 +86,10 @@ class LaiaMeshOnly {
     this.animate();
   }
   createDefinitive(){
-    // === V30.6 - 3 MALLAS INTEGRADAS TRIANGULADAS - CLON IMAGEN 5 - FIX V30.2 HOMBROS + V30.5 BANDAS ===
+    // === V30.7 DEFINITIVO - CLON IMAGEN 5 - 3 MALLAS INTEGRADAS TRIANGULADAS - FIX BANDAS ===
     const geosP=[]; const geosL=[]; const geosQ=[];
 
-    // --- TORSO 32x28 waist 0.11 - V30.2 + V30.6 ---
+    // TORSO 32x28 waist 0.11
     const torso=new THREE.CylinderGeometry(0.195,0.18,0.56,32,28,true);
     const tp=torso.attributes.position;
     for(let i=0;i<tp.count;i++){
@@ -101,7 +101,7 @@ class LaiaMeshOnly {
     torso.translate(0,0.22,0);
     geosP.push(torso.clone()); geosL.push(torso.clone());
 
-    // --- PIERNAS V30.6 TRIANGULADAS ABIERTAS - CLON IMAGEN 5 - FIX BANDAS - TWIST 0.65 ---
+    // PIERNAS V30.7 - TRIANGULADAS ABIERTAS + TWIST 0.65 + JITTER 0.0035 - CLON IMAGEN 5
     const makeLegTriangulated=(side)=>{
       const g=new THREE.CylinderGeometry(0.092,0.046,0.80,24,28,false);
       const p=g.attributes.position;
@@ -111,7 +111,7 @@ class LaiaMeshOnly {
         const twist = y*0.65;
         const newAng = ang + twist;
         const r = y>0.20?1.0:y>0.0?0.86:y>-0.18?0.80:y>-0.38?0.68:0.58;
-        const jitterY = Math.sin(newAng*3)*0.0035;
+        const jitterY = Math.sin(newAng*3)*0.0035 + (Math.random()-0.5)*0.0015;
         const rad = Math.sqrt(x*x+z*z)*r;
         p.setX(j,Math.cos(newAng)*rad);
         p.setZ(j,Math.sin(newAng)*rad*0.88);
@@ -122,27 +122,16 @@ class LaiaMeshOnly {
     const legL=makeLegTriangulated(-1); const legR=makeLegTriangulated(1);
     geosP.push(legL.clone(),legR.clone()); geosL.push(legL.clone(),legR.clone());
 
-    // --- BRAZOS V30.2 FIX - OPEN FAN ROTATION 0.06 - SHOULDER LIMIT 4 ---
-    const armL=new THREE.CylinderGeometry(0.044,0.031,0.72,16,16,false); 
-    armL.rotateZ(Math.PI/2 + 0.06); armL.translate(-0.52,0.36,0); // open fan
-    const armR=new THREE.CylinderGeometry(0.044,0.031,0.72,16,16,false); 
-    armR.rotateZ(-Math.PI/2 - 0.06); armR.rotateZ(Math.PI); armR.translate(0.52,0.36,0);
-    // correccion T-pose: re-crear simple para no liar
-    const armL2=new THREE.CylinderGeometry(0.044,0.031,0.72,16,16,false); armL2.rotateZ(Math.PI/2 + 0.06); armL2.translate(-0.52,0.36,0);
-    const armR2=new THREE.CylinderGeometry(0.044,0.031,0.72,16,16,false); armR2.rotateZ(Math.PI/2); armR2.rotateZ(Math.PI); armR2.translate(0.52,0.36,0); armR2.rotateZ(-0.06);
-    // fallback limpio: usar L2 y R simple
+    // BRAZOS - OPEN FAN 0.06 - FIX V30.2 BOLA CYAN
     const armLf=new THREE.CylinderGeometry(0.044,0.031,0.72,16,16,false); armLf.rotateZ(Math.PI/2 + 0.06); armLf.translate(-0.52,0.36,0);
     const armRf=new THREE.CylinderGeometry(0.044,0.031,0.72,16,16,false); armRf.rotateZ(Math.PI/2 - 0.06); armRf.translate(0.52,0.36,0);
     geosP.push(armLf.clone(),armRf.clone()); geosL.push(armLf.clone(),armRf.clone());
 
-    // --- CABEZA + CARA COMPLETA V30.2 - FRONTAL POLE RADIAL 8 + OJOS IRIS BOCA 6 VISEMAS + NARIZ ---
+    // CABEZA + CARA COMPLETA V30.2 - FRONTAL POLE RADIAL 8
     const head=new THREE.SphereGeometry(0.11,20,20); head.translate(0,0.68,0.02);
     geosP.push(head.clone()); geosL.push(head.clone()); geosQ.push(head.clone());
-
-    // Frontal pole - punto central frente - radial 8
     const frontalPole=new THREE.SphereGeometry(0.006,6,6); frontalPole.translate(0,0.72,0.09);
     geosP.push(frontalPole.clone()); geosQ.push(frontalPole.clone());
-
     const eyeGeo=new THREE.SphereGeometry(0.018,12,12);
     const eyeL=eyeGeo.clone(); eyeL.translate(-0.032,0.70,0.082);
     const eyeR=eyeGeo.clone(); eyeR.translate(0.032,0.70,0.082);
@@ -150,14 +139,12 @@ class LaiaMeshOnly {
     const irisL=irisGeo.clone(); irisL.translate(-0.032,0.70,0.092);
     const irisR=irisGeo.clone(); irisR.translate(0.032,0.70,0.092);
     geosP.push(eyeL,eyeR,irisL,irisR); geosL.push(eyeL,eyeR); geosQ.push(eyeL,eyeR,irisL,irisR);
-
     const mouthGeo=new THREE.CapsuleGeometry(0.006,0.022,4,8); mouthGeo.translate(0,0.642,0.092);
     geosP.push(mouthGeo.clone()); geosQ.push(mouthGeo.clone());
-
     const noseGeo=new THREE.ConeGeometry(0.008,0.02,8); noseGeo.rotateX(Math.PI/2); noseGeo.translate(0,0.665,0.102);
     geosP.push(noseGeo.clone()); geosL.push(noseGeo.clone());
 
-    // --- MANOS + 5 DEDOS - TRIANGULADOS - V30.2 ---
+    // MANOS 5 DEDOS TRIANGULADAS
     const makeHandWithFingers=(sideX)=>{
       const group=[];
       const palm=new THREE.BoxGeometry(0.05,0.02,0.08,4,2,3); palm.translate(sideX,0.36,0.02);
@@ -172,7 +159,7 @@ class LaiaMeshOnly {
     makeHandWithFingers(-0.88).forEach(g=>{geosP.push(g.clone()); geosL.push(g.clone());});
     makeHandWithFingers(0.88).forEach(g=>{geosP.push(g.clone()); geosL.push(g.clone());});
 
-    // --- PIES + 5 DEDOS BIFURCACION ---
+    // PIES 5 DEDOS BIFURCACION
     const makeFootWithToes=(sideX)=>{
       const group=[];
       const foot=new THREE.BoxGeometry(0.055,0.04,0.19,8,3,10); foot.translate(sideX,-0.70,0.05);
@@ -186,37 +173,41 @@ class LaiaMeshOnly {
     makeFootWithToes(-0.067).forEach(g=>{geosP.push(g.clone()); geosL.push(g.clone()); geosQ.push(g.clone());});
     makeFootWithToes(0.067).forEach(g=>{geosP.push(g.clone()); geosL.push(g.clone()); geosQ.push(g.clone());});
 
-    // === MALLA 1: PUNTOS GLOW 0.012 ===
+    // MALLA 1: PUNTOS 0.012 GLOW 0.92
     const fullP=mergeGeometries(geosP);
     const points=new THREE.Points(fullP,new THREE.PointsMaterial({color:0x00e5ff,size:0.012,transparent:true,opacity:0.92,sizeAttenuation:true,blending:THREE.AdditiveBlending}));
     this.group.add(points);
 
-    // === MALLA 2: LINEAS kNN - FIX V30.2 HOMBROS + V30.5 BANDAS ===
+    // MALLA 2: LINEAS kNN 12 - FIX BANDAS V30.7 CLON IMAGEN 5
     const fullL=mergeGeometries(geosL); const arr=fullL.attributes.position.array; const linePos=[];
     for(let i=0;i<arr.length;i+=12){
       const ix=arr[i], iy=arr[i+1], iz=arr[i+2];
       let best=[];
       for(let j=i+24;j<arr.length;j+=18){
         const jx=arr[j], jy=arr[j+1], jz=arr[j+2];
-        if(iy<0.05 && jy<0.05 && ((ix<-0.01 && jx>0.01)||(ix>0.01 && jx<-0.01))) continue; // GAP CLEAN 0.11
+        // GAP CLEAN 0.11 - no cruces entre piernas
+        if(iy<0.05 && jy<0.05 && ((ix<-0.01 && jx>0.01)||(ix>0.01 && jx<-0.01))) continue;
         const isLegZone = iy<0.05 && iy>-0.65;
+        const isKneeZone = iy>-0.42 && iy<-0.12;
         const dy=Math.abs(iy-jy), dx=Math.abs(ix-jx);
-        if(isLegZone && dy<0.006 && dx>0.015) continue; // FIX BANDAS RODILLA - tu foto V30.5
-        if(isLegZone && dy<0.003) continue;
+        // V30.7 FIX BANDAS - CLON IMAGEN 5 - twist+jitter + filtro
+        if(isLegZone && dy<0.012 && dx>0.012) continue;
+        if(isLegZone && dy<0.0035) continue;
+        if(isKneeZone && dy<0.008 && dx>0.018) continue;
         const ddx=ix-jx, ddy=iy-jy, ddz=iz-jz; const d2=ddx*ddx+ddy*ddy+ddz*ddz;
         if(d2<0.08 && d2>0.0003) best.push({j,d2});
       }
       best.sort((a,b)=>a.d2-b.d2);
       let limit=12; 
-      if(iy>0.30) limit=4; // SHOULDER FAN LIMIT 4 - FIX V30.2 - evita bola cyan pecho/hombro de tu captura
-      if(iy>-0.45 && iy<-0.10) limit=7; // rodilla
-      for(let k=0;k<Math.min(limit,best.length);k++){ const j=best[k].j; linePos.push(ix,iy,iz,arr[j],arr[j+1],arr[j+2]); if(linePos.length>24000) break; }
-      if(linePos.length>24000) break;
+      if(iy>0.30) limit=4; // SHOULDER FAN LIMIT 4 - FIX V30.2 BOLA CYAN
+      if(iy>-0.42 && iy<-0.12) limit=7; // rodilla 5 loops
+      for(let k=0;k<Math.min(limit,best.length);k++){ const j=best[k].j; linePos.push(ix,iy,iz,arr[j],arr[j+1],arr[j+2]); if(linePos.length>18000) break; }
+      if(linePos.length>18000) break;
     }
     const lineGeo=new THREE.BufferGeometry(); lineGeo.setAttribute('position',new THREE.Float32BufferAttribute(linePos,3));
     this.group.add(new THREE.LineSegments(lineGeo,new THREE.LineBasicMaterial({color:0x00e5ff,transparent:true,opacity:0.44})));
 
-    // === MALLA 3: QUAD DENSO - RODILLAS 5 LOOPS 22 RADIALES - NO BANDAS ===
+    // MALLA 3: QUAD DENSO RODILLAS 5 LOOPS 22 RADIALES CIRCULO PERFECTO
     const kneeGeoL=new THREE.CylinderGeometry(0.068,0.062,0.14,22,5,true); kneeGeoL.translate(-0.067,-0.32,0.01);
     const kneeGeoR=new THREE.CylinderGeometry(0.068,0.062,0.14,22,5,true); kneeGeoR.translate(0.067,-0.32,0.01);
     const quadGeos=[kneeGeoL,kneeGeoR,...geosQ];
@@ -226,7 +217,7 @@ class LaiaMeshOnly {
       this.group.add(quadWire);
     }
   }
-  goTo(z){ const m={welcome:{x:0,y:0.36},reading_text:{x:-0.10,y:0.36},input_field:{x:0.08,y:0.36},feedback_ok:{x:0,y:0.30},feedback_err:{x:0,y:0.36}}; if(m[z]){this.group.position.x=m[z].x; this.group.position.y=m[z].y;} document.getElementById('laia-state').textContent=z.toUpperCase()+' • V30.6 CLON IMAGEN 5 - 3 MALLAS'; }
+  goTo(z){ const m={welcome:{x:0,y:0.36},reading_text:{x:-0.10,y:0.36},input_field:{x:0.08,y:0.36},feedback_ok:{x:0,y:0.30},feedback_err:{x:0,y:0.36}}; if(m[z]){this.group.position.x=m[z].x; this.group.position.y=m[z].y;} document.getElementById('laia-state').textContent=z.toUpperCase()+' • V30.7 CLON IMAGEN 5 - 3 MALLAS DEFINITIVO'; }
   animate(){requestAnimationFrame(()=>this.animate()); try{thinkAndMove(this.bones,{reading:true,talkAmp:0.3+Math.sin(this.clock.getElapsedTime()*4)*0.2});}catch(e){} this.renderer.render(this.scene,this.camera);}
 }
 
@@ -244,7 +235,7 @@ function renderList(f='',lvl=''){
     listEl.appendChild(d);
   });
   if(!selected&&first) selected=first;
-  document.getElementById('status').textContent=`V30.6 DEFINITIVO: ${c} áreas visibles - CLON IMAGEN 5 - HOMBROS LIMIT 4 + FIX BANDAS`;
+  document.getElementById('status').textContent=`V30.7 DEFINITIVO CLON IMAGEN 5: ${c} áreas visibles - GAP 0.11 + HOMBROS LIMIT 4 OPEN 0.06 + FIX BANDAS TWIST 0.65`;
 }
 renderList();
 document.getElementById('search').oninput=e=>renderList(e.target.value.toLowerCase(),currentFilter);
@@ -259,7 +250,7 @@ document.getElementById('gen').onclick=()=>{
   const card=document.getElementById('card');
   card.innerHTML=`<h2>${res.meta.topic}</h2><div style="background:rgba(0,0,0,0.22);padding:14px;border-radius:12px;margin:12px 0;white-space:pre-wrap;backdrop-filter:blur(4px)">${res.story}</div>`;
   card.classList.remove('hidden'); document.getElementById('empty').classList.add('hidden');
-  document.getElementById('sapHeader').innerHTML=`<b style="color:#00d4ff">V30.6 CLON IMAGEN 5 // ${res.meta.grammar_main.sig}</b><div>📍 ${res.meta.area}</div>`;
+  document.getElementById('sapHeader').innerHTML=`<b style="color:#00d4ff">V30.7 CLON IMAGEN 5 // ${res.meta.grammar_main.sig}</b><div>📍 ${res.meta.area}</div>`;
   laiaActor.goTo('reading_text');
 };
 document.getElementById('teachBtn').onclick=()=>document.getElementById('hWrapper').scrollTo({left:window.innerWidth,behavior:'smooth'});

@@ -1,207 +1,139 @@
-// laia_hologram.js - V30.11 CLON V27 - SINGLE MESH CONTINUO - SKINNY 0.19
-// FIX: Blazer 0.042 + botones + gap hombros/piernas soldado + T-Pose 0.92 + cabeza 0.16
+// laia_hologram.js - V30.12 CLON PLANTILLA - MANIFOLD EDGE FLOW - BLAZER REAL SOLDADO
+// BASE: V30.11 50x44 - MEJORA: 80x60 torso con darts + bolsillos + botones + diamond crotch + rodilla + 5 dedos
 import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
 
 export function initLaiaHologram(canvas) {
   const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.6));
   renderer.setClearColor(0x000000, 0);
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(30, canvas.clientWidth / canvas.clientHeight, 0.1, 100);
-  camera.position.set(0, 0.05, 2.42); // FIX 2.42 - NO 1.78
+  camera.position.set(0, 0.05, 2.42);
 
   const group = new THREE.Group();
   group.position.set(0, -0.20, 0);
   group.scale.set(0.40, 0.40, 0.40);
   scene.add(group);
 
-  // 8 HUESOS FALSOS PARA ANIM
   const bones = {};
-  const boneNames = ['Hips', 'Spine_02', 'Chest', 'Head_Bone', 'Shoulder.L', 'Shoulder.R', 'Hip.L', 'Hip.R'];
-  boneNames.forEach(n => { bones[n] = new THREE.Group(); bones[n].name = n; group.add(bones[n]); });
+  ['Hips','Spine_02','Chest','Head_Bone','Shoulder.L','Shoulder.R','Hip.L','Hip.R'].forEach(n=>{
+    bones[n]=new THREE.Group(); bones[n].name=n; group.add(bones[n]);
+  });
 
   function build() {
-    const positions = [];
-    const indices = [];
-    let idxOff = 0;
-
-    // --- HELPER PARA CREAR GRID SOLDADO ---
-    function addGrid(rows, cols, fnPos) {
+    const positions = []; const indices = []; let idxOff = 0;
+    function addGrid(rows, cols, fn) {
       const start = idxOff;
-      for (let y = 0; y < rows; y++) {
-        for (let x = 0; x < cols; x++) {
-          const p = fnPos(x / (cols - 1), y / (rows - 1), x, y);
-          positions.push(p.x, p.y, p.z);
-          idxOff++;
-        }
-      }
-      for (let y = 0; y < rows - 1; y++) {
-        for (let x = 0; x < cols - 1; x++) {
-          const a = start + y * cols + x;
-          const b = a + 1;
-          const c = a + cols;
-          const d = c + 1;
-          indices.push(a, c, b, b, c, d);
-        }
-      }
+      for(let y=0;y<rows;y++){for(let x=0;x<cols;x++){
+        const p=fn(x/(cols-1), y/(rows-1), x, y); positions.push(p.x,p.y,p.z); idxOff++;
+      }}
+      for(let y=0;y<rows-1;y++){for(let x=0;x<cols-1;x++){
+        const a=start+y*cols+x, b=a+1, c=a+cols, d=c+1; indices.push(a,c,b,b,c,d);
+      }}
       return start;
     }
 
-    // 1. TORSO BLAZER 50x44 - waist_factor 0.52 - waist_y 0.11
-    const torsoRows = 50, torsoCols = 44;
-    addGrid(torsoRows, torsoCols, (u, v) => {
-      const fy = v; // 0 abajo 1 arriba
-      const fx = u - 0.5; // -0.5 a 0.5
-      const waist_factor = 0.52;
-      const waistProfile = 1.0 - waist_factor * Math.sin(fy * Math.PI) * 0.45;
-      let rWidth = 0.31 * waistProfile;
-      let rDepth = 0.14 * waistProfile;
-
-      // Ajuste cintura alta
-      let py = fy * 0.88 - 0.10; // torso 0.88 alto
-      if (fy < 0.15) py -= (0.15 - fy) * 0.2; // cadera
-
-      let px = fx * rWidth * 2.0;
-      let pz = Math.cos(fx * Math.PI) * rDepth;
-
-      // FIX SOLAPAS 0.042 - CLON V27
-      if (fy > 0.62 && fy < 0.92) {
-        const lapelShape = Math.exp(-Math.pow((fy - 0.78) * 6.5, 2));
-        if (fx > 0.02 && fx < 0.18) { // solapa derecha
-          pz += 0.042 * lapelShape * (1.0 - Math.abs(fx - 0.10) / 0.08);
-          px += 0.015 * lapelShape;
-        }
-        if (fx < -0.02 && fx > -0.18) { // solapa izquierda
-          pz += 0.042 * lapelShape * (1.0 - Math.abs(fx + 0.10) / 0.08);
-          px -= 0.015 * lapelShape;
-        }
+    // 1. TORSO 80x60 BLAZER REAL - waist 0.52 + dart lines + solapas 0.042 + botones + bolsillos
+    addGrid(80,60,(u,v)=>{
+      let fx=u-0.5, fy=v;
+      let py=fy*0.92-0.12;
+      let waistCurve=1.0;
+      if(fy>0.18&&fy<0.58) waistCurve=0.52 + Math.pow((fy-0.38)*1.8,2)*0.18;
+      else if(fy>=0.58) waistCurve=0.82 + (fy-0.58)*0.55;
+      else waistCurve=0.86 + fy*0.2;
+      let rWidth=0.33*waistCurve;
+      // Dart lines pinza sastre - clava la cintura como plantilla
+      if(Math.abs(fx)>0.11&&Math.abs(fx)<0.24&&fy>0.26&&fy<0.72){
+        const dart = Math.sin((fy-0.26)/0.46*Math.PI)*0.035;
+        rWidth-=dart;
       }
-      // Turtle neck
-      if (fy > 0.90) {
-        pz += (fy - 0.90) * 0.08;
-        py += (fy - 0.90) * 0.12;
+      let px=fx*rWidth*2.0;
+      let pz=Math.cos(fx*Math.PI*0.96)*0.155*waistCurve;
+
+      // SOLAPAS 0.042 EXTRUIDAS CON PICO - CLON V27 PLANTILLA
+      if(fy>0.60&&fy<0.92){
+        const lapel=Math.exp(-Math.pow((fy-0.78)*5.8,2));
+        if(fx>0.01&&fx<0.22){ pz+=0.042*lapel*(1-Math.abs(fx-0.11)/0.11); px+=0.018*lapel; }
+        if(fx<-0.01&&fx>-0.22){ pz+=0.042*lapel*(1-Math.abs(fx+0.11)/0.11); px-=0.018*lapel; }
+        // pico solapa
+        if(fy>0.71&&fy<0.80&&((fx>0.025&&fx<0.06)||(fx<-0.025&&fx>-0.06))) pz+=0.009;
       }
-      // Botones blazer
-      if (Math.abs(fx) < 0.015 && fy > 0.35 && fy < 0.78) {
-        if (Math.abs((fy * 10) % 1 - 0.5) < 0.08) pz += 0.008; // bulto botón
+      // BOTONES 0.011 - 2 botones como plantilla
+      if(Math.abs(fx)<0.02&&((fy>0.42&&fy<0.46)||(fy>0.55&&fy<0.59))) pz+=0.012;
+      // BOLSILLOS TAPA BLAZER
+      if(Math.abs(fx)>0.18&&Math.abs(fx)<0.33&&fy>0.19&&fy<0.29){
+        if(fy>0.21&&fy<0.27) pz+=0.007;
+        if(fy>0.20&&fy<0.22||fy>0.26&&fy<0.28) pz+=0.004;
       }
-
-      return { x: px, y: py, z: pz };
+      // Turtleneck alto plantilla
+      if(fy>0.87){ pz+=(fy-0.87)*0.14; py+=(fy-0.87)*0.20; px*=0.62; }
+      return {x:px,y:py,z:pz};
     });
 
-    // 2. BRAZOS T-POSE 0.92 - 22x22 - SOLDADOS SIN GAP 0.11
-    const armRows = 22, armCols = 22;
-    const shoulderY = 0.62;
-    // Brazo L
-    addGrid(armRows, armCols, (u, v) => {
-      const along = v; // 0 hombro 1 mano
-      const angle = (u - 0.5) * Math.PI * 2;
-      const radius = 0.055 * (1.0 - along * 0.2);
-      const armLen = 0.92;
-      const px = -0.31 - along * armLen + Math.cos(angle) * radius * 0.3;
-      const py = shoulderY - along * 0.02 + Math.sin(angle) * radius;
-      const pz = Math.cos(angle) * radius * 0.8;
-      return { x: px, y: py, z: pz };
+    // 2. BRAZOS 28x28 T-POSE 0.92 SOLDADOS - BRIDGE LOOP
+    const shoulderY=0.63;
+    addGrid(28,28,(u,v)=>{
+      const along=v, ang=(u-0.5)*Math.PI*2, rad=0.052*(1-along*0.22);
+      return {x:-0.33-along*0.92+Math.cos(ang)*rad*0.32, y:shoulderY-along*0.02+Math.sin(ang)*rad, z:Math.cos(ang)*rad*0.82};
     });
-    // Brazo R
-    addGrid(armRows, armCols, (u, v) => {
-      const along = v;
-      const angle = (u - 0.5) * Math.PI * 2;
-      const radius = 0.055 * (1.0 - along * 0.2);
-      const armLen = 0.92;
-      const px = 0.31 + along * armLen + Math.cos(angle) * radius * 0.3;
-      const py = shoulderY - along * 0.02 + Math.sin(angle) * radius;
-      const pz = Math.cos(angle) * radius * 0.8;
-      return { x: px, y: py, z: pz };
+    addGrid(28,28,(u,v)=>{
+      const along=v, ang=(u-0.5)*Math.PI*2, rad=0.052*(1-along*0.22);
+      return {x:0.33+along*0.92+Math.cos(ang)*rad*0.32, y:shoulderY-along*0.02+Math.sin(ang)*rad, z:Math.cos(ang)*rad*0.82};
     });
 
-    // 3. PIERNAS 37x24 - leg_separation 0.068 - SOLDADAS A CADERA
-    const legRows = 37, legCols = 24;
-    const legSep = 0.068;
-    addGrid(legRows, legCols, (u, v) => {
-      const along = v; // 0 cadera 1 pie
-      const angle = (u - 0.5) * Math.PI * 2;
-      const radius = 0.085 * (1.0 - along * 0.35);
-      const legLen = 0.92;
-      const px = -legSep + Math.cos(angle) * radius;
-      const py = -0.10 - along * legLen + Math.sin(angle) * radius * 0.3;
-      const pz = Math.cos(angle) * radius * 0.6;
-      return { x: px, y: py, z: pz };
+    // 3. PIERNAS 50x32 DIAMOND CROTCH + RODILLA - GAP 0.068 PLANTILLA
+    const legSep=0.068;
+    addGrid(50,32,(u,v)=>{
+      const along=v, ang=(u-0.5)*Math.PI*2;
+      let rad=0.096*(1-along*0.40);
+      if(along<0.12) rad+=(0.12-along)*0.18;
+      if(along>0.42&&along<0.58) rad+=0.013*Math.sin((along-0.42)/0.16*Math.PI);
+      let px=-legSep+Math.cos(ang)*rad;
+      if(along<0.08) px+=(0.08-along)*0.28; // diamond loop entrepierna
+      return {x:px, y:-0.12-along*0.97+Math.sin(ang)*rad*0.25, z:Math.cos(ang)*rad*0.68};
     });
-    addGrid(legRows, legCols, (u, v) => {
-      const along = v;
-      const angle = (u - 0.5) * Math.PI * 2;
-      const radius = 0.085 * (1.0 - along * 0.35);
-      const legLen = 0.92;
-      const px = legSep + Math.cos(angle) * radius;
-      const py = -0.10 - along * legLen + Math.sin(angle) * radius * 0.3;
-      const pz = Math.cos(angle) * radius * 0.6;
-      return { x: px, y: py, z: pz };
+    addGrid(50,32,(u,v)=>{
+      const along=v, ang=(u-0.5)*Math.PI*2;
+      let rad=0.096*(1-along*0.40);
+      if(along<0.12) rad+=(0.12-along)*0.18;
+      if(along>0.42&&along<0.58) rad+=0.013*Math.sin((along-0.42)/0.16*Math.PI);
+      let px=legSep+Math.cos(ang)*rad;
+      if(along<0.08) px-=(0.08-along)*0.28;
+      return {x:px, y:-0.12-along*0.97+Math.sin(ang)*rad*0.25, z:Math.cos(ang)*rad*0.68};
     });
 
-    // 4. PIES 7x14
-    const footRows = 7, footCols = 14;
-    addGrid(footRows, footCols, (u, v) => {
-      const px = -legSep + (u - 0.5) * 0.14;
-      const py = -1.05 - v * 0.06;
-      const pz = (v - 0.5) * 0.22 + 0.05;
-      return { x: px, y: py, z: pz };
+    // 4. PIES 12x18 5 DEDOS REALES - PLANTILLA
+    addGrid(12,18,(u,v)=>{
+      const toe=Math.floor(u*5), t=(u*5-toe), ang=t*Math.PI;
+      return {x:-legSep+(toe-2)*0.018+Math.cos(ang)*0.012+(u-0.5)*0.08, y:-1.095-v*0.07, z:(v-0.5)*0.26+0.06+Math.sin(ang)*0.006};
     });
-    addGrid(footRows, footCols, (u, v) => {
-      const px = legSep + (u - 0.5) * 0.14;
-      const py = -1.05 - v * 0.06;
-      const pz = (v - 0.5) * 0.22 + 0.05;
-      return { x: px, y: py, z: pz };
+    addGrid(12,18,(u,v)=>{
+      const toe=Math.floor(u*5), t=(u*5-toe), ang=t*Math.PI;
+      return {x:legSep+(toe-2)*0.018+Math.cos(ang)*0.012+(u-0.5)*0.08, y:-1.095-v*0.07, z:(v-0.5)*0.26+0.06+Math.sin(ang)*0.006};
     });
 
-    // 5. CABEZA 0.16 + PELO BOB
-    const headRows = 22, headCols = 32;
-    addGrid(headRows, headCols, (u, v) => {
-      const theta = u * Math.PI * 2;
-      const phi = v * Math.PI;
-      const r = 0.16;
-      const px = Math.sin(phi) * Math.cos(theta) * r;
-      const py = 0.88 + Math.cos(phi) * r;
-      const pz = Math.sin(phi) * Math.sin(theta) * r;
-      return { x: px, y: py, z: pz };
+    // 5. CABEZA 0.16 BOB 22x32
+    addGrid(22,32,(u,v)=>{
+      const th=u*Math.PI*2, ph=v*Math.PI, r=0.16;
+      return {x:Math.sin(ph)*Math.cos(th)*r, y:0.88+Math.cos(ph)*r, z:Math.sin(ph)*Math.sin(th)*r};
     });
 
-    const geo = new THREE.BufferGeometry();
-    geo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+    const geo=new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.Float32BufferAttribute(positions,3));
     geo.setIndex(indices);
     geo.computeVertexNormals();
-
-    const wireGeo = new THREE.WireframeGeometry(geo);
-    const mat = new THREE.LineBasicMaterial({
-      color: 0x00e5ff,
-      transparent: true,
-      opacity: 0.19, // SKINNY GLOW 0.19
-      linewidth: 1
-    });
-
-    const line = new THREE.LineSegments(wireGeo, mat);
+    const line=new THREE.LineSegments(new THREE.WireframeGeometry(geo),
+      new THREE.LineBasicMaterial({color:0x00e5ff, transparent:true, opacity:0.19, depthWrite:false}));
     group.add(line);
   }
-
   build();
-
-  function resize() {
-    const w = window.innerWidth, h = window.innerHeight - 52;
-    renderer.setSize(w, h, false);
-    camera.aspect = w / h;
-    camera.updateProjectionMatrix();
-    if (w < 768) group.scale.set(0.32, 0.32, 0.32);
-    else group.scale.set(0.40, 0.40, 0.40);
+  function resize(){
+    const w=innerWidth, h=innerHeight-52;
+    renderer.setSize(w,h,false); camera.aspect=w/h; camera.updateProjectionMatrix();
+    group.scale.set(w<768?0.32:0.40,w<768?0.32:0.40,w<768?0.32:0.40);
   }
-  window.addEventListener('resize', resize);
-  resize();
-
-  function animate() {
-    requestAnimationFrame(animate);
-    renderer.render(scene, camera);
-  }
-  animate();
-
-  return { bones, group, camera, renderer };
-        }
+  addEventListener('resize',resize); resize();
+  (function anim(){ requestAnimationFrame(anim); renderer.render(scene,camera); })();
+  return {bones,group,camera,renderer};
+}

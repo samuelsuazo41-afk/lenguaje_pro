@@ -1,6 +1,6 @@
-/* styles.css - V30.6 DEFINITIVO - CLON IMAGEN 5 - 3 MALLAS INTEGRADAS - HOMBROS LIMIT 4 OPEN + CARA + FIX BANDAS */
-/* V30.5 -> V30.6: Integración V30.2 FINAL - hombros open fan 0.06 limit 4 + cara frontal pole 8 + ojos iris boca 6 visemas + nariz + manos 5 dedos + pies 5 dedos + piernas twist 0.65 anti-banda - gap clean 0.11 - particle 0.012 glow 0.92 - scale 0.54/0.50 - camera 1.62/1.88 */
-// YARVIS + Laia - Girona - V30.6 DEFINITIVO CLON IMAGEN 5
+/* styles.css - V30.7 DEFINITIVO - CLON IMAGEN 5 - 3 MALLAS INTEGRADAS - FIX BANDAS TWIST */
+/* V30.6 -> V30.7: Fix definitivo bandas rodilla - twist 0.65 + jitter 0.0035 + filtro dy<0.012 dx>0.012 - gap clean 0.11 - hombros open fan 0.06 limit 4 + cara frontal pole 8 - particle 0.012 glow 0.92 - scale 0.54/0.50 - camera 1.62/1.88 */
+// YARVIS + Laia - Girona - V30.7 DEFINITIVO CLON IMAGEN 5
 
 :root{--bg:#080a12;--text:#f1f1f5;--muted:#9ca3af;--holo:#00d4ff;--holo-cyan:#00e5ff;--holo-glow:rgba(0,229,255,0.62);}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -17,7 +17,7 @@ header{height:58px;background:rgba(12,12,20,0.22)!important;backdrop-filter:blur
 .f:hover{border-color:rgba(0,212,255,0.22)!important;color:#cdefff!important}
 .f.active{background:rgba(0,212,255,0.88)!important;color:#000!important;font-weight:900;box-shadow:0 0 12px rgba(0,229,255,0.42)}
 
-/* V30.6 CONTENIDO ULTRA TRANSPARENTE - LAIA PROTAGONISTA DETRÁS - 3 MALLAS */
+/* V30.7 CONTENIDO ULTRA TRANSPARENTE - LAIA PROTAGONISTA - CLON IMAGEN 5 */
 .h-wrapper{margin-top:58px;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;width:100vw;height:calc(100vh - 58px);position:relative;z-index:20;scrollbar-width:none}
 .h-wrapper::-webkit-scrollbar{display:none}
 .page{min-width:100vw;width:100vw;height:100%;scroll-snap-align:start;overflow-y:auto;display:flex;flex-direction:row;position:relative;z-index:20}
@@ -38,7 +38,7 @@ header{height:58px;background:rgba(12,12,20,0.22)!important;backdrop-filter:blur
 .chat-box{display:flex;gap:8px;margin-top:12px}.chat-box input{flex:1;background:rgba(30,30,45,0.22);border:1px solid rgba(0,212,255,0.14);color:#fff;padding:12px 14px;border-radius:12px;backdrop-filter:blur(6px)}
 .chat-box button{background:var(--holo);color:#000;border:none;padding:12px 18px;border-radius:12px;font-weight:800}
 
-/* V30.6 LAIA HOLOGRAMA - 3 MALLAS INTEGRADAS - HOMBROS LIMIT 4 OPEN + CARA + FIX BANDAS - CLON IMAGEN 5 */
+/* V30.7 LAIA HOLOGRAMA - CLON IMAGEN 5 - FIX BANDAS DEFINITIVO */
 #laia-hologram{
   position:fixed!important;top:58px!important;left:0!important;width:100vw!important;height:calc(100vh - 58px)!important;
   z-index:1!important;display:flex!important;align-items:center!important;justify-content:center!important;pointer-events:none!important;
@@ -48,7 +48,7 @@ header{height:58px;background:rgba(12,12,20,0.22)!important;backdrop-filter:blur
 }
 #laia-holo-canvas{
   width:100vw!important;height:calc(100vh - 58px)!important;display:block!important;background:transparent!important;pointer-events:none!important;
-  /* V30.6 CLON IMAGEN 5 - 3 MALLAS - HOMBROS OPEN + CARA FRONTAL POLE 8 + FIX BANDAS */
+  /* V30.7 CLON IMAGEN 5 - 3 MALLAS - TWIST 0.65 JITTER 0.0035 FIX BANDAS + HOMBROS OPEN FAN + CARA FRONTAL POLE 8 */
   filter: contrast(1.32) brightness(1.22) saturate(1.16) drop-shadow(0 0 12px rgba(0,229,255,0.72)) drop-shadow(0 0 28px rgba(0,212,255,0.22))!important;
   image-rendering: -webkit-optimize-contrast;
 }
@@ -56,7 +56,7 @@ header{height:58px;background:rgba(12,12,20,0.22)!important;backdrop-filter:blur
 #bubble{position:absolute;left:50%;transform:translateX(-50%);bottom:110px;background:rgba(10,15,30,0.84);border:1px solid var(--holo);color:#fff;padding:12px 14px;border-radius:14px;font-size:12px;max-width:300px;backdrop-filter:blur(12px);z-index:60;box-shadow:0 8px 24px rgba(0,0,0,0.32)}
 .hidden{display:none!important}
 
-/* SELECT Y BOTONES V30.6 */
+/* SELECT Y BOTONES V30.7 */
 #level{background:rgba(28,28,42,0.22);border:1px solid rgba(0,212,255,0.16);color:#fff;padding:11px 12px;border-radius:10px;backdrop-filter:blur(6px)}
 #gen,#gen2{background:var(--holo)!important;color:#000!important;font-weight:900!important;box-shadow:0 0 16px rgba(0,212,255,0.32)!important;transition:all 0.2s}
 #gen:hover{box-shadow:0 0 24px rgba(0,229,255,0.52)!important;transform:translateY(-1px)}

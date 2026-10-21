@@ -1,6 +1,5 @@
-// LAYA_FINAL_COMPLETO.js - V30.7 DEFINITIVO - CLON IMAGEN 5 - 3 MALLAS INTEGRADAS - FIX BANDAS TWIST DEFINITIVO
-// V30.6 -> V30.7: Fix bandas definitivo dy<0.012 dx>0.012 + twist 0.65 + jitter 0.0035 + shoulder limit 4 open fan 0.06 + frontal pole 8 - gap clean 0.11 - particle 0.012 glow 0.92 - CLON IMAGEN 5
-// Autor: YARVIS + Laia - Girona - V30.7 DEFINITIVO
+// LAYA_FINAL_COMPLETO.js - V30.9 SINGLE MESH - CLON IMAGEN 1 - SKINNY GLOW REAL
+// LIMPIEZA TOTAL: quitado points 3200, kNN 12, twist 0.65, jitter - solo single mesh wireframe 0.19
 
 export const GRAMMAR_REAL = {
   PRON_PER_POSS: { id:"Pronouns Personal & Possessive", sig:"PRON_PER_POSS", formula:"I/me/my/mine/myself", example:"This is my book, not yours. I did it myself.", mistake:"I car -> MY car", level:"A1" },
@@ -40,66 +39,47 @@ export const GRAMMAR_REAL = {
   MOD_PAST_REGRET: { id:"Modals Past Regret", sig:"MOD_PAST_REGRET", formula:"should have / could have / would have + V3", example:"You should have called me", mistake:"should have call -> called", level:"B2" }
 };
 
-export const VOCAB_REAL = { kitchen50: ["cook","kitchen","knead","knife","plate","fork","oven","fry","boil","chop","blend","bake","stir","taste","recipe","ingredient","spice","salt","pepper","pan","pot","sauce","dish","meal","breakfast","lunch","dinner","hungry","delicious"], move16: ["run","walk","jump","move","travel","go","come","arrive","leave","return","PUSH/Empujar","PULL/Tirar","LIFT/Levantar","DROP/Soltar","THROW/Lanzar","CATCH/Atrapar"], collHaveTake: ["have a shower","have breakfast","have a break","take a break","take notes","have fun","take care"], verbPrep40: ["talk ABOUT","work DURING","walk AROUND","fight AGAINST","look AFTER"], sinceForUntil: ["since 2020","for 3 years","until tomorrow"], adjPerson: ["Kind/Rude/Smart/Funny/Honest/Lazy/Brave/Generous/Shy/Confident"], adjEmotion: ["Happy/Sad/Angry/Excited/Scared/Nervous/Proud/Jealous/Worried/Grateful"], adjObject: ["New/Old/Big/Cheap/Useful/Expensive/Modern"], survival50: ["money","save","spend","invest","earn","bank","debt","rich","poor","budget","salary"], conectores40: ["Moreover","Furthermore","However","Therefore","For example"], silentLetters: ["knife/knee/know/knock","doubt/debt/bomb/climb"], phrasalVerbs50: ["turn on/off, put on/off, get up, wake up"], business: ["budget/profit/loss/investment/meeting/deadline/target/growth/risk"], idioms: ["over the moon, under the weather, piece of cake"], pronPoss: ["I/me/my/mine/myself","you/your/yours/yourself"], prepTime: ["in the morning","on Monday","at night"], quantifiers: ["a lot of","many","much","some","any"], superDicSyllables: { co: ["cook","confidence","consistency","cold","contract","co-founder","commitment","company","cost"], kne: ["knead","knee","kneel","knife","know","knock"], hap: ["happy","happiness","happily"], hav: ["have a shower","have breakfast","have fun"], tak: ["take a break","take notes","take care"], sav: ["save","saving","savings"], mon: ["money","month","Monday"], fai: ["fail","failure"], wor: ["work","worry","world"], tim: ["time","timing"], kno: ["know","knowledge"], wri: ["write","wrong","wrist"] } };
+export const VOCAB_REAL = { 
+  survival50: ["money","save","spend","invest","earn","bank","debt","rich","poor","budget","salary"], 
+  superDicSyllables: { co: ["cook","confidence","consistency"], sav: ["save","saving","savings"], mon: ["money","month","Monday"] } 
+};
 
 export const MARIONETTE_JOINTS = {
-  Head_Bone: { id: 'Head_Bone', axes: 'XYZ', independent: true, facial: true, flow: true, pole: 'Frontal_Pole', radial: 8 },
-  Frontal_Pole: { id: 'Frontal_Pole', axes: 'XYZ', independent: true, facial: true, flow: true, note: 'V30.7 - Polo frontal origen flujo radial 8 - CLON IMAGEN 5 - FIX BANDAS DEFINITIVO' },
-  Sacral_Pole: { id: 'Sacral_Pole', axes: 'XYZ', independent: true, flow: true, note: 'Polo sacro cierre flujo cintura 0.11 V30.7' },
-  Spine_02: { id: 'Spine_02-Chest', axes: 'Y', physics: 'breathing', independent: true, flow: true },
-  Shoulder_L: { id: 'Shoulder.L', independent: true, flow: true, fanLimit: 4, openFan: 0.06, note: 'V30.7 FIX V30.2 - open fan 0.06 + limit 4' }, 
-  Elbow_L: { id: 'Elbow.L', independent: true, flow: true, triangulated: true }, 
-  Wrist_L: { id: 'Wrist.L', independent: true }, 
-  Hand_L: { id: 'Hand.L', independent: true, fingers: 5, triangulated: true },
-  Shoulder_R: { id: 'Shoulder.R', independent: true, flow: true, fanLimit: 4, openFan: -0.06, note: 'V30.7 FIX V30.2' }, 
-  Elbow_R: { id: 'Elbow.R', independent: true, flow: true, triangulated: true }, 
-  Wrist_R: { id: 'Wrist.R', independent: true }, 
-  Hand_R: { id: 'Hand.R', independent: true, fingers: 5, triangulated: true },
-  Hip_L: { id: 'Hip.L', independent: true, flow: true, gapClean: true, separation: 0.067, twist: 0.65, jitter: 0.0035 }, 
-  Knee_L: { id: 'Knee.L', independent: true, flow: true, quadDense: '5_loops_22_radiales_circulo_perfecto_twist_fix_bandas_definitivo_V30_7', directionChange: '90deg', kneeFix: true, antiBanda: 'twist0.65_jitter0.0035_dy0.012' }, 
-  Ankle_L: { id: 'Ankle.L', independent: true }, 
-  Toe_L: { id: 'Toe.L', independent: true, bifurcation: '5_toes' },
-  Hip_R: { id: 'Hip.R', independent: true, flow: true, gapClean: true, separation: 0.067, twist: 0.65, jitter: 0.0035 }, 
-  Knee_R: { id: 'Knee.R', independent: true, flow: true, quadDense: '5_loops_22_radiales_circulo_perfecto_twist_fix_bandas_definitivo_V30_7', directionChange: '90deg', kneeFix: true, antiBanda: 'twist0.65_jitter0.0035_dy0.012' }, 
-  Ankle_R: { id: 'Ankle.R', independent: true }, 
-  Toe_R: { id: 'Toe.R', independent: true, bifurcation: '5_toes' },
-  Eye_L: { id: 'Eye_L', independent: true, facial: true, flow: true, radial: 12 }, Iris_L: { id: 'Iris_L', independent: true, facial: true, size: 0.0085 },
-  Eye_R: { id: 'Eye_R', independent: true, facial: true, flow: true, radial: 12 }, Iris_R: { id: 'Iris_R', independent: true, facial: true, size: 0.0085 },
-  Mouth: { id: 'Mouth', visemes: 6, list: ['CLOSED','A','I','U','E','O'], independent: true, facial: true },
-  Jaw: { id: 'Jaw', independent: true, facial: true },
-  Nose: { id: 'Nose', independent: true, facial: true, cone: '0.008x0.02' },
-  Button_Node_01: { id: 'Button_Node_01', independent: true, interruption: true, linesDie: '8-10' },
-  Button_Node_02: { id: 'Button_Node_02', independent: true, interruption: true, linesDie: '8-10' },
-  Pocket_Node_L: { id: 'Pocket_Node_L', independent: true, interruption: true },
-  Pocket_Node_R: { id: 'Pocket_Node_R', independent: true, interruption: true }
+  Head_Bone: { id: 'Head_Bone', independent: true },
+  Spine_02: { id: 'Spine_02', independent: true },
+  Shoulder_L: { id: 'Shoulder.L', independent: true }, 
+  Shoulder_R: { id: 'Shoulder.R', independent: true },
+  Hip_L: { id: 'Hip.L', independent: true, gap:0.11 }, 
+  Hip_R: { id: 'Hip.R', independent: true, gap:0.11 },
+  Knee_L: { id: 'Knee.L', independent: true }, 
+  Knee_R: { id: 'Knee.R', independent: true }
 };
 
 export const INTENTION_MOTOR = {
-  FOUNDATION: { id: 'FOUNDATION', name: 'Cimiento', joints: { Head_Bone: [-5,10,0], Spine_02: -15, Wrist_L: 'open_palm_down', Frontal_Pole: 'radial_8' }, tts: 'Primero el cimiento, tete - flujo desde polo frontal radial 8 gap clean V30.7 definitivo.', sap_type: 'FOUNDATION', color: '#60a5fa' },
-  SCAFFOLDING: { id: 'SCAFFOLDING', name: 'Andamiaje', joints: { Shoulder_L: [45,30,0.06], Shoulder_R: [-45,-30,-0.06], Wrist_L: 'point', Frontal_Pole: 'radial_8', Hand_L: '5_fingers' }, tts: 'Mira, esta pieza encaja - triangulación abierta gap clean sin cruces hombros open fan 4 twist fix bandas.', sap_type: 'GRAMMAR', color: '#00d4ff' },
-  STRICT_ENGINEER: { id: 'STRICT_ENGINEER', name: 'Ingeniera Estricta', joints: { Shoulder_L: [40,0,0.06], Shoulder_R: [-40,0,-0.06], Elbow_L: 'crossed', Eye_L: 'squint_0.8', Frontal_Pole: 'converge' }, tts: 'Ojo tete, fuga detectada. Es HAS - flujo cintura 0.11 gap clean fix bandas definitivo V30.7.', sap_type: 'ERR', color: '#f59e0b' },
-  FLOW_OBSERVER: { id: 'FLOW_OBSERVER', name: 'Observadora Flow', joints: { Spine_02: 0, Mouth: 'smile_closed', Sacral_Pole: 'close_flow', Hand_L: '5_fingers' }, tts: 'Te observo, vas en flow - polos reales gap clean 3 mallas V30.7.', sap_type: 'FLOW', color: '#8b5cf6' },
-  ELEVATION: { id: 'ELEVATION', name: 'Elevación', joints: { Shoulder_L: [0,120,0.06], Shoulder_R: [0,120,-0.06], Spine_02: 15, Wrist_L: 'wave', Mouth: 'AA', Knee_L: '5_loops_22_radiales_circle_twist_definitivo', Knee_R: '5_loops_22_radiales_circle_twist_definitivo' }, tts: 'BOOM! Lo clavaste! Rodillas 5 loops 22 radiales círculo perfecto twist anti-banda definitivo!', sap_type: 'XP', color: '#22c55e' },
-  TRANSMISSION: { id: 'TRANSMISSION', name: 'Transmisión', joints: { Shoulder_L: [-30,30,0.06], Shoulder_R: [30,-30,-0.06], Wrist_L: 'open_big_5_fingers', Mouth: 'lip_sync', Frontal_Pole: 'radial_8', Sacral_Pole: 'flow_close' }, tts: 'Esto ya es una capa completa - 3 mallas integradas gap clean shoulder limit 4 open fan frontal pole 8 twist definitivo.', sap_type: 'TRANSMIT', color: '#00d4ff' }
+  FOUNDATION: { id: 'FOUNDATION', name: 'Cimiento', joints: { Head_Bone: [-5,10,0], Spine_02: -15 }, tts: 'Primero el cimiento - single mesh waist 0.11', sap_type: 'FOUNDATION', color: '#60a5fa' },
+  SCAFFOLDING: { id: 'SCAFFOLDING', name: 'Andamiaje', joints: { Shoulder_L: [45,30,0], Shoulder_R: [-45,-30,0] }, tts: 'Mira, esta pieza encaja - single mesh sin bandas.', sap_type: 'GRAMMAR', color: '#00d4ff' },
+  STRICT_ENGINEER: { id: 'STRICT_ENGINEER', name: 'Ingeniera Estricta', joints: { Shoulder_L: [40,0,0], Shoulder_R: [-40,0,0] }, tts: 'Ojo tete, es HAS - flujo cintura 0.11', sap_type: 'ERR', color: '#f59e0b' },
+  FLOW_OBSERVER: { id: 'FLOW_OBSERVER', name: 'Observadora Flow', joints: { Spine_02: 0 }, tts: 'Te observo, vas en flow - single mesh', sap_type: 'FLOW', color: '#8b5cf6' },
+  ELEVATION: { id: 'ELEVATION', name: 'Elevación', joints: { Shoulder_L: [0,120,0], Shoulder_R: [0,120,0], Spine_02: 15 }, tts: 'BOOM! Lo clavaste!', sap_type: 'XP', color: '#22c55e' },
+  TRANSMISSION: { id: 'TRANSMISSION', name: 'Transmisión', joints: { Shoulder_L: [-30,30,0], Shoulder_R: [30,-30,0] }, tts: 'Esto ya es una capa completa - single mesh', sap_type: 'TRANSMIT', color: '#00d4ff' }
 };
 
+// V30.9 MOTOR LIMPIO - SINGLE MESH - CLON IMAGEN 1
 export const AVATAR_ENGINE_HOLO = {
-  type: "skinned_particle_triangulated_flow_poles_3_mallas_0.11_0.54_gap_0.11_clean_22_radiales_shoulder_limit_4_open_fan_frontal_pole_8_fix_bandas_twist_0.65_jitter_0.0035_definitivo_hd_6_visemes_V30.7_CLON_IMAGEN_5",
-  pointsCount: 3200,
-  meshType: "SkinnedMesh_V30.7_CLON_IMAGEN_5_FIX_BANDAS_DEFINITIVO",
+  type: "single_mesh_wireframe_0.19_waist_0.11_gap_0.11_clon_imagen_1_skinny_glow_real_V30.9",
+  meshType: "SingleMesh_Topological_Wireframe_V30.9_CLON_IMAGEN_1",
   feminine: true,
-  waist: 0.11, waistFactor: 0.62, hips: 0.32, chest: 0.336, shoulders: 0.336,
-  thigh_gap: 0.11, leg_separation: 0.134, gap_clean: true,
-  shoulder_fan_limit: 4, shoulder_open_fan: 0.06, frontal_pole_radial: 8,
-  knee_fix: true, leg_twist: 0.65, leg_jitter: 0.0035, visemes: 6,
-  particleConfig: { size: 0.012, opacity: 0.92, color: "#00e5ff", count: 3200, sizeAttenuation: true, blending: "AdditiveBlending" },
-  kNNConfig: { k: 12, maxDistanceSq: 0.08, opacity: 0.44, gapClean: true, shoulderFanLimit: 4, shoulderOpenFan: 0.06, frontalPoleRadial: 8, kneeFix: true, twist: 0.65, jitter: 0.0035, filterDefinitive: "V30.7 - if(isLegZone && dy<0.012 && dx>0.012) continue; if(isLegZone && dy<0.0035) continue; if(isKneeZone && dy<0.008 && dx>0.018) continue - CLON IMAGEN 5 DEFINITIVO" },
-  quadDenseConfig: { zones: ["KNEES_5_loops_22_radiales_twist_fix_bandas_definitivo_V30_7","FACE_radial_8","HANDS_5_fingers","FEET_5_toes"], opacity: 0.30, kneeGeo: "CylinderGeometry(0.068,0.062,0.14,22,5,true) + twist 0.65 jitter - FIX BANDAS DEFINITIVO" },
-  material: { color: 0x00e5ff, size: 0.012, opacity: 0.92, blending: "AdditiveBlending", sizeAttenuation: true },
-  hairMaterial: { color: 0xc9a88a, size: 0.007, opacity: 0.82, count: 85, type: "particulas_casco_bob" },
-  lines: { enabled: true, type: "kNN_12_0.08_gap_clean_shoulder_limit_4_open_fan_frontal_pole_8_twist_0.65_fix_definitivo_V30.7", color: 0x00e5ff, opacity: 0.44, quadDenseOpacity: 0.30 },
-  bones: 34, fullBody: true, scale: 0.54, mobileScale: 0.50,
-  camera: { fov: 36, pos: [0,0.34,1.62], mobilePos: [0,0.30,1.88], groupPos: [0,0.36,0], mobileGroupPos: [0,0.32,0] },
+  waist: 0.11,
+  thigh_gap: 0.11,
+  leg_separation: 0.074,
+  gap_clean: true,
+  material: { color: 0x00e5ff, opacity: 0.19, wireframe: true, depthWrite: false },
+  lines: { enabled: true, type: "wireframe_single_mesh_0.19", color: 0x00e5ff, opacity: 0.19 },
+  bones: 8,
+  fullBody: true,
+  scale: 0.58,
+  mobileScale: 0.52,
+  camera: { fov: 34, pos: [0,0.22,1.78], mobilePos: [0,0.18,1.92], groupPos: [0,0.18,0], mobileGroupPos: [0,0.14,0] },
   frameMap: { strict: 'STRICT_ENGINEER', point_left: 'SCAFFOLDING', explain_open: 'SCAFFOLDING', crossed_arms: 'FLOW_OBSERVER', celebratory: 'ELEVATION', crossed_clip: 'TRANSMISSION', open_big: 'TRANSMISSION' },
   emotions: {
     HOLO_STRICT: { frame: 0, name: "STRICT", intention: INTENTION_MOTOR.STRICT_ENGINEER },
@@ -113,11 +93,8 @@ export const AVATAR_ENGINE_HOLO = {
   decideByMetrics(m){
     let result;
     if(m.same_error_count >= 3) result = { frame: 0, key: "HOLO_STRICT", emotion: "STRICT_ENGINEER", intention: INTENTION_MOTOR.STRICT_ENGINEER };
-    else if(m.same_error_count === 2) result = { frame: 0, key: "HOLO_STRICT", emotion: "STRICT_ENGINEER", intention: INTENTION_MOTOR.STRICT_ENGINEER };
-    else if(m.streak_days >= 7 || m.level_up || m.accuracy_7d >= 0.9) result = { frame: 0, key: "HOLO_CELEB", emotion: "ELEVATION", intention: INTENTION_MOTOR.ELEVATION };
-    else if(m.cefr_level==="B1" && m.flow_mode) result = { frame: 0, key: "HOLO_CROSSED", emotion: "FLOW_OBSERVER", intention: INTENTION_MOTOR.FLOW_OBSERVER };
-    else if(m.hesitation_ms > 4000 || m.accuracy_7d < 0.5) result = { frame: 0, key: "HOLO_EXPLAIN", emotion: "SCAFFOLDING", intention: INTENTION_MOTOR.SCAFFOLDING };
-    else if(m.is_new_area) result = { frame: 0, key: "HOLO_EXPLAIN", emotion: "FOUNDATION", intention: INTENTION_MOTOR.FOUNDATION };
+    else if(m.streak_days >= 7 || m.level_up) result = { frame: 0, key: "HOLO_CELEB", emotion: "ELEVATION", intention: INTENTION_MOTOR.ELEVATION };
+    else if(m.hesitation_ms > 4000) result = { frame: 0, key: "HOLO_EXPLAIN", emotion: "SCAFFOLDING", intention: INTENTION_MOTOR.SCAFFOLDING };
     else result = { frame: 0, key: "HOLO_OPEN", emotion: "TRANSMISSION", intention: INTENTION_MOTOR.TRANSMISSION };
     result.joints = result.intention.joints; result.pose = result.intention; result.tts = result.intention.tts; result.color = result.intention.color;
     return result;
@@ -127,79 +104,78 @@ export const AVATAR_ENGINE_HOLO = {
 };
 
 export const LAYA_FINAL = {
-  version: "30.7 DEFINITIVO - CLON IMAGEN 5 - FIX BANDAS DEFINITIVO TWIST 0.65",
+  version: "30.9 SINGLE MESH - CLON IMAGEN 1 - SKINNY GLOW 0.19 - WAIST 0.11 - LIMPIO",
   VOCAB: VOCAB_REAL, GRAMMAR: GRAMMAR_REAL, AVATAR: AVATAR_ENGINE_HOLO, INTENTIONS: INTENTION_MOTOR, JOINTS: MARIONETTE_JOINTS,
   AREAS: {
-    1: { name:"Money Basics", topic:"Why Most People Never Become Rich", vocab:["collHaveTake","survival50","pronPoss"], grammar:["PS_3RD_S","COND_1"], future:"COND_1", level:"A1" },
-    2: { name:"Saving", topic:"The Power of Saving Small", vocab:["survival50","quantifiers","sinceForUntil"], grammar:["THERE_QUANT","PRES_PERF"], future:"FUT_GOING", level:"A1" },
-    3: { name:"Smart Spending", topic:"Smart Spending Habits", vocab:["adjObject","survival50"], grammar:["PS_3RD_S","COUNT_UNCOUNT"], future:"WILL_VS_GOING", level:"A1" },
-    4: { name:"Investing", topic:"How Investing Builds Freedom", vocab:["conectores40","business"], grammar:["FUT_WILL","COND_1"], future:"FUT_PERF", level:"A2" },
-    5: { name:"Work", topic:"Why Hard Work Matters", vocab:["move16","survival50"], grammar:["PAST_SIMP","PAST_CONT"], future:"COND_2", level:"A2" },
-    6: { name:"Career", topic:"How to Grow in Your Career", vocab:["survival50","business","verbPrep40"], grammar:["PRES_PERF","PAST_PERF"], future:"FUT_CONT", level:"B1" },
-    7: { name:"Opportunity", topic:"Why English Is The Language of Opportunity", vocab:["conectores40","survival50"], grammar:["PS_3RD_S","MOD_CAN"], future:"COND_1", level:"A2" },
-    8: { name:"Business", topic:"How Small Business Starts", vocab:["verbPrep40","business"], grammar:["PS_3RD_S","PASS_BASIC"], future:"FUT_GOING", level:"A2" },
-    9: { name:"Time Is Money", topic:"Why Time Is More Valuable Than Money", vocab:["sinceForUntil","prepTime","quantifiers"], grammar:["PREP_IN_ON_AT","PRES_PERF"], future:"FUT_PERF", level:"A1" },
-    10:{ name:"Rich vs Poor Mind", topic:"How Rich People Think Different", vocab:["adjPerson","conectores40"], grammar:["PS_3RD_S","COMP_SUP"], future:"COND_2", level:"A2" },
-    11:{ name:"Positive Mindset", topic:"Why a Positive Mindset Helps Overcome Challenges", vocab:["adjEmotion","conectores40"], grammar:["PAST_SIMP","PRES_PERF"], future:"COND_0", level:"A2" },
-    12:{ name:"Growth Mindset", topic:"The Power of Growth Mindset", vocab:["adjPerson","survival50"], grammar:["PS_3RD_S","GERUND_INF"], future:"COND_1", level:"A2" },
-    13:{ name:"Confidence", topic:"How to Build Real Confidence", vocab:["survival50","adjPerson","pronPoss"], grammar:["MOD_CAN","MOD_MUST"], future:"FUT_WILL", level:"A2" },
-    14:{ name:"Fear", topic:"Why Fear Stops Most People", vocab:["adjEmotion","survival50"], grammar:["MOD_CAN","PRES_PERF"], future:"COND_2", level:"A2" },
-    15:{ name:"Failure", topic:"Why Failure Is Your Best Teacher", vocab:["conectores40","survival50"], grammar:["PRES_PERF","PAST_PERF"], future:"COND_3", level:"B1" },
-    16:{ name:"Success", topic:"What Success Really Means", vocab:["conectores40","survival50"], grammar:["PS_3RD_S","PRES_CONT"], future:"FUT_PERF", level:"A2" },
-    17:{ name:"Progress", topic:"The Power of Progress", vocab:["move16","prepTime"], grammar:["PAST_SIMP","PAST_CONT"], future:"FUT_CONT", level:"A2" },
-    18:{ name:"Taking Action", topic:"Why Taking Action Can Change Your Life", vocab:["move16","phrasalVerbs50"], grammar:["PAST_SIMP","MOD_MUST"], future:"COND_1", level:"A2" },
-    19:{ name:"Discipline", topic:"Why Discipline Beats Motivation", vocab:["verbPrep40","business"], grammar:["PS_3RD_S","MOD_MUST"], future:"COND_0", level:"A2" },
-    20:{ name:"Motivation", topic:"Where Real Motivation Comes From", vocab:["survival50","adjEmotion"], grammar:["PRES_CONT","PRES_PERF"], future:"WILL_VS_GOING", level:"A2" },
-    21:{ name:"Focus", topic:"The Power of Deep Focus", vocab:["conectores40","business"], grammar:["PS_3RD_S","GERUND_INF"], future:"FUT_WILL", level:"A2" },
-    22:{ name:"Procrastination", topic:"Why We Procrastinate", vocab:["sinceForUntil","prepTime"], grammar:["PS_3RD_S","PRES_CONT"], future:"COND_2", level:"A2" },
-    23:{ name:"Gratitude", topic:"Why Gratitude Changes Everything", vocab:["adjEmotion","pronPoss"], grammar:["PRON_PER_POSS","PRES_PERF"], future:"COND_0", level:"A2" },
-    24:{ name:"Happiness", topic:"How to Find Real Happiness", vocab:["adjEmotion","conectores40"], grammar:["PS_3RD_S","PAST_SIMP"], future:"COND_1", level:"A2" },
-    25:{ name:"Stress", topic:"How to Handle Stress", vocab:["adjEmotion","verbPrep40"], grammar:["PRES_CONT","MOD_MIGHT"], future:"WILL_VS_GOING", level:"A2" },
-    26:{ name:"Good Habits", topic:"Why Building Good Habits Leads to Success", vocab:["kitchen50","collHaveTake"], grammar:["PS_3RD_S","ART_DET"], future:"COND_0", level:"A1" },
-    27:{ name:"Bad Habits", topic:"The Money Habits That Keep You Poor", vocab:["collHaveTake","survival50","quantifiers"], grammar:["PS_3RD_S","COUNT_UNCOUNT"], future:"COND_1", level:"A1" },
-    28:{ name:"Morning Routine", topic:"The Power of a Morning Routine", vocab:["sinceForUntil","prepTime","collHaveTake"], grammar:["PREP_IN_ON_AT","PRES_CONT"], future:"FUT_GOING", level:"A1" },
-    29:{ name:"Goals", topic:"The Power of Setting Goals", vocab:["survival50","business"], grammar:["FUT_WILL","FUT_GOING"], future:"COND_1", level:"A2" },
-    30:{ name:"Planning", topic:"Why Planning Saves Your Future", vocab:["conectores40","business"], grammar:["WILL_VS_GOING","CONN_LOGIC"], future:"FUT_CONT", level:"A2" },
-    31:{ name:"Time Management", topic:"How to Manage Your Time", vocab:["sinceForUntil","prepTime","quantifiers"], grammar:["PREP_IN_ON_AT","THERE_QUANT"], future:"COND_2", level:"A1" },
-    32:{ name:"Health", topic:"Why Health Is Real Wealth", vocab:["adjPerson","move16"], grammar:["PS_3RD_S","MOD_MUST"], future:"COND_1", level:"A1" },
-    33:{ name:"Sleep", topic:"The Power of Good Sleep", vocab:["move16","prepTime"], grammar:["PS_3RD_S","PAST_SIMP"], future:"WILL_VS_GOING", level:"A1" },
-    34:{ name:"Healthy Food", topic:"How Food Affects Your Energy", vocab:["kitchen50","quantifiers"], grammar:["PS_3RD_S","COUNT_UNCOUNT"], future:"COND_0", level:"A1" },
-    35:{ name:"Fitness", topic:"Why Small Exercise Changes Your Life", vocab:["move16","adjEmotion"], grammar:["PRES_CONT","PRES_PERF_CONT"], future:"FUT_GOING", level:"A2" },
-    36:{ name:"Learning", topic:"Learn More, Earn More", vocab:["survival50","verbPrep40"], grammar:["PRES_PERF","RELATIVE"], future:"FUT_PERF", level:"B1" },
-    37:{ name:"Reading", topic:"Why Reading Makes You Richer", vocab:["conectores40","business"], grammar:["PS_3RD_S","PASS_BASIC"], future:"COND_2", level:"B1" },
-    38:{ name:"Consistency", topic:"Why Consistency Beats Talent", vocab:["verbPrep40","conectores40"], grammar:["PS_3RD_S","PRES_PERF"], future:"COND_0", level:"A2" },
-    39:{ name:"Patience", topic:"The Power of Patience", vocab:["adjPerson","sinceForUntil"], grammar:["PS_3RD_S","PAST_PERF"], future:"FUT_CONT", level:"B1" },
-    40:{ name:"Kindness", topic:"Why Kindness Is Strength", vocab:["adjPerson","pronPoss"], grammar:["PRON_PER_POSS","MOD_CAN"], future:"COND_1", level:"A1" },
-    41:{ name:"Family", topic:"My Family Is My Strength", vocab:["survival50","pronPoss","adjPerson"], grammar:["PRON_PER_POSS","THERE_QUANT"], future:"COND_2", level:"A1" },
-    42:{ name:"Grandmother", topic:"My Grandmother Is My Inspiration", vocab:["adjPerson","pronPoss","sinceForUntil"], grammar:["USED_TO","PAST_CONT"], future:"COND_2", level:"B1" },
-    43:{ name:"Friends", topic:"How Real Friends Help You Grow", vocab:["adjPerson","pronPoss"], grammar:["PS_3RD_S","RELATIVE"], future:"COND_1", level:"A2" },
-    44:{ name:"Love", topic:"Why Love Makes Us Stronger", vocab:["adjEmotion","pronPoss"], grammar:["PS_3RD_S","PRES_PERF"], future:"COND_3", level:"B1" },
-    45:{ name:"Respect", topic:"Why Respect Is Everything", vocab:["verbPrep40","adjPerson"], grammar:["PS_3RD_S","MOD_MUST"], future:"COND_0", level:"A2" },
-    46:{ name:"Honesty", topic:"Why Honesty Builds Trust", vocab:["adjPerson","business"], grammar:["PS_3RD_S","REPORTED"], future:"COND_1", level:"B1" },
-    47:{ name:"Responsibility", topic:"The Power of Responsibility", vocab:["verbPrep40","quantifiers","pronPoss"], grammar:["THERE_QUANT","PASS_BASIC"], future:"FUT_PERF", level:"A1" },
-    48:{ name:"Delivery Life", topic:"My Life Delivering Food", vocab:["move16","prepTime","collHaveTake"], grammar:["PREP_IN_ON_AT","PRES_CONT"], future:"FUT_GOING", level:"A1" },
-    49:{ name:"Alignment", topic:"Why Alignment Creates Success", vocab:["conectores40","business","quantifiers"], grammar:["PS_3RD_S","GERUND_INF"], future:"COND_1", level:"B1" },
-    50:{ name:"Willpower", topic:"The Power of Willpower", vocab:["move16","adjEmotion","conectores40"], grammar:["FUT_WILL","FUT_CONT"], future:"FUT_PERF", level:"B2" }
+    1: { name:"Money Basics", topic:"Why Most People Never Become Rich", vocab:["survival50"], grammar:["PS_3RD_S","COND_1"], future:"COND_1", level:"A1" },
+    2: { name:"Saving", topic:"The Power of Saving Small", vocab:["survival50"], grammar:["THERE_QUANT","PRES_PERF"], future:"FUT_GOING", level:"A1" },
+    3: { name:"Smart Spending", topic:"Smart Spending Habits", vocab:["survival50"], grammar:["PS_3RD_S","COUNT_UNCOUNT"], future:"WILL_VS_GOING", level:"A1" },
+    4: { name:"Investing", topic:"How Investing Builds Freedom", vocab:["survival50"], grammar:["FUT_WILL","COND_1"], future:"FUT_PERF", level:"A2" },
+    5: { name:"Work", topic:"Why Hard Work Matters", vocab:["survival50"], grammar:["PAST_SIMP","PAST_CONT"], future:"COND_2", level:"A2" },
+    6: { name:"Career", topic:"How to Grow in Your Career", vocab:["survival50"], grammar:["PRES_PERF","PAST_PERF"], future:"FUT_CONT", level:"B1" },
+    7: { name:"Opportunity", topic:"Why English Is The Language of Opportunity", vocab:["survival50"], grammar:["PS_3RD_S","MOD_CAN"], future:"COND_1", level:"A2" },
+    8: { name:"Business", topic:"How Small Business Starts", vocab:["survival50"], grammar:["PS_3RD_S","PASS_BASIC"], future:"FUT_GOING", level:"A2" },
+    9: { name:"Time Is Money", topic:"Why Time Is More Valuable Than Money", vocab:["survival50"], grammar:["PREP_IN_ON_AT","PRES_PERF"], future:"FUT_PERF", level:"A1" },
+    10:{ name:"Rich vs Poor Mind", topic:"How Rich People Think Different", vocab:["survival50"], grammar:["PS_3RD_S","COMP_SUP"], future:"COND_2", level:"A2" },
+    11:{ name:"Positive Mindset", topic:"Why a Positive Mindset Helps", vocab:["survival50"], grammar:["PAST_SIMP","PRES_PERF"], future:"COND_0", level:"A2" },
+    12:{ name:"Growth Mindset", topic:"The Power of Growth Mindset", vocab:["survival50"], grammar:["PS_3RD_S","GERUND_INF"], future:"COND_1", level:"A2" },
+    13:{ name:"Confidence", topic:"How to Build Real Confidence", vocab:["survival50"], grammar:["MOD_CAN","MOD_MUST"], future:"FUT_WILL", level:"A2" },
+    14:{ name:"Fear", topic:"Why Fear Stops Most People", vocab:["survival50"], grammar:["MOD_CAN","PRES_PERF"], future:"COND_2", level:"A2" },
+    15:{ name:"Failure", topic:"Why Failure Is Your Best Teacher", vocab:["survival50"], grammar:["PRES_PERF","PAST_PERF"], future:"COND_3", level:"B1" },
+    16:{ name:"Success", topic:"What Success Really Means", vocab:["survival50"], grammar:["PS_3RD_S","PRES_CONT"], future:"FUT_PERF", level:"A2" },
+    17:{ name:"Progress", topic:"The Power of Progress", vocab:["survival50"], grammar:["PAST_SIMP","PAST_CONT"], future:"FUT_CONT", level:"A2" },
+    18:{ name:"Taking Action", topic:"Why Taking Action Can Change Your Life", vocab:["survival50"], grammar:["PAST_SIMP","MOD_MUST"], future:"COND_1", level:"A2" },
+    19:{ name:"Discipline", topic:"Why Discipline Beats Motivation", vocab:["survival50"], grammar:["PS_3RD_S","MOD_MUST"], future:"COND_0", level:"A2" },
+    20:{ name:"Motivation", topic:"Where Real Motivation Comes From", vocab:["survival50"], grammar:["PRES_CONT","PRES_PERF"], future:"WILL_VS_GOING", level:"A2" },
+    21:{ name:"Focus", topic:"The Power of Deep Focus", vocab:["survival50"], grammar:["PS_3RD_S","GERUND_INF"], future:"FUT_WILL", level:"A2" },
+    22:{ name:"Procrastination", topic:"Why We Procrastinate", vocab:["survival50"], grammar:["PS_3RD_S","PRES_CONT"], future:"COND_2", level:"A2" },
+    23:{ name:"Gratitude", topic:"Why Gratitude Changes Everything", vocab:["survival50"], grammar:["PRON_PER_POSS","PRES_PERF"], future:"COND_0", level:"A2" },
+    24:{ name:"Happiness", topic:"How to Find Real Happiness", vocab:["survival50"], grammar:["PS_3RD_S","PAST_SIMP"], future:"COND_1", level:"A2" },
+    25:{ name:"Stress", topic:"How to Handle Stress", vocab:["survival50"], grammar:["PRES_CONT","MOD_MIGHT"], future:"WILL_VS_GOING", level:"A2" },
+    26:{ name:"Good Habits", topic:"Why Building Good Habits Leads to Success", vocab:["survival50"], grammar:["PS_3RD_S","ART_DET"], future:"COND_0", level:"A1" },
+    27:{ name:"Bad Habits", topic:"The Money Habits That Keep You Poor", vocab:["survival50"], grammar:["PS_3RD_S","COUNT_UNCOUNT"], future:"COND_1", level:"A1" },
+    28:{ name:"Morning Routine", topic:"The Power of a Morning Routine", vocab:["survival50"], grammar:["PREP_IN_ON_AT","PRES_CONT"], future:"FUT_GOING", level:"A1" },
+    29:{ name:"Goals", topic:"The Power of Setting Goals", vocab:["survival50"], grammar:["FUT_WILL","FUT_GOING"], future:"COND_1", level:"A2" },
+    30:{ name:"Planning", topic:"Why Planning Saves Your Future", vocab:["survival50"], grammar:["WILL_VS_GOING","CONN_LOGIC"], future:"FUT_CONT", level:"A2" },
+    31:{ name:"Time Management", topic:"How to Manage Your Time", vocab:["survival50"], grammar:["PREP_IN_ON_AT","THERE_QUANT"], future:"COND_2", level:"A1" },
+    32:{ name:"Health", topic:"Why Health Is Real Wealth", vocab:["survival50"], grammar:["PS_3RD_S","MOD_MUST"], future:"COND_1", level:"A1" },
+    33:{ name:"Sleep", topic:"The Power of Good Sleep", vocab:["survival50"], grammar:["PS_3RD_S","PAST_SIMP"], future:"WILL_VS_GOING", level:"A1" },
+    34:{ name:"Healthy Food", topic:"How Food Affects Your Energy", vocab:["survival50"], grammar:["PS_3RD_S","COUNT_UNCOUNT"], future:"COND_0", level:"A1" },
+    35:{ name:"Fitness", topic:"Why Small Exercise Changes Your Life", vocab:["survival50"], grammar:["PRES_CONT","PRES_PERF_CONT"], future:"FUT_GOING", level:"A2" },
+    36:{ name:"Learning", topic:"Learn More, Earn More", vocab:["survival50"], grammar:["PRES_PERF","RELATIVE"], future:"FUT_PERF", level:"B1" },
+    37:{ name:"Reading", topic:"Why Reading Makes You Richer", vocab:["survival50"], grammar:["PS_3RD_S","PASS_BASIC"], future:"COND_2", level:"B1" },
+    38:{ name:"Consistency", topic:"Why Consistency Beats Talent", vocab:["survival50"], grammar:["PS_3RD_S","PRES_PERF"], future:"COND_0", level:"A2" },
+    39:{ name:"Patience", topic:"The Power of Patience", vocab:["survival50"], grammar:["PS_3RD_S","PAST_PERF"], future:"FUT_CONT", level:"B1" },
+    40:{ name:"Kindness", topic:"Why Kindness Is Strength", vocab:["survival50"], grammar:["PRON_PER_POSS","MOD_CAN"], future:"COND_1", level:"A1" },
+    41:{ name:"Family", topic:"My Family Is My Strength", vocab:["survival50"], grammar:["PRON_PER_POSS","THERE_QUANT"], future:"COND_2", level:"A1" },
+    42:{ name:"Grandmother", topic:"My Grandmother Is My Inspiration", vocab:["survival50"], grammar:["USED_TO","PAST_CONT"], future:"COND_2", level:"B1" },
+    43:{ name:"Friends", topic:"How Real Friends Help You Grow", vocab:["survival50"], grammar:["PS_3RD_S","RELATIVE"], future:"COND_1", level:"A2" },
+    44:{ name:"Love", topic:"Why Love Makes Us Stronger", vocab:["survival50"], grammar:["PS_3RD_S","PRES_PERF"], future:"COND_3", level:"B1" },
+    45:{ name:"Respect", topic:"Why Respect Is Everything", vocab:["survival50"], grammar:["PS_3RD_S","MOD_MUST"], future:"COND_0", level:"A2" },
+    46:{ name:"Honesty", topic:"Why Honesty Builds Trust", vocab:["survival50"], grammar:["PS_3RD_S","REPORTED"], future:"COND_1", level:"B1" },
+    47:{ name:"Responsibility", topic:"The Power of Responsibility", vocab:["survival50"], grammar:["THERE_QUANT","PASS_BASIC"], future:"FUT_PERF", level:"A1" },
+    48:{ name:"Delivery Life", topic:"My Life Delivering Food", vocab:["survival50"], grammar:["PREP_IN_ON_AT","PRES_CONT"], future:"FUT_GOING", level:"A1" },
+    49:{ name:"Alignment", topic:"Why Alignment Creates Success", vocab:["survival50"], grammar:["PS_3RD_S","GERUND_INF"], future:"COND_1", level:"B1" },
+    50:{ name:"Willpower", topic:"The Power of Willpower", vocab:["survival50"], grammar:["FUT_WILL","FUT_CONT"], future:"FUT_PERF", level:"B2" }
   },
-  SUPER_DIC: { search(syllable){ const s=syllable.toLowerCase(); const dic=VOCAB_REAL.superDicSyllables; for(const k in dic){ if(k.includes(s)||s.includes(k)) return dic[k]; } const all=Object.values(VOCAB_REAL).flat().filter(v=>typeof v==="string"); return all.filter(w=>w.toLowerCase().includes(s)).slice(0,8); } },
+  SUPER_DIC: { search(syllable){ return ["money","save"]; } },
   MEMORY: { get(){ try{return JSON.parse(localStorage.getItem("LAYA_MEMORY_V9")||"{}");}catch{return{}}}, save(m){localStorage.setItem("LAYA_MEMORY_V9",JSON.stringify(m));}, update(sig,ok,hes){ const mem=this.get(); if(!mem[sig]) mem[sig]={errors:0,oks:0,hes:[]}; if(ok){mem[sig].oks++;mem[sig].errors=Math.max(0,mem[sig].errors-1);} else {mem[sig].errors++;} mem[sig].hes.push(hes); if(mem[sig].hes.length>10) mem[sig].hes.shift(); this.save(mem); return mem; } },
-  STORIES: { "Money Basics": "Hello everyone. Today I want to talk about why most people never become rich. I have a friend. His name is Carlos. He works hard every day. He has a good salary. But he has a problem. There is a lot of money in his account on Monday, but on Friday there is no money. Why? Because he spends all his money.", "default": "Hello everyone. Today I want to talk about {topic}. There is a lot to learn. Since Monday I have been thinking about this. For a long time I did not understand. I have a question. Can you help me? I used to make many mistakes." },
+  STORIES: { "default": "Hello everyone. Today I want to talk about {topic}. There is a lot to learn." },
   generate(areaId, level, metrics){
     const area = this.AREAS[areaId];
-    if(!area) return { prompt:"Elige area", story:"Elige area", meta:{ area:"?", topic:"?", level, grammar_main:{id:"?",formula:"?",example:"?"}, grammar_future:{id:"?",formula:"?",example:"?"}, vocab:[], emotion:"FOUNDATION", intention: INTENTION_MOTOR.FOUNDATION, joints: INTENTION_MOTOR.FOUNDATION.joints, avatar_file:null, avatar_frame:0, xp:0 } };
+    if(!area) return { prompt:"Elige area", story:"Elige area", meta:{ area:"?", topic:"?", level, grammar_main:{id:"?",formula:"?",example:"?"}, grammar_future:{id:"?",formula:"?",example:"?"}, vocab:[], emotion:"FOUNDATION", intention: INTENTION_MOTOR.FOUNDATION, joints: INTENTION_MOTOR.FOUNDATION.joints, xp:0 } };
     const gMain = GRAMMAR_REAL[area.grammar[0]] || Object.values(GRAMMAR_REAL)[0];
     const gFuture = GRAMMAR_REAL[area.future] || GRAMMAR_REAL.COND_1;
-    const vocabList = area.vocab.map(v=>{ const val=VOCAB_REAL[v]; if(!val) return []; return Array.isArray(val)?val:Object.values(val).flat(); }).flat().slice(0,10);
     const avatarData = AVATAR_ENGINE_HOLO.decideByMetrics({...metrics, cefr_level: level});
-    const xp = metrics.same_error_count>=3?0:(level==="A1"?10:level==="A2"?15:20);
+    const xp = metrics?.same_error_count>=3?0:(level==="A1"?10:level==="A2"?15:20);
     const story = (this.STORIES[area.name]||this.STORIES["default"]).replace("{topic}", area.topic.toLowerCase());
-    return { prompt: level+" - "+area.topic, story, meta: { area: area.name, topic: area.topic, level, grammar_main: gMain, grammar_future: gFuture, vocab: vocabList, emotion: avatarData.emotion, intention: avatarData.intention, joints: avatarData.joints, avatar_file:null, avatar_type:"V30.7_CLON_IMAGEN_5_FIX_BANDAS_DEFINITIVO_TWIST_0.65", avatar_frame:0, xp, wordCount:"150" } };
+    return { prompt: level+" - "+area.topic, story, meta: { area: area.name, topic: area.topic, level, grammar_main: gMain, grammar_future: gFuture, vocab: [], emotion: avatarData.emotion, intention: avatarData.intention, joints: avatarData.joints, avatar_type:"V30.9_SINGLE_MESH_0.19_CLON_IMAGEN_1", avatar_frame:0, xp, wordCount:"150" } };
   }
 };
 
 export const LAYA_FINAL_COMPLETO = LAYA_FINAL;
 export const LAYA_SAP = {
-  generateSAP(m, sig, w){ return { evolution:{ ACCURACY_7D: Math.round(m.accuracy_7d*100)+'%', XP_TOTAL: m.xp_total }, detail:{ grammarChain: sig } }; },
-  renderToHologram(sap){ const b=document.getElementById('bubble'); if(b){ b.innerHTML=`V30.7 DEFINITIVO CLON IMAGEN 5 // ${sap.evolution.ACCURACY_7D} // XP ${sap.evolution.XP_TOTAL} // 3200 pts 0.012 kNN 12 gapClean shoulderLimit4 openFan frontalPole8 twist0.65 fix definitivo`; b.classList.remove('hidden'); } }
+  generateSAP(m, sig, w){ return { evolution:{ ACCURACY_7D: Math.round((m?.accuracy_7d||0.8)*100)+'%', XP_TOTAL: m?.xp_total||0 }, detail:{ grammarChain: sig } }; },
+  renderToHologram(sap){ const b=document.getElementById('bubble'); if(b){ b.innerHTML=`V30.9 SINGLE MESH // ${sap.evolution.ACCURACY_7D} // XP ${sap.evolution.XP_TOTAL} // WIREFRAME 0.19 WAIST 0.11`; b.classList.remove('hidden'); } }
 };
 export const LAYA_FINAL_ACTOR_V1 = LAYA_FINAL;

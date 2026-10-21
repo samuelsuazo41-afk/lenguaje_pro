@@ -1,5 +1,5 @@
-// LAYA_FINAL_COMPLETO.js - V30.9 SINGLE MESH - CLON IMAGEN 1 - SKINNY GLOW REAL
-// LIMPIEZA TOTAL: quitado points 3200, kNN 12, twist 0.65, jitter - solo single mesh wireframe 0.19
+// LAYA_FINAL_COMPLETO.js - V30.10.1 FULL FRAME DEFINITIVO - CLON V27 T-POSE - SKINNY 0.19
+// FIX: scale 0.40 / mobile 0.32 / cam 2.42 / FOV 30 / group -0.20 - FULL FRAME SIN CORTES
 
 export const GRAMMAR_REAL = {
   PRON_PER_POSS: { id:"Pronouns Personal & Possessive", sig:"PRON_PER_POSS", formula:"I/me/my/mine/myself", example:"This is my book, not yours. I did it myself.", mistake:"I car -> MY car", level:"A1" },
@@ -56,30 +56,32 @@ export const MARIONETTE_JOINTS = {
 };
 
 export const INTENTION_MOTOR = {
-  FOUNDATION: { id: 'FOUNDATION', name: 'Cimiento', joints: { Head_Bone: [-5,10,0], Spine_02: -15 }, tts: 'Primero el cimiento - single mesh waist 0.11', sap_type: 'FOUNDATION', color: '#60a5fa' },
-  SCAFFOLDING: { id: 'SCAFFOLDING', name: 'Andamiaje', joints: { Shoulder_L: [45,30,0], Shoulder_R: [-45,-30,0] }, tts: 'Mira, esta pieza encaja - single mesh sin bandas.', sap_type: 'GRAMMAR', color: '#00d4ff' },
+  FOUNDATION: { id: 'FOUNDATION', name: 'Cimiento', joints: { Head_Bone: [-5,10,0], Spine_02: -15 }, tts: 'Primero el cimiento - full frame 0.40 / 2.42', sap_type: 'FOUNDATION', color: '#60a5fa' },
+  SCAFFOLDING: { id: 'SCAFFOLDING', name: 'Andamiaje', joints: { Shoulder_L: [45,30,0], Shoulder_R: [-45,-30,0] }, tts: 'Mira, esta pieza encaja - full frame sin cortes.', sap_type: 'GRAMMAR', color: '#00d4ff' },
   STRICT_ENGINEER: { id: 'STRICT_ENGINEER', name: 'Ingeniera Estricta', joints: { Shoulder_L: [40,0,0], Shoulder_R: [-40,0,0] }, tts: 'Ojo tete, es HAS - flujo cintura 0.11', sap_type: 'ERR', color: '#f59e0b' },
-  FLOW_OBSERVER: { id: 'FLOW_OBSERVER', name: 'Observadora Flow', joints: { Spine_02: 0 }, tts: 'Te observo, vas en flow - single mesh', sap_type: 'FLOW', color: '#8b5cf6' },
+  FLOW_OBSERVER: { id: 'FLOW_OBSERVER', name: 'Observadora Flow', joints: { Spine_02: 0 }, tts: 'Te observo, vas en flow - full frame', sap_type: 'FLOW', color: '#8b5cf6' },
   ELEVATION: { id: 'ELEVATION', name: 'Elevación', joints: { Shoulder_L: [0,120,0], Shoulder_R: [0,120,0], Spine_02: 15 }, tts: 'BOOM! Lo clavaste!', sap_type: 'XP', color: '#22c55e' },
-  TRANSMISSION: { id: 'TRANSMISSION', name: 'Transmisión', joints: { Shoulder_L: [-30,30,0], Shoulder_R: [30,-30,0] }, tts: 'Esto ya es una capa completa - single mesh', sap_type: 'TRANSMIT', color: '#00d4ff' }
+  TRANSMISSION: { id: 'TRANSMISSION', name: 'Transmisión', joints: { Shoulder_L: [-30,30,0], Shoulder_R: [30,-30,0] }, tts: 'Esto ya es una capa completa - full frame', sap_type: 'TRANSMIT', color: '#00d4ff' }
 };
 
-// V30.9 MOTOR LIMPIO - SINGLE MESH - CLON IMAGEN 1
+// V30.10.1 MOTOR FULL FRAME - CLON V27 T-POSE - SKINNY 0.19
 export const AVATAR_ENGINE_HOLO = {
-  type: "single_mesh_wireframe_0.19_waist_0.11_gap_0.11_clon_imagen_1_skinny_glow_real_V30.9",
-  meshType: "SingleMesh_Topological_Wireframe_V30.9_CLON_IMAGEN_1",
+  type: "full_frame_0.40_2.42_fov30_single_mesh_wireframe_0.19_waist_0.11_gap_0.068_clon_V27_T-POSE",
+  meshType: "SingleMesh_Topological_Wireframe_V30.10.1_FULL_FRAME_CLON_V27",
   feminine: true,
   waist: 0.11,
+  waist_factor: 0.52,
   thigh_gap: 0.11,
-  leg_separation: 0.074,
+  leg_separation: 0.068,
   gap_clean: true,
   material: { color: 0x00e5ff, opacity: 0.19, wireframe: true, depthWrite: false },
-  lines: { enabled: true, type: "wireframe_single_mesh_0.19", color: 0x00e5ff, opacity: 0.19 },
+  lines: { enabled: true, type: "wireframe_single_mesh_0.19_full_frame", color: 0x00e5ff, opacity: 0.19 },
   bones: 8,
   fullBody: true,
-  scale: 0.58,
-  mobileScale: 0.52,
-  camera: { fov: 34, pos: [0,0.22,1.78], mobilePos: [0,0.18,1.92], groupPos: [0,0.18,0], mobileGroupPos: [0,0.14,0] },
+  full_frame: true,
+  scale: 0.40,
+  mobileScale: 0.32,
+  camera: { fov: 30, pos: [0,0.05,2.42], mobilePos: [0,0.02,2.68], groupPos: [0,-0.20,0], mobileGroupPos: [0,-0.18,0] },
   frameMap: { strict: 'STRICT_ENGINEER', point_left: 'SCAFFOLDING', explain_open: 'SCAFFOLDING', crossed_arms: 'FLOW_OBSERVER', celebratory: 'ELEVATION', crossed_clip: 'TRANSMISSION', open_big: 'TRANSMISSION' },
   emotions: {
     HOLO_STRICT: { frame: 0, name: "STRICT", intention: INTENTION_MOTOR.STRICT_ENGINEER },
@@ -104,7 +106,7 @@ export const AVATAR_ENGINE_HOLO = {
 };
 
 export const LAYA_FINAL = {
-  version: "30.9 SINGLE MESH - CLON IMAGEN 1 - SKINNY GLOW 0.19 - WAIST 0.11 - LIMPIO",
+  version: "30.10.1 FULL FRAME 0.40/2.42 FOV30 - CLON V27 T-POSE - SKINNY 0.19 - DEFINITIVO",
   VOCAB: VOCAB_REAL, GRAMMAR: GRAMMAR_REAL, AVATAR: AVATAR_ENGINE_HOLO, INTENTIONS: INTENTION_MOTOR, JOINTS: MARIONETTE_JOINTS,
   AREAS: {
     1: { name:"Money Basics", topic:"Why Most People Never Become Rich", vocab:["survival50"], grammar:["PS_3RD_S","COND_1"], future:"COND_1", level:"A1" },
@@ -169,13 +171,13 @@ export const LAYA_FINAL = {
     const avatarData = AVATAR_ENGINE_HOLO.decideByMetrics({...metrics, cefr_level: level});
     const xp = metrics?.same_error_count>=3?0:(level==="A1"?10:level==="A2"?15:20);
     const story = (this.STORIES[area.name]||this.STORIES["default"]).replace("{topic}", area.topic.toLowerCase());
-    return { prompt: level+" - "+area.topic, story, meta: { area: area.name, topic: area.topic, level, grammar_main: gMain, grammar_future: gFuture, vocab: [], emotion: avatarData.emotion, intention: avatarData.intention, joints: avatarData.joints, avatar_type:"V30.9_SINGLE_MESH_0.19_CLON_IMAGEN_1", avatar_frame:0, xp, wordCount:"150" } };
+    return { prompt: level+" - "+area.topic, story, meta: { area: area.name, topic: area.topic, level, grammar_main: gMain, grammar_future: gFuture, vocab: [], emotion: avatarData.emotion, intention: avatarData.intention, joints: avatarData.joints, avatar_type:"V30.10.1_FULL_FRAME_0.40_2.42_CLON_V27", avatar_frame:0, xp, wordCount:"150" } };
   }
 };
 
 export const LAYA_FINAL_COMPLETO = LAYA_FINAL;
 export const LAYA_SAP = {
   generateSAP(m, sig, w){ return { evolution:{ ACCURACY_7D: Math.round((m?.accuracy_7d||0.8)*100)+'%', XP_TOTAL: m?.xp_total||0 }, detail:{ grammarChain: sig } }; },
-  renderToHologram(sap){ const b=document.getElementById('bubble'); if(b){ b.innerHTML=`V30.9 SINGLE MESH // ${sap.evolution.ACCURACY_7D} // XP ${sap.evolution.XP_TOTAL} // WIREFRAME 0.19 WAIST 0.11`; b.classList.remove('hidden'); } }
+  renderToHologram(sap){ const b=document.getElementById('bubble'); if(b){ b.innerHTML=`V30.10.1 FULL FRAME 0.40/2.42 FOV30 // ${sap.evolution.ACCURACY_7D} // XP ${sap.evolution.XP_TOTAL} // WIREFRAME 0.19 WAIST 0.52 GAP 0.068 CLON V27`; b.classList.remove('hidden'); } }
 };
 export const LAYA_FINAL_ACTOR_V1 = LAYA_FINAL;

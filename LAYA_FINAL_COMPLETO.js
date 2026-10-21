@@ -1,7 +1,6 @@
-// LAYA_FINAL_COMPLETO.js - V30.6 DEFINITIVO - CLON IMAGEN 5 - 3 MALLAS INTEGRADAS - HOMBROS + CARA + FIX BANDAS
-// V30.5 -> V30.6: Integración V30.2 FINAL hombros open fan limit 4 + cara frontal pole radial 8 + ojos iris boca 6 visemas + nariz + manos 5 dedos + pies 5 dedos + piernas twist 0.65 anti-banda - gap clean 0.11 - particle 0.012 glow 0.92 - scale 0.54/0.50 - camera 1.62/1.88
-// Malla definitiva: 3200 puntos glow 0.012 + kNN 12 maxDistance 0.08 gapClean shoulderLimit4 openFan frontalPole radial 8 + quad denso rodillas 5 loops 22 radiales circulo perfecto sin bandas + polos reales
-// Autor: YARVIS + Laia - Girona - V30.6 DEFINITIVO CLON IMAGEN 5
+// LAYA_FINAL_COMPLETO.js - V30.7 DEFINITIVO - CLON IMAGEN 5 - 3 MALLAS INTEGRADAS - FIX BANDAS TWIST DEFINITIVO
+// V30.6 -> V30.7: Fix bandas definitivo dy<0.012 dx>0.012 + twist 0.65 + jitter 0.0035 + shoulder limit 4 open fan 0.06 + frontal pole 8 - gap clean 0.11 - particle 0.012 glow 0.92 - CLON IMAGEN 5
+// Autor: YARVIS + Laia - Girona - V30.7 DEFINITIVO
 
 export const GRAMMAR_REAL = {
   PRON_PER_POSS: { id:"Pronouns Personal & Possessive", sig:"PRON_PER_POSS", formula:"I/me/my/mine/myself", example:"This is my book, not yours. I did it myself.", mistake:"I car -> MY car", level:"A1" },
@@ -45,23 +44,23 @@ export const VOCAB_REAL = { kitchen50: ["cook","kitchen","knead","knife","plate"
 
 export const MARIONETTE_JOINTS = {
   Head_Bone: { id: 'Head_Bone', axes: 'XYZ', independent: true, facial: true, flow: true, pole: 'Frontal_Pole', radial: 8 },
-  Frontal_Pole: { id: 'Frontal_Pole', axes: 'XYZ', independent: true, facial: true, flow: true, note: 'V30.6 - Polo frontal origen flujo radial 8 - (0,0.04,0.09) - V30.2 FINAL - cara completa - CLON IMAGEN 5' },
-  Sacral_Pole: { id: 'Sacral_Pole', axes: 'XYZ', independent: true, flow: true, note: 'Polo sacro cierre flujo cintura 0.11 V30.6 gap clean' },
+  Frontal_Pole: { id: 'Frontal_Pole', axes: 'XYZ', independent: true, facial: true, flow: true, note: 'V30.7 - Polo frontal origen flujo radial 8 - CLON IMAGEN 5 - FIX BANDAS DEFINITIVO' },
+  Sacral_Pole: { id: 'Sacral_Pole', axes: 'XYZ', independent: true, flow: true, note: 'Polo sacro cierre flujo cintura 0.11 V30.7' },
   Spine_02: { id: 'Spine_02-Chest', axes: 'Y', physics: 'breathing', independent: true, flow: true },
-  Shoulder_L: { id: 'Shoulder.L', independent: true, flow: true, fanLimit: 4, openFan: 0.06, note: 'V30.6 FIX V30.2 - open fan 0.06 + limit 4 - sin bola cyan pecho' }, 
+  Shoulder_L: { id: 'Shoulder.L', independent: true, flow: true, fanLimit: 4, openFan: 0.06, note: 'V30.7 FIX V30.2 - open fan 0.06 + limit 4' }, 
   Elbow_L: { id: 'Elbow.L', independent: true, flow: true, triangulated: true }, 
   Wrist_L: { id: 'Wrist.L', independent: true }, 
   Hand_L: { id: 'Hand.L', independent: true, fingers: 5, triangulated: true },
-  Shoulder_R: { id: 'Shoulder.R', independent: true, flow: true, fanLimit: 4, openFan: -0.06, note: 'V30.6 FIX V30.2 - open fan -0.06 + limit 4' }, 
+  Shoulder_R: { id: 'Shoulder.R', independent: true, flow: true, fanLimit: 4, openFan: -0.06, note: 'V30.7 FIX V30.2' }, 
   Elbow_R: { id: 'Elbow.R', independent: true, flow: true, triangulated: true }, 
   Wrist_R: { id: 'Wrist.R', independent: true }, 
   Hand_R: { id: 'Hand.R', independent: true, fingers: 5, triangulated: true },
   Hip_L: { id: 'Hip.L', independent: true, flow: true, gapClean: true, separation: 0.067, twist: 0.65, jitter: 0.0035 }, 
-  Knee_L: { id: 'Knee.L', independent: true, flow: true, quadDense: '5_loops_22_radiales_circulo_perfecto_fix_bandas', directionChange: '90deg', kneeFix: true, antiBanda: 'twist+jitter' }, 
+  Knee_L: { id: 'Knee.L', independent: true, flow: true, quadDense: '5_loops_22_radiales_circulo_perfecto_twist_fix_bandas_definitivo_V30_7', directionChange: '90deg', kneeFix: true, antiBanda: 'twist0.65_jitter0.0035_dy0.012' }, 
   Ankle_L: { id: 'Ankle.L', independent: true }, 
   Toe_L: { id: 'Toe.L', independent: true, bifurcation: '5_toes' },
   Hip_R: { id: 'Hip.R', independent: true, flow: true, gapClean: true, separation: 0.067, twist: 0.65, jitter: 0.0035 }, 
-  Knee_R: { id: 'Knee.R', independent: true, flow: true, quadDense: '5_loops_22_radiales_circulo_perfecto_fix_bandas', directionChange: '90deg', kneeFix: true, antiBanda: 'twist+jitter' }, 
+  Knee_R: { id: 'Knee.R', independent: true, flow: true, quadDense: '5_loops_22_radiales_circulo_perfecto_twist_fix_bandas_definitivo_V30_7', directionChange: '90deg', kneeFix: true, antiBanda: 'twist0.65_jitter0.0035_dy0.012' }, 
   Ankle_R: { id: 'Ankle.R', independent: true }, 
   Toe_R: { id: 'Toe.R', independent: true, bifurcation: '5_toes' },
   Eye_L: { id: 'Eye_L', independent: true, facial: true, flow: true, radial: 12 }, Iris_L: { id: 'Iris_L', independent: true, facial: true, size: 0.0085 },
@@ -76,100 +75,31 @@ export const MARIONETTE_JOINTS = {
 };
 
 export const INTENTION_MOTOR = {
-  FOUNDATION: { id: 'FOUNDATION', name: 'Cimiento', joints: { Head_Bone: [-5,10,0], Spine_02: -15, Wrist_L: 'open_palm_down', Frontal_Pole: 'radial_8' }, tts: 'Primero el cimiento, tete - flujo desde polo frontal radial 8 gap clean V30.6.', sap_type: 'FOUNDATION', color: '#60a5fa' },
-  SCAFFOLDING: { id: 'SCAFFOLDING', name: 'Andamiaje', joints: { Shoulder_L: [45,30,0.06], Shoulder_R: [-45,-30,-0.06], Wrist_L: 'point', Frontal_Pole: 'radial_8', Hand_L: '5_fingers' }, tts: 'Mira, esta pieza encaja - triangulación abierta gap clean sin cruces hombros open fan 4.', sap_type: 'GRAMMAR', color: '#00d4ff' },
-  STRICT_ENGINEER: { id: 'STRICT_ENGINEER', name: 'Ingeniera Estricta', joints: { Shoulder_L: [40,0,0.06], Shoulder_R: [-40,0,-0.06], Elbow_L: 'crossed', Eye_L: 'squint_0.8', Frontal_Pole: 'converge' }, tts: 'Ojo tete, fuga detectada. Es HAS - flujo cintura 0.11 gap clean fix bandas V30.6.', sap_type: 'ERR', color: '#f59e0b' },
-  FLOW_OBSERVER: { id: 'FLOW_OBSERVER', name: 'Observadora Flow', joints: { Spine_02: 0, Mouth: 'smile_closed', Sacral_Pole: 'close_flow', Hand_L: '5_fingers' }, tts: 'Te observo, vas en flow - polos reales gap clean 3 mallas V30.6.', sap_type: 'FLOW', color: '#8b5cf6' },
-  ELEVATION: { id: 'ELEVATION', name: 'Elevación', joints: { Shoulder_L: [0,120,0.06], Shoulder_R: [0,120,-0.06], Spine_02: 15, Wrist_L: 'wave', Mouth: 'AA', Knee_L: '5_loops_22_radiales_circle_twist', Knee_R: '5_loops_22_radiales_circle_twist' }, tts: 'BOOM! Lo clavaste! Rodillas 5 loops 22 radiales círculo perfecto twist anti-banda!', sap_type: 'XP', color: '#22c55e' },
-  TRANSMISSION: { id: 'TRANSMISSION', name: 'Transmisión', joints: { Shoulder_L: [-30,30,0.06], Shoulder_R: [30,-30,-0.06], Wrist_L: 'open_big_5_fingers', Mouth: 'lip_sync', Frontal_Pole: 'radial_8', Sacral_Pole: 'flow_close' }, tts: 'Esto ya es una capa completa - 3 mallas integradas gap clean shoulder limit 4 open fan frontal pole 8.', sap_type: 'TRANSMIT', color: '#00d4ff' }
+  FOUNDATION: { id: 'FOUNDATION', name: 'Cimiento', joints: { Head_Bone: [-5,10,0], Spine_02: -15, Wrist_L: 'open_palm_down', Frontal_Pole: 'radial_8' }, tts: 'Primero el cimiento, tete - flujo desde polo frontal radial 8 gap clean V30.7 definitivo.', sap_type: 'FOUNDATION', color: '#60a5fa' },
+  SCAFFOLDING: { id: 'SCAFFOLDING', name: 'Andamiaje', joints: { Shoulder_L: [45,30,0.06], Shoulder_R: [-45,-30,-0.06], Wrist_L: 'point', Frontal_Pole: 'radial_8', Hand_L: '5_fingers' }, tts: 'Mira, esta pieza encaja - triangulación abierta gap clean sin cruces hombros open fan 4 twist fix bandas.', sap_type: 'GRAMMAR', color: '#00d4ff' },
+  STRICT_ENGINEER: { id: 'STRICT_ENGINEER', name: 'Ingeniera Estricta', joints: { Shoulder_L: [40,0,0.06], Shoulder_R: [-40,0,-0.06], Elbow_L: 'crossed', Eye_L: 'squint_0.8', Frontal_Pole: 'converge' }, tts: 'Ojo tete, fuga detectada. Es HAS - flujo cintura 0.11 gap clean fix bandas definitivo V30.7.', sap_type: 'ERR', color: '#f59e0b' },
+  FLOW_OBSERVER: { id: 'FLOW_OBSERVER', name: 'Observadora Flow', joints: { Spine_02: 0, Mouth: 'smile_closed', Sacral_Pole: 'close_flow', Hand_L: '5_fingers' }, tts: 'Te observo, vas en flow - polos reales gap clean 3 mallas V30.7.', sap_type: 'FLOW', color: '#8b5cf6' },
+  ELEVATION: { id: 'ELEVATION', name: 'Elevación', joints: { Shoulder_L: [0,120,0.06], Shoulder_R: [0,120,-0.06], Spine_02: 15, Wrist_L: 'wave', Mouth: 'AA', Knee_L: '5_loops_22_radiales_circle_twist_definitivo', Knee_R: '5_loops_22_radiales_circle_twist_definitivo' }, tts: 'BOOM! Lo clavaste! Rodillas 5 loops 22 radiales círculo perfecto twist anti-banda definitivo!', sap_type: 'XP', color: '#22c55e' },
+  TRANSMISSION: { id: 'TRANSMISSION', name: 'Transmisión', joints: { Shoulder_L: [-30,30,0.06], Shoulder_R: [30,-30,-0.06], Wrist_L: 'open_big_5_fingers', Mouth: 'lip_sync', Frontal_Pole: 'radial_8', Sacral_Pole: 'flow_close' }, tts: 'Esto ya es una capa completa - 3 mallas integradas gap clean shoulder limit 4 open fan frontal pole 8 twist definitivo.', sap_type: 'TRANSMIT', color: '#00d4ff' }
 };
 
 export const AVATAR_ENGINE_HOLO = {
-  type: "skinned_particle_triangulated_flow_poles_3_mallas_0.11_0.54_gap_0.11_clean_22_radiales_shoulder_limit_4_open_fan_frontal_pole_8_fix_bandas_twist_0.65_definitivo_hd_6_visemes_V30.6_CLON_IMAGEN_5",
-  sprite: null,
+  type: "skinned_particle_triangulated_flow_poles_3_mallas_0.11_0.54_gap_0.11_clean_22_radiales_shoulder_limit_4_open_fan_frontal_pole_8_fix_bandas_twist_0.65_jitter_0.0035_definitivo_hd_6_visemes_V30.7_CLON_IMAGEN_5",
   pointsCount: 3200,
-  surfaceSampling: false,
-  meshReal: true,
-  proxyMesh: false,
-  skinnedMesh: true,
-  skeleton: true,
-  facialRig: true,
-  topologicalFlow: true,
-  poles: true,
-  particle: true,
-  triangulated: true,
-  gapClean: true,
-  kneeFix: true,
-  shoulderFix: true,
-  faceFix: true,
-  meshType: "SkinnedMesh_Particle_Triangulated_kNN12_Flow_Poles_GAP_CLEAN_ShoulderLimit4_OpenFan_FrontalPole8_TwistFix_Blazer_Nodes_Quad_Dense_Knees_22_Radiales_3_Mallas_Definitive_HD_V30.6_CLON_IMAGEN_5",
+  meshType: "SkinnedMesh_V30.7_CLON_IMAGEN_5_FIX_BANDAS_DEFINITIVO",
   feminine: true,
-  waist: 0.11,
-  waistFactor: 0.62,
-  hips: 0.32,
-  chest: 0.336,
-  shoulders: 0.336,
-  thigh_gap: 0.11,
-  leg_separation: 0.134,
-  gap_clean: true,
-  shoulder_fan_limit: 4,
-  shoulder_open_fan: 0.06,
-  frontal_pole_radial: 8,
-  knee_fix: true,
-  leg_twist: 0.65,
-  leg_jitter: 0.0035,
-  visemes: 6,
+  waist: 0.11, waistFactor: 0.62, hips: 0.32, chest: 0.336, shoulders: 0.336,
+  thigh_gap: 0.11, leg_separation: 0.134, gap_clean: true,
+  shoulder_fan_limit: 4, shoulder_open_fan: 0.06, frontal_pole_radial: 8,
+  knee_fix: true, leg_twist: 0.65, leg_jitter: 0.0035, visemes: 6,
   particleConfig: { size: 0.012, opacity: 0.92, color: "#00e5ff", count: 3200, sizeAttenuation: true, blending: "AdditiveBlending" },
-  kNNConfig: { k: 12, maxDistanceSq: 0.08, opacity: 0.44, gapClean: true, shoulderFanLimit: 4, shoulderOpenFan: 0.06, frontalPoleRadial: 8, kneeFix: true, twist: 0.65, jitter: 0.0035, lines: "triangulated_open_largas_muslos_0.08_cortas_cintura_gap_clean_shoulder_limit_4_open_fan_frontal_pole_8_twist_fix_anti_banda", gapCleanLogic: "if(iy<0.05 && jy<0.05 && ((ix<-0.01 && jx>0.01)||(ix>0.01 && jx<-0.01))) continue", shoulderFixLogic: "if(iy>0.30) limit=4 + openFan 0.06 - V30.2 FIX - sin bola cyan pecho", kneeFixLogic: "if(isLegZone && dy<0.006 && dx>0.015) continue + twist 0.65 jitter 0.0035 - V30.6 FIX BANDAS CLON IMAGEN 5" },
-  quadDenseConfig: { zones: ["KNEES_5_loops_22_radiales_circulo_perfecto_twist_fix_bandas","FACE_radial_8_frontal_pole_eyes_iris_mouth_nose","HANDS_5_fingers_triangulated","FEET_5_toes_bifurcation_clusters"], opacity: 0.32, kneeGeo: "CylinderGeometry(0.068,0.062,0.14,22,5,true) + twist - FIX BANDAS CLON IMAGEN 5" },
-  polesConfig: { frontal: "(0,0.04,0.09) radial 8 - V30.2 FINAL - CLON IMAGEN 5 - origen flujo cara completa", sacral: "(0,-0.02,-0.04) cierre flujo 0.11", interruption: "Button_Node_01_02_Pocket_Node_L_R donde mueren 8-10 líneas", shoulderFix: "Shoulder.L/R rotation.z 0.06/-0.06 open fan + fanLimit 4 - FIX V30.2 hairball bola cyan", faceFix: "Frontal_Pole radial 8 + Eye_L/R Iris + Mouth 6 visemes + Nose - V30.2 cara completa integrada 3 mallas", kneeFix: "Knee.L/R 5 loops 22 radiales + twist 0.65 jitter 0.0035 + filtro anti-banda - solo radiales+verticales - CLON IMAGEN 5" },
-  flowConfig: { origin: "Frontal_Pole radial 8", convergenceWaist: "45deg cambio dirección", knee: "90deg vertical->horizontal 5 loops 22 radiales circulo perfecto TWIST FIX BANDAS - CLON IMAGEN 5", termination: "5 toes bifurcation + 5 fingers hands", gap: "0.11 limpio sin cruces - leg separation 0.134", shoulder: "fan limit 4 open 0.06 sin bola cyan - V30.2 FIX", kneeFix: "twist 0.65 jitter 0.0035 bloquea anillos horizontales puros rodilla - CLON IMAGEN 5", face: "frontal pole 8 radios + ojos iris boca 6 visemas nariz - V30.2 cara completa" },
+  kNNConfig: { k: 12, maxDistanceSq: 0.08, opacity: 0.44, gapClean: true, shoulderFanLimit: 4, shoulderOpenFan: 0.06, frontalPoleRadial: 8, kneeFix: true, twist: 0.65, jitter: 0.0035, filterDefinitive: "V30.7 - if(isLegZone && dy<0.012 && dx>0.012) continue; if(isLegZone && dy<0.0035) continue; if(isKneeZone && dy<0.008 && dx>0.018) continue - CLON IMAGEN 5 DEFINITIVO" },
+  quadDenseConfig: { zones: ["KNEES_5_loops_22_radiales_twist_fix_bandas_definitivo_V30_7","FACE_radial_8","HANDS_5_fingers","FEET_5_toes"], opacity: 0.30, kneeGeo: "CylinderGeometry(0.068,0.062,0.14,22,5,true) + twist 0.65 jitter - FIX BANDAS DEFINITIVO" },
   material: { color: 0x00e5ff, size: 0.012, opacity: 0.92, blending: "AdditiveBlending", sizeAttenuation: true },
   hairMaterial: { color: 0xc9a88a, size: 0.007, opacity: 0.82, count: 85, type: "particulas_casco_bob" },
-  lines: { enabled: true, type: "kNN_Flow_Poles_Triangulated_Particle_12_0.08_gap_clean_shoulder_limit_4_open_fan_frontal_pole_8_twist_fix_hd_V30.6_CLON_IMAGEN_5", color: 0x00e5ff, opacity: 0.44, quadDenseOpacity: 0.30 },
-  bones: 34,
-  hiddenSkeleton: false,
-  fullBody: true,
-  scale: 0.54,
-  mobileScale: 0.50,
+  lines: { enabled: true, type: "kNN_12_0.08_gap_clean_shoulder_limit_4_open_fan_frontal_pole_8_twist_0.65_fix_definitivo_V30.7", color: 0x00e5ff, opacity: 0.44, quadDenseOpacity: 0.30 },
+  bones: 34, fullBody: true, scale: 0.54, mobileScale: 0.50,
   camera: { fov: 36, pos: [0,0.34,1.62], mobilePos: [0,0.30,1.88], groupPos: [0,0.36,0], mobileGroupPos: [0,0.32,0] },
-  distribution_mesh_real_definitiva_V30_6: {
-    body_cylinder_topological_flow_32_28_Spine_02_Chest_poles_convergence_0.62_z0.58_gap_clean_shoulder_limit_4_open_fan: 1200,
-    lapels_nodes_interruption_8_10_lines: 120,
-    buttons_torus_nodes_where_lines_die: 60,
-    pockets_box_nodes_interruption: 80,
-    head_flow_frontal_pole_radial_8_radios_20_segments_V30_2_cara_completa: 500,
-    face_frontal_pole_006_radial_8_V30_2: 20,
-    face_eyes_white_Eye_L_R_flow_12_radial: 120,
-    face_iris_Iris_L_R_flow_0085: 80,
-    face_mouth_Mouth_Jaw_6_visemes_CLOSED_A_I_U_E_O: 80,
-    face_nose_Cone_0008_V30_2: 40,
-    bob_brown_particulas_casco_Head_Bone_85: 85,
-    arms_cylinder_triangulated_open_16_16_Shoulder_Elbow_flow_shoulder_limit_4_open_fan_0_06: 520,
-    hands_box_Hand_L_R_5_fingers_triangulated_each: 240,
-    legs_cylinder_triangulated_open_24_28_Hip_Knee_gap_clean_0_11_0_134_twist_0_65_jitter_0_0035_fix_bandas_CLON_IMAGEN_5: 960,
-    knees_quad_dense_5_loops_22_radiales_circulo_perfecto_90deg_twist_fix_bandas_V30_6: 320,
-    feet_box_5_toes_bifurcation_clusters_termination: 180,
-    lines_kNN_12_maxDistanceSq_0_08_gap_clean_shoulder_limit_4_open_fan_frontal_pole_8_twist_fix_triangulated_CLON_IMAGEN_5: 2800,
-    total_points: 3200,
-    total_with_lines: "~6000 vértices líneas gap clean fix bandas open fan frontal pole 8"
-  },
-  mesh_real_profile_definitiva_V30_6: {
-    torso: "CylinderGeometry(0.195,0.18,0.56,32,28)_Skinned_Spine_02_Chest_flow_poles_convergence_0.62_z0.58_hd_V30.6_shoulder_limit_4_open_fan",
-    deform: "y>0.22 scale 1.12/1.05 hombros 0.336 FLOW radial 8 desde frontal pole shoulder limit 4 open fan 0.06 + twist fix bandas, y>0.02 scale 0.62/0.58 cintura 0.11 FLOW PRINCESS SEAM convergencia 45deg hourglass sin arruga, y>-0.12 scale 0.97/0.92 cadera 0.32 FLOW",
-    lapels: "2x PlaneGeometry(0.08,0.28,6,10)_rotated_0.32rad_blazer_lapels_nodes_interruption_8-10_lines_hd_flow",
-    buttons: "2x TorusGeometry(0.011,0.0025,12,20)_blazer_buttons_nodes_poles_donde_mueren_8-10_lineas_flow",
-    pockets: "2x BoxGeometry(0.075,0.038,0.012,6,3,1)_blazer_pockets_nodes_interruption_hd_flow",
-    legs: "2x Cylinder 0.092->0.046,0.80,24,28 tapered TRIANGULATED_OPEN SKINNED_Hip_Knee_Ankle_gap_0.11_CLEAN_0.134_HD_V30.6 + TWIST 0.65 JITTER 0.0035 FIX BANDAS CLON IMAGEN 5 - muslo triangulación abierta puntos separados 0.08-0.12 líneas largas cruzadas - gap clean filter no cruces - NO quad grid gordo - NO bandas horizontales puras - CLON IMAGEN 5",
-    knees_dense: "V30.6 DEFINITIVO FIX BANDAS CLON IMAGEN 5: 5 loops horizontales juntos Y -0.15 a -0.35 + 22 radiales + TWIST 0.65 + JITTER 0.0035 - QUAD DENSO PURO - círculo perfecto - 90deg cambio dirección vertical->horizontal - CylinderGeometry(0.068,0.062,0.14,22,5,true) + filtro if(dy<0.006 && dx>0.015) continue - único sitio quad puro pierna FIX BANDAS CLON IMAGEN 5",
-    feet: "2x BoxGeometry 0.055x0.04x0.19 8x3x10 box feet with 5 toes clusters BIFURCATION FLOW 5 terminaciones SKINNED_Ankle_Toe_HD - cada dedo cluster propio polo",
-    arms: "2x Cylinder 0.044->0.031,0.72 T-pose TRIANGULATED_OPEN SKINNED_Shoulder_Elbow_Wrist_Hand_5_fingers_NO_CUT_HD_V30.6 - bíceps antebrazo líneas largas cruzadas - codo anillo denso - shoulder fan limit 4 open 0.06 - FIX V30.2 bola cyan",
-    hands: "2x BoxGeometry 0.05x0.02x0.08 + 5x Cylinder 0.0065 fingers triangulated - hands SKINNED_Hand_L_R_5_fingers_HD_V30.2 - CLON IMAGEN 5",
-    head: "Sphere 0.11 20 segments HD realistic face SKINNED_Head_Bone_Frontal_Pole_Eye_L_R_Iris_L_R_Mouth_Jaw_Nose_6_visemes_flow - polo frontal origen radial 8 radios - V30.2 + V30.6 CLON IMAGEN 5",
-    face: "Frontal_Pole 0.006 radial 8 + Eye_L/R 0.018 + Iris_L/R 0.0085 + Mouth Capsule 6 visemas + Nose Cone 0.008 - V30.2 cara completa integrada 3 mallas - CLON IMAGEN 5",
-    hair: "Sphere 0.115 14 segmentos 0 a 1.95 bob PARTICULAS CASCO 85 puntos - no sphere recortada - volumen real casco - imagen definitiva V30.6",
-    note: "V30.6 DEFINITIVO CLON IMAGEN 5 - 3 mallas superpuestas integradas trianguladas - Malla 1 puntos 0.012 glow 0.92 3200 AdditiveBlending + Malla 2 kNN 12 líneas 0.08 gapClean true shoulderLimit 4 openFan 0.06 frontalPole 8 twist 0.65 jitter 0.0035 anti-banda + Malla 3 quad denso rodillas 5 loops 22 radiales círculo perfecto twist fix bandas + cara + manos 5 dedos + pies 5 dedos - Polos reales frontal/sacro - Flujo topológico 45deg cintura 90deg rodilla - 0.11 waist hourglass - gap limpio 0.134 sin cruces - shoulder limit 4 open fan sin hairball - kneeFix twist sin bandas - imagen definitiva clonada vértice a vértice CLON IMAGEN 5"
-  },
   frameMap: { strict: 'STRICT_ENGINEER', point_left: 'SCAFFOLDING', explain_open: 'SCAFFOLDING', crossed_arms: 'FLOW_OBSERVER', celebratory: 'ELEVATION', crossed_clip: 'TRANSMISSION', open_big: 'TRANSMISSION' },
   emotions: {
     HOLO_STRICT: { frame: 0, name: "STRICT", intention: INTENTION_MOTOR.STRICT_ENGINEER },
@@ -189,10 +119,7 @@ export const AVATAR_ENGINE_HOLO = {
     else if(m.hesitation_ms > 4000 || m.accuracy_7d < 0.5) result = { frame: 0, key: "HOLO_EXPLAIN", emotion: "SCAFFOLDING", intention: INTENTION_MOTOR.SCAFFOLDING };
     else if(m.is_new_area) result = { frame: 0, key: "HOLO_EXPLAIN", emotion: "FOUNDATION", intention: INTENTION_MOTOR.FOUNDATION };
     else result = { frame: 0, key: "HOLO_OPEN", emotion: "TRANSMISSION", intention: INTENTION_MOTOR.TRANSMISSION };
-    result.joints = result.intention.joints;
-    result.pose = result.intention;
-    result.tts = result.intention.tts;
-    result.color = result.intention.color;
+    result.joints = result.intention.joints; result.pose = result.intention; result.tts = result.intention.tts; result.color = result.intention.color;
     return result;
   },
   focusFrame(index){ return 0; },
@@ -200,7 +127,7 @@ export const AVATAR_ENGINE_HOLO = {
 };
 
 export const LAYA_FINAL = {
-  version: "30.6 DEFINITIVO - CLON IMAGEN 5 - 3 MALLAS INTEGRADAS - HOMBROS LIMIT 4 OPEN FAN + CARA FRONTAL POLE 8 + FIX BANDAS TWIST 0.65",
+  version: "30.7 DEFINITIVO - CLON IMAGEN 5 - FIX BANDAS DEFINITIVO TWIST 0.65",
   VOCAB: VOCAB_REAL, GRAMMAR: GRAMMAR_REAL, AVATAR: AVATAR_ENGINE_HOLO, INTENTIONS: INTENTION_MOTOR, JOINTS: MARIONETTE_JOINTS,
   AREAS: {
     1: { name:"Money Basics", topic:"Why Most People Never Become Rich", vocab:["collHaveTake","survival50","pronPoss"], grammar:["PS_3RD_S","COND_1"], future:"COND_1", level:"A1" },
@@ -266,13 +193,13 @@ export const LAYA_FINAL = {
     const avatarData = AVATAR_ENGINE_HOLO.decideByMetrics({...metrics, cefr_level: level});
     const xp = metrics.same_error_count>=3?0:(level==="A1"?10:level==="A2"?15:20);
     const story = (this.STORIES[area.name]||this.STORIES["default"]).replace("{topic}", area.topic.toLowerCase());
-    return { prompt: level+" - "+area.topic, story, meta: { area: area.name, topic: area.topic, level, grammar_main: gMain, grammar_future: gFuture, vocab: vocabList, emotion: avatarData.emotion, intention: avatarData.intention, joints: avatarData.joints, avatar_file:null, avatar_type:"skinned_particle_triangulated_flow_poles_3_mallas_0.11_0.54_gap_0.11_clean_22_radiales_shoulder_limit_4_open_fan_frontal_pole_8_twist_fix_definitiva_hd_6_visemes_V30.6_CLON_IMAGEN_5", avatar_frame:0, xp, wordCount:"150" } };
+    return { prompt: level+" - "+area.topic, story, meta: { area: area.name, topic: area.topic, level, grammar_main: gMain, grammar_future: gFuture, vocab: vocabList, emotion: avatarData.emotion, intention: avatarData.intention, joints: avatarData.joints, avatar_file:null, avatar_type:"V30.7_CLON_IMAGEN_5_FIX_BANDAS_DEFINITIVO_TWIST_0.65", avatar_frame:0, xp, wordCount:"150" } };
   }
 };
 
 export const LAYA_FINAL_COMPLETO = LAYA_FINAL;
 export const LAYA_SAP = {
   generateSAP(m, sig, w){ return { evolution:{ ACCURACY_7D: Math.round(m.accuracy_7d*100)+'%', XP_TOTAL: m.xp_total }, detail:{ grammarChain: sig } }; },
-  renderToHologram(sap){ const b=document.getElementById('bubble'); if(b){ b.innerHTML=`V30.6 DEFINITIVO CLON IMAGEN 5 // ${sap.evolution.ACCURACY_7D} // XP ${sap.evolution.XP_TOTAL} // 3200 pts 0.012 opacity 0.92 kNN 12 gapClean shoulderLimit4 openFan frontalPole8 twistFix 22 radiales - 3 MALLAS`; b.classList.remove('hidden'); } }
+  renderToHologram(sap){ const b=document.getElementById('bubble'); if(b){ b.innerHTML=`V30.7 DEFINITIVO CLON IMAGEN 5 // ${sap.evolution.ACCURACY_7D} // XP ${sap.evolution.XP_TOTAL} // 3200 pts 0.012 kNN 12 gapClean shoulderLimit4 openFan frontalPole8 twist0.65 fix definitivo`; b.classList.remove('hidden'); } }
 };
 export const LAYA_FINAL_ACTOR_V1 = LAYA_FINAL;

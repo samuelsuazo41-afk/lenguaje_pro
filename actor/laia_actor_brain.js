@@ -1,33 +1,40 @@
-// actor/laia_actor_brain.js - V30.9 DEFINITIVO - SINGLE MESH - CLON IMAGEN 1 - SKINNY GLOW 0.19
-// AUTOR: YARVIS + Laia - Girona - V30.9 LIMPIO DEFINITIVO
-// BORRAR: laia_actor.json - duplicado con 34 bones y 3200 points que hace bloque
+// actor/laia_actor_brain.js - V30.10.1 FULL FRAME DEFINITIVO - CLON V27 T-POSE - SKINNY 0.19
+// FIX: scale 0.40 / cam 2.42 / FOV 30 / group -0.20 - NO 0.58 / 1.78 QUE CORTABA
+// BORRAR: laia_actor.json
 
 export const LAIA_BRAIN_CONFIG = {
-  version: "30.9 DEFINITIVO - SINGLE MESH - CLON IMAGEN 1 - WAIST 0.11 - GAP 0.11 - SKINNY GLOW 0.19",
-  author: "YARVIS + Laia - V30.9 SINGLE MESH LIMPIO",
+  version: "30.10.1 FULL FRAME - CLON V27 T-POSE - WAIST 0.11 GAP 0.11 SKINNY 0.19 - DEFINITIVO",
+  author: "YARVIS + Laia - V30.10.1 FULL FRAME",
   skeleton: {
     bones: 8,
     hiddenSkeleton: false,
     skinnedMesh: false,
-    type: "SingleMesh_Topological_Wireframe_V30.9_CLON_IMAGEN_1_SKINNY_GLOW_0.19"
+    type: "SingleMesh_Topological_Wireframe_V30.10.1_FULL_FRAME_0.40_2.42_CLON_V27_SKINNY_0.19"
   },
   config: {
-    scale: 0.58,
-    mobileScale: 0.52,
-    camera: { fov: 34, pos: [0, 0.22, 1.78], mobilePos: [0, 0.18, 1.92], groupPos: [0, 0.18, 0], mobileGroupPos: [0, 0.14, 0] },
+    scale: 0.40,
+    mobileScale: 0.32,
+    camera: { 
+      fov: 30, 
+      pos: [0, 0.05, 2.42], 
+      mobilePos: [0, 0.02, 2.68], 
+      groupPos: [0, -0.20, 0], 
+      mobileGroupPos: [0, -0.18, 0] 
+    },
     singleMesh: {
       enabled: true,
-      note: "SINGLE MESH CONTINUA - CLON IMAGEN 1 - NO 3 MALLAS - NO POINTS 3200 - NO KNN 12 - NO TWIST 0.65",
+      note: "FULL FRAME 0.40 / 2.42 FOV 30 - SINGLE MESH CONTINUA - CLON V27 T-POSE COMPLETA - NO CORTES",
       waist: 0.11,
-      waistFactor: 0.56,
+      waistFactor: 0.52,
       thigh_gap: 0.11,
-      leg_separation: 0.074,
-      torso: "32 radiales x 42 verticales - waist 0.11 marcada real imagen 1",
-      legs: "22 radiales x 36 verticales - gap clean 0.074 continuo desde torso - sin bandas horizontales",
-      feet: "12 radiales x 6 verticales - 5 dedos continuos bifurcación real - no cajas",
-      arms: "20 radiales x 18 verticales - T-pose imagen 1 - open fan limpio",
+      leg_separation: 0.068,
+      torso: "43 radiales x 34 verticales - waist 0.52 marcada + solapas 0.042 extruidas - blazer V27",
+      legs: "37 radiales x 24 verticales - gap 0.068 limpio - sin bandas - continuo torso",
+      feet: "7 radiales x 14 verticales - 5 dedos continuos bifurcacion real - no cajas",
+      arms: "22 radiales x 22 verticales - T-pose 0.92 largo V27 - open fan limpio",
+      head: "sphere 0.16 wireframe 0.19 provisional - no foto aun - misma opacidad",
       material: { color: 0x00e5ff, opacity: 0.19, wireframe: true, depthWrite: false, transparent: true },
-      filter: "contrast(1.12) brightness(1.08) saturate(1.06) drop-shadow 8px 18px - SKINNY GLOW REAL - IMAGEN 1"
+      filter: "contrast(1.12) brightness(1.08) saturate(1.06) drop-shadow 8px 18px opacity 0.14 - SKINNY GLOW REAL - FULL FRAME"
     }
   },
   bones_hierarchy: [
@@ -37,17 +44,18 @@ export const LAIA_BRAIN_CONFIG = {
     { name: "Head_Bone", parent: "Chest", pos: [0, 0.22, 0] },
     { name: "Shoulder.L", parent: "Chest", pos: [-0.22, 0.15, 0] },
     { name: "Shoulder.R", parent: "Chest", pos: [0.22, 0.15, 0] },
-    { name: "Hip.L", parent: "Hips", pos: [-0.074, -0.18, 0] },
-    { name: "Hip.R", parent: "Hips", pos: [0.074, -0.18, 0] }
+    { name: "Hip.L", parent: "Hips", pos: [-0.068, -0.18, 0] },
+    { name: "Hip.R", parent: "Hips", pos: [0.068, -0.18, 0] }
   ],
-  distribution_mesh_real_V30_9: {
-    note: "SINGLE MESH CONTINUA - 1 sola BufferGeometry - wireframe 0.19 - CLON IMAGEN 1",
-    torso_single: 1344,
-    legs_single_gap_clean: 1584,
-    feet_5_toes_continuos: 288,
-    arms_T_pose: 720,
-    total_vertices: 3936,
-    wireframe: "Single LineSegments WireframeGeometry opacity 0.19 skinny glow",
+  distribution_mesh_real_V30_10_1: {
+    note: "FULL FRAME 0.40/2.42 - SINGLE MESH CONTINUA - 1 BufferGeometry - wireframe 0.19 - CLON V27 T-POSE",
+    torso_single_blazer: 1462,
+    legs_single_gap_clean_0_068: 1776,
+    feet_5_toes_continuos: 196,
+    arms_T_pose_0_92_largo: 968,
+    head_0_16_provisional: 196,
+    total_vertices: 4598,
+    wireframe: "Single LineSegments WireframeGeometry opacity 0.19 skinny glow full frame",
     total_points: 0,
     kNN_lines: 0,
     quadDense: 0
@@ -72,8 +80,8 @@ export function createLaiaSkeleton(THREE, group) {
   const head = mk('Head_Bone', new THREE.Vector3(0,0.22,0), chest);
   const shoulderL = mk('Shoulder.L', new THREE.Vector3(-0.22,0.15,0), chest);
   const shoulderR = mk('Shoulder.R', new THREE.Vector3(0.22,0.15,0), chest);
-  const hipL = mk('Hip.L', new THREE.Vector3(-0.074,-0.18,0), hips);
-  const hipR = mk('Hip.R', new THREE.Vector3(0.074,-0.18,0), hips);
+  const hipL = mk('Hip.L', new THREE.Vector3(-0.068,-0.18,0), hips);
+  const hipR = mk('Hip.R', new THREE.Vector3(0.068,-0.18,0), hips);
   const skeleton = new THREE.Skeleton(bones);
   return { bones, skeleton };
 }
@@ -109,17 +117,14 @@ export function decideByMetrics(metrics) {
   return { state: 'IDLE_CORTANA', color: '#00d4ff', pos: 'welcome' };
 }
 
-// EXPORTS COMPATIBILIDAD - TODOS APUNTAN A V30.9 SINGLE MESH
-export const LAIA_ACTOR_BRAIN_V30_9 = {
-  version: "30.9 SINGLE MESH - CLON IMAGEN 1 - SKINNY GLOW 0.19 - DEFINITIVO",
+export const LAIA_ACTOR_BRAIN_V30_10_1 = {
+  version: "30.10.1 FULL FRAME 0.40/2.42 FOV30 - CLON V27 T-POSE - SKINNY 0.19 DEFINITIVO",
   createLaiaSkeleton,
   thinkAndMove,
   decideByMetrics,
   config: LAIA_BRAIN_CONFIG
 };
-export const LAIA_ACTOR_BRAIN = LAIA_ACTOR_BRAIN_V30_9;
-export const LAIA_ACTOR_BRAIN_V30_7 = LAIA_ACTOR_BRAIN_V30_9;
-export const LAIA_ACTOR_BRAIN_V30_8 = LAIA_ACTOR_BRAIN_V30_9;
-export const LAIA_ACTOR_BRAIN_V30_6 = LAIA_ACTOR_BRAIN_V30_9;
-export const LAIA_ACTOR_BRAIN_V30_5 = LAIA_ACTOR_BRAIN_V30_9;
-export const LAIA_BRAIN = LAIA_ACTOR_BRAIN_V30_9;
+export const LAIA_ACTOR_BRAIN = LAIA_ACTOR_BRAIN_V30_10_1;
+export const LAIA_ACTOR_BRAIN_V30_10 = LAIA_ACTOR_BRAIN_V30_10_1;
+export const LAIA_ACTOR_BRAIN_V30_9 = LAIA_ACTOR_BRAIN_V30_10_1;
+export const LAIA_BRAIN = LAIA_ACTOR_BRAIN_V30_10_1;

@@ -2,59 +2,67 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LENGUAJE-PRO V30.9 CLON IMAGEN 1 - SINGLE MESH</title>
+<title>V30.10.1 FULL FRAME - CLON V27 T-POSE - SKINNY 0.19</title>
 <link rel="icon" href="./icon-192.png">
 <meta name="theme-color" content="#00d4ff">
 <script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js"}}</script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#020208;color:#f1f1f5;font-family:Inter,system-ui;overflow:hidden}
-header{height:54px!important;background:rgba(10,12,20,0.28)!important;backdrop-filter:blur(12px)!important;border-bottom:1px solid rgba(0,212,255,0.10)!important;display:flex!important;justify-content:space-between!important;align-items:center!important;padding:0 16px!important;position:sticky!important;top:0!important;z-index:100!important}
+header{height:52px!important;background:rgba(10,12,20,0.28)!important;backdrop-filter:blur(12px)!important;border-bottom:1px solid rgba(0,212,255,0.10)!important;display:flex!important;justify-content:space-between!important;align-items:center!important;padding:0 14px!important;position:fixed!important;top:0!important;left:0!important;right:0!important;z-index:100!important}
 .logo{font-weight:800}.logo span{background:#00d4ff;color:#000;padding:2px 8px;border-radius:6px;font-size:10px;margin-left:6px;font-weight:900}
-.metrics{display:flex;gap:10px;font-size:12px;color:#9ca3af;align-items:center}
-#level-badge{background:#00d4ff;color:#000;padding:2px 8px;border-radius:12px;font-weight:800;font-size:10px}
-#page1 aside{width:360px!important;min-width:360px!important;background:rgba(12,14,22,0.18)!important;backdrop-filter:blur(10px)!important;border-right:1px solid rgba(0,212,255,0.08)!important;padding:14px!important;display:flex!important;flex-direction:column!important;gap:10px!important;height:calc(100vh - 54px)!important;overflow-y:auto!important;z-index:25!important}
-#list{min-height:380px!important;background:rgba(10,12,18,0.12)!important;border:1px solid rgba(0,212,255,0.06)!important;border-radius:10px!important;padding:6px!important;display:flex!important;flex-direction:column!important;gap:6px!important;flex:1!important}
-.area{background:rgba(22,24,36,0.22)!important;padding:9px 10px!important;border-radius:8px!important;border:1px solid rgba(0,212,255,0.06)!important;cursor:pointer!important;color:#d0d0d8!important}
+#laia-hologram{position:fixed!important;top:52px!important;left:0!important;width:100vw!important;height:calc(100vh - 52px)!important;z-index:1!important;display:flex!important;align-items:center!important;justify-content:center!important;pointer-events:none!important;background:transparent!important}
+#laia-holo-canvas{width:100vw!important;height:calc(100vh - 52px)!important;display:block!important;background:transparent!important;filter: contrast(1.12) brightness(1.08) saturate(1.06) drop-shadow(0 0 8px rgba(0,229,255,0.38)) drop-shadow(0 0 18px rgba(0,212,255,0.14))!important}
+.h-wrapper{margin-top:52px!important;display:flex!important;overflow-x:auto!important;scroll-snap-type:x mandatory!important;width:100vw!important;height:calc(100vh - 52px)!important;position:relative!important;z-index:20!important;scrollbar-width:none}
+.h-wrapper::-webkit-scrollbar{display:none}
+.page{min-width:100vw!important;width:100vw!important;height:100%!important;scroll-snap-align:start!important;overflow-y:auto!important;display:flex!important;position:relative!important;z-index:20!important}
+#page1 aside{width:340px!important;min-width:340px!important;background:rgba(12,14,22,0.18)!important;backdrop-filter:blur(10px)!important;border-right:1px solid rgba(0,212,255,0.08)!important;padding:12px!important;display:flex!important;flex-direction:column!important;gap:8px!important;height:calc(100vh - 52px)!important;overflow-y:auto!important}
+#list{min-height:300px!important;background:rgba(10,12,18,0.12)!important;border:1px solid rgba(0,212,255,0.06)!important;border-radius:10px!important;padding:6px!important;display:flex!important;flex-direction:column!important;gap:5px!important;flex:1!important}
+.area{background:rgba(22,24,36,0.22)!important;padding:8px 10px!important;border-radius:8px!important;border:1px solid rgba(0,212,255,0.06)!important;cursor:pointer!important;color:#d0d0d8!important}
 .area b{color:#fff;font-size:12px}.area small{color:#9ca3af;font-size:10px}
 .area.active{background:rgba(0,212,255,0.62)!important;color:#000!important}
 .area.active b,.area.active small{color:#000!important}
-#page1 main{flex:1!important;padding:16px!important;max-width:760px!important;background:transparent!important;z-index:25!important}
-#card,.sap-header,.evo-lab{background:rgba(14,16,26,0.20)!important;backdrop-filter:blur(8px)!important;border:1px solid rgba(0,212,255,0.10)!important;border-radius:12px!important;padding:14px!important}
-.h-wrapper{margin-top:54px!important;display:flex!important;overflow-x:auto!important;scroll-snap-type:x mandatory!important;width:100vw!important;height:calc(100vh - 54px)!important;position:relative!important;z-index:20!important}
-.page{min-width:100vw!important;width:100vw!important;height:100%!important;scroll-snap-align:start!important;overflow-y:auto!important;display:flex!important;position:relative!important;z-index:20!important}
-
-/* V30.9 - SKINNY GLOW REAL - SIN BLOQUE */
-#laia-hologram{position:fixed!important;top:54px!important;left:0!important;width:100vw!important;height:calc(100vh - 54px)!important;z-index:1!important;display:flex!important;align-items:center!important;justify-content:center!important;pointer-events:none!important;opacity:1!important;background:transparent!important}
-#laia-holo-canvas{width:100vw!important;height:calc(100vh - 54px)!important;display:block!important;background:transparent!important;filter: contrast(1.12) brightness(1.08) saturate(1.06) drop-shadow(0 0 8px rgba(0,229,255,0.38)) drop-shadow(0 0 18px rgba(0,212,255,0.16))!important}
-@media(max-width:768px){#page1{flex-direction:column!important}#page1 aside{width:100%!important;min-width:100%!important;max-height:44vh!important}}
+#card,.sap-header,.evo-lab{background:rgba(14,16,26,0.20)!important;backdrop-filter:blur(8px)!important;border:1px solid rgba(0,212,255,0.10)!important;border-radius:12px!important;padding:12px!important}
+@media(max-width:768px){#page1{flex-direction:column!important}#page1 aside{width:100%!important;min-width:100%!important;max-height:42vh!important}}
 </style>
 </head>
 <body>
-<header><div class="logo">📚 LENGUAJE-PRO <span>V30.9 SINGLE MESH - IMAGEN 1</span></div><div class="metrics"><span id="xp">⭐ 0 XP</span><span>🔥 <b id="streak">0</b></span><span id="level-badge">A2</span></div></header>
-<div class="h-wrapper" id="hWrapper"><div class="page" id="page1"><aside><h3 style="font-size:10px;color:#00d4ff;font-weight:900">V30.9 WAIST 0.11 GAP 0.11 SKINNY 0.19</h3><input id="search" placeholder="Buscar 50 áreas..." style="background:rgba(22,24,36,0.28);border:1px solid rgba(0,212,255,0.12);color:#fff;padding:10px;border-radius:10px;width:100%"><div id="filters" style="display:flex;gap:6px;flex-wrap:wrap"><button class="f active" data-f="" style="background:#00d4ff;color:#000;padding:5px 10px;border-radius:20px;border:none;font-weight:700">Todas</button><button class="f" data-f="A1">A1</button><button class="f" data-f="A2">A2</button><button class="f" data-f="B1">B1</button><button class="f" data-f="B2">B2</button></div><div id="list">Cargando...</div></aside><main><div style="display:flex;gap:10px;margin-bottom:12px"><select id="level" style="background:rgba(24,26,40,0.28);border:1px solid rgba(0,212,255,0.12);color:#fff;padding:10px;border-radius:8px"><option>A1</option><option selected>A2</option><option>B1</option><option>B2</option></select><button id="gen" style="background:#00d4ff;color:#000;border:none;padding:12px 18px;border-radius:12px;font-weight:800;flex:1;max-width:280px">⚡ GENERAR V30.9</button><button id="teachBtn" style="background:#8b5cf6;color:#fff;border:none;padding:11px 14px;border-radius:12px;font-weight:700">📌 SAPs</button></div><div id="empty"><h1>👋 Soy Laia V30.9</h1><p id="status" style="color:#00d4ff">SINGLE MESH - WAIST 0.11 - SKINNY GLOW 0.19 - CLON IMAGEN 1</p></div><div id="card" class="hidden"></div></main></div><div class="page" id="page2"><div style="width:100%;max-width:760px"><h2>🧬 MOTOR 2 - SAP + V30.9</h2><div class="sap-header" id="sapHeader">Esperando...</div><div style="margin-top:14px;display:flex;gap:8px"><input id="wordInput" placeholder="co, hav, mon..." style="background:rgba(24,26,40,0.28);border:1px solid rgba(0,212,255,0.12);color:#fff;padding:10px;border-radius:8px;flex:1"><button id="gen2" style="background:#00d4ff;color:#000;border:none;padding:12px 18px;border-radius:12px;font-weight:800">🔍 EXPLORAR</button></div><div id="card2" class="hidden"></div><div class="evo-lab" id="evoLab">V30.9 - SINGLE MESH CONTINUA - TORSO 32x42 WAIST 0.11 + PIERNAS 22x36 GAP 0.11 + BRAZOS T-POSE + PIES 5 DEDOS - WIREFRAME 0.19 - SKINNY GLOW REAL - CLON IMAGEN 1</div></div></div></div>
-<div id="laia-hologram"><canvas id="laia-holo-canvas"></canvas><div id="laia-state" style="position:absolute;bottom:18px;left:50%;transform:translateX(-50%);background:rgba(0,212,255,0.82);color:#000;font-size:9px;padding:4px 10px;border-radius:10px;font-weight:800">V30.9 SINGLE MESH - IMAGEN 1 - 0.19</div></div>
+<header><div class="logo">📚 LENGUAJE-PRO <span>V30.10.1 FULL FRAME - WAIST 0.11 GAP 0.11 - CLON V27</span></div><div style="display:flex;gap:8px;font-size:11px;align-items:center"><span>⭐ <b id="xp">0</b> XP</span><span>🔥 <b id="streak">0</b></span><span id="level-badge" style="background:#00d4ff;color:#000;padding:2px 8px;border-radius:10px;font-weight:800">A2</span></div></header>
+<div class="h-wrapper" id="hWrapper"><div class="page" id="page1"><aside><h3 style="font-size:9px;color:#00d4ff;font-weight:900">V30.10.1 - FULL FRAME 0.40 / 2.42 - WAIST 0.11 GAP 0.11 SKINNY 0.19</h3><input id="search" placeholder="Buscar 50 áreas..." style="background:rgba(22,24,36,0.28);border:1px solid rgba(0,212,255,0.12);color:#fff;padding:9px;border-radius:8px;width:100%"><div id="filters" style="display:flex;gap:6px;flex-wrap:wrap"><button class="f active" data-f="">Todas</button><button class="f" data-f="A1">A1</button><button class="f" data-f="A2">A2</button><button class="f" data-f="B1">B1</button></div><div id="list">Cargando V30.10.1...</div></aside><main style="flex:1;padding:16px;max-width:760px"><div style="display:flex;gap:8px;margin-bottom:12px"><select id="level" style="background:rgba(24,26,40,0.28);border:1px solid rgba(0,212,255,0.12);color:#fff;padding:9px;border-radius:8px"><option>A1</option><option selected>A2</option><option>B1</option><option>B2</option></select><button id="gen" style="background:#00d4ff;color:#000;border:none;padding:12px 18px;border-radius:12px;font-weight:800;flex:1;max-width:300px">⚡ GENERAR V30.10.1</button><button id="teachBtn" style="background:#8b5cf6;color:#fff;border:none;padding:10px 14px;border-radius:12px;font-weight:700">📌 SAPs</button></div><div id="empty"><h1 style="font-size:22px">👋 Soy Laia V30.10.1</h1><p id="status" style="color:#00d4ff;font-size:12px">FULL FRAME 0.40 / 2.42 - SINGLE MESH WAIST 0.11 GAP 0.11 SKINNY 0.19 - CLON V27 T-POSE</p></div><div id="card" class="hidden"></div></main></div><div class="page" id="page2"><div style="width:100%;max-width:760px;padding:16px"><h2 style="font-size:14px">🧬 MOTOR 2 - SAP + V30.10.1</h2><div class="sap-header" id="sapHeader">Esperando...</div><div class="evo-lab" id="evoLab" style="margin-top:12px;font-size:11px">V30.10.1 - FULL FRAME - SCALE 0.40 CAM 2.42 FOV 30 - TORSO 43x33 WAIST 0.52 + PIERNAS 37x23 GAP 0.068 + BRAZOS T-POSE 0.92 + PIES 5 DEDOS + CABEZA 0.16 - WIREFRAME 0.19 - SKINNY GLOW REAL</div></div></div></div>
+<div id="laia-hologram"><canvas id="laia-holo-canvas"></canvas><div id="laia-state" style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);background:rgba(0,212,255,0.82);color:#000;font-size:9px;padding:4px 10px;border-radius:10px;font-weight:800;letter-spacing:0.5px">V30.10.1 FULL FRAME 0.40 / 2.42 - IMAGEN V27 - 0.19</div></div>
 <script type="module">
 import * as THREE from 'three';
-let LAYA_FINAL={AREAS:{1:{name:"Money Basics",topic:"Why Most People Never Become Rich",level:"A1"},2:{name:"Saving",topic:"Saving Small",level:"A1"},3:{name:"Smart Spending",topic:"Smart Spending",level:"A1"},4:{name:"Investing",topic:"Investing Freedom",level:"A2"},5:{name:"Work",topic:"Work Matters",level:"A2"},6:{name:"Career",topic:"Grow Career",level:"B1"},7:{name:"Opportunity",topic:"English Opportunity",level:"A2"},8:{name:"Business",topic:"Small Business",level:"A2"},9:{name:"Time Is Money",topic:"Time Valuable",level:"A1"},10:{name:"Rich vs Poor",topic:"Rich Think Different",level:"A2"}},generate(id,lvl){const a=this.AREAS[id]||{name:"Test",topic:"Test"};return{story:`Hello ${a.topic}. V30.9 single mesh waist 0.11 skinny 0.19.`,meta:{area:a.name,topic:a.topic,level:lvl,grammar_main:{sig:"PS_3RD_S"},xp:15}}},VOCAB:{}};
-try{const m=await import('./LAYA_FINAL_COMPLETO.js?v=30.9'); LAYA_FINAL=m.LAYA_FINAL||m.LAYA_FINAL_COMPLETO||LAYA_FINAL;}catch(e){}
+let LAYA_FINAL={AREAS:{1:{name:"Money Basics",topic:"Why Most People Never Become Rich",level:"A1"},2:{name:"Saving",topic:"Saving Small",level:"A1"},3:{name:"Smart Spending",topic:"Smart Spending",level:"A1"},4:{name:"Investing",topic:"Investing Freedom",level:"A2"},5:{name:"Work",topic:"Work Matters",level:"A2"},6:{name:"Career",topic:"Grow Career",level:"B1"},7:{name:"Opportunity",topic:"English Opportunity",level:"A2"},8:{name:"Business",topic:"Small Business",level:"A2"},9:{name:"Time Is Money",topic:"Time Valuable",level:"A1"},10:{name:"Rich vs Poor",topic:"Rich Think Different",level:"A2"}},generate(id,lvl){const a=this.AREAS[id]||{name:"Test",topic:"Test"};return{story:`Hello ${a.topic}. V30.10.1 full frame 0.40 / 2.42 single mesh waist 0.11 gap 0.11 skinny 0.19 clon V27 T-POSE.`,meta:{area:a.name,topic:a.topic,level:lvl,grammar_main:{sig:"PS_3RD_S"},xp:15}}},VOCAB:{}};
+try{const m=await import('./LAYA_FINAL_COMPLETO.js?v=30.10.1'); LAYA_FINAL=m.LAYA_FINAL||m.LAYA_FINAL_COMPLETO||LAYA_FINAL;}catch(e){}
 let createLaiaSkeleton=(THREE,g)=>{const b=new THREE.Bone();b.name='Hips';g.add(b);return{bones:[b],skeleton:new THREE.Skeleton([b])}}; let thinkAndMove=()=>{};
-try{const b=await import('./actor/laia_actor_brain.js?v=30.9'); createLaiaSkeleton=b.createLaiaSkeleton||createLaiaSkeleton; thinkAndMove=b.thinkAndMove||thinkAndMove;}catch(e){}
+try{const b=await import('./actor/laia_actor_brain.js?v=30.10.1'); createLaiaSkeleton=b.createLaiaSkeleton||createLaiaSkeleton; thinkAndMove=b.thinkAndMove||thinkAndMove;}catch(e){}
 
-class LaiaMeshOnly{
+class LaiaFullFrame{
   constructor(canvas){
     this.canvas=canvas; this.scene=new THREE.Scene();
-    this.camera=new THREE.PerspectiveCamera(34, innerWidth/innerHeight, 0.1, 100);
-    this.camera.position.set(0,0.22,1.78);
+    this.camera=new THREE.PerspectiveCamera(30, innerWidth/innerHeight, 0.1, 100);
+    // V30.10.1 FULL FRAME DEFINITIVO - NO SE TOCA MAS
+    this.camera.position.set(0,0.05,2.42);
     this.renderer=new THREE.WebGLRenderer({canvas, alpha:true, antialias:true});
-    this.renderer.setSize(innerWidth, innerHeight-54);
+    this.renderer.setSize(innerWidth, innerHeight-52);
     this.renderer.setPixelRatio(Math.min(devicePixelRatio,1.6));
-    this.group=new THREE.Group(); this.group.scale.set(0.58,0.58,0.58); this.group.position.set(0,0.18,0);
-    if(innerWidth<768){this.camera.position.set(0,0.18,1.92); this.group.scale.set(0.52,0.52,0.52); this.group.position.set(0,0.14,0);}
+    this.group=new THREE.Group();
+    this.group.scale.set(0.40,0.40,0.40);
+    this.group.position.set(0,-0.20,0);
+    if(innerWidth<768){
+      this.camera.position.set(0,0.02,2.68);
+      this.group.scale.set(0.32,0.32,0.32);
+      this.group.position.set(0,-0.18,0);
+    }
     const rig=createLaiaSkeleton(THREE,this.group); this.bones=rig.bones;
     this.createDefinitive();
     this.scene.add(this.group);
-    addEventListener('resize',()=>{this.camera.aspect=innerWidth/innerHeight; this.camera.updateProjectionMatrix(); this.renderer.setSize(innerWidth,innerHeight-54);});
+    addEventListener('resize',()=>{
+      this.camera.aspect=innerWidth/innerHeight; this.camera.updateProjectionMatrix();
+      this.renderer.setSize(innerWidth,innerHeight-52);
+      if(innerWidth<768){ this.camera.position.set(0,0.02,2.68); this.group.scale.set(0.32,0.32,0.32); this.group.position.set(0,-0.18,0); }
+      else { this.camera.position.set(0,0.05,2.42); this.group.scale.set(0.40,0.40,0.40); this.group.position.set(0,-0.20,0); }
+    });
     this.animate();
   }
   createDefinitive(){
@@ -65,29 +73,48 @@ class LaiaMeshOnly{
       for(let y=0;y<rows-1;y++){for(let x=0;x<cols-1;x++){const a=grid[y][x], b=grid[y+1][x]; indices.push(a,b,a+1, b,b+1,a+1);}}
       return grid;
     };
-    addGrid(43,33,(ty,tx)=>{
-      const yy=ty*0.62-0.04; let waist=1;
-      if(yy>0.28) waist=1.08; else if(yy>0.08) waist=0.56; else if(yy>-0.06) waist=0.86; else waist=0.96;
-      const ang=tx*Math.PI*2; const r=0.202*waist;
-      return {x:Math.cos(ang)*r, y:yy+0.38, z:Math.sin(ang)*r*0.62};
+    // TORSO BLAZER HD - WAIST 0.11 REAL - SOLAPAS CLON V27
+    addGrid(43,34,(ty,tx)=>{
+      const yy=ty*0.66-0.06;
+      let waist=1;
+      if(yy>0.34) waist=1.06; // hombros T-POSE anchos
+      else if(yy>0.12) waist=0.52; // WAIST 0.11 MARCADA - era 0.56 ahora 0.52 mas fina
+      else if(yy>-0.04) waist=0.82; // cadera blazer
+      else waist=0.94;
+      // solapas blazer extruidas
+      let lapel=0;
+      if(ty>0.58 && ty<0.78 && tx>0.40 && tx<0.60){
+        if(tx<0.50) lapel = (tx>0.44?0.042:0.015);
+        else lapel = (tx<0.56?0.042:0.015);
+      }
+      const ang=tx*Math.PI*2;
+      const r=0.202*waist + lapel;
+      const zExtra = lapel>0 ? 0.045 : 0;
+      return {x:Math.cos(ang)*r, y:yy+0.46, z:Math.sin(ang)*r*0.62 + zExtra};
     });
+    // PIERNAS - GAP 0.11 LIMPIO - side 0.068 - SIN BANDAS
     const leg = (side)=>{
-      addGrid(37,23,(ty,tx)=>{
-        const yy=ty*0.82; const rad= yy<0.15?0.082: yy<0.35?0.071: yy<0.60?0.058:0.044;
-        const ang=tx*Math.PI*2; const r=rad*(0.96+Math.sin(ang*2.2)*0.025);
-        return {x:Math.cos(ang)*r + side*0.074, y:-yy+0.26, z:Math.sin(ang)*r*0.84};
+      addGrid(37,24,(ty,tx)=>{
+        const yy=ty*0.86;
+        const rad= yy<0.14?0.082: yy<0.34?0.071: yy<0.60?0.058:0.044;
+        const ang=tx*Math.PI*2;
+        const r=rad*(0.97+Math.sin(ang*2.2)*0.02);
+        return {x:Math.cos(ang)*r + side*0.068, y:-yy+0.36, z:Math.sin(ang)*r*0.86};
       });
-      addGrid(6,12,(ty,tx)=>{
-        const ang=tx*Math.PI*2; const toe=Math.floor(tx*5);
-        const toeX=side*0.074 + (toe-2)*0.013 + Math.cos(ang)*0.008;
-        return {x:toeX, y:-0.82 - ty*0.02, z:0.06 + ty*0.05 + Math.sin(ang)*0.006};
+      addGrid(7,14,(ty,tx)=>{
+        const ang=tx*Math.PI*2;
+        const toe=Math.floor(tx*5);
+        return {x:side*0.068 + (toe-2)*0.014 + Math.cos(ang)*0.009, y:-0.86 - ty*0.022, z:0.06 + ty*0.055 + Math.sin(ang)*0.007};
       });
     };
     leg(-1); leg(1);
+    // BRAZOS T-POSE 0.92 LARGOS - CLON V27
     const arm=(side)=>{
-      addGrid(19,21,(ty,tx)=>{
-        const ang=tx*Math.PI*2; const r=0.041*(1-ty*0.22); const armLen=ty*0.74;
-        return {x:side*(0.22+armLen) + Math.cos(ang)*r*0.3, y:0.48 - Math.sin(ang)*r + ty*0.02, z:Math.sin(ang)*r};
+      addGrid(22,22,(ty,tx)=>{
+        const ang=tx*Math.PI*2;
+        const r=0.041*(1-ty*0.22);
+        const armLen=ty*0.92; // largo V27 no 0.74
+        return {x:side*(0.22+armLen) + Math.cos(ang)*r*0.28, y:0.56 - Math.sin(ang)*r + ty*0.015, z:Math.sin(ang)*r};
       });
     };
     arm(-1); arm(1);
@@ -97,11 +124,17 @@ class LaiaMeshOnly{
     const mat=new THREE.LineBasicMaterial({color:0x00e5ff, transparent:true, opacity:0.19, depthWrite:false});
     const wire=new THREE.LineSegments(new THREE.WireframeGeometry(geo), mat);
     this.group.add(wire);
+    // CABEZA PROVISIONAL 0.16 - MISMA OPACIDAD 0.19 - NO FOTO AUN
+    const headGeo=new THREE.SphereGeometry(0.16,14,14);
+    const headMat=new THREE.MeshBasicMaterial({color:0x00e5ff, wireframe:true, transparent:true, opacity:0.19, depthWrite:false});
+    const head=new THREE.Mesh(headGeo, headMat);
+    head.position.set(0,1.16,0);
+    this.group.add(head);
   }
-  goTo(z){const m={welcome:{x:0,y:0.18},reading_text:{x:-0.10,y:0.18},input_field:{x:0.08,y:0.18},feedback_ok:{x:0,y:0.10}}; if(m[z]){this.group.position.x=m[z].x; this.group.position.y=m[z].y;} document.getElementById('laia-state').textContent=z.toUpperCase()+' • V30.9 SINGLE MESH - IMAGEN 1 - 0.19';}
+  goTo(z){const m={welcome:{x:0,y:-0.20},reading_text:{x:-0.08,y:-0.20},input_field:{x:0.08,y:-0.20},feedback_ok:{x:0,y:-0.22}}; if(m[z]){this.group.position.x=m[z].x; this.group.position.y=m[z].y;} document.getElementById('laia-state').textContent=z.toUpperCase()+' • V30.10.1 FULL FRAME 0.40 / 2.42 - 0.19';}
   animate(){requestAnimationFrame(()=>this.animate()); try{thinkAndMove(this.bones,{reading:true,talkAmp:0.18});}catch(e){} this.renderer.render(this.scene,this.camera);}
 }
-const laia=new LaiaMeshOnly(document.getElementById('laia-holo-canvas'));
+const laia=new LaiaFullFrame(document.getElementById('laia-holo-canvas'));
 const listEl=document.getElementById('list'); let sel='1', cur='';
 function render(f='',lvl=''){
   listEl.innerHTML=''; let c=0;
@@ -112,7 +145,7 @@ function render(f='',lvl=''){
     d.onclick=()=>{sel=id; document.querySelectorAll('.area').forEach(x=>x.classList.remove('active')); d.classList.add('active'); laia.goTo('reading_text');};
     listEl.appendChild(d);
   });
-  document.getElementById('status').textContent=`${c} áreas - V30.9 SINGLE MESH - IMAGEN 1 - 0.19`;
+  document.getElementById('status').textContent=`${c} áreas - V30.10.1 FULL FRAME 0.40 / 2.42 - WAIST 0.11 GAP 0.11 - 0.19`;
 }
 render();
 document.getElementById('search').oninput=e=>render(e.target.value.toLowerCase(),cur);

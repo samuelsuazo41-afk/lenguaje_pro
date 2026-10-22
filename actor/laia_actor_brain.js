@@ -1,125 +1,65 @@
-// actor/laia_actor_brain.js - V30.11 FULL FRAME - CLON V27 BLAZER SOLDADO - SKINNY 0.19
-// FIX V30.11: Geometría movida a laia_hologram.js - Brain solo huesos + lógica - 50x44 + 0.042 solapas
+// laia_hologram.js V30.21 FINAL TEMPLATE BEST - PANTALÓN + OXFORDS - CURVAS SUAVES - 0.52->0.146
+import * as THREE from 'three';
+import { LAIA_ACTOR_BRAIN } from './actor/laia_actor_brain.js';
 
-export const LAIA_BRAIN_CONFIG = {
-  version: "30.11 FULL FRAME - CLON V27 BLAZER SOLDADO - SINGLE MESH 50x44 - 0.19",
-  author: "YARVIS + Laia - V30.11",
-  skeleton: {
-    bones: 8,
-    hiddenSkeleton: false,
-    skinnedMesh: false,
-    type: "V30.11_FULL_FRAME_SOLDADO_50x44_BLAZER_0.042_T-POSE_0.92"
-  },
-  config: {
-    scale: 0.40,
-    mobileScale: 0.32,
-    camera: { 
-      fov: 30, 
-      pos: [0, 0.05, 2.42], 
-      mobilePos: [0, 0.02, 2.68], 
-      groupPos: [0, -0.20, 0], 
-      mobileGroupPos: [0, -0.18, 0] 
-    },
-    singleMesh: {
-      enabled: true,
-      note: "V30.11 - SINGLE MESH 50x44 CONTINUO SOLDADO - NO MAS 43x34 - BLAZER 0.042 + T-POSE 0.92 + GAP 0.068 LIMPIO",
-      waist: 0.11,
-      waistFactor: 0.52,
-      thigh_gap: 0.11,
-      leg_separation: 0.068,
-      torso: "50 radiales x 44 verticales - waist 0.52 + solapas 0.042 exp + botones 0.008 - V27",
-      legs: "37x24 - gap 0.068 soldado a cadera sin banda",
-      feet: "7x14 - 5 dedos continuos",
-      arms: "22x22 - T-pose 0.92 soldados a hombro sin gap",
-      head: "22x32 esfera 0.16 + pelo bob - wireframe 0.19",
-      material: { color: 0x00e5ff, opacity: 0.19, wireframe: true, depthWrite: false, transparent: true },
-      filter: "contrast(1.12) brightness(1.08) saturate(1.06) drop-shadow 0.19 skinny glow real"
-    }
-  },
-  bones_hierarchy: [
-    { name: "Hips", parent: "root", pos: [0, 0, 0] },
-    { name: "Spine_02", parent: "Hips", pos: [0, 0.18, 0] },
-    { name: "Chest", parent: "Spine_02", pos: [0, 0.22, 0] },
-    { name: "Head_Bone", parent: "Chest", pos: [0, 0.22, 0] },
-    { name: "Shoulder.L", parent: "Chest", pos: [-0.31, 0.15, 0] },
-    { name: "Shoulder.R", parent: "Chest", pos: [0.31, 0.15, 0] },
-    { name: "Hip.L", parent: "Hips", pos: [-0.068, -0.18, 0] },
-    { name: "Hip.R", parent: "Hips", pos: [0.068, -0.18, 0] }
-  ],
-  distribution_mesh_real_V30_11: {
-    note: "V30.11 SINGLE MESH 50x44 SOLDADO - wireframe 0.19",
-    torso_single_blazer_50x44: 2200,
-    legs_single_gap_clean_0_068_37x24: 1776,
-    feet_5_toes_7x14: 196,
-    arms_T_pose_0_92_22x22_soldados: 968,
-    head_0_16_22x32: 704,
-    total_vertices: 5844,
-    wireframe: "LineSegments WireframeGeometry opacity 0.19 skinny glow"
-  }
-};
+export function initLaiaHologram(canvas, THREE_MOD){
+  const THREE_LIB = THREE_MOD || THREE;
+  const group = new THREE_LIB.Group();
+  group.scale.set(0.58,0.58,0.58); // FIX mobile 0.32 -> 0.58
+  group.position.y = -0.15;
 
-let MIND = { breath: 0, mood: 'curiosa', state: 'IDLE_CORTANA', talkAmp: 0, viseme: 0 };
-
-export function createLaiaSkeleton(THREE, group) {
-  const bones = [];
-  const mk = (name, pos, parent) => {
-    const b = new THREE.Bone();
-    b.name = name;
-    b.position.copy(pos);
-    parent.add(b);
-    bones.push(b);
-    return b;
+  // Material doble - FIX 0.19 invisible -> 0.38 visible
+  const pos=[], idx=[]; let v=0;
+  const add=(rows,cols,fn)=>{
+    const s=v;
+    for(let y=0;y<rows;y++) for(let x=0;x<cols;x++){ const p=fn(x/(cols-1), y/(rows-1)); pos.push(p.x,p.y,p.z); v++; }
+    for(let y=0;y<rows-1;y++) for(let x=0;x<cols-1;x++){ const a=s+y*cols+x, b=a+1, c=a+cols, d=c+1; idx.push(a,c,b,b,c,d); }
   };
-  const hips = mk('Hips', new THREE.Vector3(0,0,0), group);
-  const spine02 = mk('Spine_02', new THREE.Vector3(0,0.18,0), hips);
-  const chest = mk('Chest', new THREE.Vector3(0,0.22,0), spine02);
-  const head = mk('Head_Bone', new THREE.Vector3(0,0.22,0), chest);
-  const shoulderL = mk('Shoulder.L', new THREE.Vector3(-0.31,0.15,0), chest);
-  const shoulderR = mk('Shoulder.R', new THREE.Vector3(0.31,0.15,0), chest);
-  const hipL = mk('Hip.L', new THREE.Vector3(-0.068,-0.18,0), hips);
-  const hipR = mk('Hip.R', new THREE.Vector3(0.068,-0.18,0), hips);
-  const skeleton = new THREE.Skeleton(bones);
-  return { bones, skeleton };
+
+  // CABEZA 48x64 HUMANOIDE - NO SPHERE
+  add(48,64,(u,fy)=>{
+    const fx=(u-0.5)*2; let px=fx*0.16*(0.8+0.2*Math.cos(fy*Math.PI));
+    let py=0.78+fy*0.32; let pz=0.14*Math.cos(fx*1.2)*Math.sin(fy*Math.PI);
+    if(fy>0.65||Math.abs(fx)>0.55){ const bob=Math.exp(-Math.pow((fy-0.75)*2,2)); pz+=(Math.abs(fx)>0.5?0.03:0)*bob; px*=1.08; }
+    return {x:px,y:py,z:pz};
+  });
+
+  // TORSO 90x70 BLAZER 0.52->0.146 CURVA SUAVE + LAPELAS 0.042 + BOTONES 0.008
+  add(90,70,(u,fy)=>{
+    const fx=u-0.5; let py=fy*0.92-0.12;
+    let wc=fy<0.18?0.86+fy*0.2:fy<0.58?0.52+Math.pow((fy-0.38)*1.8,2)*0.18:0.82+(fy-0.58)*0.55;
+    let rW=0.33*wc; 
+    if(Math.abs(fx)>0.11&&Math.abs(fx)<0.24&&fy>0.26&&fy<0.72) rW-=Math.sin((fy-0.26)/0.46*Math.PI)*0.038;
+    let px=fx*rW*2.0, pz=Math.cos(fx*Math.PI*0.96)*0.155*wc;
+    if(fy>0.60&&fy<0.92){ const lap=Math.exp(-Math.pow((fy-0.78)*5.8,2)); if(fx>0.01&&fx<0.22){ pz+=0.042*lap; px+=0.018*lap; } if(fx<-0.01&&fx>-0.22){ pz+=0.042*lap; px-=0.018*lap; } }
+    if(Math.abs(fx)<0.02&&((fy>0.42&&fy<0.46)||(fy>0.55&&fy<0.59))) pz+=0.014;
+    if(fy>0.87){ pz+=(fy-0.87)*0.14; py+=(fy-0.87)*0.20; px*=0.62; }
+    return {x:px,y:py,z:pz};
+  });
+
+  // BRAZOS 28x28 T-POSE 0.92 SOLDADOS
+  add(28,28,(u,fv)=>{ const ang=(u-0.5)*Math.PI*2, rad=0.052*(1-fv*0.22); return {x:-0.34-fv*0.92+Math.cos(ang)*rad*0.32, y:0.63-fv*0.02+Math.sin(ang)*rad, z:Math.cos(ang)*rad*0.82}; });
+  add(28,28,(u,fv)=>{ const ang=(u-0.5)*Math.PI*2, rad=0.052*(1-fv*0.22); return {x:0.34+fv*0.92+Math.cos(ang)*rad*0.32, y:0.63-fv*0.02+Math.sin(ang)*rad, z:Math.cos(ang)*rad*0.82}; });
+
+  // PANTALÓN 60x40 SASTRE + DIAMOND CLOSED 100%
+  const legSep=0.068; // V30.11 gap soldado
+  add(60,40,(u,fy)=>{ const ang=(u-0.5)*Math.PI*2; let rad=0.105-fy*0.015; return {x:-legSep+Math.cos(ang)*rad, y:0.08-fy*0.98, z:Math.sin(ang)*rad*0.65}; });
+  add(60,40,(u,fy)=>{ const ang=(u-0.5)*Math.PI*2; let rad=0.105-fy*0.015; return {x:legSep+Math.cos(ang)*rad, y:0.08-fy*0.98, z:Math.sin(ang)*rad*0.65}; });
+  
+  // FIX DIAMOND BRIDGE - cierra hueco entre piernas
+  add(3,6,(u,fy)=>{ return {x:(u-0.5)*0.136, y:0.08-fy*0.06, z:0.02*Math.cos((u-0.5)*Math.PI)}; });
+
+  // OXFORDS 18x28
+  add(18,28,(u,fy)=>{ const fx=u-0.5; let px=-0.068+fx*0.11, py=-0.92-fy*0.12, pz=(fy-0.5)*0.28+0.08; return {x:px,y:py,z:pz}; });
+  add(18,28,(u,fy)=>{ const fx=u-0.5; let px=0.068+fx*0.11, py=-0.92-fy*0.12, pz=(fy-0.5)*0.28+0.08; return {x:px,y:py,z:pz}; });
+
+  const geo=new THREE_LIB.BufferGeometry();
+  geo.setAttribute('position', new THREE_LIB.Float32BufferAttribute(pos,3));
+  geo.setIndex(idx); geo.computeVertexNormals();
+  const wire=new THREE_LIB.WireframeGeometry(geo);
+  const mat=new THREE_LIB.LineBasicMaterial({color:0x00e5ff, transparent:true, opacity:0.38, depthWrite:false});
+  group.add(new THREE_LIB.LineSegments(wire, mat));
+  
+  const brain = LAIA_ACTOR_BRAIN.createLaiaSkeleton(THREE_LIB, group);
+  return { group, brain, geo };
 }
-
-export function thinkAndMove(bones, context) {
-  MIND.breath += 0.016;
-  MIND.talkAmp = context.talkAmp || 0;
-  if (!bones || bones.length === 0) return MIND.state;
-  const t = MIND.breath;
-  const hips = bones.find(b=>b.name==='Hips');
-  if (hips) hips.position.y = Math.sin(t * 0.7) * 0.003;
-
-  if (context.inputFocused) MIND.state = 'LISTENING';
-  else if (context.sapError) MIND.state = 'SCOLDING';
-  else if (context.sapOK) MIND.state = 'CELEBRATING';
-  else if (context.reading || context.talkAmp > 0.1) MIND.state = 'EXPLAINING';
-  else MIND.state = 'IDLE_CORTANA';
-
-  const head = bones.find(b=>b.name==='Head_Bone');
-  if (MIND.state === 'IDLE_CORTANA' && head) {
-    head.rotation.y = Math.sin(t * 0.32) * 0.10;
-    head.rotation.x = Math.sin(t * 0.26) * 0.02;
-  }
-  return MIND.state;
-}
-
-export function decideByMetrics(metrics) {
-  const m = metrics || {};
-  if (m.same_error_count >= 3) return { state: 'SCOLDING', color: '#f59e0b', pos: 'feedback_err' };
-  if (m.streak_days >= 7 || m.level_up) return { state: 'CELEBRATING', color: '#22c55e', pos: 'feedback_ok' };
-  if (m.hesitation_ms > 4000) return { state: 'EXPLAINING', color: '#00d4ff', pos: 'reading_text' };
-  if (m.is_new_area) return { state: 'LISTENING', color: '#60a5fa', pos: 'input_field' };
-  return { state: 'IDLE_CORTANA', color: '#00d4ff', pos: 'welcome' };
-}
-
-export const LAIA_ACTOR_BRAIN_V30_11 = {
-  version: "30.11 FULL FRAME 0.40/2.42 FOV30 - 50x44 BLAZER 0.042 SOLDADO DEFINITIVO",
-  createLaiaSkeleton,
-  thinkAndMove,
-  decideByMetrics,
-  config: LAIA_BRAIN_CONFIG
-};
-export const LAIA_ACTOR_BRAIN = LAIA_ACTOR_BRAIN_V30_11;
-export const LAIA_ACTOR_BRAIN_V30_10_1 = LAIA_ACTOR_BRAIN_V30_11;
-export const LAIA_BRAIN = LAIA_ACTOR_BRAIN_V30_11;

@@ -2,17 +2,17 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>V30.11 FULL FRAME - CLON V27 BLAZER SOLDADO - SKINNY 0.19</title>
+<title>V30.21 FINAL - Best Template Pantalón + Oxfords - Curvas Suaves 0.146</title>
 <link rel="icon" href="./icon-192.png">
 <meta name="theme-color" content="#00d4ff">
-<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js"}}</script>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#020208;color:#f1f1f5;font-family:Inter,system-ui;overflow:hidden}
 header{height:52px!important;background:rgba(10,12,20,0.28)!important;backdrop-filter:blur(12px)!important;border-bottom:1px solid rgba(0,212,255,0.10)!important;display:flex!important;justify-content:space-between!important;align-items:center!important;padding:0 14px!important;position:fixed!important;top:0!important;left:0!important;right:0!important;z-index:100!important}
 .logo{font-weight:800}.logo span{background:#00d4ff;color:#000;padding:2px 8px;border-radius:6px;font-size:10px;margin-left:6px;font-weight:900}
 #laia-hologram{position:fixed!important;top:52px!important;left:0!important;width:100vw!important;height:calc(100vh - 52px)!important;z-index:1!important;display:flex!important;align-items:center!important;justify-content:center!important;pointer-events:none!important;background:transparent!important}
-#laia-holo-canvas{width:100vw!important;height:calc(100vh - 52px)!important;display:block!important;background:transparent!important;filter: contrast(1.12) brightness(1.08) saturate(1.06) drop-shadow(0 0 8px rgba(0,229,255,0.38)) drop-shadow(0 0 18px rgba(0,212,255,0.14))!important}
+#laia-holo-canvas{width:100vw!important;height:calc(100vh - 52px)!important;display:block!important;background:transparent!important;filter: contrast(1.12) brightness(1.08) saturate(1.06) drop-shadow(0 0 8px rgba(0,229,255,0.45)) drop-shadow(0 0 18px rgba(0,212,255,0.20))!important}
 .h-wrapper{margin-top:52px!important;display:flex!important;overflow-x:auto!important;scroll-snap-type:x mandatory!important;width:100vw!important;height:calc(100vh - 52px)!important;position:relative!important;z-index:20!important;scrollbar-width:none}
 .h-wrapper::-webkit-scrollbar{display:none}
 .page{min-width:100vw!important;width:100vw!important;height:100%!important;scroll-snap-align:start!important;overflow-y:auto!important;display:flex!important;position:relative!important;z-index:20!important}
@@ -21,28 +21,73 @@ header{height:52px!important;background:rgba(10,12,20,0.28)!important;backdrop-f
 .area{background:rgba(22,24,36,0.22)!important;padding:8px 10px!important;border-radius:8px!important;border:1px solid rgba(0,212,255,0.06)!important;cursor:pointer!important;color:#d0d0d8!important}
 .area b{color:#fff;font-size:12px}.area small{color:#9ca3af;font-size:10px}
 .area.active{background:rgba(0,212,255,0.62)!important;color:#000!important}
-.area.active b,.area.active small{color:#000!important}
 #card,.sap-header,.evo-lab{background:rgba(14,16,26,0.20)!important;backdrop-filter:blur(8px)!important;border:1px solid rgba(0,212,255,0.10)!important;border-radius:12px!important;padding:12px!important}
 @media(max-width:768px){#page1{flex-direction:column!important}#page1 aside{width:100%!important;min-width:100%!important;max-height:42vh!important}}
 </style>
 </head>
 <body>
-<header><div class="logo">📚 LENGUAJE-PRO <span>V30.11 FULL FRAME - 50x44 BLAZER 0.042 SOLDADO</span></div><div style="display:flex;gap:8px;font-size:11px;align-items:center"><span>⭐ <b id="xp">0</b> XP</span><span>🔥 <b id="streak">0</b></span><span id="level-badge" style="background:#00d4ff;color:#000;padding:2px 8px;border-radius:10px;font-weight:800">A2</span></div></header>
-<div class="h-wrapper" id="hWrapper"><div class="page" id="page1"><aside><h3 style="font-size:9px;color:#00d4ff;font-weight:900">V30.11 - 50x44 BLAZER 0.042 - T-POSE 0.92 - GAP 0.068 SOLDADO - 0.19</h3><input id="search" placeholder="Buscar 50 áreas..." style="background:rgba(22,24,36,0.28);border:1px solid rgba(0,212,255,0.12);color:#fff;padding:9px;border-radius:8px;width:100%"><div id="filters" style="display:flex;gap:6px;flex-wrap:wrap"><button class="f active" data-f="">Todas</button><button class="f" data-f="A1">A1</button><button class="f" data-f="A2">A2</button><button class="f" data-f="B1">B1</button></div><div id="list">Cargando V30.11...</div></aside><main style="flex:1;padding:16px;max-width:760px"><div style="display:flex;gap:8px;margin-bottom:12px"><select id="level" style="background:rgba(24,26,40,0.28);border:1px solid rgba(0,212,255,0.12);color:#fff;padding:9px;border-radius:8px"><option>A1</option><option selected>A2</option><option>B1</option><option>B2</option></select><button id="gen" style="background:#00d4ff;color:#000;border:none;padding:12px 18px;border-radius:12px;font-weight:800;flex:1;max-width:300px">⚡ GENERAR V30.11</button><button id="teachBtn" style="background:#8b5cf6;color:#fff;border:none;padding:10px 14px;border-radius:12px;font-weight:700">📌 SAPs</button></div><div id="empty"><h1 style="font-size:22px">👋 Soy Laia V30.11</h1><p id="status" style="color:#00d4ff;font-size:12px">FULL FRAME 50x44 BLAZER 0.042 SOLDADO - 0.40/2.42 - 0.19 CLON V27</p></div><div id="card" class="hidden"></div></main></div><div class="page" id="page2"><div style="width:100%;max-width:760px;padding:16px"><h2 style="font-size:14px">🧬 MOTOR 2 - SAP + V30.11</h2><div class="sap-header" id="sapHeader">Esperando...</div><div class="evo-lab" id="evoLab" style="margin-top:12px;font-size:11px">V30.11 - FULL FRAME SOLDADO - 50x44 TORSO WAIST 0.52 + SOLAPAS 0.042 + 22x22 BRAZOS T-POSE 0.92 SOLDADOS + 37x24 PIERNAS GAP 0.068 + 7x14 PIES 5 DEDOS + 22x32 CABEZA 0.16 BOB - WIREFRAME 0.19 - CLON V27</div></div></div></div>
-<div id="laia-hologram"><canvas id="laia-holo-canvas"></canvas><div id="laia-state" style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);background:rgba(0,212,255,0.82);color:#000;font-size:9px;padding:4px 10px;border-radius:10px;font-weight:800;letter-spacing:0.5px">V30.11 FULL FRAME 50x44 SOLDADO - 0.19</div></div>
+<header><div class="logo">📚 LENGUAJE-PRO <span>V30.21 FINAL BEST TEMPLATE - 90x70 BLAZER 0.042 + PANTALÓN + OXFORDS</span></div><div style="display:flex;gap:8px;font-size:11px;align-items:center"><span>⭐ <b id="xp">0</b> XP</span><span>🔥 <b id="streak">0</b></span><span id="level-badge" style="background:#00d4ff;color:#000;padding:2px 8px;border-radius:10px;font-weight:800">A2</span></div></header>
+<div class="h-wrapper" id="hWrapper"><div class="page" id="page1"><aside><h3 style="font-size:9px;color:#00d4ff;font-weight:900">V30.21 - 90x70 BLAZER 0.042 - T-POSE 0.92 - GAP 0.068 CLOSED - 0.38 - WAIST 0.52->0.146</h3><input id="search" placeholder="Buscar 50 áreas..." style="background:rgba(22,24,36,0.28);border:1px solid rgba(0,212,255,0.12);color:#fff;padding:9px;border-radius:8px;width:100%"><div id="filters" style="display:flex;gap:6px;flex-wrap:wrap"><button class="f active" data-f="">Todas</button><button class="f" data-f="A1">A1</button><button class="f" data-f="A2">A2</button><button class="f" data-f="B1">B1</button></div><div id="list">Cargando V30.21...</div></aside><main style="flex:1;padding:16px;max-width:760px"><div style="display:flex;gap:8px;margin-bottom:12px"><select id="level" style="background:rgba(24,26,40,0.28);border:1px solid rgba(0,212,255,0.12);color:#fff;padding:9px;border-radius:8px"><option>A1</option><option selected>A2</option><option>B1</option><option>B2</option></select><button id="gen" style="background:#00d4ff;color:#000;border:none;padding:12px 18px;border-radius:12px;font-weight:800;flex:1;max-width:300px">⚡ GENERAR V30.21</button><button id="teachBtn" style="background:#8b5cf6;color:#fff;border:none;padding:10px 14px;border-radius:12px;font-weight:700">📌 SAPs</button></div><div id="empty"><h1 style="font-size:22px">👋 Soy Laia V30.21</h1><p id="status" style="color:#00d4ff;font-size:12px">FINAL BEST TEMPLATE 90x70 BLAZER 0.042 + PANTALÓN + OXFORDS - 0.58/2.42 - 0.38 - WAIST 0.52->0.146 - CURVAS SUAVES</p></div><div id="card" class="hidden"></div></main></div><div class="page" id="page2"><div style="width:100%;max-width:760px;padding:16px"><h2 style="font-size:14px">🧬 MOTOR 2 - SAP + V30.21</h2><div class="sap-header" id="sapHeader">Esperando...</div><div class="evo-lab" id="evoLab" style="margin-top:12px;font-size:11px">V30.21 - FINAL BEST TEMPLATE - 90x70 TORSO WAIST 0.52->0.146 + SOLAPAS 0.042 + 28x28 BRAZOS T-POSE 0.92 + 60x40 PANTALÓN GAP 0.068 CLOSED + 18x28 OXFORDS + 48x64 CABEZA HUMANOIDE BOB - WIREFRAME 0.38 - ORGANIC BODY</div></div></div></div>
+<div id="laia-hologram"><canvas id="laia-holo-canvas"></canvas><div id="laia-state" style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);background:rgba(0,212,255,0.82);color:#000;font-size:9px;padding:4px 10px;border-radius:10px;font-weight:800;letter-spacing:0.5px">V30.21 FINAL BEST TEMPLATE - 0.38 - PANTALÓN + OXFORDS</div></div>
 <script type="module">
-import { initLaiaHologram } from './laia_hologram.js?v=30.11';
-import { createLaiaSkeleton, thinkAndMove } from './actor/laia_actor_brain.js?v=30.11';
 import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { LAIA_ACTOR_BRAIN } from './actor/laia_actor_brain.js?v=30.21';
 
-// Init hologram V30.11 - SINGLE MESH 50x44 SOLDADO
-const canvas = document.getElementById('laia-holo-canvas');
-const laia = initLaiaHologram(canvas);
+// === LAIA HOLOGRAM V30.21 INTEGRADO ===
+const canvas=document.getElementById('laia-holo-canvas');
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,1.8));
+renderer.setSize(innerWidth,innerHeight);
+const scene=new THREE.Scene(); scene.background=null;
+const camera=new THREE.PerspectiveCamera(30, innerWidth/innerHeight, 0.1, 100);
+camera.position.set(0,0.02,2.68);
+const controls=new OrbitControls(camera, renderer.domElement);
+controls.enableDamping=true; controls.dampingFactor=0.08; controls.target.set(0,-0.18,0);
+const group=new THREE.Group(); group.scale.set(0.58,0.58,0.58); group.position.y=-0.15; scene.add(group);
+scene.add(new THREE.AmbientLight(0x00e5ff,0.18));
 
-// LAYA
-let LAYA_FINAL={AREAS:{1:{name:"Money Basics",topic:"Why Most People Never Become Rich",level:"A1"},2:{name:"Saving",topic:"Saving Small",level:"A1"},3:{name:"Smart Spending",topic:"Smart Spending",level:"A1"},4:{name:"Investing",topic:"Investing Freedom",level:"A2"},5:{name:"Work",topic:"Work Matters",level:"A2"},6:{name:"Career",topic:"Grow Career",level:"B1"},7:{name:"Opportunity",topic:"English Opportunity",level:"A2"},8:{name:"Business",topic:"Small Business",level:"A2"},9:{name:"Time Is Money",topic:"Time Valuable",level:"A1"},10:{name:"Rich vs Poor",topic:"Rich Think Different",level:"A2"}},generate(id,lvl){const a=this.AREAS[id]||{name:"Test",topic:"Test"};return{story:`Hello ${a.topic}. V30.11 50x44 blazer 0.042 soldado full frame 0.40/2.42 skinny 0.19 clon V27 T-POSE.`,meta:{area:a.name,topic:a.topic,level:lvl,grammar_main:{sig:"PS_3RD_S"},xp:15}}},VOCAB:{}};
-try{const m=await import('./LAYA_FINAL_COMPLETO.js?v=30.11'); LAYA_FINAL=m.LAYA_FINAL||m.LAYA_FINAL_COMPLETO||LAYA_FINAL;}catch(e){}
+function buildV30_21(){
+  const pos=[], idx=[]; let v=0;
+  const add=(rows,cols,fn)=>{
+    const s=v;
+    for(let y=0;y<rows;y++) for(let x=0;x<cols;x++){ const p=fn(x/(cols-1), y/(rows-1)); pos.push(p.x,p.y,p.z); v++; }
+    for(let y=0;y<rows-1;y++) for(let x=0;x<cols-1;x++){ const a=s+y*cols+x, b=a+1, c=a+cols, d=c+1; idx.push(a,c,b,b,c,d); }
+  };
+  add(48,64,(u,fy)=>{ const fx=(u-0.5)*2; let px=fx*0.16*(0.8+0.2*Math.cos(fy*Math.PI)); let py=0.78+fy*0.32; let pz=0.14*Math.cos(fx*1.2)*Math.sin(fy*Math.PI); return {x:px,y:py,z:pz}; });
+  add(90,70,(u,fy)=>{
+    const fx=u-0.5; let py=fy*0.92-0.12;
+    let wc=fy<0.18?0.86+fy*0.2:fy<0.58?0.52+Math.pow((fy-0.38)*1.8,2)*0.18:0.82+(fy-0.58)*0.55;
+    let rW=0.33*wc; 
+    if(Math.abs(fx)>0.11&&Math.abs(fx)<0.24&&fy>0.26&&fy<0.72) rW-=Math.sin((fy-0.26)/0.46*Math.PI)*0.038;
+    let px=fx*rW*2.0, pz=Math.cos(fx*Math.PI*0.96)*0.155*wc;
+    if(fy>0.60&&fy<0.92){ const lap=Math.exp(-Math.pow((fy-0.78)*5.8,2)); if(Math.abs(fx)>0.01&&Math.abs(fx)<0.22){ pz+=0.042*lap; px+=0.018*lap; } if(Math.abs(fx)>0.01&&Math.abs(fx)>-0.22&&fx<0){ pz+=0.042*lap; px-=0.018*lap; } }
+    if(Math.abs(fx)<0.02&&((fy>0.42&&fy<0.46)||(fy>0.55&&fy<0.59))) pz+=0.014;
+    if(fy>0.87){ pz+=(fy-0.87)*0.14; py+=(fy-0.87)*0.20; px*=0.62; }
+    return {x:px,y:py,z:pz};
+  });
+  add(28,28,(u,fv)=>{ const ang=(u-0.5)*Math.PI*2, rad=0.052*(1-fv*0.22); return {x:-0.34-fv*0.92+Math.cos(ang)*rad*0.32, y:0.63-fv*0.02+Math.sin(ang)*rad, z:Math.cos(ang)*rad*0.82}; });
+  add(28,28,(u,fv)=>{ const ang=(u-0.5)*Math.PI*2, rad=0.052*(1-fv*0.22); return {x:0.34+fv*0.92+Math.cos(ang)*rad*0.32, y:0.63-fv*0.02+Math.sin(ang)*rad, z:Math.cos(ang)*rad*0.82}; });
+  const legSep=0.068;
+  add(60,40,(u,fy)=>{ const ang=(u-0.5)*Math.PI*2; let rad=0.105-fy*0.015; return {x:-legSep+Math.cos(ang)*rad, y:0.08-fy*0.98, z:Math.sin(ang)*rad*0.65}; });
+  add(60,40,(u,fy)=>{ const ang=(u-0.5)*Math.PI*2; let rad=0.105-fy*0.015; return {x:legSep+Math.cos(ang)*rad, y:0.08-fy*0.98, z:Math.sin(ang)*rad*0.65}; });
+  add(3,6,(u,fy)=>{ return {x:(u-0.5)*0.136, y:0.08-fy*0.06, z:0.02*Math.cos((u-0.5)*Math.PI)}; });
+  add(18,28,(u,fy)=>{ const fx=u-0.5; let px=-0.068+fx*0.11, py=-0.92-fy*0.12, pz=(fy-0.5)*0.28+0.08; return {x:px,y:py,z:pz}; });
+  add(18,28,(u,fy)=>{ const fx=u-0.5; let px=0.068+fx*0.11, py=-0.92-fy*0.12, pz=(fy-0.5)*0.28+0.08; return {x:px,y:py,z:pz}; });
+  const geo=new THREE.BufferGeometry(); geo.setAttribute('position', new THREE.Float32BufferAttribute(pos,3)); geo.setIndex(idx); geo.computeVertexNormals();
+  const wire=new THREE.WireframeGeometry(geo); const mat=new THREE.LineBasicMaterial({color:0x00e5ff, transparent:true, opacity:0.38, depthWrite:false}); group.add(new THREE.LineSegments(wire, mat));
+  return geo;
+}
+buildV30_21();
 
+// BRAIN V30.11 -> V30.21
+const { bones } = LAIA_ACTOR_BRAIN.createLaiaSkeleton(THREE, group);
+let ctx={}; function animate(){ requestAnimationFrame(animate); LAIA_ACTOR_BRAIN.thinkAndMove(bones, ctx); controls.update(); renderer.render(scene,camera); } animate();
+function resize(){ renderer.setSize(innerWidth,innerHeight); camera.aspect=innerWidth/innerHeight; camera.updateProjectionMatrix(); } addEventListener('resize',resize);
+
+// LAYA LOGIC
+let LAYA_FINAL={AREAS:{1:{name:"Money Basics",topic:"Why Most People Never Become Rich",level:"A1"},2:{name:"Saving",topic:"Saving Small",level:"A1"},3:{name:"Smart Spending",topic:"Smart Spending",level:"A1"},4:{name:"Investing",topic:"Investing Freedom",level:"A2"},5:{name:"Work",topic:"Work Matters",level:"A2"}} ,generate(id,lvl){const a=this.AREAS[id]||{name:"Test",topic:"Test"};return{story:`Hello ${a.topic}. V30.21 FINAL BEST TEMPLATE 90x70 blazer 0.042 + pantalón + oxfords + waist 0.52->0.146 curvas suaves.`,meta:{area:a.name,topic:a.topic,level:lvl}};}};
+try{const m=await import('./LAYA_FINAL_COMPLETO.js?v=30.21'); LAYA_FINAL=m.LAYA_FINAL||LAYA_FINAL;}catch(e){}
 const listEl=document.getElementById('list'); let sel='1', cur='';
 function render(f='',lvl=''){
   listEl.innerHTML=''; let c=0;
@@ -50,19 +95,17 @@ function render(f='',lvl=''){
     const hay=`${id} ${a.name} ${a.topic} ${a.level}`.toLowerCase();
     if(f&&!hay.includes(f)) return; if(lvl&&a.level!==lvl) return; c++;
     const d=document.createElement('div'); d.className='area'; d.innerHTML=`<b>${id}. ${a.name}</b><br><small>${a.topic} • ${a.level}</small>`;
-    d.onclick=()=>{sel=id; document.querySelectorAll('.area').forEach(x=>x.classList.remove('active')); d.classList.add('active'); document.getElementById('laia-state').textContent='READING_TEXT • V30.11 50x44 SOLDADO';};
+    d.onclick=()=>{sel=id; document.querySelectorAll('.area').forEach(x=>x.classList.remove('active')); d.classList.add('active'); document.getElementById('laia-state').textContent='READING_TEXT • V30.21 BEST'; ctx.reading=true;};
     listEl.appendChild(d);
   });
-  document.getElementById('status').textContent=`${c} áreas - V30.11 FULL FRAME 50x44 SOLDADO 0.40/2.42 - 0.19`;
+  document.getElementById('status').textContent=`${c} áreas - V30.21 FINAL BEST TEMPLATE - 90x70 - 0.58 - 0.38`;
 }
 render();
 document.getElementById('search').oninput=e=>render(e.target.value.toLowerCase(),cur);
 document.querySelectorAll('.f').forEach(b=>b.onclick=()=>{document.querySelectorAll('.f').forEach(x=>x.classList.remove('active')); b.classList.add('active'); cur=b.dataset.f; render(document.getElementById('search').value.toLowerCase(),cur);});
-document.getElementById('gen').onclick=()=>{const lvl=document.getElementById('level').value; const res=LAYA_FINAL.generate(sel,lvl); const card=document.getElementById('card'); card.innerHTML=`<h2>${res.meta.topic}</h2><div style="background:rgba(0,0,0,0.22);padding:14px;border-radius:12px;margin:12px 0;white-space:pre-wrap">${res.story}</div>`; card.classList.remove('hidden'); document.getElementById('empty').classList.add('hidden'); document.getElementById('laia-state').textContent='READING_TEXT • V30.11';};
+document.getElementById('gen').onclick=()=>{const lvl=document.getElementById('level').value; const res=LAYA_FINAL.generate(sel,lvl); const card=document.getElementById('card'); card.innerHTML=`<h2>${res.meta.topic}</h2><div style="background:rgba(0,0,0,0.22);padding:14px;border-radius:12px;margin:12px 0;white-space:pre-wrap">${res.story}</div>`; card.classList.remove('hidden'); document.getElementById('empty').classList.add('hidden'); document.getElementById('laia-state').textContent='EXPLAINING • V30.21'; ctx.reading=true;};
 document.getElementById('teachBtn').onclick=()=>document.getElementById('hWrapper').scrollTo({left:innerWidth,behavior:'smooth'});
-
-// SW update fix V30.11
-if('serviceWorker' in navigator){ navigator.serviceWorker.register('./sw.js?v=30.11').then(r=>r.update()); }
+if('serviceWorker' in navigator){ navigator.serviceWorker.register('./sw.js?v=30.21').then(r=>r.update()); }
 </script>
 </body>
 </html>

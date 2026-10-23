@@ -1,4 +1,4 @@
-// sw.js - V30.17 FULL FRAME DEFINITIVO - CLON V27 BLAZER SOLDADO 50x44 - SKINNY 0.19
+// sw.js - V30.21 FULL FRAME DEFINITIVO - CLON V27 BLAZER SOLDADO 50x44 - SKINNY 0.19
 // FIX: mata cache V17.38 constellation y V30.10.1 - nuevo single mesh 50x44 0.042 soldado
 const CACHE_NAME = 'laia-v30.11-full-frame-50x44-blazer-soldado-skinny-0.19';
 const ASSETS = [

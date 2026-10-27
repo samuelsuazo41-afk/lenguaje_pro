@@ -1,5 +1,5 @@
-/* styles.css - V32 NEW TEMPLATE FROM SCRATCH - BORRADO TOTAL V31 - MAPEO ANATÓMICO NUEVO */
-/* SPECS: ANCHURA 0.48m - CINTURA 0.12 narrowest - CADERA 0.335*wc - CABEZA 28x36 depth 0.24 - TRAPEZIUS 0.32 - CUELLO 0.12 - LUMBAR 0.22-0.50 - FLAT GLUTEO NEUTRAL STANCE - DIAMOND CLOSED 0.0 - CLEAN QUAD TOPOLOGY - T-POSE 90° */
+/* styles.css - V32.1 ORGANIC ANATOMICAL SEAM - 2 PIERNAS SEPARADAS REALES - BORRADO TOTAL CONO */
+/* SPECS: ANCHURA 0.48m - CINTURA 0.12 narrowest - CADERA 0.335*wc - CABEZA 28x36 depth 0.24 - TRAPEZIUS 0.32 - CUELLO 0.12 - LUMBAR 0.22-0.50 - FLAT GLUTEO NEUTRAL STANCE - DIAMOND CLOSED 0.0 - CLEAN QUAD - COSTURA NATURAL ORGÁNICA MAMAS AXILAS ESPALDA ENTREPIERNAS PANTORRILLAS PIES */
 
 :root{
   --bg:#020208;
@@ -33,7 +33,7 @@ header{
 #level-badge{background:var(--holo);color:#000;padding:2px 8px;border-radius:12px;font-weight:800;font-size:10px}
 #xp{color:#fbbf24;font-weight:800}
 
-/* V32 NEW TEMPLATE - CONTENIDO DETRÁS DEL AVATAR - z-index 10 vs 999 front - CLEAN */
+/* V32.1 ORGANIC - CONTENIDO DETRÁS DEL AVATAR - z-index 10 vs 999 front - CLEAN 2 PIERNAS */
 .h-wrapper{
   margin-top:52px!important;
   display:flex!important;overflow-x:auto!important;
@@ -105,8 +105,8 @@ header{
   border-radius:12px!important;padding:12px!important
 }
 
-/* === V32 NEW TEMPLATE FROM SCRATCH - T-POSE 90° - AVATAR POR DELANTE - BORRADO TOTAL V31 === */
-/* MAPEO ANATÓMICO NUEVO: ANCHURA 0.48m + CINTURA 0.12 narrowest + CADERA 0.335*wc + CABEZA 28x36 depth 0.24 + TRAPEZIUS 0.32 + CUELLO 0.12 + LUMBAR 0.22-0.50 + FLAT GLUTEO NEUTRAL STANCE + DIAMOND CLOSED 0.0 + CLEAN QUAD TOPOLOGY */
+/* === V32.1 ORGANIC SEAM - 2 PIERNAS SEPARADAS REALES - T-POSE 90° - AVATAR POR DELANTE - BORRADO CONO === */
+/* COSTURA NATURAL ORGÁNICA: CINTURA 0.12 -> CADERA 0.335*wc -> GLÚTEOS FLAT -> ENTREPIERNAS DIAMOND 0.0 -> 2 PIERNAS -0.095/+0.095 -> PANTORRILLAS -> PIES + MAMAS + AXILAS + ESPALDA + CUELLO 0.12 + CABEZA 28x36 depth 0.24 + TRAPEZIUS 0.32 + ANCHURA 0.48m + BRAZOS T-POSE 90° */
 #laia-hologram{
   position:fixed!important;
   top:52px!important;left:0!important;
@@ -121,8 +121,7 @@ header{
   width:100vw!important;height:calc(100vh - 52px)!important;
   display:block!important;background:transparent!important;
   pointer-events:auto!important;
-  /* V32 NEW TEMPLATE GLOW - T-POSE 90° - CINTURA 0.12 - DIAMOND 0.0 - ANCHURA 0.48m - CLEAN QUAD */
-  filter: contrast(1.16) brightness(1.10) saturate(1.08) drop-shadow(0 0 10px rgba(0,229,255,0.50)) drop-shadow(0 0 24px rgba(0,212,255,0.24))!important;
+  filter: contrast(1.18) brightness(1.12) saturate(1.10) drop-shadow(0 0 12px rgba(0,229,255,0.52)) drop-shadow(0 0 26px rgba(0,212,255,0.26))!important;
 }
 #laia-state{
   position:absolute!important;bottom:16px!important;left:50%!important;transform:translateX(-50%)!important;

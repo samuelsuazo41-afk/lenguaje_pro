@@ -133,4 +133,4 @@ header{
 @media(max-width:768px){
   #page1{flex-direction:column!important}
   #page1 aside{width:100%!important;min-width:100%!important;max-height:42vh!important}
-}
+} 

@@ -1,17 +1,20 @@
-/* styles.css - V31 BUSINESS - FROM SCRATCH - T-POSE 90° - V30.71 LATERAL 90° + V30.22 POSTERIOR T-POSE MODO NEGOCIO */
-/* SPECS: CINTURA 0.12 - DIAMOND 0.0 - FLAT GLUTEO CURVE - LUMBAR 0.22-0.50 - ANCHURA HOMBROS 0.48m - TRAPEZIUS 0.32" - CADERA 0.335*wc - T-POSE 90° ARM EXTENSION */
+/* styles.css - V32 NEW TEMPLATE FROM SCRATCH - BORRADO TOTAL V31 - MAPEO ANATÓMICO NUEVO */
+/* SPECS: ANCHURA 0.48m - CINTURA 0.12 narrowest - CADERA 0.335*wc - CABEZA 28x36 depth 0.24 - TRAPEZIUS 0.32 - CUELLO 0.12 - LUMBAR 0.22-0.50 - FLAT GLUTEO NEUTRAL STANCE - DIAMOND CLOSED 0.0 - CLEAN QUAD TOPOLOGY - T-POSE 90° */
 
 :root{
   --bg:#020208;
   --text:#f1f1f5;
   --muted:#9ca3af;
   --holo:#00e5ff;
-  --holo-glow:rgba(0,229,255,0.45);
-  --v31-cintura:0.12;
-  --v31-diamond:0.0;
-  --v31-anchura:0.48m;
-  --v31-trapezius:0.32;
-  --v31-cadera:0.335;
+  --holo-glow:rgba(0,229,255,0.50);
+  --v32-anchura:0.48m;
+  --v32-cintura:0.12;
+  --v32-cadera:0.335;
+  --v32-trapezius:0.32;
+  --v32-cabeza:28x36;
+  --v32-cuello:0.12;
+  --v32-diamond:0.0;
+  --v32-lumbar:0.22-0.50;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system;overflow:hidden}
@@ -30,7 +33,7 @@ header{
 #level-badge{background:var(--holo);color:#000;padding:2px 8px;border-radius:12px;font-weight:800;font-size:10px}
 #xp{color:#fbbf24;font-weight:800}
 
-/* FIX V31 BUSINESS - CONTENIDO DETRÁS DEL AVATAR - z-index 10 vs 999 front */
+/* V32 NEW TEMPLATE - CONTENIDO DETRÁS DEL AVATAR - z-index 10 vs 999 front - CLEAN */
 .h-wrapper{
   margin-top:52px!important;
   display:flex!important;overflow-x:auto!important;
@@ -102,9 +105,8 @@ header{
   border-radius:12px!important;padding:12px!important
 }
 
-/* === V31 BUSINESS - FROM SCRATCH - T-POSE 90° ARM EXTENSION - AVATAR POR DELANTE === */
-/* V30.71 LATERAL 90°: shoulders dorsal ancho + cintura 0.12 + diamond 0.0 + flat gluteo curve + lumbar 0.22-0.50 + ARM EXTENSION 90° */
-/* V30.22 POSTERIOR: cabeza 28x36" + cuello 0.12" + trapezius 0.32" + anchura hombros 0.48m + cadera 0.335*wc + diamond closed gap 0.0 + columna T1-T12 */
+/* === V32 NEW TEMPLATE FROM SCRATCH - T-POSE 90° - AVATAR POR DELANTE - BORRADO TOTAL V31 === */
+/* MAPEO ANATÓMICO NUEVO: ANCHURA 0.48m + CINTURA 0.12 narrowest + CADERA 0.335*wc + CABEZA 28x36 depth 0.24 + TRAPEZIUS 0.32 + CUELLO 0.12 + LUMBAR 0.22-0.50 + FLAT GLUTEO NEUTRAL STANCE + DIAMOND CLOSED 0.0 + CLEAN QUAD TOPOLOGY */
 #laia-hologram{
   position:fixed!important;
   top:52px!important;left:0!important;
@@ -119,7 +121,7 @@ header{
   width:100vw!important;height:calc(100vh - 52px)!important;
   display:block!important;background:transparent!important;
   pointer-events:auto!important;
-  /* V31 BUSINESS GLOW - T-POSE 90° - CINTURA 0.12 - DIAMOND 0.0 - ANCHURA 0.48m - TRAPEZIUS 0.32 - PROPORTIONAL BALLOON */
+  /* V32 NEW TEMPLATE GLOW - T-POSE 90° - CINTURA 0.12 - DIAMOND 0.0 - ANCHURA 0.48m - CLEAN QUAD */
   filter: contrast(1.16) brightness(1.10) saturate(1.08) drop-shadow(0 0 10px rgba(0,229,255,0.50)) drop-shadow(0 0 24px rgba(0,212,255,0.24))!important;
 }
 #laia-state{

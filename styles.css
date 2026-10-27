@@ -1,4 +1,4 @@
-/* styles.css - V30.21 FINAL BEST TEMPLATE - 90x70 BLAZER 0.042 + PANTALÓN + OXFORDS - CURVAS SUAVES 0.52->0.146 */
+/* styles.css - V30.85 FIX FRONT - Avatar por delante + Piernas 62x42 + Diamond Closed 0.0 + X-clamp 0.1976 */
 
 :root{
   --bg:#020208;
@@ -16,7 +16,7 @@ header{
   backdrop-filter:blur(14px)!important;
   border-bottom:1px solid rgba(0,229,255,0.14)!important;
   display:flex!important;justify-content:space-between!important;align-items:center!important;
-  padding:0 14px!important;position:fixed!important;top:0!important;left:0!important;right:0!important;z-index:100!important
+  padding:0 14px!important;position:fixed!important;top:0!important;left:0!important;right:0!important;z-index:1000!important
 }
 .logo{font-weight:800;letter-spacing:-0.02em}
 .logo span{background:var(--holo);color:#000;padding:2px 8px;border-radius:6px;font-size:10px;margin-left:6px;font-weight:900}
@@ -24,12 +24,13 @@ header{
 #level-badge{background:var(--holo);color:#000;padding:2px 8px;border-radius:12px;font-weight:800;font-size:10px}
 #xp{color:#fbbf24;font-weight:800}
 
+/* FIX V30.85 - CONTENIDO DETRÁS DEL AVATAR */
 .h-wrapper{
   margin-top:52px!important;
   display:flex!important;overflow-x:auto!important;
   scroll-snap-type:x mandatory!important;
   width:100vw!important;height:calc(100vh - 52px)!important;
-  position:relative!important;z-index:20!important;
+  position:relative!important;z-index:10!important;
   scrollbar-width:none!important
 }
 .h-wrapper::-webkit-scrollbar{display:none}
@@ -37,7 +38,7 @@ header{
   min-width:100vw!important;width:100vw!important;height:100%!important;
   scroll-snap-align:start!important;overflow-y:auto!important;
   display:flex!important;flex-direction:row!important;
-  position:relative!important;z-index:20!important
+  position:relative!important;z-index:10!important
 }
 
 #page1 aside{
@@ -47,13 +48,13 @@ header{
   border-right:1px solid rgba(0,229,255,0.10)!important;
   padding:12px!important;display:flex!important;flex-direction:column!important;gap:8px!important;
   height:calc(100vh - 52px)!important;overflow-y:auto!important;
-  z-index:25!important
+  z-index:15!important
 }
 #page1 main{
   flex:1!important;padding:16px!important;max-width:760px!important;
-  background:transparent!important;z-index:25!important
+  background:transparent!important;z-index:15!important
 }
-#page2{background:transparent!important;z-index:25!important;padding:18px!important;display:flex!important;flex-direction:column!important;gap:12px!important;align-items:center!important;min-width:100vw!important}
+#page2{background:transparent!important;z-index:15!important;padding:18px!important;display:flex!important;flex-direction:column!important;gap:12px!important;align-items:center!important;min-width:100vw!important}
 
 #search{
   background:rgba(22,24,36,0.32)!important;
@@ -95,12 +96,12 @@ header{
   border-radius:12px!important;padding:12px!important
 }
 
-/* === V30.21 LAIA - FINAL BEST TEMPLATE - 0.58 / 2.68 - 90x70 BLAZER 0.042 + PANTALÓN + OXFORDS - CURVAS SUAVES 0.52->0.146 === */
+/* === V30.85 FIX FRONT - AVATAR POR DELANTE DE TODO + PIERNAS CONTINUAS 62x42 === */
 #laia-hologram{
   position:fixed!important;
   top:52px!important;left:0!important;
   width:100vw!important;height:calc(100vh - 52px)!important;
-  z-index:1!important;
+  z-index:999!important;
   display:flex!important;align-items:center!important;justify-content:center!important;
   pointer-events:none!important;
   opacity:1!important;
@@ -109,14 +110,15 @@ header{
 #laia-holo-canvas{
   width:100vw!important;height:calc(100vh - 52px)!important;
   display:block!important;background:transparent!important;
-  /* V30.21 FINAL GLOW REAL - 0.38 - 90x70 BLAZER 0.042 - BEST TEMPLATE VISIBLE MÓVIL */
+  pointer-events:auto!important;
+  /* V30.85 FRONT GLOW - 0.38 - 62x42 DIAMOND CLOSED 0.0 - PROPORTIONAL BALLOON */
   filter: contrast(1.14) brightness(1.12) saturate(1.08) drop-shadow(0 0 10px rgba(0,229,255,0.45)) drop-shadow(0 0 22px rgba(0,212,255,0.22))!important;
 }
 #laia-state{
   position:absolute!important;bottom:16px!important;left:50%!important;transform:translateX(-50%)!important;
   background:rgba(0,229,255,0.88)!important;color:#000!important;
   font-size:9px!important;padding:5px 12px!important;border-radius:10px!important;font-weight:900!important;letter-spacing:0.5px!important;
-  z-index:10!important;
+  z-index:1001!important;
 }
 .hidden{display:none!important}
 @media(max-width:768px){

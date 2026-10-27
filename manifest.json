@@ -1,12 +1,32 @@
 {
-  "name": "Lenguaje Pro - Laia MESH ONLY 1200",
-  "short_name": "LenguajePro",
-  "description": "50 areas, 35 grammar, 72 vocab with Laia MESH ONLY 1200 puntos - Sin esqueleto visible",
+  "name": "Lenguaje Pro - Laia V31 BUSINESS T-POSE 90°",
+  "short_name": "LenguajePro V31",
+  "description": "50 areas, 35 grammar, 72 vocab with Laia V31 BUSINESS T-POSE 90° - CINTURA 0.12 - DIAMOND 0.0 - FLAT GLUTEO CURVE - LUMBAR 0.22-0.50 - ANCHURA 0.48m - TRAPEZIUS 0.32 - CADERA 0.335*wc - V30.71 + V30.22",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0f0f14",
+  "background_color": "#020208",
   "theme_color": "#00d4ff",
   "orientation": "portrait",
+  "version": "31.0.0-BUSINESS-TPOSE-90-FROM-SCRATCH",
+  "avatar": {
+    "type": "V31_BUSINESS_TPOSE_90",
+    "templates": ["V30.71 LATERAL 90°", "V30.22 POSTERIOR T-POSE MODO NEGOCIO"],
+    "specs": {
+      "cintura": 0.12,
+      "diamond": 0.0,
+      "flat_gluteo_curve": 0.0,
+      "lumbar": "0.22-0.50",
+      "anchura_hombros": "0.48m",
+      "trapezius": 0.32,
+      "cadera": "0.335*wc",
+      "cabeza": "28x36\"",
+      "cuello": "0.12\"",
+      "tpose": "90°",
+      "posture": "neutral stance",
+      "dorsal_ancho": true,
+      "columna": "T1-T12"
+    }
+  },
   "icons": [
     {
       "src": "/icon-192.png",

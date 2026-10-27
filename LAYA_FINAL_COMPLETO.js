@@ -1,5 +1,4 @@
-// LAYA_FINAL_COMPLETO.js - V30.21 FINAL BEST TEMPLATE - 90x70 BLAZER 0.042 + PANTALÓN + OXFORDS - CURVAS SUAVES 0.52->0.146
-// FIX V30.21: 90x70 torso + solapas 0.042 + brazos 28x28 soldados T-POSE 0.92 + piernas 60x40 gap 0.068 CLOSED + cabeza 48x64 humanoide + oxfords 18x28
+// LAYA_FINAL_COMPLETO.js - V30.85 FIX FRONT - Avatar por delante + Piernas 62x42 + Diamond Closed 0.0 + X-clamp 0.1976 + Proportional Balloon + Manos
 
 export const GRAMMAR_REAL = {
   PRON_PER_POSS: { id:"Pronouns Personal & Possessive", sig:"PRON_PER_POSS", formula:"I/me/my/mine/myself", example:"This is my book, not yours. I did it myself.", mistake:"I car -> MY car", level:"A1" },
@@ -44,51 +43,71 @@ export const VOCAB_REAL = {
   superDicSyllables: { co: ["cook","confidence","consistency"], sav: ["save","saving","savings"], mon: ["money","month","Monday"] } 
 };
 
+// V30.85 FIX FRONT - JOINTS CON GAP 0.052 + X-CLAMP 0.1976 + PROPORTIONAL BALLOON
 export const MARIONETTE_JOINTS = {
-  Head_Bone: { id: 'Head_Bone', independent: true },
-  Spine_02: { id: 'Spine_02', independent: true },
-  Shoulder_L: { id: 'Shoulder.L', independent: true }, 
-  Shoulder_R: { id: 'Shoulder.R', independent: true },
-  Hip_L: { id: 'Hip.L', independent: true, gap:0.068 }, 
-  Hip_R: { id: 'Hip.R', independent: true, gap:0.068 },
-  Knee_L: { id: 'Knee.L', independent: true }, 
-  Knee_R: { id: 'Knee.R', independent: true }
+  Head_Bone: { id: 'Head_Bone', independent: true, rows:28, cols:36, depth:0.24 },
+  Spine_02: { id: 'Spine_02', independent: true, waist:0.146, waist_factor:0.52, cresta:0.335 },
+  Shoulder_L: { id: 'Shoulder.L', independent: true, trapezius:0.32, deltoides:0.32, axilla:'clean_no_cone' }, 
+  Shoulder_R: { id: 'Shoulder.R', independent: true, trapezius:0.32, deltoides:0.32, axilla:'clean_no_cone' },
+  Hip_L: { id: 'Hip.L', independent: true, gap:0.052, x_clamp:0.1976, glute:{rx:0.20, ry:0.21, rz:0.15, max:0.16, bulge:0.145}, upper_glute_minus:14 }, 
+  Hip_R: { id: 'Hip.R', independent: true, gap:0.052, x_clamp:0.1976, glute:{rx:0.20, ry:0.21, rz:0.15, max:0.16, bulge:0.145}, upper_glute_minus:14 },
+  Knee_L: { id: 'Knee.L', independent: true, fan:32, dual_core:true, seamless:true }, 
+  Knee_R: { id: 'Knee.R', independent: true, fan:32, dual_core:true, seamless:true },
+  Calf_L: { id: 'Calf.L', independent: true, gastrocnemius:{bulge:0.66, depth:-0.16, radius:0.18}, achilles:0.12 },
+  Calf_R: { id: 'Calf.R', independent: true, gastrocnemius:{bulge:0.66, depth:-0.16, radius:0.18}, achilles:0.12 },
+  Hand_L: { id: 'Hand.L', independent: true, palma:{x:0.14, y:0.08}, dedos:5, verts:125, falanges:3, wrist_twist:360 },
+  Hand_R: { id: 'Hand.R', independent: true, palma:{x:0.14, y:0.08}, dedos:5, verts:125, falanges:3, wrist_twist:360 }
 };
 
 export const INTENTION_MOTOR = {
-  FOUNDATION: { id: 'FOUNDATION', name: 'Cimiento', joints: { Head_Bone: [-5,10,0], Spine_02: -15 }, tts: 'Primero el cimiento - V30.21 best 0.52->0.146', sap_type: 'FOUNDATION', color: '#60a5fa' },
-  SCAFFOLDING: { id: 'SCAFFOLDING', name: 'Andamiaje', joints: { Shoulder_L: [45,30,0], Shoulder_R: [-45,-30,0] }, tts: 'Mira, esta pieza encaja - 90x70 blazer 0.042 + pantalón + oxfords.', sap_type: 'GRAMMAR', color: '#00d4ff' },
-  STRICT_ENGINEER: { id: 'STRICT_ENGINEER', name: 'Ingeniera Estricta', joints: { Shoulder_L: [40,0,0], Shoulder_R: [-40,0,0] }, tts: 'Ojo tete, es HAS - cintura 0.52->0.146 curvas suaves', sap_type: 'ERR', color: '#f59e0b' },
-  FLOW_OBSERVER: { id: 'FLOW_OBSERVER', name: 'Observadora Flow', joints: { Spine_02: 0 }, tts: 'Te observo, vas en flow - pantalón + oxfords closed', sap_type: 'FLOW', color: '#8b5cf6' },
-  ELEVATION: { id: 'ELEVATION', name: 'Elevación', joints: { Shoulder_L: [0,120,0], Shoulder_R: [0,120,0], Spine_02: 15 }, tts: 'BOOM! Lo clavaste!', sap_type: 'XP', color: '#22c55e' },
-  TRANSMISSION: { id: 'TRANSMISSION', name: 'Transmisión', joints: { Shoulder_L: [-30,30,0], Shoulder_R: [30,-30,0] }, tts: 'Esto ya es una capa completa - best template 5', sap_type: 'TRANSMIT', color: '#00d4ff' }
+  FOUNDATION: { id: 'FOUNDATION', name: 'Cimiento', joints: { Head_Bone: [-5,10,0], Spine_02: -15 }, tts: 'Primero el cimiento - V30.85 front 0.52->0.146 diamond 0.0', sap_type: 'FOUNDATION', color: '#60a5fa' },
+  SCAFFOLDING: { id: 'SCAFFOLDING', name: 'Andamiaje', joints: { Shoulder_L: [45,30,0], Shoulder_R: [-45,-30,0] }, tts: 'Mira, esta pieza encaja - V30.85 62x42 + manos + X-clamp 0.1976', sap_type: 'GRAMMAR', color: '#00d4ff' },
+  STRICT_ENGINEER: { id: 'STRICT_ENGINEER', name: 'Ingeniera Estricta', joints: { Shoulder_L: [40,0,0], Shoulder_R: [-40,0,0] }, tts: 'Ojo tete, es HAS - proportional balloon glute 1.0->thigh 0.7->knee 0.5->calf 0.6', sap_type: 'ERR', color: '#f59e0b' },
+  FLOW_OBSERVER: { id: 'FLOW_OBSERVER', name: 'Observadora Flow', joints: { Spine_02: 0 }, tts: 'Te observo, vas en flow - pierna continua sin escalón', sap_type: 'FLOW', color: '#8b5cf6' },
+  ELEVATION: { id: 'ELEVATION', name: 'Elevación', joints: { Shoulder_L: [0,120,0], Shoulder_R: [0,120,0], Spine_02: 15 }, tts: 'BOOM! Lo clavaste! Diamond closed 0.0 flat', sap_type: 'XP', color: '#22c55e' },
+  TRANSMISSION: { id: 'TRANSMISSION', name: 'Transmisión', joints: { Shoulder_L: [-30,30,0], Shoulder_R: [30,-30,0] }, tts: 'Esto ya es una capa completa - V30.85 front', sap_type: 'TRANSMIT', color: '#00d4ff' }
 };
 
-// V30.21 MOTOR FINAL BEST TEMPLATE - 90x70 + 60x40 + 48x64 + 18x28
+// V30.85 FIX FRONT MOTOR - AVATAR POR DELANTE
 export const AVATAR_ENGINE_HOLO = {
-  type: "full_frame_0.58_2.68_fov30_90x70_blazer_0.042_pantalon_oxfords_waist_0.52_0.146_curvas_suaves_diamond_closed",
-  meshType: "Organic_Body_Wireframe_V30.21_FINAL_BEST_TEMPLATE_90x70_60x40_48x64_18x28",
+  type: "full_frame_0.58_2.68_fov30_90x70_blazer_0.042_62x42_legs_0.052_diamond_closed_0.0_front_z999",
+  meshType: "Organic_Body_Wireframe_V30.85_FIX_FRONT_90x70_62x42_48x64_18x28_HANDS",
   feminine: true,
   waist: 0.146,
   waist_factor: 0.52,
-  thigh_gap: 0.068,
-  leg_separation: 0.068,
+  thigh_gap: 0.052,
+  leg_separation: 0.052,
+  x_clamp: 0.1976,
   gap_clean: true,
   diamond_closed: true,
+  diamond_type: "U_shape_8x12_flat_gap_0.0",
   blazer_lapel: 0.042,
   torso_rows: 90,
   torso_cols: 70,
-  legs_rows: 60,
-  legs_cols: 40,
+  legs_rows: 62,
+  legs_cols: 42,
+  legs_rad: 0.108,
+  legs_outer: 0.1945,
   head_rows: 48,
   head_cols: 64,
   feet_rows: 18,
   feet_cols: 28,
+  hand_palma: { x:0.14, y:0.08 },
+  hand_dedos: 5,
+  hand_verts: 125,
+  hand_falanges: 3,
+  knee_fan: 32,
+  gastrocnemius: { bulge:0.66, depth:-0.16 },
+  achilles: 0.12,
+  proportional_balloon: { glute:1.0, thigh:0.7, knee:0.5, calf:0.6 },
+  falloff: { formula:"exp(-(t*2.2)²)", rGeneral:0.12, rCalf:0.18 },
   material: { color: 0x00e5ff, opacity: 0.38, wireframe: true, depthWrite: false },
-  lines: { enabled: true, type: "wireframe_organic_0.38_best_template", color: 0x00e5ff, opacity: 0.38 },
-  bones: 8,
+  lines: { enabled: true, type: "wireframe_organic_0.38_front", color: 0x00e5ff, opacity: 0.38 },
+  bones: 12,
   fullBody: true,
   full_frame: true,
+  front: true,
+  z_index: 999,
   scale: 0.58,
   mobileScale: 0.58,
   camera: { fov: 30, pos: [0,0.02,2.68], mobilePos: [0,0.02,2.68], groupPos: [0,-0.15,0], mobileGroupPos: [0,-0.15,0] },
@@ -116,7 +135,7 @@ export const AVATAR_ENGINE_HOLO = {
 };
 
 export const LAYA_FINAL = {
-  version: "30.21 FINAL BEST TEMPLATE 90x70 BLAZER 0.042 + PANTALÓN + OXFORDS - 0.58/2.68 FOV30 - 0.38 - WAIST 0.52->0.146 CURVAS SUAVES DIAMOND CLOSED",
+  version: "30.85 FIX FRONT - 62x42 PIERNA CONTINUA + DIAMOND CLOSED 0.0 U-SHAPE 8x12 + X-CLAMP 0.1976 + MANOS 0.14x0.08 + GASTRO 0.66 DEPTH -0.16 + RODILLA FAN 32 - AVATAR FRONT Z999",
   VOCAB: VOCAB_REAL, GRAMMAR: GRAMMAR_REAL, AVATAR: AVATAR_ENGINE_HOLO, INTENTIONS: INTENTION_MOTOR, JOINTS: MARIONETTE_JOINTS,
   AREAS: {
     1: { name:"Money Basics", topic:"Why Most People Never Become Rich", vocab:["survival50"], grammar:["PS_3RD_S","COND_1"], future:"COND_1", level:"A1" },
@@ -181,13 +200,13 @@ export const LAYA_FINAL = {
     const avatarData = AVATAR_ENGINE_HOLO.decideByMetrics({...metrics, cefr_level: level});
     const xp = metrics?.same_error_count>=3?0:(level==="A1"?10:level==="A2"?15:20);
     const story = (this.STORIES[area.name]||this.STORIES["default"]).replace("{topic}", area.topic.toLowerCase());
-    return { prompt: level+" - "+area.topic, story, meta: { area: area.name, topic: area.topic, level, grammar_main: gMain, grammar_future: gFuture, vocab: [], emotion: avatarData.emotion, intention: avatarData.intention, joints: avatarData.joints, avatar_type:"V30.21_FINAL_BEST_TEMPLATE_90x70_PANTALON_OXFORDS", avatar_frame:0, xp, wordCount:"150" } };
+    return { prompt: level+" - "+area.topic, story, meta: { area: area.name, topic: area.topic, level, grammar_main: gMain, grammar_future: gFuture, vocab: [], emotion: avatarData.emotion, intention: avatarData.intention, joints: avatarData.joints, avatar_type:"V30.85_FIX_FRONT_62x42_DIAMOND_0.0", avatar_frame:0, xp, wordCount:"150" } };
   }
 };
 
 export const LAYA_FINAL_COMPLETO = LAYA_FINAL;
 export const LAYA_SAP = {
   generateSAP(m, sig, w){ return { evolution:{ ACCURACY_7D: Math.round((m?.accuracy_7d||0.8)*100)+'%', XP_TOTAL: m?.xp_total||0 }, detail:{ grammarChain: sig } }; },
-  renderToHologram(sap){ const b=document.getElementById('bubble'); if(b){ b.innerHTML=`V30.21 FINAL BEST 90x70 BLAZER 0.042 + PANTALÓN + OXFORDS // ${sap.evolution.ACCURACY_7D} // XP ${sap.evolution.XP_TOTAL} // WIREFRAME 0.38 WAIST 0.52->0.146`; b.classList.remove('hidden'); } }
+  renderToHologram(sap){ const b=document.getElementById('bubble'); if(b){ b.innerHTML=`V30.85 FIX FRONT 62x42 + MANOS + DIAMOND CLOSED 0.0 // ${sap.evolution.ACCURACY_7D} // XP ${sap.evolution.XP_TOTAL} // FRONT Z999 WAIST 0.52->0.146`; b.classList.remove('hidden'); } }
 };
 export const LAYA_FINAL_ACTOR_V1 = LAYA_FINAL;

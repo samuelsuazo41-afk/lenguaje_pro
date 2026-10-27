@@ -1,7 +1,7 @@
 // sw.js - V32 NEW TEMPLATE FROM SCRATCH - BORRADO TOTAL V31 - T-POSE 90° - BLUEPRINT VALIDATED
 // SPECS: ANCHURA 0.48m - CINTURA 0.12 narrowest - CADERA 0.335*wc - CABEZA 28x36 depth 0.24 - TRAPEZIUS 0.32 - CUELLO 0.12 - LUMBAR 0.22-0.50 - FLAT GLUTEO NEUTRAL STANCE - DIAMOND CLOSED 0.0 - CLEAN QUAD TOPOLOGY
 
-const CACHE_NAME = 'laia-v33-new-template-from-scratch-tpose-90-0.48m-cintura-0.12-diamond-0.0-clean-quad-blueprint-validated-v1';
+const CACHE_NAME = 'laia-v33.1-new-template-from-scratch-tpose-90-0.48m-cintura-0.12-diamond-0.0-clean-quad-blueprint-validated-v1';
 const ASSETS = [
   './',
   './index.html',

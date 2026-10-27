@@ -1,7 +1,7 @@
-// sw.js - V31 BUSINESS - FROM SCRATCH - T-POSE 90° - V30.71 LATERAL 90° + V30.22 POSTERIOR T-POSE MODO NEGOCIO
-// SPECS: CINTURA 0.12 - DIAMOND 0.0 - FLAT GLUTEO CURVE - LUMBAR 0.22-0.50 - ANCHURA HOMBROS 0.48m - TRAPEZIUS 0.32" - CADERA 0.335*wc - CABEZA 28x36" - CUELLO 0.12" - T-POSE 90°
+// sw.js - V32 NEW TEMPLATE FROM SCRATCH - BORRADO TOTAL V31 - T-POSE 90° - BLUEPRINT VALIDATED
+// SPECS: ANCHURA 0.48m - CINTURA 0.12 narrowest - CADERA 0.335*wc - CABEZA 28x36 depth 0.24 - TRAPEZIUS 0.32 - CUELLO 0.12 - LUMBAR 0.22-0.50 - FLAT GLUTEO NEUTRAL STANCE - DIAMOND CLOSED 0.0 - CLEAN QUAD TOPOLOGY
 
-const CACHE_NAME = 'laia-v31-business-tpose-90-from-scratch-cintura-0.12-diamond-0.0-flat-gluteo-lumbar-0.22-0.50-anchura-0.48m-v1';
+const CACHE_NAME = 'laia-v32-new-template-from-scratch-tpose-90-0.48m-cintura-0.12-diamond-0.0-clean-quad-blueprint-validated-v1';
 const ASSETS = [
   './',
   './index.html',
@@ -16,11 +16,11 @@ const ASSETS = [
 
 self.addEventListener('install', e => {
   self.skipWaiting();
-  console.log('[SW V31 BUSINESS T-POSE 90° FROM SCRATCH - V30.71 + V30.22] Instalando - CINTURA 0.12 DIAMOND 0.0 FLAT GLUTEO LUMBAR 0.22-0.50 ANCHURA 0.48m TRAPEZIUS 0.32 CADERA 0.335*wc - AVATAR FRONT Z999 T-POSE 90°');
+  console.log('[SW V32 NEW TEMPLATE FROM SCRATCH] Instalando - T-POSE 90° ANCHURA 0.48m CINTURA 0.12 narrowest CADERA 0.335*wc CABEZA 28x36 depth 0.24 TRAPEZIUS 0.32 CUELLO 0.12 LUMBAR 0.22-0.50 FLAT GLUTEO NEUTRAL DIAMOND CLOSED 0.0 CLEAN QUAD TOPOLOGY - BLUEPRINT VALIDATED');
   e.waitUntil(
     caches.open(CACHE_NAME).then(c => {
       return c.addAll(ASSETS.map(url => new Request(url, {cache: 'reload'}))).catch(err => {
-        console.log('[SW V31 BUSINESS] addAll fail, intentando individual:', err);
+        console.log('[SW V32 NEW TEMPLATE] addAll fail, intentando individual:', err);
         return Promise.allSettled(ASSETS.map(u => c.add(u).catch(e=>console.log('fail',u))));
       });
     })
@@ -32,7 +32,7 @@ self.addEventListener('activate', e => {
     caches.keys().then(keys => {
       return Promise.all(
         keys.filter(k => k !== CACHE_NAME).map(k => {
-          console.log('[SW V31 BUSINESS] Borrando cache vieja V30.85 gap 0.052:', k);
+          console.log('[SW V32 NEW TEMPLATE] Borrando cache vieja V31 BUSINESS V30.85 gap 0.052:', k);
           return caches.delete(k);
         })
       );
@@ -53,4 +53,4 @@ self.addEventListener('fetch', e => {
       });
     }).catch(()=> caches.match(e.request))
   );
-}); 
+});

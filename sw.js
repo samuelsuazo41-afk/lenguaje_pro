@@ -1,5 +1,5 @@
-// sw.js - V30.21 FINAL BEST TEMPLATE - 90x70 BLAZER 0.042 + PANTALÓN + OXFORDS - 0.38 - 0.58 - WAIST 0.52->0.146 - DIAMOND CLOSED
-const CACHE_NAME = 'laia-v30.85-final-best-90x70-pantalon-oxfords-0.38-0.58-0.146-diamond-closed-v1';
+// sw.js - V30.85 FIX FRONT - Avatar por delante + Piernas 62x42 + Diamond Closed 0.0 + X-clamp 0.1976 + Manos + Proportional Balloon
+const CACHE_NAME = 'laia-v30.85-fix-front-62x42-diamond-closed-0.0-xclamp-0.1976-manos-proportional-v1';
 const ASSETS = [
   './',
   './index.html',
@@ -12,11 +12,11 @@ const ASSETS = [
 
 self.addEventListener('install', e => {
   self.skipWaiting();
-  console.log('[SW V30.21 FINAL BEST 90x70 + PANTALON + OXFORDS - 0.38 - 0.58 - WAIST 0.146] Instalando - DIAMOND CLOSED');
+  console.log('[SW V30.85 FIX FRONT 62x42 + DIAMOND CLOSED 0.0 + X-CLAMP 0.1976 + MANOS] Instalando - AVATAR FRONT Z999');
   e.waitUntil(
     caches.open(CACHE_NAME).then(c => {
       return c.addAll(ASSETS.map(url => new Request(url, {cache: 'reload'}))).catch(err => {
-        console.log('[SW V30.21] addAll fail, intentando individual:', err);
+        console.log('[SW V30.85] addAll fail, intentando individual:', err);
         return Promise.allSettled(ASSETS.map(u => c.add(u).catch(e=>console.log('fail',u))));
       });
     })
@@ -28,7 +28,7 @@ self.addEventListener('activate', e => {
     caches.keys().then(keys => {
       return Promise.all(
         keys.filter(k => k !== CACHE_NAME).map(k => {
-          console.log('[SW V30.21] Borrando cache vieja V30.11 skinny 0.19:', k);
+          console.log('[SW V30.85] Borrando cache vieja V30.21 gap 0.068:', k);
           return caches.delete(k);
         })
       );

@@ -1,4 +1,6 @@
-// LAYA_FINAL_COMPLETO.js - V30.85 FIX FRONT - Avatar por delante + Piernas 62x42 + Diamond Closed 0.0 + X-clamp 0.1976 + Proportional Balloon + Manos
+// LAYA_FINAL_COMPLETO.js - V31 BUSINESS - FROM SCRATCH - T-POSE 90° - V30.71 LATERAL 90° + V30.22 POSTERIOR T-POSE MODO NEGOCIO
+// SPECS: CINTURA 0.12 - DIAMOND 0.0 - FLAT GLUTEO CURVE - LUMBAR 0.22-0.50 - ANCHURA HOMBROS 0.48m - TRAPEZIUS 0.32" - CADERA 0.335*wc
+// T-POSE 90° ARM EXTENSION - POSTURE NEUTRAL STANCE - COLUMNA T1-T12 - DELTOIDES - CABEZA 28x36" - CUELLO 0.12" - DIAMOND CLOSED GAP 0.0
 
 export const GRAMMAR_REAL = {
   PRON_PER_POSS: { id:"Pronouns Personal & Possessive", sig:"PRON_PER_POSS", formula:"I/me/my/mine/myself", example:"This is my book, not yours. I did it myself.", mistake:"I car -> MY car", level:"A1" },
@@ -43,66 +45,72 @@ export const VOCAB_REAL = {
   superDicSyllables: { co: ["cook","confidence","consistency"], sav: ["save","saving","savings"], mon: ["money","month","Monday"] } 
 };
 
-// V30.85 FIX FRONT - JOINTS CON GAP 0.052 + X-CLAMP 0.1976 + PROPORTIONAL BALLOON
+// V31 BUSINESS - FROM SCRATCH - T-POSE 90° - JOINTS CON DIAMOND 0.0 + ANCHURA 0.48m + CINTURA 0.12
 export const MARIONETTE_JOINTS = {
-  Head_Bone: { id: 'Head_Bone', independent: true, rows:28, cols:36, depth:0.24 },
-  Spine_02: { id: 'Spine_02', independent: true, waist:0.146, waist_factor:0.52, cresta:0.335 },
-  Shoulder_L: { id: 'Shoulder.L', independent: true, trapezius:0.32, deltoides:0.32, axilla:'clean_no_cone' }, 
-  Shoulder_R: { id: 'Shoulder.R', independent: true, trapezius:0.32, deltoides:0.32, axilla:'clean_no_cone' },
-  Hip_L: { id: 'Hip.L', independent: true, gap:0.052, x_clamp:0.1976, glute:{rx:0.20, ry:0.21, rz:0.15, max:0.16, bulge:0.145}, upper_glute_minus:14 }, 
-  Hip_R: { id: 'Hip.R', independent: true, gap:0.052, x_clamp:0.1976, glute:{rx:0.20, ry:0.21, rz:0.15, max:0.16, bulge:0.145}, upper_glute_minus:14 },
-  Knee_L: { id: 'Knee.L', independent: true, fan:32, dual_core:true, seamless:true }, 
-  Knee_R: { id: 'Knee.R', independent: true, fan:32, dual_core:true, seamless:true },
-  Calf_L: { id: 'Calf.L', independent: true, gastrocnemius:{bulge:0.66, depth:-0.16, radius:0.18}, achilles:0.12 },
-  Calf_R: { id: 'Calf.R', independent: true, gastrocnemius:{bulge:0.66, depth:-0.16, radius:0.18}, achilles:0.12 },
-  Hand_L: { id: 'Hand.L', independent: true, palma:{x:0.14, y:0.08}, dedos:5, verts:125, falanges:3, wrist_twist:360 },
-  Hand_R: { id: 'Hand.R', independent: true, palma:{x:0.14, y:0.08}, dedos:5, verts:125, falanges:3, wrist_twist:360 }
+  Head_Bone: { id: 'Head_Bone', independent: true, rows:28, cols:36, spec:'28x36"' },
+  Spine_02: { id: 'Spine_02', independent: true, waist:0.12, lumbar:'0.22-0.50', flat_gluteo:true, columna:'T1-T12' },
+  Shoulder_L: { id: 'Shoulder.L', independent: true, trapezius:0.32, anchura:0.48, deltoides:0.32, tpose:'90°', dorsal_ancho:true }, 
+  Shoulder_R: { id: 'Shoulder.R', independent: true, trapezius:0.32, anchura:0.48, deltoides:0.32, tpose:'90°', dorsal_ancho:true },
+  Hip_L: { id: 'Hip.L', independent: true, gap:0.0, diamond_closed:true, diamond:'closed gap 0.0 flat', cadera:'0.335*wc', glute:{flat_curve:true, rx:0.20, ry:0.21, rz:0.15}, x_clamp:0.1976 }, 
+  Hip_R: { id: 'Hip.R', independent: true, gap:0.0, diamond_closed:true, diamond:'closed gap 0.0 flat', cadera:'0.335*wc', glute:{flat_curve:true, rx:0.20, ry:0.21, rz:0.15}, x_clamp:0.1976 },
+  Knee_L: { id: 'Knee.L', independent: true, fan:24, posture:'neutral stance' }, 
+  Knee_R: { id: 'Knee.R', independent: true, fan:24, posture:'neutral stance' },
+  Calf_L: { id: 'Calf.L', independent: true, posture:'neutral' },
+  Calf_R: { id: 'Calf.R', independent: true, posture:'neutral' },
+  Hand_L: { id: 'Hand.L', independent: true, tpose:'90°', palma:{x:0.12}, dedos:5, noClamp:true },
+  Hand_R: { id: 'Hand.R', independent: true, tpose:'90°', palma:{x:0.12}, dedos:5, noClamp:true }
 };
 
 export const INTENTION_MOTOR = {
-  FOUNDATION: { id: 'FOUNDATION', name: 'Cimiento', joints: { Head_Bone: [-5,10,0], Spine_02: -15 }, tts: 'Primero el cimiento - V30.85 front 0.52->0.146 diamond 0.0', sap_type: 'FOUNDATION', color: '#60a5fa' },
-  SCAFFOLDING: { id: 'SCAFFOLDING', name: 'Andamiaje', joints: { Shoulder_L: [45,30,0], Shoulder_R: [-45,-30,0] }, tts: 'Mira, esta pieza encaja - V30.85 62x42 + manos + X-clamp 0.1976', sap_type: 'GRAMMAR', color: '#00d4ff' },
-  STRICT_ENGINEER: { id: 'STRICT_ENGINEER', name: 'Ingeniera Estricta', joints: { Shoulder_L: [40,0,0], Shoulder_R: [-40,0,0] }, tts: 'Ojo tete, es HAS - proportional balloon glute 1.0->thigh 0.7->knee 0.5->calf 0.6', sap_type: 'ERR', color: '#f59e0b' },
-  FLOW_OBSERVER: { id: 'FLOW_OBSERVER', name: 'Observadora Flow', joints: { Spine_02: 0 }, tts: 'Te observo, vas en flow - pierna continua sin escalón', sap_type: 'FLOW', color: '#8b5cf6' },
-  ELEVATION: { id: 'ELEVATION', name: 'Elevación', joints: { Shoulder_L: [0,120,0], Shoulder_R: [0,120,0], Spine_02: 15 }, tts: 'BOOM! Lo clavaste! Diamond closed 0.0 flat', sap_type: 'XP', color: '#22c55e' },
-  TRANSMISSION: { id: 'TRANSMISSION', name: 'Transmisión', joints: { Shoulder_L: [-30,30,0], Shoulder_R: [30,-30,0] }, tts: 'Esto ya es una capa completa - V30.85 front', sap_type: 'TRANSMIT', color: '#00d4ff' }
+  FOUNDATION: { id: 'FOUNDATION', name: 'Cimiento', joints: { Head_Bone: [-5,10,0], Spine_02: -10 }, tts: 'Primero el cimiento - V31 BUSINESS cintura 0.12 diamond 0.0', sap_type: 'FOUNDATION', color: '#60a5fa' },
+  SCAFFOLDING: { id: 'SCAFFOLDING', name: 'Andamiaje', joints: { Shoulder_L: [0,0,0], Shoulder_R: [0,0,0] }, tts: 'Mira, esta pieza encaja - V31 BUSINESS T-POSE 90° anchura 0.48m', sap_type: 'GRAMMAR', color: '#00d4ff' },
+  STRICT_ENGINEER: { id: 'STRICT_ENGINEER', name: 'Ingeniera Estricta', joints: { Shoulder_L: [0,0,0], Shoulder_R: [0,0,0] }, tts: 'Ojo tete, es HAS - T-POSE 90° posture neutral', sap_type: 'ERR', color: '#f59e0b' },
+  FLOW_OBSERVER: { id: 'FLOW_OBSERVER', name: 'Observadora Flow', joints: { Spine_02: 0 }, tts: 'Te observo, vas en flow - flat gluteo curve', sap_type: 'FLOW', color: '#8b5cf6' },
+  ELEVATION: { id: 'ELEVATION', name: 'Elevación', joints: { Shoulder_L: [0,15,0], Shoulder_R: [0,15,0], Spine_02: 8 }, tts: 'BOOM! Lo clavaste! Diamond closed 0.0 flat', sap_type: 'XP', color: '#22c55e' },
+  TRANSMISSION: { id: 'TRANSMISSION', name: 'Transmisión', joints: { Shoulder_L: [0,0,0], Shoulder_R: [0,0,0] }, tts: 'Esto ya es una capa completa - V31 BUSINESS', sap_type: 'TRANSMIT', color: '#00d4ff' }
 };
 
-// V30.85 FIX FRONT MOTOR - AVATAR POR DELANTE
+// V31 BUSINESS MOTOR - T-POSE 90° FROM SCRATCH
 export const AVATAR_ENGINE_HOLO = {
-  type: "full_frame_0.58_2.68_fov30_90x70_blazer_0.042_62x42_legs_0.052_diamond_closed_0.0_front_z999",
-  meshType: "Organic_Body_Wireframe_V30.85_FIX_FRONT_90x70_62x42_48x64_18x28_HANDS",
+  type: "V31_BUSINESS_FROM_SCRATCH_TPOSE_90_0.48m_cintura_0.12_diamond_0.0_flat_gluteo_lumbar_0.22-0.50",
+  meshType: "Organic_Body_Wireframe_V31_BUSINESS_TPOSE_90_72x64_48x36_CLOSED_0.0",
   feminine: true,
-  waist: 0.146,
-  waist_factor: 0.52,
-  thigh_gap: 0.052,
-  leg_separation: 0.052,
-  x_clamp: 0.1976,
-  gap_clean: true,
+  waist: 0.12,
+  waist_narrowest: 0.12,
+  lumbar: "0.22-0.50",
+  flat_gluteo: true,
+  flat_gluteo_curve: 0.0,
+  diamond: 0.0,
   diamond_closed: true,
-  diamond_type: "U_shape_8x12_flat_gap_0.0",
+  diamond_type: "closed flat gap 0.0 - V30.22 + V30.71",
+  anchura_hombros: 0.48,
+  trapezius: 0.32,
+  cadera_wc: 0.335,
+  cabeza: "28x36\"",
+  cuello: "0.12\"",
+  tpose: "90°",
+  arm_extension: "90°",
+  posture: "neutral stance",
+  dorsal_ancho: true,
+  columna: "T1-T12",
+  deltoides: 0.32,
   blazer_lapel: 0.042,
-  torso_rows: 90,
-  torso_cols: 70,
-  legs_rows: 62,
-  legs_cols: 42,
+  torso_rows: 72,
+  torso_cols: 64,
+  legs_rows: 48,
+  legs_cols: 36,
   legs_rad: 0.108,
-  legs_outer: 0.1945,
-  head_rows: 48,
-  head_cols: 64,
-  feet_rows: 18,
-  feet_cols: 28,
-  hand_palma: { x:0.14, y:0.08 },
+  head_rows: 28,
+  head_cols: 36,
+  feet_rows: 14,
+  feet_cols: 20,
+  hand_palma: { x:0.12 },
   hand_dedos: 5,
-  hand_verts: 125,
-  hand_falanges: 3,
-  knee_fan: 32,
-  gastrocnemius: { bulge:0.66, depth:-0.16 },
-  achilles: 0.12,
+  knee_fan: 24,
   proportional_balloon: { glute:1.0, thigh:0.7, knee:0.5, calf:0.6 },
   falloff: { formula:"exp(-(t*2.2)²)", rGeneral:0.12, rCalf:0.18 },
   material: { color: 0x00e5ff, opacity: 0.38, wireframe: true, depthWrite: false },
-  lines: { enabled: true, type: "wireframe_organic_0.38_front", color: 0x00e5ff, opacity: 0.38 },
+  lines: { enabled: true, type: "wireframe_organic_0.38_TPOSE_90", color: 0x00e5ff, opacity: 0.38 },
   bones: 12,
   fullBody: true,
   full_frame: true,
@@ -135,7 +143,7 @@ export const AVATAR_ENGINE_HOLO = {
 };
 
 export const LAYA_FINAL = {
-  version: "30.85 FIX FRONT - 62x42 PIERNA CONTINUA + DIAMOND CLOSED 0.0 U-SHAPE 8x12 + X-CLAMP 0.1976 + MANOS 0.14x0.08 + GASTRO 0.66 DEPTH -0.16 + RODILLA FAN 32 - AVATAR FRONT Z999",
+  version: "V31 BUSINESS FROM SCRATCH - T-POSE 90° ARM EXTENSION - CINTURA 0.12 - DIAMOND 0.0 FLAT GLUTEO CURVE - LUMBAR 0.22-0.50 - ANCHURA HOMBROS 0.48m - TRAPEZIUS 0.32 - CADERA 0.335*wc - CABEZA 28x36 - CUELLO 0.12 - POSTURE NEUTRAL STANCE - V30.71 + V30.22",
   VOCAB: VOCAB_REAL, GRAMMAR: GRAMMAR_REAL, AVATAR: AVATAR_ENGINE_HOLO, INTENTIONS: INTENTION_MOTOR, JOINTS: MARIONETTE_JOINTS,
   AREAS: {
     1: { name:"Money Basics", topic:"Why Most People Never Become Rich", vocab:["survival50"], grammar:["PS_3RD_S","COND_1"], future:"COND_1", level:"A1" },
@@ -200,13 +208,13 @@ export const LAYA_FINAL = {
     const avatarData = AVATAR_ENGINE_HOLO.decideByMetrics({...metrics, cefr_level: level});
     const xp = metrics?.same_error_count>=3?0:(level==="A1"?10:level==="A2"?15:20);
     const story = (this.STORIES[area.name]||this.STORIES["default"]).replace("{topic}", area.topic.toLowerCase());
-    return { prompt: level+" - "+area.topic, story, meta: { area: area.name, topic: area.topic, level, grammar_main: gMain, grammar_future: gFuture, vocab: [], emotion: avatarData.emotion, intention: avatarData.intention, joints: avatarData.joints, avatar_type:"V30.85_FIX_FRONT_62x42_DIAMOND_0.0", avatar_frame:0, xp, wordCount:"150" } };
+    return { prompt: level+" - "+area.topic, story, meta: { area: area.name, topic: area.topic, level, grammar_main: gMain, grammar_future: gFuture, vocab: [], emotion: avatarData.emotion, intention: avatarData.intention, joints: avatarData.joints, avatar_type:"V31_BUSINESS_TPOSE_90_DIAMOND_0.0", avatar_frame:0, xp, wordCount:"150" } };
   }
 };
 
 export const LAYA_FINAL_COMPLETO = LAYA_FINAL;
 export const LAYA_SAP = {
   generateSAP(m, sig, w){ return { evolution:{ ACCURACY_7D: Math.round((m?.accuracy_7d||0.8)*100)+'%', XP_TOTAL: m?.xp_total||0 }, detail:{ grammarChain: sig } }; },
-  renderToHologram(sap){ const b=document.getElementById('bubble'); if(b){ b.innerHTML=`V30.85 FIX FRONT 62x42 + MANOS + DIAMOND CLOSED 0.0 // ${sap.evolution.ACCURACY_7D} // XP ${sap.evolution.XP_TOTAL} // FRONT Z999 WAIST 0.52->0.146`; b.classList.remove('hidden'); } }
+  renderToHologram(sap){ const b=document.getElementById('bubble'); if(b){ b.innerHTML=`V31 BUSINESS T-POSE 90° CINTURA 0.12 DIAMOND 0.0 FLAT GLUTEO LUMBAR 0.22-0.50 // ${sap.evolution.ACCURACY_7D} // XP ${sap.evolution.XP_TOTAL} // ANCHURA 0.48m TRAPEZIUS 0.32 CADERA 0.335*wc`; b.classList.remove('hidden'); } }
 };
 export const LAYA_FINAL_ACTOR_V1 = LAYA_FINAL;

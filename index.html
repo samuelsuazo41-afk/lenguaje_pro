@@ -2,20 +2,20 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>V30.21 FINAL - Best Template Pantalón + Oxfords - Curvas Suaves 0.146</title>
+<title>V30.85 FIX - Avatar FRONT + Piernas Proporcionales - 62x42 - Diamond Closed 0.0</title>
 <link rel="icon" href="./icon-192.png">
 <meta name="theme-color" content="#00d4ff">
 <script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#020208;color:#f1f1f5;font-family:Inter,system-ui;overflow:hidden}
-header{height:52px!important;background:rgba(10,12,20,0.28)!important;backdrop-filter:blur(12px)!important;border-bottom:1px solid rgba(0,212,255,0.10)!important;display:flex!important;justify-content:space-between!important;align-items:center!important;padding:0 14px!important;position:fixed!important;top:0!important;left:0!important;right:0!important;z-index:100!important}
-.logo{font-weight:800}.logo span{background:#00d4ff;color:#000;padding:2px 8px;border-radius:6px;font-size:10px;margin-left:6px;font-weight:900}
-#laia-hologram{position:fixed!important;top:52px!important;left:0!important;width:100vw!important;height:calc(100vh - 52px)!important;z-index:1!important;display:flex!important;align-items:center!important;justify-content:center!important;pointer-events:none!important;background:transparent!important}
-#laia-holo-canvas{width:100vw!important;height:calc(100vh - 52px)!important;display:block!important;background:transparent!important;filter: contrast(1.12) brightness(1.08) saturate(1.06) drop-shadow(0 0 8px rgba(0,229,255,0.45)) drop-shadow(0 0 18px rgba(0,212,255,0.20))!important}
-.h-wrapper{margin-top:52px!important;display:flex!important;overflow-x:auto!important;scroll-snap-type:x mandatory!important;width:100vw!important;height:calc(100vh - 52px)!important;position:relative!important;z-index:20!important;scrollbar-width:none}
+header{height:52px!important;background:rgba(10,12,20,0.28)!important;backdrop-filter:blur(12px)!important;border-bottom:1px solid rgba(0,212,255,0.10)!important;display:flex!important;justify-content:space-between!important;align-items:center!important;padding:0 14px!important;position:fixed!important;top:0!important;left:0!important;right:0!important;z-index:1000!important}
+#laia-hologram{position:fixed!important;top:52px!important;left:0!important;width:100vw!important;height:calc(100vh - 52px)!important;z-index:999!important;display:flex!important;align-items:center!important;justify-content:center!important;pointer-events:none!important;background:transparent!important}
+#laia-holo-canvas{width:100vw!important;height:calc(100vh - 52px)!important;display:block!important;background:transparent!important;pointer-events:auto!important;filter: contrast(1.12) brightness(1.08) saturate(1.06) drop-shadow(0 0 8px rgba(0,229,255,0.45)) drop-shadow(0 0 18px rgba(0,212,255,0.20))!important}
+#laia-state{z-index:1001!important}
+.h-wrapper{margin-top:52px!important;display:flex!important;overflow-x:auto!important;scroll-snap-type:x mandatory!important;width:100vw!important;height:calc(100vh - 52px)!important;position:relative!important;z-index:10!important;scrollbar-width:none}
 .h-wrapper::-webkit-scrollbar{display:none}
-.page{min-width:100vw!important;width:100vw!important;height:100%!important;scroll-snap-align:start!important;overflow-y:auto!important;display:flex!important;position:relative!important;z-index:20!important}
+.page{min-width:100vw!important;width:100vw!important;height:100%!important;scroll-snap-align:start!important;overflow-y:auto!important;display:flex!important;position:relative!important;z-index:10!important}
 #page1 aside{width:340px!important;min-width:340px!important;background:rgba(12,14,22,0.18)!important;backdrop-filter:blur(10px)!important;border-right:1px solid rgba(0,212,255,0.08)!important;padding:12px!important;display:flex!important;flex-direction:column!important;gap:8px!important;height:calc(100vh - 52px)!important;overflow-y:auto!important}
 #list{min-height:300px!important;background:rgba(10,12,18,0.12)!important;border:1px solid rgba(0,212,255,0.06)!important;border-radius:10px!important;padding:6px!important;display:flex!important;flex-direction:column!important;gap:5px!important;flex:1!important}
 .area{background:rgba(22,24,36,0.22)!important;padding:8px 10px!important;border-radius:8px!important;border:1px solid rgba(0,212,255,0.06)!important;cursor:pointer!important;color:#d0d0d8!important}
@@ -26,14 +26,13 @@ header{height:52px!important;background:rgba(10,12,20,0.28)!important;backdrop-f
 </style>
 </head>
 <body>
-<header><div class="logo">📚 LENGUAJE-PRO <span>V30.21 FINAL BEST - 90x70 + PANTALÓN + OXFORDS - 0.38 - 0.146</span></div><div style="display:flex;gap:8px;font-size:11px;align-items:center"><span>⭐ <b id="xp">0</b> XP</span><span>🔥 <b id="streak">0</b></span><span id="level-badge" style="background:#00d4ff;color:#000;padding:2px 8px;border-radius:10px;font-weight:800">A2</span></div></header>
-<div class="h-wrapper" id="hWrapper"><div class="page" id="page1"><aside><h3 style="font-size:9px;color:#00d4ff;font-weight:900">V30.21 - 90x70 BLAZER 0.042 - T-POSE 0.92 - GAP 0.068 CLOSED - 0.38 - WAIST 0.52->0.146</h3><input id="search" placeholder="Buscar 50 áreas..." style="background:rgba(22,24,36,0.28);border:1px solid rgba(0,212,255,0.12);color:#fff;padding:9px;border-radius:8px;width:100%"><div id="filters" style="display:flex;gap:6px;flex-wrap:wrap"><button class="f active" data-f="">Todas</button><button class="f" data-f="A1">A1</button><button class="f" data-f="A2">A2</button><button class="f" data-f="B1">B1</button></div><div id="list">Cargando V30.21...</div></aside><main style="flex:1;padding:16px;max-width:760px"><div style="display:flex;gap:8px;margin-bottom:12px"><select id="level" style="background:rgba(24,26,40,0.28);border:1px solid rgba(0,212,255,0.12);color:#fff;padding:9px;border-radius:8px"><option>A1</option><option selected>A2</option><option>B1</option><option>B2</option></select><button id="gen" style="background:#00d4ff;color:#000;border:none;padding:12px 18px;border-radius:12px;font-weight:800;flex:1;max-width:300px">⚡ GENERAR V30.21</button><button id="teachBtn" style="background:#8b5cf6;color:#fff;border:none;padding:10px 14px;border-radius:12px;font-weight:700">📌 SAPs</button></div><div id="empty"><h1 style="font-size:22px">👋 Soy Laia V30.21</h1><p id="status" style="color:#00d4ff;font-size:12px">FINAL BEST TEMPLATE 90x70 BLAZER 0.042 + PANTALÓN + OXFORDS - 0.58/2.68 - 0.38 - WAIST 0.52->0.146 - CURVAS SUAVES</p></div><div id="card" class="hidden"></div></main></div><div class="page" id="page2"><div style="width:100%;max-width:760px;padding:16px"><h2 style="font-size:14px">🧬 MOTOR 2 - SAP + V30.21</h2><div class="sap-header" id="sapHeader">Esperando...</div><div class="evo-lab" id="evoLab" style="margin-top:12px;font-size:11px">V30.21 - FINAL BEST TEMPLATE - 90x70 TORSO WAIST 0.52->0.146 + SOLAPAS 0.042 + 28x28 BRAZOS T-POSE 0.92 + 60x40 PANTALÓN GAP 0.068 CLOSED + 18x28 OXFORDS + 48x64 CABEZA HUMANOIDE BOB - WIREFRAME 0.38 - ORGANIC BODY</div></div></div></div>
-<div id="laia-hologram"><canvas id="laia-holo-canvas"></canvas><div id="laia-state" style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);background:rgba(0,212,255,0.82);color:#000;font-size:9px;padding:4px 10px;border-radius:10px;font-weight:800;letter-spacing:0.5px">V30.21 FINAL BEST TEMPLATE - 0.38 - PANTALÓN + OXFORDS - DIAMOND CLOSED</div></div>
+<header><div class="logo">📚 LENGUAJE-PRO <span>V30.85 FIX FRONT - 62x42 + MANOS + DIAMOND 0.0</span></div><div style="display:flex;gap:8px;font-size:11px;align-items:center"><span>⭐ <b id="xp">0</b> XP</span><span>🔥 <b id="streak">0</b></span><span id="level-badge" style="background:#00d4ff;color:#000;padding:2px 8px;border-radius:10px;font-weight:800">A2</span></div></header>
+<div class="h-wrapper" id="hWrapper"><div class="page" id="page1"><aside><h3 style="font-size:9px;color:#00d4ff;font-weight:900">V30.85 FIX FRONT - 62x42 PIERNA CONTINUA - DIAMOND CLOSED 0.0 - X-CLAMP 0.1976</h3><input id="search" placeholder="Buscar 50 áreas..." style="background:rgba(22,24,36,0.28);border:1px solid rgba(0,212,255,0.12);color:#fff;padding:9px;border-radius:8px;width:100%"><div id="filters" style="display:flex;gap:6px;flex-wrap:wrap"><button class="f active" data-f="">Todas</button><button class="f" data-f="A1">A1</button><button class="f" data-f="A2">A2</button><button class="f" data-f="B1">B1</button></div><div id="list">Cargando V30.85...</div></aside><main style="flex:1;padding:16px;max-width:760px"><div style="display:flex;gap:8px;margin-bottom:12px"><select id="level" style="background:rgba(24,26,40,0.28);border:1px solid rgba(0,212,255,0.12);color:#fff;padding:9px;border-radius:8px"><option>A1</option><option selected>A2</option><option>B1</option><option>B2</option></select><button id="gen" style="background:#00d4ff;color:#000;border:none;padding:12px 18px;border-radius:12px;font-weight:800;flex:1;max-width:300px">⚡ GENERAR V30.85</button><button id="teachBtn" style="background:#8b5cf6;color:#fff;border:none;padding:10px 14px;border-radius:12px;font-weight:700">📌 SAPs</button></div><div id="empty"><h1 style="font-size:22px">👋 Soy Laia V30.85 FRONT</h1><p id="status" style="color:#00d4ff;font-size:12px">V30.85 FIX - AVATAR POR DELANTE - 62x42 PIERNA CONTINUA - DIAMOND CLOSED 0.0 - MANOS</p></div><div id="card" class="hidden"></div></main></div><div class="page" id="page2"><div style="width:100%;max-width:760px;padding:16px"><h2 style="font-size:14px">🧬 MOTOR 2 - SAP + V30.85</h2><div class="sap-header" id="sapHeader">Esperando...</div><div class="evo-lab" id="evoLab" style="margin-top:12px;font-size:11px">V30.85 FIX FRONT - Pierna continua 62x42 rad 0.108 + Glute rx0.20 ry0.21 rz0.15 MAX 0.145-0.16 + Gastrocnemius 0.66 depth -0.16 + Rodilla fan 32 dual core + X-clamp 0.1976 + Diamond U-shape 8x12 gap 0.0</div></div></div></div>
+<div id="laia-hologram"><canvas id="laia-holo-canvas"></canvas><div id="laia-state" style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);background:rgba(0,212,255,0.82);color:#000;font-size:9px;padding:4px 10px;border-radius:10px;font-weight:800;letter-spacing:0.5px">V30.85 FRONT - DIAMOND CLOSED 0.0 - PIERNAS FIX</div></div>
 <script type="module">
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { LAIA_ACTOR_BRAIN } from './actor/laia_actor_brain.js';
-
 const canvas=document.getElementById('laia-holo-canvas');
 const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
 renderer.setPixelRatio(Math.min(devicePixelRatio,1.8));
@@ -45,12 +44,16 @@ const controls=new OrbitControls(camera, renderer.domElement);
 controls.enableDamping=true; controls.dampingFactor=0.08; controls.target.set(0,-0.15,0);
 const group=new THREE.Group(); group.scale.set(0.58,0.58,0.58); group.position.y=-0.15; scene.add(group);
 scene.add(new THREE.AmbientLight(0x00e5ff,0.18));
-
-function buildV30_21(){
-  const pos=[], idx=[]; let v=0;
+function buildV30_85_FRONT(){
+  const pos=[], idx=[]; let v=0; const X_CLAMP=0.1976;
   const add=(rows,cols,fn)=>{
     const s=v;
-    for(let y=0;y<rows;y++) for(let x=0;x<cols;x++){ const p=fn(x/(cols-1), y/(rows-1)); pos.push(p.x,p.y,p.z); v++; }
+    for(let y=0;y<rows;y++) for(let x=0;x<cols;x++){ 
+      let p=fn(x/(cols-1), y/(rows-1));
+      if(p.x > X_CLAMP) p.x = X_CLAMP - Math.pow(p.x - X_CLAMP,3)*0.5;
+      if(p.x < -X_CLAMP) p.x = -X_CLAMP + Math.pow(-X_CLAMP - p.x,3)*0.5;
+      pos.push(p.x,p.y,p.z); v++; 
+    }
     for(let y=0;y<rows-1;y++) for(let x=0;x<cols-1;x++){ const a=s+y*cols+x, b=a+1, c=a+cols, d=c+1; idx.push(a,c,b,b,c,d); }
   };
   add(48,64,(u,fy)=>{ const fx=(u-0.5)*2; let px=fx*0.16*(0.8+0.2*Math.cos(fy*Math.PI)); let py=0.78+fy*0.32; let pz=0.14*Math.cos(fx*1.2)*Math.sin(fy*Math.PI); return {x:px,y:py,z:pz}; });
@@ -58,32 +61,38 @@ function buildV30_21(){
     const fx=u-0.5; let py=fy*0.92-0.12;
     let wc=fy<0.18?0.86+fy*0.2:fy<0.58?0.52+Math.pow((fy-0.38)*1.8,2)*0.18:0.82+(fy-0.58)*0.55;
     let rW=0.33*wc; 
-    if(Math.abs(fx)>0.11&&Math.abs(fx)<0.24&&fy>0.26&&fy<0.72) rW-=Math.sin((fy-0.26)/0.46*Math.PI)*0.038;
+    if(Math.abs(fx)>0.11&&Math.abs(fx)<0.24&&fy>0.26&&fy<0.72) rW-=Math.sin((fy-0.26)/0.46*Math.PI)*0.028;
     let px=fx*rW*2.0, pz=Math.cos(fx*Math.PI*0.96)*0.155*wc;
     if(fy>0.60&&fy<0.92){ const lap=Math.exp(-Math.pow((fy-0.78)*5.8,2)); if(fx>0.01&&fx<0.22){ pz+=0.042*lap; px+=0.018*lap; } if(fx>-0.22&&fx<0){ pz+=0.042*lap; px-=0.018*lap; } }
-    if(Math.abs(fx)<0.02&&((fy>0.42&&fy<0.46)||(fy>0.55&&fy<0.59))) pz+=0.014;
-    if(fy>0.87){ pz+=(fy-0.87)*0.14; py+=(fy-0.87)*0.20; px*=0.62; }
     return {x:px,y:py,z:pz};
   });
-  add(28,28,(u,fv)=>{ const ang=(u-0.5)*Math.PI*2, rad=0.052*(1-fv*0.22); return {x:-0.34-fv*0.92+Math.cos(ang)*rad*0.32, y:0.63-fv*0.02+Math.sin(ang)*rad, z:Math.cos(ang)*rad*0.82}; });
-  add(28,28,(u,fv)=>{ const ang=(u-0.5)*Math.PI*2, rad=0.052*(1-fv*0.22); return {x:0.34+fv*0.92+Math.cos(ang)*rad*0.32, y:0.63-fv*0.02+Math.sin(ang)*rad, z:Math.cos(ang)*rad*0.82}; });
-  const legSep=0.068;
-  add(60,40,(u,fy)=>{ const ang=(u-0.5)*Math.PI*2; let rad=0.105-fy*0.015; return {x:-legSep+Math.cos(ang)*rad, y:0.08-fy*0.98, z:Math.sin(ang)*rad*0.65}; });
-  add(60,40,(u,fy)=>{ const ang=(u-0.5)*Math.PI*2; let rad=0.105-fy*0.015; return {x:legSep+Math.cos(ang)*rad, y:0.08-fy*0.98, z:Math.sin(ang)*rad*0.65}; });
-  add(3,6,(u,fy)=>{ return {x:(u-0.5)*0.136, y:0.08-fy*0.06, z:0.02*Math.cos((u-0.5)*Math.PI)}; });
-  add(18,28,(u,fy)=>{ const fx=u-0.5; let px=-0.068+fx*0.11, py=-0.92-fy*0.12, pz=(fy-0.5)*0.28+0.08; return {x:px,y:py,z:pz}; });
-  add(18,28,(u,fy)=>{ const fx=u-0.5; let px=0.068+fx*0.11, py=-0.92-fy*0.12, pz=(fy-0.5)*0.28+0.08; return {x:px,y:py,z:pz}; });
+  add(28,28,(u,fv)=>{ const ang=(u-0.5)*Math.PI*2, rad=(0.054-fv*0.036)*0.52; return {x:-0.34-fv*0.92+Math.cos(ang)*rad*0.32, y:0.63-fv*0.02+Math.sin(ang)*rad, z:Math.cos(ang)*rad*0.82}; });
+  add(28,28,(u,fv)=>{ const ang=(u-0.5)*Math.PI*2, rad=(0.054-fv*0.036)*0.52; return {x:0.34+fv*0.92+Math.cos(ang)*rad*0.32, y:0.63-fv*0.02+Math.sin(ang)*rad, z:Math.cos(ang)*rad*0.82}; });
+  const legSep=0.052;
+  const legFn = (sign)=>(u,fy)=>{
+    const ang=(u-0.5)*Math.PI*2;
+    let baseRad = 0.108 - fy*0.022 + Math.sin(fy*Math.PI)*0.018;
+    if(fy<0.25) baseRad = 0.11 - fy*0.14 + 0.145*Math.exp(-Math.pow((fy-0.12)*6,2)) * (Math.cos(ang)>0?0.6:0.2);
+    if(fy>0.60&&fy<0.78) baseRad += 0.022*Math.exp(-Math.pow((fy-0.66)*8,2));
+    const r = baseRad + Math.cos(ang)*0.012;
+    return {x:sign*legSep + Math.cos(ang)*r, y:0.10 - fy*0.98, z:Math.sin(ang)*r*0.72 + (fy>0.60? -0.16*Math.exp(-Math.pow((fy-0.66)*4,2)):0)};
+  };
+  add(62,42,legFn(-1)); add(62,42,legFn(1));
+  add(8,12,(u,fy)=>{ return {x:(u-0.5)*0.104, y:0.10 - fy*0.08, z:Math.cos((u-0.5)*Math.PI)*0.02 + 0.01}; });
+  add(32,16,(u,fy)=>{ const ang=(u-0.5)*Math.PI*2, rad=0.068+Math.sin(fy*Math.PI)*0.008; return {x:-0.052+Math.cos(ang)*rad*0.5, y:-0.28-fy*0.08, z:Math.sin(ang)*rad*0.6}; });
+  add(32,16,(u,fy)=>{ const ang=(u-0.5)*Math.PI*2, rad=0.068+Math.sin(fy*Math.PI)*0.008; return {x:0.052+Math.cos(ang)*rad*0.5, y:-0.28-fy*0.08, z:Math.sin(ang)*rad*0.6}; });
+  const addHand=(side)=>{ const baseX=side<0?-1.28:1.28; add(14,12,(u,fy)=>{ return {x:baseX+(u-0.5)*0.14*0.6, y:0.58-fy*0.14, z:(fy-0.5)*0.08}; }); for(let d=0;d<5;d++) add(8,8,(u,fy)=>{ const ang=(u-0.5)*Math.PI*2, rad=0.012-d*0.001; return {x:baseX+(d-2)*0.022+Math.cos(ang)*rad, y:0.44-fy*0.10, z:0.02+Math.sin(ang)*rad}; }); };
+  addHand(-1); addHand(1);
+  add(18,28,(u,fy)=>{ return {x:-0.052+(u-0.5)*0.11, y:-0.92-fy*0.12, z:(fy-0.5)*0.28+0.08}; });
+  add(18,28,(u,fy)=>{ return {x:0.052+(u-0.5)*0.11, y:-0.92-fy*0.12, z:(fy-0.5)*0.28+0.08}; });
   const geo=new THREE.BufferGeometry(); geo.setAttribute('position', new THREE.Float32BufferAttribute(pos,3)); geo.setIndex(idx); geo.computeVertexNormals();
   const wire=new THREE.WireframeGeometry(geo); const mat=new THREE.LineBasicMaterial({color:0x00e5ff, transparent:true, opacity:0.38, depthWrite:false}); group.add(new THREE.LineSegments(wire, mat));
   return geo;
 }
-buildV30_21();
-
-const { bones } = LAIA_ACTOR_BRAIN.createLaiaSkeleton(THREE, group);
+buildV30_85_FRONT();
+const { bones } = LAIA_ACTOR_BRAIN.createLaiaSkeleton(THREE, group, { X_CLAMP:0.1976, proportional:{glute:1.0,thigh:0.7,knee:0.5,calf:0.6} });
 let ctx={}; function animate(){ requestAnimationFrame(animate); LAIA_ACTOR_BRAIN.thinkAndMove(bones, ctx); controls.update(); renderer.render(scene,camera); } animate();
 function resize(){ renderer.setSize(innerWidth,innerHeight); camera.aspect=innerWidth/innerHeight; camera.updateProjectionMatrix(); } addEventListener('resize',resize);
-
-// LAYA FINAL CON 50 AREAS EMBEBIDAS - NO DEPENDE DE IMPORT
 let LAYA_FINAL={
   AREAS:{
     1:{name:"Money Basics",topic:"Why Most People Never Become Rich",level:"A1"},2:{name:"Saving",topic:"The Power of Saving Small",level:"A1"},3:{name:"Smart Spending",topic:"Smart Spending Habits",level:"A1"},4:{name:"Investing",topic:"How Investing Builds Freedom",level:"A2"},5:{name:"Work",topic:"Why Hard Work Matters",level:"A2"},6:{name:"Career",topic:"How to Grow in Your Career",level:"B1"},7:{name:"Opportunity",topic:"Why English Is The Language of Opportunity",level:"A2"},8:{name:"Business",topic:"How Small Business Starts",level:"A2"},9:{name:"Time Is Money",topic:"Why Time Is More Valuable Than Money",level:"A1"},10:{name:"Rich vs Poor Mind",topic:"How Rich People Think Different",level:"A2"},
@@ -92,12 +101,9 @@ let LAYA_FINAL={
     31:{name:"Time Management",topic:"How to Manage Your Time",level:"A1"},32:{name:"Health",topic:"Why Health Is Real Wealth",level:"A1"},33:{name:"Sleep",topic:"The Power of Good Sleep",level:"A1"},34:{name:"Healthy Food",topic:"How Food Affects Your Energy",level:"A1"},35:{name:"Fitness",topic:"Why Small Exercise Changes Your Life",level:"A2"},36:{name:"Learning",topic:"Learn More, Earn More",level:"B1"},37:{name:"Reading",topic:"Why Reading Makes You Richer",level:"B1"},38:{name:"Consistency",topic:"Why Consistency Beats Talent",level:"A2"},39:{name:"Patience",topic:"The Power of Patience",level:"B1"},40:{name:"Kindness",topic:"Why Kindness Is Strength",level:"A1"},
     41:{name:"Family",topic:"My Family Is My Strength",level:"A1"},42:{name:"Grandmother",topic:"My Grandmother Is My Inspiration",level:"B1"},43:{name:"Friends",topic:"How Real Friends Help You Grow",level:"A2"},44:{name:"Love",topic:"Why Love Makes Us Stronger",level:"B1"},45:{name:"Respect",topic:"Why Respect Is Everything",level:"A2"},46:{name:"Honesty",topic:"Why Honesty Builds Trust",level:"B1"},47:{name:"Responsibility",topic:"The Power of Responsibility",level:"A1"},48:{name:"Delivery Life",topic:"My Life Delivering Food",level:"A1"},49:{name:"Alignment",topic:"Why Alignment Creates Success",level:"B1"},50:{name:"Willpower",topic:"The Power of Willpower",level:"B2"}
   },
-  generate(id,lvl){const a=this.AREAS[id]||{name:"Test",topic:"Test"};return{story:`Hello ${a.topic}. V30.21 FINAL BEST TEMPLATE 90x70 blazer 0.042 + pantalón + oxfords waist 0.52->0.146 curvas suaves diamond closed organic body.`,meta:{area:a.name,topic:a.topic,level:lvl}};}
+  generate(id,lvl){const a=this.AREAS[id]||{name:"Test",topic:"Test"};return{story:`Hello ${a.topic}. V30.85 FRONT FIX`,meta:{area:a.name,topic:a.topic,level:lvl}};}
 };
-
-// INTENTO DE CARGAR LAYA EXTERNO SI EXISTE (sin ?v)
-try{ const m=await import('./LAYA_FINAL_COMPLETO.js'); if(m.LAYA_FINAL && Object.keys(m.LAYA_FINAL.AREAS||{}).length>=10) LAYA_FINAL=m.LAYA_FINAL; }catch(e){ console.log('Usando AREAS embebidas V30.21 - 50 areas'); }
-
+try{ const m=await import('./LAYA_FINAL_COMPLETO.js'); if(m.LAYA_FINAL && Object.keys(m.LAYA_FINAL.AREAS||{}).length>=10) LAYA_FINAL=m.LAYA_FINAL; }catch(e){}
 const listEl=document.getElementById('list'); let sel='1', cur='';
 function render(f='',lvl=''){
   listEl.innerHTML=''; let c=0;
@@ -105,15 +111,15 @@ function render(f='',lvl=''){
     const hay=`${id} ${a.name} ${a.topic} ${a.level}`.toLowerCase();
     if(f&&!hay.includes(f)) return; if(lvl&&a.level!==lvl) return; c++;
     const d=document.createElement('div'); d.className='area'; d.innerHTML=`<b>${id}. ${a.name}</b><br><small>${a.topic} • ${a.level}</small>`;
-    d.onclick=()=>{sel=id; document.querySelectorAll('.area').forEach(x=>x.classList.remove('active')); d.classList.add('active'); document.getElementById('laia-state').textContent='READING_TEXT • V30.21 BEST 0.38'; ctx.reading=true;};
+    d.onclick=()=>{sel=id; document.querySelectorAll('.area').forEach(x=>x.classList.remove('active')); d.classList.add('active'); document.getElementById('laia-state').textContent='READING_TEXT • V30.85 FRONT'; ctx.reading=true;};
     listEl.appendChild(d);
   });
-  document.getElementById('status').textContent=`${c} áreas - V30.21 FINAL BEST TEMPLATE - 90x70 - 0.58 - 0.38 - WAIST 0.146`;
+  document.getElementById('status').textContent=`${c} áreas - V30.85 FRONT FIX`;
 }
 render();
 document.getElementById('search').oninput=e=>render(e.target.value.toLowerCase(),cur);
 document.querySelectorAll('.f').forEach(b=>b.onclick=()=>{document.querySelectorAll('.f').forEach(x=>x.classList.remove('active')); b.classList.add('active'); cur=b.dataset.f; render(document.getElementById('search').value.toLowerCase(),cur);});
-document.getElementById('gen').onclick=()=>{const lvl=document.getElementById('level').value; const res=LAYA_FINAL.generate(sel,lvl); const card=document.getElementById('card'); card.innerHTML=`<h2>${res.meta.topic}</h2><div style="background:rgba(0,0,0,0.22);padding:14px;border-radius:12px;margin:12px 0;white-space:pre-wrap">${res.story}</div>`; card.classList.remove('hidden'); document.getElementById('empty').classList.add('hidden'); document.getElementById('laia-state').textContent='EXPLAINING • V30.21 BEST TEMPLATE'; ctx.reading=true;};
+document.getElementById('gen').onclick=()=>{const lvl=document.getElementById('level').value; const res=LAYA_FINAL.generate(sel,lvl); const card=document.getElementById('card'); card.innerHTML=`<h2>${res.meta.topic}</h2><div style="background:rgba(0,0,0,0.22);padding:14px;border-radius:12px;margin:12px 0;white-space:pre-wrap">${res.story}</div>`; card.classList.remove('hidden'); document.getElementById('empty').classList.add('hidden'); ctx.reading=true;};
 document.getElementById('teachBtn').onclick=()=>document.getElementById('hWrapper').scrollTo({left:innerWidth,behavior:'smooth'});
 if('serviceWorker' in navigator){ navigator.serviceWorker.register('./sw.js').then(r=>r.update()); }
 </script>

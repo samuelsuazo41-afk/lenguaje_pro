@@ -1,5 +1,5 @@
 // sw.js - V30.21 FINAL BEST TEMPLATE - 90x70 BLAZER 0.042 + PANTALÓN + OXFORDS - 0.38 - 0.58 - WAIST 0.52->0.146 - DIAMOND CLOSED
-const CACHE_NAME = 'laia-v30.21-final-best-90x70-pantalon-oxfords-0.38-0.58-0.146-diamond-closed-v1';
+const CACHE_NAME = 'laia-v30.85-final-best-90x70-pantalon-oxfords-0.38-0.58-0.146-diamond-closed-v1';
 const ASSETS = [
   './',
   './index.html',

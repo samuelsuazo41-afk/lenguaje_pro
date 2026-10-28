@@ -1,6 +1,6 @@
-// LAYA_FINAL_COMPLETO.js - V32.1 ORGANIC ANATOMICAL SEAM - 2 PIERNAS SEPARADAS REALES - BORRADO TOTAL CONO
-// FIX: Cadera 0.335*wc + 2 piernas -0.095/+0.095 + entrepiernas diamond closed 0.0 + glúteos flat + mamas axilas espalda pantorrillas pies
-// SPECS: ANCHURA 0.48m - CINTURA 0.12 narrowest - CADERA 0.335*wc - CABEZA 28x36 depth 0.24 - TRAPEZIUS 0.32 - CUELLO 0.12 - LUMBAR 0.22-0.50 - FLAT GLUTEO NEUTRAL - DIAMOND 0.0 - CLEAN QUAD - T-POSE 90°
+// LAYA_FINAL_COMPLETO.js - V34.1 ORGANIC ANATOMICAL SEAM - PUZZLE FINAL
+// FIX: Cadera 0.1225 + X-CLAMP 0.1976 + 2 piernas -0.095/+0.095 + diamond 0.0
+// BASE TU V32.1 + UPDATE V34.1
 
 export const GRAMMAR_REAL = {
   PRON_PER_POSS: { id:"Pronouns Personal & Possessive", sig:"PRON_PER_POSS", formula:"I/me/my/mine/myself", example:"This is my book, not yours. I did it myself.", mistake:"I car -> MY car", level:"A1" },
@@ -45,14 +45,14 @@ export const VOCAB_REAL = {
   superDicSyllables: { co: ["cook","confidence","consistency"], sav: ["save","saving","savings"], mon: ["money","month","Monday"] } 
 };
 
-// V32.1 - JOINTS ORGANIC SEAM - 2 PIERNAS SEPARADAS REALES - BORRADO CONO
+// V34.1 - JOINTS ORGANIC SEAM - PUZZLE X-CLAMP 0.1976
 export const MARIONETTE_JOINTS = {
   Head_Bone: { id: 'Head_Bone', independent: true, spec:'28x36 depth 0.24 Bob Cut', rows:28, cols:36 },
   Spine_02: { id: 'Spine_02', independent: true, waist:0.12, lumbar:'0.22-0.50', flat_gluteo:true, spine:'neutral alignment', mamas:true, axilas:true },
   Shoulder_L: { id: 'Shoulder.L', independent: true, anchura:0.48, trapezius:0.32, tpose:'90°', dorsal_ancho:true, axila:true }, 
   Shoulder_R: { id: 'Shoulder.R', independent: true, anchura:0.48, trapezius:0.32, tpose:'90°', dorsal_ancho:true, axila:true },
-  Hip_L: { id: 'Hip.L', independent: true, x:-0.095, y:-0.08, gap:0.19, diamond_closed:true, cadera:'0.335*wc', flat_gluteo:true, entrepiernas:true, leg:'separada izq' }, 
-  Hip_R: { id: 'Hip.R', independent: true, x:0.095, y:-0.08, gap:0.19, diamond_closed:true, cadera:'0.335*wc', flat_gluteo:true, entrepiernas:true, leg:'separada der' },
+  Hip_L: { id: 'Hip.L', independent: true, x:-0.095, y:-0.08, gap:0.19, diamond_closed:true, cadera:'0.1225', xclamp:0.1976, flat_gluteo:true, entrepiernas:true, leg:'separada izq puzzle' }, 
+  Hip_R: { id: 'Hip.R', independent: true, x:0.095, y:-0.08, gap:0.19, diamond_closed:true, cadera:'0.1225', xclamp:0.1976, flat_gluteo:true, entrepiernas:true, leg:'separada der puzzle' },
   Knee_L: { id: 'Knee.L', independent: true, posture:'neutral stance', triangular:true }, 
   Knee_R: { id: 'Knee.R', independent: true, posture:'neutral stance', triangular:true },
   Calf_L: { id: 'Calf.L', independent: true, posture:'neutral', pantorrilla:true },
@@ -64,59 +64,38 @@ export const MARIONETTE_JOINTS = {
 };
 
 export const INTENTION_MOTOR = {
-  FOUNDATION: { id: 'FOUNDATION', name: 'Cimiento', joints: { Head_Bone: [-5,10,0], Spine_02: -10 }, tts: 'Primero el cimiento - V32.1 ORGANIC SEAM 2 PIERNAS cintura 0.12 diamond 0.0', sap_type: 'FOUNDATION', color: '#60a5fa' },
-  SCAFFOLDING: { id: 'SCAFFOLDING', name: 'Andamiaje', joints: { Shoulder_L: [0,0,0], Shoulder_R: [0,0,0] }, tts: 'Mira, esta pieza encaja - V32.1 T-POSE 90° anchura 0.48m 2 piernas', sap_type: 'GRAMMAR', color: '#00d4ff' },
+  FOUNDATION: { id: 'FOUNDATION', name: 'Cimiento', joints: { Head_Bone: [-5,10,0], Spine_02: -10 }, tts: 'Primero el cimiento - V34.1 PUZZLE X-CLAMP 0.1976 cintura 0.12 diamond 0.0', sap_type: 'FOUNDATION', color: '#60a5fa' },
+  SCAFFOLDING: { id: 'SCAFFOLDING', name: 'Andamiaje', joints: { Shoulder_L: [0,0,0], Shoulder_R: [0,0,0] }, tts: 'Mira, esta pieza encaja - V34.1 T-POSE 90° anchura 0.48m 2 piernas puzzle', sap_type: 'GRAMMAR', color: '#00d4ff' },
   STRICT_ENGINEER: { id: 'STRICT_ENGINEER', name: 'Ingeniera Estricta', joints: { Shoulder_L: [0,0,0], Shoulder_R: [0,0,0] }, tts: 'Ojo tete, es HAS - T-POSE 90° neutral stance', sap_type: 'ERR', color: '#f59e0b' },
   FLOW_OBSERVER: { id: 'FLOW_OBSERVER', name: 'Observadora Flow', joints: { Spine_02: 0 }, tts: 'Te observo, vas en flow - flat gluteo curve neutral', sap_type: 'FLOW', color: '#8b5cf6' },
-  ELEVATION: { id: 'ELEVATION', name: 'Elevación', joints: { Shoulder_L: [0,10,0], Shoulder_R: [0,10,0], Spine_02: 5 }, tts: 'BOOM! Lo clavaste! Diamond closed 0.0 clean quad 2 piernas', sap_type: 'XP', color: '#22c55e' },
-  TRANSMISSION: { id: 'TRANSMISSION', name: 'Transmisión', joints: { Shoulder_L: [0,0,0], Shoulder_R: [0,0,0] }, tts: 'Esto ya es una capa completa - V32.1 ORGANIC SEAM', sap_type: 'TRANSMIT', color: '#00d4ff' }
+  ELEVATION: { id: 'ELEVATION', name: 'Elevación', joints: { Shoulder_L: [0,10,0], Shoulder_R: [0,10,0], Spine_02: 5 }, tts: 'BOOM! Lo clavaste! Diamond closed 0.0 clean quad 2 piernas puzzle X-CLAMP', sap_type: 'XP', color: '#22c55e' },
+  TRANSMISSION: { id: 'TRANSMISSION', name: 'Transmisión', joints: { Shoulder_L: [0,0,0], Shoulder_R: [0,0,0] }, tts: 'Esto ya es una capa completa - V34.1 PUZZLE PERFECTO', sap_type: 'TRANSMIT', color: '#00d4ff' }
 };
 
 export const AVATAR_ENGINE_HOLO = {
-  type: "V32.1_ORGANIC_SEAM_2_PIERNAS_SEPARADAS_TPOSE_90_0.48m_cintura_0.12_diamond_0.0",
-  meshType: "Organic_Body_Wireframe_V32.1_ORGANIC_SEAM_2_LEGS_SEPARATED_-0.095_+0.095_DIAMOND_0.0_CLEAN",
+  type: "V34.1_ORGANIC_SEAM_PUZZLE_XCLAMP_0.1976_2_LEGS_SEPARATED_TPOSE_90",
+  meshType: "Organic_Body_Wireframe_V34.1_PUZZLE_2_LEGS_SEPARATED_-0.095_+0.095_RADIUS_0.1225_XCLAMP_0.1976_DIAMOND_0.0",
   feminine: true,
   waist: 0.12,
   waist_narrowest: 0.12,
   lumbar: "0.22-0.50",
   flat_gluteo: true,
-  flat_gluteo_curve: 0.0,
   diamond: 0.0,
   diamond_closed: true,
-  diamond_type: "closed flat gap 0.0 + 2 piernas separadas 0.19 - V32.1 ORGANIC BLUEPRINT",
   anchura_hombros: 0.48,
   trapezius: 0.32,
-  cadera_wc: 0.335,
+  cadera_wc: 0.1225,
+  cadera_xclamp: 0.1976,
   cadera_gap: 0.19,
-  cadera_separacion: "-0.095 / +0.095",
+  cadera_separacion: "-0.095 / +0.095 - CIRCULAR MATCH",
   cabeza: "28x36 depth 0.24",
   cuello: "0.12",
   bob_cut: true,
   tpose: "90°",
-  arm_extension: "90° horizontal",
-  posture: "neutral stance",
-  dorsal_ancho: true,
-  spine: "neutral alignment",
-  legs: "2 piernas separadas triangulares con cintura",
-  costura: "cintura->cadera->glúteos->espalda->entrepiernas->axilas->mamas->cuello->cabeza->brazos->manos->pantorrillas->pies",
-  blazer: "professional tailored lapel",
-  bodysuit: "neutral gray matte closed holographic wireframe",
-  torso_rows: 54,
-  torso_cols: 48,
-  hips_rows: 20,
-  hips_cols: 36,
-  legs_rows: 42,
-  legs_cols: 28,
-  head_rows: 28,
-  head_cols: 36,
   material: { color: 0x00e5ff, opacity: 0.42, wireframe: true, depthWrite: false },
-  lines: { enabled: true, type: "wireframe_organic_0.42_V32.1_TPOSE_90_CLEAN_2_LEGS", color: 0x00e5ff, opacity: 0.42 },
   bones: 16,
-  fullBody: true,
-  organic_seam: true,
   scale: 0.58,
   camera: { fov: 30, pos: [0,0.02,2.68], groupPos: [0,-0.15,0] },
-  frameMap: { strict: 'STRICT_ENGINEER', point_left: 'SCAFFOLDING', explain_open: 'SCAFFOLDING', crossed_arms: 'FLOW_OBSERVER', celebratory: 'ELEVATION', crossed_clip: 'TRANSMISSION', open_big: 'TRANSMISSION' },
   emotions: {
     HOLO_STRICT: { frame: 0, name: "STRICT", intention: INTENTION_MOTOR.STRICT_ENGINEER },
     HOLO_CELEB: { frame: 0, name: "CELEBRATORY", intention: INTENTION_MOTOR.ELEVATION },
@@ -134,13 +113,11 @@ export const AVATAR_ENGINE_HOLO = {
     else result = { frame: 0, key: "HOLO_OPEN", emotion: "TRANSMISSION", intention: INTENTION_MOTOR.TRANSMISSION };
     result.joints = result.intention.joints; result.pose = result.intention; result.tts = result.intention.tts; result.color = result.intention.color;
     return result;
-  },
-  focusFrame(index){ return 0; },
-  getFrameByName(name){ return this.frameMap[name] || 'SCAFFOLDING'; }
+  }
 };
 
 export const LAYA_FINAL = {
-  version: "V32.1 ORGANIC ANATOMICAL SEAM - 2 PIERNAS SEPARADAS REALES - BORRADO TOTAL CONO - ANCHURA 0.48m - CINTURA 0.12 - CADERA 0.335*wc - CABEZA 28x36 depth 0.24 - TRAPEZIUS 0.32 - CUELLO 0.12 - LUMBAR 0.22-0.50 - FLAT GLUTEO NEUTRAL - DIAMOND 0.0 - CLEAN QUAD - COSTURA NATURAL MAMAS AXILAS ESPALDA ENTREPIERNAS PANTORRILLAS PIES",
+  version: "V34.1 PUZZLE PERFECTO - X-CLAMP 0.1976 - RADIUS 0.1225 - 2 PIERNAS -0.095/+0.095 - DIAMOND 0.0 - SIN ESCALON",
   VOCAB: VOCAB_REAL, GRAMMAR: GRAMMAR_REAL, AVATAR: AVATAR_ENGINE_HOLO, INTENTIONS: INTENTION_MOTOR, JOINTS: MARIONETTE_JOINTS,
   AREAS: {
     1: { name:"Money Basics", topic:"Why Most People Never Become Rich", vocab:["survival50"], grammar:["PS_3RD_S","COND_1"], future:"COND_1", level:"A1" },
@@ -194,9 +171,6 @@ export const LAYA_FINAL = {
     49:{ name:"Alignment", topic:"Why Alignment Creates Success", vocab:["survival50"], grammar:["PS_3RD_S","GERUND_INF"], future:"COND_1", level:"B1" },
     50:{ name:"Willpower", topic:"The Power of Willpower", vocab:["survival50"], grammar:["FUT_WILL","FUT_CONT"], future:"FUT_PERF", level:"B2" }
   },
-  SUPER_DIC: { search(syllable){ return ["money","save"]; } },
-  MEMORY: { get(){ try{return JSON.parse(localStorage.getItem("LAYA_MEMORY_V9")||"{}");}catch{return{}}}, save(m){localStorage.setItem("LAYA_MEMORY_V9",JSON.stringify(m));}, update(sig,ok,hes){ const mem=this.get(); if(!mem[sig]) mem[sig]={errors:0,oks:0,hes:[]}; if(ok){mem[sig].oks++;mem[sig].errors=Math.max(0,mem[sig].errors-1);} else {mem[sig].errors++;} mem[sig].hes.push(hes); if(mem[sig].hes.length>10) mem[sig].hes.shift(); this.save(mem); return mem; } },
-  STORIES: { "default": "Hello everyone. Today I want to talk about {topic}. There is a lot to learn." },
   generate(areaId, level, metrics){
     const area = this.AREAS[areaId];
     if(!area) return { prompt:"Elige area", story:"Elige area", meta:{ area:"?", topic:"?", level, grammar_main:{id:"?",formula:"?",example:"?"}, grammar_future:{id:"?",formula:"?",example:"?"}, vocab:[], emotion:"FOUNDATION", intention: INTENTION_MOTOR.FOUNDATION, joints: INTENTION_MOTOR.FOUNDATION.joints, xp:0 } };
@@ -204,14 +178,9 @@ export const LAYA_FINAL = {
     const gFuture = GRAMMAR_REAL[area.future] || GRAMMAR_REAL.COND_1;
     const avatarData = AVATAR_ENGINE_HOLO.decideByMetrics({...metrics, cefr_level: level});
     const xp = metrics?.same_error_count>=3?0:(level==="A1"?10:level==="A2"?15:20);
-    const story = (this.STORIES[area.name]||this.STORIES["default"]).replace("{topic}", area.topic.toLowerCase());
-    return { prompt: level+" - "+area.topic, story, meta: { area: area.name, topic: area.topic, level, grammar_main: gMain, grammar_future: gFuture, vocab: [], emotion: avatarData.emotion, intention: avatarData.intention, joints: avatarData.joints, avatar_type:"V32.1_ORGANIC_SEAM_2_LEGS", avatar_frame:0, xp, wordCount:"150" } };
+    const story = `Hello ${area.topic}. V34.1 PUZZLE PERFECTO X-CLAMP 0.1976`;
+    return { prompt: level+" - "+area.topic, story, meta: { area: area.name, topic: area.topic, level, grammar_main: gMain, grammar_future: gFuture, vocab: [], emotion: avatarData.emotion, intention: avatarData.intention, joints: avatarData.joints, avatar_type:"V34.1_PUZZLE_XCLAMP_0.1976", avatar_frame:0, xp } };
   }
 };
 
 export const LAYA_FINAL_COMPLETO = LAYA_FINAL;
-export const LAYA_SAP = {
-  generateSAP(m, sig, w){ return { evolution:{ ACCURACY_7D: Math.round((m?.accuracy_7d||0.8)*100)+'%', XP_TOTAL: m?.xp_total||0 }, detail:{ grammarChain: sig } }; },
-  renderToHologram(sap){ const b=document.getElementById('bubble'); if(b){ b.innerHTML=`V32.1 ORGANIC SEAM 2 PIERNAS // ${sap.evolution.ACCURACY_7D} // XP ${sap.evolution.XP_TOTAL} // ANCHURA 0.48m CINTURA 0.12 DIAMOND 0.0 CLEAN QUAD 2 LEGS -0.095/+0.095`; b.classList.remove('hidden'); } }
-};
-export const LAYA_FINAL_ACTOR_V1 = LAYA_FINAL;

@@ -1,5 +1,5 @@
-/* styles.css - V32.1 ORGANIC ANATOMICAL SEAM - 2 PIERNAS SEPARADAS REALES - BORRADO TOTAL CONO */
-/* SPECS: ANCHURA 0.48m - CINTURA 0.12 narrowest - CADERA 0.335*wc - CABEZA 28x36 depth 0.24 - TRAPEZIUS 0.32 - CUELLO 0.12 - LUMBAR 0.22-0.50 - FLAT GLUTEO NEUTRAL STANCE - DIAMOND CLOSED 0.0 - CLEAN QUAD - COSTURA NATURAL ORGÁNICA MAMAS AXILAS ESPALDA ENTREPIERNAS PANTORRILLAS PIES */
+/* styles.css - V34.1 ORGANIC ANATOMICAL SEAM - PUZZLE FINAL - X-CLAMP 0.1976 */
+/* SPECS: ANCHURA 0.48m - CINTURA 0.12 narrowest - CADERA 0.1225 - X-CLAMP 0.1976 - CABEZA 28x36 depth 0.24 - TRAPEZIUS 0.32 - CUELLO 0.12 - DIAMOND 0.0 - CIRCULAR MATCH -0.095/+0.095 - SIN ESCALON */
 
 :root{
   --bg:#020208;
@@ -7,14 +7,16 @@
   --muted:#9ca3af;
   --holo:#00e5ff;
   --holo-glow:rgba(0,229,255,0.50);
-  --v32-anchura:0.48m;
-  --v32-cintura:0.12;
-  --v32-cadera:0.335;
-  --v32-trapezius:0.32;
-  --v32-cabeza:28x36;
-  --v32-cuello:0.12;
-  --v32-diamond:0.0;
-  --v32-lumbar:0.22-0.50;
+  --v34-anchura:0.48m;
+  --v34-cintura:0.12;
+  --v34-cadera:0.1225;
+  --v34-xclamp:0.1976;
+  --v34-trapezius:0.32;
+  --v34-cabeza:28x36;
+  --v34-cuello:0.12;
+  --v34-diamond:0.0;
+  --v34-cx:-0.095;
+  --v34-radius:0.1225;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system;overflow:hidden}
@@ -33,7 +35,7 @@ header{
 #level-badge{background:var(--holo);color:#000;padding:2px 8px;border-radius:12px;font-weight:800;font-size:10px}
 #xp{color:#fbbf24;font-weight:800}
 
-/* V32.1 ORGANIC - CONTENIDO DETRÁS DEL AVATAR - z-index 10 vs 999 front - CLEAN 2 PIERNAS */
+/* V34.1 PUZZLE - CONTENIDO DETRÁS DEL AVATAR - z-index 10 vs 999 front */
 .h-wrapper{
   margin-top:52px!important;
   display:flex!important;overflow-x:auto!important;
@@ -105,8 +107,7 @@ header{
   border-radius:12px!important;padding:12px!important
 }
 
-/* === V32.1 ORGANIC SEAM - 2 PIERNAS SEPARADAS REALES - T-POSE 90° - AVATAR POR DELANTE - BORRADO CONO === */
-/* COSTURA NATURAL ORGÁNICA: CINTURA 0.12 -> CADERA 0.335*wc -> GLÚTEOS FLAT -> ENTREPIERNAS DIAMOND 0.0 -> 2 PIERNAS -0.095/+0.095 -> PANTORRILLAS -> PIES + MAMAS + AXILAS + ESPALDA + CUELLO 0.12 + CABEZA 28x36 depth 0.24 + TRAPEZIUS 0.32 + ANCHURA 0.48m + BRAZOS T-POSE 90° */
+/* === V34.1 PUZZLE FINAL - X-CLAMP ±0.1976 - RADIUS 0.1225 - 2 PIERNAS -0.095/+0.095 - SIN ESCALON === */
 #laia-hologram{
   position:fixed!important;
   top:52px!important;left:0!important;
@@ -133,4 +134,4 @@ header{
 @media(max-width:768px){
   #page1{flex-direction:column!important}
   #page1 aside{width:100%!important;min-width:100%!important;max-height:42vh!important}
-} 
+}

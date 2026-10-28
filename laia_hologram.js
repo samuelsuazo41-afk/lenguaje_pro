@@ -78,4 +78,4 @@ export function buildV34_FROM_SCRATCH(group) {
 }
 export const buildV32_NEW_TEMPLATE = buildV34_FROM_SCRATCH;
 export const buildV34Avatar = buildV34_FROM_SCRATCH;
-export function buildV32Avatar(g){ return buildV34_FROM_SCRATCH(g); }
+export function buildV32Avatar(g){ return buildV34_FROM_SCRATCH(g); } 

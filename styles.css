@@ -1,137 +1,102 @@
-/* styles.css - V34.3 CLEAN UNIFICADO - SIN BLOQUE RAYADO - SIN PINCH */
-/* SPECS: ANCHURA 0.48m - CINTURA 0.20 sin pinch - CADERA 0.1225 - X-CLAMP 0.1976 - CABEZA 28x36 depth 0.24 - TRAPEZIUS 0.32 - CUELLO 0.065 - DIAMOND 0.0 - CIRCULAR MATCH -0.095/+0.095 - SIN ESCALON - SIN BLOQUE RAYADO */
+/* styles.css - V35.0 PUZZLE GANADORA - FULL 360° CON MANOS - 0.095 SIN ESCALON - SIN BLOQUE RAYADO */
 
 :root{
   --bg:#020208;
   --text:#f1f1f5;
   --muted:#9ca3af;
   --holo:#00e5ff;
-  --holo-glow:rgba(0,229,255,0.50);
-  --v34-anchura:0.48m;
-  --v34-cintura:0.20;
-  --v34-cadera:0.1225;
-  --v34-xclamp:0.1976;
-  --v34-trapezius:0.32;
-  --v34-cabeza:28x36;
-  --v34-cuello:0.065;
-  --v34-diamond:0.0;
-  --v34-cx:-0.095;
-  --v34-radius:0.1225;
-  --v34-fix:"V34.3 CLEAN SIN BLOQUE RAYADO";
+  --holo-dim:rgba(0,229,255,0.14);
+  --holo-mid:rgba(0,229,255,0.42);
+  --holo-bright:rgba(0,229,255,0.88);
+  --panel:rgba(12,14,22,0.22);
+  --panel-strong:rgba(14,16,26,0.24);
+  --border:rgba(0,212,255,0.10);
 }
+
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system;overflow:hidden}
+html,body{width:100%;height:100%;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto;overflow:hidden}
 
 header{
-  height:52px!important;
-  background:rgba(10,12,20,0.32)!important;
-  backdrop-filter:blur(14px)!important;
-  border-bottom:1px solid rgba(0,229,255,0.14)!important;
-  display:flex!important;justify-content:space-between!important;align-items:center!important;
-  padding:0 14px!important;position:fixed!important;top:0!important;left:0!important;right:0!important;z-index:1000!important
+  height:52px;
+  background:rgba(10,12,20,0.32);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--holo-dim);
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0 14px;position:fixed;top:0;left:0;right:0;z-index:1000
 }
-.logo{font-weight:800;letter-spacing:-0.02em}
-.logo span{background:var(--holo);color:#000;padding:2px 8px;border-radius:6px;font-size:10px;margin-left:6px;font-weight:900}
-.metrics{display:flex;gap:10px;font-size:12px;color:var(--muted);align-items:center}
-#level-badge{background:var(--holo);color:#000;padding:2px 8px;border-radius:12px;font-weight:800;font-size:10px}
-#xp{color:#fbbf24;font-weight:800}
 
+/* LAIA HOLOGRAM - V35.0 - FULL 360° - A=HEAD+NECK B=TORSO+ARMS C=WAIST-TO-FEET E=HANDS */
+#laia-hologram{
+  position:fixed;top:52px;left:0;width:100vw;height:calc(100vh - 52px);
+  z-index:999;display:flex;align-items:center;justify-content:center;
+  pointer-events:none;background:transparent
+}
+#laia-holo-canvas{
+  width:100vw;height:calc(100vh - 52px);display:block;
+  background:transparent;pointer-events:auto;
+  filter: contrast(1.18) brightness(1.12) drop-shadow(0 0 12px var(--holo-mid))
+}
+#laia-state{
+  z-index:1001;position:absolute;bottom:16px;left:50%;transform:translateX(-50%);
+  background:var(--holo-bright);color:#000;font-size:9px;
+  padding:5px 12px;border-radius:10px;font-weight:900;letter-spacing:0.5px
+}
+
+/* LAYOUT PUZZLE */
 .h-wrapper{
-  margin-top:52px!important;
-  display:flex!important;overflow-x:auto!important;
-  scroll-snap-type:x mandatory!important;
-  width:100vw!important;height:calc(100vh - 52px)!important;
-  position:relative!important;z-index:10!important;
-  scrollbar-width:none!important
+  margin-top:52px;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;
+  width:100vw;height:calc(100vh - 52px);position:relative;z-index:10;scrollbar-width:none
 }
 .h-wrapper::-webkit-scrollbar{display:none}
 .page{
-  min-width:100vw!important;width:100vw!important;height:100%!important;
-  scroll-snap-align:start!important;overflow-y:auto!important;
-  display:flex!important;flex-direction:row!important;
-  position:relative!important;z-index:10!important
+  min-width:100vw;width:100vw;height:100%;scroll-snap-align:start;
+  overflow-y:auto;display:flex;position:relative;z-index:10
 }
-
 #page1 aside{
-  width:340px!important;min-width:340px!important;
-  background:rgba(12,14,22,0.22)!important;
-  backdrop-filter:blur(12px)!important;
-  border-right:1px solid rgba(0,229,255,0.10)!important;
-  padding:12px!important;display:flex!important;flex-direction:column!important;gap:8px!important;
-  height:calc(100vh - 52px)!important;overflow-y:auto!important;
-  z-index:15!important
+  width:340px;min-width:340px;background:var(--panel);
+  backdrop-filter:blur(12px);border-right:1px solid var(--border);
+  padding:12px;display:flex;flex-direction:column;gap:8px;
+  height:calc(100vh - 52px);overflow-y:auto;z-index:15
 }
-#page1 main{
-  flex:1!important;padding:16px!important;max-width:760px!important;
-  background:transparent!important;z-index:15!important
-}
-#page2{background:transparent!important;z-index:15!important;padding:18px!important;display:flex!important;flex-direction:column!important;gap:12px!important;align-items:center!important;min-width:100vw!important}
-
-#search{
-  background:rgba(22,24,36,0.32)!important;
-  border:1px solid rgba(0,229,255,0.16)!important;
-  color:#fff!important;padding:9px 12px!important;border-radius:10px!important;
-  width:100%!important;outline:none!important
-}
-.f{
-  background:rgba(24,26,40,0.24)!important;
-  border:1px solid rgba(70,70,90,0.12)!important;
-  color:var(--muted)!important;padding:5px 10px!important;border-radius:20px!important;
-  font-size:11px!important;cursor:pointer!important
-}
-.f.active{background:rgba(0,229,255,0.88)!important;color:#000!important;font-weight:800!important}
-
 #list{
-  overflow-y:auto!important;display:flex!important;flex-direction:column!important;gap:5px!important;flex:1!important;
-  min-height:300px!important;
-  background:rgba(10,12,18,0.16)!important;
-  border:1px solid rgba(0,229,255,0.08)!important;
-  border-radius:10px!important;padding:6px!important;
-  scrollbar-width:thin!important
+  min-height:300px;background:rgba(10,12,18,0.16);
+  border:1px solid rgba(0,212,255,0.08);border-radius:10px;
+  padding:6px;display:flex;flex-direction:column;gap:5px;flex:1;overflow-y:auto
 }
 .area{
-  background:rgba(22,24,36,0.26)!important;
-  padding:8px 10px!important;border-radius:8px!important;cursor:pointer!important;
-  border:1px solid rgba(0,229,255,0.08)!important;
-  color:#d0d0d8!important;display:flex!important;flex-direction:column!important;gap:2px!important
+  background:rgba(22,24,36,0.26);padding:8px 10px;border-radius:8px;
+  border:1px solid rgba(0,212,255,0.08);cursor:pointer;color:#d0d0d8;
+  transition: all 0.18s ease
 }
-.area b{color:#fff!important;font-size:12px!important;font-weight:700!important}
-.area small{color:#9ca3af!important;font-size:10px!important}
-.area.active{background:rgba(0,229,255,0.68)!important;color:#000!important}
-.area.active b,.area.active small{color:#000!important}
+.area:hover{border-color:var(--holo-dim);background:rgba(22,24,36,0.42)}
+.area b{color:#fff;font-size:12px}.area small{color:var(--muted);font-size:10px}
+.area.active{background:rgba(0,212,255,0.68);color:#000;border-color:var(--holo-bright)}
+.area.active b{color:#000}.area.active small{color:rgba(0,0,0,0.7)}
 
-#card,.sap-header,.evo-lab{
-  background:rgba(14,16,26,0.24)!important;
-  backdrop-filter:blur(10px)!important;
-  border:1px solid rgba(0,229,255,0.12)!important;
-  border-radius:12px!important;padding:12px!important
-}
-
-/* === V34.3 CLEAN - SIN BLOQUE RAYADO - PELVIS+PIERNA UNIFICADA === */
-#laia-hologram{
-  position:fixed!important;
-  top:52px!important;left:0!important;
-  width:100vw!important;height:calc(100vh - 52px)!important;
-  z-index:999!important;
-  display:flex!important;align-items:center!important;justify-content:center!important;
-  pointer-events:none!important;
-  opacity:1!important;
-  background:transparent!important;
-}
-#laia-holo-canvas{
-  width:100vw!important;height:calc(100vh - 52px)!important;
-  display:block!important;background:transparent!important;
-  pointer-events:auto!important;
-  filter: contrast(1.18) brightness(1.12) saturate(1.10) drop-shadow(0 0 12px rgba(0,229,255,0.52)) drop-shadow(0 0 26px rgba(0,212,255,0.26))!important;
-}
-#laia-state{
-  position:absolute!important;bottom:16px!important;left:50%!important;transform:translateX(-50%)!important;
-  background:rgba(0,229,255,0.88)!important;color:#000!important;
-  font-size:9px!important;padding:5px 12px!important;border-radius:10px!important;font-weight:900!important;letter-spacing:0.5px!important;
-  z-index:1001!important;
+#card{
+  background:var(--panel-strong);backdrop-filter:blur(10px);
+  border:1px solid rgba(0,212,255,0.12);border-radius:12px;padding:12px
 }
 .hidden{display:none!important}
+.f{
+  background:rgba(24,26,40,0.24);border:1px solid rgba(70,70,90,0.12);
+  color:var(--muted);padding:5px 10px;border-radius:20px;
+  font-size:11px;cursor:pointer;transition:all 0.18s
+}
+.f.active{background:var(--holo-bright);color:#000;font-weight:800;border-color:var(--holo-bright)}
+input,select,button{outline:none}
+
+/* FIX V35 - 0.095 SIN ESCALON SIN BLOQUE RAYADO - CIRCULAR MATCH 0.1225 */
+.laia-module{
+  --hip-offset:0.095;
+  --hip-radius:0.1225;
+  --waist:0.20;
+  --neck:0.065;
+}
+
+/* Responsive */
 @media(max-width:768px){
-  #page1{flex-direction:column!important}
-  #page1 aside{width:100%!important;min-width:100%!important;max-height:42vh!important}
+  #page1{flex-direction:column}
+  #page1 aside{width:100%;min-width:100%;max-height:42vh}
+  #laia-hologram{opacity:0.42}
 }

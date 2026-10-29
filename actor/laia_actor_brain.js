@@ -1,69 +1,79 @@
-ñ// actor/laia_actor_brain.js - V35.1 PUZZLE GANADORA - TORSO FULL 360° CERRADO COMO PIERNAS/BRAZOS
-// FIX: Torso era plano frontal fx*2.08 - Ahora cilindro elíptico cerrado cos(ang)*rW + sin(ang)*rD - igual que piernas/brazos
+// actor/laia_actor_brain.js - V35.2 FINAL - FIX ROJO VERDE AZUL - PIERNAS FINAS NATURALES
+// ROJO: pierna 0.1225 muy gorda vs cintura 0.20 -> ahora 0.088 fina costura perfecta 0.20
+// VERDE: pliegue lateral por zScale*=0.25 -> quitado
+// AZUL: pliegue rodilla por salto brusco radius -> curva suave natural
 
 export const LAIA_ACTOR_BRAIN = {
-  version: "V35.1 PUZZLE GANADORA - TORSO FULL 360° CERRADO - Modular A-E - A HEAD+NECK 28x36 B TORSO CILINDRO 360° C WAIST-TO-FEET D ARMS E HANDS 5F - Waist 0.20 Hips ±0.095 radius 0.1225",
+  version: "V35.2 FINAL - FIX ROJO VERDE AZUL - PIERNAS FINAS NATURALES COSTURA PERFECTA - TORSO 360 CERRADO - Hips ±0.095 radius 0.088 waist 0.20",
 
   createLaiaSkeleton(THREE, group){
     const bones=[]; 
     const mk=(n,p,par)=>{ const b=new THREE.Bone(); b.name=n; b.position.copy(p); par.add(b); bones.push(b); return b; };
     
-    // ===== ROOT - PUZZLE SYSTEM - CIRCULAR MATCH 0.1225 =====
-    const hips=mk('Hips_V35_1_Puzzle_Male_x2_Up_Torso360Closed', new THREE.Vector3(0,0,0), group);
-    hips.userData.puzzle = { tabs: "2 MALE UP", connectsTo: "ModuleB", hipOffset: "±0.095", radius: 0.1225, waist: 0.20, torso: "360-closed cylinder" };
+    // ROOT - FIX ROJO
+    const hips=mk('Hips_V35_2_Fix_RGB_PiernasFinas_Torso360', new THREE.Vector3(0,0,0), group);
+    hips.userData.puzzle = { tabs: "2 MALE UP", hipOffset: "±0.095", radius: 0.088, waist: 0.20, fixRojo: "0.1225->0.088 fina proporcional" };
 
-    // ===== MODULE B TORSO FULL 360° CERRADO - FIX GANADOR =====
-    // ANTES: plano frontal fx*rW*2.08 -> solo malla frontal
-    // AHORA: cilindro elíptico cerrado cos(ang)*rW + sin(ang)*rD -> 360° como piernas/brazos
-    const spineLow=mk('Spine_00_Lower_Torso360Closed', new THREE.Vector3(0,0.08,0), hips);
-    spineLow.userData.puzzle = { type: "ModuleB TORSO", shape: "cylinder elliptical closed 360°", mode: "cos(ang)*rW + sin(ang)*rD" };
+    // MODULE B TORSO FULL 360° CERRADO SIN PINCH
+    const spineLow=mk('Spine_00_Lower_Torso360Closed_V35_2', new THREE.Vector3(0,0.08,0), hips);
+    spineLow.userData.puzzle = { type: "ModuleB TORSO", shape: "cylinder elliptical closed 360°", waist: 0.20 };
     
-    const spine=mk('Spine_02_ModuleB_Torso360Closed', new THREE.Vector3(0,0.08,0), spineLow);
-    spine.userData.puzzle = { type: "ModuleB TORSO", shape: "cylinder closed 360°", waist: 0.20, before: "frontal-only", now: "360-closed" };
+    const spine=mk('Spine_02_ModuleB_Torso360_V35_2', new THREE.Vector3(0,0.08,0), spineLow);
+    spine.userData.puzzle = { waist: 0.20, curve: "0.40->0.20 smooth pow 1.4 sin hilo" };
     
-    const chest=mk('Chest_ModuleB_Socket_Female_Up_For_A_Torso360Closed', new THREE.Vector3(0,0.24,0), spine);
-    chest.userData.puzzle = { sockets: "1 FEMALE UP for ModuleA HEAD+NECK, 2 FEMALE DOWN for ModuleC", torso: "FULL 360° CLOSED" };
+    const chest=mk('Chest_ModuleB_Socket_Torso360_V35_2', new THREE.Vector3(0,0.24,0), spine);
+    chest.userData.puzzle = { torso: "FULL 360° CLOSED" };
 
-    // MODULE A HEAD+NECK 28x36 FULL 360°
-    const head=mk('Head_Bone_ModuleA_HeadNeck_28x36_Full360_Torso360', new THREE.Vector3(0,0.20,0), chest);
-    head.userData.puzzle = { tab: "MALE DOWN", connectsTo: "ModuleB", diameter: "28x36", neck: 0.065, full360: true };
+    const head=mk('Head_Bone_ModuleA_28x36_Full360_V35_2', new THREE.Vector3(0,0.20,0), chest);
+    head.userData.puzzle = { neck: 0.065, full360: true };
 
-    // MODULE B ARMS T-POSE 0.48m FULL 360°
-    const shoulderL=mk('Shoulder.L_ModuleB_TPose_48m_Full360_Torso360', new THREE.Vector3(-0.24,0.16,0), chest);
-    const shoulderR=mk('Shoulder.R_ModuleB_TPose_48m_Full360_Torso360', new THREE.Vector3(0.24,0.16,0), chest);
-    shoulderL.userData.puzzle = { socket: "FEMALE SHOULDER", arm: "ModuleD Upper", torso: "360-closed" };
-    shoulderR.userData.puzzle = { socket: "FEMALE SHOULDER", arm: "ModuleD Upper", torso: "360-closed" };
+    const shoulderL=mk('Shoulder.L_TPose_48m_V35_2', new THREE.Vector3(-0.24,0.16,0), chest);
+    const shoulderR=mk('Shoulder.R_TPose_48m_V35_2', new THREE.Vector3(0.24,0.16,0), chest);
 
-    const elbowL=mk('Elbow.L_ModuleD_Upper_Lower_Puzzle_Torso360', new THREE.Vector3(-0.38,0,0), shoulderL);
-    const elbowR=mk('Elbow.R_ModuleD_Upper_Lower_Puzzle_Torso360', new THREE.Vector3(0.38,0,0), shoulderR);
-    elbowL.userData.puzzle = { socket: "FEMALE ELBOW", tab: "MALE WRIST" };
-    elbowR.userData.puzzle = { socket: "FEMALE ELBOW", tab: "MALE WRIST" };
+    const elbowL=mk('Elbow.L_V35_2', new THREE.Vector3(-0.38,0,0), shoulderL);
+    const elbowR=mk('Elbow.R_V35_2', new THREE.Vector3(0.38,0,0), shoulderR);
 
-    // MODULE E HANDS 5 FINGERS
-    const handL=mk('Hand.L_ModuleE_5Fingers_Socket_Female_Wrist_Full360_Torso360', new THREE.Vector3(-0.38,0,0), elbowL);
-    const handR=mk('Hand.R_ModuleE_5Fingers_Socket_Female_Wrist_Full360_Torso360', new THREE.Vector3(0.38,0,0), elbowR);
-    handL.userData.puzzle = { type: "ModuleE HANDS", fingers: 5, socket: "FEMALE WRIST", full360: true };
-    handR.userData.puzzle = { type: "ModuleE HANDS", fingers: 5, socket: "FEMALE WRIST", full360: true };
+    const handL=mk('Hand.L_ModuleE_5Fingers_V35_2', new THREE.Vector3(-0.38,0,0), elbowL);
+    const handR=mk('Hand.R_ModuleE_5Fingers_V35_2', new THREE.Vector3(0.38,0,0), elbowR);
     
     for(let i=0;i<5;i++){
-      mk(`Finger.L.${i}_ModuleE_Full360_Torso360`, new THREE.Vector3((i-2)*0.018, -0.05, 0), handL);
-      mk(`Finger.R.${i}_ModuleE_Full360_Torso360`, new THREE.Vector3((i-2)*0.018, -0.05, 0), handR);
+      mk(`Finger.L.${i}_V35_2`, new THREE.Vector3((i-2)*0.018, -0.05, 0), handL);
+      mk(`Finger.R.${i}_V35_2`, new THREE.Vector3((i-2)*0.018, -0.05, 0), handR);
     }
 
-    // MODULE C LOWER BODY FULL 360° - -0.095/+0.095 radius 0.1225
-    const hipL=mk('Hip.L_ModuleC_WaistToFeet_Unified_Minus_0.095_Full360_Torso360', new THREE.Vector3(-0.095, -0.05, 0), hips);
-    const hipR=mk('Hip.R_ModuleC_WaistToFeet_Unified_Plus_0.095_Full360_Torso360', new THREE.Vector3(0.095, -0.05, 0), hips);
-    hipL.userData.puzzle = { offset: -0.095, radius: 0.1225, circularMatch: true, full360: true, note: "SIN ESCALON SIN BLOQUE RAYADO" };
-    hipR.userData.puzzle = { offset: 0.095, radius: 0.1225, circularMatch: true, full360: true, note: "SIN ESCALON SIN BLOQUE RAYADO" };
+    // MODULE C LOWER BODY - V35.2 FIX TUS 3 COLORES
+    const hipL=mk('Hip.L_V35_2_Rojo_0.088_Fino_CosturaPerfecta_0.20', new THREE.Vector3(-0.095, -0.05, 0), hips);
+    const hipR=mk('Hip.R_V35_2_Rojo_0.088_Fino_CosturaPerfecta_0.20', new THREE.Vector3(0.095, -0.05, 0), hips);
+    hipL.userData.puzzle = { 
+      offset: -0.095, 
+      radius: 0.088, 
+      fixRojo: "antes 0.1225 muy gorda vs waist 0.20, ahora 0.088 fina - costura 0.095+0.088=0.183 encaja 0.20",
+      fixVerde: "quitado zScale*=0.25 pliegue lateral vertical",
+      fixAzul: "curva suave 0.088->0.070->0.048 sin salto brusco rodilla",
+      full360: true 
+    };
+    hipR.userData.puzzle = { 
+      offset: 0.095, 
+      radius: 0.088, 
+      fixRojo: "0.1225->0.088 fina",
+      fixVerde: "sin pliegue lateral",
+      fixAzul: "rodilla natural sin pliegue horizontal",
+      full360: true 
+    };
     
-    const kneeL=mk('Knee.L_ModuleC_Full360_Torso360', new THREE.Vector3(0, -0.38, 0), hipL);
-    const kneeR=mk('Knee.R_ModuleC_Full360_Torso360', new THREE.Vector3(0, -0.38, 0), hipR);
+    // FIX AZUL: rodilla natural sin pliegue - curva suave no escalón
+    const kneeL=mk('Knee.L_V35_2_Azul_CurvaSuave_0.070_Natural', new THREE.Vector3(0, -0.38, 0), hipL);
+    const kneeR=mk('Knee.R_V35_2_Azul_CurvaSuave_0.070_Natural', new THREE.Vector3(0, -0.38, 0), hipR);
+    kneeL.userData.puzzle = { radius: 0.070, fixAzul: "antes salto 0.1225->0.0925 pliegue azul, ahora 0.070 curva suave" };
+    kneeR.userData.puzzle = { radius: 0.070, fixAzul: "rodilla natural" };
     
-    const calfL=mk('Calf.L_ModuleC_Full360_Torso360', new THREE.Vector3(0, -0.38, 0), kneeL);
-    const calfR=mk('Calf.R_ModuleC_Full360_Torso360', new THREE.Vector3(0, -0.38, 0), kneeR);
+    const calfL=mk('Calf.L_V35_2_Pantorrilla_0.048_Fina_Natural', new THREE.Vector3(0, -0.38, 0), kneeL);
+    const calfR=mk('Calf.R_V35_2_Pantorrilla_0.048_Fina_Natural', new THREE.Vector3(0, -0.38, 0), kneeR);
+    calfL.userData.puzzle = { radius: "0.070->0.048", curve: "smooth" };
+    calfR.userData.puzzle = { radius: "0.070->0.048", curve: "smooth" };
     
-    const footL=mk('Foot.L_ModuleC_Full360_Torso360', new THREE.Vector3(0, -0.08, 0.04), calfL);
-    const footR=mk('Foot.R_ModuleC_Full360_Torso360', new THREE.Vector3(0, -0.08, 0.04), calfR);
+    const footL=mk('Foot.L_V35_2', new THREE.Vector3(0, -0.08, 0.04), calfL);
+    const footR=mk('Foot.R_V35_2', new THREE.Vector3(0, -0.08, 0.04), calfR);
 
     return {bones, hips, spine, chest, head, hipL, hipR, handL, handR};
   },
@@ -72,21 +82,20 @@ export const LAIA_ACTOR_BRAIN = {
     if(!bones || !bones.length) return;
     const t=Date.now()*0.001;
     bones.forEach(b=>{
-      if(b.name.includes('Spine_00_Lower_Torso360Closed')) {
-        // torso respiración 360° cerrado
+      if(b.name.includes('Spine_00_Lower')) {
         b.rotation.x = Math.sin(t*0.5)*0.02;
         b.rotation.y = Math.sin(t*0.3)*0.02;
       }
-      if(b.name.includes('Spine_02_ModuleB_Torso360Closed')) {
+      if(b.name.includes('Spine_02')) {
         b.rotation.x = Math.sin(t*0.6)*0.03;
       }
-      if(b.name.includes('Head_Bone_ModuleA')) { 
+      if(b.name.includes('Head_Bone')) { 
         b.rotation.y = Math.sin(t*0.35)*0.12; 
         b.rotation.x = -0.04 + Math.sin(t*0.28)*0.03; 
       }
-      if(b.name.includes('Shoulder.L_ModuleB')) b.rotation.z = -0.04 + Math.sin(t*0.45)*0.025;
-      if(b.name.includes('Shoulder.R_ModuleB')) b.rotation.z = 0.04 - Math.sin(t*0.45)*0.025;
-      if(b.name.includes('Hand.L_ModuleE') || b.name.includes('Hand.R_ModuleE')){
+      if(b.name.includes('Shoulder.L')) b.rotation.z = -0.04 + Math.sin(t*0.45)*0.025;
+      if(b.name.includes('Shoulder.R')) b.rotation.z = 0.04 - Math.sin(t*0.45)*0.025;
+      if(b.name.includes('Hand.L') || b.name.includes('Hand.R')){
         b.rotation.x = Math.sin(t*0.6)*0.06;
       }
       if(b.name.includes('Finger')){
@@ -97,5 +106,6 @@ export const LAIA_ACTOR_BRAIN = {
 };
 
 export const LAIA_FINAL_ACTOR_BRAIN = LAIA_ACTOR_BRAIN;
+export const LAIA_V35_2_FINAL_FIX_RGB = LAIA_ACTOR_BRAIN;
 export const LAIA_V35_1_PUZZLE_GANADORA_TORSO_360 = LAIA_ACTOR_BRAIN;
 export const LAIA_V35_PUZZLE_GANADORA = LAIA_ACTOR_BRAIN;

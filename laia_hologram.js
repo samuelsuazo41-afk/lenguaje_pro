@@ -127,4 +127,4 @@ export function buildV35_FROM_SCRATCH(group) {
 
 export const buildV35_1_FROM_SCRATCH = buildV35_FROM_SCRATCH;
 export const buildV34_FROM_SCRATCH = buildV35_FROM_SCRATCH;
-export const buildV32_NEW_TEMPLATE = buildV35_FROM_SCRATCH;
+export const buildV32_NEW_TEMPLATE = buildV35_FROM_SCRATCH; 

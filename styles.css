@@ -1,4 +1,4 @@
-/* styles.css - V35.2 FINAL - FIX ROJO VERDE AZUL - PIERNAS FINAS NATURALES - COSTURA PERFECTA */
+/* styles.css - V35.3 BALANCE FINAL - CINTURA 0.28 + PIERNAS 0.065 FINAS - COSTURA PERFECTA */
 
 :root{
   --bg:#020208;
@@ -84,35 +84,32 @@ header{
 .f.active{background:var(--holo-bright);color:#000;font-weight:800;border-color:var(--holo-bright)}
 input,select,button{outline:none}
 
-/* V35.2 FIX GANADOR - TUS 3 COLORES */
+/* V35.3 BALANCE FINAL - FIX ROJO CINTURA + AZUL PIERNAS */
 .laia-module{
-  /* ROJO FIX: antes 0.1225 muy gorda vs waist 0.20 - ahora 0.088 fina costura perfecta */
-  --hip-offset:0.095; /* -0.095/+0.095 sin escalón */
-  --hip-radius:0.088; /* FIX ROJO: antes 0.1225 -> ahora 0.088 proporcional waist */
-  --waist:0.20; /* cintura ganadora */
+  /* ROJO FIX: cintura 0.20 hilo muy estrecha -> 0.28 más ancha encaje perfecto */
+  --hip-offset:0.12; /* FIX GAP: antes 0.095 -> 0.12 cierra separación torso/piernas */
+  --hip-radius:0.065; /* AZUL FIX: antes 0.088 -> 0.065 mucho más fina proporcional */
+  --waist:0.28; /* ROJO: antes 0.20 -> 0.28 menos pinch */
   --neck:0.065;
-  --torso-radius:0.22; /* torso 360° cerrado */
+  --torso-radius:0.24;
   --torso-depth:0.60;
   --torso-mode:360-closed;
-  /* VERDE FIX: quitado zScale*=0.25 pliegue lateral */
-  --leg-zscale:0.58; /* constante sin aplaste */
-  /* AZUL FIX: curva suave natural */
-  --leg-thigh:0.088; /* muslo */
-  --leg-knee:0.070; /* rodilla */
-  --leg-calf:0.048; /* pantorrilla fina */
-  --leg-curve: smooth-conical; /* antes step brusco, ahora smooth */
+  --leg-zscale:0.58;
+  --leg-thigh:0.065;
+  --leg-knee:0.053;
+  --leg-calf:0.035;
+  --leg-curve: smooth-conical-balance;
 }
 
 .laia-torso{
-  /* V35.2: cilindro elíptico 360° cerrado - cos(ang)*rW + sin(ang)*rD */
   transform-style: preserve-3d;
 }
 
 .laia-legs{
-  /* V35.2 DOCUMENTACION FIX */
-  /* ROJO: radius 0.1225 -> 0.088 costura: 0.095+0.088=0.183 encaja con waist 0.20 */
-  /* VERDE: zScale constante 0.58, sin if cos>0.6 zScale*=0.25 que creaba pliegue vertical */
-  /* AZUL: radius curva suave 0.088 -> 0.070 -> 0.048 sin salto 0.1225->0.0925 que creaba pliegue horizontal rodilla */
+  /* V35.3 BALANCE */
+  /* ROJO: waist 0.20->0.28 cintura menos estrecha, cadera bottom 0.20+0.62 -> 0.28+0.72 baja directo sin gap */
+  /* AZUL: radius 0.088->0.065 fina + offset 0.095->0.12 cierra gap lateral que se veía en capturas laterales */
+  /* Costura: 0.12+0.065=0.185 encaja perfecto con torso bottom aprox 0.20 */
 }
 
 @media(max-width:768px){

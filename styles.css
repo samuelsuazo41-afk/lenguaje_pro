@@ -1,4 +1,4 @@
-/* styles.css - V35.1 PUZZLE GANADORA - TORSO FULL 360° CERRADO COMO PIERNAS/BRAZOS - 0.095 SIN ESCALON SIN BLOQUE RAYADO */
+/* styles.css - V35.2 FINAL - FIX ROJO VERDE AZUL - PIERNAS FINAS NATURALES - COSTURA PERFECTA */
 
 :root{
   --bg:#020208;
@@ -25,7 +25,6 @@ header{
   padding:0 14px;position:fixed;top:0;left:0;right:0;z-index:1000
 }
 
-/* LAIA HOLOGRAM - V35.1 - TORSO FULL 360° CERRADO - FIX GANADOR - ANTES SOLO FRONTAL */
 #laia-hologram{
   position:fixed;top:52px;left:0;width:100vw;height:calc(100vh - 52px);
   z-index:999;display:flex;align-items:center;justify-content:center;
@@ -42,7 +41,6 @@ header{
   padding:5px 12px;border-radius:10px;font-weight:900;letter-spacing:0.5px
 }
 
-/* LAYOUT PUZZLE */
 .h-wrapper{
   margin-top:52px;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;
   width:100vw;height:calc(100vh - 52px);position:relative;z-index:10;scrollbar-width:none
@@ -86,26 +84,37 @@ header{
 .f.active{background:var(--holo-bright);color:#000;font-weight:800;border-color:var(--holo-bright)}
 input,select,button{outline:none}
 
-/* V35.1 FIX GANADOR - TORSO CILINDRO 360° CERRADO - ANTES PLANO FRONTAL */
+/* V35.2 FIX GANADOR - TUS 3 COLORES */
 .laia-module{
+  /* ROJO FIX: antes 0.1225 muy gorda vs waist 0.20 - ahora 0.088 fina costura perfecta */
   --hip-offset:0.095; /* -0.095/+0.095 sin escalón */
-  --hip-radius:0.1225; /* circular match ganador */
+  --hip-radius:0.088; /* FIX ROJO: antes 0.1225 -> ahora 0.088 proporcional waist */
   --waist:0.20; /* cintura ganadora */
-  --neck:0.065; /* cuello fijo */
-  --torso-radius:0.22; /* torso lateral - ahora 360° cerrado como piernas */
-  --torso-depth:0.58; /* profundidad pecho-espalda - factor elíptico */
-  --torso-mode:360-closed; /* ANTES: frontal-only - AHORA: 360-closed cylinder */
+  --neck:0.065;
+  --torso-radius:0.22; /* torso 360° cerrado */
+  --torso-depth:0.60;
+  --torso-mode:360-closed;
+  /* VERDE FIX: quitado zScale*=0.25 pliegue lateral */
+  --leg-zscale:0.58; /* constante sin aplaste */
+  /* AZUL FIX: curva suave natural */
+  --leg-thigh:0.088; /* muslo */
+  --leg-knee:0.070; /* rodilla */
+  --leg-calf:0.048; /* pantorrilla fina */
+  --leg-curve: smooth-conical; /* antes step brusco, ahora smooth */
 }
 
-/* TORSO 360° - DOCUMENTACION DEL FIX */
 .laia-torso{
-  /* ANTES V35.0: x = fx * rW * 2.08 -> plano frontal solo malla frontal */
-  /* AHORA V35.1: x = cos(ang)*rW, z = sin(ang)*rD -> cilindro elíptico 360° cerrado */
-  /* Igual que piernas y brazos que usan ang = (u-0.5)*2PI */
+  /* V35.2: cilindro elíptico 360° cerrado - cos(ang)*rW + sin(ang)*rD */
   transform-style: preserve-3d;
 }
 
-/* Responsive */
+.laia-legs{
+  /* V35.2 DOCUMENTACION FIX */
+  /* ROJO: radius 0.1225 -> 0.088 costura: 0.095+0.088=0.183 encaja con waist 0.20 */
+  /* VERDE: zScale constante 0.58, sin if cos>0.6 zScale*=0.25 que creaba pliegue vertical */
+  /* AZUL: radius curva suave 0.088 -> 0.070 -> 0.048 sin salto 0.1225->0.0925 que creaba pliegue horizontal rodilla */
+}
+
 @media(max-width:768px){
   #page1{flex-direction:column}
   #page1 aside{width:100%;min-width:100%;max-height:42vh}

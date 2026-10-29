@@ -1,4 +1,4 @@
-/* styles.css - V35.3 BALANCE FINAL - CINTURA 0.28 + PIERNAS 0.065 FINAS - COSTURA PERFECTA */
+/* styles.css - V35.4 SOLO PIERNAS - CINTURA 0.28 INTACTA NO TOCAR - PIERNAS JUNTAS 0.095 + ENGROSADA 0.092 */
 
 :root{
   --bg:#020208;
@@ -84,21 +84,25 @@ header{
 .f.active{background:var(--holo-bright);color:#000;font-weight:800;border-color:var(--holo-bright)}
 input,select,button{outline:none}
 
-/* V35.3 BALANCE FINAL - FIX ROJO CINTURA + AZUL PIERNAS */
+/* V35.4 SOLO PIERNAS - CINTURA 0.28 INTACTA */
 .laia-module{
-  /* ROJO FIX: cintura 0.20 hilo muy estrecha -> 0.28 más ancha encaje perfecto */
-  --hip-offset:0.12; /* FIX GAP: antes 0.095 -> 0.12 cierra separación torso/piernas */
-  --hip-radius:0.065; /* AZUL FIX: antes 0.088 -> 0.065 mucho más fina proporcional */
-  --waist:0.28; /* ROJO: antes 0.20 -> 0.28 menos pinch */
-  --neck:0.065;
+  /* CINTURA INTACTA NO TOCAR */
+  --waist:0.28;
   --torso-radius:0.24;
   --torso-depth:0.60;
   --torso-mode:360-closed;
-  --leg-zscale:0.58;
-  --leg-thigh:0.065;
-  --leg-knee:0.053;
-  --leg-calf:0.035;
-  --leg-curve: smooth-conical-balance;
+  --neck:0.065;
+
+  /* PIERNAS - FIX QUE PEDISTE */
+  --hip-offset:0.095; /* ANTES 0.12 -> 0.095 juntas más adentro lateral y posterior calza con círculo azul cintura */
+  --hip-radius:0.092; /* ANTES 0.065 -> 0.092 engrosada en costura calza grosor cintura */
+  --hip-radius-mid:0.073; /* muslo medio */
+  --leg-thigh:0.092; /* costura gruesa */
+  --leg-thigh-mid:0.073; /* ángulo natural */
+  --leg-knee:0.055; /* rodilla */
+  --leg-calf:0.035; /* pantorrilla */
+  --leg-zscale:0.68; /* ANTES 0.58 -> 0.68 más grueso posterior para calzar con cintura */
+  --leg-curve: organic-thigh-angle;
 }
 
 .laia-torso{
@@ -106,10 +110,10 @@ input,select,button{outline:none}
 }
 
 .laia-legs{
-  /* V35.3 BALANCE */
-  /* ROJO: waist 0.20->0.28 cintura menos estrecha, cadera bottom 0.20+0.62 -> 0.28+0.72 baja directo sin gap */
-  /* AZUL: radius 0.088->0.065 fina + offset 0.095->0.12 cierra gap lateral que se veía en capturas laterales */
-  /* Costura: 0.12+0.065=0.185 encaja perfecto con torso bottom aprox 0.20 */
+  /* V35.4 DOCUMENTACION */
+  /* CINTURA: 0.28 INTACTA NO TOCADA */
+  /* PIERNAS: offset 0.12->0.095 juntas + radius 0.065->0.092 engrosada costura calza grosor cintura */
+  /* ÁNGULO: 0.092 -> 0.073 -> 0.055 -> 0.035 muslo ancho en pelvis que disminuye hasta rodilla orgánico uniforme */
 }
 
 @media(max-width:768px){

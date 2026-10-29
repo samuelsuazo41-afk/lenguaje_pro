@@ -1,6 +1,5 @@
-// laia_hologram.js - V35.3 BALANCE FINAL - FIX ROJO CINTURA + AZUL PIERNAS
-// ROJO: cintura 0.20 muy estrecha hilo -> ahora 0.28 más ancha encaje perfecto
-// AZUL: pierna 0.088 aún gruesa -> ahora 0.065 fina natural + offset 0.12 cierra gap
+// laia_hologram.js - V35.4 SOLO PIERNAS - CINTURA INTACTA 0.28 NO TOCAR
+// FIX: piernas juntas 0.12->0.095 + engrosadas costura 0.065->0.092 calza grosor cintura + ángulo natural 0.092->0.073->0.055
 import * as THREE from 'three';
 
 export function buildV35_FROM_SCRATCH(group) {
@@ -18,7 +17,7 @@ export function buildV35_FROM_SCRATCH(group) {
     }
   };
 
-  // ========== MODULE A - HEAD+NECK 28x36 360° ==========
+  // MODULE A - HEAD+NECK 28x36 360°
   add(28,36,(u,fy)=>{
     const ang=(u-0.5)*Math.PI*2;
     const y=0.88+fy*0.24;
@@ -30,15 +29,15 @@ export function buildV35_FROM_SCRATCH(group) {
     return {x:Math.cos(ang)*0.065, y:0.73+fy*0.14, z:Math.sin(ang)*0.065};
   });
 
-  // ========== MODULE B - TORSO - V35.3 FIX ROJO CINTURA 0.28 ==========
+  // MODULE B - TORSO - V35.3 INTACTO 0.28 NO TOCAR
   add(52,48,(u,fy)=>{
     const ang=(u-0.5)*Math.PI*2;
     let py=0.73 - fy*0.60;
     let wc;
     if(fy<0.20) wc=0.82;
-    else if(fy<0.42) wc=0.82 - (fy-0.20)*1.45; // cae menos brusco
-    else if(fy<0.68) wc=0.50 - Math.pow((fy-0.42)/0.26,1.3)*0.22; // 0.50 -> 0.28 ROJO FIX antes 0.20 hilo
-    else wc=0.28 + (fy-0.68)*0.72; // 0.28 -> 0.52 cadera baja directo a pierna sin gap
+    else if(fy<0.42) wc=0.82 - (fy-0.20)*1.45;
+    else if(fy<0.68) wc=0.50 - Math.pow((fy-0.42)/0.26,1.3)*0.22;
+    else wc=0.28 + (fy-0.68)*0.72; // CINTURA INTACTA 0.28
     const rW=0.24*(wc/0.82);
     const rD=rW*0.60;
     return {x: Math.cos(ang)*rW, y: py, z: Math.sin(ang)*rD};
@@ -52,7 +51,7 @@ export function buildV35_FROM_SCRATCH(group) {
   add(14,18, breast(-1));
   add(14,18, breast(1));
 
-  // ========== BRAZOS FULL 360° - T-POSE 0.48m ==========
+  // BRAZOS FULL 360° - T-POSE 0.48m
   const arm360=(sign)=>(u,fy)=>{
     const ang=(u-0.5)*Math.PI*2;
     const rad=0.038 - fy*0.012;
@@ -62,41 +61,44 @@ export function buildV35_FROM_SCRATCH(group) {
   add(22,28, arm360(-1));
   add(22,28, arm360(1));
 
-  // ========== MODULE C - LOWER BODY - V35.3 FIX AZUL PIERNA FINA 0.065 ==========
+  // MODULE C - LOWER BODY - V35.4 SOLO PIERNAS FIX QUE PEDISTE
   const lowerBody=(sign)=>(u,fy)=>{
     const ang=(u-0.5)*Math.PI*2;
-    const cx=sign*0.12; // FIX GAP: 0.095 -> 0.12 cierra separación torso/piernas que se ve en tu captura
+    const cx=sign*0.095; // JUNTAS: 0.12 -> 0.095 más adentro lateral y posterior calza con azul
     let py, radius;
 
-    // AZUL FIX: 0.088 -> 0.065 mucho más fina proporcional a cintura nueva 0.28
-    if(fy<0.15){
-      py=0.13 - fy*0.80;
-      radius=0.065;
-    } else if(fy<0.55){
-      const t=(fy-0.15)/0.40;
-      py=0.01 - t*0.38;
-      radius=0.065 - t*0.012; // 0.065 -> 0.053 muslo fino
+    if(fy<0.10){
+      py=0.13 - fy*0.70;
+      radius=0.092; // ENGROSADA: 0.065 -> 0.092 calza grosor cintura
+    } else if(fy<0.28){
+      const t=(fy-0.10)/0.18;
+      py=0.06 - t*0.10;
+      radius=0.092 - t*0.019; // 0.092 -> 0.073 ángulo natural cadera
+    } else if(fy<0.58){
+      const t=(fy-0.28)/0.30;
+      py=-0.04 - t*0.33;
+      radius=0.073 - t*0.018; // 0.073 -> 0.055 hasta rodilla
     } else {
-      const t=(fy-0.55)/0.45;
+      const t=(fy-0.58)/0.42;
       py=-0.37 - t*0.47;
-      radius=0.053 - t*0.018; // 0.053 -> 0.035 pantorrilla muy fina
+      radius=0.055 - t*0.020; // 0.055 -> 0.035 pantorrilla
     }
 
-    const zScale=0.58; // sin pliegue lateral
+    const zScale=0.68; // MÁS GRUESO POSTERIOR 0.58->0.68 calza grosor cintura
     return {x: cx + Math.cos(ang)*radius, y: py, z: Math.sin(ang)*radius*zScale};
   };
   add(40,32, lowerBody(-1));
   add(40,32, lowerBody(1));
 
-  // PIES - siguen pierna 0.12
+  // PIES - siguen nueva posición 0.095
   const foot=(sign)=>(u,fy)=>{
     const ang=(u-0.5)*Math.PI*2;
-    return {x:sign*0.12+Math.cos(ang)*0.028, y:-0.84 - fy*0.05, z:0.04+fy*0.08+Math.sin(ang)*0.010};
+    return {x:sign*0.095+Math.cos(ang)*0.028, y:-0.84 - fy*0.05, z:0.04+fy*0.08+Math.sin(ang)*0.010};
   };
   add(10,16, foot(-1));
   add(10,16, foot(1));
 
-  // ========== MODULE E - HANDS 5 DEDOS ==========
+  // MODULE E - HANDS 5 DEDOS
   const hand=(sign)=>(u,fy)=>{
     if(fy<0.38){
       const ang=(u-0.5)*Math.PI*2;
@@ -111,7 +113,6 @@ export function buildV35_FROM_SCRATCH(group) {
   add(12,20, hand(-1));
   add(12,20, hand(1));
 
-  // FINAL COMPILADO
   const geo=new THREE.BufferGeometry();
   geo.setAttribute('position', new THREE.Float32BufferAttribute(pos,3));
   geo.setIndex(idx);
@@ -119,10 +120,11 @@ export function buildV35_FROM_SCRATCH(group) {
   const wire=new THREE.WireframeGeometry(geo);
   const mat=new THREE.LineBasicMaterial({color:0x00e5ff, transparent:true, opacity:0.40, depthWrite:false});
   group.add(new THREE.LineSegments(wire, mat));
-  console.log("LAIA V35.3 BALANCE - ROJO cintura 0.28 menos estrecha - AZUL pierna 0.065 fina - GAP cerrado 0.12");
+  console.log("LAIA V35.4 - CINTURA 0.28 INTACTA + PIERNAS JUNTAS 0.095 + ENGROSADA 0.092 ANGULO NATURAL");
   return geo;
 }
 
+export const buildV35_4_FROM_SCRATCH = buildV35_FROM_SCRATCH;
 export const buildV35_3_FROM_SCRATCH = buildV35_FROM_SCRATCH;
 export const buildV35_1_FROM_SCRATCH = buildV35_FROM_SCRATCH;
 export const buildV35_2_FROM_SCRATCH = buildV35_FROM_SCRATCH;

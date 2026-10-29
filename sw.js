@@ -1,7 +1,7 @@
 // sw.js - V34.3 PUZZLE FINAL - X-CLAMP 0.1976 - CIRCULAR MATCH 0.1225 - SIN ESCALON
 // SPECS: ANCHURA 0.48m - CINTURA 0.12 - CADERA 0.1225 - X-CLAMP 0.1976 - CABEZA 28x36 depth 0.24 - TRAPEZIUS 0.32 - CUELLO 0.12 - DIAMOND 0.0 - PUZZLE PERFECTO
 
-const CACHE_NAME = 'laia-v34.8-puzzle-final-xclamp-0.1976-radius-0.1225-cx-0.095-diamond-0.0-2-piernas-separadas-sin-escalon-blueprint-validated-v1';
+const CACHE_NAME = 'laia-v34.9-puzzle-final-xclamp-0.1976-radius-0.1225-cx-0.095-diamond-0.0-2-piernas-separadas-sin-escalon-blueprint-validated-v1';
 const ASSETS = [
   './',
   './index.html',

@@ -1,4 +1,4 @@
-/* styles.css - V35.0 PUZZLE GANADORA - FULL 360° CON MANOS - 0.095 SIN ESCALON - SIN BLOQUE RAYADO */
+/* styles.css - V35.1 PUZZLE GANADORA - TORSO FULL 360° CERRADO COMO PIERNAS/BRAZOS - 0.095 SIN ESCALON SIN BLOQUE RAYADO */
 
 :root{
   --bg:#020208;
@@ -25,7 +25,7 @@ header{
   padding:0 14px;position:fixed;top:0;left:0;right:0;z-index:1000
 }
 
-/* LAIA HOLOGRAM - V35.0 - FULL 360° - A=HEAD+NECK B=TORSO+ARMS C=WAIST-TO-FEET E=HANDS */
+/* LAIA HOLOGRAM - V35.1 - TORSO FULL 360° CERRADO - FIX GANADOR - ANTES SOLO FRONTAL */
 #laia-hologram{
   position:fixed;top:52px;left:0;width:100vw;height:calc(100vh - 52px);
   z-index:999;display:flex;align-items:center;justify-content:center;
@@ -86,17 +86,28 @@ header{
 .f.active{background:var(--holo-bright);color:#000;font-weight:800;border-color:var(--holo-bright)}
 input,select,button{outline:none}
 
-/* FIX V35 - 0.095 SIN ESCALON SIN BLOQUE RAYADO - CIRCULAR MATCH 0.1225 */
+/* V35.1 FIX GANADOR - TORSO CILINDRO 360° CERRADO - ANTES PLANO FRONTAL */
 .laia-module{
-  --hip-offset:0.095;
-  --hip-radius:0.1225;
-  --waist:0.20;
-  --neck:0.065;
+  --hip-offset:0.095; /* -0.095/+0.095 sin escalón */
+  --hip-radius:0.1225; /* circular match ganador */
+  --waist:0.20; /* cintura ganadora */
+  --neck:0.065; /* cuello fijo */
+  --torso-radius:0.22; /* torso lateral - ahora 360° cerrado como piernas */
+  --torso-depth:0.58; /* profundidad pecho-espalda - factor elíptico */
+  --torso-mode:360-closed; /* ANTES: frontal-only - AHORA: 360-closed cylinder */
+}
+
+/* TORSO 360° - DOCUMENTACION DEL FIX */
+.laia-torso{
+  /* ANTES V35.0: x = fx * rW * 2.08 -> plano frontal solo malla frontal */
+  /* AHORA V35.1: x = cos(ang)*rW, z = sin(ang)*rD -> cilindro elíptico 360° cerrado */
+  /* Igual que piernas y brazos que usan ang = (u-0.5)*2PI */
+  transform-style: preserve-3d;
 }
 
 /* Responsive */
 @media(max-width:768px){
   #page1{flex-direction:column}
   #page1 aside{width:100%;min-width:100%;max-height:42vh}
-  #laia-hologram{opacity:0.42}
+  #laia-hologram{opacity:0.55}
 }

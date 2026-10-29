@@ -1,7 +1,6 @@
-// laia_hologram.js - V35.2 FINAL - FIX ROJO VERDE AZUL + TORSO FULL 360° CERRADO
-// ROJO: pierna 0.1225 muy gorda vs cintura 0.20 -> ahora 0.088 fino costura perfecta 0.20
-// VERDE: pliegue lateral por zScale*=0.25 -> quitado, cilindro completo natural
-// AZUL: pliegue rodilla por salto brusco radius -> ahora curva suave 0.088->0.070->0.048
+// laia_hologram.js - V35.3 BALANCE FINAL - FIX ROJO CINTURA + AZUL PIERNAS
+// ROJO: cintura 0.20 muy estrecha hilo -> ahora 0.28 más ancha encaje perfecto
+// AZUL: pierna 0.088 aún gruesa -> ahora 0.065 fina natural + offset 0.12 cierra gap
 import * as THREE from 'three';
 
 export function buildV35_FROM_SCRATCH(group) {
@@ -31,16 +30,16 @@ export function buildV35_FROM_SCRATCH(group) {
     return {x:Math.cos(ang)*0.065, y:0.73+fy*0.14, z:Math.sin(ang)*0.065};
   });
 
-  // ========== MODULE B - TORSO FULL 360° CERRADO - SIN PINCH ==========
+  // ========== MODULE B - TORSO - V35.3 FIX ROJO CINTURA 0.28 ==========
   add(52,48,(u,fy)=>{
     const ang=(u-0.5)*Math.PI*2;
     let py=0.73 - fy*0.60;
     let wc;
     if(fy<0.20) wc=0.82;
-    else if(fy<0.42) wc=0.82 - (fy-0.20)*1.68;
-    else if(fy<0.68) wc=0.40 - Math.pow((fy-0.42)/0.26,1.4)*0.20; // curva suave a 0.20 sin hilo
-    else wc=0.20 + (fy-0.68)*0.62;
-    const rW=0.22*(wc/0.82);
+    else if(fy<0.42) wc=0.82 - (fy-0.20)*1.45; // cae menos brusco
+    else if(fy<0.68) wc=0.50 - Math.pow((fy-0.42)/0.26,1.3)*0.22; // 0.50 -> 0.28 ROJO FIX antes 0.20 hilo
+    else wc=0.28 + (fy-0.68)*0.72; // 0.28 -> 0.52 cadera baja directo a pierna sin gap
+    const rW=0.24*(wc/0.82);
     const rD=rW*0.60;
     return {x: Math.cos(ang)*rW, y: py, z: Math.sin(ang)*rD};
   });
@@ -63,41 +62,36 @@ export function buildV35_FROM_SCRATCH(group) {
   add(22,28, arm360(-1));
   add(22,28, arm360(1));
 
-  // ========== MODULE C - LOWER BODY - V35.2 FIX TUS 3 COLORES ==========
+  // ========== MODULE C - LOWER BODY - V35.3 FIX AZUL PIERNA FINA 0.065 ==========
   const lowerBody=(sign)=>(u,fy)=>{
     const ang=(u-0.5)*Math.PI*2;
-    const cx=sign*0.095;
+    const cx=sign*0.12; // FIX GAP: 0.095 -> 0.12 cierra separación torso/piernas que se ve en tu captura
     let py, radius;
 
-    // ROJO FIX: 0.1225 era 61% más ancho que cintura 0.20, ahora 0.088 fino proporcional
-    // Costura: 0.095 + 0.088 = 0.183 encaja perfecto con waist 0.20
+    // AZUL FIX: 0.088 -> 0.065 mucho más fina proporcional a cintura nueva 0.28
     if(fy<0.15){
       py=0.13 - fy*0.80;
-      radius=0.088; // antes 0.1225 -> ahora fino
+      radius=0.065;
     } else if(fy<0.55){
-      // AZUL FIX: antes salto brusco 0.1225->0.0925 creaba pliegue rodilla
       const t=(fy-0.15)/0.40;
       py=0.01 - t*0.38;
-      radius=0.088 - t*0.018; // 0.088 -> 0.070 suave sin escalón
+      radius=0.065 - t*0.012; // 0.065 -> 0.053 muslo fino
     } else {
       const t=(fy-0.55)/0.45;
       py=-0.37 - t*0.47;
-      radius=0.070 - t*0.022; // 0.070 -> 0.048 pantorrilla fina natural
+      radius=0.053 - t*0.018; // 0.053 -> 0.035 pantorrilla muy fina
     }
 
-    // VERDE FIX: quitado if(cos>0.6) zScale*=0.25 que hacía pliegue vertical
-    // Ahora cilindro completo 360° natural
-    const zScale=0.58; // constante, sin aplaste
-    
+    const zScale=0.58; // sin pliegue lateral
     return {x: cx + Math.cos(ang)*radius, y: py, z: Math.sin(ang)*radius*zScale};
   };
   add(40,32, lowerBody(-1));
   add(40,32, lowerBody(1));
 
-  // PIES
+  // PIES - siguen pierna 0.12
   const foot=(sign)=>(u,fy)=>{
     const ang=(u-0.5)*Math.PI*2;
-    return {x:sign*0.095+Math.cos(ang)*0.032, y:-0.84 - fy*0.05, z:0.04+fy*0.08+Math.sin(ang)*0.012};
+    return {x:sign*0.12+Math.cos(ang)*0.028, y:-0.84 - fy*0.05, z:0.04+fy*0.08+Math.sin(ang)*0.010};
   };
   add(10,16, foot(-1));
   add(10,16, foot(1));
@@ -125,10 +119,11 @@ export function buildV35_FROM_SCRATCH(group) {
   const wire=new THREE.WireframeGeometry(geo);
   const mat=new THREE.LineBasicMaterial({color:0x00e5ff, transparent:true, opacity:0.40, depthWrite:false});
   group.add(new THREE.LineSegments(wire, mat));
-  console.log("LAIA V35.2 FINAL - ROJO pierna 0.088 costura perfecta waist 0.20 - VERDE sin pliegue lateral - AZUL rodilla natural");
+  console.log("LAIA V35.3 BALANCE - ROJO cintura 0.28 menos estrecha - AZUL pierna 0.065 fina - GAP cerrado 0.12");
   return geo;
 }
 
+export const buildV35_3_FROM_SCRATCH = buildV35_FROM_SCRATCH;
 export const buildV35_1_FROM_SCRATCH = buildV35_FROM_SCRATCH;
 export const buildV35_2_FROM_SCRATCH = buildV35_FROM_SCRATCH;
 export const buildV34_FROM_SCRATCH = buildV35_FROM_SCRATCH;

@@ -1,4 +1,4 @@
-/* styles.css - V35.4 SOLO PIERNAS - CINTURA 0.28 INTACTA NO TOCAR - PIERNAS JUNTAS 0.095 + ENGROSADA 0.092 */
+/* styles.css - V35.5 BLOCK THEORY - TECNICA VIDEO HEAD 1/3 + CINTURA 0.28 INTACTA */
 
 :root{
   --bg:#020208;
@@ -84,36 +84,56 @@ header{
 .f.active{background:var(--holo-bright);color:#000;font-weight:800;border-color:var(--holo-bright)}
 input,select,button{outline:none}
 
-/* V35.4 SOLO PIERNAS - CINTURA 0.28 INTACTA */
+/* V35.5 BLOCK THEORY - TECNICA VIDEO - CINTURA 0.28 INTACTA */
 .laia-module{
-  /* CINTURA INTACTA NO TOCAR */
+  /* === CINTURA INTACTA NO TOCAR - V35.4 base === */
   --waist:0.28;
   --torso-radius:0.24;
   --torso-depth:0.60;
-  --torso-mode:360-closed;
+  --torso-mode:360-closed-block;
   --neck:0.065;
 
-  /* PIERNAS - FIX QUE PEDISTE */
-  --hip-offset:0.095; /* ANTES 0.12 -> 0.095 juntas más adentro lateral y posterior calza con círculo azul cintura */
-  --hip-radius:0.092; /* ANTES 0.065 -> 0.092 engrosada en costura calza grosor cintura */
-  --hip-radius-mid:0.073; /* muslo medio */
-  --leg-thigh:0.092; /* costura gruesa */
-  --leg-thigh-mid:0.073; /* ángulo natural */
-  --leg-knee:0.055; /* rodilla */
-  --leg-calf:0.035; /* pantorrilla */
-  --leg-zscale:0.68; /* ANTES 0.58 -> 0.68 más grueso posterior para calzar con cintura */
-  --leg-curve: organic-thigh-angle;
+  /* === HEAD 1/3 TECHNIQUE COMO VIDEO === */
+  --head-top:1/3; /* pelo */
+  --head-mid:1/3; /* frente */
+  --head-bottom:1/3; /* mandíbula */
+  --head-side:1/2; /* lateral volumen */
+
+  /* === TORSO BLOCK 1/3 + 1/2 === */
+  --torso-upper:1/3; /* pecho 0.82 */
+  --torso-mid:1/3; /* abdomen 0.50->0.28 */
+  --torso-lower:1/2; /* cintura 0.28 intacta */
+
+  /* === PIERNAS BLOCK 1/2 - FIX EMPOTRADO === */
+  --hip-offset:0.088; /* V35.4 0.095 -> 0.088 más juntas empotradas técnica block sella gap */
+  --hip-radius:0.095; /* V35.4 0.092 -> 0.095 costura más gruesa calza grosor cintura 0.28 */
+  --hip-radius-mid:0.073; /* 1/2 muslo */
+  --leg-thigh:0.095; /* costura gruesa empotrada */
+  --leg-thigh-mid:0.073; /* 1/2 muslo ángulo natural */
+  --leg-knee:0.055; /* 1/2 rodilla */
+  --leg-calf:0.035; /* 1/2 pantorrilla */
+  --leg-zscale:0.72; /* V35.4 0.68 -> 0.72 más grueso posterior calza cintura */
+  --leg-curve:block-planar-1/2-empotrado;
+  --leg-py:0.16; /* arranca 3cm dentro torso sella gap lateral */
 }
 
 .laia-torso{
   transform-style: preserve-3d;
+  /* Block theory: 3 planos 1/3 */
+  --block-division: 1/3 1/3 1/2;
 }
 
 .laia-legs{
-  /* V35.4 DOCUMENTACION */
-  /* CINTURA: 0.28 INTACTA NO TOCADA */
-  /* PIERNAS: offset 0.12->0.095 juntas + radius 0.065->0.092 engrosada costura calza grosor cintura */
-  /* ÁNGULO: 0.092 -> 0.073 -> 0.055 -> 0.035 muslo ancho en pelvis que disminuye hasta rodilla orgánico uniforme */
+  /* V35.5 BLOCK DOCUMENTACION */
+  /* CINTURA: 0.28 INTACTA NO TOCADA - base V35.4 */
+  /* TECNICA VIDEO: Head 1/3 + Body 1/2 divisiones planares limpias */
+  /* PIERNAS: offset 0.095->0.088 juntas empotradas 0.16 dentro torso + radius 0.092->0.095 grosor cintura + zScale 0.68->0.72 */
+  /* ÁNGULO BLOCK: 0.095 (costura) -> 0.073 (1/2 muslo) -> 0.055 (1/2 rodilla) -> 0.035 (1/2 pantorrilla) orgánico uniforme sin corte */
+}
+
+.laia-head{
+  /* Head theory 1/3 como video - mantiene volumen 360° */
+  --head-block: planar-1/3;
 }
 
 @media(max-width:768px){

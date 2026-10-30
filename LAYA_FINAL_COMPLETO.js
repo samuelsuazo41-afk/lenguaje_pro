@@ -1,6 +1,5 @@
-// LAYA_FINAL_COMPLETO.js - V35.0 PUZZLE GANADORA - FULL 360° CON MANOS - 2 PLANTILLAS GANADORAS
-// Plantilla 1: V30.74 T-POSE 4 vistas | Plantilla 2: MODULAR A-E con puzzle macho/hembra + manos
-// FIX: FULL 360° -0.095/+0.095 radius 0.1225 circular match - waist 0.20 - neck 0.065 - sin media malla - sin bloque rayado - sin pinch
+// LAYA_FINAL_COMPLETO.js - V35.5 BLOCK THEORY - HEAD 1/3 + CINTURA 0.28 INTACTA + PIERNAS BLOCK 0.088/0.095 EMPOTRADAS
+// BASE: V35.0 PUZZLE GANADORA + FIX: V35.4 0.28 intacta + V35.5 Block 1/3 1/2 empotrado sella gap - FULL 360° CON MANOS
 
 export const GRAMMAR_REAL = {
   PRON_PER_POSS: { id:"Pronouns Personal & Possessive", sig:"PRON_PER_POSS", formula:"I/me/my/mine/myself", example:"This is my book, not yours. I did it myself.", mistake:"I car -> MY car", level:"A1" },
@@ -42,51 +41,51 @@ export const GRAMMAR_REAL = {
 
 export const VOCAB_REAL = { survival50: ["money","save","spend","invest","earn","bank","debt","rich","poor","budget","salary"] };
 
-// V35.0 PUZZLE GANADORA - MARIONETTE - FULL 360° CON MANOS - PLANTILLAS GANADORAS
+// V35.5 BLOCK THEORY - MARIONETTE - HEAD 1/3 + CINTURA 0.28 INTACTA + PIERNAS BLOCK 0.088/0.095
 export const MARIONETTE_JOINTS = {
-  Head_Bone: { id: 'Head_Bone', independent: true, spec:'28x36 Full 360° Module A HEAD+NECK', rows:28, cols:36, neck:0.065, puzzle:'Module A MALE DOWN -> Module B FEMALE UP' },
-  Spine_02: { id: 'Spine_02', independent: true, waist:0.20, lumbar:'0.22-0.50', flat_gluteo:true, spine:'neutral alignment - waist 0.20 ganadora', puzzle:'Module B TORSO+ARMS' },
-  Shoulder_L: { id: 'Shoulder.L', independent: true, anchura:0.48, trapezius:0.32, tpose:'90° Full 360°', module:'B TORSO+ARMS ONE PIECE' }, 
-  Shoulder_R: { id: 'Shoulder.R', independent: true, anchura:0.48, trapezius:0.32, tpose:'90° Full 360°', module:'B TORSO+ARMS ONE PIECE' },
-  Elbow_L: { id: 'Elbow.L', independent: true, module:'D ARMS DETAIL Upper+Lower Puzzle', puzzle:'FEMALE ELBOW -> MALE WRIST' },
-  Elbow_R: { id: 'Elbow.R', independent: true, module:'D ARMS DETAIL Upper+Lower Puzzle', puzzle:'FEMALE ELBOW -> MALE WRIST' },
-  Hip_L: { id: 'Hip.L', independent: true, x:-0.095, y:-0.05, gap:0.19, diamond_closed:true, cadera:'0.1225', xclamp:0.1976, leg:'Module C WAIST-TO-FEET LEFT Full 360° -0.095 puzzle clean', puzzle:'MALE x2 UP -> Module B' }, 
-  Hip_R: { id: 'Hip.R', independent: true, x:0.095, y:-0.05, gap:0.19, diamond_closed:true, cadera:'0.1225', xclamp:0.1976, leg:'Module C WAIST-TO-FEET RIGHT Full 360° +0.095 puzzle clean', puzzle:'MALE x2 UP -> Module B' },
-  Knee_L: { id: 'Knee.L', independent: true, posture:'neutral stance', module:'C' }, 
-  Knee_R: { id: 'Knee.R', independent: true, posture:'neutral stance', module:'C' },
-  Calf_L: { id: 'Calf.L', independent: true, module:'C' }, Calf_R: { id: 'Calf.R', independent: true, module:'C' },
-  Foot_L: { id: 'Foot.L', independent: true, module:'C' }, Foot_R: { id: 'Foot.R', independent: true, module:'C' },
-  Hand_L: { id: 'Hand.L', independent: true, tpose:'90°', module:'E HANDS 5 FINGERS Full 360°', puzzle:'Module E FEMALE WRIST SOCKET -> Lower Arm MALE' }, 
-  Hand_R: { id: 'Hand.R', independent: true, tpose:'90°', module:'E HANDS 5 FINGERS Full 360°', puzzle:'Module E FEMALE WRIST SOCKET -> Lower Arm MALE' },
-  Finger_L_0: { id: 'Finger.L.0', independent: true, module:'E' }, Finger_L_1: { id: 'Finger.L.1', independent: true, module:'E' }, Finger_L_2: { id: 'Finger.L.2', independent: true, module:'E' }, Finger_L_3: { id: 'Finger.L.3', independent: true, module:'E' }, Finger_L_4: { id: 'Finger.L.4', independent: true, module:'E' },
-  Finger_R_0: { id: 'Finger.R.0', independent: true, module:'E' }, Finger_R_1: { id: 'Finger.R.1', independent: true, module:'E' }, Finger_R_2: { id: 'Finger.R.2', independent: true, module:'E' }, Finger_R_3: { id: 'Finger.R.3', independent: true, module:'E' }, Finger_R_4: { id: 'Finger.R.4', independent: true, module:'E' }
+  Head_Bone: { id: 'Head_Bone', independent: true, spec:'36x24 Block 1/3 Full 360° Module A HEAD+NECK', rows:36, cols:24, neck:0.065, puzzle:'Block 1/3: 0.128/0.118/0.108', technique:"Different Angles Head Theory 1/3 + 1/2" },
+  Spine_02: { id: 'Spine_02', independent: true, waist:0.28, lumbar:'0.22-0.50', flat_gluteo:true, spine:'neutral alignment - waist 0.28 INTACTA ganadora Block 1/3', puzzle:'Module B TORSO+ARMS BLOCK 1/3' },
+  Shoulder_L: { id: 'Shoulder.L', independent: true, anchura:0.48, trapezius:0.32, tpose:'90° Full 360° Block 1/2', module:'B TORSO+ARMS ONE PIECE BLOCK' }, 
+  Shoulder_R: { id: 'Shoulder.R', independent: true, anchura:0.48, trapezius:0.32, tpose:'90° Full 360° Block 1/2', module:'B TORSO+ARMS ONE PIECE BLOCK' },
+  Elbow_L: { id: 'Elbow.L', independent: true, module:'D ARMS DETAIL Block 1/2 Upper+Lower Puzzle', puzzle:'Block FEMALE ELBOW -> MALE WRIST' },
+  Elbow_R: { id: 'Elbow.R', independent: true, module:'D ARMS DETAIL Block 1/2 Upper+Lower Puzzle', puzzle:'Block FEMALE ELBOW -> MALE WRIST' },
+  Hip_L: { id: 'Hip.L', independent: true, x:-0.088, y:-0.02, py:0.16, gap:0.176, diamond_closed:true, cadera:'0.095', cadera_mid:'0.073', xclamp:0.1976, zScale:0.72, leg:'Module C BLOCK 1/2 WAIST-TO-FEET LEFT Full 360° -0.088 empotrada 0.16 dentro torso puzzle clean', puzzle:'Block MALE x2 UP -> Module B CINTURA 0.28 INTACTA - 0.088/0.095 engrosada', technique:"Block 1/2: 0.095->0.073->0.055->0.035" }, 
+  Hip_R: { id: 'Hip.R', independent: true, x:0.088, y:-0.02, py:0.16, gap:0.176, diamond_closed:true, cadera:'0.095', cadera_mid:'0.073', xclamp:0.1976, zScale:0.72, leg:'Module C BLOCK 1/2 WAIST-TO-FEET RIGHT Full 360° +0.088 empotrada puzzle clean', puzzle:'Block MALE x2 UP -> Module B CINTURA 0.28 INTACTA' },
+  Knee_L: { id: 'Knee.L', independent: true, posture:'neutral stance Block 1/2', radius:0.055, module:'C BLOCK 1/2' }, 
+  Knee_R: { id: 'Knee.R', independent: true, posture:'neutral stance Block 1/2', radius:0.055, module:'C BLOCK 1/2' },
+  Calf_L: { id: 'Calf.L', independent: true, radius:0.035, module:'C BLOCK 1/2' }, Calf_R: { id: 'Calf.R', independent: true, radius:0.035, module:'C BLOCK 1/2' },
+  Foot_L: { id: 'Foot.L', independent: true, offset:0.088, module:'C BLOCK' }, Foot_R: { id: 'Foot.R', independent: true, offset:0.088, module:'C BLOCK' },
+  Hand_L: { id: 'Hand.L', independent: true, tpose:'90° Block', module:'E HANDS 5 FINGERS Full 360° Block', puzzle:'Module E FEMALE WRIST SOCKET -> Lower Arm MALE Block' }, 
+  Hand_R: { id: 'Hand.R', independent: true, tpose:'90° Block', module:'E HANDS 5 FINGERS Full 360° Block', puzzle:'Module E FEMALE WRIST SOCKET -> Lower Arm MALE Block' },
+  Finger_L_0: { id: 'Finger.L.0', independent: true, module:'E BLOCK' }, Finger_L_1: { id: 'Finger.L.1', independent: true, module:'E BLOCK' }, Finger_L_2: { id: 'Finger.L.2', independent: true, module:'E BLOCK' }, Finger_L_3: { id: 'Finger.L.3', independent: true, module:'E BLOCK' }, Finger_L_4: { id: 'Finger.L.4', independent: true, module:'E BLOCK' },
+  Finger_R_0: { id: 'Finger.R.0', independent: true, module:'E BLOCK' }, Finger_R_1: { id: 'Finger.R.1', independent: true, module:'E BLOCK' }, Finger_R_2: { id: 'Finger.R.2', independent: true, module:'E BLOCK' }, Finger_R_3: { id: 'Finger.R.3', independent: true, module:'E BLOCK' }, Finger_R_4: { id: 'Finger.R.4', independent: true, module:'E BLOCK' }
 };
 
 export const INTENTION_MOTOR = {
-  FOUNDATION: { id: 'FOUNDATION', name: 'Cimiento', joints: { Head_Bone: [-5,10,0], Spine_02: -10 }, tts: 'Primero el cimiento - V35.0 PUZZLE GANADORA Full 360° con manos', sap_type: 'FOUNDATION', color: '#60a5fa' },
-  SCAFFOLDING: { id: 'SCAFFOLDING', name: 'Andamiaje', joints: { Shoulder_L: [0,0,0], Shoulder_R: [0,0,0] }, tts: 'Mira tete, esta pieza encaja - puzzle macho/hembra V35', sap_type: 'GRAMMAR', color: '#00d4ff' },
-  STRICT_ENGINEER: { id: 'STRICT_ENGINEER', name: 'Ingeniera Estricta', joints: { Shoulder_L: [0,0,0], Shoulder_R: [0,0,0] }, tts: 'Ojo tete, es HAS - V35 Full 360°', sap_type: 'ERR', color: '#f59e0b' },
-  FLOW_OBSERVER: { id: 'FLOW_OBSERVER', name: 'Observadora Flow', joints: { Spine_02: 0 }, tts: 'Te observo, vas en flow V35', sap_type: 'FLOW', color: '#8b5cf6' },
-  ELEVATION: { id: 'ELEVATION', name: 'Elevación', joints: { Shoulder_L: [0,10,0], Shoulder_R: [0,10,0], Spine_02: 5 }, tts: 'BOOM! Lo clavaste! V35.0 PUZZLE GANADORA sin bloque rayado con manos', sap_type: 'XP', color: '#22c55e' },
-  TRANSMISSION: { id: 'TRANSMISSION', name: 'Transmisión', joints: { Shoulder_L: [0,0,0], Shoulder_R: [0,0,0] }, tts: 'Esto ya es cuerpo completo V35 - A+B+C+E', sap_type: 'TRANSMIT', color: '#00d4ff' }
+  FOUNDATION: { id: 'FOUNDATION', name: 'Cimiento', joints: { Head_Bone: [-5,10,0], Spine_02: -10 }, tts: 'Primero el cimiento - V35.5 BLOCK THEORY Head 1/3 + Cintura 0.28 intacta', sap_type: 'FOUNDATION', color: '#60a5fa' },
+  SCAFFOLDING: { id: 'SCAFFOLDING', name: 'Andamiaje', joints: { Shoulder_L: [0,0,0], Shoulder_R: [0,0,0] }, tts: 'Mira tete, esta pieza encaja - block 1/3 1/2 puzzle', sap_type: 'GRAMMAR', color: '#00d4ff' },
+  STRICT_ENGINEER: { id: 'STRICT_ENGINEER', name: 'Ingeniera Estricta', joints: { Shoulder_L: [0,0,0], Shoulder_R: [0,0,0] }, tts: 'Ojo tete, es HAS - V35.5 Block Full 360°', sap_type: 'ERR', color: '#f59e0b' },
+  FLOW_OBSERVER: { id: 'FLOW_OBSERVER', name: 'Observadora Flow', joints: { Spine_02: 0 }, tts: 'Te observo, vas en flow V35.5 Block', sap_type: 'FLOW', color: '#8b5cf6' },
+  ELEVATION: { id: 'ELEVATION', name: 'Elevación', joints: { Shoulder_L: [0,10,0], Shoulder_R: [0,10,0], Spine_02: 5 }, tts: 'BOOM! Lo clavaste! V35.5 BLOCK 0.28 intacta + 0.088/0.095 empotradas sin gap', sap_type: 'XP', color: '#22c55e' },
+  TRANSMISSION: { id: 'TRANSMISSION', name: 'Transmisión', joints: { Shoulder_L: [0,0,0], Shoulder_R: [0,0,0] }, tts: 'Esto ya es cuerpo completo V35.5 Block - A+B+C+E', sap_type: 'TRANSMIT', color: '#00d4ff' }
 };
 
 export const AVATAR_ENGINE_HOLO = {
-  type: "V35.0_PUZZLE_GANADORA_FULL360_CON_MANOS_A_HEAD_NECK_B_TORSO_ARMS_C_WAIST_TO_FEET_D_ARMS_E_HANDS",
-  meshType: "Organic_Body_Wireframe_V35.0_PUZZLE_-0.095_+0.095_RADIUS_0.1225_WAIST_0.20_FULL360_HANDS_5FINGERS_SIN_BLOQUE_RAYADO_SIN_ESCALON",
-  feminine: true, waist: 0.20, waist_narrowest: 0.20, lumbar: "0.22-0.50", flat_gluteo: true, diamond: 0.0, diamond_closed: true,
-  anchura_hombros: 0.48, trapezius: 0.32, cadera_wc: 0.1225, cadera_xclamp: 0.1976, cadera_gap: 0.19,
-  cadera_separacion: "-0.095 / +0.095 - CIRCULAR MATCH CLEAN - FULL 360° - 0.095 SIN ESCALON SIN BLOQUE RAYADO",
-  cabeza: "28x36 depth 0.24 Full 360° Module A", cuello: "0.065 Module A ONE PIECE", bob_cut: true, tpose: "90° Module B",
-  manos: "Module E 5 fingers Full 360° puzzle female wrist socket",
+  type: "V35.5_BLOCK_THEORY_HEAD_1/3_CINTURA_0.28_INTACTA_PIERNAS_0.088_0.095_EMPOTRADAS_FULL360_CON_MANOS_A_HEAD_NECK_B_TORSO_ARMS_C_WAIST_TO_FEET_D_ARMS_E_HANDS",
+  meshType: "Organic_Body_Wireframe_V35.5_BLOCK_HEAD_1/3_BODY_1/2_WAIST_0.28_INTACTA_-0.088_+0.088_RADIUS_0.095_0.073_0.055_0.035_WAIST_TO_FEET_FULL360_HANDS_5FINGERS_SIN_GAP",
+  feminine: true, waist: 0.28, waist_narrowest: 0.28, lumbar: "0.22-0.50", flat_gluteo: true, diamond: 0.0, diamond_closed: true,
+  anchura_hombros: 0.48, trapezius: 0.32, cadera_wc: 0.095, cadera_wc_mid: 0.073, cadera_xclamp: 0.1976, cadera_gap: 0.176, cadera_zScale: 0.72, cadera_py: 0.16,
+  cadera_separacion: "-0.088 / +0.088 - BLOCK 1/2 - EMPOTRADA 0.16 DENTRO TORSO SELLA GAP - CIRCULAR MATCH CLEAN - FULL 360° - 0.095 GROSOR CALZA CINTURA 0.28",
+  cabeza: "36x24 Block 1/3 depth 0.128/0.118/0.108 Full 360° Module A - Different Angles Head Theory 1/3 + 1/2 lateral", cuello: "0.065 Module A ONE PIECE Block", bob_cut: true, tpose: "90° Module B Block 1/2",
+  manos: "Module E 5 fingers Full 360° Block puzzle female wrist socket",
   material: { color: 0x00e5ff, opacity: 0.42, wireframe: true, depthWrite: false },
   bones: 26, scale: 0.58, camera: { fov: 30, pos: [0,0.02,2.68], groupPos: [0,-0.15,0] },
   modular: {
-    A: "HEAD+NECK 28x36 Ø0.065 ONE PIECE - TAB MALE DOWN",
-    B: "TORSO+ARMS T-POSE 0.48m ONE PIECE - SOCKET FEMALE UP FOR A + 2x FEMALE DOWN FOR C",
-    C: "LOWER BODY WAIST 0.20 TO FEET UNIFIED - PELVIS+THIGHS+CALVES+FEET ONE PIECE - 2x TAB MALE UP - -0.095/+0.095 radius 0.1225 circular match - FULL 360°",
-    D: "ARMS DETAIL UPPER+LOWER PUZZLE - FEMALE SHOULDER -> MALE ELBOW -> FEMALE WRIST",
-    E: "HANDS 5 FINGERS Full 360° - FEMALE SOCKET WRIST -> MALE LOWER ARM"
+    A: "HEAD+NECK 36x24 Block 1/3 Ø0.065 ONE PIECE - TAB MALE DOWN - 1/3 top/mid/bottom 0.128/0.118/0.108",
+    B: "TORSO+ARMS T-POSE 0.48m ONE PIECE Block 1/3 - SOCKET FEMALE UP FOR A + 2x FEMALE DOWN FOR C - WAIST 0.28 INTACTA",
+    C: "LOWER BODY BLOCK 1/2 WAIST 0.28 TO FEET UNIFIED - PELVIS+THIGHS+CALVES+FEET ONE PIECE - 2x TAB MALE UP - -0.088/+0.088 radius 0.095->0.073->0.055->0.035 circular match - py 0.16 empotrada sella gap - zScale 0.72 - FULL 360°",
+    D: "ARMS DETAIL BLOCK 1/2 UPPER+LOWER PUZZLE - FEMALE SHOULDER -> MALE ELBOW -> FEMALE WRIST - 1/2 division",
+    E: "HANDS 5 FINGERS Full 360° Block - FEMALE SOCKET WRIST -> MALE LOWER ARM"
   },
   emotions: {
     HOLO_STRICT: { frame: 0, name: "STRICT", intention: INTENTION_MOTOR.STRICT_ENGINEER },
@@ -109,7 +108,7 @@ export const AVATAR_ENGINE_HOLO = {
 };
 
 export const LAYA_FINAL = {
-  version: "V35.0 PUZZLE GANADORA - FULL 360° CON MANOS - WAIST 0.20 - RADIUS 0.1225 - X-CLAMP 0.1976 - 0.095 SIN ESCALON SIN BLOQUE RAYADO - PLANTILLAS V30.74 + MODULAR A-E",
+  version: "V35.5 BLOCK THEORY - HEAD 1/3 + CINTURA 0.28 INTACTA + PIERNAS 0.088/0.095 EMPOTRADAS - RADIUS 0.095->0.073->0.055->0.035 BLOCK 1/2 - PY 0.16 ZSCALE 0.72 FULL360 MANOS",
   VOCAB: VOCAB_REAL, GRAMMAR: GRAMMAR_REAL, AVATAR: AVATAR_ENGINE_HOLO, INTENTIONS: INTENTION_MOTOR, JOINTS: MARIONETTE_JOINTS,
   AREAS: {
     1: { name:"Money Basics", topic:"Why Most People Never Become Rich", vocab:["survival50"], grammar:["PS_3RD_S","COND_1"], future:"COND_1", level:"A1" },
@@ -170,8 +169,8 @@ export const LAYA_FINAL = {
     const gFuture = GRAMMAR_REAL[area.future] || GRAMMAR_REAL.COND_1;
     const avatarData = AVATAR_ENGINE_HOLO.decideByMetrics({...metrics, cefr_level: level});
     const xp = metrics?.same_error_count>=3?0:(level==="A1"?10:level==="A2"?15:20);
-    const story = `Hello ${area.topic}. V35.0 PUZZLE GANADORA - Plantillas V30.74 + Modular A-E con manos Full 360° - Waist 0.20 radius 0.1225 -0.095/+0.095 sin escalón sin bloque rayado`;
-    return { prompt: level+" - "+area.topic, story, meta: { area: area.name, topic: area.topic, level, grammar_main: gMain, grammar_future: gFuture, vocab: [], emotion: avatarData.emotion, intention: avatarData.intention, joints: avatarData.joints, avatar_type:"V35.0_PUZZLE_GANADORA_FULL360_CON_MANOS", avatar_frame:0, xp } };
+    const story = `Hello ${area.topic}. V35.5 BLOCK THEORY - Head 1/3 + Cintura 0.28 INTACTA + Piernas 0.088/0.095 empotradas Block 1/2 - 0.095->0.073->0.055->0.035 ángulo natural sin gap`;
+    return { prompt: level+" - "+area.topic, story, meta: { area: area.name, topic: area.topic, level, grammar_main: gMain, grammar_future: gFuture, vocab: [], emotion: avatarData.emotion, intention: avatarData.intention, joints: avatarData.joints, avatar_type:"V35.5_BLOCK_THEORY_0.28_INTACTA_0.088_0.095", avatar_frame:0, xp } };
   }
 };
 export const LAYA_FINAL_COMPLETO = LAYA_FINAL;

@@ -1,5 +1,5 @@
-// laia_hologram.js - V35.5 BLOCK THEORY - TECNICA VIDEO HEAD 1/3 + CINTURA 0.28 INTACTA
-// BASE: tu V35.4 + BLOCK: empotrado 0.088/0.095 + divisiones 1/3 y 1/2 planares
+// laia_hologram.js - V35.6 COSTURA PERFECTA - CINTURA 0.28 INTACTA + PUENTE ACOSTURADO CURVA
+// FIX: Donde tenías rayado -> genera costura perfecta que nace de la malla de cintura y curva sin gap
 import * as THREE from 'three';
 
 export function buildV35_FROM_SCRATCH(group) {
@@ -18,7 +18,6 @@ export function buildV35_FROM_SCRATCH(group) {
   };
 
   // MODULE A - HEAD BLOCK 1/3 TECHNIQUE COMO VIDEO - 36x24 planar
-  // Antes 28x36 orgánico -> ahora 36x24 block 1/3 divisiones
   add(36,24,(u,fy)=>{
     const ang=(u-0.5)*Math.PI*2;
     let r;
@@ -33,7 +32,7 @@ export function buildV35_FROM_SCRATCH(group) {
     return {x:Math.cos(ang)*0.065, y:0.73+fy*0.14, z:Math.sin(ang)*0.065};
   });
 
-  // MODULE B - TORSO BLOCK 1/3 + 1/2 - V35.4 INTACTO 0.28 NO TOCAR - pero con loops block
+  // MODULE B - TORSO BLOCK 1/3 + 1/2 - V35.4 INTACTO 0.28 NO TOCAR
   add(52,48,(u,fy)=>{
     const ang=(u-0.5)*Math.PI*2;
     let py=0.73 - fy*0.60;
@@ -41,7 +40,7 @@ export function buildV35_FROM_SCRATCH(group) {
     if(fy<0.20) wc=0.82; // 1/3 pecho
     else if(fy<0.42) wc=0.82 - (fy-0.20)*1.45;
     else if(fy<0.68) wc=0.50 - Math.pow((fy-0.42)/0.26,1.3)*0.22; // ->0.28
-    else wc=0.28 + (fy-0.68)*0.72; // CINTURA INTACTA 0.28 - 1/2 final
+    else wc=0.28 + (fy-0.68)*0.72; // CINTURA INTACTA 0.28
     const rW=0.24*(wc/0.82);
     const rD=rW*0.60;
     return {x: Math.cos(ang)*rW, y: py, z: Math.sin(ang)*rD};
@@ -65,37 +64,64 @@ export function buildV35_FROM_SCRATCH(group) {
   add(22,28, armBlock(-1));
   add(22,28, armBlock(1));
 
-  // MODULE C - LOWER BODY BLOCK 1/2 - V35.5 FIX EMPOTRADO - CINTURA INTACTA
-  const lowerBlock=(sign)=>(u,fy)=>{
+  // ===== V35.6 COSTURA PERFECTA - SOLO PORCIÓN RAYADA - ACOSTURADA A CINTURA =====
+  const costuraAcosturada=(sign)=>(u,fy)=>{
     const ang=(u-0.5)*Math.PI*2;
-    const cx=sign*0.088; // V35.4 0.095 -> 0.088 más juntas empotradas técnica block sella gap
-    let py, radius;
+    const cx=sign*0.088; // empotrada 0.088
+    let py, radius, zScale;
 
-    if(fy<0.08){
-      // EMPOTRADO DENTRO CINTURA - sella gap lateral que se ve en tus fotos
-      py=0.16 - fy*0.50; // ANTES 0.13 -> 0.16 entra 3cm dentro torso
-      radius=0.095; // V35.4 0.092 -> 0.095 más gruesa calza grosor cintura 0.28
-    } else if(fy<0.26){
-      const t=(fy-0.08)/0.18;
-      py=0.12 - t*0.12;
-      radius=0.095 - t*0.022; // 0.095 -> 0.073 ángulo natural pelvis BLOCK 1/2
-    } else if(fy<0.58){
-      const t=(fy-0.26)/0.32;
-      py=0.0 - t*0.37;
-      radius=0.073 - t*0.018; // 0.073 -> 0.055 rodilla BLOCK 1/2
+    if(fy<0.30){
+      // NACE DE LA MISMA MALLA CINTURA - py 0.13 = final torso, radio cintura
+      const t=fy/0.30;
+      py=0.13 - t*0.02; // 0.13 -> 0.11 sin salto
+      const rCinturaBase=0.24*(0.28/0.82); // 0.0819 radio real cintura 0.28
+      // Interpola radio cintura -> muslo 0.095 con curva
+      radius=rCinturaBase*(1-t) + 0.095*t + Math.sin(t*Math.PI)*0.008;
+      zScale=0.60*(1-t) + 0.72*t;
+    } else if(fy<0.65){
+      // CURVA DONDE MARCAS CON ROSA - genera curva perfecta glúteo
+      const t=(fy-0.30)/0.35;
+      py=0.11 - t*0.10 - Math.sin(t*Math.PI)*0.018; // curva hacia afuera natural
+      radius=0.095 + Math.sin(t*Math.PI)*0.014; // ensancha 0.095->0.109 curva muslo
+      zScale=0.72 + t*0.08; // más grueso posterior calza cintura
     } else {
-      const t=(fy-0.58)/0.42;
-      py=-0.37 - t*0.47;
-      radius=0.055 - t*0.020; // 0.055 -> 0.035 pantorrilla BLOCK 1/2
+      // EMPALME CON PIERNA - ya soldada
+      const t=(fy-0.65)/0.35;
+      py=0.01 - t*0.08;
+      radius=0.095 - t*0.022; // 0.095->0.073
+      zScale=0.80 - t*0.08;
     }
-
-    const zScale=0.72; // V35.4 0.68 -> 0.72 más grueso posterior calza cintura 0.28
     return {x: cx + Math.cos(ang)*radius, y: py, z: Math.sin(ang)*radius*zScale};
   };
-  add(40,32, lowerBlock(-1));
-  add(40,32, lowerBlock(1));
+  // 22 filas puente que sella gap rayado
+  add(22,32, costuraAcosturada(-1));
+  add(22,32, costuraAcosturada(1));
 
-  // PIES - siguen nueva posición 0.088 block
+  // MODULE C - LOWER BODY CONTINUACION DESDE COSTURA YA SOLDADA
+  const lowerBlock=(sign)=>(u,fy)=>{
+    const ang=(u-0.5)*Math.PI*2;
+    const cx=sign*0.088;
+    let py, radius;
+    if(fy<0.35){
+      const t=fy/0.35;
+      py=-0.07 - t*0.12;
+      radius=0.073 - t*0.010;
+    } else if(fy<0.70){
+      const t=(fy-0.35)/0.35;
+      py=-0.19 - t*0.28;
+      radius=0.063 - t*0.008;
+    } else {
+      const t=(fy-0.70)/0.30;
+      py=-0.47 - t*0.37;
+      radius=0.055 - t*0.020;
+    }
+    const zScale=0.72;
+    return {x: cx + Math.cos(ang)*radius, y: py, z: Math.sin(ang)*radius*zScale};
+  };
+  add(36,32, lowerBlock(-1));
+  add(36,32, lowerBlock(1));
+
+  // PIES
   const foot=(sign)=>(u,fy)=>{
     const ang=(u-0.5)*Math.PI*2;
     return {x:sign*0.088+Math.cos(ang)*0.028, y:-0.84 - fy*0.05, z:0.04+fy*0.08+Math.sin(ang)*0.010};
@@ -125,10 +151,11 @@ export function buildV35_FROM_SCRATCH(group) {
   const wire=new THREE.WireframeGeometry(geo);
   const mat=new THREE.LineBasicMaterial({color:0x00e5ff, transparent:true, opacity:0.40, depthWrite:false});
   group.add(new THREE.LineSegments(wire, mat));
-  console.log("LAIA V35.5 BLOCK THEORY - HEAD 1/3 + BODY 1/2 - CINTURA 0.28 INTACTA + PIERNAS 0.088/0.095 EMPOTRADAS");
+  console.log("LAIA V35.6 COSTURA PERFECTA - CINTURA 0.28 INTACTA + PUENTE CURVA ACOSTURADA SIN RAYADO");
   return geo;
 }
 
+export const buildV35_6_FROM_SCRATCH = buildV35_FROM_SCRATCH;
 export const buildV35_5_FROM_SCRATCH = buildV35_FROM_SCRATCH;
 export const buildV35_4_FROM_SCRATCH = buildV35_FROM_SCRATCH;
 export const buildV35_3_FROM_SCRATCH = buildV35_FROM_SCRATCH;

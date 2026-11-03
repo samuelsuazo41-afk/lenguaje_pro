@@ -1,4 +1,4 @@
-/* styles.css - V35.5 BLOCK THEORY - TECNICA VIDEO HEAD 1/3 + CINTURA 0.28 INTACTA */
+/* styles.css - V35.7 SOLDADA REAL - CINTURA 0.28 INTACTA + 48 COLS + BEZIER GLUTI 0.112 */
 
 :root{
   --bg:#020208;
@@ -84,56 +84,68 @@ header{
 .f.active{background:var(--holo-bright);color:#000;font-weight:800;border-color:var(--holo-bright)}
 input,select,button{outline:none}
 
-/* V35.5 BLOCK THEORY - TECNICA VIDEO - CINTURA 0.28 INTACTA */
+/* V35.7 SOLDADA REAL - CINTURA 0.28 INTACTA + 48 COLS + BEZIER GLUTI */
 .laia-module{
   /* === CINTURA INTACTA NO TOCAR - V35.4 base === */
   --waist:0.28;
   --torso-radius:0.24;
   --torso-depth:0.60;
   --torso-mode:360-closed-block;
+  --torso-cols:48;
   --neck:0.065;
 
   /* === HEAD 1/3 TECHNIQUE COMO VIDEO === */
-  --head-top:1/3; /* pelo */
-  --head-mid:1/3; /* frente */
-  --head-bottom:1/3; /* mandíbula */
-  --head-side:1/2; /* lateral volumen */
+  --head-top:1/3;
+  --head-mid:1/3;
+  --head-bottom:1/3;
+  --head-side:1/2;
+  --head-cols:24;
+  --head-rows:36;
 
-  /* === TORSO BLOCK 1/3 + 1/2 === */
-  --torso-upper:1/3; /* pecho 0.82 */
-  --torso-mid:1/3; /* abdomen 0.50->0.28 */
-  --torso-lower:1/2; /* cintura 0.28 intacta */
+  /* === TORSO BLOCK 1/3 + 1/2 - 52x48 === */
+  --torso-upper:1/3;
+  --torso-mid:1/3;
+  --torso-lower:1/2;
+  --torso-rows:52;
 
-  /* === PIERNAS BLOCK 1/2 - FIX EMPOTRADO === */
-  --hip-offset:0.088; /* V35.4 0.095 -> 0.088 más juntas empotradas técnica block sella gap */
-  --hip-radius:0.095; /* V35.4 0.092 -> 0.095 costura más gruesa calza grosor cintura 0.28 */
-  --hip-radius-mid:0.073; /* 1/2 muslo */
-  --leg-thigh:0.095; /* costura gruesa empotrada */
-  --leg-thigh-mid:0.073; /* 1/2 muslo ángulo natural */
-  --leg-knee:0.055; /* 1/2 rodilla */
-  --leg-calf:0.035; /* 1/2 pantorrilla */
-  --leg-zscale:0.72; /* V35.4 0.68 -> 0.72 más grueso posterior calza cintura */
-  --leg-curve:block-planar-1/2-empotrado;
-  --leg-py:0.16; /* arranca 3cm dentro torso sella gap lateral */
+  /* === PIERNAS BLOCK 1/2 - V35.7 SOLDADA REAL === */
+  --hip-offset:0.088; /* V35.7 empotrada dentro circulo azul cintura 0.28 */
+  --hip-radius:0.095; /* base costura */
+  --hip-radius-gluti:0.112; /* V35.7 BEZIER GLUTI pic curva rosa */
+  --hip-radius-mid:0.073;
+  --leg-thigh:0.095; /* costura */
+  --leg-thigh-gluti:0.112; /* gluti bezier */
+  --leg-thigh-mid:0.073; /* 1/2 muslo */
+  --leg-knee:0.055;
+  --leg-calf:0.035;
+  --leg-zscale:0.90; /* V35.7 0.72->0.90 posterior volumen natural */
+  --leg-cols:48; /* V35.7 32->48 soldada a torso */
+  --leg-rows:24;
+  --leg-curve:bezier-3p-smoothstep;
+  --leg-py:"0.13 bezier -> 0.11 -> -0.07";
+  --bezier-control:"bezier2(0.11, -0.02, -0.02) + sin(t)*0.025";
+  --bezier-radius:"bezier2(0.095, 0.112, 0.095) + sin(t)*0.012";
 }
 
 .laia-torso{
   transform-style: preserve-3d;
-  /* Block theory: 3 planos 1/3 */
   --block-division: 1/3 1/3 1/2;
+  --block-cols: 48;
 }
 
 .laia-legs{
-  /* V35.5 BLOCK DOCUMENTACION */
-  /* CINTURA: 0.28 INTACTA NO TOCADA - base V35.4 */
-  /* TECNICA VIDEO: Head 1/3 + Body 1/2 divisiones planares limpias */
-  /* PIERNAS: offset 0.095->0.088 juntas empotradas 0.16 dentro torso + radius 0.092->0.095 grosor cintura + zScale 0.68->0.72 */
-  /* ÁNGULO BLOCK: 0.095 (costura) -> 0.073 (1/2 muslo) -> 0.055 (1/2 rodilla) -> 0.035 (1/2 pantorrilla) orgánico uniforme sin corte */
+  /* V35.7 SOLDADA REAL DOCUMENTACION */
+  /* CINTURA: 0.28 INTACTA NO TOCADA - base V35.4 52x48 */
+  /* TECNICA: Head 1/3 + Body 1/2 + Bezier 3 puntos + Smoothstep */
+  /* FIX V35.6->V35.7: 22x32->24x48 cols soldades vertice a vertice torso */
+  /* CURVA ROSA: bezier2(0.11, -0.02, -0.02) + sin(t)*0.025 + zScale 0.72->0.90 */
+  /* RADI: 0.0819 cintura 0.28 -> 0.095 costura -> 0.112 gluti bezier -> 0.073 muslo */
+  /* PY: bezier2(0.13, 0.125, 0.11) neix sense gap + bezier2(-0.02,-0.04,-0.07) empalme pierna */
 }
 
 .laia-head{
-  /* Head theory 1/3 como video - mantiene volumen 360° */
   --head-block: planar-1/3;
+  --head-cols: 24;
 }
 
 @media(max-width:768px){

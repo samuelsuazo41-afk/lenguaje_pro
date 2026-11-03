@@ -1,5 +1,5 @@
-// laia_hologram.js - V35.6 COSTURA PERFECTA - CINTURA 0.28 INTACTA + PUENTE ACOSTURADO CURVA
-// FIX: Donde tenías rayado -> genera costura perfecta que nace de la malla de cintura y curva sin gap
+// laia_hologram.js - V35.7 COSTURA SOLDADA REAL - CINTURA 0.28 INTACTA + BEZIER GLUTI
+// FIX V35.6: 48 cols soldades + curva bezier rosa + radi gluti 0.112
 import * as THREE from 'three';
 
 export function buildV35_FROM_SCRATCH(group) {
@@ -15,15 +15,16 @@ export function buildV35_FROM_SCRATCH(group) {
       const a=s+y*cols+x, b=a+1, c=a+cols, d=c+1;
       idx.push(a,c,b,b,c,d);
     }
+    return s;
   };
 
-  // MODULE A - HEAD BLOCK 1/3 TECHNIQUE COMO VIDEO - 36x24 planar
+  // MODULE A - HEAD BLOCK 1/3
   add(36,24,(u,fy)=>{
     const ang=(u-0.5)*Math.PI*2;
     let r;
-    if(fy<0.33) r=0.128; // 1/3 superior pelo
-    else if(fy<0.66) r=0.118; // 1/3 medio frente
-    else r=0.108; // 1/3 inferior mandíbula
+    if(fy<0.33) r=0.128;
+    else if(fy<0.66) r=0.118;
+    else r=0.108;
     const y=0.88 + fy*0.26;
     return {x:Math.cos(ang)*r, y:y, z:Math.sin(ang)*r*0.90};
   });
@@ -32,15 +33,15 @@ export function buildV35_FROM_SCRATCH(group) {
     return {x:Math.cos(ang)*0.065, y:0.73+fy*0.14, z:Math.sin(ang)*0.065};
   });
 
-  // MODULE B - TORSO BLOCK 1/3 + 1/2 - V35.4 INTACTO 0.28 NO TOCAR
-  add(52,48,(u,fy)=>{
+  // MODULE B - TORSO V35.4 INTACTO 0.28 NO TOCAR - 52x48
+  const torsoStart = add(52,48,(u,fy)=>{
     const ang=(u-0.5)*Math.PI*2;
     let py=0.73 - fy*0.60;
     let wc;
-    if(fy<0.20) wc=0.82; // 1/3 pecho
+    if(fy<0.20) wc=0.82;
     else if(fy<0.42) wc=0.82 - (fy-0.20)*1.45;
-    else if(fy<0.68) wc=0.50 - Math.pow((fy-0.42)/0.26,1.3)*0.22; // ->0.28
-    else wc=0.28 + (fy-0.68)*0.72; // CINTURA INTACTA 0.28
+    else if(fy<0.68) wc=0.50 - Math.pow((fy-0.42)/0.26,1.3)*0.22;
+    else wc=0.28 + (fy-0.68)*0.72;
     const rW=0.24*(wc/0.82);
     const rD=rW*0.60;
     return {x: Math.cos(ang)*rW, y: py, z: Math.sin(ang)*rD};
@@ -54,50 +55,52 @@ export function buildV35_FROM_SCRATCH(group) {
   add(14,18, breast(-1));
   add(14,18, breast(1));
 
-  // BRAZOS BLOCK 1/2 - T-POSE
   const armBlock=(sign)=>(u,fy)=>{
     const ang=(u-0.5)*Math.PI*2;
-    const rad=fy<0.50?0.038:0.028; // 1/2 division hombro/antebrazo
+    const rad=fy<0.50?0.038:0.028;
     const len=0.26+fy*0.76;
     return {x:sign*len, y:0.58+Math.sin(ang)*rad, z:Math.cos(ang)*rad};
   };
   add(22,28, armBlock(-1));
   add(22,28, armBlock(1));
 
-  // ===== V35.6 COSTURA PERFECTA - SOLO PORCIÓN RAYADA - ACOSTURADA A CINTURA =====
+  // ===== V35.7 COSTURA SOLDADA REAL - 48 COLS + BEZIER GLUTI =====
+  const smoothstep=(t)=> t*t*(3-2*t);
+  const bezier2=(p0,p1,p2,t)=>{
+    const it=1-t;
+    return it*it*p0 + 2*it*t*p1 + t*t*p2;
+  };
+
   const costuraAcosturada=(sign)=>(u,fy)=>{
     const ang=(u-0.5)*Math.PI*2;
-    const cx=sign*0.088; // empotrada 0.088
+    const cx=sign*0.088;
     let py, radius, zScale;
+    const rCinturaBase=0.24*(0.28/0.82); // 0.0819
 
-    if(fy<0.30){
-      // NACE DE LA MISMA MALLA CINTURA - py 0.13 = final torso, radio cintura
-      const t=fy/0.30;
-      py=0.13 - t*0.02; // 0.13 -> 0.11 sin salto
-      const rCinturaBase=0.24*(0.28/0.82); // 0.0819 radio real cintura 0.28
-      // Interpola radio cintura -> muslo 0.095 con curva
-      radius=rCinturaBase*(1-t) + 0.095*t + Math.sin(t*Math.PI)*0.008;
+    if(fy<0.32){
+      const t=smoothstep(fy/0.32);
+      py=bezier2(0.13, 0.125, 0.11, t); // neix sense gap
+      radius= rCinturaBase*(1-t) + 0.095*t + Math.sin(t*Math.PI)*0.006;
       zScale=0.60*(1-t) + 0.72*t;
-    } else if(fy<0.65){
-      // CURVA DONDE MARCAS CON ROSA - genera curva perfecta glúteo
-      const t=(fy-0.30)/0.35;
-      py=0.11 - t*0.10 - Math.sin(t*Math.PI)*0.018; // curva hacia afuera natural
-      radius=0.095 + Math.sin(t*Math.PI)*0.014; // ensancha 0.095->0.109 curva muslo
-      zScale=0.72 + t*0.08; // más grueso posterior calza cintura
+    } else if(fy<0.68){
+      // CURVA ROSA - control bezier gluti
+      const t=smoothstep((fy-0.32)/0.36);
+      py=bezier2(0.11, -0.02, -0.02, t) - Math.sin(t*Math.PI)*0.025; // corba cap enfora
+      radius=bezier2(0.095, 0.112, 0.095, t) + Math.sin(t*Math.PI)*0.012; // pic 0.112 gluti
+      zScale=0.72 + bezier2(0, 0.18, 0.08, t); // més profund darrere
     } else {
-      // EMPALME CON PIERNA - ya soldada
-      const t=(fy-0.65)/0.35;
-      py=0.01 - t*0.08;
-      radius=0.095 - t*0.022; // 0.095->0.073
+      const t=smoothstep((fy-0.68)/0.32);
+      py=bezier2(-0.02, -0.04, -0.07, t);
+      radius=bezier2(0.095, 0.084, 0.073, t);
       zScale=0.80 - t*0.08;
     }
     return {x: cx + Math.cos(ang)*radius, y: py, z: Math.sin(ang)*radius*zScale};
   };
-  // 22 filas puente que sella gap rayado
-  add(22,32, costuraAcosturada(-1));
-  add(22,32, costuraAcosturada(1));
+  // 24 files, 48 cols = SOLDAT A TORSO
+  add(24,48, costuraAcosturada(-1));
+  add(24,48, costuraAcosturada(1));
 
-  // MODULE C - LOWER BODY CONTINUACION DESDE COSTURA YA SOLDADA
+  // MODULE C - LOWER BODY DESDE -0.07 SOLDAT
   const lowerBlock=(sign)=>(u,fy)=>{
     const ang=(u-0.5)*Math.PI*2;
     const cx=sign*0.088;
@@ -121,7 +124,6 @@ export function buildV35_FROM_SCRATCH(group) {
   add(36,32, lowerBlock(-1));
   add(36,32, lowerBlock(1));
 
-  // PIES
   const foot=(sign)=>(u,fy)=>{
     const ang=(u-0.5)*Math.PI*2;
     return {x:sign*0.088+Math.cos(ang)*0.028, y:-0.84 - fy*0.05, z:0.04+fy*0.08+Math.sin(ang)*0.010};
@@ -129,7 +131,6 @@ export function buildV35_FROM_SCRATCH(group) {
   add(10,16, foot(-1));
   add(10,16, foot(1));
 
-  // MODULE E - HANDS BLOCK
   const hand=(sign)=>(u,fy)=>{
     if(fy<0.38){
       const ang=(u-0.5)*Math.PI*2;
@@ -151,10 +152,11 @@ export function buildV35_FROM_SCRATCH(group) {
   const wire=new THREE.WireframeGeometry(geo);
   const mat=new THREE.LineBasicMaterial({color:0x00e5ff, transparent:true, opacity:0.40, depthWrite:false});
   group.add(new THREE.LineSegments(wire, mat));
-  console.log("LAIA V35.6 COSTURA PERFECTA - CINTURA 0.28 INTACTA + PUENTE CURVA ACOSTURADA SIN RAYADO");
+  console.log("LAIA V35.7 SOLDADA REAL - CINTURA 0.28 INTACTA + BEZIER GLUTI 0.112 + 48 COLS");
   return geo;
 }
 
+export const buildV35_7_FROM_SCRATCH = buildV35_FROM_SCRATCH;
 export const buildV35_6_FROM_SCRATCH = buildV35_FROM_SCRATCH;
 export const buildV35_5_FROM_SCRATCH = buildV35_FROM_SCRATCH;
 export const buildV35_4_FROM_SCRATCH = buildV35_FROM_SCRATCH;

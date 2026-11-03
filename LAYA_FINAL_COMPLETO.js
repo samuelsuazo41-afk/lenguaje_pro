@@ -173,4 +173,4 @@ export const LAYA_FINAL = {
     return { prompt: level+" - "+area.topic, story, meta: { area: area.name, topic: area.topic, level, grammar_main: gMain, grammar_future: gFuture, vocab: [], emotion: avatarData.emotion, intention: avatarData.intention, joints: avatarData.joints, avatar_type:"V35.5_BLOCK_THEORY_0.28_INTACTA_0.088_0.095", avatar_frame:0, xp } };
   }
 };
-export const LAYA_FINAL_COMPLETO = LAYA_FINAL;
+export const LAYA_FINAL_COMPLETO = LAYA_FINAL; 

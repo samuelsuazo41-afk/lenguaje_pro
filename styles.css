@@ -1,4 +1,4 @@
-/* styles.css - V35.8 SOLDADA CUELLO-HOMBRO-BRAZO + AXILA - CINTURA 0.28 INTACTA + 48 COLS + 0.285 + 0.112 */
+/* styles.css - V35.9 UNIFICADO HOMBRO-AXILA-BRAZO + CUELLO TRAPECIO - CINTURA 0.28 INTACTA + 48 COLS + 0.18-0.58 + 0.112 */
 
 :root{
   --bg:#020208;
@@ -84,7 +84,7 @@ header{
 .f.active{background:var(--holo-bright);color:#000;font-weight:800;border-color:var(--holo-bright)}
 input,select,button{outline:none}
 
-/* V35.8 SOLDADA CUELLO-HOMBRO-BRAZO + AXILA - CINTURA 0.28 INTACTA */
+/* V35.9 UNIFICADO HOMBRO-AXILA-BRAZO + CUELLO TRAPECIO - CINTURA 0.28 INTACTA */
 .laia-module{
   /* === CINTURA INTACTA NO TOCAR - V35.4 base === */
   --waist:0.28;
@@ -92,22 +92,26 @@ input,select,button{outline:none}
   --torso-depth:0.60;
   --torso-mode:360-closed-block-unificado;
   --torso-cols:48;
-  --torso-rows:62; /* V35.7 52 -> V35.8 62 unificado cuello+hombro+torso */
+  --torso-rows:62;
 
-  /* === CUELLO SOLDADO - 48 COLS - QUITA CAMPANA AZUL === */
-  --neck:0.065;
-  --neck-cols:48; /* V35.7 24 separado -> V35.8 48 soldado */
-  --neck-py:"0.99->0.73 bezier2(0.99,0.86,0.73)";
-  --neck-wc:"0.22->0.82 bezier";
-  --neck-fix:"campana azul eliminada - cuello 48 cols nace de torso 62x48 una sola malla";
+  /* === CUELLO TRAPECIO - 48 COLS - 0.88 NO 0.99 TUBO === */
+  --neck:0.055;
+  --neck-base:0.095;
+  --neck-cols:48;
+  --neck-py:"0.88->0.73 bezier2(0.88,0.80,0.73)";
+  --neck-wc:"0.32->0.82 bezier";
+  --neck-fix:"V35.8 tubo 0.99->0.73 -> V35.9 trapecio 0.88->0.73 base 0.095 cima 0.055 - cabeza nace en 0.88 sin tubo";
 
-  /* === HOMBRO SOLDADO + AXILA LINE === */
-  --shoulder-surface:0.285; /* V35.7 0.24 flotando -> V35.8 0.285 soldado superficie */
-  --shoulder-bulge:0.065; /* protuberancia donde nace brazo */
-  --shoulder-peak:"pow(abs(cosA),4) * 0.065 * sin(t*PI)";
-  --axila-dip:0.035; /* linea axila rosa que pedias */
-  --axila-zone:"sinA < -0.2 && cosA pow2";
-  --axila-fix:"dip 0.22-0.38 crea linea axila - brazo soldado sin gap";
+  /* === HOMBRO UNIFICADO EN PICO + AXILA SIGUE CURVA === */
+  --shoulder-surface:0.18;
+  --shoulder-y:0.58;
+  --shoulder-pico:0.085;
+  --shoulder-bulge:0.085;
+  --shoulder-peak:"pow(abs(cosA),3) * 0.085 * sin(t*PI) - pico como captura, no redondo";
+  --shoulder-fix:"V35.8 0.285 fuera en 0.68 -> V35.9 0.18 dentro en 0.58 misma Y que brazo - solapa 0.14";
+  --axila-dip:0.045;
+  --axila-zone:"sinA < 0.1 && pow(abs(cosA),2.5)";
+  --axila-fix:"dip 0.38-0.58 sigue curva pico - axila curva como subrayado, no corte recto";
 
   /* === HEAD 1/3 TECHNIQUE === */
   --head-top:1/3;
@@ -115,21 +119,25 @@ input,select,button{outline:none}
   --head-bottom:1/3;
   --head-side:1/2;
   --head-cols:24;
-  --head-rows:28; /* V35.7 36 -> V35.8 28 sobre cuello 0.99 */
+  --head-rows:28;
+  --head-y:"0.88 + fy*0.18 sobre cuello trapecio 0.88";
 
   /* === TORSO BLOCK 1/3 + 1/2 - 62x48 UNIFICADO === */
-  --torso-upper:1/3; /* pecho 0.82 + hombro 0.285 bulge */
-  --torso-mid:1/3; /* abdomen 0.50->0.28 */
-  --torso-lower:1/2; /* cintura 0.28 intacta */
+  --torso-upper:1/3;
+  --torso-mid:1/3;
+  --torso-lower:1/2;
 
-  /* === BRAZOS SOLDADOS - ROOT 0.285 === */
-  --arm-root:0.285; /* V35.7 0.26 flotando -> V35.8 0.285 soldado */
-  --arm-radius-shoulder:0.042; /* bezier 0.042->0.038 */
+  /* === BRAZOS UNIFICADOS - NACEN DENTRO 0.18 - DELTOIDE COPIA PICO === */
+  --arm-root:0.18;
+  --arm-deltoid:0.075;
+  --arm-radius-shoulder:0.075;
   --arm-radius-mid:0.038;
   --arm-radius-low:0.028;
-  --arm-len:"0.285 + fy*0.76 = 0.285->1.045 T-POSE soldado";
+  --arm-len:"bezier2(0.18,0.34,1.045) = 0.18 dentro -> 1.045 mano - solapa 0.14";
+  --arm-y:"0.58 + yOff deltoide 0.035";
   --arm-cols:28;
-  --arm-rows:24;
+  --arm-rows:28;
+  --arm-fix:"V35.8 0.285 fuera -> V35.9 0.18 dentro, deltoide 0.075 copia pico hombro";
 
   /* === PIERNAS BLOCK 1/2 - V35.7 INTACTA === */
   --hip-offset:0.088;
@@ -155,34 +163,34 @@ input,select,button{outline:none}
   --block-division: 1/3 1/3 1/2;
   --block-cols: 48;
   --block-rows: 62;
-  --fix-campana:"cuello 48 cols soldado a torso 62x48 una sola malla - sin escalon";
+  --fix-campana:"cuello trapecio 0.88 + hombro pico 0.58 en torso 62x48 una sola malla";
 }
 
 .laia-shoulder{
-  /* V35.8 HOMBRO SOLDADO */
-  --shoulder-surface: 0.285;
-  --shoulder-bulge: 0.065;
-  --axila-dip: 0.035;
-  --axila-line: "bezier dip crea linea rosa pedida en imagen 8";
+  --shoulder-surface: 0.18;
+  --shoulder-y: 0.58;
+  --shoulder-pico: 0.085;
+  --axila-dip: 0.045;
+  --axila-line: "dip sigue curva pico - linea axila como subrayado";
 }
 
 .laia-arms{
-  /* V35.8 BRAZOS SOLDADOS */
-  --arm-root: 0.285;
-  --arm-fix: "root sobre protuberancia hombro torso - sin gap axila";
+  --arm-root: 0.18;
+  --arm-deltoid: 0.075;
+  --arm-fix: "nace dentro torso 0.18, copia pico hombro, misma Y 0.58";
 }
 
 .laia-legs{
-  /* V35.7->V35.8 INTACTA */
-  /* CINTURA: 0.28 INTACTA NO TOCADA - base 62x48 ahora */
+  /* V35.8->V35.9 INTACTA */
+  /* CINTURA: 0.28 INTACTA - base 62x48 */
   /* PIERNAS: 0.088 + 0.112 gluti bezier intactas */
-  /* FIX V35.8: solo cuello-hombro-brazo tocado, piernas intactas */
+  /* FIX V35.9: solo cuello-hombro-brazo tocado */
 }
 
 .laia-head{
   --head-block: planar-1/3;
   --head-cols: 24;
-  --head-y: "0.99 + fy*0.18 sobre cuello soldado 0.99";
+  --head-y: "0.88 + fy*0.18 sobre cuello trapecio 0.88";
 }
 
 @media(max-width:768px){

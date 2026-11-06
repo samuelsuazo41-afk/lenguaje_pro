@@ -1,4 +1,4 @@
-/* styles.css - V35.9 UNIFICADO HOMBRO-AXILA-BRAZO + CUELLO TRAPECIO - CINTURA 0.28 INTACTA + 48 COLS + 0.18-0.58 + 0.112 */
+/* styles.css - V36 MOLDE TRAPECIO - CINTURA 0.28 INTACTA + 64 COLS + 0.92-0.80-0.60 + BRAZO -18deg + 0.112 */
 
 :root{
   --bg:#020208;
@@ -84,34 +84,40 @@ header{
 .f.active{background:var(--holo-bright);color:#000;font-weight:800;border-color:var(--holo-bright)}
 input,select,button{outline:none}
 
-/* V35.9 UNIFICADO HOMBRO-AXILA-BRAZO + CUELLO TRAPECIO - CINTURA 0.28 INTACTA */
+/* V36 MOLDE TRAPECIO - CINTURA 0.28 INTACTA */
 .laia-module{
   /* === CINTURA INTACTA NO TOCAR - V35.4 base === */
   --waist:0.28;
   --torso-radius:0.24;
-  --torso-depth:0.60;
-  --torso-mode:360-closed-block-unificado;
-  --torso-cols:48;
-  --torso-rows:62;
+  --torso-depth:0.58;
+  --torso-mode:360-closed-block-molde-trapecio;
+  --torso-cols:64;
+  --torso-rows:72;
 
-  /* === CUELLO TRAPECIO - 48 COLS - 0.88 NO 0.99 TUBO === */
-  --neck:0.055;
-  --neck-base:0.095;
-  --neck-cols:48;
-  --neck-py:"0.88->0.73 bezier2(0.88,0.80,0.73)";
-  --neck-wc:"0.32->0.82 bezier";
-  --neck-fix:"V35.8 tubo 0.99->0.73 -> V35.9 trapecio 0.88->0.73 base 0.095 cima 0.055 - cabeza nace en 0.88 sin tubo";
+  /* === CUELLO RECTO MOLDE ROIG - 64 COLS - 0.92->0.80 === */
+  --neck:0.09;
+  --neck-base:0.32;
+  --neck-cols:64;
+  --neck-py:"0.92->0.80 bezier2(0.92,0.86,0.80)";
+  --neck-wc:"0.18->0.32 bezier";
+  --neck-fix:"V35.9 trapecio 0.88->0.73 -> V36 recto 0.92->0.80 radio 0.09 - cabeza nace en 0.92 sin tubo ni trapecio";
 
-  /* === HOMBRO UNIFICADO EN PICO + AXILA SIGUE CURVA === */
-  --shoulder-surface:0.18;
-  --shoulder-y:0.58;
-  --shoulder-pico:0.085;
-  --shoulder-bulge:0.085;
-  --shoulder-peak:"pow(abs(cosA),3) * 0.085 * sin(t*PI) - pico como captura, no redondo";
-  --shoulder-fix:"V35.8 0.285 fuera en 0.68 -> V35.9 0.18 dentro en 0.58 misma Y que brazo - solapa 0.14";
-  --axila-dip:0.045;
-  --axila-zone:"sinA < 0.1 && pow(abs(cosA),2.5)";
-  --axila-fix:"dip 0.38-0.58 sigue curva pico - axila curva como subrayado, no corte recto";
+  /* === TRAPECIO MOLDE ROIG - DIAGONAL CUELLO->HOMBRO === */
+  --trapecio-py:"0.80->0.60 bezier2(0.80,0.70,0.60)";
+  --trapecio-wc:"0.32->0.95 bezier";
+  --trapecio-fix:"diagonal del teu trac roig - fletxa cap avall - no pico diamant";
+  --linea-pecho:"0.60 horizontal";
+
+  /* === HOMBRO MOLDE TRAPECIO + AXILA DIAGONAL === */
+  --shoulder-surface:0.16;
+  --shoulder-y:"0.62->0.58 pendiente -18deg";
+  --shoulder-pico:0.06;
+  --shoulder-bulge:0.06;
+  --shoulder-peak:"pow(abs(cosA),2) * 0.06 * sin(t*PI) - suau, no pico pow3 0.085";
+  --shoulder-fix:"V35.9 0.18 pico 0.58 -> V36 0.16 trapecio -18deg - solapa molde";
+  --axila-dip:0.038;
+  --axila-zone:"sinA < 0.2 && pow(abs(cosA),2.0)";
+  --axila-fix:"dip 0.32-0.52 py-=dip*0.45 diagonal - axila sigue linea roja, no corte recto";
 
   /* === HEAD 1/3 TECHNIQUE === */
   --head-top:1/3;
@@ -120,24 +126,24 @@ input,select,button{outline:none}
   --head-side:1/2;
   --head-cols:24;
   --head-rows:28;
-  --head-y:"0.88 + fy*0.18 sobre cuello trapecio 0.88";
+  --head-y:"0.92 + fy*0.18 sobre cuello recto 0.92";
 
-  /* === TORSO BLOCK 1/3 + 1/2 - 62x48 UNIFICADO === */
+  /* === TORSO BLOCK 1/3 + 1/2 - 72x64 MOLDE === */
   --torso-upper:1/3;
   --torso-mid:1/3;
   --torso-lower:1/2;
 
-  /* === BRAZOS UNIFICADOS - NACEN DENTRO 0.18 - DELTOIDE COPIA PICO === */
-  --arm-root:0.18;
+  /* === BRAZOS MOLDE - NACEN DENTRO 0.16 - PENDIENTE -18deg === */
+  --arm-root:0.16;
   --arm-deltoid:0.075;
   --arm-radius-shoulder:0.075;
   --arm-radius-mid:0.038;
   --arm-radius-low:0.028;
-  --arm-len:"bezier2(0.18,0.34,1.045) = 0.18 dentro -> 1.045 mano - solapa 0.14";
-  --arm-y:"0.58 + yOff deltoide 0.035";
+  --arm-len:"bezier2(0.16,0.36,1.045) = 0.16 dentro -> 1.045 mano";
+  --arm-y:"0.62->0.58 pendiente -18deg misma que trapecio";
   --arm-cols:28;
   --arm-rows:28;
-  --arm-fix:"V35.8 0.285 fuera -> V35.9 0.18 dentro, deltoide 0.075 copia pico hombro";
+  --arm-fix:"V35.9 0.18 horizontal 0.58 -> V36 0.16 -18deg 0.62->0.58, deltoide 0.075 copia trapecio";
 
   /* === PIERNAS BLOCK 1/2 - V35.7 INTACTA === */
   --hip-offset:0.088;
@@ -161,36 +167,36 @@ input,select,button{outline:none}
 .laia-torso{
   transform-style: preserve-3d;
   --block-division: 1/3 1/3 1/2;
-  --block-cols: 48;
-  --block-rows: 62;
-  --fix-campana:"cuello trapecio 0.88 + hombro pico 0.58 en torso 62x48 una sola malla";
+  --block-cols: 64;
+  --block-rows: 72;
+  --fix-campana:"cuello recto 0.92 + trapecio diagonal 0.80->0.60 + hombro -18deg en torso 72x64 MOLDE una sola malla";
 }
 
 .laia-shoulder{
-  --shoulder-surface: 0.18;
+  --shoulder-surface: 0.16;
   --shoulder-y: 0.58;
-  --shoulder-pico: 0.085;
-  --axila-dip: 0.045;
-  --axila-line: "dip sigue curva pico - linea axila como subrayado";
+  --shoulder-pico: 0.06;
+  --axila-dip: 0.038;
+  --axila-line: "dip diagonal py-=dip*0.45 - linea axila como tu trac rojo";
 }
 
 .laia-arms{
-  --arm-root: 0.18;
+  --arm-root: 0.16;
   --arm-deltoid: 0.075;
-  --arm-fix: "nace dentro torso 0.18, copia pico hombro, misma Y 0.58";
+  --arm-fix: "nace dentro trapecio 0.16, misma pendiente -18deg 0.62->0.58";
 }
 
 .laia-legs{
-  /* V35.8->V35.9 INTACTA */
-  /* CINTURA: 0.28 INTACTA - base 62x48 */
+  /* V35.9->V36 INTACTA */
+  /* CINTURA: 0.28 INTACTA - base 72x64 MOLDE */
   /* PIERNAS: 0.088 + 0.112 gluti bezier intactas */
-  /* FIX V35.9: solo cuello-hombro-brazo tocado */
+  /* FIX V36: solo cuello-trapecio-hombro-brazo tocado */
 }
 
 .laia-head{
   --head-block: planar-1/3;
   --head-cols: 24;
-  --head-y: "0.88 + fy*0.18 sobre cuello trapecio 0.88";
+  --head-y: "0.92 + fy*0.18 sobre cuello recto 0.92";
 }
 
 @media(max-width:768px){

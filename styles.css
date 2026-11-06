@@ -1,188 +1,206 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>V37 MOLDE PLANO cuello 0.84 + hombro 0.68 + brazo 0.60 - 0.28 + 0.108</title>
-<link rel="icon" href="./icon-192.png">
-<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
-<style>
+/* styles.css - V37 MOLDE PLANO - CINTURA 0.28 INTACTA + 64 COLS + 0.84-0.74-0.68-0.60 + 0.108 */
+
+:root{
+  --bg:#020208;
+  --text:#f1f1f5;
+  --muted:#9ca3af;
+  --holo:#00e5ff;
+  --holo-dim:rgba(0,229,255,0.14);
+  --holo-mid:rgba(0,229,255,0.42);
+  --holo-bright:rgba(0,229,255,0.88);
+  --panel:rgba(12,14,22,0.22);
+  --panel-strong:rgba(14,16,26,0.24);
+  --border:rgba(0,212,255,0.10);
+}
+
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#020208;color:#f1f1f5;font-family:Inter,system-ui;overflow:hidden}
-header{height:52px;background:rgba(10,12,20,0.32);backdrop-filter:blur(14px);border-bottom:1px solid rgba(0,212,255,0.14);display:flex;justify-content:space-between;align-items:center;padding:0 14px;position:fixed;top:0;left:0;right:0;z-index:1000}
-#laia-hologram{position:fixed;top:52px;left:0;width:100vw;height:calc(100vh - 52px);z-index:999;display:flex;align-items:center;justify-content:center;pointer-events:none;background:transparent}
-#laia-holo-canvas{width:100vw;height:calc(100vh - 52px);display:block;background:transparent;pointer-events:auto;filter: contrast(1.18) brightness(1.12) drop-shadow(0 0 12px rgba(0,229,255,0.52))}
-#laia-state{z-index:1001;position:absolute;bottom:16px;left:50%;transform:translateX(-50%);background:rgba(0,229,255,0.88);color:#000;font-size:9px;padding:5px 12px;border-radius:10px;font-weight:900}
-.h-wrapper{margin-top:52px;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;width:100vw;height:calc(100vh - 52px);position:relative;z-index:10;scrollbar-width:none}
-.page{min-width:100vw;width:100vw;height:100%;scroll-snap-align:start;overflow-y:auto;display:flex;position:relative;z-index:10}
-#page1 aside{width:340px;min-width:340px;background:rgba(12,14,22,0.22);backdrop-filter:blur(12px);border-right:1px solid rgba(0,212,255,0.10);padding:12px;display:flex;flex-direction:column;gap:8px;height:calc(100vh - 52px);overflow-y:auto;z-index:15}
-#list{min-height:300px;background:rgba(10,12,18,0.16);border:1px solid rgba(0,212,255,0.08);border-radius:10px;padding:6px;display:flex;flex-direction:column;gap:5px;flex:1;overflow-y:auto}
-.area{background:rgba(22,24,36,0.26);padding:8px 10px;border-radius:8px;border:1px solid rgba(0,212,255,0.08);cursor:pointer;color:#d0d0d8}
-.area b{color:#fff;font-size:12px}.area small{color:#9ca3af;font-size:10px}
-.area.active{background:rgba(0,212,255,0.68);color:#000}
-#card{background:rgba(14,16,26,0.24);backdrop-filter:blur(10px);border:1px solid rgba(0,212,255,0.12);border-radius:12px;padding:12px}
+html,body{width:100%;height:100%;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto;overflow:hidden}
+
+header{
+  height:52px;
+  background:rgba(10,12,20,0.32);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--holo-dim);
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0 14px;position:fixed;top:0;left:0;right:0;z-index:1000
+}
+
+#laia-hologram{
+  position:fixed;top:52px;left:0;width:100vw;height:calc(100vh - 52px);
+  z-index:999;display:flex;align-items:center;justify-content:center;
+  pointer-events:none;background:transparent
+}
+#laia-holo-canvas{
+  width:100vw;height:calc(100vh - 52px);display:block;
+  background:transparent;pointer-events:auto;
+  filter: contrast(1.18) brightness(1.12) drop-shadow(0 0 12px var(--holo-mid))
+}
+#laia-state{
+  z-index:1001;position:absolute;bottom:16px;left:50%;transform:translateX(-50%);
+  background:var(--holo-bright);color:#000;font-size:9px;
+  padding:5px 12px;border-radius:10px;font-weight:900;letter-spacing:0.5px
+}
+
+.h-wrapper{
+  margin-top:52px;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;
+  width:100vw;height:calc(100vh - 52px);position:relative;z-index:10;scrollbar-width:none
+}
+.h-wrapper::-webkit-scrollbar{display:none}
+.page{
+  min-width:100vw;width:100vw;height:100%;scroll-snap-align:start;
+  overflow-y:auto;display:flex;position:relative;z-index:10
+}
+#page1 aside{
+  width:340px;min-width:340px;background:var(--panel);
+  backdrop-filter:blur(12px);border-right:1px solid var(--border);
+  padding:12px;display:flex;flex-direction:column;gap:8px;
+  height:calc(100vh - 52px);overflow-y:auto;z-index:15
+}
+#list{
+  min-height:300px;background:rgba(10,12,18,0.16);
+  border:1px solid rgba(0,212,255,0.08);border-radius:10px;
+  padding:6px;display:flex;flex-direction:column;gap:5px;flex:1;overflow-y:auto
+}
+.area{
+  background:rgba(22,24,36,0.26);padding:8px 10px;border-radius:8px;
+  border:1px solid rgba(0,212,255,0.08);cursor:pointer;color:#d0d0d8;
+  transition: all 0.18s ease
+}
+.area:hover{border-color:var(--holo-dim);background:rgba(22,24,36,0.42)}
+.area b{color:#fff;font-size:12px}.area small{color:var(--muted);font-size:10px}
+.area.active{background:rgba(0,212,255,0.68);color:#000;border-color:var(--holo-bright)}
+.area.active b{color:#000}.area.active small{color:rgba(0,0,0,0.7)}
+
+#card{
+  background:var(--panel-strong);backdrop-filter:blur(10px);
+  border:1px solid rgba(0,212,255,0.12);border-radius:12px;padding:12px
+}
 .hidden{display:none!important}
-.f{background:rgba(24,26,40,0.24);border:1px solid rgba(70,70,90,0.12);color:#9ca3af;padding:5px 10px;border-radius:20px;font-size:11px;cursor:pointer}
-.f.active{background:rgba(0,229,255,0.88);color:#000;font-weight:800}
-@media(max-width:768px){#page1{flex-direction:column}#page1 aside{width:100%;min-width:100%;max-height:42vh}}
-</style>
-</head>
-<body>
-<header><div>📚 LENGUAJE-PRO <span style="background:#00d4ff;color:#000;padding:2px 8px;border-radius:6px;font-size:10px">V37 MOLDE PLANO 0.84 + 0.68 + 0.60 + 0.28 + 0.108</span></div><div style="display:flex;gap:8px;font-size:11px;align-items:center"><span>⭐ <b id="xp">0</b> XP</span><span style="background:#00d4ff;color:#000;padding:2px 8px;border-radius:10px;font-weight:800">A2</span></div></header>
-<div class="h-wrapper" id="hWrapper"><div class="page" id="page1"><aside><h3 style="font-size:9px;color:#00d4ff;font-weight:900">V37 MOLDE PLANO - CUELLO BAJO 0.84 + HOMBRO PLANO 0.68 + AXILA CIERRA + 0.108</h3><input id="search" placeholder="Buscar 50 áreas..." style="background:rgba(22,24,36,0.28);border:1px solid rgba(0,212,255,0.12);color:#fff;padding:9px;border-radius:8px;width:100%"><div style="display:flex;gap:6px;flex-wrap:wrap"><button class="f active" data-f="">Todas</button><button class="f" data-f="A1">A1</button><button class="f" data-f="A2">A2</button><button class="f" data-f="B1">B1</button></div><div id="list">Cargando V37 MOLDE PLANO...</div></aside><main style="flex:1;padding:16px;max-width:760px"><div style="display:flex;gap:8px;margin-bottom:12px"><select id="level" style="background:rgba(24,26,40,0.28);border:1px solid rgba(0,212,255,0.12);color:#fff;padding:9px;border-radius:8px"><option>A1</option><option selected>A2</option><option>B1</option><option>B2</option></select><button id="gen" style="background:#00d4ff;color:#000;border:none;padding:12px 18px;border-radius:12px;font-weight:800;flex:1;max-width:300px">⚡ GENERAR V37 MOLDE PLANO</button><button id="teachBtn" style="background:#8b5cf6;color:#fff;border:none;padding:10px 14px;border-radius:12px;font-weight:700">📌 SAPs</button></div><div id="empty"><h1 style="font-size:22px">👋 Soy Laia V37 MOLDE PLANO</h1><p id="status" style="color:#00d4ff;font-size:12px">V37 CUELLO BAJO 0.84 + HOMBRO PLANO 0.68 + AXILA CIERRA + BRAZO 0.60 + CINTURA 0.28 + 0.108 GLUTI</p></div><div id="card" class="hidden"></div></main></div><div class="page" id="page2"><div style="width:100%;max-width:760px;padding:16px"><h2 style="font-size:14px">🧬 MOTOR 2 - V37 MOLDE PLANO</h2><div style="background:rgba(14,16,26,0.20);border:1px solid rgba(0,212,255,0.10);border-radius:12px;padding:12px;margin-top:12px">FIX V36->V37: Bolsa hombro wc 0.95 + bulge 0.06 + deltoide 0.075 + cuello 0.92 flotando + axila colgando + cadera 0.088 separada -> Hombro PLANO wc 0.68 + bulge 0.015 + deltoide 0.055 + cuello BAJO 0.84->0.74 pegado + cabeza hundida 0.84 + axila CIERRA dip 0.050 py-=dip*0.60 + cadera JUNTA 0.082. Cintura 0.28 + gluti 0.108 intactas.</div></div></div></div>
-<div id="laia-hologram"><canvas id="laia-holo-canvas"></canvas><div id="laia-state">V37 MOLDE PLANO 0.84 + 0.68 + 0.60</div></div>
-<script type="module">
-import * as THREE from 'three';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-const canvas=document.getElementById('laia-holo-canvas');
-const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
-renderer.setPixelRatio(Math.min(devicePixelRatio,1.8));
-renderer.setSize(innerWidth,innerHeight);
-const scene=new THREE.Scene();
-const camera=new THREE.PerspectiveCamera(30, innerWidth/innerHeight, 0.1, 100);
-camera.position.set(0,0.02,2.68);
-const controls=new OrbitControls(camera, renderer.domElement);
-controls.enableDamping=true; controls.dampingFactor=0.08; controls.target.set(0,-0.15,0);
-const group=new THREE.Group(); group.scale.set(0.58,0.58,0.58); group.position.y=-0.15; scene.add(group);
-scene.add(new THREE.AmbientLight(0x00e5ff,0.20));
-function buildV35_PUZZLE_GANADORA(){
-  group.clear();
-  const pos=[], idx=[]; let v=0;
-  const add=(rows,cols,fn)=>{
-    const s=v;
-    for(let y=0;y<rows;y++) for(let x=0;x<cols;x++){ let p=fn(x/(cols-1), y/(rows-1)); pos.push(p.x,p.y,p.z); v++; }
-    for(let y=0;y<rows-1;y++) for(let x=0;x<cols-1;x++){ const a=s+y*cols+x, b=a+1, c=a+cols, d=c+1; idx.push(a,c,b,b,c,d); }
-  };
-  const smoothstep=(t)=> t*t*(3-2*t);
-  const bezier2=(p0,p1,p2,t)=>{ const it=1-t; return it*it*p0 + 2*it*t*p1 + t*t*p2; };
-  // ===== V37 MOLDE PLANO: CUELLO BAJO + HOMBRO PLANO + TORSO 72x64 =====
-  add(72,64,(u,fy)=>{
-    const ang=(u-0.5)*Math.PI*2;
-    const cosA=Math.cos(ang); const sinA=Math.sin(ang);
-    let py,wc;
-    if(fy<0.12){
-      const t=smoothstep(fy/0.12);
-      py=bezier2(0.84, 0.79, 0.74, t);
-      wc=bezier2(0.20, 0.26, 0.34, t);
-    } else if(fy<0.32){
-      const t=smoothstep((fy-0.12)/0.20);
-      py=bezier2(0.74, 0.69, 0.64, t);
-      wc=bezier2(0.34, 0.52, 0.68, t);
-    } else if(fy<0.45){
-      const t=smoothstep((fy-0.32)/0.13);
-      py=bezier2(0.64, 0.58, 0.52, t);
-      wc=bezier2(0.68, 0.60, 0.52, t);
-    } else {
-      const fy2=(fy-0.45)/0.55;
-      py=0.52 - fy2*0.39;
-      if(fy2<0.20) wc=0.52 - fy2*0.55;
-      else if(fy2<0.55) wc=0.41 - Math.pow((fy2-0.20)/0.35,1.3)*0.13;
-      else wc=0.28 + (fy2-0.55)*0.60;
-    }
-    let rW=0.24*(wc/0.82); let rD=rW*0.58;
-    if(fy>=0.12 && fy<=0.45){
-      const tT=(fy<0.32)? smoothstep((fy-0.12)/0.20) : smoothstep((fy-0.32)/0.13);
-      const lat=Math.pow(Math.abs(cosA),2.0);
-      const trap=lat*0.015*Math.sin(tT*Math.PI);
-      rW+=trap; rD+=trap*0.20;
-    }
-    if(fy>=0.30 && fy<=0.50){
-      const tA=smoothstep((fy-0.30)/0.20);
-      const axilaZone=(sinA<0.2)? Math.pow(Math.abs(cosA),2.0)*(1-Math.abs(sinA)*0.4):0;
-      const dip=axilaZone*0.050*Math.sin(tA*Math.PI);
-      rW-=dip; py-=dip*0.60;
-    }
-    return {x:cosA*rW, y:py, z:sinA*rD};
-  });
-  add(28,24,(u,fy)=>{
-    const ang=(u-0.5)*Math.PI*2;
-    let r; if(fy<0.33) r=0.128; else if(fy<0.66) r=0.118; else r=0.108;
-    if(fy<0.15) r=0.130 - fy*0.15;
-    return {x:Math.cos(ang)*r, y:0.84 + fy*0.18, z:Math.sin(ang)*r*0.90};
-  });
-  add(14,18,(u,fy)=>{ const ang=(u-0.5)*Math.PI*2; const r=0.034+Math.cos(fy*Math.PI*0.5)*0.016; return {x:-0.085+Math.cos(ang)*r*0.6, y:0.52-fy*0.10, z:0.14+Math.sin(ang)*r*0.4}; });
-  add(14,18,(u,fy)=>{ const ang=(u-0.5)*Math.PI*2; const r=0.034+Math.cos(fy*Math.PI*0.5)*0.016; return {x:0.085+Math.cos(ang)*r*0.6, y:0.52-fy*0.10, z:0.14+Math.sin(ang)*r*0.4}; });
-  // BRAZO PLANO - recto 0.60
-  const armPlano=(sign)=>(u,fy)=>{
-    const ang=(u-0.5)*Math.PI*2;
-    const len=bezier2(0.14, 0.34, 1.045, fy);
-    let rad;
-    if(fy<0.18) rad=bezier2(0.055, 0.045, 0.038, fy/0.18);
-    else if(fy<0.50) rad=0.038;
-    else rad=bezier2(0.038, 0.032, 0.028, (fy-0.50)/0.50);
-    return {x:sign*len, y:0.60 + Math.sin(ang)*rad, z:Math.cos(ang)*rad};
-  };
-  add(28,28, armPlano(-1)); add(28,28, armPlano(1));
-  const costuraAcosturada=(sign)=>(u,fy)=>{
-    const ang=(u-0.5)*Math.PI*2; const cx=sign*0.082;
-    let py, radius, zScale;
-    const rCinturaBase=0.24*(0.28/0.82);
-    if(fy<0.32){
-      const t=smoothstep(fy/0.32);
-      py=bezier2(0.13, 0.125, 0.11, t);
-      radius=rCinturaBase*(1-t) + 0.095*t + Math.sin(t*Math.PI)*0.006;
-      zScale=0.60*(1-t) + 0.72*t;
-    } else if(fy<0.68){
-      const t=smoothstep((fy-0.32)/0.36);
-      py=bezier2(0.11, -0.02, -0.02, t) - Math.sin(t*Math.PI)*0.025;
-      radius=bezier2(0.095, 0.108, 0.095, t) + Math.sin(t*Math.PI)*0.012;
-      zScale=0.72 + bezier2(0, 0.18, 0.08, t);
-    } else {
-      const t=smoothstep((fy-0.68)/0.32);
-      py=bezier2(-0.02, -0.04, -0.07, t);
-      radius=bezier2(0.095, 0.084, 0.073, t);
-      zScale=0.80 - t*0.08;
-    }
-    return {x: cx + Math.cos(ang)*radius, y: py, z: Math.sin(ang)*radius*zScale};
-  };
-  add(24,48, costuraAcosturada(-1)); add(24,48, costuraAcosturada(1));
-  const lowerBlock=(sign)=>(u,fy)=>{
-    const ang=(u-0.5)*Math.PI*2; const cx=sign*0.082;
-    let py, radius;
-    if(fy<0.35){ const t=fy/0.35; py=-0.07 - t*0.12; radius=0.073 - t*0.010; }
-    else if(fy<0.70){ const t=(fy-0.35)/0.35; py=-0.19 - t*0.28; radius=0.063 - t*0.008; }
-    else { const t=(fy-0.70)/0.30; py=-0.47 - t*0.37; radius=0.055 - t*0.020; }
-    return {x:cx + Math.cos(ang)*radius, y:py, z:Math.sin(ang)*radius*0.72};
-  };
-  add(36,32, lowerBlock(-1)); add(36,32, lowerBlock(1));
-  const foot=(sign)=>(u,fy)=>{ const ang=(u-0.5)*Math.PI*2; return {x:sign*0.082+Math.cos(ang)*0.028, y:-0.84 - fy*0.05, z:0.04+fy*0.08+Math.sin(ang)*0.010}; };
-  add(10,16, foot(-1)); add(10,16, foot(1));
-  const hand=(sign)=>(u,fy)=>{
-    if(fy<0.38){ const ang=(u-0.5)*Math.PI*2; return {x:sign*1.045 + Math.cos(ang)*0.032, y:0.60 + Math.sin(ang)*0.018, z:Math.sin(ang)*0.012}; }
-    else{ const finger=Math.floor(u*5); const fu=(u*5)%1; const ang=(fu-0.5)*Math.PI*2; return {x:sign*(1.08+fy*0.06) + Math.cos(ang)*0.008, y:0.585+Math.sin(ang)*0.008, z:(finger-2)*0.016}; }
-  };
-  add(12,20, hand(-1)); add(12,20, hand(1));
-  const geo=new THREE.BufferGeometry(); geo.setAttribute('position', new THREE.Float32BufferAttribute(pos,3)); geo.setIndex(idx); geo.computeVertexNormals();
-  const wire=new THREE.WireframeGeometry(geo); const mat=new THREE.LineBasicMaterial({color:0x00e5ff, transparent:true, opacity:0.42, depthWrite:false});
-  group.add(new THREE.LineSegments(wire, mat));
-  console.log("LAIA V37 MOLDE PLANO 0.84 + 0.68 + 0.60 - 0.28 + 0.108");
+.f{
+  background:rgba(24,26,40,0.24);border:1px solid rgba(70,70,90,0.12);
+  color:var(--muted);padding:5px 10px;border-radius:20px;
+  font-size:11px;cursor:pointer;transition:all 0.18s
 }
-buildV35_PUZZLE_GANADORA();
-function animate(){ requestAnimationFrame(animate); controls.update(); renderer.render(scene,camera); } animate();
-addEventListener('resize',()=>{ renderer.setSize(innerWidth,innerHeight); camera.aspect=innerWidth/innerHeight; camera.updateProjectionMatrix(); });
-let LAYA_FINAL={ AREAS:{
-1:{name:"Money Basics",topic:"Why Most People Never Become Rich",level:"A1"},2:{name:"Saving",topic:"The Power of Saving Small",level:"A1"},3:{name:"Smart Spending",topic:"Smart Spending Habits",level:"A1"},4:{name:"Investing",topic:"How Investing Builds Freedom",level:"A2"},5:{name:"Work",topic:"Why Hard Work Matters",level:"A2"},6:{name:"Career",topic:"How to Grow in Your Career",level:"B1"},7:{name:"Opportunity",topic:"Why English Is The Language of Opportunity",level:"A2"},8:{name:"Business",topic:"How Small Business Starts",level:"A2"},9:{name:"Time Is Money",topic:"Why Time Is More Valuable Than Money",level:"A1"},10:{name:"Rich vs Poor Mind",topic:"How Rich People Think Different",level:"A2"},
-11:{name:"Positive Mindset",topic:"Why a Positive Mindset Helps",level:"A2"},12:{name:"Growth Mindset",topic:"The Power of Growth Mindset",level:"A2"},13:{name:"Confidence",topic:"How to Build Real Confidence",level:"A2"},14:{name:"Fear",topic:"Why Fear Stops Most People",level:"A2"},15:{name:"Failure",topic:"Why Failure Is Your Best Teacher",level:"B1"},16:{name:"Success",topic:"What Success Really Means",level:"A2"},17:{name:"Progress",topic:"The Power of Progress",level:"A2"},18:{name:"Taking Action",topic:"Why Taking Action Can Change Your Life",level:"A2"},19:{name:"Discipline",topic:"Why Discipline Beats Motivation",level:"A2"},20:{name:"Motivation",topic:"Where Real Motivation Comes From",level:"A2"},
-21:{name:"Focus",topic:"The Power of Deep Focus",level:"A2"},22:{name:"Procrastination",topic:"Why We Procrastinate",level:"A2"},23:{name:"Gratitude",topic:"Why Gratitude Changes Everything",level:"A2"},24:{name:"Happiness",topic:"How to Find Real Happiness",level:"A2"},25:{name:"Stress",topic:"How to Handle Stress",level:"A2"},26:{name:"Good Habits",topic:"Why Building Good Habits Leads to Success",level:"A1"},27:{name:"Bad Habits",topic:"The Money Habits That Keep You Poor",level:"A1"},28:{name:"Morning Routine",topic:"The Power of a Morning Routine",level:"A1"},29:{name:"Goals",topic:"The Power of Setting Goals",level:"A2"},30:{name:"Planning",topic:"Why Planning Saves Your Future",level:"A2"},
-31:{name:"Time Management",topic:"How to Manage Your Time",level:"A1"},32:{name:"Health",topic:"Why Health Is Real Wealth",level:"A1"},33:{name:"Sleep",topic:"The Power of Good Sleep",level:"A1"},34:{name:"Healthy Food",topic:"How Food Affects Your Energy",level:"A1"},35:{name:"Fitness",topic:"Why Small Exercise Changes Your Life",level:"A2"},36:{name:"Learning",topic:"Learn More, Earn More",level:"B1"},37:{name:"Reading",topic:"Why Reading Makes You Richer",level:"B1"},38:{name:"Consistency",topic:"Why Consistency Beats Talent",level:"A2"},39:{name:"Patience",topic:"The Power of Patience",level:"B1"},40:{name:"Kindness",topic:"Why Kindness Is Strength",level:"A1"},
-41:{name:"Family",topic:"My Family Is My Strength",level:"A1"},42:{name:"Grandmother",topic:"My Grandmother Is My Inspiration",level:"B1"},43:{name:"Friends",topic:"How Real Friends Help You Grow",level:"A2"},44:{name:"Love",topic:"Why Love Makes Us Stronger",level:"B1"},45:{name:"Respect",topic:"Why Respect Is Everything",level:"A2"},46:{name:"Honesty",topic:"Why Honesty Builds Trust",level:"B1"},47:{name:"Responsibility",topic:"The Power of Responsibility",level:"A1"},48:{name:"Delivery Life",topic:"My Life Delivering Food",level:"A1"},49:{name:"Alignment",topic:"Why Alignment Creates Success",level:"B1"},50:{name:"Willpower",topic:"The Power of Willpower",level:"B2"}
-}, generate(id,lvl){ const a=this.AREAS[id]||{name:"Test",topic:"Test"}; return {story:`Hello ${a.topic}. V37 MOLDE PLANO - Cintura 0.28 + Hombro 0.68 plano + Gluti 0.108`, meta:{area:a.name,topic:a.topic,level:lvl}}; } };
-const listEl=document.getElementById('list'); let sel='1', cur='';
-function render(f='',lvl=''){
-  listEl.innerHTML=''; let c=0;
-  Object.entries(LAYA_FINAL.AREAS).forEach(([id,a])=>{
-    const hay=`${id} ${a.name} ${a.topic} ${a.level}`.toLowerCase();
-    if(f&&!hay.includes(f)) return; if(lvl&&a.level!==lvl) return; c++;
-    const d=document.createElement('div'); d.className='area'; d.innerHTML=`<b>${id}. ${a.name}</b><br><small>${a.topic} • ${a.level}</small>`;
-    d.onclick=()=>{ sel=id; document.querySelectorAll('.area').forEach(x=>x.classList.remove('active')); d.classList.add('active'); };
-    listEl.appendChild(d);
-  });
-  document.getElementById('status').textContent=`${c} áreas - V37 MOLDE PLANO - LISTO`;
+.f.active{background:var(--holo-bright);color:#000;font-weight:800;border-color:var(--holo-bright)}
+input,select,button{outline:none}
+
+/* V37 MOLDE PLANO - CINTURA 0.28 INTACTA */
+.laia-module{
+  /* === CINTURA INTACTA NO TOCAR - V35.4 base === */
+  --waist:0.28;
+  --torso-radius:0.24;
+  --torso-depth:0.58;
+  --torso-mode:360-closed-block-molde-plano;
+  --torso-cols:64;
+  --torso-rows:72;
+
+  /* === CUELLO BAJO Y PEGADO - 64 COLS - 0.84->0.74 === */
+  --neck:0.09;
+  --neck-base:0.34;
+  --neck-cols:64;
+  --neck-py:"0.84->0.74 bezier2(0.84,0.79,0.74)";
+  --neck-wc:"0.20->0.34 bezier";
+  --neck-fix:"V36 0.92 flotando -> V37 0.84 bajo pegado radio 0.09 - cabeza hundida en 0.84 base 0.13 traga cuello";
+
+  /* === HOMBRO PLANO - LINEA NARANJA - CUELLO->HOMBRO === */
+  --hombro-plano-py:"0.74->0.64 bezier2(0.74,0.69,0.64)";
+  --hombro-plano-wc:"0.34->0.68 bezier - NO 0.95 bolsa";
+  --hombro-plano-fix:"linea taronja dalt: casi recta, baja solo 0.10 cuello->hombro - no cupula";
+  --linea-pecho:"0.64 horizontal - pecho 0.64->0.52";
+
+  /* === HOMBRO PLANO + AXILA CIERRA === */
+  --shoulder-surface:0.14;
+  --shoulder-y:"0.60 recta - linea naranja lateral";
+  --shoulder-pico:0.015;
+  --shoulder-bulge:0.015;
+  --shoulder-peak:"pow(abs(cosA),2) * 0.015 * sin(t*PI) - plano, no cupula 0.06 bolsa";
+  --shoulder-fix:"V36 0.16 bulge 0.06 bolsa -> V37 0.14 bulge 0.015 plano - solapa molde sin bolsa";
+  --axila-dip:0.050;
+  --axila-zone:"sinA < 0.2 && pow(abs(cosA),2.0)";
+  --axila-fix:"dip 0.30-0.50 py-=dip*0.60 cierra hacia arriba - curva taronja abajo, no cuelga";
+
+  /* === HEAD 1/3 TECHNIQUE - HUNDIDA === */
+  --head-top:1/3;
+  --head-mid:1/3;
+  --head-bottom:1/3;
+  --head-side:1/2;
+  --head-cols:24;
+  --head-rows:28;
+  --head-y:"0.84 + fy*0.18 hundida - base 0.13 traga cuello 0.84";
+
+  /* === TORSO BLOCK 1/3 + 1/2 - 72x64 MOLDE PLANO === */
+  --torso-upper:1/3;
+  --torso-mid:1/3;
+  --torso-lower:1/2;
+
+  /* === BRAZOS PLANO - NACEN DENTRO 0.14 - RECTO 0.60 === */
+  --arm-root:0.14;
+  --arm-deltoid:0.055;
+  --arm-radius-shoulder:0.055;
+  --arm-radius-mid:0.038;
+  --arm-radius-low:0.028;
+  --arm-len:"bezier2(0.14,0.34,1.045) = 0.14 dentro -> 1.045 mano";
+  --arm-y:"0.60 recta misma que hombro plano";
+  --arm-cols:28;
+  --arm-rows:28;
+  --arm-fix:"V36 0.16 deltoide 0.075 bolsa -18deg -> V37 0.14 deltoide 0.055 plano recto 0.60";
+
+  /* === PIERNAS BLOCK 1/2 - JUNTA 0.082 - CIERRA FORAT === */
+  --hip-offset:0.082;
+  --hip-radius:0.095;
+  --hip-radius-gluti:0.108;
+  --hip-radius-mid:0.073;
+  --leg-thigh:0.095;
+  --leg-thigh-gluti:0.108;
+  --leg-thigh-mid:0.073;
+  --leg-knee:0.055;
+  --leg-calf:0.035;
+  --leg-zscale:0.90;
+  --leg-cols:48;
+  --leg-rows:24;
+  --leg-curve:bezier-3p-smoothstep;
+  --leg-py:"0.13 bezier -> 0.11 -> -0.07";
+  --bezier-control:"bezier2(0.11, -0.02, -0.02) + sin(t)*0.025";
+  --bezier-radius:"bezier2(0.095, 0.108, 0.095) + sin(t)*0.012";
 }
-render();
-document.getElementById('search').oninput=e=>render(e.target.value.toLowerCase(),cur);
-document.querySelectorAll('.f').forEach(b=>b.onclick=()=>{document.querySelectorAll('.f').forEach(x=>x.classList.remove('active')); b.classList.add('active'); cur=b.dataset.f; render(document.getElementById('search').value.toLowerCase(),cur);});
-document.getElementById('gen').onclick=()=>{ const lvl=document.getElementById('level').value; const res=LAYA_FINAL.generate(sel,lvl); const card=document.getElementById('card'); card.innerHTML=`<h2>${res.meta.topic}</h2><div style="background:rgba(0,0,0,0.22);padding:14px;border-radius:12px;margin:12px 0;white-space:pre-wrap">${res.story}</div>`; card.classList.remove('hidden'); document.getElementById('empty').classList.add('hidden'); };
-document.getElementById('teachBtn').onclick=()=>document.getElementById('hWrapper').scrollTo({left:innerWidth,behavior:'smooth'});
-</script>
-</body>
-</html>
+
+.laia-torso{
+  transform-style: preserve-3d;
+  --block-division: 1/3 1/3 1/2;
+  --block-cols: 64;
+  --block-rows: 72;
+  --fix-campana:"cuello bajo 0.84 + hombro plano 0.68 + axila cierra en torso 72x64 MOLDE PLANO una sola malla";
+}
+
+.laia-shoulder{
+  --shoulder-surface: 0.14;
+  --shoulder-y: 0.60;
+  --shoulder-pico: 0.015;
+  --axila-dip: 0.050;
+  --axila-line: "dip cierra py-=dip*0.60 - curva taronja abajo, no cuelga";
+}
+
+.laia-arms{
+  --arm-root: 0.14;
+  --arm-deltoid: 0.055;
+  --arm-fix: "nace dentro hombro plano 0.14, recta 0.60 - linea naranja lateral";
+}
+
+.laia-legs{
+  /* V36->V37 JUNTA */
+  /* CINTURA: 0.28 INTACTA - base 72x64 MOLDE PLANO */
+  /* PIERNAS: 0.082 + 0.108 gluti bezier - cierra forat abajo rojo */
+  /* FIX V37: solo cuello-hombro-brazo-cadera tocado */
+}
+
+.laia-head{
+  --head-block: planar-1/3;
+  --head-cols: 24;
+  --head-y: "0.84 + fy*0.18 hundida sobre cuello bajo 0.84";
+}
+
+@media(max-width:768px){
+  #page1{flex-direction:column}
+  #page1 aside{width:100%;min-width:100%;max-height:42vh}
+  #laia-hologram{opacity:0.55}
+}

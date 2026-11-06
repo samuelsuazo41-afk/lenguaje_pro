@@ -1,5 +1,5 @@
-// laia_hologram.js - V37 MOLDE PLANO - 0.28 INTACTA + 0.108
-// FIX V36: bolsa hombro wc 0.95 + bulge 0.06 + deltoide 0.075 + cuello 0.92 flotando + axila colgando + cadera 0.088 separada -> V37: hombro PLANO wc 0.68 + bulge 0.015 + deltoide 0.055 + cuello BAJO 0.84->0.74 pegado + cabeza hundida 0.84 + axila CIERRA 0.05 + cadera 0.082 junta
+// laia_hologram.js - V38 SOLDADO CUELLO-HOMBRO - 0.28 INTACTA + 0.108
+// FIX V37: bolsa = torso cupula wc 0.68 + bulge 0.015 + cuello 0.84 flotando sobre cupula + axila 0.05 forat -> V38: SOSTRE PLA 0.64 + cuello SOLDADO DENTRO 0.78->0.64 + wc MAX 0.55 = ancho hombro = raiz brazo + bulge 0 ELIMINADO + axila 0.02 suave
 import * as THREE from 'three';
 
 export function buildV35_FROM_SCRATCH(group) {
@@ -20,26 +20,28 @@ export function buildV35_FROM_SCRATCH(group) {
   const smoothstep=(t)=> t*t*(3-2*t);
   const bezier2=(p0,p1,p2,t)=>{ const it=1-t; return it*it*p0 + 2*it*t*p1 + t*t*p2; };
 
-  // ===== MOLDE PLANO: CUELLO BAJO + HOMBRO PLANO + TORSO 72x64 - UNA SOLA MALLA =====
+  // ===== V38 SOLDADO: SOSTRE PLA 0.64 + CUELLO DENTRO + TORSO 72x64 - UNA SOLA MALLA =====
   add(72,64,(u,fy)=>{
     const ang=(u-0.5)*Math.PI*2;
     const cosA=Math.cos(ang); const sinA=Math.sin(ang);
     let py,wc;
-    if(fy<0.12){
-      // CUELLO BAJO Y PEGADO: 0.84->0.74, no 0.92 flotando. wc 0.20->0.34
-      const t=smoothstep(fy/0.12);
-      py=bezier2(0.84, 0.79, 0.74, t);
-      wc=bezier2(0.20, 0.26, 0.34, t);
-    } else if(fy<0.32){
-      // HOMBRO PLANO - LINEA NARANJA: 0.74->0.64, wc 0.34->0.68 NO 0.95 bolsa
-      const t=smoothstep((fy-0.12)/0.20);
-      py=bezier2(0.74, 0.69, 0.64, t);
-      wc=bezier2(0.34, 0.52, 0.68, t);
+    if(fy<0.10){
+      // CUELLO SOLDADO - LINEA GROGA DALT: 0.78->0.70, wc 0.18->0.28
+      // No es un tubo encima, es la parte que sobresale del sostre pla
+      const t=smoothstep(fy/0.10);
+      py=bezier2(0.78, 0.74, 0.70, t);
+      wc=bezier2(0.18, 0.23, 0.28, t);
+    } else if(fy<0.30){
+      // SOLDADURA CUELLO->HOMBRO - FLETXA GROGA: 0.70->0.64 SOSTRE PLA
+      // wc 0.28->0.55, NO 0.68. Aqui es on es solda, a la 2a linea groga 0.64
+      const t=smoothstep((fy-0.10)/0.20);
+      py=bezier2(0.70, 0.67, 0.64, t);
+      wc=bezier2(0.28, 0.42, 0.55, t);
     } else if(fy<0.45){
-      // PECHO + AXILA QUE CIERRA: 0.64->0.52, wc 0.68->0.52
-      const t=smoothstep((fy-0.32)/0.13);
+      // PECHO DESPRES DE LA SOLDADURA: 0.64->0.52, wc 0.55->0.52 casi recto
+      const t=smoothstep((fy-0.30)/0.15);
       py=bezier2(0.64, 0.58, 0.52, t);
-      wc=bezier2(0.68, 0.60, 0.52, t);
+      wc=bezier2(0.55, 0.53, 0.52, t);
     } else {
       // TORSO -> CINTURA 0.28 INTACTA NO TOCAR
       const fy2=(fy-0.45)/0.55;
@@ -49,29 +51,23 @@ export function buildV35_FROM_SCRATCH(group) {
       else wc=0.28 + (fy2-0.55)*0.60;
     }
     let rW=0.24*(wc/0.82); let rD=rW*0.58;
-    // SIN BOLSA: bulge 0.015, no 0.06. Hombro plano, no cupula
-    if(fy>=0.12 && fy<=0.45){
-      const tT=(fy<0.32)? smoothstep((fy-0.12)/0.20) : smoothstep((fy-0.32)/0.13);
-      const lat=Math.pow(Math.abs(cosA),2.0);
-      const trap=lat*0.015*Math.sin(tT*Math.PI);
-      rW+=trap; rD+=trap*0.20;
-    }
-    // AXILA CIERRA - FLECHAS ROJAS: dip mas fuerte 0.05 y sube, no cuelga
-    if(fy>=0.30 && fy<=0.50){
-      const tA=smoothstep((fy-0.30)/0.20);
+    // BOLSA ELIMINADA - ROIG: bulge 0. NO trap, NO cupula. Sostre pla.
+    // AXILA SUAVE: dip 0.02, no 0.05 que feia forat
+    if(fy>=0.28 && fy<=0.48){
+      const tA=smoothstep((fy-0.28)/0.20);
       const axilaZone=(sinA<0.2)? Math.pow(Math.abs(cosA),2.0)*(1-Math.abs(sinA)*0.4):0;
-      const dip=axilaZone*0.050*Math.sin(tA*Math.PI);
-      rW-=dip; py-=dip*0.60;
+      const dip=axilaZone*0.020*Math.sin(tA*Math.PI);
+      rW-=dip; py-=dip*0.30;
     }
     return {x:cosA*rW, y:py, z:sinA*rD};
   });
 
-  // HEAD HUNDIDA: nace en 0.84, base 0.13 traga el cuello 0.84 - no puesta encima
+  // HEAD SOLDADA: nace en 0.78, base 0.13 traga el cuello soldado 0.78 - no puesta encima
   add(28,24,(u,fy)=>{
     const ang=(u-0.5)*Math.PI*2;
     let r; if(fy<0.33) r=0.128; else if(fy<0.66) r=0.118; else r=0.108;
     if(fy<0.15) r=0.130 - fy*0.15;
-    return {x:Math.cos(ang)*r, y:0.84 + fy*0.18, z:Math.sin(ang)*r*0.90};
+    return {x:Math.cos(ang)*r, y:0.78 + fy*0.18, z:Math.sin(ang)*r*0.90};
   });
   const breast=(sign)=>(u,fy)=>{
     const ang=(u-0.5)*Math.PI*2;
@@ -80,17 +76,17 @@ export function buildV35_FROM_SCRATCH(group) {
   };
   add(14,18, breast(-1)); add(14,18, breast(1));
 
-  // BRAZO PLANO - LINEA NARANJA LATERAL: recto a 0.60, deltoide 0.055 NO 0.075 bolsa
-  const armPlano=(sign)=>(u,fy)=>{
+  // BRAZO SOLDADO AL SOSTRE PLA: raiz 0.14 = ancho hombro 0.161, recto 0.60, deltoide 0.045 sin bolsa
+  const armSoldado=(sign)=>(u,fy)=>{
     const ang=(u-0.5)*Math.PI*2;
     const len=bezier2(0.14, 0.34, 1.045, fy);
     let rad;
-    if(fy<0.18) rad=bezier2(0.055, 0.045, 0.038, fy/0.18);
+    if(fy<0.18) rad=bezier2(0.045, 0.042, 0.038, fy/0.18);
     else if(fy<0.50) rad=0.038;
     else rad=bezier2(0.038, 0.032, 0.028, (fy-0.50)/0.50);
     return {x:sign*len, y:0.60 + Math.sin(ang)*rad, z:Math.cos(ang)*rad};
   };
-  add(28,28, armPlano(-1)); add(28,28, armPlano(1));
+  add(28,28, armSoldado(-1)); add(28,28, armSoldado(1));
 
   // CADERA JUNTA - ABAJO ROJO: 0.082 NO 0.088, cierra forat entre piernas. Gluti 0.108
   const costuraAcosturada=(sign)=>(u,fy)=>{
@@ -123,9 +119,10 @@ export function buildV35_FROM_SCRATCH(group) {
   const wire=new THREE.WireframeGeometry(geo);
   const mat=new THREE.LineBasicMaterial({color:0x00e5ff, transparent:true, opacity:0.40, depthWrite:false});
   group.add(new THREE.LineSegments(wire, mat));
-  console.log("LAIA V37 MOLDE PLANO cuello 0.84 pegado + hombro plano 0.68 + axila cierra 0.05 + cadera 0.082 - 0.28 + 0.108");
+  console.log("LAIA V38 SOLDADO cuello 0.78->0.64 sostre pla + wc max 0.55 + bulge 0 - 0.28 + 0.108");
   return geo;
 }
+export const buildV38_FROM_SCRATCH = buildV35_FROM_SCRATCH;
 export const buildV37_FROM_SCRATCH = buildV35_FROM_SCRATCH;
 export const buildV36_FROM_SCRATCH = buildV35_FROM_SCRATCH;
 export const buildV35_9_FROM_SCRATCH = buildV35_FROM_SCRATCH;

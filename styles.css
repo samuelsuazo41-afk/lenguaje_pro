@@ -1,4 +1,4 @@
-/* styles.css - V37 MOLDE PLANO - CINTURA 0.28 INTACTA + 64 COLS + 0.84-0.74-0.68-0.60 + 0.108 */
+/* styles.css - V38 SOLDADO CUELLO-HOMBRO - CINTURA 0.28 INTACTA + 64 COLS + 0.78-0.64-0.55-0.60 + 0.108 */
 
 :root{
   --bg:#020208;
@@ -84,66 +84,66 @@ header{
 .f.active{background:var(--holo-bright);color:#000;font-weight:800;border-color:var(--holo-bright)}
 input,select,button{outline:none}
 
-/* V37 MOLDE PLANO - CINTURA 0.28 INTACTA */
+/* V38 SOLDADO - CINTURA 0.28 INTACTA */
 .laia-module{
   /* === CINTURA INTACTA NO TOCAR - V35.4 base === */
   --waist:0.28;
   --torso-radius:0.24;
   --torso-depth:0.58;
-  --torso-mode:360-closed-block-molde-plano;
+  --torso-mode:360-closed-block-soldado;
   --torso-cols:64;
   --torso-rows:72;
 
-  /* === CUELLO BAJO Y PEGADO - 64 COLS - 0.84->0.74 === */
+  /* === CUELLO SOLDADO DENTRO - 64 COLS - 0.78->0.64 LINEA GROGA === */
   --neck:0.09;
-  --neck-base:0.34;
+  --neck-base:0.28;
   --neck-cols:64;
-  --neck-py:"0.84->0.74 bezier2(0.84,0.79,0.74)";
-  --neck-wc:"0.20->0.34 bezier";
-  --neck-fix:"V36 0.92 flotando -> V37 0.84 bajo pegado radio 0.09 - cabeza hundida en 0.84 base 0.13 traga cuello";
+  --neck-py:"0.78->0.64 bezier2(0.78,0.74,0.70) + soldadura 0.70->0.64";
+  --neck-wc:"0.18->0.28 bezier";
+  --neck-fix:"V37 0.84 flotando sobre cupula -> V38 0.78 soldado DENTRO hasta linea groga 0.64 - cabeza hundida en 0.78 base 0.13 traga cuello";
 
-  /* === HOMBRO PLANO - LINEA NARANJA - CUELLO->HOMBRO === */
-  --hombro-plano-py:"0.74->0.64 bezier2(0.74,0.69,0.64)";
-  --hombro-plano-wc:"0.34->0.68 bezier - NO 0.95 bolsa";
-  --hombro-plano-fix:"linea taronja dalt: casi recta, baja solo 0.10 cuello->hombro - no cupula";
+  /* === SOLDADURA CUELLO->HOMBRO - FLETXA GROGA - SOSTRE PLA 0.64 === */
+  --soldadura-py:"0.70->0.64 bezier2(0.70,0.67,0.64)";
+  --soldadura-wc:"0.28->0.55 bezier - NO 0.68 cupula";
+  --soldadura-fix:"linea groga dalt: cuello soldat, sostre pla 0.64 - no tubo encima, no cupula";
   --linea-pecho:"0.64 horizontal - pecho 0.64->0.52";
 
-  /* === HOMBRO PLANO + AXILA CIERRA === */
+  /* === HOMBRO SOLDADO + AXILA SUAVE === */
   --shoulder-surface:0.14;
   --shoulder-y:"0.60 recta - linea naranja lateral";
-  --shoulder-pico:0.015;
-  --shoulder-bulge:0.015;
-  --shoulder-peak:"pow(abs(cosA),2) * 0.015 * sin(t*PI) - plano, no cupula 0.06 bolsa";
-  --shoulder-fix:"V36 0.16 bulge 0.06 bolsa -> V37 0.14 bulge 0.015 plano - solapa molde sin bolsa";
-  --axila-dip:0.050;
+  --shoulder-pico:0;
+  --shoulder-bulge:0;
+  --shoulder-peak:"bulge 0 ELIMINADO - sostre pla, no cupula 0.015 bolsa";
+  --shoulder-fix:"V37 0.14 bulge 0.015 -> V38 0.14 bulge 0 - solapa soldada sin bolsa";
+  --axila-dip:0.020;
   --axila-zone:"sinA < 0.2 && pow(abs(cosA),2.0)";
-  --axila-fix:"dip 0.30-0.50 py-=dip*0.60 cierra hacia arriba - curva taronja abajo, no cuelga";
+  --axila-fix:"dip 0.28-0.48 py-=dip*0.30 suave - no forat, no cuelga";
 
-  /* === HEAD 1/3 TECHNIQUE - HUNDIDA === */
+  /* === HEAD 1/3 TECHNIQUE - HUNDIDA 0.78 === */
   --head-top:1/3;
   --head-mid:1/3;
   --head-bottom:1/3;
   --head-side:1/2;
   --head-cols:24;
   --head-rows:28;
-  --head-y:"0.84 + fy*0.18 hundida - base 0.13 traga cuello 0.84";
+  --head-y:"0.78 + fy*0.18 hundida - base 0.13 traga cuello soldado 0.78";
 
-  /* === TORSO BLOCK 1/3 + 1/2 - 72x64 MOLDE PLANO === */
+  /* === TORSO BLOCK 1/3 + 1/2 - 72x64 SOLDADO === */
   --torso-upper:1/3;
   --torso-mid:1/3;
   --torso-lower:1/2;
 
-  /* === BRAZOS PLANO - NACEN DENTRO 0.14 - RECTO 0.60 === */
+  /* === BRAZOS SOLDADO - NACEN DENTRO 0.14 - RECTO 0.60 === */
   --arm-root:0.14;
-  --arm-deltoid:0.055;
-  --arm-radius-shoulder:0.055;
+  --arm-deltoid:0.045;
+  --arm-radius-shoulder:0.045;
   --arm-radius-mid:0.038;
   --arm-radius-low:0.028;
   --arm-len:"bezier2(0.14,0.34,1.045) = 0.14 dentro -> 1.045 mano";
-  --arm-y:"0.60 recta misma que hombro plano";
+  --arm-y:"0.60 recta misma que hombro soldado";
   --arm-cols:28;
   --arm-rows:28;
-  --arm-fix:"V36 0.16 deltoide 0.075 bolsa -18deg -> V37 0.14 deltoide 0.055 plano recto 0.60";
+  --arm-fix:"V37 0.14 deltoide 0.055 bolsa -> V38 0.14 deltoide 0.045 soldado recto 0.60 sin bolsa";
 
   /* === PIERNAS BLOCK 1/2 - JUNTA 0.082 - CIERRA FORAT === */
   --hip-offset:0.082;
@@ -169,34 +169,34 @@ input,select,button{outline:none}
   --block-division: 1/3 1/3 1/2;
   --block-cols: 64;
   --block-rows: 72;
-  --fix-campana:"cuello bajo 0.84 + hombro plano 0.68 + axila cierra en torso 72x64 MOLDE PLANO una sola malla";
+  --fix-campana:"cuello soldado 0.78->0.64 + sostre pla 0.64 + wc max 0.55 + bulge 0 en torso 72x64 SOLDADO una sola malla";
 }
 
 .laia-shoulder{
   --shoulder-surface: 0.14;
   --shoulder-y: 0.60;
-  --shoulder-pico: 0.015;
-  --axila-dip: 0.050;
-  --axila-line: "dip cierra py-=dip*0.60 - curva taronja abajo, no cuelga";
+  --shoulder-pico: 0;
+  --axila-dip: 0.020;
+  --axila-line: "dip suave py-=dip*0.30 - no forat, no cuelga";
 }
 
 .laia-arms{
   --arm-root: 0.14;
-  --arm-deltoid: 0.055;
-  --arm-fix: "nace dentro hombro plano 0.14, recta 0.60 - linea naranja lateral";
+  --arm-deltoid: 0.045;
+  --arm-fix: "nace dentro hombro soldado 0.14, recta 0.60 - linea naranja lateral";
 }
 
 .laia-legs{
-  /* V36->V37 JUNTA */
-  /* CINTURA: 0.28 INTACTA - base 72x64 MOLDE PLANO */
-  /* PIERNAS: 0.082 + 0.108 gluti bezier - cierra forat abajo rojo */
-  /* FIX V37: solo cuello-hombro-brazo-cadera tocado */
+  /* V37->V38 INTACTA */
+  /* CINTURA: 0.28 INTACTA - base 72x64 SOLDADO */
+  /* PIERNAS: 0.082 + 0.108 gluti bezier - cierra forat abajo */
+  /* FIX V38: solo cuello-hombro-brazo tocado - bolsa eliminada */
 }
 
 .laia-head{
   --head-block: planar-1/3;
   --head-cols: 24;
-  --head-y: "0.84 + fy*0.18 hundida sobre cuello bajo 0.84";
+  --head-y: "0.78 + fy*0.18 hundida sobre cuello soldado 0.78";
 }
 
 @media(max-width:768px){

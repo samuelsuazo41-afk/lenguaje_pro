@@ -1,5 +1,5 @@
-// laia_hologram.js - V35.9 UNIFICADO HOMBRO-AXILA-BRAZO + CUELLO TRAPECIO - 0.28 INTACTA + 0.112
-// FIX V35.8: hombro 0.68 vs brazo 0.58 gap Y 0.10 -> hombro centrado 0.58 + brazo nace DENTRO 0.18 + cuello 0.99->0.88 trapecio
+// laia_hologram.js - V36 MOLDE TRAPECIO - 0.28 INTACTA + 0.112
+// FIX V35.9: pico diamant pow3 0.085 + cuello trapecio 0.88 + brazo horizontal -> MOLDE ROIG: cuello recto 0.92->0.80 + trapecio diagonal 0.32->0.95 hasta 0.60 + linea pecho 0.60 + axila diagonal + brazo -18deg 0.62->0.58
 import * as THREE from 'three';
 
 export function buildV35_FROM_SCRATCH(group) {
@@ -20,48 +20,58 @@ export function buildV35_FROM_SCRATCH(group) {
   const smoothstep=(t)=> t*t*(3-2*t);
   const bezier2=(p0,p1,p2,t)=>{ const it=1-t; return it*it*p0 + 2*it*t*p1 + t*t*p2; };
 
-  // ===== TORSO+CUELLO 62x48 - CUELLO 0.88 TRAPECIO, NO TUBO 0.99 =====
-  add(62,48,(u,fy)=>{
+  // ===== MOLDE UNICO: CUELLO+TRAPECIO+HOMBRO+TORSO 72x64 - UNA SOLA MALLA =====
+  add(72,64,(u,fy)=>{
     const ang=(u-0.5)*Math.PI*2;
     const cosA=Math.cos(ang); const sinA=Math.sin(ang);
     let py,wc;
-    if(fy<0.15){
-      const t=smoothstep(fy/0.15);
-      py=bezier2(0.88, 0.80, 0.73, t);
-      wc=bezier2(0.32, 0.55, 0.82, t);
+    if(fy<0.12){
+      // CUELLO RECTO MOLDE ROIG: 0.92->0.80, wc 0.18->0.32 base cuello
+      const t=smoothstep(fy/0.12);
+      py=bezier2(0.92, 0.86, 0.80, t);
+      wc=bezier2(0.18, 0.24, 0.32, t);
+    } else if(fy<0.32){
+      // TRAPECIO MOLDE ROIG: diagonal cuello->hombro 0.80->0.60, wc 0.32->0.95 hombro ancho
+      const t=smoothstep((fy-0.12)/0.20);
+      py=bezier2(0.80, 0.70, 0.60, t);
+      wc=bezier2(0.32, 0.68, 0.95, t);
+    } else if(fy<0.45){
+      // LINEA PECHO 0.60 + AXILA DIAGONAL: 0.60->0.52, wc 0.95->0.62
+      const t=smoothstep((fy-0.32)/0.13);
+      py=bezier2(0.60, 0.56, 0.52, t);
+      wc=bezier2(0.95, 0.78, 0.62, t);
     } else {
-      const fy2=(fy-0.15)/0.85;
-      py=0.73 - fy2*0.60;
-      if(fy2<0.06) wc=0.82;
-      else if(fy2<0.28) wc=0.82 - (fy2-0.06)*1.45;
-      else if(fy2<0.58) wc=0.50 - Math.pow((fy2-0.28)/0.30,1.3)*0.22;
-      else wc=0.28 + (fy2-0.58)*0.72;
+      // TORSO -> CINTURA 0.28 INTACTA NO TOCAR
+      const fy2=(fy-0.45)/0.55;
+      py=0.52 - fy2*0.39;
+      if(fy2<0.20) wc=0.62 - fy2*0.70;
+      else if(fy2<0.55) wc=0.48 - Math.pow((fy2-0.20)/0.35,1.3)*0.20;
+      else wc=0.28 + (fy2-0.55)*0.60;
     }
-    let rW=0.24*(wc/0.82); let rD=rW*0.60;
-    // HOMBRO EN PICO CENTRADO EN 0.58 = MISMA Y QUE BRAZO - fy 0.28-0.48
-    if(fy>=0.28 && fy<=0.48){
-      const tH=smoothstep((fy-0.28)/0.20);
-      const peak=Math.pow(Math.abs(cosA),3.0);
-      const bulge=peak * 0.085 * Math.sin(tH*Math.PI);
-      rW+=bulge; rD+=bulge*0.45;
-      if(peak>0.6) py-=0.015*Math.sin(tH*Math.PI);
+    let rW=0.24*(wc/0.82); let rD=rW*0.58;
+    // FORMA MOLDE: trapecio plano delante/detras + punta lateral suave - NO pico diamant pow3
+    if(fy>=0.12 && fy<=0.45){
+      const tT=(fy<0.32)? smoothstep((fy-0.12)/0.20) : smoothstep((fy-0.32)/0.13);
+      const lat=Math.pow(Math.abs(cosA),2.0);
+      const trap=lat*0.06*Math.sin(tT*Math.PI);
+      rW+=trap; rD+=trap*0.25;
     }
-    // AXILA SIGUE CURVA PICO - NO CORTE RECTO
-    if(fy>=0.38 && fy<=0.58){
-      const tA=smoothstep((fy-0.38)/0.20);
-      const axilaZone=(sinA<0.1)? Math.pow(Math.abs(cosA),2.5)*(1-Math.abs(sinA)*0.5):0;
-      const dip=axilaZone*0.045*Math.sin(tA*Math.PI);
-      rW-=dip; py-=dip*0.30;
+    // AXILA MOLDE: diagonal que baja, sigue linea roja derecha/izquierda - NO corte recto
+    if(fy>=0.32 && fy<=0.52){
+      const tA=smoothstep((fy-0.32)/0.20);
+      const axilaZone=(sinA<0.2)? Math.pow(Math.abs(cosA),2.0)*(1-Math.abs(sinA)*0.4):0;
+      const dip=axilaZone*0.038*Math.sin(tA*Math.PI);
+      rW-=dip; py-=dip*0.45;
     }
     return {x:cosA*rW, y:py, z:sinA*rD};
   });
 
-  // HEAD NACE EN 0.88 SIN TUBO
+  // HEAD NACE EN 0.92 - del cuello recto, no del trapecio
   add(28,24,(u,fy)=>{
     const ang=(u-0.5)*Math.PI*2;
     let r; if(fy<0.33) r=0.128; else if(fy<0.66) r=0.118; else r=0.108;
-    if(fy<0.12) r=0.115 + fy*0.10;
-    return {x:Math.cos(ang)*r, y:0.88 + fy*0.18, z:Math.sin(ang)*r*0.90};
+    if(fy<0.12) r=0.105 + fy*0.10;
+    return {x:Math.cos(ang)*r, y:0.92 + fy*0.18, z:Math.sin(ang)*r*0.90};
   });
   const breast=(sign)=>(u,fy)=>{
     const ang=(u-0.5)*Math.PI*2;
@@ -70,18 +80,18 @@ export function buildV35_FROM_SCRATCH(group) {
   };
   add(14,18, breast(-1)); add(14,18, breast(1));
 
-  // BRAZO UNIFICADO - NACE DENTRO 0.18, DELTOIDE 0.075 COPIA PICO
-  const armUnificado=(sign)=>(u,fy)=>{
+  // BRAZO MOLDE - misma pendiente -18deg que trapecio, no horizontal. Nace DENTRO 0.16
+  const armMolde=(sign)=>(u,fy)=>{
     const ang=(u-0.5)*Math.PI*2;
-    const len=bezier2(0.18, 0.34, 1.045, fy);
+    const len=bezier2(0.16, 0.36, 1.045, fy);
     let rad;
     if(fy<0.18) rad=bezier2(0.075, 0.055, 0.038, fy/0.18);
     else if(fy<0.50) rad=0.038;
     else rad=bezier2(0.038, 0.032, 0.028, (fy-0.50)/0.50);
-    const yOff=fy<0.18 ? Math.sin((fy/0.18)*Math.PI)*0.035 : 0;
-    return {x:sign*len, y:0.58 + yOff + Math.sin(ang)*rad, z:Math.cos(ang)*rad};
+    const yBase = len<0.45 ? 0.62 - (len-0.16)*0.138 : 0.58;
+    return {x:sign*len, y:yBase + Math.sin(ang)*rad, z:Math.cos(ang)*rad};
   };
-  add(28,28, armUnificado(-1)); add(28,28, armUnificado(1));
+  add(28,28, armMolde(-1)); add(28,28, armMolde(1));
 
   // COSTURA GLUTI 0.112 INTACTA
   const costuraAcosturada=(sign)=>(u,fy)=>{
@@ -114,9 +124,10 @@ export function buildV35_FROM_SCRATCH(group) {
   const wire=new THREE.WireframeGeometry(geo);
   const mat=new THREE.LineBasicMaterial({color:0x00e5ff, transparent:true, opacity:0.40, depthWrite:false});
   group.add(new THREE.LineSegments(wire, mat));
-  console.log("LAIA V35.9 UNIFICADO HOMBRO-AXILA-BRAZO 0.18-0.58 + CUELLO 0.88 TRAPECIO - 0.28 INTACTA + 0.112");
+  console.log("LAIA V36 MOLDE TRAPECIO 0.92-0.80-0.60 + BRAZO -18deg - 0.28 INTACTA + 0.112");
   return geo;
 }
+export const buildV36_FROM_SCRATCH = buildV35_FROM_SCRATCH;
 export const buildV35_9_FROM_SCRATCH = buildV35_FROM_SCRATCH;
 export const buildV35_8_FROM_SCRATCH = buildV35_FROM_SCRATCH;
 export const buildV35_7_FROM_SCRATCH = buildV35_FROM_SCRATCH;
@@ -127,4 +138,4 @@ export const buildV35_3_FROM_SCRATCH = buildV35_FROM_SCRATCH;
 export const buildV35_1_FROM_SCRATCH = buildV35_FROM_SCRATCH;
 export const buildV35_2_FROM_SCRATCH = buildV35_FROM_SCRATCH;
 export const buildV34_FROM_SCRATCH = buildV35_FROM_SCRATCH;
-export const buildV32_NEW_TEMPLATE = buildV35_FROM_SCRATCH; 
+export const buildV32_NEW_TEMPLATE = buildV35_FROM_SCRATCH;
